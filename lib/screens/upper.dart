@@ -23,14 +23,14 @@ final List<int> _pool = [
   -9,
 ];
 
-class LowerScreen extends StatefulWidget {
-  const LowerScreen({super.key});
+class UpperScreen extends StatefulWidget {
+  const UpperScreen({super.key});
 
   @override
-  State<LowerScreen> createState() => _LowerScreenState();
+  State<UpperScreen> createState() => _UpperScreenState();
 }
 
-class _LowerScreenState extends State<LowerScreen> {
+class _UpperScreenState extends State<UpperScreen> {
   late List<int> numbers;
   int currentStep = 0;
   bool showAnswer = false;
@@ -65,8 +65,8 @@ class _LowerScreenState extends State<LowerScreen> {
     });
   }
 
-  int getSmallest() {
-    return numbers.reduce((a, b) => a < b ? a : b);
+  int getLargest() {
+    return numbers.reduce((a, b) => a > b ? a : b);
   }
 
   @override
@@ -85,7 +85,7 @@ class _LowerScreenState extends State<LowerScreen> {
           Positioned(
             top: 110,
             left: 20,
-            child: Image.asset('assets/images/lower.png', width: 120),
+            child: Image.asset('assets/images/upper.png', width: 120),
           ),
           Positioned(
             top: 0,
@@ -290,7 +290,7 @@ class _LowerScreenState extends State<LowerScreen> {
                                   child: Stack(
                                     children: [
                                       Text(
-                                        "${getSmallest()}",
+                                        "${getLargest()}",
                                         style: TextStyle(
                                           fontSize: 36,
                                           fontWeight: FontWeight.bold,
@@ -301,7 +301,7 @@ class _LowerScreenState extends State<LowerScreen> {
                                         ),
                                       ),
                                       Text(
-                                        "${getSmallest()}",
+                                        "${getLargest()}",
                                         style: const TextStyle(
                                           fontSize: 36,
                                           fontWeight: FontWeight.bold,
