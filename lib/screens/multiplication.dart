@@ -2,59 +2,47 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'setting.dart';
 
-class UpperScreen extends StatefulWidget {
+class MultiplicationScreen extends StatefulWidget {
   final MathsSetting setting;
 
-  const UpperScreen({super.key, required this.setting});
+  const MultiplicationScreen({super.key, required this.setting});
 
   @override
-  State<UpperScreen> createState() => _UpperScreenState();
+  State<MultiplicationScreen> createState() => _MultiplicationScreenState();
 }
 
-class _UpperScreenState extends State<UpperScreen> {
-  late List<int> numbers;
+class _MultiplicationScreenState extends State<MultiplicationScreen> {
   int currentStep = 0;
+
   bool showAnswer = false;
   bool isSoundOn = true;
   bool isPaused = false;
   bool waitingToShowAnswer = false;
-  bool get isFlashCard => widget.setting.display.toLowerCase() == "flash card";
-
-  bool get isShowAll => widget.setting.display.toLowerCase() == "show all";
 
   @override
   void initState() {
     super.initState();
     _generateRandomNumbers();
-
-    if (isFlashCard) {
-      _startFlashCard();
-    }
   }
+
+  List<List<int>> multiplicationProblems = [];
 
   void _generateRandomNumbers() {
     final digit1 = int.tryParse(widget.setting.digit1) ?? 1;
     final digit2 = int.tryParse(widget.setting.digit2) ?? 1;
-    final row = int.tryParse(widget.setting.row) ?? 3;
+    final count = int.tryParse(widget.setting.point) ?? 3;
 
-    final minDigit1 = pow(10, digit1 - 1).toInt(); // e.g. digit1 = 2 → 10
-    final maxDigit1 = pow(10, digit1).toInt() - 1; // e.g. digit1 = 2 → 99
-
-    final digit2Abs = digit2.abs();
-    final minDigit2 = pow(10, digit2Abs - 1).toInt();
-    final maxDigit2 = pow(10, digit2Abs).toInt() - 1;
+    final min1 = pow(10, digit1 - 1).toInt();
+    final max1 = pow(10, digit1).toInt() - 1;
+    final min2 = pow(10, digit2 - 1).toInt();
+    final max2 = pow(10, digit2).toInt() - 1;
 
     final random = Random();
 
-    numbers = List.generate(row, (index) {
-      if (index == 0) {
-        // ตัวแรกต้องเป็นค่าบวกตาม digit1
-        return random.nextInt(maxDigit1 - minDigit1 + 1) + minDigit1;
-      } else {
-        int value = random.nextInt(maxDigit2 - minDigit2 + 1) + minDigit2;
-        bool isNegative = random.nextBool();
-        return isNegative ? -value : value;
-      }
+    multiplicationProblems = List.generate(count, (_) {
+      final a = random.nextInt(max1 - min1 + 1) + min1;
+      final b = random.nextInt(max2 - min2 + 1) + min2;
+      return [a, b];
     });
   }
 
@@ -65,7 +53,7 @@ class _UpperScreenState extends State<UpperScreen> {
 
       _nextStep();
 
-      if (currentStep < numbers.length && !isPaused) {
+      if (currentStep < multiplicationProblems.length && !isPaused) {
         _startFlashCard();
       }
     });
@@ -73,19 +61,12 @@ class _UpperScreenState extends State<UpperScreen> {
 
   void _nextStep() {
     setState(() {
-      if (isShowAll) {
-        // Show all: กด Next → แสดงคำตอบเลย
-        showAnswer = true;
-        return;
-      }
-
       if (waitingToShowAnswer) {
-        // Flash card: กำลังรอแสดง ? → แสดงคำตอบ
         showAnswer = true;
         waitingToShowAnswer = false;
-      } else if (currentStep < numbers.length) {
+      } else if (currentStep < multiplicationProblems.length) {
         currentStep++;
-        if (currentStep == numbers.length) {
+        if (currentStep == multiplicationProblems.length) {
           waitingToShowAnswer = true;
         }
       }
@@ -98,14 +79,13 @@ class _UpperScreenState extends State<UpperScreen> {
       showAnswer = false;
       waitingToShowAnswer = false;
       _generateRandomNumbers();
-
-      if (isFlashCard) {
-        _startFlashCard();
-      }
     });
   }
 
-  int getAnswerSum() => numbers.fold(0, (sum, n) => sum + n);
+  int getCurrentAnswer() {
+    final p = multiplicationProblems[currentStep];
+    return p[0] * p[1];
+  }
 
   Widget buildOutlinedText(
     String text, {
@@ -151,9 +131,6 @@ class _UpperScreenState extends State<UpperScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final displayMode = widget.setting.display.toLowerCase() == 'flash card'
-        ? 'Flash card'
-        : 'Show all';
     return Scaffold(
       body: Stack(
         children: [
@@ -168,7 +145,7 @@ class _UpperScreenState extends State<UpperScreen> {
           Positioned(
             top: 110,
             left: 20,
-            child: Image.asset('assets/images/upper.png', width: 150),
+            child: Image.asset('assets/images/multiplication.png', width: 170),
           ),
           Positioned(
             top: 10,
@@ -218,29 +195,6 @@ class _UpperScreenState extends State<UpperScreen> {
                   ),
                 ),
                 const SizedBox(height: 6),
-                Stack(
-                  children: [
-                    Text(
-                      "Display : $displayMode",
-                      style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                        foreground: Paint()
-                          ..style = PaintingStyle.stroke
-                          ..strokeWidth = 7
-                          ..color = Colors.black,
-                      ),
-                    ),
-                    Text(
-                      "Display : $displayMode",
-                      style: const TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ],
-                ),
 
                 Padding(
                   padding: const EdgeInsets.only(top: 0),
@@ -272,30 +226,22 @@ class _UpperScreenState extends State<UpperScreen> {
             children: [
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 16),
+                  padding: const EdgeInsets.only(top: 50),
                   child: Center(
-                    child: isShowAll
-                        ? Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: numbers.map((e) {
-                              return Padding(
-                                padding: const EdgeInsets.symmetric(
-                                  vertical: 1,
-                                ),
-                                child: buildOutlinedText(
-                                  "$e",
-                                  fontSize: 60,
-                                  strokeWidth: 15,
-                                ),
-                              );
-                            }).toList(),
+                    child: multiplicationProblems.isEmpty
+                        ? const Text(
+                            "Loading...",
+                            style: TextStyle(fontSize: 40, color: Colors.red),
                           )
-                        : showAnswer || waitingToShowAnswer
-                        ? buildOutlinedText("?", fontSize: 160, strokeWidth: 20)
-                        : buildOutlinedText(
-                            "${numbers[currentStep]}",
-                            fontSize: 160,
-                            strokeWidth: 20,
+                        : Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              buildOutlinedText(
+                                "${multiplicationProblems[currentStep][0]} × ${multiplicationProblems[currentStep][1]}",
+                                fontSize: 120,
+                                strokeWidth: 15,
+                              ),
+                            ],
                           ),
                   ),
                 ),
@@ -351,7 +297,7 @@ class _UpperScreenState extends State<UpperScreen> {
                                   child: Stack(
                                     children: [
                                       Text(
-                                        "${getAnswerSum()}",
+                                        "${getCurrentAnswer()}",
                                         style: TextStyle(
                                           fontSize: 36,
                                           fontWeight: FontWeight.bold,
@@ -362,7 +308,7 @@ class _UpperScreenState extends State<UpperScreen> {
                                         ),
                                       ),
                                       Text(
-                                        "${getAnswerSum()}",
+                                        "${getCurrentAnswer()}",
                                         style: const TextStyle(
                                           fontSize: 36,
                                           fontWeight: FontWeight.bold,
@@ -380,11 +326,26 @@ class _UpperScreenState extends State<UpperScreen> {
 
                     const SizedBox(width: 12),
                     ElevatedButton(
-                      onPressed: showAnswer ? _restart : _nextStep,
+                      onPressed: () {
+                        setState(() {
+                          if (!showAnswer) {
+                            showAnswer = true; // แสดงคำตอบ
+                          } else {
+                            // ไปข้อถัดไป
+                            if (currentStep <
+                                multiplicationProblems.length - 1) {
+                              currentStep++;
+                              showAnswer = false;
+                            } else {
+                              // จบ → เริ่มใหม่
+                              _restart();
+                            }
+                          }
+                        });
+                      },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.transparent,
                         elevation: 0,
-                        shadowColor: Colors.transparent,
                         padding: EdgeInsets.zero,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30),

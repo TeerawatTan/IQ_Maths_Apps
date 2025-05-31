@@ -3,6 +3,8 @@ import 'screens/login.dart';
 import 'screens/setting.dart';
 import 'screens/lower.dart';
 import 'screens/upper.dart';
+import 'screens/multiplication.dart';
+import 'screens/division.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,12 +18,34 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'IQ Maths',
-      theme: ThemeData(useMaterial3: true),
-      home: LoginScreen(),
-      routes: {
-        '/Setting': (context) => SettingScreen(),
-        '/Lower': (context) => LowerScreen(),
-        '/Upper': (context) => UpperScreen(),
+      theme: ThemeData(fontFamily: 'PoetsenOn', useMaterial3: true),
+      home: const LoginScreen(),
+      onGenerateRoute: (settings) {
+        if (settings.name == '/Lower') {
+          final mathsSetting = settings.arguments as MathsSetting;
+          return MaterialPageRoute(
+            builder: (_) => LowerScreen(setting: mathsSetting),
+          );
+        } else if (settings.name == '/Upper') {
+          final mathsSetting = settings.arguments as MathsSetting;
+          return MaterialPageRoute(
+            builder: (_) => UpperScreen(setting: mathsSetting),
+          );
+        } else if (settings.name == '/Multiplication') {
+          final mathsSetting = settings.arguments as MathsSetting;
+          return MaterialPageRoute(
+            builder: (_) => MultiplicationScreen(setting: mathsSetting),
+          );
+        } else if (settings.name == '/Division') {
+          final mathsSetting = settings.arguments as MathsSetting;
+          print("Creating Division screen with setting: $mathsSetting");
+          return MaterialPageRoute(
+            builder: (_) => DivisionScreen(setting: mathsSetting),
+          );
+        } else if (settings.name == '/Setting') {
+          return MaterialPageRoute(builder: (_) => const SettingScreen());
+        }
+        return MaterialPageRoute(builder: (_) => const SettingScreen());
       },
     );
   }

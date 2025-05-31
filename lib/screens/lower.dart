@@ -1,30 +1,11 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-
-final List<int> _pool = [
-  9,
-  8,
-  7,
-  6,
-  5,
-  4,
-  3,
-  2,
-  1,
-  0,
-  -1,
-  -2,
-  -3,
-  -4,
-  -5,
-  -6,
-  -7,
-  -8,
-  -9,
-];
+import 'setting.dart';
 
 class LowerScreen extends StatefulWidget {
-  const LowerScreen({super.key});
+  final MathsSetting setting;
+
+  const LowerScreen({super.key, required this.setting});
 
   @override
   State<LowerScreen> createState() => _LowerScreenState();
@@ -35,42 +16,187 @@ class _LowerScreenState extends State<LowerScreen> {
   int currentStep = 0;
   bool showAnswer = false;
   bool isSoundOn = true;
+  bool isPaused = false;
+  bool waitingToShowAnswer = false;
+  bool get isFlashCard => widget.setting.display.toLowerCase() == "flash card";
+  bool get isShowAll => widget.setting.display.toLowerCase() == "show all";
 
   @override
   void initState() {
     super.initState();
     _generateRandomNumbers();
+
+    if (isFlashCard) {
+      Future.delayed(const Duration(milliseconds: 500), () {
+        if (mounted && !isPaused) {
+          _startFlashCard();
+        }
+      });
+    }
   }
 
   void _generateRandomNumbers() {
+    final digit1 = int.tryParse(widget.setting.digit1) ?? 1;
+    final digit2 = int.tryParse(widget.setting.digit2) ?? 1;
+    final row = int.tryParse(widget.setting.row) ?? 3;
+
+    final minDigit1 = pow(10, digit1 - 1).toInt();
+    final maxDigit1 = pow(10, digit1).toInt() - 1;
+
+    final digit2Abs = digit2.abs();
+    final minDigit2 = pow(10, digit2Abs - 1).toInt();
+    final maxDigit2 = pow(10, digit2Abs).toInt() - 1;
+
     final random = Random();
-    final tempList = List<int>.from(_pool)..shuffle(random);
-    numbers = tempList.take(3).toList();
+
+    numbers = List.generate(row, (index) {
+      if (index == 0) {
+        return random.nextInt(maxDigit1 - minDigit1 + 1) + minDigit1;
+      } else {
+        int value = random.nextInt(maxDigit2 - minDigit2 + 1) + minDigit2;
+        bool isNegative = random.nextBool();
+        return isNegative ? -value : value;
+      }
+    });
+  }
+
+  void _startFlashCard() {
+    final time = double.tryParse(widget.setting.time) ?? 1.5;
+
+    Future.delayed(Duration(milliseconds: (time * 1000).toInt()), () {
+      if (!mounted || isPaused) return;
+
+      setState(() {
+        if (currentStep < numbers.length) {
+          currentStep++;
+          showAnswer = false;
+          if (currentStep == numbers.length) {
+            waitingToShowAnswer = true;
+          }
+        }
+      });
+
+      if (currentStep < numbers.length && !isPaused) {
+        _startFlashCard();
+      }
+    });
   }
 
   void _nextStep() {
     setState(() {
-      if (currentStep < numbers.length) {
-        currentStep++;
-      } else {
+      if (isShowAll) {
+        // Show all: กด Next → แสดงคำตอบเลย
         showAnswer = true;
+        return;
+      }
+
+      if (waitingToShowAnswer) {
+        // Flash card: กำลังรอแสดง ? → แสดงคำตอบ
+        showAnswer = true;
+        waitingToShowAnswer = false;
+      } else if (currentStep < numbers.length) {
+        currentStep++;
+        if (currentStep == numbers.length) {
+          waitingToShowAnswer = true;
+        }
       }
     });
+  }
+
+  Widget buildNumberDisplay() {
+    if (isShowAll) {
+      return Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: numbers.map((e) {
+          return Padding(
+            padding: const EdgeInsets.symmetric(vertical: 1),
+            child: buildOutlinedText("$e", fontSize: 60, strokeWidth: 15),
+          );
+        }).toList(),
+      );
+    }
+
+    if (waitingToShowAnswer) {
+      return buildOutlinedText("?", fontSize: 160, strokeWidth: 20);
+    }
+
+    if (currentStep < numbers.length) {
+      return buildOutlinedText(
+        "${numbers[currentStep]}",
+        fontSize: 160,
+        strokeWidth: 20,
+      );
+    }
+
+    return buildOutlinedText(
+      "${getAnswerSum()}",
+      fontSize: 160,
+      strokeWidth: 20,
+    );
   }
 
   void _restart() {
     setState(() {
       currentStep = 0;
       showAnswer = false;
+      waitingToShowAnswer = false;
+      _generateRandomNumbers();
+
+      if (isFlashCard) {
+        _startFlashCard();
+      }
     });
   }
 
-  int getSmallest() {
-    return numbers.reduce((a, b) => a < b ? a : b);
+  int getAnswerSum() => numbers.fold(0, (sum, n) => sum + n);
+
+  Widget buildOutlinedText(
+    String text, {
+    double fontSize = 60,
+    double strokeWidth = 10,
+    Color strokeColor = Colors.black,
+    Color fillColor = Colors.white,
+  }) {
+    return Stack(
+      children: [
+        Text(
+          text,
+          style: TextStyle(
+            fontSize: fontSize,
+            fontWeight: FontWeight.bold,
+            height: 0.4,
+            foreground: Paint()
+              ..style = PaintingStyle.stroke
+              ..strokeWidth = strokeWidth
+              ..color = strokeColor,
+          ),
+          textHeightBehavior: const TextHeightBehavior(
+            applyHeightToFirstAscent: false,
+            applyHeightToLastDescent: false,
+          ),
+        ),
+        Text(
+          text,
+          style: TextStyle(
+            fontSize: fontSize,
+            fontWeight: FontWeight.bold,
+            height: 0.8,
+            color: fillColor,
+          ),
+          textHeightBehavior: const TextHeightBehavior(
+            applyHeightToFirstAscent: false,
+            applyHeightToLastDescent: false,
+          ),
+        ),
+      ],
+    );
   }
 
   @override
   Widget build(BuildContext context) {
+    final displayMode = widget.setting.display.toLowerCase() == 'flash card'
+        ? 'Flash card'
+        : 'Show all';
     return Scaffold(
       body: Stack(
         children: [
@@ -80,25 +206,24 @@ class _LowerScreenState extends State<LowerScreen> {
           Positioned(
             top: 30,
             left: 20,
-            child: Image.asset('assets/images/logo.png', width: 70),
+            child: Image.asset('assets/images/logo.png', width: 60),
           ),
           Positioned(
             top: 110,
             left: 20,
-            child: Image.asset('assets/images/lower.png', width: 120),
+            child: Image.asset('assets/images/lower.png', width: 150),
           ),
           Positioned(
-            top: 0,
-            left: 0,
-            right: 0,
+            top: 10,
+            left: 100,
             child: Center(
               child: Image.asset('assets/images/iq_maths_icon.png', width: 130),
             ),
           ),
           Positioned(
             bottom: 40,
-            left: 0,
-            child: Image.asset('assets/images/owl.png', width: 150),
+            left: 20,
+            child: Image.asset('assets/images/owl.png', width: 120),
           ),
 
           Positioned(
@@ -139,7 +264,7 @@ class _LowerScreenState extends State<LowerScreen> {
                 Stack(
                   children: [
                     Text(
-                      "Display : Flash card",
+                      "Display : $displayMode",
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
@@ -149,15 +274,38 @@ class _LowerScreenState extends State<LowerScreen> {
                           ..color = Colors.black,
                       ),
                     ),
-                    const Text(
-                      "Display : Flash card",
-                      style: TextStyle(
+                    Text(
+                      "Display : $displayMode",
+                      style: const TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
                       ),
                     ),
                   ],
+                ),
+
+                Padding(
+                  padding: const EdgeInsets.only(top: 0),
+                  child: IconButton(
+                    icon: Image.asset(
+                      isPaused
+                          ? 'assets/images/play_icon.png'
+                          : 'assets/images/pause_icon.png',
+                      width: 100,
+                      height: 100,
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        isPaused = !isPaused;
+                        if (!isPaused &&
+                            widget.setting.display.toLowerCase() ==
+                                "Flash card") {
+                          _startFlashCard();
+                        }
+                      });
+                    },
+                  ),
                 ),
               ],
             ),
@@ -167,78 +315,37 @@ class _LowerScreenState extends State<LowerScreen> {
             children: [
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 50),
+                  padding: const EdgeInsets.only(top: 16),
                   child: Center(
-                    child: currentStep == 0
+                    child: isShowAll
                         ? Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: numbers.map((e) {
                               return Padding(
                                 padding: const EdgeInsets.symmetric(
-                                  vertical: 4,
+                                  vertical: 1,
                                 ),
-                                child: Stack(
-                                  children: [
-                                    // Stroke
-                                    Text(
-                                      "$e",
-                                      style: TextStyle(
-                                        fontSize: 60,
-                                        fontWeight: FontWeight.bold,
-                                        height: 0.1,
-                                        foreground: Paint()
-                                          ..style = PaintingStyle.stroke
-                                          ..strokeWidth = 10
-                                          ..color = Colors.black,
-                                      ),
-                                      textHeightBehavior:
-                                          const TextHeightBehavior(
-                                            applyHeightToFirstAscent: false,
-                                            applyHeightToLastDescent: false,
-                                          ),
-                                    ),
-                                    // Fill
-                                    Text(
-                                      "$e",
-                                      style: const TextStyle(
-                                        fontSize: 60,
-                                        fontWeight: FontWeight.bold,
-                                        height: 0.1,
-                                        color: Colors.white,
-                                      ),
-                                      textHeightBehavior:
-                                          const TextHeightBehavior(
-                                            applyHeightToFirstAscent: false,
-                                            applyHeightToLastDescent: false,
-                                          ),
-                                    ),
-                                  ],
+                                child: buildOutlinedText(
+                                  "$e",
+                                  fontSize: 60,
+                                  strokeWidth: 15,
                                 ),
                               );
                             }).toList(),
                           )
-                        : showAnswer
-                        ? Text(
-                            "?",
-                            style: const TextStyle(
-                              fontSize: 160,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                            ),
-                          )
-                        : Text(
-                            "${numbers[currentStep - 1]}",
-                            style: const TextStyle(
-                              fontSize: 160,
-                              fontWeight: FontWeight.bold,
-                            ),
+                        : showAnswer || waitingToShowAnswer
+                        ? buildOutlinedText("?", fontSize: 160, strokeWidth: 20)
+                        : buildOutlinedText(
+                            "${numbers[currentStep]}",
+                            fontSize: 160,
+                            strokeWidth: 20,
                           ),
                   ),
                 ),
               ),
 
               Padding(
-                padding: const EdgeInsets.only(bottom: 4.0),
+                padding: const EdgeInsets.only(bottom: 5.0),
                 child: Row(
                   children: [
                     const SizedBox(width: 150),
@@ -246,11 +353,8 @@ class _LowerScreenState extends State<LowerScreen> {
                       child: Center(
                         child: Container(
                           width: 350,
-                          height: 75,
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 27,
-                            vertical: 12,
-                          ),
+                          height: 60,
+                          padding: const EdgeInsets.fromLTRB(20, 7, 0, 0),
                           decoration: BoxDecoration(
                             color: Colors.yellow[600],
                             borderRadius: BorderRadius.circular(50),
@@ -290,7 +394,7 @@ class _LowerScreenState extends State<LowerScreen> {
                                   child: Stack(
                                     children: [
                                       Text(
-                                        "${getSmallest()}",
+                                        "${getAnswerSum()}",
                                         style: TextStyle(
                                           fontSize: 36,
                                           fontWeight: FontWeight.bold,
@@ -301,7 +405,7 @@ class _LowerScreenState extends State<LowerScreen> {
                                         ),
                                       ),
                                       Text(
-                                        "${getSmallest()}",
+                                        "${getAnswerSum()}",
                                         style: const TextStyle(
                                           fontSize: 36,
                                           fontWeight: FontWeight.bold,
@@ -369,7 +473,6 @@ class _LowerScreenState extends State<LowerScreen> {
                           'assets/images/sound_icon.png',
                           width: 22,
                           height: 22,
-                          color: Colors.white,
                         ),
                         const SizedBox(width: 4),
                         Transform.scale(
