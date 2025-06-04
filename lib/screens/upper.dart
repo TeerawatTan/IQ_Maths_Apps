@@ -1,6 +1,7 @@
-import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:iq_maths_apps/models/upper_question4.dart';
 import 'setting.dart';
+import 'package:iq_maths_apps/datas/upper.dart';
 
 class UpperScreen extends StatefulWidget {
   final MathsSetting setting;
@@ -12,15 +13,17 @@ class UpperScreen extends StatefulWidget {
 }
 
 class _UpperScreenState extends State<UpperScreen> {
-  late List<int> numbers;
+  late List<int> numbers = [];
   int currentStep = 0;
   bool showAnswer = false;
   bool isSoundOn = true;
   bool isPaused = false;
   bool waitingToShowAnswer = false;
   bool get isFlashCard => widget.setting.display.toLowerCase() == "flash card";
-
   bool get isShowAll => widget.setting.display.toLowerCase() == "show all";
+  final int questionLimit = 2;
+  dynamic currentQ;
+  int answer = 0;
 
   @override
   void initState() {
@@ -37,25 +40,37 @@ class _UpperScreenState extends State<UpperScreen> {
     final digit2 = int.tryParse(widget.setting.digit2) ?? 1;
     final row = int.tryParse(widget.setting.row) ?? 3;
 
-    final minDigit1 = pow(10, digit1 - 1).toInt(); // e.g. digit1 = 2 → 10
-    final maxDigit1 = pow(10, digit1).toInt() - 1; // e.g. digit1 = 2 → 99
+    if (row == 3) {
+      _randomQuestion3rows(digit1, digit2);
+    } else if (row == 4) {
+      _randomQuestion4rows(digit1, digit2);
+    }
+  }
 
-    final digit2Abs = digit2.abs();
-    final minDigit2 = pow(10, digit2Abs - 1).toInt();
-    final maxDigit2 = pow(10, digit2Abs).toInt() - 1;
+  void _randomQuestion3rows(int d1, int d2) {
+    // final List<Upper3row> allQuestions = upper3row11;
+    // Upper3row? currentQuestion;
+    // if (digit1 == 1) {
+    //   // สุ่มเลือก index จากลิสต์
+    //   int randomIndex = _random.nextInt(allQuestions.length);
+    //   currentQuestion = allQuestions[randomIndex];
+    // }
+  }
 
-    final random = Random();
-
-    numbers = List.generate(row, (index) {
-      if (index == 0) {
-        // ตัวแรกต้องเป็นค่าบวกตาม digit1
-        return random.nextInt(maxDigit1 - minDigit1 + 1) + minDigit1;
-      } else {
-        int value = random.nextInt(maxDigit2 - minDigit2 + 1) + minDigit2;
-        bool isNegative = random.nextBool();
-        return isNegative ? -value : value;
-      }
-    });
+  void _randomQuestion4rows(int d1, int d2) {
+    if (d1 == 1) {
+      if (d2 == 1) {
+        UpperQuestion4Row selector = UpperQuestion4Row(questions: upper4row11);
+        selector.selectRandomQuestion();
+        Upper4row? currentQ = selector.getCurrentQuestion();
+        if (currentQ != null) {
+          numbers.add(currentQ.digit1);
+          numbers.add(currentQ.digit2);
+          numbers.add(currentQ.digit3);
+          numbers.add(currentQ.digit4);
+        }
+      } else if (d2 == 2) {}
+    } else if (d1 == 2) {}
   }
 
   void _startFlashCard() {
@@ -83,9 +98,9 @@ class _UpperScreenState extends State<UpperScreen> {
         // Flash card: กำลังรอแสดง ? → แสดงคำตอบ
         showAnswer = true;
         waitingToShowAnswer = false;
-      } else if (currentStep < numbers.length) {
+      } else if (currentStep < questionLimit) {
         currentStep++;
-        if (currentStep == numbers.length) {
+        if (currentStep == questionLimit) {
           waitingToShowAnswer = true;
         }
       }
@@ -105,7 +120,7 @@ class _UpperScreenState extends State<UpperScreen> {
     });
   }
 
-  int getAnswerSum() => numbers.fold(0, (sum, n) => sum + n);
+  // int getAnswerSum() => numbers.fold(0, (sum, n) => sum + n);
 
   Widget buildOutlinedText(
     String text, {
@@ -182,7 +197,6 @@ class _UpperScreenState extends State<UpperScreen> {
             left: 20,
             child: Image.asset('assets/images/owl.png', width: 120),
           ),
-
           Positioned(
             top: 30,
             right: 20,
@@ -267,7 +281,6 @@ class _UpperScreenState extends State<UpperScreen> {
               ],
             ),
           ),
-
           Column(
             children: [
               Expanded(
@@ -284,8 +297,8 @@ class _UpperScreenState extends State<UpperScreen> {
                                 ),
                                 child: buildOutlinedText(
                                   "$e",
-                                  fontSize: 60,
-                                  strokeWidth: 15,
+                                  fontSize: 50,
+                                  strokeWidth: 10,
                                 ),
                               );
                             }).toList(),
@@ -300,7 +313,6 @@ class _UpperScreenState extends State<UpperScreen> {
                   ),
                 ),
               ),
-
               Padding(
                 padding: const EdgeInsets.only(bottom: 5.0),
                 child: Row(
@@ -345,13 +357,28 @@ class _UpperScreenState extends State<UpperScreen> {
                                   color: Colors.white,
                                 ),
                               ),
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                  left: 100.0,
+                                  right: 100,
+                                ),
+                                child: TextField(
+                                  keyboardType: TextInputType.number,
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 60,
+                                    color: Colors.red,
+                                  ),
+                                  cursorColor: Colors.red,
+                                ),
+                              ),
                               if (showAnswer)
                                 Align(
                                   alignment: Alignment.center,
                                   child: Stack(
                                     children: [
                                       Text(
-                                        "${getAnswerSum()}",
+                                        "$answer",
                                         style: TextStyle(
                                           fontSize: 36,
                                           fontWeight: FontWeight.bold,
@@ -362,7 +389,7 @@ class _UpperScreenState extends State<UpperScreen> {
                                         ),
                                       ),
                                       Text(
-                                        "${getAnswerSum()}",
+                                        "$answer",
                                         style: const TextStyle(
                                           fontSize: 36,
                                           fontWeight: FontWeight.bold,
@@ -377,7 +404,6 @@ class _UpperScreenState extends State<UpperScreen> {
                         ),
                       ),
                     ),
-
                     const SizedBox(width: 12),
                     ElevatedButton(
                       onPressed: showAnswer ? _restart : _nextStep,
@@ -401,7 +427,6 @@ class _UpperScreenState extends State<UpperScreen> {
                   ],
                 ),
               ),
-
               Container(
                 height: 42,
                 color: Colors.lightBlueAccent,

@@ -30,7 +30,7 @@ class _MultiplicationScreenState extends State<MultiplicationScreen> {
   void _generateRandomNumbers() {
     final digit1 = int.tryParse(widget.setting.digit1) ?? 1;
     final digit2 = int.tryParse(widget.setting.digit2) ?? 1;
-    final count = int.tryParse(widget.setting.point) ?? 3;
+    final count = 10;
 
     final min1 = pow(10, digit1 - 1).toInt();
     final max1 = pow(10, digit1).toInt() - 1;

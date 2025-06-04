@@ -30,7 +30,7 @@ class _DivisionScreenState extends State<DivisionScreen> {
   void _generateRandomNumbers() {
     final digit1 = int.tryParse(widget.setting.digit1) ?? 2; // หลักของ dividend
     final digit2 = int.tryParse(widget.setting.digit2) ?? 1; // หลักของ divisor
-    final count = int.tryParse(widget.setting.point) ?? 3;
+    final count = 10;
 
     final minDividend = pow(10, digit1 - 1).toInt(); // เช่น 10
     final maxDividend = pow(10, digit1).toInt() - 1; // เช่น 99

@@ -9,7 +9,6 @@ class SettingScreen extends StatefulWidget {
 
 class MathsSetting {
   String digit1;
-  String point;
   String digit2;
   String display;
   String row;
@@ -17,7 +16,6 @@ class MathsSetting {
 
   MathsSetting({
     this.digit1 = '',
-    this.point = '',
     this.digit2 = '',
     this.display = '',
     this.row = '',
@@ -30,19 +28,12 @@ class MathsSetting {
     final needsOnlyBasicFields = d == "multiplication";
     final needsOnlyBasicFieldsd = d == "division";
     if (needsOnlyBasicFields) {
-      return digit1.isNotEmpty &&
-          point.isNotEmpty &&
-          digit2.isNotEmpty &&
-          time.isNotEmpty;
+      return digit1.isNotEmpty && digit2.isNotEmpty && time.isNotEmpty;
     } else if (needsOnlyBasicFieldsd) {
-      return digit1.isNotEmpty &&
-          point.isNotEmpty &&
-          digit2.isNotEmpty &&
-          time.isNotEmpty;
+      return digit1.isNotEmpty && digit2.isNotEmpty && time.isNotEmpty;
     }
 
     return digit1.isNotEmpty &&
-        point.isNotEmpty &&
         digit2.isNotEmpty &&
         display.isNotEmpty &&
         row.isNotEmpty &&
@@ -60,7 +51,6 @@ class _SettingScreenState extends State<SettingScreen> {
   bool isSoundOn = true;
 
   String selectedDigit1 = '';
-  String selectedPoint = '';
   String selectedDigit2 = '';
   String selectedDisplay = '';
   String selectedRow = '';
@@ -69,7 +59,6 @@ class _SettingScreenState extends State<SettingScreen> {
   void clearSetting() {
     setState(() {
       selectedDigit1 = '';
-      selectedPoint = '';
       selectedDigit2 = '';
       selectedDisplay = '';
       selectedRow = '';
@@ -98,7 +87,6 @@ class _SettingScreenState extends State<SettingScreen> {
   void initState() {
     super.initState();
     selectedDigit1 = '';
-    selectedPoint = '';
     selectedDigit2 = '';
     selectedDisplay = '';
     selectedRow = '';
@@ -246,11 +234,11 @@ class _SettingScreenState extends State<SettingScreen> {
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
               ),
               SizedBox(height: 8),
-              _settingRow(["Digit 1", "Point"]),
+              _settingRow(["Digit 1", "Display"]),
               SizedBox(height: 8),
-              _settingRow(["Digit 2", "Display"]),
+              _settingRow(["Digit 2", "Time"]),
               SizedBox(height: 8),
-              _settingRow(["Row", "Time"]),
+              _settingRow(["Row"]),
             ],
             if (type == "FIVE")
               SizedBox(
@@ -345,11 +333,11 @@ class _SettingScreenState extends State<SettingScreen> {
                         ),
                       ),
                       SizedBox(height: 8),
-                      _settingRow(["Digit 1", "Point"]),
+                      _settingRow(["Digit 1", "Display"]),
                       SizedBox(height: 8),
-                      _settingRow(["Digit 2", "Display"]),
+                      _settingRow(["Digit 2", "Time"]),
                       SizedBox(height: 8),
-                      _settingRow(["Row", "Time"]),
+                      _settingRow(["Row"]),
                     ],
                   ),
                 ),
@@ -534,11 +522,11 @@ class _SettingScreenState extends State<SettingScreen> {
                         ),
                       ),
                       SizedBox(height: 8),
-                      _settingRow(["Digit 1", "Point"]),
+                      _settingRow(["Digit 1", "Display"]),
                       SizedBox(height: 8),
-                      _settingRow(["Digit 2", "Display"]),
+                      _settingRow(["Digit 2", "Time"]),
                       SizedBox(height: 8),
-                      _settingRow(["Row", "Time"]),
+                      _settingRow(["Row"]),
                     ],
                   ),
                 ),
@@ -723,11 +711,11 @@ class _SettingScreenState extends State<SettingScreen> {
                         ),
                       ),
                       SizedBox(height: 8),
-                      _settingRow(["Digit 1", "Point"]),
+                      _settingRow(["Digit 1", "Display"]),
                       SizedBox(height: 8),
-                      _settingRow(["Digit 2", "Display"]),
+                      _settingRow(["Digit 2", "Time"]),
                       SizedBox(height: 8),
-                      _settingRow(["Row", "Time"]),
+                      _settingRow(["Row"]),
                     ],
                   ),
                 ),
@@ -749,9 +737,9 @@ class _SettingScreenState extends State<SettingScreen> {
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
               ),
               SizedBox(height: 10),
-              _settingRow(["Digit 1", "Point"]),
+              _settingRow(["Digit 1", "Time"]),
               SizedBox(height: 10),
-              _settingRow(["Digit 2", "Time"]),
+              _settingRow(["Digit 2"]),
             ],
             if (type == "DIV") ...[
               Row(
@@ -770,9 +758,9 @@ class _SettingScreenState extends State<SettingScreen> {
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
               ),
               SizedBox(height: 10),
-              _settingRow(["Digit 1", "Point"]),
+              _settingRow(["Digit 1", "Time"]),
               SizedBox(height: 10),
-              _settingRow(["Digit 2", "Time"]),
+              _settingRow(["Digit 2"]),
             ],
           ],
         ),
@@ -791,6 +779,7 @@ class _SettingScreenState extends State<SettingScreen> {
     right: 10,
     child: Image.asset('assets/images/maths_icon4.png', width: 90),
   );
+
   Widget _buildFooter() => Positioned(
     bottom: 0,
     left: 0,
@@ -886,7 +875,6 @@ class _SettingScreenState extends State<SettingScreen> {
         try {
           final setting = MathsSetting(
             digit1: selectedDigit1,
-            point: selectedPoint,
             digit2: selectedDigit2,
             display: displayOverride ?? selectedDisplay,
             row: selectedRow,
@@ -898,11 +886,7 @@ class _SettingScreenState extends State<SettingScreen> {
 
             if (!mounted) return;
 
-            final result = await Navigator.pushNamed(
-              context,
-              route,
-              arguments: setting,
-            );
+            await Navigator.pushNamed(context, route, arguments: setting);
           } else {
             if (mounted) {
               ScaffoldMessenger.of(context).showSnackBar(
@@ -926,7 +910,7 @@ class _SettingScreenState extends State<SettingScreen> {
               );
             }
           }
-        } catch (e, stackTrace) {
+        } catch (e) {
           if (mounted) {
             showDialog(
               context: context,
@@ -958,17 +942,6 @@ class _SettingScreenState extends State<SettingScreen> {
           {'label': '2', 'value': '2'},
           {'label': '3', 'value': '3'},
         ];
-        break;
-      case "Point":
-        options = [
-          {'label': '0', 'value': '0'},
-          {'label': '1', 'value': '1'},
-          {'label': '2', 'value': '2'},
-          {'label': '3', 'value': '3'},
-          {'label': '5', 'value': '5'},
-          {'label': '10', 'value': '10'},
-        ];
-
         break;
       case "Display":
         options = [
@@ -1060,8 +1033,6 @@ class _SettingScreenState extends State<SettingScreen> {
     switch (label) {
       case "Digit 1":
         return selectedDigit1;
-      case "Point":
-        return selectedPoint;
       case "Digit 2":
         return selectedDigit2;
       case "Display":
@@ -1079,9 +1050,6 @@ class _SettingScreenState extends State<SettingScreen> {
     switch (label) {
       case "Digit 1":
         selectedDigit1 = value;
-        break;
-      case "Point":
-        selectedPoint = value;
         break;
       case "Digit 2":
         selectedDigit2 = value;
