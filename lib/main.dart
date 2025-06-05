@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import '../models/maths_setting.dart';
 import 'screens/login.dart';
 import 'screens/setting.dart';
 import 'screens/lower.dart';
 import 'screens/upper.dart';
+import 'screens/lowerandupper.dart';
 import 'screens/multiplication.dart';
 import 'screens/division.dart';
 
@@ -31,6 +33,11 @@ class MyApp extends StatelessWidget {
           return MaterialPageRoute(
             builder: (_) => UpperScreen(setting: mathsSetting),
           );
+        } else if (settings.name == '/LowerAndUpper') {
+          final mathsSetting = settings.arguments as MathsSetting;
+          return MaterialPageRoute(
+            builder: (_) => LowerAndUpperScreen(setting: mathsSetting),
+          );
         } else if (settings.name == '/Multiplication') {
           final mathsSetting = settings.arguments as MathsSetting;
           return MaterialPageRoute(
@@ -38,7 +45,6 @@ class MyApp extends StatelessWidget {
           );
         } else if (settings.name == '/Division') {
           final mathsSetting = settings.arguments as MathsSetting;
-          print("Creating Division screen with setting: $mathsSetting");
           return MaterialPageRoute(
             builder: (_) => DivisionScreen(setting: mathsSetting),
           );

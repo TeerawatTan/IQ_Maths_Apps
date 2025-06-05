@@ -1,6 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'setting.dart';
+import 'package:iq_maths_apps/models/maths_setting.dart';
 
 class DivisionScreen extends StatefulWidget {
   final MathsSetting setting;
@@ -18,40 +18,55 @@ class _DivisionScreenState extends State<DivisionScreen> {
   bool isSoundOn = true;
   bool isPaused = false;
   bool waitingToShowAnswer = false;
+  bool isLoading = true;
+  List<List<int>> divisionProblems = [];
 
   @override
   void initState() {
     super.initState();
-    _generateRandomNumbers();
+    _GenerateNumbers();
   }
 
-  List<List<int>> divisionProblems = [];
+  void _GenerateNumbers() async {
+    setState(() => isLoading = true);
+    divisionProblems = await _generateRandomNumbers();
+    setState(() {
+      currentStep = 0;
+      showAnswer = false;
+      isLoading = false;
+    });
+  }
 
-  void _generateRandomNumbers() {
-    final digit1 = int.tryParse(widget.setting.digit1) ?? 2; // หลักของ dividend
-    final digit2 = int.tryParse(widget.setting.digit2) ?? 1; // หลักของ divisor
+  Future<List<List<int>>> _generateRandomNumbers() async {
+    final digit1 = int.tryParse(widget.setting.digit1) ?? 2;
+    final digit2 = int.tryParse(widget.setting.digit2) ?? 1;
     final count = 10;
 
-    final minDividend = pow(10, digit1 - 1).toInt(); // เช่น 10
-    final maxDividend = pow(10, digit1).toInt() - 1; // เช่น 99
-
-    final minDivisor = pow(10, digit2 - 1).toInt(); // เช่น 1
-    final maxDivisor = pow(10, digit2).toInt() - 1; // เช่น 9
-
+    final minDividend = pow(10, digit1 - 1).toInt();
+    final maxDividend = pow(10, digit1).toInt() - 1;
+    final minDivisor = pow(10, digit2 - 1).toInt();
+    final maxDivisor = pow(10, digit2).toInt() - 1;
     final random = Random();
 
-    divisionProblems = List.generate(count, (_) {
-      late int divisor, quotient, dividend;
+    List<List<int>> results = [];
+    int attempt = 0;
 
-      // สุ่มจนได้ dividend ที่มี digit1 หลัก
-      do {
-        divisor = random.nextInt(maxDivisor - minDivisor + 1) + minDivisor;
-        quotient = random.nextInt(9) + 1; // ให้ผลลัพธ์อยู่ในช่วง 1–9
-        dividend = divisor * quotient;
-      } while (dividend < minDividend || dividend > maxDividend);
+    while (results.length < count && attempt < count * 20) {
+      attempt++;
+      int divisor = random.nextInt(maxDivisor - minDivisor + 1) + minDivisor;
+      int quotient = random.nextInt(9) + 1;
+      int dividend = divisor * quotient;
 
-      return [dividend, divisor]; // [ตัวตั้ง, ตัวหาร]
-    });
+      if (dividend >= minDividend && dividend <= maxDividend) {
+        results.add([dividend, divisor]);
+      }
+    }
+
+    while (results.length < count) {
+      results.add([minDividend, minDivisor]);
+    }
+
+    return results;
   }
 
   void _startFlashCard() {
@@ -86,22 +101,23 @@ class _DivisionScreenState extends State<DivisionScreen> {
       currentStep = 0;
       showAnswer = false;
       waitingToShowAnswer = false;
-      _generateRandomNumbers();
+      _GenerateNumbers();
     });
   }
 
   int getCurrentAnswer() {
     final p = divisionProblems[currentStep];
-    return p[0] ~/ p[1]; // quotient
+    return p[0] ~/ p[1];
   }
 
   Widget buildOutlinedText(
     String text, {
     double fontSize = 60,
-    double strokeWidth = 10,
+    double strokeWidthRatio = 0.2,
     Color strokeColor = Colors.black,
     Color fillColor = Colors.white,
   }) {
+    final strokeWidth = fontSize * strokeWidthRatio;
     return Stack(
       children: [
         Text(
@@ -109,11 +125,12 @@ class _DivisionScreenState extends State<DivisionScreen> {
           style: TextStyle(
             fontSize: fontSize,
             fontWeight: FontWeight.bold,
-            height: 0.4,
+            height: 1.3,
             foreground: Paint()
               ..style = PaintingStyle.stroke
               ..strokeWidth = strokeWidth
-              ..color = strokeColor,
+              ..color = strokeColor
+              ..strokeJoin = StrokeJoin.round,
           ),
           textHeightBehavior: const TextHeightBehavior(
             applyHeightToFirstAscent: false,
@@ -125,7 +142,7 @@ class _DivisionScreenState extends State<DivisionScreen> {
           style: TextStyle(
             fontSize: fontSize,
             fontWeight: FontWeight.bold,
-            height: 0.8,
+            height: 1.3,
             color: fillColor,
           ),
           textHeightBehavior: const TextHeightBehavior(
@@ -247,7 +264,6 @@ class _DivisionScreenState extends State<DivisionScreen> {
                               buildOutlinedText(
                                 "${divisionProblems[currentStep][0]} ÷ ${divisionProblems[currentStep][1]}",
                                 fontSize: 120,
-                                strokeWidth: 15,
                               ),
                             ],
                           ),
@@ -288,7 +304,8 @@ class _DivisionScreenState extends State<DivisionScreen> {
                                   foreground: Paint()
                                     ..style = PaintingStyle.stroke
                                     ..strokeWidth = 10
-                                    ..color = Colors.black,
+                                    ..color = Colors.black
+                                    ..strokeJoin = StrokeJoin.round,
                                 ),
                               ),
                               const Text(
@@ -312,7 +329,8 @@ class _DivisionScreenState extends State<DivisionScreen> {
                                           foreground: Paint()
                                             ..style = PaintingStyle.stroke
                                             ..strokeWidth = 10
-                                            ..color = Colors.red,
+                                            ..color = Colors.red
+                                            ..strokeJoin = StrokeJoin.round,
                                         ),
                                       ),
                                       Text(

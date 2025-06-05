@@ -1,30 +1,26 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:iq_maths_apps/datas/upper.dart';
 import 'package:iq_maths_apps/models/maths_setting.dart';
-import 'package:iq_maths_apps/models/upper_question4.dart';
 
-class UpperScreen extends StatefulWidget {
+class LowerAndUpperScreen extends StatefulWidget {
   final MathsSetting setting;
 
-  const UpperScreen({super.key, required this.setting});
+  const LowerAndUpperScreen({super.key, required this.setting});
 
   @override
-  State<UpperScreen> createState() => _UpperScreenState();
+  State<LowerAndUpperScreen> createState() => _LowerAndUpperScreenState();
 }
 
-class _UpperScreenState extends State<UpperScreen> {
-  late List<int> numbers = [];
+class _LowerAndUpperScreenState extends State<LowerAndUpperScreen> {
+  late List<int> numbers;
   int currentStep = 0;
   bool showAnswer = false;
   bool isSoundOn = true;
   bool isPaused = false;
   bool waitingToShowAnswer = false;
   bool get isFlashCard => widget.setting.display.toLowerCase() == "flash card";
+
   bool get isShowAll => widget.setting.display.toLowerCase() == "show all";
-  final int questionLimit = 2;
-  dynamic currentQ;
-  int answer = 0;
 
   @override
   void initState() {
@@ -41,42 +37,24 @@ class _UpperScreenState extends State<UpperScreen> {
     final digit2 = int.tryParse(widget.setting.digit2) ?? 1;
     final row = int.tryParse(widget.setting.row) ?? 3;
 
-    void _generateRandomNumbers() {
-      final digit1 = int.tryParse(widget.setting.digit1) ?? 1;
-      final digit2 = int.tryParse(widget.setting.digit2) ?? 1;
-      final row = int.tryParse(widget.setting.row) ?? 3;
+    final minDigit1 = pow(10, digit1 - 1).toInt();
+    final maxDigit1 = pow(10, digit1).toInt() - 1;
 
-      if (row == 3) {
-        _randomQuestion3rows(digit1, digit2);
-      } else if (row == 4) {
-        _randomQuestion4rows(digit1, digit2);
+    final digit2Abs = digit2.abs();
+    final minDigit2 = pow(10, digit2Abs - 1).toInt();
+    final maxDigit2 = pow(10, digit2Abs).toInt() - 1;
+
+    final random = Random();
+
+    numbers = List.generate(row, (index) {
+      if (index == 0) {
+        return random.nextInt(maxDigit1 - minDigit1 + 1) + minDigit1;
+      } else {
+        int value = random.nextInt(maxDigit2 - minDigit2 + 1) + minDigit2;
+        bool isNegative = random.nextBool();
+        return isNegative ? -value : value;
       }
-    }
-  }
-
-  void _randomQuestion3rows(int d1, int d2) {
-    // final List<Upper3row> allQuestions = upper3row11;
-    // Upper3row? currentQuestion;
-    // if (digit1 == 1) {
-    //   // สุ่มเลือก index จากลิสต์
-    //   int randomIndex = _random.nextInt(allQuestions.length);
-    //   currentQuestion = allQuestions[randomIndex];
-    // }
-  }
-  void _randomQuestion4rows(int d1, int d2) {
-    if (d1 == 1) {
-      if (d2 == 1) {
-        UpperQuestion4Row selector = UpperQuestion4Row(questions: upper4row11);
-        selector.selectRandomQuestion();
-        Upper4row? currentQ = selector.getCurrentQuestion();
-        if (currentQ != null) {
-          numbers.add(currentQ.digit1);
-          numbers.add(currentQ.digit2);
-          numbers.add(currentQ.digit3);
-          numbers.add(currentQ.digit4);
-        }
-      } else if (d2 == 2) {}
-    } else if (d1 == 2) {}
+    });
   }
 
   void _startFlashCard() {
@@ -95,18 +73,16 @@ class _UpperScreenState extends State<UpperScreen> {
   void _nextStep() {
     setState(() {
       if (isShowAll) {
-        // Show all: กด Next → แสดงคำตอบเลย
         showAnswer = true;
         return;
       }
 
       if (waitingToShowAnswer) {
-        // Flash card: กำลังรอแสดง ? → แสดงคำตอบ
         showAnswer = true;
         waitingToShowAnswer = false;
-      } else if (currentStep < questionLimit) {
+      } else if (currentStep < numbers.length) {
         currentStep++;
-        if (currentStep == questionLimit) {
+        if (currentStep == numbers.length) {
           waitingToShowAnswer = true;
         }
       }
@@ -184,7 +160,7 @@ class _UpperScreenState extends State<UpperScreen> {
           Positioned(
             top: 110,
             left: 20,
-            child: Image.asset('assets/images/upper.png', width: 150),
+            child: Image.asset('assets/images/lowerandupper.png', width: 150),
           ),
           Positioned(
             top: 10,
@@ -358,28 +334,13 @@ class _UpperScreenState extends State<UpperScreen> {
                                   color: Colors.white,
                                 ),
                               ),
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                  left: 100.0,
-                                  right: 100,
-                                ),
-                                child: TextField(
-                                  keyboardType: TextInputType.number,
-                                  style: const TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 60,
-                                    color: Colors.red,
-                                  ),
-                                  cursorColor: Colors.red,
-                                ),
-                              ),
                               if (showAnswer)
                                 Align(
                                   alignment: Alignment.center,
                                   child: Stack(
                                     children: [
                                       Text(
-                                        "$answer",
+                                        "${getAnswerSum()}",
                                         style: TextStyle(
                                           fontSize: 36,
                                           fontWeight: FontWeight.bold,
@@ -391,7 +352,7 @@ class _UpperScreenState extends State<UpperScreen> {
                                         ),
                                       ),
                                       Text(
-                                        "$answer",
+                                        "${getAnswerSum()}",
                                         style: const TextStyle(
                                           fontSize: 36,
                                           fontWeight: FontWeight.bold,

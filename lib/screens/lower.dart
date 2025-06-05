@@ -1,6 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'setting.dart';
+import 'package:iq_maths_apps/models/maths_setting.dart';
 
 class LowerScreen extends StatefulWidget {
   final MathsSetting setting;
@@ -85,13 +85,10 @@ class _LowerScreenState extends State<LowerScreen> {
   void _nextStep() {
     setState(() {
       if (isShowAll) {
-        // Show all: กด Next → แสดงคำตอบเลย
         showAnswer = true;
         return;
       }
-
       if (waitingToShowAnswer) {
-        // Flash card: กำลังรอแสดง ? → แสดงคำตอบ
         showAnswer = true;
         waitingToShowAnswer = false;
       } else if (currentStep < numbers.length) {
@@ -110,29 +107,21 @@ class _LowerScreenState extends State<LowerScreen> {
         children: numbers.map((e) {
           return Padding(
             padding: const EdgeInsets.symmetric(vertical: 1),
-            child: buildOutlinedText("$e", fontSize: 60, strokeWidth: 15),
+            child: buildOutlinedText("$e", fontSize: 60),
           );
         }).toList(),
       );
     }
 
     if (waitingToShowAnswer) {
-      return buildOutlinedText("?", fontSize: 160, strokeWidth: 20);
+      return buildOutlinedText("?", fontSize: 160);
     }
 
     if (currentStep < numbers.length) {
-      return buildOutlinedText(
-        "${numbers[currentStep]}",
-        fontSize: 160,
-        strokeWidth: 20,
-      );
+      return buildOutlinedText("${numbers[currentStep]}", fontSize: 160);
     }
 
-    return buildOutlinedText(
-      "${getAnswerSum()}",
-      fontSize: 160,
-      strokeWidth: 20,
-    );
+    return buildOutlinedText("${getAnswerSum()}", fontSize: 160);
   }
 
   void _restart() {
@@ -153,10 +142,12 @@ class _LowerScreenState extends State<LowerScreen> {
   Widget buildOutlinedText(
     String text, {
     double fontSize = 60,
-    double strokeWidth = 10,
+    double strokeWidthRatio = 0.25,
     Color strokeColor = Colors.black,
     Color fillColor = Colors.white,
   }) {
+    final strokeWidth = fontSize * strokeWidthRatio;
+
     return Stack(
       children: [
         Text(
@@ -164,15 +155,12 @@ class _LowerScreenState extends State<LowerScreen> {
           style: TextStyle(
             fontSize: fontSize,
             fontWeight: FontWeight.bold,
-            height: 0.4,
+            height: 1.3,
             foreground: Paint()
               ..style = PaintingStyle.stroke
               ..strokeWidth = strokeWidth
-              ..color = strokeColor,
-          ),
-          textHeightBehavior: const TextHeightBehavior(
-            applyHeightToFirstAscent: false,
-            applyHeightToLastDescent: false,
+              ..color = strokeColor
+              ..strokeJoin = StrokeJoin.round,
           ),
         ),
         Text(
@@ -180,12 +168,8 @@ class _LowerScreenState extends State<LowerScreen> {
           style: TextStyle(
             fontSize: fontSize,
             fontWeight: FontWeight.bold,
-            height: 0.8,
+            height: 1.3,
             color: fillColor,
-          ),
-          textHeightBehavior: const TextHeightBehavior(
-            applyHeightToFirstAscent: false,
-            applyHeightToLastDescent: false,
           ),
         ),
       ],
@@ -271,7 +255,8 @@ class _LowerScreenState extends State<LowerScreen> {
                         foreground: Paint()
                           ..style = PaintingStyle.stroke
                           ..strokeWidth = 7
-                          ..color = Colors.black,
+                          ..color = Colors.black
+                          ..strokeJoin = StrokeJoin.round,
                       ),
                     ),
                     Text(
@@ -325,20 +310,15 @@ class _LowerScreenState extends State<LowerScreen> {
                                 padding: const EdgeInsets.symmetric(
                                   vertical: 1,
                                 ),
-                                child: buildOutlinedText(
-                                  "$e",
-                                  fontSize: 60,
-                                  strokeWidth: 15,
-                                ),
+                                child: buildOutlinedText("$e", fontSize: 60),
                               );
                             }).toList(),
                           )
                         : showAnswer || waitingToShowAnswer
-                        ? buildOutlinedText("?", fontSize: 160, strokeWidth: 20)
+                        ? buildOutlinedText("?", fontSize: 160)
                         : buildOutlinedText(
                             "${numbers[currentStep]}",
                             fontSize: 160,
-                            strokeWidth: 20,
                           ),
                   ),
                 ),
@@ -377,7 +357,8 @@ class _LowerScreenState extends State<LowerScreen> {
                                   foreground: Paint()
                                     ..style = PaintingStyle.stroke
                                     ..strokeWidth = 10
-                                    ..color = Colors.black,
+                                    ..color = Colors.black
+                                    ..strokeJoin = StrokeJoin.round,
                                 ),
                               ),
                               const Text(
@@ -401,7 +382,8 @@ class _LowerScreenState extends State<LowerScreen> {
                                           foreground: Paint()
                                             ..style = PaintingStyle.stroke
                                             ..strokeWidth = 10
-                                            ..color = Colors.red,
+                                            ..color = Colors.red
+                                            ..strokeJoin = StrokeJoin.round,
                                         ),
                                       ),
                                       Text(

@@ -1,8 +1,7 @@
-import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:iq_maths_apps/models/upper_question4.dart';
 import 'package:iq_maths_apps/datas/upper.dart';
 import 'package:iq_maths_apps/models/maths_setting.dart';
-import 'package:iq_maths_apps/models/upper_question4.dart';
 
 class UpperScreen extends StatefulWidget {
   final MathsSetting setting;
@@ -41,16 +40,10 @@ class _UpperScreenState extends State<UpperScreen> {
     final digit2 = int.tryParse(widget.setting.digit2) ?? 1;
     final row = int.tryParse(widget.setting.row) ?? 3;
 
-    void _generateRandomNumbers() {
-      final digit1 = int.tryParse(widget.setting.digit1) ?? 1;
-      final digit2 = int.tryParse(widget.setting.digit2) ?? 1;
-      final row = int.tryParse(widget.setting.row) ?? 3;
-
-      if (row == 3) {
-        _randomQuestion3rows(digit1, digit2);
-      } else if (row == 4) {
-        _randomQuestion4rows(digit1, digit2);
-      }
+    if (row == 3) {
+      _randomQuestion3rows(digit1, digit2);
+    } else if (row == 4) {
+      _randomQuestion4rows(digit1, digit2);
     }
   }
 
@@ -63,6 +56,7 @@ class _UpperScreenState extends State<UpperScreen> {
     //   currentQuestion = allQuestions[randomIndex];
     // }
   }
+
   void _randomQuestion4rows(int d1, int d2) {
     if (d1 == 1) {
       if (d2 == 1) {
@@ -126,17 +120,15 @@ class _UpperScreenState extends State<UpperScreen> {
     });
   }
 
-  int getAnswerSum() => numbers.fold(0, (sum, n) => sum + n);
+  // int getAnswerSum() => numbers.fold(0, (sum, n) => sum + n);
 
   Widget buildOutlinedText(
     String text, {
     double fontSize = 60,
-    double strokeWidthRatio = 0.25,
+    double strokeWidth = 10,
     Color strokeColor = Colors.black,
     Color fillColor = Colors.white,
   }) {
-    final strokeWidth = fontSize * strokeWidthRatio;
-
     return Stack(
       children: [
         Text(
@@ -144,12 +136,15 @@ class _UpperScreenState extends State<UpperScreen> {
           style: TextStyle(
             fontSize: fontSize,
             fontWeight: FontWeight.bold,
-            height: 1.3,
+            height: 0.4,
             foreground: Paint()
               ..style = PaintingStyle.stroke
               ..strokeWidth = strokeWidth
-              ..color = strokeColor
-              ..strokeJoin = StrokeJoin.round,
+              ..color = strokeColor,
+          ),
+          textHeightBehavior: const TextHeightBehavior(
+            applyHeightToFirstAscent: false,
+            applyHeightToLastDescent: false,
           ),
         ),
         Text(
@@ -157,8 +152,12 @@ class _UpperScreenState extends State<UpperScreen> {
           style: TextStyle(
             fontSize: fontSize,
             fontWeight: FontWeight.bold,
-            height: 1.3,
+            height: 0.8,
             color: fillColor,
+          ),
+          textHeightBehavior: const TextHeightBehavior(
+            applyHeightToFirstAscent: false,
+            applyHeightToLastDescent: false,
           ),
         ),
       ],
@@ -198,7 +197,6 @@ class _UpperScreenState extends State<UpperScreen> {
             left: 20,
             child: Image.asset('assets/images/owl.png', width: 120),
           ),
-
           Positioned(
             top: 30,
             right: 20,
@@ -244,8 +242,7 @@ class _UpperScreenState extends State<UpperScreen> {
                         foreground: Paint()
                           ..style = PaintingStyle.stroke
                           ..strokeWidth = 7
-                          ..color = Colors.black
-                          ..strokeJoin = StrokeJoin.round,
+                          ..color = Colors.black,
                       ),
                     ),
                     Text(
@@ -284,7 +281,6 @@ class _UpperScreenState extends State<UpperScreen> {
               ],
             ),
           ),
-
           Column(
             children: [
               Expanded(
@@ -299,20 +295,24 @@ class _UpperScreenState extends State<UpperScreen> {
                                 padding: const EdgeInsets.symmetric(
                                   vertical: 1,
                                 ),
-                                child: buildOutlinedText("$e", fontSize: 60),
+                                child: buildOutlinedText(
+                                  "$e",
+                                  fontSize: 50,
+                                  strokeWidth: 10,
+                                ),
                               );
                             }).toList(),
                           )
                         : showAnswer || waitingToShowAnswer
-                        ? buildOutlinedText("?", fontSize: 160)
+                        ? buildOutlinedText("?", fontSize: 160, strokeWidth: 20)
                         : buildOutlinedText(
                             "${numbers[currentStep]}",
                             fontSize: 160,
+                            strokeWidth: 20,
                           ),
                   ),
                 ),
               ),
-
               Padding(
                 padding: const EdgeInsets.only(bottom: 5.0),
                 child: Row(
@@ -346,8 +346,7 @@ class _UpperScreenState extends State<UpperScreen> {
                                   foreground: Paint()
                                     ..style = PaintingStyle.stroke
                                     ..strokeWidth = 10
-                                    ..color = Colors.black
-                                    ..strokeJoin = StrokeJoin.round,
+                                    ..color = Colors.black,
                                 ),
                               ),
                               const Text(
@@ -386,8 +385,7 @@ class _UpperScreenState extends State<UpperScreen> {
                                           foreground: Paint()
                                             ..style = PaintingStyle.stroke
                                             ..strokeWidth = 10
-                                            ..color = Colors.red
-                                            ..strokeJoin = StrokeJoin.round,
+                                            ..color = Colors.red,
                                         ),
                                       ),
                                       Text(
@@ -406,7 +404,6 @@ class _UpperScreenState extends State<UpperScreen> {
                         ),
                       ),
                     ),
-
                     const SizedBox(width: 12),
                     ElevatedButton(
                       onPressed: showAnswer ? _restart : _nextStep,
@@ -430,7 +427,6 @@ class _UpperScreenState extends State<UpperScreen> {
                   ],
                 ),
               ),
-
               Container(
                 height: 42,
                 color: Colors.lightBlueAccent,

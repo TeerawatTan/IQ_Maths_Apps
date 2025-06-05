@@ -1,6 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'setting.dart';
+import 'package:iq_maths_apps/models/maths_setting.dart';
 
 class MultiplicationScreen extends StatefulWidget {
   final MathsSetting setting;
@@ -90,10 +90,11 @@ class _MultiplicationScreenState extends State<MultiplicationScreen> {
   Widget buildOutlinedText(
     String text, {
     double fontSize = 60,
-    double strokeWidth = 10,
+    double strokeWidthRatio = 0.2,
     Color strokeColor = Colors.black,
     Color fillColor = Colors.white,
   }) {
+    final strokeWidth = fontSize * strokeWidthRatio;
     return Stack(
       children: [
         Text(
@@ -101,11 +102,12 @@ class _MultiplicationScreenState extends State<MultiplicationScreen> {
           style: TextStyle(
             fontSize: fontSize,
             fontWeight: FontWeight.bold,
-            height: 0.4,
+            height: 1.3,
             foreground: Paint()
               ..style = PaintingStyle.stroke
               ..strokeWidth = strokeWidth
-              ..color = strokeColor,
+              ..color = strokeColor
+              ..strokeJoin = StrokeJoin.round,
           ),
           textHeightBehavior: const TextHeightBehavior(
             applyHeightToFirstAscent: false,
@@ -117,7 +119,7 @@ class _MultiplicationScreenState extends State<MultiplicationScreen> {
           style: TextStyle(
             fontSize: fontSize,
             fontWeight: FontWeight.bold,
-            height: 0.8,
+            height: 1.3,
             color: fillColor,
           ),
           textHeightBehavior: const TextHeightBehavior(
@@ -239,7 +241,6 @@ class _MultiplicationScreenState extends State<MultiplicationScreen> {
                               buildOutlinedText(
                                 "${multiplicationProblems[currentStep][0]} × ${multiplicationProblems[currentStep][1]}",
                                 fontSize: 120,
-                                strokeWidth: 15,
                               ),
                             ],
                           ),
@@ -280,7 +281,8 @@ class _MultiplicationScreenState extends State<MultiplicationScreen> {
                                   foreground: Paint()
                                     ..style = PaintingStyle.stroke
                                     ..strokeWidth = 10
-                                    ..color = Colors.black,
+                                    ..color = Colors.black
+                                    ..strokeJoin = StrokeJoin.round,
                                 ),
                               ),
                               const Text(
@@ -304,7 +306,8 @@ class _MultiplicationScreenState extends State<MultiplicationScreen> {
                                           foreground: Paint()
                                             ..style = PaintingStyle.stroke
                                             ..strokeWidth = 10
-                                            ..color = Colors.red,
+                                            ..color = Colors.red
+                                            ..strokeJoin = StrokeJoin.round,
                                         ),
                                       ),
                                       Text(
