@@ -1,8 +1,7 @@
-import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:iq_maths_apps/datas/upper.dart';
 import 'package:iq_maths_apps/models/maths_setting.dart';
-import 'package:iq_maths_apps/models/upper_question4.dart';
+import 'package:iq_maths_apps/models/random_question.dart';
 
 class UpperScreen extends StatefulWidget {
   final MathsSetting setting;
@@ -41,16 +40,14 @@ class _UpperScreenState extends State<UpperScreen> {
     final digit2 = int.tryParse(widget.setting.digit2) ?? 1;
     final row = int.tryParse(widget.setting.row) ?? 3;
 
-    void _generateRandomNumbers() {
-      final digit1 = int.tryParse(widget.setting.digit1) ?? 1;
-      final digit2 = int.tryParse(widget.setting.digit2) ?? 1;
-      final row = int.tryParse(widget.setting.row) ?? 3;
-
-      if (row == 3) {
-        _randomQuestion3rows(digit1, digit2);
-      } else if (row == 4) {
-        _randomQuestion4rows(digit1, digit2);
-      }
+    if (row == 3) {
+      _randomQuestion3rows(digit1, digit2);
+    } else if (row == 4) {
+      _randomQuestion4rows(digit1, digit2);
+    } else if (row == 5) {
+      _randomQuestion5rows(digit1, digit2);
+    } else if (row == 6) {
+      _randomQuestion6rows(digit1, digit2);
     }
   }
 
@@ -64,23 +61,82 @@ class _UpperScreenState extends State<UpperScreen> {
     // }
   }
   void _randomQuestion4rows(int d1, int d2) {
+    Upper4row? currentQ;
     if (d1 == 1) {
       if (d2 == 1) {
-        UpperQuestion4Row selector = UpperQuestion4Row(questions: upper4row11);
+        RandomQuestionRow selector = RandomQuestionRow(questions: upper4row11);
         selector.selectRandomQuestion();
-        Upper4row? currentQ = selector.getCurrentQuestion();
-        if (currentQ != null) {
-          numbers.add(currentQ.digit1);
-          numbers.add(currentQ.digit2);
-          numbers.add(currentQ.digit3);
-          numbers.add(currentQ.digit4);
-        }
+        currentQ = selector.getCurrentQuestion();
       } else if (d2 == 2) {}
-    } else if (d1 == 2) {}
+    } else if (d1 == 2) {
+      if (d2 == 1) {
+        RandomQuestionRow selector = RandomQuestionRow(questions: upper4row21);
+        selector.selectRandomQuestion();
+        currentQ = selector.getCurrentQuestion();
+      }
+    }
+    if (currentQ != null) {
+      numbers.add(currentQ.digit1);
+      numbers.add(currentQ.digit2);
+      numbers.add(currentQ.digit3);
+      numbers.add(currentQ.digit4);
+      answer = currentQ.ans;
+    }
+  }
+
+  void _randomQuestion5rows(int d1, int d2) {
+    Upper5row? currentQ;
+    if (d1 == 1) {
+      if (d2 == 1) {
+        RandomQuestionRow selector = RandomQuestionRow(questions: upper5row11);
+        selector.selectRandomQuestion();
+        currentQ = selector.getCurrentQuestion() as Upper5row?;
+      } else if (d2 == 2) {}
+    } else if (d1 == 2) {
+      if (d2 == 1) {
+        RandomQuestionRow selector = RandomQuestionRow(questions: upper5row21);
+        selector.selectRandomQuestion();
+        currentQ = selector.getCurrentQuestion();
+      }
+    }
+    if (currentQ != null) {
+      numbers.add(currentQ.digit1);
+      numbers.add(currentQ.digit2);
+      numbers.add(currentQ.digit3);
+      numbers.add(currentQ.digit4);
+      numbers.add(currentQ.digit5);
+      answer = currentQ.ans;
+    }
+  }
+
+  void _randomQuestion6rows(int d1, int d2) {
+    Upper6row? currentQ;
+    if (d1 == 1) {
+      if (d2 == 1) {
+        RandomQuestionRow selector = RandomQuestionRow(questions: upper6row11);
+        selector.selectRandomQuestion();
+        currentQ = selector.getCurrentQuestion() as Upper6row?;
+      } else if (d2 == 2) {}
+    } else if (d1 == 2) {
+      if (d2 == 1) {
+        RandomQuestionRow selector = RandomQuestionRow(questions: upper6row21);
+        selector.selectRandomQuestion();
+        currentQ = selector.getCurrentQuestion();
+      }
+    }
+    if (currentQ != null) {
+      numbers.add(currentQ.digit1);
+      numbers.add(currentQ.digit2);
+      numbers.add(currentQ.digit3);
+      numbers.add(currentQ.digit4);
+      numbers.add(currentQ.digit5);
+      numbers.add(currentQ.digit6);
+      answer = currentQ.ans;
+    }
   }
 
   void _startFlashCard() {
-    final time = 1.5;
+    final time = int.tryParse(widget.setting.time) ?? 2;
     Future.delayed(Duration(milliseconds: (time * 1000).toInt()), () {
       if (!mounted || isPaused) return;
 

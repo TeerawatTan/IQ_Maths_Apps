@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:iq_maths_apps/models/upper_question4.dart';
+import 'package:iq_maths_apps/models/random_question.dart';
 import 'package:iq_maths_apps/datas/upper.dart';
 import 'package:iq_maths_apps/models/maths_setting.dart';
 
@@ -60,7 +60,7 @@ class _UpperScreenState extends State<UpperScreen> {
   void _randomQuestion4rows(int d1, int d2) {
     if (d1 == 1) {
       if (d2 == 1) {
-        UpperQuestion4Row selector = UpperQuestion4Row(questions: upper4row11);
+        RandomQuestionRow selector = RandomQuestionRow(questions: upper4row11);
         selector.selectRandomQuestion();
         Upper4row? currentQ = selector.getCurrentQuestion();
         if (currentQ != null) {

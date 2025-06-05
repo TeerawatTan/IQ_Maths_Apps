@@ -20,7 +20,7 @@ class SettingForm extends StatelessWidget {
     required this.selectedDigit2,
     required this.selectedDisplay,
     required this.selectedRow,
-    required this.selectedTime,
+    this.selectedTime,
     required this.onChanged,
     this.showDisplay = true,
     this.showRow = true,

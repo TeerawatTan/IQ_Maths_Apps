@@ -25,6 +25,7 @@ class _SettingScreenState extends State<SettingScreen> {
 
   bool isSoundOn = true;
   bool isSettingValid() {
+    print("selectedDisplay : $selectedDisplay");
     if (selectedMenu == 'MULTI' || selectedMenu == 'DIV') {
       return selectedDigit1.isNotEmpty &&
           selectedDigit2.isNotEmpty &&
@@ -34,7 +35,8 @@ class _SettingScreenState extends State<SettingScreen> {
         selectedDigit2.isNotEmpty &&
         selectedDisplay.isNotEmpty &&
         selectedRow.isNotEmpty &&
-        selectedTime.isNotEmpty;
+        (selectedDisplay == 'Show all' ? true : selectedTime.isNotEmpty);
+    //selectedTime.isNotEmpty;
   }
 
   void clearSetting() {

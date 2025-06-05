@@ -1,12 +1,11 @@
 import 'dart:math';
-import 'package:iq_maths_apps/datas/upper.dart';
 
-class UpperQuestion4Row {
+class RandomQuestionRow {
   final Random _random = Random();
-  final List<Upper4row> _allQuestions; // เก็บลิสต์คำถามทั้งหมด
-  Upper4row? _currentQuestion; // เก็บคำถามที่ถูกเลือกมาล่าสุด
+  final List<dynamic> _allQuestions; // เก็บลิสต์คำถามทั้งหมด
+  dynamic _currentQuestion; // เก็บคำถามที่ถูกเลือกมาล่าสุด
 
-  UpperQuestion4Row({required List<Upper4row> questions})
+  RandomQuestionRow({required List<dynamic> questions})
     : _allQuestions = questions;
 
   /// ฟังก์ชัน void ที่สุ่มเลือกคำถามจาก upper5rowList
@@ -17,11 +16,12 @@ class UpperQuestion4Row {
     }
     // สุ่มเลือก index จากลิสต์
     int randomIndex = _random.nextInt(_allQuestions.length);
+    print("No : ${randomIndex + 1}");
     _currentQuestion = _allQuestions[randomIndex];
   }
 
   /// ฟังก์ชันสำหรับเรียกดูคำถามที่ถูกสุ่มเลือกมา
-  Upper4row? getCurrentQuestion() {
+  dynamic getCurrentQuestion() {
     return _currentQuestion;
   }
 
