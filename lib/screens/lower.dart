@@ -303,17 +303,26 @@ class _LowerScreenState extends State<LowerScreen> {
                   padding: const EdgeInsets.only(top: 16),
                   child: Center(
                     child: isShowAll
-                        ? Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: numbers.map((e) {
-                              return Padding(
-                                padding: const EdgeInsets.symmetric(
-                                  vertical: 1,
-                                ),
-                                child: buildOutlinedText("$e", fontSize: 60),
-                              );
-                            }).toList(),
-                          )
+                        ? () {
+                            final rowCount = numbers.length;
+                            final double fontSize = (120 - (rowCount * 16.5))
+                                .clamp(35, 120)
+                                .toDouble();
+                            return Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: numbers.map((e) {
+                                return Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                    vertical: 1,
+                                  ),
+                                  child: buildOutlinedText(
+                                    "$e",
+                                    fontSize: fontSize,
+                                  ),
+                                );
+                              }).toList(),
+                            );
+                          }()
                         : showAnswer || waitingToShowAnswer
                         ? buildOutlinedText("?", fontSize: 160)
                         : buildOutlinedText(
