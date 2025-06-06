@@ -61,7 +61,7 @@ class _LowerScreenState extends State<LowerScreen> {
   }
 
   void _startFlashCard() {
-    final time = double.tryParse(widget.setting.time!) ?? 1.5;
+    final time = double.tryParse(widget.setting.time) ?? 1.5;
 
     Future.delayed(Duration(milliseconds: (time * 1000).toInt()), () {
       if (!mounted || isPaused) return;

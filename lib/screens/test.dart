@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:iq_maths_apps/models/random_question.dart';
+import 'package:iq_maths_apps/datas/random_question.dart';
 import 'package:iq_maths_apps/datas/upper.dart';
 import 'package:iq_maths_apps/models/maths_setting.dart';
+import 'package:iq_maths_apps/models/upper.dart';
 
 class UpperScreen extends StatefulWidget {
   final MathsSetting setting;
