@@ -8,7 +8,7 @@ class RandomQuestionRow {
   RandomQuestionRow({required List<dynamic> questions})
     : _allQuestions = questions;
 
-  /// ฟังก์ชัน void ที่สุ่มเลือกคำถามจาก upper5rowList
+  /// ฟังก์ชัน void ที่สุ่มเลือกคำถามจาก LowerUpper5RowList
   void selectRandomQuestion() {
     if (_allQuestions.isEmpty) {
       _currentQuestion = null;

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:iq_maths_apps/datas/random_question.dart';
 import 'package:iq_maths_apps/datas/upper.dart';
 import 'package:iq_maths_apps/models/maths_setting.dart';
-import 'package:iq_maths_apps/models/upper.dart';
+import 'package:iq_maths_apps/models/lower_upper.dart';
 
 class UpperScreen extends StatefulWidget {
   final MathsSetting setting;
@@ -49,8 +49,8 @@ class _UpperScreenState extends State<UpperScreen> {
   }
 
   void _randomQuestion3rows(int d1, int d2) {
-    // final List<Upper3row> allQuestions = upper3row11;
-    // Upper3row? currentQuestion;
+    // final List<LowerUpper3Row> allQuestions = LowerUpper3Row11;
+    // LowerUpper3Row? currentQuestion;
     // if (digit1 == 1) {
     //   // สุ่มเลือก index จากลิสต์
     //   int randomIndex = _random.nextInt(allQuestions.length);
@@ -61,9 +61,9 @@ class _UpperScreenState extends State<UpperScreen> {
   void _randomQuestion4rows(int d1, int d2) {
     if (d1 == 1) {
       if (d2 == 1) {
-        RandomQuestionRow selector = RandomQuestionRow(questions: upper4row11);
+        RandomQuestionRow selector = RandomQuestionRow(questions: upper4Row11);
         selector.selectRandomQuestion();
-        Upper4row? currentQ = selector.getCurrentQuestion();
+        LowerUpper4Row? currentQ = selector.getCurrentQuestion();
         if (currentQ != null) {
           numbers.add(currentQ.digit1);
           numbers.add(currentQ.digit2);

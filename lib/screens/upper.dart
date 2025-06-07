@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:iq_maths_apps/datas/upper.dart';
 import 'package:iq_maths_apps/models/maths_setting.dart';
 import 'package:iq_maths_apps/datas/random_question.dart';
-import 'package:iq_maths_apps/models/upper.dart';
+import 'package:iq_maths_apps/models/lower_upper.dart';
+import 'package:iq_maths_apps/screens/summary.dart';
 
 class UpperScreen extends StatefulWidget {
   final MathsSetting setting;
@@ -23,8 +25,11 @@ class _UpperScreenState extends State<UpperScreen> {
   bool get isFlashCard => widget.setting.display.toLowerCase() == "flash card";
   bool get isShowAll => widget.setting.display.toLowerCase() == "show all";
   final int questionLimit = 2;
+  int currentQuestionNo = 0;
   dynamic currentQ;
   int answer = 0;
+  int countAnsCorrect = 0;
+  final TextEditingController _inputAnsController = TextEditingController();
 
   @override
   void initState() {
@@ -34,6 +39,12 @@ class _UpperScreenState extends State<UpperScreen> {
     if (isFlashCard) {
       _startFlashCard();
     }
+  }
+
+  @override
+  void dispose() {
+    _inputAnsController.dispose();
+    super.dispose();
   }
 
   void _generateRandomNumbers() {
@@ -53,25 +64,39 @@ class _UpperScreenState extends State<UpperScreen> {
   }
 
   void _randomQuestion3rows(int d1, int d2) {
-    // final List<Upper3row> allQuestions = upper3row11;
-    // Upper3row? currentQuestion;
-    // if (digit1 == 1) {
-    //   // สุ่มเลือก index จากลิสต์
-    //   int randomIndex = _random.nextInt(allQuestions.length);
-    //   currentQuestion = allQuestions[randomIndex];
-    // }
-  }
-  void _randomQuestion4rows(int d1, int d2) {
-    Upper4row? currentQ;
+    LowerUpper3Row? currentQ;
     if (d1 == 1) {
       if (d2 == 1) {
-        RandomQuestionRow selector = RandomQuestionRow(questions: upper4row11);
+        RandomQuestionRow selector = RandomQuestionRow(questions: upper3Row11);
         selector.selectRandomQuestion();
         currentQ = selector.getCurrentQuestion();
       } else if (d2 == 2) {}
     } else if (d1 == 2) {
       if (d2 == 1) {
-        RandomQuestionRow selector = RandomQuestionRow(questions: upper4row21);
+        RandomQuestionRow selector = RandomQuestionRow(questions: upper3Row21);
+        selector.selectRandomQuestion();
+        currentQ = selector.getCurrentQuestion();
+      }
+    }
+    if (currentQ != null) {
+      numbers.add(currentQ.digit1);
+      numbers.add(currentQ.digit2);
+      numbers.add(currentQ.digit3);
+      answer = currentQ.ans;
+    }
+  }
+
+  void _randomQuestion4rows(int d1, int d2) {
+    LowerUpper4Row? currentQ;
+    if (d1 == 1) {
+      if (d2 == 1) {
+        RandomQuestionRow selector = RandomQuestionRow(questions: upper4Row11);
+        selector.selectRandomQuestion();
+        currentQ = selector.getCurrentQuestion();
+      } else if (d2 == 2) {}
+    } else if (d1 == 2) {
+      if (d2 == 1) {
+        RandomQuestionRow selector = RandomQuestionRow(questions: upper4Row21);
         selector.selectRandomQuestion();
         currentQ = selector.getCurrentQuestion();
       }
@@ -86,16 +111,16 @@ class _UpperScreenState extends State<UpperScreen> {
   }
 
   void _randomQuestion5rows(int d1, int d2) {
-    Upper5row? currentQ;
+    LowerUpper5Row? currentQ;
     if (d1 == 1) {
       if (d2 == 1) {
-        RandomQuestionRow selector = RandomQuestionRow(questions: upper5row11);
+        RandomQuestionRow selector = RandomQuestionRow(questions: upper5Row11);
         selector.selectRandomQuestion();
-        currentQ = selector.getCurrentQuestion() as Upper5row?;
+        currentQ = selector.getCurrentQuestion() as LowerUpper5Row?;
       } else if (d2 == 2) {}
     } else if (d1 == 2) {
       if (d2 == 1) {
-        RandomQuestionRow selector = RandomQuestionRow(questions: upper5row21);
+        RandomQuestionRow selector = RandomQuestionRow(questions: upper5Row21);
         selector.selectRandomQuestion();
         currentQ = selector.getCurrentQuestion();
       }
@@ -111,16 +136,16 @@ class _UpperScreenState extends State<UpperScreen> {
   }
 
   void _randomQuestion6rows(int d1, int d2) {
-    Upper6row? currentQ;
+    LowerUpper6Row? currentQ;
     if (d1 == 1) {
       if (d2 == 1) {
-        RandomQuestionRow selector = RandomQuestionRow(questions: upper6row11);
+        RandomQuestionRow selector = RandomQuestionRow(questions: upper6Row11);
         selector.selectRandomQuestion();
-        currentQ = selector.getCurrentQuestion() as Upper6row?;
+        currentQ = selector.getCurrentQuestion() as LowerUpper6Row?;
       } else if (d2 == 2) {}
     } else if (d1 == 2) {
       if (d2 == 1) {
-        RandomQuestionRow selector = RandomQuestionRow(questions: upper6row21);
+        RandomQuestionRow selector = RandomQuestionRow(questions: upper6Row21);
         selector.selectRandomQuestion();
         currentQ = selector.getCurrentQuestion();
       }
@@ -141,7 +166,17 @@ class _UpperScreenState extends State<UpperScreen> {
     Future.delayed(Duration(milliseconds: (time * 1000).toInt()), () {
       if (!mounted || isPaused) return;
 
-      _nextStep();
+      print("Start FlashCard currentStep : $currentStep");
+      if (waitingToShowAnswer) {
+        // Flash card: กำลังรอแสดง ? → แสดงคำตอบ
+        showAnswer = true;
+        waitingToShowAnswer = false;
+      } else if (currentStep < numbers.length) {
+        currentStep++;
+        if (currentStep == numbers.length) {
+          waitingToShowAnswer = true;
+        }
+      }
 
       if (currentStep < numbers.length && !isPaused) {
         _startFlashCard();
@@ -153,18 +188,32 @@ class _UpperScreenState extends State<UpperScreen> {
     setState(() {
       if (isShowAll) {
         // Show all: กด Next → แสดงคำตอบเลย
-        showAnswer = true;
-        return;
-      }
-
-      if (waitingToShowAnswer) {
-        // Flash card: กำลังรอแสดง ? → แสดงคำตอบ
-        showAnswer = true;
-        waitingToShowAnswer = false;
-      } else if (currentStep < questionLimit) {
-        currentStep++;
-        if (currentStep == questionLimit) {
-          waitingToShowAnswer = true;
+        int enteredNumber = int.parse(_inputAnsController.text);
+        if (enteredNumber == answer) {
+          ++countAnsCorrect;
+          showAnswer = false;
+        } else {
+          showAnswer = true;
+        }
+        numbers = [];
+        _inputAnsController.clear();
+        answer = 0;
+        ++currentQuestionNo;
+        if (currentQuestionNo == questionLimit) {
+          Future.delayed(const Duration(seconds: 1), () {
+            if (!mounted) {
+              return;
+            }
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) =>
+                    SummaryScreen(answerCorrect: countAnsCorrect),
+              ),
+            );
+          });
+        } else {
+          _generateRandomNumbers();
         }
       }
     });
@@ -175,6 +224,11 @@ class _UpperScreenState extends State<UpperScreen> {
       currentStep = 0;
       showAnswer = false;
       waitingToShowAnswer = false;
+
+      numbers = [];
+      _inputAnsController.clear();
+      answer = 0;
+
       _generateRandomNumbers();
 
       if (isFlashCard) {
@@ -182,8 +236,6 @@ class _UpperScreenState extends State<UpperScreen> {
       }
     });
   }
-
-  int getAnswerSum() => numbers.fold(0, (sum, n) => sum + n);
 
   Widget buildOutlinedText(
     String text, {
@@ -431,41 +483,58 @@ class _UpperScreenState extends State<UpperScreen> {
                                 ),
                                 child: TextField(
                                   keyboardType: TextInputType.number,
+                                  controller: _inputAnsController,
+                                  decoration: InputDecoration(counterText: ''),
                                   style: const TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 60,
                                     color: Colors.red,
                                   ),
-                                  cursorColor: Colors.red,
+                                  showCursor: false,
+                                  inputFormatters: <TextInputFormatter>[
+                                    FilteringTextInputFormatter.digitsOnly,
+                                  ],
+                                  maxLength: 5,
                                 ),
                               ),
                               if (showAnswer)
-                                Align(
-                                  alignment: Alignment.center,
-                                  child: Stack(
-                                    children: [
-                                      Text(
-                                        "$answer",
-                                        style: TextStyle(
-                                          fontSize: 36,
-                                          fontWeight: FontWeight.bold,
-                                          foreground: Paint()
-                                            ..style = PaintingStyle.stroke
-                                            ..strokeWidth = 10
-                                            ..color = Colors.red
-                                            ..strokeJoin = StrokeJoin.round,
-                                        ),
+                                Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: <Widget>[
+                                    Image.asset(
+                                      'assets/images/wrong.png',
+                                      width: 50,
+                                      height: 50,
+                                    ),
+                                    SizedBox(width: 10),
+                                    Flexible(
+                                      child: Stack(
+                                        children: [
+                                          Text(
+                                            "$answer",
+                                            style: TextStyle(
+                                              fontSize: 36,
+                                              fontWeight: FontWeight.bold,
+                                              foreground: Paint()
+                                                ..style = PaintingStyle.stroke
+                                                ..strokeWidth = 10
+                                                ..color = Colors.red
+                                                ..strokeJoin = StrokeJoin.round,
+                                            ),
+                                          ),
+                                          Text(
+                                            "$answer",
+                                            style: const TextStyle(
+                                              fontSize: 36,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                        ],
                                       ),
-                                      Text(
-                                        "$answer",
-                                        style: const TextStyle(
-                                          fontSize: 36,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
+                                    ),
+                                  ],
                                 ),
                             ],
                           ),

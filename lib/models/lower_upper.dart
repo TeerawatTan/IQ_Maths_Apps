@@ -1,10 +1,10 @@
-class Upper3row {
+class LowerUpper3Row {
   final int digit1;
   final int digit2;
   final int digit3;
   final int ans;
 
-  Upper3row({
+  LowerUpper3Row({
     required this.digit1,
     required this.digit2,
     required this.digit3,
@@ -12,14 +12,14 @@ class Upper3row {
   });
 }
 
-class Upper4row {
+class LowerUpper4Row {
   final int digit1;
   final int digit2;
   final int digit3;
   final int digit4;
   final int ans;
 
-  Upper4row({
+  LowerUpper4Row({
     required this.digit1,
     required this.digit2,
     required this.digit3,
@@ -28,7 +28,7 @@ class Upper4row {
   });
 }
 
-class Upper5row {
+class LowerUpper5Row {
   final int digit1;
   final int digit2;
   final int digit3;
@@ -36,7 +36,7 @@ class Upper5row {
   final int digit5;
   final int ans;
 
-  Upper5row({
+  LowerUpper5Row({
     required this.digit1,
     required this.digit2,
     required this.digit3,
@@ -46,7 +46,7 @@ class Upper5row {
   });
 }
 
-class Upper6row {
+class LowerUpper6Row {
   int digit1;
   int digit2;
   int digit3;
@@ -55,7 +55,7 @@ class Upper6row {
   int digit6;
   int ans;
 
-  Upper6row({
+  LowerUpper6Row({
     required this.digit1,
     required this.digit2,
     required this.digit3,
