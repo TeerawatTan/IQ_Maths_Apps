@@ -31,7 +31,7 @@ class SubOptionsTenPlus extends StatelessWidget {
         padding: const EdgeInsets.all(12),
         child: Container(
           decoration: BoxDecoration(
-            color: Colors.white.withOpacity(0.1),
+            color: Colors.white10,
             borderRadius: BorderRadius.circular(12),
           ),
           child: Column(

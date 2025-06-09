@@ -16,27 +16,30 @@ class UpperScreen extends StatefulWidget {
 }
 
 class _UpperScreenState extends State<UpperScreen> {
-  late List<int> numbers = [];
-  int currentStep = 0;
-  bool showAnswer = false;
-  bool isSoundOn = true;
-  bool isPaused = false;
-  bool waitingToShowAnswer = false;
-  bool get isFlashCard => widget.setting.display.toLowerCase() == "flash card";
-  bool get isShowAll => widget.setting.display.toLowerCase() == "show all";
-  final int questionLimit = 2;
-  int currentQuestionNo = 0;
-  dynamic currentQ;
-  int answer = 0;
-  int countAnsCorrect = 0;
+  static const int questionLimit = 1;
+  List<int> _numbers = [];
+  int _currentStep = 0;
+  bool _showAnswer = false;
+  bool _isSoundOn = true;
+  bool _isPaused = false;
+  bool _waitingToShowAnswer = false;
+  bool _isShowAll = false;
+  int _answer = 0;
+  int _countAnsCorrect = 0;
+  int _questionsAttempted = 0;
+  bool _isFlashCardAnimating = false;
   final TextEditingController _inputAnsController = TextEditingController();
+  bool _shouldContinueFlashCard = false;
+  bool _showSmallWrongIcon = false;
+  bool _showAnswerText = false;
 
   @override
   void initState() {
     super.initState();
     _generateRandomNumbers();
 
-    if (isFlashCard) {
+    if (widget.setting.display.toLowerCase() == "flash card") {
+      _shouldContinueFlashCard = true;
       _startFlashCard();
     }
   }
@@ -44,6 +47,7 @@ class _UpperScreenState extends State<UpperScreen> {
   @override
   void dispose() {
     _inputAnsController.dispose();
+    _shouldContinueFlashCard = false;
     super.dispose();
   }
 
@@ -51,6 +55,8 @@ class _UpperScreenState extends State<UpperScreen> {
     final digit1 = int.tryParse(widget.setting.digit1) ?? 1;
     final digit2 = int.tryParse(widget.setting.digit2) ?? 1;
     final row = int.tryParse(widget.setting.row) ?? 3;
+
+    _numbers = [];
 
     if (row == 3) {
       _randomQuestion3rows(digit1, digit2);
@@ -60,6 +66,26 @@ class _UpperScreenState extends State<UpperScreen> {
       _randomQuestion5rows(digit1, digit2);
     } else if (row == 6) {
       _randomQuestion6rows(digit1, digit2);
+    }
+
+    _currentStep = 0;
+    _showAnswer = false;
+    _waitingToShowAnswer = false;
+    _showSmallWrongIcon = false;
+    _showAnswerText = false;
+    _inputAnsController.clear();
+    setState(() {
+      // Determine _isShowAll here based on the current setting
+      _isShowAll = widget.setting.display.toLowerCase() == 'show all';
+    });
+    if (!_isShowAll) {
+      _shouldContinueFlashCard = true;
+      _startFlashCard();
+    } else {
+      // If in show all mode, reset _currentStep and immediately update UI
+      setState(() {
+        _currentStep = 0; // Not strictly needed for showAll but good practice
+      });
     }
   }
 
@@ -79,10 +105,10 @@ class _UpperScreenState extends State<UpperScreen> {
       }
     }
     if (currentQ != null) {
-      numbers.add(currentQ.digit1);
-      numbers.add(currentQ.digit2);
-      numbers.add(currentQ.digit3);
-      answer = currentQ.ans;
+      _numbers.add(currentQ.digit1);
+      _numbers.add(currentQ.digit2);
+      _numbers.add(currentQ.digit3);
+      _answer = currentQ.ans;
     }
   }
 
@@ -102,11 +128,11 @@ class _UpperScreenState extends State<UpperScreen> {
       }
     }
     if (currentQ != null) {
-      numbers.add(currentQ.digit1);
-      numbers.add(currentQ.digit2);
-      numbers.add(currentQ.digit3);
-      numbers.add(currentQ.digit4);
-      answer = currentQ.ans;
+      _numbers.add(currentQ.digit1);
+      _numbers.add(currentQ.digit2);
+      _numbers.add(currentQ.digit3);
+      _numbers.add(currentQ.digit4);
+      _answer = currentQ.ans;
     }
   }
 
@@ -126,12 +152,12 @@ class _UpperScreenState extends State<UpperScreen> {
       }
     }
     if (currentQ != null) {
-      numbers.add(currentQ.digit1);
-      numbers.add(currentQ.digit2);
-      numbers.add(currentQ.digit3);
-      numbers.add(currentQ.digit4);
-      numbers.add(currentQ.digit5);
-      answer = currentQ.ans;
+      _numbers.add(currentQ.digit1);
+      _numbers.add(currentQ.digit2);
+      _numbers.add(currentQ.digit3);
+      _numbers.add(currentQ.digit4);
+      _numbers.add(currentQ.digit5);
+      _answer = currentQ.ans;
     }
   }
 
@@ -151,90 +177,142 @@ class _UpperScreenState extends State<UpperScreen> {
       }
     }
     if (currentQ != null) {
-      numbers.add(currentQ.digit1);
-      numbers.add(currentQ.digit2);
-      numbers.add(currentQ.digit3);
-      numbers.add(currentQ.digit4);
-      numbers.add(currentQ.digit5);
-      numbers.add(currentQ.digit6);
-      answer = currentQ.ans;
+      _numbers.add(currentQ.digit1);
+      _numbers.add(currentQ.digit2);
+      _numbers.add(currentQ.digit3);
+      _numbers.add(currentQ.digit4);
+      _numbers.add(currentQ.digit5);
+      _numbers.add(currentQ.digit6);
+      _answer = currentQ.ans;
     }
   }
 
-  void _startFlashCard() {
-    final time = int.tryParse(widget.setting.time) ?? 2;
-    Future.delayed(Duration(milliseconds: (time * 1000).toInt()), () {
-      if (!mounted || isPaused) return;
-
-      print("Start FlashCard currentStep : $currentStep");
-      if (waitingToShowAnswer) {
-        // Flash card: กำลังรอแสดง ? → แสดงคำตอบ
-        showAnswer = true;
-        waitingToShowAnswer = false;
-      } else if (currentStep < numbers.length) {
-        currentStep++;
-        if (currentStep == numbers.length) {
-          waitingToShowAnswer = true;
-        }
-      }
-
-      if (currentStep < numbers.length && !isPaused) {
-        _startFlashCard();
-      }
+  Future<void> _startFlashCard() async {
+    setState(() {
+      _isFlashCardAnimating = true; // Disable button during animation
+      _waitingToShowAnswer = false; // Hide '?' during flash card display
+      _showAnswer = false; // Hide wrong _answer feedback
+      _inputAnsController.clear(); // Clear input field
     });
+
+    final int delaySeconds = int.tryParse(widget.setting.time.toString()) ?? 1;
+    final Duration delayDuration = Duration(seconds: delaySeconds);
+
+    // *** THIS IS THE KEY CHANGE ***
+    // The loop now starts from the '_currentStep' instead of '0'
+    for (int i = _currentStep; i < _numbers.length; i++) {
+      if (!mounted || !_shouldContinueFlashCard) {
+        // If the widget is unmounted or we've been told to stop (e.g., paused)
+        return;
+      }
+      while (_isPaused && mounted) {
+        // If paused, wait here without incrementing 'i' or '_currentStep'
+        await Future.delayed(const Duration(milliseconds: 100));
+      }
+      if (!mounted || !_shouldContinueFlashCard) {
+        // Check again after resuming, in case the state changed while paused
+        return;
+      }
+      setState(() {
+        _currentStep = i; // Update _currentStep to the number being displayed
+      });
+      await Future.delayed(delayDuration);
+    }
+
+    if (!mounted || !_shouldContinueFlashCard) {
+      return;
+    }
+    setState(() {
+      _waitingToShowAnswer = true; // Show '?' after all _numbers are flashed
+      _isFlashCardAnimating = false; // Enable button after animation
+    });
+  }
+
+  void _goSummaryPage() {
+    if (!mounted) {
+      return;
+    }
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (context) => SummaryScreen(answerCorrect: _countAnsCorrect),
+      ),
+    );
   }
 
   void _nextStep() {
-    setState(() {
-      if (isShowAll) {
-        // Show all: กด Next → แสดงคำตอบเลย
-        int enteredNumber = int.parse(_inputAnsController.text);
-        if (enteredNumber == answer) {
-          ++countAnsCorrect;
-          showAnswer = false;
-        } else {
-          showAnswer = true;
+    if (_showAnswer) {
+      _restart();
+      return;
+    }
+
+    String input = _inputAnsController.text;
+    int? userAnswer;
+    if (input.isNotEmpty) {
+      userAnswer = int.tryParse(input);
+    }
+    if (userAnswer != null) {
+      if (userAnswer == _answer) {
+        // ตอบถูก
+        _countAnsCorrect++;
+        _questionsAttempted++;
+        if (_questionsAttempted >= questionLimit) {
+          _goSummaryPage();
+          return;
         }
-        numbers = [];
-        _inputAnsController.clear();
-        answer = 0;
-        ++currentQuestionNo;
-        if (currentQuestionNo == questionLimit) {
-          Future.delayed(const Duration(seconds: 1), () {
-            if (!mounted) {
-              return;
-            }
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) =>
-                    SummaryScreen(answerCorrect: countAnsCorrect),
-              ),
-            );
+        _generateRandomNumbers();
+      } else {
+        //ตอบผิด
+        setState(() {
+          _showAnswer = true;
+          _showSmallWrongIcon = false;
+          _showAnswerText = false;
+        });
+        Future.delayed(const Duration(seconds: 1), () {
+          if (!mounted) return;
+          setState(() {
+            _showSmallWrongIcon = true;
           });
-        } else {
-          _generateRandomNumbers();
-        }
+
+          // --- Second Delay: For the answer text to appear (e.g., 200 milliseconds) ---
+          Future.delayed(const Duration(milliseconds: 200), () {
+            if (!mounted) return;
+            setState(() {
+              _showAnswerText = true; // NEW: Now show the answer text
+            });
+
+            // --- Third Delay: For the entire feedback display (2 seconds) ---
+            Future.delayed(const Duration(seconds: 2), () {
+              if (mounted && _showAnswer) {
+                // Ensure still in feedback state
+                _questionsAttempted++;
+                if (_questionsAttempted >= questionLimit) {
+                  _goSummaryPage();
+                  return;
+                }
+                _generateRandomNumbers(); // Generate new question (resets all flags)
+              }
+            });
+          });
+        });
       }
-    });
+    } else {
+      return;
+    }
   }
 
   void _restart() {
+    _generateRandomNumbers();
+  }
+
+  void _playPauseFlashCard() {
     setState(() {
-      currentStep = 0;
-      showAnswer = false;
-      waitingToShowAnswer = false;
-
-      numbers = [];
-      _inputAnsController.clear();
-      answer = 0;
-
-      _generateRandomNumbers();
-
-      if (isFlashCard) {
-        _startFlashCard();
-      }
+      _isPaused = !_isPaused;
+      _shouldContinueFlashCard = !_isPaused; // Control the animation loop
     });
+    if (!_isPaused) {
+      _startFlashCard(); // Resume the flashcard animation if unpaused
+    }
   }
 
   Widget buildOutlinedText(
@@ -277,8 +355,18 @@ class _UpperScreenState extends State<UpperScreen> {
   @override
   Widget build(BuildContext context) {
     final displayMode = widget.setting.display.toLowerCase() == 'flash card'
-        ? 'Flash card'
+        ? 'flash card'
         : 'Show all';
+
+    // Determine if the Next button should be enabled
+    bool isNextButtonEnabled = true;
+    if (!_isShowAll && _isFlashCardAnimating) {
+      isNextButtonEnabled = false; // Disable during flash card animation
+    } else if (!_isShowAll && !_waitingToShowAnswer && !_showAnswer) {
+      // In flash card mode, if not showing '?' or _answer, button is disabled (waiting for sequence to finish)
+      // This case is actually covered by _isFlashCardAnimating now.
+    }
+
     return Scaffold(
       body: Stack(
         children: [
@@ -367,29 +455,33 @@ class _UpperScreenState extends State<UpperScreen> {
                     ),
                   ],
                 ),
-
-                Padding(
-                  padding: const EdgeInsets.only(top: 0),
-                  child: IconButton(
-                    icon: Image.asset(
-                      isPaused
-                          ? 'assets/images/play_icon.png'
-                          : 'assets/images/pause_icon.png',
-                      width: 100,
-                      height: 100,
+                if (widget.setting.display.toLowerCase() == "flash card" &&
+                    !_waitingToShowAnswer)
+                  Padding(
+                    padding: const EdgeInsets.only(top: 0),
+                    child: IconButton(
+                      icon: Image.asset(
+                        _isPaused
+                            ? 'assets/images/play_icon.png'
+                            : 'assets/images/pause_icon.png',
+                        width: 100,
+                        height: 100,
+                      ),
+                      onPressed: _playPauseFlashCard,
                     ),
-                    onPressed: () {
-                      setState(() {
-                        isPaused = !isPaused;
-                        if (!isPaused &&
-                            widget.setting.display.toLowerCase() ==
-                                "Flash card") {
-                          _startFlashCard();
-                        }
-                      });
-                    },
                   ),
-                ),
+                // Display current step/total _numbers if paused and in flash card mode
+                if (_isPaused &&
+                    widget.setting.display.toLowerCase() == "flash card")
+                  Padding(
+                    padding: const EdgeInsets.only(top: 8.0),
+                    child: buildOutlinedText(
+                      '${_currentStep + 1}/${_numbers.length}', // Display current number/total
+                      fontSize: 30,
+                      strokeColor: Colors.blueAccent,
+                      fillColor: Colors.white,
+                    ),
+                  ),
               ],
             ),
           ),
@@ -400,15 +492,15 @@ class _UpperScreenState extends State<UpperScreen> {
                 child: Padding(
                   padding: const EdgeInsets.only(top: 16),
                   child: Center(
-                    child: isShowAll
+                    child: _isShowAll
                         ? () {
-                            final rowCount = numbers.length;
+                            final rowCount = _numbers.length;
                             final double fontSize = (120 - (rowCount * 16.5))
                                 .clamp(35, 120)
                                 .toDouble();
                             return Column(
                               mainAxisAlignment: MainAxisAlignment.center,
-                              children: numbers.map((e) {
+                              children: _numbers.map((e) {
                                 return Padding(
                                   padding: const EdgeInsets.symmetric(
                                     vertical: 1,
@@ -421,12 +513,14 @@ class _UpperScreenState extends State<UpperScreen> {
                               }).toList(),
                             );
                           }()
-                        : showAnswer || waitingToShowAnswer
-                        ? buildOutlinedText("?", fontSize: 160)
-                        : buildOutlinedText(
-                            "${numbers[currentStep]}",
+                        : _isFlashCardAnimating // Show current step during flash card animation
+                        ? buildOutlinedText(
+                            "${_numbers[_currentStep]}",
                             fontSize: 160,
-                          ),
+                          )
+                        : _showAnswer || _waitingToShowAnswer
+                        ? buildOutlinedText("?", fontSize: 160)
+                        : Container(),
                   ),
                 ),
               ),
@@ -495,45 +589,51 @@ class _UpperScreenState extends State<UpperScreen> {
                                     FilteringTextInputFormatter.digitsOnly,
                                   ],
                                   maxLength: 5,
+                                  enabled:
+                                      !_isFlashCardAnimating, // Disable input during animation
                                 ),
                               ),
-                              if (showAnswer)
+                              if (_showAnswer)
                                 Row(
                                   mainAxisSize: MainAxisSize.max,
                                   mainAxisAlignment: MainAxisAlignment.end,
                                   children: <Widget>[
-                                    Image.asset(
-                                      'assets/images/wrong.png',
-                                      width: 50,
-                                      height: 50,
-                                    ),
-                                    SizedBox(width: 10),
-                                    Flexible(
-                                      child: Stack(
-                                        children: [
-                                          Text(
-                                            "$answer",
-                                            style: TextStyle(
-                                              fontSize: 36,
-                                              fontWeight: FontWeight.bold,
-                                              foreground: Paint()
-                                                ..style = PaintingStyle.stroke
-                                                ..strokeWidth = 10
-                                                ..color = Colors.red
-                                                ..strokeJoin = StrokeJoin.round,
-                                            ),
-                                          ),
-                                          Text(
-                                            "$answer",
-                                            style: const TextStyle(
-                                              fontSize: 36,
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.white,
-                                            ),
-                                          ),
-                                        ],
+                                    if (_showSmallWrongIcon)
+                                      Image.asset(
+                                        'assets/images/wrong.png',
+                                        width: 50,
+                                        height: 50,
                                       ),
-                                    ),
+                                    if (_showSmallWrongIcon)
+                                      SizedBox(width: 10),
+                                    if (_showAnswerText)
+                                      Flexible(
+                                        child: Stack(
+                                          children: [
+                                            Text(
+                                              "$_answer",
+                                              style: TextStyle(
+                                                fontSize: 36,
+                                                fontWeight: FontWeight.bold,
+                                                foreground: Paint()
+                                                  ..style = PaintingStyle.stroke
+                                                  ..strokeWidth = 10
+                                                  ..color = Colors.red
+                                                  ..strokeJoin =
+                                                      StrokeJoin.round,
+                                              ),
+                                            ),
+                                            Text(
+                                              "$_answer",
+                                              style: const TextStyle(
+                                                fontSize: 36,
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.white,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
                                   ],
                                 ),
                             ],
@@ -544,7 +644,9 @@ class _UpperScreenState extends State<UpperScreen> {
 
                     const SizedBox(width: 12),
                     ElevatedButton(
-                      onPressed: showAnswer ? _restart : _nextStep,
+                      onPressed: isNextButtonEnabled
+                          ? (_showAnswer ? _restart : _nextStep)
+                          : null, // Disable button if not enabled
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.transparent,
                         elevation: 0,
@@ -599,10 +701,10 @@ class _UpperScreenState extends State<UpperScreen> {
                         Transform.scale(
                           scale: 0.8,
                           child: Switch(
-                            value: isSoundOn,
+                            value: _isSoundOn,
                             onChanged: (value) {
                               setState(() {
-                                isSoundOn = value;
+                                _isSoundOn = value;
                               });
                             },
                             activeColor: Colors.white,
@@ -617,9 +719,9 @@ class _UpperScreenState extends State<UpperScreen> {
                         ),
                         const SizedBox(width: 4),
                         Text(
-                          isSoundOn ? "ON" : "OFF",
+                          _isSoundOn ? "ON" : "OFF",
                           style: TextStyle(
-                            color: isSoundOn ? Colors.white : Colors.white,
+                            color: _isSoundOn ? Colors.white : Colors.white,
                             fontWeight: FontWeight.bold,
                           ),
                         ),

@@ -24,10 +24,10 @@ class _DivisionScreenState extends State<DivisionScreen> {
   @override
   void initState() {
     super.initState();
-    _GenerateNumbers();
+    _generateNumbers();
   }
 
-  void _GenerateNumbers() async {
+  void _generateNumbers() async {
     setState(() => isLoading = true);
     divisionProblems = await _generateRandomNumbers();
     setState(() {
@@ -101,7 +101,7 @@ class _DivisionScreenState extends State<DivisionScreen> {
       currentStep = 0;
       showAnswer = false;
       waitingToShowAnswer = false;
-      _GenerateNumbers();
+      _generateNumbers();
     });
   }
 

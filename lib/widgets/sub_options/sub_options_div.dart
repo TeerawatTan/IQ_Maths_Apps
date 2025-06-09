@@ -24,7 +24,7 @@ class SubOptionsDiv extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.1),
+        color: Colors.white10,
         borderRadius: BorderRadius.circular(12),
       ),
       child: Column(

@@ -16,7 +16,6 @@ class RandomQuestionRow {
     }
     // สุ่มเลือก index จากลิสต์
     int randomIndex = _random.nextInt(_allQuestions.length);
-    print("No : ${randomIndex + 1}");
     _currentQuestion = _allQuestions[randomIndex];
   }
 

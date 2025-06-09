@@ -1,15 +1,10 @@
 import 'package:flutter/material.dart';
 
-class SummaryScreen extends StatefulWidget {
+class SummaryScreen extends StatelessWidget {
   final int answerCorrect;
 
   const SummaryScreen({super.key, required this.answerCorrect});
 
-  @override
-  State<SummaryScreen> createState() => _SummaryScreenState();
-}
-
-class _SummaryScreenState extends State<SummaryScreen> {
   Widget buildOutlinedText(
     String text, {
     double fontSize = 60,
@@ -123,23 +118,25 @@ class _SummaryScreenState extends State<SummaryScreen> {
           Column(
             children: [
               Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 16),
-                  child: Center(
-                    child: Row(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      answerCorrect == 0
+                          ? 'assets/images/wrong.png'
+                          : 'assets/images/correct.png',
+                      width: 100,
+                      height: 100,
+                    ),
+                    Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        Image.asset(
-                          'assets/images/correct.png',
-                          width: 120,
-                          height: 120,
-                        ),
                         Flexible(
                           child: Stack(
                             children: [
                               Text(
-                                "ตอบถูก ${widget.answerCorrect} ข้อ",
+                                "ตอบถูก $answerCorrect ข้อ",
                                 style: TextStyle(
                                   fontSize: 70,
                                   fontWeight: FontWeight.bold,
@@ -151,7 +148,7 @@ class _SummaryScreenState extends State<SummaryScreen> {
                                 ),
                               ),
                               Text(
-                                "ตอบถูก ${widget.answerCorrect} ข้อ",
+                                "ตอบถูก $answerCorrect ข้อ",
                                 style: const TextStyle(
                                   fontSize: 70,
                                   fontWeight: FontWeight.bold,
@@ -163,8 +160,62 @@ class _SummaryScreenState extends State<SummaryScreen> {
                         ),
                       ],
                     ),
-                  ),
+                    const SizedBox(height: 30),
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.pop(
+                          context,
+                        ); // Pops SummaryScreen, revealing YourWidget
+                      },
+                      child: const Text(
+                        "Play Again",
+                        style: TextStyle(fontSize: 20),
+                      ),
+                    ),
+                  ],
                 ),
+                // child: Padding(
+                //   padding: const EdgeInsets.only(top: 16),
+                //   child: Center(
+                //     child: Row(
+                //       mainAxisSize: MainAxisSize.max,
+                //       mainAxisAlignment: MainAxisAlignment.center,
+                //       children: <Widget>[
+                //         Image.asset(
+                //           'assets/images/correct.png',
+                //           width: 120,
+                //           height: 120,
+                //         ),
+                //         Flexible(
+                //           child: Stack(
+                //             children: [
+                //               Text(
+                //                 "ตอบถูก $answerCorrect ข้อ",
+                //                 style: TextStyle(
+                //                   fontSize: 70,
+                //                   fontWeight: FontWeight.bold,
+                //                   foreground: Paint()
+                //                     ..style = PaintingStyle.stroke
+                //                     ..strokeWidth = 10
+                //                     ..color = Colors.black
+                //                     ..strokeJoin = StrokeJoin.round,
+                //                 ),
+                //               ),
+                //               Text(
+                //                 "ตอบถูก $answerCorrect ข้อ",
+                //                 style: const TextStyle(
+                //                   fontSize: 70,
+                //                   fontWeight: FontWeight.bold,
+                //                   color: Colors.white,
+                //                 ),
+                //               ),
+                //             ],
+                //           ),
+                //         ),
+                //       ],
+                //     ),
+                //   ),
+                // ),
               ),
               Container(
                 height: 42,

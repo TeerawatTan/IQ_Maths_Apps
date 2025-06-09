@@ -25,7 +25,6 @@ class _SettingScreenState extends State<SettingScreen> {
 
   bool isSoundOn = true;
   bool isSettingValid() {
-    print("selectedDisplay : $selectedDisplay");
     if (selectedMenu == 'MULTI' || selectedMenu == 'DIV') {
       return selectedDigit1.isNotEmpty &&
           selectedDigit2.isNotEmpty &&
