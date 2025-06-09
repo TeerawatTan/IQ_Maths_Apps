@@ -92,14 +92,16 @@ class _UpperScreenState extends State<UpperScreen> {
   void _randomQuestion3rows(int d1, int d2) {
     LowerUpper3Row? currentQ;
     if (d1 == 1) {
-      if (d2 == 1) {
-        RandomQuestionRow selector = RandomQuestionRow(questions: upper3Row11);
+      if (d2 == 1) {}
+    } else if (d1 == 2) {
+      if (d2 == 2) {
+        RandomQuestionRow selector = RandomQuestionRow(questions: upper3Row22);
         selector.selectRandomQuestion();
         currentQ = selector.getCurrentQuestion();
-      } else if (d2 == 2) {}
-    } else if (d1 == 2) {
-      if (d2 == 1) {
-        RandomQuestionRow selector = RandomQuestionRow(questions: upper3Row21);
+      }
+    } else if (d1 == 3) {
+      if (d2 == 3) {
+        RandomQuestionRow selector = RandomQuestionRow(questions: upper3Row33);
         selector.selectRandomQuestion();
         currentQ = selector.getCurrentQuestion();
       }
@@ -119,10 +121,20 @@ class _UpperScreenState extends State<UpperScreen> {
         RandomQuestionRow selector = RandomQuestionRow(questions: upper4Row11);
         selector.selectRandomQuestion();
         currentQ = selector.getCurrentQuestion();
-      } else if (d2 == 2) {}
+      }
     } else if (d1 == 2) {
       if (d2 == 1) {
         RandomQuestionRow selector = RandomQuestionRow(questions: upper4Row21);
+        selector.selectRandomQuestion();
+        currentQ = selector.getCurrentQuestion();
+      } else if (d2 == 2) {
+        RandomQuestionRow selector = RandomQuestionRow(questions: upper4Row22);
+        selector.selectRandomQuestion();
+        currentQ = selector.getCurrentQuestion();
+      }
+    } else if (d1 == 3) {
+      if (d2 == 3) {
+        RandomQuestionRow selector = RandomQuestionRow(questions: upper4Row33);
         selector.selectRandomQuestion();
         currentQ = selector.getCurrentQuestion();
       }
@@ -142,11 +154,21 @@ class _UpperScreenState extends State<UpperScreen> {
       if (d2 == 1) {
         RandomQuestionRow selector = RandomQuestionRow(questions: upper5Row11);
         selector.selectRandomQuestion();
-        currentQ = selector.getCurrentQuestion() as LowerUpper5Row?;
-      } else if (d2 == 2) {}
+        currentQ = selector.getCurrentQuestion();
+      }
     } else if (d1 == 2) {
       if (d2 == 1) {
         RandomQuestionRow selector = RandomQuestionRow(questions: upper5Row21);
+        selector.selectRandomQuestion();
+        currentQ = selector.getCurrentQuestion();
+      } else if (d2 == 2) {
+        RandomQuestionRow selector = RandomQuestionRow(questions: upper5Row22);
+        selector.selectRandomQuestion();
+        currentQ = selector.getCurrentQuestion();
+      }
+    } else if (d1 == 3) {
+      if (d2 == 3) {
+        RandomQuestionRow selector = RandomQuestionRow(questions: upper5Row33);
         selector.selectRandomQuestion();
         currentQ = selector.getCurrentQuestion();
       }
@@ -167,11 +189,21 @@ class _UpperScreenState extends State<UpperScreen> {
       if (d2 == 1) {
         RandomQuestionRow selector = RandomQuestionRow(questions: upper6Row11);
         selector.selectRandomQuestion();
-        currentQ = selector.getCurrentQuestion() as LowerUpper6Row?;
-      } else if (d2 == 2) {}
+        currentQ = selector.getCurrentQuestion();
+      }
     } else if (d1 == 2) {
       if (d2 == 1) {
         RandomQuestionRow selector = RandomQuestionRow(questions: upper6Row21);
+        selector.selectRandomQuestion();
+        currentQ = selector.getCurrentQuestion();
+      } else if (d2 == 2) {
+        RandomQuestionRow selector = RandomQuestionRow(questions: upper6Row22);
+        selector.selectRandomQuestion();
+        currentQ = selector.getCurrentQuestion();
+      }
+    } else if (d1 == 3) {
+      if (d2 == 3) {
+        RandomQuestionRow selector = RandomQuestionRow(questions: upper6Row33);
         selector.selectRandomQuestion();
         currentQ = selector.getCurrentQuestion();
       }
