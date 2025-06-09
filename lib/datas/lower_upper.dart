@@ -606,7 +606,6 @@ List<LowerUpper3Row> lowerUpper3Row22 = [
   LowerUpper3Row(digit1: 62, digit2: -51, digit3: 23, ans: 34),
   LowerUpper3Row(digit1: 87, digit2: -62, digit3: 53, ans: 78),
 ];
-List<LowerUpper3Row> lowerUpper3Row31 = [];
 List<LowerUpper3Row> lowerUpper3Row32 = [
   LowerUpper3Row(digit1: 332, digit2: 17, digit3: -34, ans: 315),
   LowerUpper3Row(digit1: 139, digit2: -17, digit3: 62, ans: 184),
@@ -1517,7 +1516,6 @@ List<LowerUpper4Row> lowerUpper4Row22 = [
   LowerUpper4Row(digit1: 62, digit2: -51, digit3: 23, digit4: 55, ans: 89),
   LowerUpper4Row(digit1: 87, digit2: -62, digit3: 53, digit4: -25, ans: 53),
 ];
-List<LowerUpper4Row> lowerUpper4Row31 = [];
 List<LowerUpper4Row> lowerUpper4Row32 = [
   LowerUpper4Row(digit1: 332, digit2: 17, digit3: -34, digit4: 22, ans: 337),
   LowerUpper4Row(digit1: 139, digit2: -17, digit3: 62, digit4: -21, ans: 163),
@@ -6892,7 +6890,6 @@ List<LowerUpper5Row> lowerUpper5Row22 = [
     ans: 79,
   ),
 ];
-List<LowerUpper5Row> lowerUpper5Row31 = [];
 List<LowerUpper5Row> lowerUpper5Row32 = [
   LowerUpper5Row(
     digit1: 332,
@@ -14703,7 +14700,6 @@ List<LowerUpper6Row> lowerUpper6Row22 = [
     ans: 13,
   ),
 ];
-List<LowerUpper6Row> lowerUpper6Row31 = [];
 List<LowerUpper6Row> lowerUpper6Row32 = [
   LowerUpper6Row(
     digit1: 332,
