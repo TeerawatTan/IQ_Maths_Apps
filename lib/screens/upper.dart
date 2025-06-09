@@ -16,7 +16,7 @@ class UpperScreen extends StatefulWidget {
 }
 
 class _UpperScreenState extends State<UpperScreen> {
-  static const int questionLimit = 1;
+  static const int _questionLimit = 10;
   List<int> _numbers = [];
   int _currentStep = 0;
   bool _showAnswer = false;
@@ -288,7 +288,7 @@ class _UpperScreenState extends State<UpperScreen> {
         // ตอบถูก
         _countAnsCorrect++;
         _questionsAttempted++;
-        if (_questionsAttempted >= questionLimit) {
+        if (_questionsAttempted >= _questionLimit) {
           _goSummaryPage();
           return;
         }
@@ -318,7 +318,7 @@ class _UpperScreenState extends State<UpperScreen> {
               if (mounted && _showAnswer) {
                 // Ensure still in feedback state
                 _questionsAttempted++;
-                if (_questionsAttempted >= questionLimit) {
+                if (_questionsAttempted >= _questionLimit) {
                   _goSummaryPage();
                   return;
                 }
