@@ -523,181 +523,215 @@ class _LowerScreenState extends State<LowerScreen> {
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.only(top: 16),
-                  child: Center(
-                    child: _isShowAll
-                        ? () {
-                            final rowCount = _numbers.length;
-                            final double fontSize = (120 - (rowCount * 16.5))
-                                .clamp(35, 120)
-                                .toDouble();
-                            return Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: _numbers.map((e) {
-                                return Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                    vertical: 1,
-                                  ),
-                                  child: buildOutlinedText(
-                                    "$e",
-                                    fontSize: fontSize,
-                                  ),
-                                );
-                              }).toList(),
-                            );
-                          }()
-                        : _isFlashCardAnimating // Show current step during flash card animation
-                        ? buildOutlinedText(
-                            "${_numbers[_currentStep]}",
-                            fontSize: 160,
-                          )
-                        : _showAnswer || _waitingToShowAnswer
-                        ? buildOutlinedText("?", fontSize: 160)
-                        : Container(),
-                  ),
+                  child: _numbers.isEmpty
+                      ? Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Center(
+                              child: buildOutlinedText("No data", fontSize: 60),
+                            ),
+                            const SizedBox(height: 30),
+                            ElevatedButton(
+                              onPressed: () {
+                                Navigator.pop(
+                                  context,
+                                ); // Pops SummaryScreen, revealing YourWidget
+                              },
+                              child: const Text(
+                                "Play Again",
+                                style: TextStyle(fontSize: 20),
+                              ),
+                            ),
+                          ],
+                        )
+                      : Center(
+                          child: _isShowAll
+                              ? () {
+                                  final rowCount = _numbers.length;
+                                  final double fontSize =
+                                      (120 - (rowCount * 16.5))
+                                          .clamp(35, 120)
+                                          .toDouble();
+                                  return Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: _numbers.map((e) {
+                                      return Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                          vertical: 1,
+                                        ),
+                                        child: buildOutlinedText(
+                                          "$e",
+                                          fontSize: fontSize,
+                                        ),
+                                      );
+                                    }).toList(),
+                                  );
+                                }()
+                              : _isFlashCardAnimating // Show current step during flash card animation
+                              ? buildOutlinedText(
+                                  "${_numbers[_currentStep]}",
+                                  fontSize: 160,
+                                )
+                              : _showAnswer || _waitingToShowAnswer
+                              ? buildOutlinedText("?", fontSize: 160)
+                              : Container(),
+                        ),
                 ),
               ),
 
               Padding(
                 padding: const EdgeInsets.only(bottom: 5.0),
-                child: Row(
-                  children: [
-                    const SizedBox(width: 150),
-                    Expanded(
-                      child: Center(
-                        child: Container(
-                          width: 350,
-                          height: 60,
-                          padding: const EdgeInsets.fromLTRB(20, 7, 0, 0),
-                          decoration: BoxDecoration(
-                            color: Colors.yellow[600],
-                            borderRadius: BorderRadius.circular(50),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.orange.shade200,
-                                offset: const Offset(4, 4),
-                                blurRadius: 6,
-                                spreadRadius: 1,
-                              ),
-                            ],
-                          ),
-                          child: Stack(
-                            children: [
-                              Text(
-                                "Ans",
-                                style: TextStyle(
-                                  fontSize: 36,
-                                  fontWeight: FontWeight.bold,
-                                  foreground: Paint()
-                                    ..style = PaintingStyle.stroke
-                                    ..strokeWidth = 10
-                                    ..color = Colors.black
-                                    ..strokeJoin = StrokeJoin.round,
-                                ),
-                              ),
-                              const Text(
-                                "Ans",
-                                style: TextStyle(
-                                  fontSize: 36,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                  left: 100.0,
-                                  right: 100,
-                                ),
-                                child: TextField(
-                                  keyboardType: TextInputType.number,
-                                  controller: _inputAnsController,
-                                  decoration: InputDecoration(counterText: ''),
-                                  style: const TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 60,
-                                    color: Colors.red,
-                                  ),
-                                  showCursor: false,
-                                  inputFormatters: <TextInputFormatter>[
-                                    FilteringTextInputFormatter.digitsOnly,
-                                  ],
-                                  maxLength: 5,
-                                  enabled:
-                                      !_isFlashCardAnimating, // Disable input during animation
-                                ),
-                              ),
-                              if (_showAnswer)
-                                Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: <Widget>[
-                                    if (_showSmallWrongIcon)
-                                      Image.asset(
-                                        'assets/images/wrong.png',
-                                        width: 50,
-                                        height: 50,
-                                      ),
-                                    if (_showSmallWrongIcon)
-                                      SizedBox(width: 10),
-                                    if (_showAnswerText)
-                                      Flexible(
-                                        child: Stack(
-                                          children: [
-                                            Text(
-                                              "$_answer",
-                                              style: TextStyle(
-                                                fontSize: 36,
-                                                fontWeight: FontWeight.bold,
-                                                foreground: Paint()
-                                                  ..style = PaintingStyle.stroke
-                                                  ..strokeWidth = 10
-                                                  ..color = Colors.red
-                                                  ..strokeJoin =
-                                                      StrokeJoin.round,
-                                              ),
-                                            ),
-                                            Text(
-                                              "$_answer",
-                                              style: const TextStyle(
-                                                fontSize: 36,
-                                                fontWeight: FontWeight.bold,
-                                                color: Colors.white,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                  ],
-                                ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-
-                    const SizedBox(width: 12),
-                    ElevatedButton(
-                      onPressed: isNextButtonEnabled
-                          ? (_showAnswer ? _restart : _nextStep)
-                          : null, // Disable button if not enabled
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.transparent,
-                        elevation: 0,
-                        shadowColor: Colors.transparent,
-                        padding: EdgeInsets.zero,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30),
-                        ),
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
+                child: _numbers.isEmpty
+                    ? Row()
+                    : Row(
                         children: [
-                          Image.asset('assets/images/Next.png', width: 150),
+                          const SizedBox(width: 150),
+                          Expanded(
+                            child: Center(
+                              child: Container(
+                                width: 350,
+                                height: 60,
+                                padding: const EdgeInsets.fromLTRB(20, 7, 0, 0),
+                                decoration: BoxDecoration(
+                                  color: Colors.yellow[600],
+                                  borderRadius: BorderRadius.circular(50),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.orange.shade200,
+                                      offset: const Offset(4, 4),
+                                      blurRadius: 6,
+                                      spreadRadius: 1,
+                                    ),
+                                  ],
+                                ),
+                                child: Stack(
+                                  children: [
+                                    Text(
+                                      "Ans",
+                                      style: TextStyle(
+                                        fontSize: 36,
+                                        fontWeight: FontWeight.bold,
+                                        foreground: Paint()
+                                          ..style = PaintingStyle.stroke
+                                          ..strokeWidth = 10
+                                          ..color = Colors.black
+                                          ..strokeJoin = StrokeJoin.round,
+                                      ),
+                                    ),
+                                    const Text(
+                                      "Ans",
+                                      style: TextStyle(
+                                        fontSize: 36,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                        left: 100.0,
+                                        right: 100,
+                                      ),
+                                      child: TextField(
+                                        keyboardType: TextInputType.number,
+                                        controller: _inputAnsController,
+                                        decoration: InputDecoration(
+                                          counterText: '',
+                                        ),
+                                        style: const TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 60,
+                                          color: Colors.red,
+                                        ),
+                                        showCursor: false,
+                                        inputFormatters: <TextInputFormatter>[
+                                          FilteringTextInputFormatter
+                                              .digitsOnly,
+                                        ],
+                                        maxLength: 5,
+                                        enabled:
+                                            !_isFlashCardAnimating, // Disable input during animation
+                                      ),
+                                    ),
+                                    if (_showAnswer)
+                                      Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.end,
+                                        children: <Widget>[
+                                          if (_showSmallWrongIcon)
+                                            Image.asset(
+                                              'assets/images/wrong.png',
+                                              width: 50,
+                                              height: 50,
+                                            ),
+                                          if (_showSmallWrongIcon)
+                                            SizedBox(width: 10),
+                                          if (_showAnswerText)
+                                            Flexible(
+                                              child: Stack(
+                                                children: [
+                                                  Text(
+                                                    "$_answer",
+                                                    style: TextStyle(
+                                                      fontSize: 36,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      foreground: Paint()
+                                                        ..style =
+                                                            PaintingStyle.stroke
+                                                        ..strokeWidth = 10
+                                                        ..color = Colors.red
+                                                        ..strokeJoin =
+                                                            StrokeJoin.round,
+                                                    ),
+                                                  ),
+                                                  Text(
+                                                    "$_answer",
+                                                    style: const TextStyle(
+                                                      fontSize: 36,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      color: Colors.white,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                        ],
+                                      ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+
+                          const SizedBox(width: 12),
+                          ElevatedButton(
+                            onPressed: isNextButtonEnabled
+                                ? (_showAnswer ? _restart : _nextStep)
+                                : null, // Disable button if not enabled
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.transparent,
+                              elevation: 0,
+                              shadowColor: Colors.transparent,
+                              padding: EdgeInsets.zero,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30),
+                              ),
+                            ),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Image.asset(
+                                  'assets/images/Next.png',
+                                  width: 150,
+                                ),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(width: 12),
                         ],
                       ),
-                    ),
-                    const SizedBox(width: 12),
-                  ],
-                ),
               ),
 
               Container(
