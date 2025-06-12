@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:iq_maths_apps/datas/upper.dart';
 import 'package:iq_maths_apps/models/maths_setting.dart';
 import 'package:iq_maths_apps/datas/random_question.dart';
 import 'package:iq_maths_apps/models/lower_upper.dart';
 import 'package:iq_maths_apps/screens/summary.dart';
+import 'package:iq_maths_apps/widgets/lower_upper_wrapper.dart';
 
 class UpperScreen extends StatefulWidget {
   final MathsSetting setting;
@@ -20,7 +20,6 @@ class _UpperScreenState extends State<UpperScreen> {
   List<int> _numbers = [];
   int _currentStep = 0;
   bool _showAnswer = false;
-  bool _isSoundOn = true;
   bool _isPaused = false;
   bool _waitingToShowAnswer = false;
   bool _isShowAll = false;
@@ -386,11 +385,6 @@ class _UpperScreenState extends State<UpperScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final displayMode = widget.setting.display.toLowerCase() == 'flash card'
-        ? 'flash card'
-        : 'Show all';
-
-    // Determine if the Next button should be enabled
     bool isNextButtonEnabled = true;
     if (!_isShowAll && _isFlashCardAnimating) {
       isNextButtonEnabled = false; // Disable during flash card animation
@@ -399,407 +393,70 @@ class _UpperScreenState extends State<UpperScreen> {
       // This case is actually covered by _isFlashCardAnimating now.
     }
 
-    return Scaffold(
-      body: Stack(
-        children: [
-          Positioned.fill(
-            child: Image.asset('assets/images/bg4.png', fit: BoxFit.cover),
-          ),
-          Positioned(
-            top: 30,
-            left: 20,
-            child: Image.asset('assets/images/logo.png', width: 60),
-          ),
-          Positioned(
-            top: 110,
-            left: 20,
-            child: Image.asset('assets/images/upper.png', width: 150),
-          ),
-          Positioned(
-            top: 10,
-            left: 100,
-            child: Center(
-              child: Image.asset('assets/images/iq_maths_icon.png', width: 130),
-            ),
-          ),
-          Positioned(
-            bottom: 40,
-            left: 20,
-            child: Image.asset('assets/images/owl.png', width: 120),
-          ),
-
-          Positioned(
-            top: 30,
-            right: 20,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
+    return LowerUpperWrapper(
+      userName: "User Test",
+      avatarImg: null,
+      displayMode: widget.setting.display,
+      inputAnsController: _inputAnsController,
+      onNextPressed: isNextButtonEnabled
+          ? (_showAnswer ? _restart : _nextStep)
+          : null,
+      onPlayPauseFlashCard: _playPauseFlashCard,
+      isPaused: _isPaused,
+      currentStep: _currentStep,
+      totalNumbers: _numbers.length,
+      isFlashCardAnimating: _isFlashCardAnimating,
+      showAnswer: _showAnswer,
+      showAnswerText: _showAnswerText,
+      waitingToShowAnswer: _waitingToShowAnswer,
+      showSmallWrongIcon: _showSmallWrongIcon,
+      answerText: _answer.toString(),
+      currentMenuImage: 'assets/images/upper.png',
+      child: _numbers.isEmpty
+          ? Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
-                  decoration: BoxDecoration(
-                    color: Colors.cyan[100],
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 12,
-                    vertical: 4,
-                  ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      const Text(
-                        "ID : User Test",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.pink,
-                        ),
-                      ),
-                      const SizedBox(width: 8),
-                      CircleAvatar(
-                        radius: 18,
-                        backgroundColor: Colors.black12,
-                        child: Icon(Icons.person, color: Colors.black),
-                      ),
-                    ],
+                Center(child: buildOutlinedText("No data", fontSize: 60)),
+                const SizedBox(height: 30),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.pop(
+                      context,
+                    ); // Pops SummaryScreen, revealing YourWidget
+                  },
+                  child: const Text(
+                    "Play Again",
+                    style: TextStyle(fontSize: 20),
                   ),
                 ),
-                const SizedBox(height: 6),
-                Stack(
-                  children: [
-                    Text(
-                      "Display : $displayMode",
-                      style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                        foreground: Paint()
-                          ..style = PaintingStyle.stroke
-                          ..strokeWidth = 7
-                          ..color = Colors.black
-                          ..strokeJoin = StrokeJoin.round,
-                      ),
-                    ),
-                    Text(
-                      "Display : $displayMode",
-                      style: const TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ],
-                ),
-                if (widget.setting.display.toLowerCase() == "flash card" &&
-                    !_waitingToShowAnswer)
-                  Padding(
-                    padding: const EdgeInsets.only(top: 0),
-                    child: IconButton(
-                      icon: Image.asset(
-                        _isPaused
-                            ? 'assets/images/play_icon.png'
-                            : 'assets/images/pause_icon.png',
-                        width: 100,
-                        height: 100,
-                      ),
-                      onPressed: _playPauseFlashCard,
-                    ),
-                  ),
-                // Display current step/total _numbers if paused and in flash card mode
-                if (_isPaused &&
-                    widget.setting.display.toLowerCase() == "flash card")
-                  Padding(
-                    padding: const EdgeInsets.only(top: 8.0),
-                    child: buildOutlinedText(
-                      '${_currentStep + 1}/${_numbers.length}', // Display current number/total
-                      fontSize: 30,
-                      strokeColor: Colors.blueAccent,
-                      fillColor: Colors.white,
-                    ),
-                  ),
               ],
+            )
+          : Center(
+              child: _isShowAll
+                  ? () {
+                      final rowCount = _numbers.length;
+                      final double fontSize = (120 - (rowCount * 16.5))
+                          .clamp(35, 120)
+                          .toDouble();
+                      return Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: _numbers.map((e) {
+                          return Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 1),
+                            child: buildOutlinedText("$e", fontSize: fontSize),
+                          );
+                        }).toList(),
+                      );
+                    }()
+                  : _isFlashCardAnimating // Show current step during flash card animation
+                  ? buildOutlinedText(
+                      "${_numbers[_currentStep]}",
+                      fontSize: 160,
+                    )
+                  : _showAnswer || _waitingToShowAnswer
+                  ? buildOutlinedText("?", fontSize: 160)
+                  : Container(),
             ),
-          ),
-
-          Column(
-            children: [
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 16),
-                  child: _numbers.isEmpty
-                      ? Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Center(
-                              child: buildOutlinedText("No data", fontSize: 60),
-                            ),
-                            const SizedBox(height: 30),
-                            ElevatedButton(
-                              onPressed: () {
-                                Navigator.pop(
-                                  context,
-                                ); // Pops SummaryScreen, revealing YourWidget
-                              },
-                              child: const Text(
-                                "Play Again",
-                                style: TextStyle(fontSize: 20),
-                              ),
-                            ),
-                          ],
-                        )
-                      : Center(
-                          child: _isShowAll
-                              ? () {
-                                  final rowCount = _numbers.length;
-                                  final double fontSize =
-                                      (120 - (rowCount * 16.5))
-                                          .clamp(35, 120)
-                                          .toDouble();
-                                  return Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: _numbers.map((e) {
-                                      return Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                          vertical: 1,
-                                        ),
-                                        child: buildOutlinedText(
-                                          "$e",
-                                          fontSize: fontSize,
-                                        ),
-                                      );
-                                    }).toList(),
-                                  );
-                                }()
-                              : _isFlashCardAnimating // Show current step during flash card animation
-                              ? buildOutlinedText(
-                                  "${_numbers[_currentStep]}",
-                                  fontSize: 160,
-                                )
-                              : _showAnswer || _waitingToShowAnswer
-                              ? buildOutlinedText("?", fontSize: 160)
-                              : Container(),
-                        ),
-                ),
-              ),
-
-              Padding(
-                padding: const EdgeInsets.only(bottom: 5.0),
-                child: _numbers.isEmpty
-                    ? Row()
-                    : Row(
-                        children: [
-                          const SizedBox(width: 150),
-                          Expanded(
-                            child: Center(
-                              child: Container(
-                                width: 350,
-                                height: 60,
-                                padding: const EdgeInsets.fromLTRB(20, 7, 0, 0),
-                                decoration: BoxDecoration(
-                                  color: Colors.yellow[600],
-                                  borderRadius: BorderRadius.circular(50),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.orange.shade200,
-                                      offset: const Offset(4, 4),
-                                      blurRadius: 6,
-                                      spreadRadius: 1,
-                                    ),
-                                  ],
-                                ),
-                                child: Stack(
-                                  children: [
-                                    Text(
-                                      "Ans",
-                                      style: TextStyle(
-                                        fontSize: 36,
-                                        fontWeight: FontWeight.bold,
-                                        foreground: Paint()
-                                          ..style = PaintingStyle.stroke
-                                          ..strokeWidth = 10
-                                          ..color = Colors.black
-                                          ..strokeJoin = StrokeJoin.round,
-                                      ),
-                                    ),
-                                    const Text(
-                                      "Ans",
-                                      style: TextStyle(
-                                        fontSize: 36,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white,
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(
-                                        left: 100.0,
-                                        right: 100,
-                                      ),
-                                      child: TextField(
-                                        keyboardType: TextInputType.number,
-                                        controller: _inputAnsController,
-                                        decoration: InputDecoration(
-                                          counterText: '',
-                                        ),
-                                        style: const TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 60,
-                                          color: Colors.red,
-                                        ),
-                                        showCursor: false,
-                                        inputFormatters: <TextInputFormatter>[
-                                          FilteringTextInputFormatter
-                                              .digitsOnly,
-                                        ],
-                                        maxLength: 5,
-                                        enabled:
-                                            !_isFlashCardAnimating, // Disable input during animation
-                                      ),
-                                    ),
-                                    if (_showAnswer)
-                                      Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.end,
-                                        children: <Widget>[
-                                          if (_showSmallWrongIcon)
-                                            Image.asset(
-                                              'assets/images/wrong.png',
-                                              width: 50,
-                                              height: 50,
-                                            ),
-                                          if (_showSmallWrongIcon)
-                                            SizedBox(width: 10),
-                                          if (_showAnswerText)
-                                            Flexible(
-                                              child: Stack(
-                                                children: [
-                                                  Text(
-                                                    "$_answer",
-                                                    style: TextStyle(
-                                                      fontSize: 36,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      foreground: Paint()
-                                                        ..style =
-                                                            PaintingStyle.stroke
-                                                        ..strokeWidth = 10
-                                                        ..color = Colors.red
-                                                        ..strokeJoin =
-                                                            StrokeJoin.round,
-                                                    ),
-                                                  ),
-                                                  Text(
-                                                    "$_answer",
-                                                    style: const TextStyle(
-                                                      fontSize: 36,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      color: Colors.white,
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                        ],
-                                      ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-
-                          const SizedBox(width: 12),
-                          ElevatedButton(
-                            onPressed: isNextButtonEnabled
-                                ? (_showAnswer ? _restart : _nextStep)
-                                : null, // Disable button if not enabled
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.transparent,
-                              elevation: 0,
-                              shadowColor: Colors.transparent,
-                              padding: EdgeInsets.zero,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(30),
-                              ),
-                            ),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Image.asset(
-                                  'assets/images/Next.png',
-                                  width: 150,
-                                ),
-                              ],
-                            ),
-                          ),
-                          const SizedBox(width: 12),
-                        ],
-                      ),
-              ),
-
-              Container(
-                height: 42,
-                color: Colors.lightBlueAccent,
-                padding: const EdgeInsets.symmetric(horizontal: 12),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Text(
-                      "Intelligent Quick Maths ( IQM )",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Row(
-                      children: [
-                        const Text(
-                          "Sound ",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        const SizedBox(width: 4),
-                        Image.asset(
-                          'assets/images/sound_icon.png',
-                          width: 22,
-                          height: 22,
-                        ),
-                        const SizedBox(width: 4),
-                        Transform.scale(
-                          scale: 0.8,
-                          child: Switch(
-                            value: _isSoundOn,
-                            onChanged: (value) {
-                              setState(() {
-                                _isSoundOn = value;
-                              });
-                            },
-                            activeColor: Colors.white,
-                            inactiveThumbColor: Colors.red,
-                            inactiveTrackColor: const Color.fromARGB(
-                              255,
-                              235,
-                              116,
-                              107,
-                            ),
-                          ),
-                        ),
-                        const SizedBox(width: 4),
-                        Text(
-                          _isSoundOn ? "ON" : "OFF",
-                          style: TextStyle(
-                            color: _isSoundOn ? Colors.white : Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ],
-      ),
     );
   }
 }
