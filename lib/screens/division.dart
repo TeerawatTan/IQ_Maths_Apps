@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:iq_maths_apps/models/maths_setting.dart';
 
@@ -20,6 +21,7 @@ class _DivisionScreenState extends State<DivisionScreen> {
   bool waitingToShowAnswer = false;
   bool isLoading = true;
   List<List<int>> divisionProblems = [];
+  bool _isLoggingOut = false; // State to manage logout loading
 
   @override
   void initState() {
@@ -108,6 +110,43 @@ class _DivisionScreenState extends State<DivisionScreen> {
   int getCurrentAnswer() {
     final p = divisionProblems[currentStep];
     return p[0] ~/ p[1];
+  }
+
+  // Function to handle user logout
+  Future<void> _logout() async {
+    setState(() {
+      _isLoggingOut = true; // Show loading indicator
+    });
+
+    try {
+      await FirebaseAuth.instance.signOut(); // Sign out the current user
+      // After successful logout, navigate back to the login screen
+      if (mounted) {
+        // Check if the widget is still in the tree
+        Navigator.pushReplacementNamed(
+          context,
+          '/',
+        ); // Assuming '/' is your login route
+      }
+    } on FirebaseAuthException catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Error logging out: ${e.message}')),
+        );
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('An unexpected error occurred: $e')),
+        );
+      }
+    } finally {
+      if (mounted) {
+        setState(() {
+          _isLoggingOut = false; // Hide loading indicator
+        });
+      }
+    }
   }
 
   Widget buildOutlinedText(
@@ -216,6 +255,30 @@ class _DivisionScreenState extends State<DivisionScreen> {
                         backgroundColor: Colors.black12,
                         child: Icon(Icons.person, color: Colors.black),
                       ),
+                      _isLoggingOut
+                          ? const SizedBox(
+                              width: 30, // Match icon size
+                              height: 30, // Match icon size
+                              child: CircularProgressIndicator(
+                                strokeWidth: 3,
+                                valueColor: AlwaysStoppedAnimation<Color>(
+                                  Color.fromARGB(255, 235, 99, 144),
+                                ),
+                              ),
+                            )
+                          : IconButton(
+                              icon: const Icon(Icons.logout), // Logout icon
+                              iconSize: 30.0, // Adjust icon size as needed
+                              color: const Color.fromARGB(
+                                255,
+                                235,
+                                99,
+                                144,
+                              ), // Icon color
+                              onPressed: _logout, // Call the _logout function
+                              tooltip:
+                                  'Logout', // Text that appears on long press
+                            ),
                     ],
                   ),
                 ),
@@ -402,51 +465,51 @@ class _DivisionScreenState extends State<DivisionScreen> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    Row(
-                      children: [
-                        const Text(
-                          "Sound ",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        const SizedBox(width: 4),
-                        Image.asset(
-                          'assets/images/sound_icon.png',
-                          width: 22,
-                          height: 22,
-                        ),
-                        const SizedBox(width: 4),
-                        Transform.scale(
-                          scale: 0.8,
-                          child: Switch(
-                            value: isSoundOn,
-                            onChanged: (value) {
-                              setState(() {
-                                isSoundOn = value;
-                              });
-                            },
-                            activeColor: Colors.white,
-                            inactiveThumbColor: Colors.red,
-                            inactiveTrackColor: const Color.fromARGB(
-                              255,
-                              235,
-                              116,
-                              107,
-                            ),
-                          ),
-                        ),
-                        const SizedBox(width: 4),
-                        Text(
-                          isSoundOn ? "ON" : "OFF",
-                          style: TextStyle(
-                            color: isSoundOn ? Colors.white : Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    ),
+                    // Row(
+                    //   children: [
+                    //     const Text(
+                    //       "Sound ",
+                    //       style: TextStyle(
+                    //         color: Colors.white,
+                    //         fontWeight: FontWeight.bold,
+                    //       ),
+                    //     ),
+                    //     const SizedBox(width: 4),
+                    //     Image.asset(
+                    //       'assets/images/sound_icon.png',
+                    //       width: 22,
+                    //       height: 22,
+                    //     ),
+                    //     const SizedBox(width: 4),
+                    //     Transform.scale(
+                    //       scale: 0.8,
+                    //       child: Switch(
+                    //         value: isSoundOn,
+                    //         onChanged: (value) {
+                    //           setState(() {
+                    //             isSoundOn = value;
+                    //           });
+                    //         },
+                    //         activeColor: Colors.white,
+                    //         inactiveThumbColor: Colors.red,
+                    //         inactiveTrackColor: const Color.fromARGB(
+                    //           255,
+                    //           235,
+                    //           116,
+                    //           107,
+                    //         ),
+                    //       ),
+                    //     ),
+                    //     const SizedBox(width: 4),
+                    //     Text(
+                    //       isSoundOn ? "ON" : "OFF",
+                    //       style: TextStyle(
+                    //         color: isSoundOn ? Colors.white : Colors.white,
+                    //         fontWeight: FontWeight.bold,
+                    //       ),
+                    //     ),
+                    //   ],
+                    // ),
                   ],
                 ),
               ),

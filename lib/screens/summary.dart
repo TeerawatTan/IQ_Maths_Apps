@@ -1,9 +1,17 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class SummaryScreen extends StatelessWidget {
+class SummaryScreen extends StatefulWidget {
   final int answerCorrect;
 
   const SummaryScreen({super.key, required this.answerCorrect});
+
+  @override
+  State<SummaryScreen> createState() => _SummaryScreenState();
+}
+
+class _SummaryScreenState extends State<SummaryScreen> {
+  bool _isLoggingOut = false; // State to manage logout loading
 
   Widget buildOutlinedText(
     String text, {
@@ -46,6 +54,43 @@ class SummaryScreen extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  // Function to handle user logout
+  Future<void> _logout() async {
+    setState(() {
+      _isLoggingOut = true; // Show loading indicator
+    });
+
+    try {
+      await FirebaseAuth.instance.signOut(); // Sign out the current user
+      // After successful logout, navigate back to the login screen
+      if (mounted) {
+        // Check if the widget is still in the tree
+        Navigator.pushReplacementNamed(
+          context,
+          '/',
+        ); // Assuming '/' is your login route
+      }
+    } on FirebaseAuthException catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Error logging out: ${e.message}')),
+        );
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('An unexpected error occurred: $e')),
+        );
+      }
+    } finally {
+      if (mounted) {
+        setState(() {
+          _isLoggingOut = false; // Hide loading indicator
+        });
+      }
+    }
   }
 
   @override
@@ -109,6 +154,30 @@ class SummaryScreen extends StatelessWidget {
                         backgroundColor: Colors.black12,
                         child: Icon(Icons.person, color: Colors.black),
                       ),
+                      _isLoggingOut
+                          ? const SizedBox(
+                              width: 30, // Match icon size
+                              height: 30, // Match icon size
+                              child: CircularProgressIndicator(
+                                strokeWidth: 3,
+                                valueColor: AlwaysStoppedAnimation<Color>(
+                                  Color.fromARGB(255, 235, 99, 144),
+                                ),
+                              ),
+                            )
+                          : IconButton(
+                              icon: const Icon(Icons.logout), // Logout icon
+                              iconSize: 30.0, // Adjust icon size as needed
+                              color: const Color.fromARGB(
+                                255,
+                                235,
+                                99,
+                                144,
+                              ), // Icon color
+                              onPressed: _logout, // Call the _logout function
+                              tooltip:
+                                  'Logout', // Text that appears on long press
+                            ),
                     ],
                   ),
                 ),
@@ -122,7 +191,7 @@ class SummaryScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Image.asset(
-                      answerCorrect == 0
+                      widget.answerCorrect == 0
                           ? 'assets/images/wrong.png'
                           : 'assets/images/correct.png',
                       width: 100,
@@ -136,7 +205,7 @@ class SummaryScreen extends StatelessWidget {
                           child: Stack(
                             children: [
                               Text(
-                                "ตอบถูก $answerCorrect ข้อ",
+                                "ตอบถูก ${widget.answerCorrect} ข้อ",
                                 style: TextStyle(
                                   fontSize: 70,
                                   fontWeight: FontWeight.bold,
@@ -148,7 +217,7 @@ class SummaryScreen extends StatelessWidget {
                                 ),
                               ),
                               Text(
-                                "ตอบถูก $answerCorrect ข้อ",
+                                "ตอบถูก ${widget.answerCorrect} ข้อ",
                                 style: const TextStyle(
                                   fontSize: 70,
                                   fontWeight: FontWeight.bold,

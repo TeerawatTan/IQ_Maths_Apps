@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "177506535469",
+    "project_id": "iq-maths",
+    "storage_bucket": "iq-maths.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:177506535469:android:ae1a497b4e4b84be2bd0a4",
+        "android_client_info": {
+          "package_name": "com.example.iq_maths_apps"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyABWw5-Y6nrcgh39y-bP7FxGiWUOiCpFyM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

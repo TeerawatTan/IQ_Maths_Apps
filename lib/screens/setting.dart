@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:iq_maths_apps/widgets/setting_menu_button.dart';
 import 'package:iq_maths_apps/widgets/sub_options/sub_options_lp.dart';
@@ -22,8 +23,9 @@ class _SettingScreenState extends State<SettingScreen> {
   String selectedDisplay = '';
   String selectedRow = '';
   String selectedTime = '';
-
   bool isSoundOn = true;
+  bool _isLoggingOut = false; // State to manage logout loading
+
   bool isSettingValid() {
     if (selectedMenu == 'MULTI' || selectedMenu == 'DIV') {
       return selectedDigit1.isNotEmpty &&
@@ -113,6 +115,43 @@ class _SettingScreenState extends State<SettingScreen> {
     });
   }
 
+  // Function to handle user logout
+  Future<void> _logout() async {
+    setState(() {
+      _isLoggingOut = true; // Show loading indicator
+    });
+
+    try {
+      await FirebaseAuth.instance.signOut(); // Sign out the current user
+      // After successful logout, navigate back to the login screen
+      if (mounted) {
+        // Check if the widget is still in the tree
+        Navigator.pushReplacementNamed(
+          context,
+          '/',
+        ); // Assuming '/' is your login route
+      }
+    } on FirebaseAuthException catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Error logging out: ${e.message}')),
+        );
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('An unexpected error occurred: $e')),
+        );
+      }
+    } finally {
+      if (mounted) {
+        setState(() {
+          _isLoggingOut = false; // Hide loading indicator
+        });
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -165,6 +204,24 @@ class _SettingScreenState extends State<SettingScreen> {
             backgroundColor: Colors.black12,
             child: Icon(Icons.person, color: Colors.black),
           ),
+          _isLoggingOut
+              ? const SizedBox(
+                  width: 30, // Match icon size
+                  height: 30, // Match icon size
+                  child: CircularProgressIndicator(
+                    strokeWidth: 3,
+                    valueColor: AlwaysStoppedAnimation<Color>(
+                      Color.fromARGB(255, 235, 99, 144),
+                    ),
+                  ),
+                )
+              : IconButton(
+                  icon: const Icon(Icons.logout), // Logout icon
+                  iconSize: 30.0, // Adjust icon size as needed
+                  color: const Color.fromARGB(255, 235, 99, 144), // Icon color
+                  onPressed: _logout, // Call the _logout function
+                  tooltip: 'Logout', // Text that appears on long press
+                ),
         ],
       ),
     ),
@@ -309,30 +366,30 @@ class _SettingScreenState extends State<SettingScreen> {
             "Intelligent Quick Maths (IQM)",
             style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
           ),
-          Row(
-            children: [
-              Text(
-                isSoundOn ? "Sound ON" : "Sound OFF",
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const SizedBox(width: 6),
-              Image.asset(
-                'assets/images/sound_icon.png',
-                width: 22,
-                height: 22,
-              ),
-              const SizedBox(width: 6),
-              Switch(
-                value: isSoundOn,
-                onChanged: (value) => setState(() => isSoundOn = value),
-                activeColor: Colors.white,
-                inactiveThumbColor: Colors.white70,
-              ),
-            ],
-          ),
+          // Row(
+          //   children: [
+          //     Text(
+          //       isSoundOn ? "Sound ON" : "Sound OFF",
+          //       style: const TextStyle(
+          //         color: Colors.white,
+          //         fontWeight: FontWeight.bold,
+          //       ),
+          //     ),
+          //     const SizedBox(width: 6),
+          //     Image.asset(
+          //       'assets/images/sound_icon.png',
+          //       width: 22,
+          //       height: 22,
+          //     ),
+          //     const SizedBox(width: 6),
+          //     Switch(
+          //       value: isSoundOn,
+          //       onChanged: (value) => setState(() => isSoundOn = value),
+          //       activeColor: Colors.white,
+          //       inactiveThumbColor: Colors.white70,
+          //     ),
+          //   ],
+          // ),
         ],
       ),
     ),
