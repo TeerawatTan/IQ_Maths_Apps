@@ -114,108 +114,90 @@ class _LowerScreenState extends State<LowerScreen> {
   }
 
   void _randomQuestion4rows(int d1, int d2) {
-    // LowerUpper4Row? currentQ;
-    // if (d1 == 1) {
-    //   if (d2 == 1) {
-    //     RandomQuestionRow selector = RandomQuestionRow(questions: upper4Row11);
-    //     selector.selectRandomQuestion();
-    //     currentQ = selector.getCurrentQuestion();
-    //   }
-    // } else if (d1 == 2) {
-    //   if (d2 == 1) {
-    //     RandomQuestionRow selector = RandomQuestionRow(questions: upper4Row21);
-    //     selector.selectRandomQuestion();
-    //     currentQ = selector.getCurrentQuestion();
-    //   } else if (d2 == 2) {
-    //     RandomQuestionRow selector = RandomQuestionRow(questions: upper4Row22);
-    //     selector.selectRandomQuestion();
-    //     currentQ = selector.getCurrentQuestion();
-    //   }
-    // } else if (d1 == 3) {
-    //   if (d2 == 3) {
-    //     RandomQuestionRow selector = RandomQuestionRow(questions: upper4Row33);
-    //     selector.selectRandomQuestion();
-    //     currentQ = selector.getCurrentQuestion();
-    //   }
-    // }
-    // if (currentQ != null) {
-    //   _numbers.add(currentQ.digit1);
-    //   _numbers.add(currentQ.digit2);
-    //   _numbers.add(currentQ.digit3);
-    //   _numbers.add(currentQ.digit4);
-    //   _answer = currentQ.ans;
-    // }
+    LowerUpper4Row? currentQ;
+    if (d1 == 1) {
+      if (d2 == 1) {
+        RandomQuestionRow selector = RandomQuestionRow(questions: lower4Row11);
+        selector.selectRandomQuestion();
+        currentQ = selector.getCurrentQuestion();
+      }
+    } else if (d1 == 2) {
+      if (d2 == 1) {
+        RandomQuestionRow selector = RandomQuestionRow(questions: lower4Row21);
+        selector.selectRandomQuestion();
+        currentQ = selector.getCurrentQuestion();
+      } else if (d2 == 2) {
+        RandomQuestionRow selector = RandomQuestionRow(questions: lower4Row22);
+        selector.selectRandomQuestion();
+        currentQ = selector.getCurrentQuestion();
+      }
+    }
+    if (currentQ != null) {
+      _numbers.add(currentQ.digit1);
+      _numbers.add(currentQ.digit2);
+      _numbers.add(currentQ.digit3);
+      _numbers.add(currentQ.digit4);
+      _answer = currentQ.ans;
+    }
   }
 
   void _randomQuestion5rows(int d1, int d2) {
-    // LowerUpper5Row? currentQ;
-    // if (d1 == 1) {
-    //   if (d2 == 1) {
-    //     RandomQuestionRow selector = RandomQuestionRow(questions: upper5Row11);
-    //     selector.selectRandomQuestion();
-    //     currentQ = selector.getCurrentQuestion();
-    //   }
-    // } else if (d1 == 2) {
-    //   if (d2 == 1) {
-    //     RandomQuestionRow selector = RandomQuestionRow(questions: upper5Row21);
-    //     selector.selectRandomQuestion();
-    //     currentQ = selector.getCurrentQuestion();
-    //   } else if (d2 == 2) {
-    //     RandomQuestionRow selector = RandomQuestionRow(questions: upper5Row22);
-    //     selector.selectRandomQuestion();
-    //     currentQ = selector.getCurrentQuestion();
-    //   }
-    // } else if (d1 == 3) {
-    //   if (d2 == 3) {
-    //     RandomQuestionRow selector = RandomQuestionRow(questions: upper5Row33);
-    //     selector.selectRandomQuestion();
-    //     currentQ = selector.getCurrentQuestion();
-    //   }
-    // }
-    // if (currentQ != null) {
-    //   _numbers.add(currentQ.digit1);
-    //   _numbers.add(currentQ.digit2);
-    //   _numbers.add(currentQ.digit3);
-    //   _numbers.add(currentQ.digit4);
-    //   _numbers.add(currentQ.digit5);
-    //   _answer = currentQ.ans;
-    // }
+    LowerUpper5Row? currentQ;
+    if (d1 == 1) {
+      if (d2 == 1) {
+        RandomQuestionRow selector = RandomQuestionRow(questions: lower5Row11);
+        selector.selectRandomQuestion();
+        currentQ = selector.getCurrentQuestion();
+      }
+    } else if (d1 == 2) {
+      if (d2 == 1) {
+        RandomQuestionRow selector = RandomQuestionRow(questions: lower5Row21);
+        selector.selectRandomQuestion();
+        currentQ = selector.getCurrentQuestion();
+      } else if (d2 == 2) {
+        RandomQuestionRow selector = RandomQuestionRow(questions: lower5Row22);
+        selector.selectRandomQuestion();
+        currentQ = selector.getCurrentQuestion();
+      }
+    }
+    if (currentQ != null) {
+      _numbers.add(currentQ.digit1);
+      _numbers.add(currentQ.digit2);
+      _numbers.add(currentQ.digit3);
+      _numbers.add(currentQ.digit4);
+      _numbers.add(currentQ.digit5);
+      _answer = currentQ.ans;
+    }
   }
 
   void _randomQuestion6rows(int d1, int d2) {
-    // LowerUpper6Row? currentQ;
-    // if (d1 == 1) {
-    //   if (d2 == 1) {
-    //     RandomQuestionRow selector = RandomQuestionRow(questions: upper6Row11);
-    //     selector.selectRandomQuestion();
-    //     currentQ = selector.getCurrentQuestion();
-    //   }
-    // } else if (d1 == 2) {
-    //   if (d2 == 1) {
-    //     RandomQuestionRow selector = RandomQuestionRow(questions: upper6Row21);
-    //     selector.selectRandomQuestion();
-    //     currentQ = selector.getCurrentQuestion();
-    //   } else if (d2 == 2) {
-    //     RandomQuestionRow selector = RandomQuestionRow(questions: upper6Row22);
-    //     selector.selectRandomQuestion();
-    //     currentQ = selector.getCurrentQuestion();
-    //   }
-    // } else if (d1 == 3) {
-    //   if (d2 == 3) {
-    //     RandomQuestionRow selector = RandomQuestionRow(questions: upper6Row33);
-    //     selector.selectRandomQuestion();
-    //     currentQ = selector.getCurrentQuestion();
-    //   }
-    // }
-    // if (currentQ != null) {
-    //   _numbers.add(currentQ.digit1);
-    //   _numbers.add(currentQ.digit2);
-    //   _numbers.add(currentQ.digit3);
-    //   _numbers.add(currentQ.digit4);
-    //   _numbers.add(currentQ.digit5);
-    //   _numbers.add(currentQ.digit6);
-    //   _answer = currentQ.ans;
-    // }
+    LowerUpper6Row? currentQ;
+    if (d1 == 1) {
+      if (d2 == 1) {
+        RandomQuestionRow selector = RandomQuestionRow(questions: lower6Row11);
+        selector.selectRandomQuestion();
+        currentQ = selector.getCurrentQuestion();
+      }
+    } else if (d1 == 2) {
+      if (d2 == 1) {
+        RandomQuestionRow selector = RandomQuestionRow(questions: lower6Row21);
+        selector.selectRandomQuestion();
+        currentQ = selector.getCurrentQuestion();
+      } else if (d2 == 2) {
+        RandomQuestionRow selector = RandomQuestionRow(questions: lower6Row22);
+        selector.selectRandomQuestion();
+        currentQ = selector.getCurrentQuestion();
+      }
+    }
+    if (currentQ != null) {
+      _numbers.add(currentQ.digit1);
+      _numbers.add(currentQ.digit2);
+      _numbers.add(currentQ.digit3);
+      _numbers.add(currentQ.digit4);
+      _numbers.add(currentQ.digit5);
+      _numbers.add(currentQ.digit6);
+      _answer = currentQ.ans;
+    }
   }
 
   Future<void> _startFlashCard() async {
