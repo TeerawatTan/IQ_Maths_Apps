@@ -14,7 +14,6 @@ class DivisionScreen extends StatefulWidget {
 
 class _DivisionScreenState extends State<DivisionScreen> {
   int currentStep = 0;
-
   bool showAnswer = false;
   bool isSoundOn = true;
   bool isPaused = false;
@@ -22,6 +21,7 @@ class _DivisionScreenState extends State<DivisionScreen> {
   bool isLoading = true;
   List<List<int>> divisionProblems = [];
   bool _isLoggingOut = false; // State to manage logout loading
+  final auth = FirebaseAuth.instance;
 
   @override
   void initState() {
@@ -242,8 +242,8 @@ class _DivisionScreenState extends State<DivisionScreen> {
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      const Text(
-                        "ID : User Test",
+                      Text(
+                        "ID : ${auth.currentUser == null ? '' : auth.currentUser!.email!.substring(0, auth.currentUser!.email!.indexOf('@'))}",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           color: Colors.pink,

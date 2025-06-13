@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:iq_maths_apps/datas/lower.dart';
 import 'package:iq_maths_apps/datas/random_question.dart';
@@ -31,6 +32,7 @@ class _LowerScreenState extends State<LowerScreen> {
   bool _shouldContinueFlashCard = false;
   bool _showSmallWrongIcon = false;
   bool _showAnswerText = false;
+  final auth = FirebaseAuth.instance;
 
   @override
   void initState() {
@@ -120,6 +122,10 @@ class _LowerScreenState extends State<LowerScreen> {
         RandomQuestionRow selector = RandomQuestionRow(questions: lower4Row11);
         selector.selectRandomQuestion();
         currentQ = selector.getCurrentQuestion();
+      } else if (d2 == 2) {
+        RandomQuestionRow selector = RandomQuestionRow(questions: lower4Row21);
+        selector.selectRandomQuestion();
+        currentQ = selector.getCurrentQuestion();
       }
     } else if (d1 == 2) {
       if (d2 == 1) {
@@ -146,6 +152,10 @@ class _LowerScreenState extends State<LowerScreen> {
     if (d1 == 1) {
       if (d2 == 1) {
         RandomQuestionRow selector = RandomQuestionRow(questions: lower5Row11);
+        selector.selectRandomQuestion();
+        currentQ = selector.getCurrentQuestion();
+      } else if (d2 == 2) {
+        RandomQuestionRow selector = RandomQuestionRow(questions: lower5Row21);
         selector.selectRandomQuestion();
         currentQ = selector.getCurrentQuestion();
       }
@@ -175,6 +185,10 @@ class _LowerScreenState extends State<LowerScreen> {
     if (d1 == 1) {
       if (d2 == 1) {
         RandomQuestionRow selector = RandomQuestionRow(questions: lower6Row11);
+        selector.selectRandomQuestion();
+        currentQ = selector.getCurrentQuestion();
+      } else if (d2 == 2) {
+        RandomQuestionRow selector = RandomQuestionRow(questions: lower6Row21);
         selector.selectRandomQuestion();
         currentQ = selector.getCurrentQuestion();
       }
@@ -377,7 +391,12 @@ class _LowerScreenState extends State<LowerScreen> {
     }
 
     return LowerUpperWrapper(
-      userName: "User Test",
+      userName: auth.currentUser == null
+          ? ''
+          : auth.currentUser!.email!.substring(
+              0,
+              auth.currentUser!.email!.indexOf('@'),
+            ),
       avatarImg: null,
       displayMode: widget.setting.display,
       inputAnsController: _inputAnsController,

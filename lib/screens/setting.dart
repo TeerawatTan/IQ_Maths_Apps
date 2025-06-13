@@ -25,6 +25,7 @@ class _SettingScreenState extends State<SettingScreen> {
   String selectedTime = '';
   bool isSoundOn = true;
   bool _isLoggingOut = false; // State to manage logout loading
+  final auth = FirebaseAuth.instance;
 
   bool isSettingValid() {
     if (selectedMenu == 'MULTI' || selectedMenu == 'DIV') {
@@ -194,8 +195,8 @@ class _SettingScreenState extends State<SettingScreen> {
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
       child: Row(
         children: [
-          const Text(
-            "ID : User Test",
+          Text(
+            "ID : ${auth.currentUser == null ? '' : auth.currentUser!.email!.substring(0, auth.currentUser!.email!.indexOf('@'))}",
             style: TextStyle(fontWeight: FontWeight.bold, color: Colors.pink),
           ),
           const SizedBox(width: 8),

@@ -14,12 +14,12 @@ class MultiplicationScreen extends StatefulWidget {
 
 class _MultiplicationScreenState extends State<MultiplicationScreen> {
   int currentStep = 0;
-
   bool showAnswer = false;
   bool isSoundOn = true;
   bool isPaused = false;
   bool waitingToShowAnswer = false;
   bool _isLoggingOut = false; // State to manage logout loading
+  final auth = FirebaseAuth.instance;
 
   @override
   void initState() {
@@ -219,9 +219,9 @@ class _MultiplicationScreenState extends State<MultiplicationScreen> {
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      const Text(
-                        "ID : User Test",
-                        style: TextStyle(
+                      Text(
+                        "ID : ${auth.currentUser == null ? '' : auth.currentUser!.email!.substring(0, auth.currentUser!.email!.indexOf('@'))}",
+                        style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           color: Colors.pink,
                         ),

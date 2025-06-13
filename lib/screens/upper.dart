@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:iq_maths_apps/datas/upper.dart';
 import 'package:iq_maths_apps/models/maths_setting.dart';
@@ -31,6 +32,7 @@ class _UpperScreenState extends State<UpperScreen> {
   bool _shouldContinueFlashCard = false;
   bool _showSmallWrongIcon = false;
   bool _showAnswerText = false;
+  final auth = FirebaseAuth.instance;
 
   @override
   void initState() {
@@ -120,6 +122,10 @@ class _UpperScreenState extends State<UpperScreen> {
         RandomQuestionRow selector = RandomQuestionRow(questions: upper4Row11);
         selector.selectRandomQuestion();
         currentQ = selector.getCurrentQuestion();
+      } else if (d2 == 2) {
+        RandomQuestionRow selector = RandomQuestionRow(questions: upper4Row21);
+        selector.selectRandomQuestion();
+        currentQ = selector.getCurrentQuestion();
       }
     } else if (d1 == 2) {
       if (d2 == 1) {
@@ -152,6 +158,10 @@ class _UpperScreenState extends State<UpperScreen> {
     if (d1 == 1) {
       if (d2 == 1) {
         RandomQuestionRow selector = RandomQuestionRow(questions: upper5Row11);
+        selector.selectRandomQuestion();
+        currentQ = selector.getCurrentQuestion();
+      } else if (d2 == 2) {
+        RandomQuestionRow selector = RandomQuestionRow(questions: upper5Row21);
         selector.selectRandomQuestion();
         currentQ = selector.getCurrentQuestion();
       }
@@ -187,6 +197,10 @@ class _UpperScreenState extends State<UpperScreen> {
     if (d1 == 1) {
       if (d2 == 1) {
         RandomQuestionRow selector = RandomQuestionRow(questions: upper6Row11);
+        selector.selectRandomQuestion();
+        currentQ = selector.getCurrentQuestion();
+      } else if (d2 == 2) {
+        RandomQuestionRow selector = RandomQuestionRow(questions: upper6Row21);
         selector.selectRandomQuestion();
         currentQ = selector.getCurrentQuestion();
       }
@@ -394,7 +408,12 @@ class _UpperScreenState extends State<UpperScreen> {
     }
 
     return LowerUpperWrapper(
-      userName: "User Test",
+      userName: auth.currentUser == null
+          ? ''
+          : auth.currentUser!.email!.substring(
+              0,
+              auth.currentUser!.email!.indexOf('@'),
+            ),
       avatarImg: null,
       displayMode: widget.setting.display,
       inputAnsController: _inputAnsController,

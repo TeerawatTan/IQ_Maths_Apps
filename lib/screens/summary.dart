@@ -12,6 +12,7 @@ class SummaryScreen extends StatefulWidget {
 
 class _SummaryScreenState extends State<SummaryScreen> {
   bool _isLoggingOut = false; // State to manage logout loading
+  final auth = FirebaseAuth.instance;
 
   Widget buildOutlinedText(
     String text, {
@@ -141,8 +142,8 @@ class _SummaryScreenState extends State<SummaryScreen> {
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      const Text(
-                        "ID : User Test",
+                      Text(
+                        "ID : ${auth.currentUser == null ? '' : auth.currentUser!.email!.substring(0, auth.currentUser!.email!.indexOf('@'))}",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           color: Colors.pink,
