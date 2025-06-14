@@ -25,8 +25,49 @@ class _LoginScreenState extends State<LoginScreen> {
     super.dispose();
   }
 
+  // Custom validation function that shows ScaffoldMessenger
+  bool _validateInputs() {
+    String? emailError;
+    String? passwordError;
+
+    // Validate email
+    if (emailController.text.isEmpty) {
+      emailError = 'Please enter your email';
+    } else if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(emailController.text)) {
+      emailError = 'Please enter a valid email';
+    }
+
+    // Validate password
+    if (passwordController.text.isEmpty) {
+      passwordError = 'Please enter your password';
+    }
+
+    // Show error message if validation fails
+    if (emailError != null) {
+      _showValidationError(emailError);
+      return false;
+    }
+    if (passwordError != null) {
+      _showValidationError(passwordError);
+      return false;
+    }
+
+    return true;
+  }
+
+  void _showValidationError(String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(message),
+        backgroundColor: Colors.red,
+        duration: const Duration(seconds: 3),
+      ),
+    );
+  }
+
   Future<void> _login() async {
-    if (formKey.currentState!.validate()) {
+    // Use custom validation instead of form validation
+    if (_validateInputs()) {
       setState(() {
         _isLoading = true; // Start loading
       });
@@ -159,18 +200,6 @@ class _LoginScreenState extends State<LoginScreen> {
                             label: "Email :",
                             controller: emailController,
                             icon: Icons.email,
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return 'Please enter your email';
-                              }
-                              // Basic email validation
-                              if (!RegExp(
-                                r'^[^@]+@[^@]+\.[^@]+',
-                              ).hasMatch(value)) {
-                                return 'Please enter a valid email';
-                              }
-                              return null;
-                            },
                           ),
 
                           const SizedBox(height: 8),
@@ -190,16 +219,6 @@ class _LoginScreenState extends State<LoginScreen> {
                                   ),
                                 )
                               : ElevatedButton(
-                                  // onPressed: () {
-                                  //   if (emailController.text == 'admin' &&
-                                  //       passwordController.text == '1234') {
-                                  //     Navigator.pushReplacementNamed(context, '/Setting');
-                                  //   } else {
-                                  //     ScaffoldMessenger.of(context).showSnackBar(
-                                  //       SnackBar(content: Text('Invalid ID or Password')),
-                                  //     );
-                                  //   }
-                                  // },
                                   onPressed: _login,
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor: const Color.fromARGB(
@@ -224,6 +243,20 @@ class _LoginScreenState extends State<LoginScreen> {
                                     ),
                                   ),
                                 ),
+                          const SizedBox(height: 5),
+                          TextButton(
+                            onPressed: () {
+                              Navigator.pushNamed(context, '/Register');
+                            },
+                            child: const Text(
+                              "Don't have an account? Register here",
+                              style: TextStyle(
+                                color: Color.fromARGB(255, 235, 99, 144),
+                                fontWeight: FontWeight.bold,
+                                decoration: TextDecoration.underline,
+                              ),
+                            ),
+                          ),
 
                           const SizedBox(height: 50),
                         ],
@@ -249,34 +282,6 @@ class _LoginScreenState extends State<LoginScreen> {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        // Row(
-                        //   children: [
-                        //     Text(
-                        //       isSoundOn ? "Sound ON" : "Sound OFF",
-                        //       style: const TextStyle(
-                        //         color: Colors.white,
-                        //         fontWeight: FontWeight.bold,
-                        //       ),
-                        //     ),
-                        //     const SizedBox(width: 6),
-                        //     Image.asset(
-                        //       'assets/images/sound_icon.png',
-                        //       width: 22,
-                        //       height: 22,
-                        //     ),
-                        //     const SizedBox(width: 6),
-                        //     Switch(
-                        //       value: isSoundOn,
-                        //       onChanged: (value) {
-                        //         setState(() {
-                        //           isSoundOn = value;
-                        //         });
-                        //       },
-                        //       activeColor: Colors.white,
-                        //       inactiveThumbColor: Colors.white70,
-                        //     ),
-                        //   ],
-                        // ),
                       ],
                     ),
                   ),
@@ -303,7 +308,6 @@ class _LoginScreenState extends State<LoginScreen> {
     required TextEditingController controller,
     required IconData icon,
     bool isPassword = false,
-    String? Function(String?)? validator,
   }) {
     return Container(
       width: 240,
@@ -319,23 +323,25 @@ class _LoginScreenState extends State<LoginScreen> {
         controller: controller,
         obscureText: isPassword,
         style: const TextStyle(fontWeight: FontWeight.bold),
-        validator: validator,
         decoration: InputDecoration(
+          hintText: label,
+          hintStyle: const TextStyle(
+            color: Color.fromARGB(255, 235, 99, 144),
+            fontWeight: FontWeight.bold,
+          ),
           prefixIcon: Icon(
             icon,
             color: const Color.fromARGB(255, 235, 99, 144),
           ),
-          labelText: label,
           labelStyle: const TextStyle(
             color: Color.fromARGB(255, 235, 99, 144),
             fontWeight: FontWeight.bold,
           ),
           border: InputBorder.none,
-          contentPadding: const EdgeInsets.symmetric(vertical: 14),
-          errorStyle: const TextStyle(
-            color: Colors.red,
-            fontSize: 10,
-          ), // Style for e
+          contentPadding: const EdgeInsets.symmetric(
+            vertical: 14,
+            horizontal: 20,
+          ),
         ),
       ),
     );

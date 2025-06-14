@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../models/maths_setting.dart';
 import 'screens/login.dart';
+import 'screens/register.dart';
 import 'screens/setting.dart';
 import 'screens/lower.dart';
 import 'screens/upper.dart';
@@ -57,6 +58,8 @@ class MyApp extends StatelessWidget {
           );
         } else if (settings.name == '/Setting') {
           return MaterialPageRoute(builder: (_) => const SettingScreen());
+        } else if (settings.name == '/Register') {
+          return MaterialPageRoute(builder: (_) => const RegisterScreen());
         }
         return MaterialPageRoute(builder: (_) => const SettingScreen());
       },

@@ -35,6 +35,24 @@ Widget buildOutlinedText(
   );
 }
 
+double _getFontSize(int textLength) {
+  switch (textLength) {
+    case 0:
+    case 1:
+      return 60.0;
+    case 2:
+      return 55.0;
+    case 3:
+      return 50.0;
+    case 4:
+      return 45.0;
+    case 5:
+      return 37.5;
+    default:
+      return 35.0;
+  }
+}
+
 class LowerUpperWrapper extends StatefulWidget {
   final String? userName;
   final String? avatarImg;
@@ -297,7 +315,7 @@ class _LowerUpperWrapperState extends State<LowerUpperWrapper> {
                           Expanded(
                             child: Center(
                               child: Container(
-                                width: 350,
+                                width: 400,
                                 height: 60,
                                 padding: const EdgeInsets.fromLTRB(20, 7, 0, 0),
                                 decoration: BoxDecoration(
@@ -345,11 +363,17 @@ class _LowerUpperWrapperState extends State<LowerUpperWrapper> {
                                         decoration: const InputDecoration(
                                           counterText: '',
                                         ),
-                                        style: const TextStyle(
+                                        style: TextStyle(
                                           fontWeight: FontWeight.bold,
-                                          fontSize: 60,
+                                          fontSize: _getFontSize(
+                                            widget
+                                                .inputAnsController
+                                                .text
+                                                .length,
+                                          ),
                                           color: Colors.red,
                                         ),
+                                        textAlign: TextAlign.center,
                                         showCursor: false,
                                         inputFormatters: <TextInputFormatter>[
                                           FilteringTextInputFormatter
@@ -357,60 +381,72 @@ class _LowerUpperWrapperState extends State<LowerUpperWrapper> {
                                         ],
                                         maxLength: 5,
                                         enabled: !widget.isFlashCardAnimating,
+                                        onChanged: (value) {
+                                          setState(
+                                            () {},
+                                          ); // อัพเดท UI เมื่อข้อความเปลี่ยน
+                                        },
                                       ),
                                     ),
                                     if (widget.showAnswer)
-                                      Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.end,
-                                        children: <Widget>[
-                                          if (widget.showSmallWrongIcon)
-                                            Image.asset(
-                                              'assets/images/wrong.png',
-                                              width: 50,
-                                              height: 50,
-                                            ),
-                                          if (widget.showSmallWrongIcon)
-                                            const SizedBox(width: 10),
-                                          if (widget.showAnswerText)
-                                            Flexible(
-                                              child: Stack(
-                                                children: [
-                                                  Text(
-                                                    widget.answerText!,
-                                                    style: TextStyle(
-                                                      fontSize: 36,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      foreground: Paint()
-                                                        ..style =
-                                                            PaintingStyle.stroke
-                                                        ..strokeWidth = 10
-                                                        ..color = Colors.red
-                                                        ..strokeJoin =
-                                                            StrokeJoin.round,
-                                                    ),
-                                                  ),
-                                                  Text(
-                                                    widget.answerText!,
-                                                    style: const TextStyle(
-                                                      fontSize: 36,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      color: Colors.white,
-                                                    ),
-                                                  ),
-                                                ],
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                          right: 20.0,
+                                        ), // ขยับซ้าย 50 pixels
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.end,
+                                          children: <Widget>[
+                                            if (widget.showSmallWrongIcon)
+                                              Image.asset(
+                                                'assets/images/wrong.png',
+                                                width: 50,
+                                                height: 50,
                                               ),
-                                            ),
-                                        ],
+                                            if (widget.showSmallWrongIcon)
+                                              const SizedBox(width: 5),
+                                            if (widget.showAnswerText)
+                                              Flexible(
+                                                child: Stack(
+                                                  children: [
+                                                    Text(
+                                                      widget.answerText!,
+                                                      style: TextStyle(
+                                                        fontSize: 36,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        foreground: Paint()
+                                                          ..style =
+                                                              PaintingStyle
+                                                                  .stroke
+                                                          ..strokeWidth = 10
+                                                          ..color = Colors.red
+                                                          ..strokeJoin =
+                                                              StrokeJoin.round,
+                                                      ),
+                                                    ),
+                                                    Text(
+                                                      widget.answerText!,
+                                                      style: const TextStyle(
+                                                        fontSize: 36,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        color: Colors.white,
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                          ],
+                                        ),
                                       ),
                                   ],
                                 ),
                               ),
                             ),
                           ),
+
                           const SizedBox(width: 12),
                           ElevatedButton(
                             onPressed: widget.onNextPressed as void Function()?,
