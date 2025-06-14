@@ -25,7 +25,12 @@ class _SettingScreenState extends State<SettingScreen> {
   String selectedTime = '';
   bool isSoundOn = true;
   bool _isLoggingOut = false; // State to manage logout loading
-  final auth = FirebaseAuth.instance;
+  String uname = FirebaseAuth.instance.currentUser == null
+      ? ''
+      : FirebaseAuth.instance.currentUser!.email!.substring(
+          0,
+          FirebaseAuth.instance.currentUser!.email!.indexOf('@'),
+        );
 
   bool isSettingValid() {
     if (selectedMenu == 'MULTI' || selectedMenu == 'DIV') {
@@ -155,6 +160,7 @@ class _SettingScreenState extends State<SettingScreen> {
 
   @override
   Widget build(BuildContext context) {
+    print("name login : $uname");
     return Scaffold(
       body: Stack(
         children: [
@@ -196,7 +202,7 @@ class _SettingScreenState extends State<SettingScreen> {
       child: Row(
         children: [
           Text(
-            "ID : ${auth.currentUser == null ? '' : auth.currentUser!.email!.substring(0, auth.currentUser!.email!.indexOf('@'))}",
+            "ID : $uname",
             style: TextStyle(fontWeight: FontWeight.bold, color: Colors.pink),
           ),
           const SizedBox(width: 8),
@@ -267,6 +273,12 @@ class _SettingScreenState extends State<SettingScreen> {
             color: const Color(0xFFC4A5FF),
             onPressed: () => selectMenu('DIV'),
           ),
+          if (uname.isNotEmpty && uname.toLowerCase() == "iqmaths.official")
+            MenuButton(
+              title: 'Register',
+              color: Colors.white,
+              onPressed: () => Navigator.pushNamed(context, '/Register'),
+            ),
         ],
       ),
     ),

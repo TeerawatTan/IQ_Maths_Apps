@@ -89,7 +89,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
           password: passwordController.text.trim(),
         );
         if (mounted) {
-          Navigator.pushReplacementNamed(context, '/Setting');
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(SnackBar(content: Text("Register success.")));
+          Navigator.pop(context);
+          // Navigator.pushReplacementNamed(context, '/Setting');
         }
       } on FirebaseAuthException catch (e) {
         String message;
