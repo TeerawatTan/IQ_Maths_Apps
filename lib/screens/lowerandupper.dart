@@ -516,9 +516,7 @@ class _LowerAndUpperScreenState extends State<LowerAndUpperScreen> {
                 const SizedBox(height: 30),
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.pop(
-                      context,
-                    ); // Pops SummaryScreen, revealing YourWidget
+                    Navigator.pop(context);
                   },
                   child: const Text(
                     "Play Again",
@@ -530,10 +528,29 @@ class _LowerAndUpperScreenState extends State<LowerAndUpperScreen> {
           : Center(
               child: _isShowAll
                   ? () {
+                      // คำนวณ fontSize ให้เหมาะสมกับทุกขนาดหน้าจอ
                       final rowCount = _numbers.length;
-                      final double fontSize = (120 - (rowCount * 16.5))
-                          .clamp(35, 120)
-                          .toDouble();
+                      final screenHeight = MediaQuery.of(context).size.height;
+                      final screenWidth = MediaQuery.of(context).size.width;
+                      final availableHeight = screenHeight * 0.45;
+                      double fontSize = (availableHeight / rowCount * 0.8)
+                          .clamp(25, 120);
+                      // ปรับแต่งเพิ่มเติมตามขนาดหน้าจอ
+                      if (screenWidth < 400) {
+                        // Pixel รุ่นแรก และหน้าจอเล็ก
+                        fontSize = fontSize * 0.8;
+                      } else if (screenWidth >= 400 && screenWidth < 500) {
+                        // Pixel 6 และหน้าจอขนาดกลาง
+                        fontSize = fontSize * 0.85;
+                      } else if (screenWidth >= 500 && screenWidth < 700) {
+                        // หน้าจอใหญ่ แต่ยังเป็น Phone
+                        fontSize = fontSize * 0.9;
+                      } else {
+                        // Tablet (> 700px)
+                        fontSize = fontSize * 1.3;
+                      }
+                      fontSize = fontSize.clamp(25, 120);
+
                       return Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: _numbers.map((e) {
@@ -544,7 +561,7 @@ class _LowerAndUpperScreenState extends State<LowerAndUpperScreen> {
                         }).toList(),
                       );
                     }()
-                  : _isFlashCardAnimating // Show current step during flash card animation
+                  : _isFlashCardAnimating
                   ? buildOutlinedText(
                       "${_numbers[_currentStep]}",
                       fontSize: 160,

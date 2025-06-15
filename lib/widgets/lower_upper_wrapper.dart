@@ -64,13 +64,12 @@ class LowerUpperWrapper extends StatefulWidget {
   final bool waitingToShowAnswer;
   final TextEditingController inputAnsController;
   final Function? onNextPressed;
-  final Function?
-  onPlayPauseFlashCard; // Optional callback for flash card play/pause
-  final bool isPaused; // For flash card state
-  final int? currentStep; // For flash card step display
-  final int? totalNumbers; // For flash card total numbers display
+  final Function? onPlayPauseFlashCard;
+  final bool isPaused;
+  final int? currentStep;
+  final int? totalNumbers;
   final bool showSmallWrongIcon;
-  final String? answerText; // For displaying the actual answer
+  final String? answerText;
   final String currentMenuImage;
 
   const LowerUpperWrapper({
@@ -99,25 +98,33 @@ class LowerUpperWrapper extends StatefulWidget {
 }
 
 class _LowerUpperWrapperState extends State<LowerUpperWrapper> {
-  // bool _isSoundOn = true; // State for sound toggle
+  bool _isLoggingOut = false;
 
-  bool _isLoggingOut = false; // State to manage logout loading
+  // Function สำหรับปรับขนาดฟอนต์ตามหน้าจอ
+  double _getResponsiveFontSize(int textLength, bool isSmallScreen) {
+    double baseFontSize = _getFontSize(textLength);
+    return isSmallScreen ? baseFontSize * 0.8 : baseFontSize;
+  }
 
-  // Function to handle user logout
+  // Function สำหรับปรับขนาดรูปภาพตามหน้าจอ
+  double _getResponsiveImageSize(double baseSize, bool isSmallScreen) {
+    return isSmallScreen ? baseSize * 0.7 : baseSize;
+  }
+
+  // Function สำหรับปรับขนาดฟอนต์ทั่วไปตามหน้าจอ
+  double _getResponsiveTextSize(double baseSize, bool isSmallScreen) {
+    return isSmallScreen ? baseSize * 0.8 : baseSize;
+  }
+
   Future<void> _logout() async {
     setState(() {
-      _isLoggingOut = true; // Show loading indicator
+      _isLoggingOut = true;
     });
 
     try {
-      await FirebaseAuth.instance.signOut(); // Sign out the current user
-      // After successful logout, navigate back to the login screen
+      await FirebaseAuth.instance.signOut();
       if (mounted) {
-        // Check if the widget is still in the tree
-        Navigator.pushReplacementNamed(
-          context,
-          '/',
-        ); // Assuming '/' is your login route
+        Navigator.pushReplacementNamed(context, '/');
       }
     } on FirebaseAuthException catch (e) {
       if (mounted) {
@@ -134,7 +141,7 @@ class _LowerUpperWrapperState extends State<LowerUpperWrapper> {
     } finally {
       if (mounted) {
         setState(() {
-          _isLoggingOut = false; // Hide loading indicator
+          _isLoggingOut = false;
         });
       }
     }
@@ -143,405 +150,532 @@ class _LowerUpperWrapperState extends State<LowerUpperWrapper> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
-          Positioned.fill(
-            child: Image.asset('assets/images/bg4.png', fit: BoxFit.cover),
-          ),
-          Positioned(
-            top: 30,
-            left: 20,
-            child: Image.asset('assets/images/logo.png', width: 60),
-          ),
-          Positioned(
-            top: 110,
-            left: 20,
-            child: Image.asset(widget.currentMenuImage, width: 150),
-          ),
-          Positioned(
-            top: 10,
-            left: 100,
-            child: Center(
-              child: Image.asset('assets/images/iq_maths_icon.png', width: 130),
-            ),
-          ),
-          Positioned(
-            bottom: 40,
-            left: 20,
-            child: Image.asset('assets/images/owl.png', width: 120),
-          ),
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          bool isSmallScreen = constraints.maxWidth < 600;
 
-          Positioned(
-            top: 30,
-            right: 30,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                    color: Colors.cyan[100],
-                    borderRadius: BorderRadius.circular(20),
+          return Stack(
+            children: [
+              // Background
+              Positioned.fill(
+                child: Image.asset('assets/images/bg4.png', fit: BoxFit.cover),
+              ),
+
+              // Logo
+              Positioned(
+                top: isSmallScreen ? 25 : 30,
+                left: isSmallScreen ? 15 : 20,
+                child: Image.asset(
+                  'assets/images/logo.png',
+                  width: _getResponsiveImageSize(60, isSmallScreen),
+                ),
+              ),
+
+              // Menu Image
+              Positioned(
+                top: isSmallScreen ? 90 : 110,
+                left: isSmallScreen ? 15 : 20,
+                child: Image.asset(
+                  widget.currentMenuImage,
+                  width: _getResponsiveImageSize(150, isSmallScreen),
+                ),
+              ),
+
+              // IQ Maths Icon
+              Positioned(
+                top: isSmallScreen ? 8 : 10,
+                left: isSmallScreen ? 80 : 100,
+                child: Center(
+                  child: Image.asset(
+                    'assets/images/iq_maths_icon.png',
+                    width: _getResponsiveImageSize(130, isSmallScreen),
                   ),
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 12,
-                    vertical: 4,
-                  ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text(
-                        "ID : ${widget.userName}",
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.pink,
+                ),
+              ),
+
+              // Owl Image
+              Positioned(
+                bottom: isSmallScreen ? 80 : 40,
+                left: isSmallScreen ? 15 : 20,
+                child: Image.asset(
+                  'assets/images/owl.png',
+                  width: _getResponsiveImageSize(120, isSmallScreen),
+                ),
+              ),
+
+              // Top Right User Info and Controls
+              Positioned(
+                top: isSmallScreen ? 25 : 30,
+                right: isSmallScreen ? 15 : 30,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    // User Info Container
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.cyan[100],
+                        borderRadius: BorderRadius.circular(
+                          isSmallScreen ? 15 : 20,
                         ),
                       ),
-                      const SizedBox(width: 8),
-                      CircleAvatar(
-                        radius: 18,
-                        backgroundColor: Colors.black12,
-                        child: widget.avatarImg == null
-                            ? const Icon(Icons.person, color: Colors.black)
-                            : ClipOval(
-                                child: Image.asset(
-                                  widget.avatarImg!,
-                                  fit: BoxFit.cover,
-                                  width: 36,
-                                  height: 36,
-                                ),
-                              ),
+                      padding: EdgeInsets.symmetric(
+                        horizontal: isSmallScreen ? 8 : 12,
+                        vertical: isSmallScreen ? 3 : 4,
                       ),
-                      _isLoggingOut
-                          ? const SizedBox(
-                              width: 30, // Match icon size
-                              height: 30, // Match icon size
-                              child: CircularProgressIndicator(
-                                strokeWidth: 3,
-                                valueColor: AlwaysStoppedAnimation<Color>(
-                                  Color.fromARGB(255, 235, 99, 144),
-                                ),
-                              ),
-                            )
-                          : IconButton(
-                              icon: const Icon(Icons.logout), // Logout icon
-                              iconSize: 30.0, // Adjust icon size as needed
-                              color: const Color.fromARGB(
-                                255,
-                                235,
-                                99,
-                                144,
-                              ), // Icon color
-                              onPressed: _logout, // Call the _logout function
-                              tooltip:
-                                  'Logout', // Text that appears on long press
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            "ID : ${widget.userName}",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.pink,
+                              fontSize: isSmallScreen ? 12 : 14,
                             ),
-                    ],
-                  ),
-                ),
-                const SizedBox(height: 6),
-                Stack(
-                  children: [
-                    Text(
-                      "Display : ${widget.displayMode}",
-                      style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                        foreground: Paint()
-                          ..style = PaintingStyle.stroke
-                          ..strokeWidth = 7
-                          ..color = Colors.black
-                          ..strokeJoin = StrokeJoin.round,
+                          ),
+                          SizedBox(width: isSmallScreen ? 6 : 8),
+                          CircleAvatar(
+                            radius: isSmallScreen ? 15 : 18,
+                            backgroundColor: Colors.black12,
+                            child: widget.avatarImg == null
+                                ? Icon(
+                                    Icons.person,
+                                    color: Colors.black,
+                                    size: isSmallScreen ? 20 : 24,
+                                  )
+                                : ClipOval(
+                                    child: Image.asset(
+                                      widget.avatarImg!,
+                                      fit: BoxFit.cover,
+                                      width: isSmallScreen ? 30 : 36,
+                                      height: isSmallScreen ? 30 : 36,
+                                    ),
+                                  ),
+                          ),
+                          _isLoggingOut
+                              ? SizedBox(
+                                  width: isSmallScreen ? 25 : 30,
+                                  height: isSmallScreen ? 25 : 30,
+                                  child: const CircularProgressIndicator(
+                                    strokeWidth: 3,
+                                    valueColor: AlwaysStoppedAnimation<Color>(
+                                      Color.fromARGB(255, 235, 99, 144),
+                                    ),
+                                  ),
+                                )
+                              : IconButton(
+                                  icon: const Icon(Icons.logout),
+                                  iconSize: isSmallScreen ? 25.0 : 30.0,
+                                  color: const Color.fromARGB(
+                                    255,
+                                    235,
+                                    99,
+                                    144,
+                                  ),
+                                  onPressed: _logout,
+                                  tooltip: 'Logout',
+                                ),
+                        ],
                       ),
                     ),
-                    Text(
-                      "Display : ${widget.displayMode}",
-                      style: const TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
+
+                    SizedBox(height: isSmallScreen ? 4 : 6),
+
+                    // Display Mode Text
+                    Stack(
+                      children: [
+                        Text(
+                          "Display : ${widget.displayMode}",
+                          style: TextStyle(
+                            fontSize: _getResponsiveTextSize(24, isSmallScreen),
+                            fontWeight: FontWeight.bold,
+                            foreground: Paint()
+                              ..style = PaintingStyle.stroke
+                              ..strokeWidth = isSmallScreen ? 5 : 7
+                              ..color = Colors.black
+                              ..strokeJoin = StrokeJoin.round,
+                          ),
+                        ),
+                        Text(
+                          "Display : ${widget.displayMode}",
+                          style: TextStyle(
+                            fontSize: _getResponsiveTextSize(24, isSmallScreen),
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ],
                     ),
+
+                    // Flash Card Controls
+                    if (widget.displayMode.toLowerCase() == "flash card" &&
+                        !widget.waitingToShowAnswer)
+                      Padding(
+                        padding: const EdgeInsets.only(top: 0),
+                        child: IconButton(
+                          icon: Image.asset(
+                            widget.isPaused
+                                ? 'assets/images/play_icon.png'
+                                : 'assets/images/pause_icon.png',
+                            width: _getResponsiveImageSize(100, isSmallScreen),
+                            height: _getResponsiveImageSize(100, isSmallScreen),
+                          ),
+                          onPressed:
+                              widget.onPlayPauseFlashCard as void Function()?,
+                        ),
+                      ),
+
+                    // Step Counter
+                    if (widget.isPaused &&
+                        widget.displayMode.toLowerCase() == "flash card")
+                      Padding(
+                        padding: const EdgeInsets.only(top: 8.0),
+                        child: buildOutlinedText(
+                          '${widget.currentStep! + 1}/${widget.totalNumbers!}',
+                          fontSize: _getResponsiveTextSize(30, isSmallScreen),
+                          strokeColor: Colors.blueAccent,
+                          fillColor: Colors.white,
+                        ),
+                      ),
                   ],
                 ),
-                if (widget.displayMode.toLowerCase() == "flash card" &&
-                    !widget.waitingToShowAnswer)
-                  Padding(
-                    padding: const EdgeInsets.only(top: 0),
-                    child: IconButton(
-                      icon: Image.asset(
-                        widget.isPaused
-                            ? 'assets/images/play_icon.png'
-                            : 'assets/images/pause_icon.png',
-                        width: 100,
-                        height: 100,
-                      ),
-                      onPressed:
-                          widget.onPlayPauseFlashCard as void Function()?,
+              ),
+
+              // Main Content Area
+              Column(
+                children: [
+                  Expanded(
+                    child: Padding(
+                      padding: EdgeInsets.only(top: isSmallScreen ? 12 : 16),
+                      child: widget.child,
                     ),
                   ),
-                // Display current step/total _numbers if paused and in flash card mode
-                if (widget.isPaused &&
-                    widget.displayMode.toLowerCase() == "flash card")
+
+                  // Answer Input and Next Button Section - Responsive
                   Padding(
-                    padding: const EdgeInsets.only(top: 8.0),
-                    child: buildOutlinedText(
-                      '${widget.currentStep! + 1}/${widget.totalNumbers!}', // Display current number/total
-                      fontSize: 30,
-                      strokeColor: Colors.blueAccent,
-                      fillColor: Colors.white,
+                    padding: EdgeInsets.symmetric(
+                      horizontal: isSmallScreen ? 8.0 : 16.0,
+                      vertical: 5.0,
+                    ),
+                    child: widget.totalNumbers! > 0
+                        ? _buildResponsiveInputSection(
+                            isSmallScreen,
+                            constraints,
+                          )
+                        : const SizedBox.shrink(),
+                  ),
+
+                  // Bottom Bar
+                  Container(
+                    height: isSmallScreen ? 35 : 42,
+                    color: Colors.blue[300],
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Padding(
+                        padding: EdgeInsets.only(left: isSmallScreen ? 10 : 16),
+                        child: Text(
+                          'Intelligent Quick Maths ( IQM )',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: isSmallScreen ? 14 : 16,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          );
+        },
+      ),
+    );
+  }
+
+  Widget _buildResponsiveInputSection(
+    bool isSmallScreen,
+    BoxConstraints constraints,
+  ) {
+    if (isSmallScreen) {
+      // Layout แบบ Column สำหรับหน้าจอเล็ก
+      return Column(
+        children: [
+          // Answer Input Box
+          Container(
+            width: constraints.maxWidth * 0.95,
+            height: 50,
+            padding: const EdgeInsets.fromLTRB(15, 5, 0, 0),
+            decoration: BoxDecoration(
+              color: Colors.yellow[600],
+              borderRadius: BorderRadius.circular(40),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.orange.shade200,
+                  offset: const Offset(2, 2),
+                  blurRadius: 4,
+                  spreadRadius: 1,
+                ),
+              ],
+            ),
+            child: Stack(
+              children: [
+                // "Ans" Label
+                Text(
+                  "Ans",
+                  style: TextStyle(
+                    fontSize: 28,
+                    fontWeight: FontWeight.bold,
+                    foreground: Paint()
+                      ..style = PaintingStyle.stroke
+                      ..strokeWidth = 8
+                      ..color = Colors.black
+                      ..strokeJoin = StrokeJoin.round,
+                  ),
+                ),
+                const Text(
+                  "Ans",
+                  style: TextStyle(
+                    fontSize: 28,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+
+                // Input Field
+                Padding(
+                  padding: const EdgeInsets.only(left: 80.0, right: 80),
+                  child: TextField(
+                    keyboardType: TextInputType.number,
+                    controller: widget.inputAnsController,
+                    decoration: const InputDecoration(
+                      counterText: '',
+                      border: InputBorder.none,
+                    ),
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: _getResponsiveFontSize(
+                        widget.inputAnsController.text.length,
+                        isSmallScreen,
+                      ),
+                      color: Colors.red,
+                    ),
+                    textAlign: TextAlign.center,
+                    showCursor: false,
+                    inputFormatters: <TextInputFormatter>[
+                      FilteringTextInputFormatter.digitsOnly,
+                    ],
+                    maxLength: 5,
+                    enabled: !widget.isFlashCardAnimating,
+                    onChanged: (value) {
+                      setState(() {});
+                    },
+                  ),
+                ),
+
+                // Answer Display
+                if (widget.showAnswer)
+                  Positioned(
+                    right: 15,
+                    top: 0,
+                    bottom: 0,
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        if (widget.showSmallWrongIcon)
+                          Image.asset(
+                            'assets/images/wrong.png',
+                            width: 35,
+                            height: 35,
+                          ),
+                        if (widget.showSmallWrongIcon) const SizedBox(width: 3),
+                        if (widget.showAnswerText)
+                          Stack(
+                            children: [
+                              Text(
+                                widget.answerText!,
+                                style: TextStyle(
+                                  fontSize: 28,
+                                  fontWeight: FontWeight.bold,
+                                  foreground: Paint()
+                                    ..style = PaintingStyle.stroke
+                                    ..strokeWidth = 8
+                                    ..color = Colors.red
+                                    ..strokeJoin = StrokeJoin.round,
+                                ),
+                              ),
+                              Text(
+                                widget.answerText!,
+                                style: const TextStyle(
+                                  fontSize: 28,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ],
+                          ),
+                      ],
                     ),
                   ),
               ],
             ),
           ),
 
-          // Main Content Area (passed as child)
-          Column(
-            children: [
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 16),
-                  child: widget.child,
-                ),
-              ),
+          const SizedBox(height: 8),
 
-              // Answer Input and Next Button Section
-              Padding(
-                padding: const EdgeInsets.only(bottom: 5.0),
-                child: widget.totalNumbers! > 0
-                    ? Row(
-                        children: [
-                          const SizedBox(width: 150),
-                          Expanded(
-                            child: Center(
-                              child: Container(
-                                width: 400,
-                                height: 60,
-                                padding: const EdgeInsets.fromLTRB(20, 7, 0, 0),
-                                decoration: BoxDecoration(
-                                  color: Colors.yellow[600],
-                                  borderRadius: BorderRadius.circular(50),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.orange.shade200,
-                                      offset: const Offset(4, 4),
-                                      blurRadius: 6,
-                                      spreadRadius: 1,
-                                    ),
-                                  ],
-                                ),
+          // Next Button
+          ElevatedButton(
+            onPressed: widget.onNextPressed as void Function()?,
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.transparent,
+              elevation: 0,
+              shadowColor: Colors.transparent,
+              padding: EdgeInsets.zero,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(30),
+              ),
+            ),
+            child: Image.asset('assets/images/Next.png', width: 120),
+          ),
+        ],
+      );
+    } else {
+      // Layout แบบ Row สำหรับหน้าจอใหญ่
+      return Row(
+        children: [
+          const SizedBox(width: 150),
+          Expanded(
+            child: Center(
+              child: Container(
+                width: 400,
+                height: 60,
+                padding: const EdgeInsets.fromLTRB(20, 7, 0, 0),
+                decoration: BoxDecoration(
+                  color: Colors.yellow[600],
+                  borderRadius: BorderRadius.circular(50),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.orange.shade200,
+                      offset: const Offset(4, 4),
+                      blurRadius: 6,
+                      spreadRadius: 1,
+                    ),
+                  ],
+                ),
+                child: Stack(
+                  children: [
+                    Text(
+                      "Ans",
+                      style: TextStyle(
+                        fontSize: 36,
+                        fontWeight: FontWeight.bold,
+                        foreground: Paint()
+                          ..style = PaintingStyle.stroke
+                          ..strokeWidth = 10
+                          ..color = Colors.black
+                          ..strokeJoin = StrokeJoin.round,
+                      ),
+                    ),
+                    const Text(
+                      "Ans",
+                      style: TextStyle(
+                        fontSize: 36,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 100.0, right: 100),
+                      child: TextField(
+                        keyboardType: TextInputType.number,
+                        controller: widget.inputAnsController,
+                        decoration: const InputDecoration(counterText: ''),
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: _getFontSize(
+                            widget.inputAnsController.text.length,
+                          ),
+                          color: Colors.red,
+                        ),
+                        textAlign: TextAlign.center,
+                        showCursor: false,
+                        inputFormatters: <TextInputFormatter>[
+                          FilteringTextInputFormatter.digitsOnly,
+                        ],
+                        maxLength: 5,
+                        enabled: !widget.isFlashCardAnimating,
+                        onChanged: (value) {
+                          setState(() {});
+                        },
+                      ),
+                    ),
+                    if (widget.showAnswer)
+                      Padding(
+                        padding: const EdgeInsets.only(right: 20.0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: <Widget>[
+                            if (widget.showSmallWrongIcon)
+                              Image.asset(
+                                'assets/images/wrong.png',
+                                width: 50,
+                                height: 50,
+                              ),
+                            if (widget.showSmallWrongIcon)
+                              const SizedBox(width: 5),
+                            if (widget.showAnswerText)
+                              Flexible(
                                 child: Stack(
                                   children: [
                                     Text(
-                                      "Ans",
+                                      widget.answerText!,
                                       style: TextStyle(
                                         fontSize: 36,
                                         fontWeight: FontWeight.bold,
                                         foreground: Paint()
                                           ..style = PaintingStyle.stroke
                                           ..strokeWidth = 10
-                                          ..color = Colors.black
+                                          ..color = Colors.red
                                           ..strokeJoin = StrokeJoin.round,
                                       ),
                                     ),
-                                    const Text(
-                                      "Ans",
-                                      style: TextStyle(
+                                    Text(
+                                      widget.answerText!,
+                                      style: const TextStyle(
                                         fontSize: 36,
                                         fontWeight: FontWeight.bold,
                                         color: Colors.white,
                                       ),
                                     ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(
-                                        left: 100.0,
-                                        right: 100,
-                                      ),
-                                      child: TextField(
-                                        keyboardType: TextInputType.number,
-                                        controller: widget.inputAnsController,
-                                        decoration: const InputDecoration(
-                                          counterText: '',
-                                        ),
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: _getFontSize(
-                                            widget
-                                                .inputAnsController
-                                                .text
-                                                .length,
-                                          ),
-                                          color: Colors.red,
-                                        ),
-                                        textAlign: TextAlign.center,
-                                        showCursor: false,
-                                        inputFormatters: <TextInputFormatter>[
-                                          FilteringTextInputFormatter
-                                              .digitsOnly,
-                                        ],
-                                        maxLength: 5,
-                                        enabled: !widget.isFlashCardAnimating,
-                                        onChanged: (value) {
-                                          setState(
-                                            () {},
-                                          ); // อัพเดท UI เมื่อข้อความเปลี่ยน
-                                        },
-                                      ),
-                                    ),
-                                    if (widget.showAnswer)
-                                      Padding(
-                                        padding: const EdgeInsets.only(
-                                          right: 20.0,
-                                        ), // ขยับซ้าย 50 pixels
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.end,
-                                          children: <Widget>[
-                                            if (widget.showSmallWrongIcon)
-                                              Image.asset(
-                                                'assets/images/wrong.png',
-                                                width: 50,
-                                                height: 50,
-                                              ),
-                                            if (widget.showSmallWrongIcon)
-                                              const SizedBox(width: 5),
-                                            if (widget.showAnswerText)
-                                              Flexible(
-                                                child: Stack(
-                                                  children: [
-                                                    Text(
-                                                      widget.answerText!,
-                                                      style: TextStyle(
-                                                        fontSize: 36,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        foreground: Paint()
-                                                          ..style =
-                                                              PaintingStyle
-                                                                  .stroke
-                                                          ..strokeWidth = 10
-                                                          ..color = Colors.red
-                                                          ..strokeJoin =
-                                                              StrokeJoin.round,
-                                                      ),
-                                                    ),
-                                                    Text(
-                                                      widget.answerText!,
-                                                      style: const TextStyle(
-                                                        fontSize: 36,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        color: Colors.white,
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                          ],
-                                        ),
-                                      ),
                                   ],
                                 ),
                               ),
-                            ),
-                          ),
-
-                          const SizedBox(width: 12),
-                          ElevatedButton(
-                            onPressed: widget.onNextPressed as void Function()?,
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.transparent,
-                              elevation: 0,
-                              shadowColor: Colors.transparent,
-                              padding: EdgeInsets.zero,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(30),
-                              ),
-                            ),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Image.asset(
-                                  'assets/images/Next.png',
-                                  width: 150,
-                                ),
-                              ],
-                            ),
-                          ),
-                          const SizedBox(width: 12),
-                        ],
-                      )
-                    : Row(),
-              ),
-
-              // Bottom Bar
-              Container(
-                height: 42,
-                color: Colors.lightBlueAccent,
-                padding: const EdgeInsets.symmetric(horizontal: 12),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Text(
-                      "Intelligent Quick Maths ( IQM )",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
+                          ],
+                        ),
                       ),
-                    ),
-                    // Row(
-                    //   children: [
-                    //     const Text(
-                    //       "Sound ",
-                    //       style: TextStyle(
-                    //         color: Colors.white,
-                    //         fontWeight: FontWeight.bold,
-                    //       ),
-                    //     ),
-                    //     const SizedBox(width: 4),
-                    //     Image.asset(
-                    //       'assets/images/sound_icon.png',
-                    //       width: 22,
-                    //       height: 22,
-                    //     ),
-                    //     const SizedBox(width: 4),
-                    //     Transform.scale(
-                    //       scale: 0.8,
-                    //       child: Switch(
-                    //         value: _isSoundOn,
-                    //         onChanged: (value) {
-                    //           setState(() {
-                    //             _isSoundOn = value;
-                    //           });
-                    //         },
-                    //         activeColor: Colors.white,
-                    //         inactiveThumbColor: Colors.red,
-                    //         inactiveTrackColor: const Color.fromARGB(
-                    //           255,
-                    //           235,
-                    //           116,
-                    //           107,
-                    //         ),
-                    //       ),
-                    //     ),
-                    //     const SizedBox(width: 4),
-                    //     Text(
-                    //       _isSoundOn ? "ON" : "OFF",
-                    //       style: TextStyle(
-                    //         color: _isSoundOn ? Colors.white : Colors.white,
-                    //         fontWeight: FontWeight.bold,
-                    //       ),
-                    //     ),
-                    //   ],
-                    // ),
                   ],
                 ),
               ),
-            ],
+            ),
           ),
+          const SizedBox(width: 12),
+          ElevatedButton(
+            onPressed: widget.onNextPressed as void Function()?,
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.transparent,
+              elevation: 0,
+              shadowColor: Colors.transparent,
+              padding: EdgeInsets.zero,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(30),
+              ),
+            ),
+            child: Image.asset('assets/images/Next.png', width: 150),
+          ),
+          const SizedBox(width: 12),
         ],
-      ),
-    );
+      );
+    }
   }
 }
