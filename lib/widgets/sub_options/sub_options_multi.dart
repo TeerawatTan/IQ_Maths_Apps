@@ -7,7 +7,7 @@ class SubOptionsMulti extends StatelessWidget {
 
   final String? digit1;
   final String? digit2;
-  final String? time;
+  // final String? time;
   final void Function(String label, String value) onSettingChanged;
 
   const SubOptionsMulti({
@@ -15,7 +15,7 @@ class SubOptionsMulti extends StatelessWidget {
     required this.onNavigate,
     required this.digit1,
     required this.digit2,
-    required this.time,
+    // required this.time,
     required this.onSettingChanged,
   });
 
@@ -56,7 +56,7 @@ class SubOptionsMulti extends StatelessWidget {
                   selectedDigit2: digit2,
                   selectedDisplay: null,
                   selectedRow: null,
-                  selectedTime: time,
+                  // selectedTime: time,
                   onChanged: onSettingChanged,
                   showDisplay: false,
                   showRow: false,

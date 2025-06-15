@@ -34,9 +34,8 @@ class _SettingScreenState extends State<SettingScreen> {
 
   bool isSettingValid() {
     if (selectedMenu == 'MULTI' || selectedMenu == 'DIV') {
-      return selectedDigit1.isNotEmpty &&
-          selectedDigit2.isNotEmpty &&
-          selectedTime.isNotEmpty;
+      return selectedDigit1.isNotEmpty && selectedDigit2.isNotEmpty;
+      // && selectedTime.isNotEmpty;
     }
     return selectedDigit1.isNotEmpty &&
         selectedDigit2.isNotEmpty &&
@@ -160,22 +159,26 @@ class _SettingScreenState extends State<SettingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    print("name login : $uname");
     return Scaffold(
-      body: Stack(
-        children: [
-          _buildBackground(),
-          _buildHeader(),
-          _buildUserInfo(),
-          _buildMainMenu(),
-          if (selectedMenu == 'LP') _buildSubOptionsLP(),
-          if (selectedMenu == 'FIVE') _buildSubOptionsFive(),
-          if (selectedMenu == 'TEN+') _buildSubOptionsTenPlus(),
-          if (selectedMenu == 'TEN-') _buildSubOptionsTenMinus(),
-          if (selectedMenu == 'MULTI') _buildSubOptionsMulti(),
-          if (selectedMenu == 'DIV') _buildSubOptionsDiv(),
-          _buildFooter(),
-        ],
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          bool isSmallScreen = constraints.maxWidth < 600;
+          return Stack(
+            children: [
+              _buildBackground(),
+              _buildHeader(),
+              _buildUserInfo(),
+              _buildMainMenu(),
+              if (selectedMenu == 'LP') _buildSubOptionsLP(),
+              if (selectedMenu == 'FIVE') _buildSubOptionsFive(),
+              if (selectedMenu == 'TEN+') _buildSubOptionsTenPlus(),
+              if (selectedMenu == 'TEN-') _buildSubOptionsTenMinus(),
+              if (selectedMenu == 'MULTI') _buildSubOptionsMulti(),
+              if (selectedMenu == 'DIV') _buildSubOptionsDiv(),
+              _buildFooter(isSmallScreen),
+            ],
+          );
+        },
       ),
     );
   }
@@ -347,7 +350,7 @@ class _SettingScreenState extends State<SettingScreen> {
       onNavigate: navigateToRoute,
       digit1: selectedDigit1,
       digit2: selectedDigit2,
-      time: selectedTime,
+      // time: selectedTime,
       onSettingChanged: handleSettingChanged,
     ),
   );
@@ -359,12 +362,12 @@ class _SettingScreenState extends State<SettingScreen> {
       onNavigate: navigateToRoute,
       digit1: selectedDigit1,
       digit2: selectedDigit2,
-      time: selectedTime,
+      // time: selectedTime,
       onSettingChanged: handleSettingChanged,
     ),
   );
 
-  Widget _buildFooter() => Positioned(
+  Widget _buildFooter(bool isSmallScreen) => Positioned(
     bottom: 0,
     left: 0,
     right: 0,
@@ -375,34 +378,28 @@ class _SettingScreenState extends State<SettingScreen> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const Text(
-            "Intelligent Quick Maths (IQM)",
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          Padding(
+            padding: EdgeInsets.only(left: isSmallScreen ? 10 : 16),
+            child: Text(
+              "Intelligent Quick Maths (IQM)",
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: isSmallScreen ? 14 : 16,
+              ),
+            ),
           ),
-          // Row(
-          //   children: [
-          //     Text(
-          //       isSoundOn ? "Sound ON" : "Sound OFF",
-          //       style: const TextStyle(
-          //         color: Colors.white,
-          //         fontWeight: FontWeight.bold,
-          //       ),
-          //     ),
-          //     const SizedBox(width: 6),
-          //     Image.asset(
-          //       'assets/images/sound_icon.png',
-          //       width: 22,
-          //       height: 22,
-          //     ),
-          //     const SizedBox(width: 6),
-          //     Switch(
-          //       value: isSoundOn,
-          //       onChanged: (value) => setState(() => isSoundOn = value),
-          //       activeColor: Colors.white,
-          //       inactiveThumbColor: Colors.white70,
-          //     ),
-          //   ],
-          // ),
+          Padding(
+            padding: EdgeInsets.only(right: isSmallScreen ? 10 : 16),
+            child: Text(
+              "v.1.0.0",
+              style: TextStyle(
+                color: Colors.white10,
+                fontWeight: FontWeight.bold,
+                fontSize: isSmallScreen ? 14 : 16,
+              ),
+            ),
+          ),
         ],
       ),
     ),

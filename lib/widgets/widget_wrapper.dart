@@ -4,30 +4,34 @@ import 'package:flutter/services.dart';
 
 Widget buildOutlinedText(
   String text, {
-  double fontSize = 16.0,
+  double fontSize = 60,
+  double strokeWidthRatio = 0.25,
   Color strokeColor = Colors.black,
   Color fillColor = Colors.white,
 }) {
+  final strokeWidth = fontSize * strokeWidthRatio;
+
   return Stack(
     children: [
-      // Stroked text
       Text(
         text,
         style: TextStyle(
           fontSize: fontSize,
           fontWeight: FontWeight.bold,
+          height: 1.3,
           foreground: Paint()
             ..style = PaintingStyle.stroke
-            ..strokeWidth = 7
-            ..color = strokeColor,
+            ..strokeWidth = strokeWidth
+            ..color = strokeColor
+            ..strokeJoin = StrokeJoin.round,
         ),
       ),
-      // Solid text
       Text(
         text,
         style: TextStyle(
           fontSize: fontSize,
           fontWeight: FontWeight.bold,
+          height: 1.3,
           color: fillColor,
         ),
       ),
@@ -53,10 +57,9 @@ double _getFontSize(int textLength) {
   }
 }
 
-class LowerUpperWrapper extends StatefulWidget {
+class WidgetWrapper extends StatefulWidget {
   final String? userName;
   final String? avatarImg;
-  final Widget child;
   final String displayMode;
   final bool isFlashCardAnimating;
   final bool showAnswer;
@@ -71,12 +74,13 @@ class LowerUpperWrapper extends StatefulWidget {
   final bool showSmallWrongIcon;
   final String? answerText;
   final String currentMenuImage;
+  final bool isShowMode;
+  final Widget child;
 
-  const LowerUpperWrapper({
+  const WidgetWrapper({
     super.key,
     this.userName = '',
     this.avatarImg,
-    required this.child,
     required this.displayMode,
     this.isFlashCardAnimating = false,
     this.showAnswer = false,
@@ -91,13 +95,15 @@ class LowerUpperWrapper extends StatefulWidget {
     this.showSmallWrongIcon = false,
     this.answerText,
     required this.currentMenuImage,
+    required this.isShowMode,
+    required this.child,
   });
 
   @override
-  State<LowerUpperWrapper> createState() => _LowerUpperWrapperState();
+  State<WidgetWrapper> createState() => _WidgetWrapperState();
 }
 
-class _LowerUpperWrapperState extends State<LowerUpperWrapper> {
+class _WidgetWrapperState extends State<WidgetWrapper> {
   bool _isLoggingOut = false;
 
   // Function สำหรับปรับขนาดฟอนต์ตามหน้าจอ
@@ -282,30 +288,37 @@ class _LowerUpperWrapperState extends State<LowerUpperWrapper> {
                     SizedBox(height: isSmallScreen ? 4 : 6),
 
                     // Display Mode Text
-                    Stack(
-                      children: [
-                        Text(
-                          "Display : ${widget.displayMode}",
-                          style: TextStyle(
-                            fontSize: _getResponsiveTextSize(24, isSmallScreen),
-                            fontWeight: FontWeight.bold,
-                            foreground: Paint()
-                              ..style = PaintingStyle.stroke
-                              ..strokeWidth = isSmallScreen ? 5 : 7
-                              ..color = Colors.black
-                              ..strokeJoin = StrokeJoin.round,
+                    if (widget.isShowMode)
+                      Stack(
+                        children: [
+                          Text(
+                            "Display : ${widget.displayMode}",
+                            style: TextStyle(
+                              fontSize: _getResponsiveTextSize(
+                                24,
+                                isSmallScreen,
+                              ),
+                              fontWeight: FontWeight.bold,
+                              foreground: Paint()
+                                ..style = PaintingStyle.stroke
+                                ..strokeWidth = isSmallScreen ? 5 : 7
+                                ..color = Colors.black
+                                ..strokeJoin = StrokeJoin.round,
+                            ),
                           ),
-                        ),
-                        Text(
-                          "Display : ${widget.displayMode}",
-                          style: TextStyle(
-                            fontSize: _getResponsiveTextSize(24, isSmallScreen),
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
+                          Text(
+                            "Display : ${widget.displayMode}",
+                            style: TextStyle(
+                              fontSize: _getResponsiveTextSize(
+                                24,
+                                isSmallScreen,
+                              ),
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
+                        ],
+                      ),
 
                     // Flash Card Controls
                     if (widget.displayMode.toLowerCase() == "flash card" &&
@@ -364,24 +377,41 @@ class _LowerUpperWrapperState extends State<LowerUpperWrapper> {
                           )
                         : const SizedBox.shrink(),
                   ),
-
+                  // const SizedBox(height: 5),
                   // Bottom Bar
                   Container(
-                    height: isSmallScreen ? 35 : 42,
+                    height: isSmallScreen ? 32 : 35,
                     color: Colors.blue[300],
-                    child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: Padding(
-                        padding: EdgeInsets.only(left: isSmallScreen ? 10 : 16),
-                        child: Text(
-                          'Intelligent Quick Maths ( IQM )',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: isSmallScreen ? 14 : 16,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.only(
+                            left: isSmallScreen ? 10 : 16,
+                          ),
+                          child: Text(
+                            "Intelligent Quick Maths (IQM)",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: isSmallScreen ? 14 : 16,
+                            ),
                           ),
                         ),
-                      ),
+                        Padding(
+                          padding: EdgeInsets.only(
+                            right: isSmallScreen ? 10 : 16,
+                          ),
+                          child: Text(
+                            "v.1.0.0",
+                            style: TextStyle(
+                              color: Colors.white10,
+                              fontWeight: FontWeight.bold,
+                              fontSize: isSmallScreen ? 14 : 16,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ],

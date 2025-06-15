@@ -5,7 +5,7 @@ import 'package:iq_maths_apps/datas/random_question.dart';
 import 'package:iq_maths_apps/models/lower_upper.dart';
 import 'package:iq_maths_apps/models/maths_setting.dart';
 import 'package:iq_maths_apps/screens/summary.dart';
-import 'package:iq_maths_apps/widgets/lower_upper_wrapper.dart';
+import 'package:iq_maths_apps/widgets/widget_wrapper.dart';
 
 class LowerAndUpperScreen extends StatefulWidget {
   final MathsSetting setting;
@@ -17,21 +17,21 @@ class LowerAndUpperScreen extends StatefulWidget {
 }
 
 class _LowerAndUpperScreenState extends State<LowerAndUpperScreen> {
-  static const int _questionLimit = 10;
-  List<int> _numbers = [];
-  int _currentStep = 0;
-  bool _showAnswer = false;
-  bool _isPaused = false;
-  bool _waitingToShowAnswer = false;
-  bool _isShowAll = false;
-  int _answer = 0;
-  int _countAnsCorrect = 0;
-  int _questionsAttempted = 0;
-  bool _isFlashCardAnimating = false;
-  final TextEditingController _inputAnsController = TextEditingController();
-  bool _shouldContinueFlashCard = false;
-  bool _showSmallWrongIcon = false;
-  bool _showAnswerText = false;
+  static const int questionLimit = 10;
+  List<int> numbers = [];
+  int currentStep = 0;
+  bool showAnswer = false;
+  bool isPaused = false;
+  bool waitingToShowAnswer = false;
+  bool isShowAll = false;
+  int answer = 0;
+  int countAnsCorrect = 0;
+  int questionsAttempted = 0;
+  bool isFlashCardAnimating = false;
+  final TextEditingController inputAnsController = TextEditingController();
+  bool shouldContinueFlashCard = false;
+  bool showSmallWrongIcon = false;
+  bool showAnswerText = false;
   final auth = FirebaseAuth.instance;
 
   @override
@@ -40,15 +40,15 @@ class _LowerAndUpperScreenState extends State<LowerAndUpperScreen> {
     _generateRandomNumbers();
 
     if (widget.setting.display.toLowerCase() == "flash card") {
-      _shouldContinueFlashCard = true;
+      shouldContinueFlashCard = true;
       _startFlashCard();
     }
   }
 
   @override
   void dispose() {
-    _inputAnsController.dispose();
-    _shouldContinueFlashCard = false;
+    inputAnsController.dispose();
+    shouldContinueFlashCard = false;
     super.dispose();
   }
 
@@ -57,7 +57,7 @@ class _LowerAndUpperScreenState extends State<LowerAndUpperScreen> {
     final digit2 = int.tryParse(widget.setting.digit2) ?? 1;
     final row = int.tryParse(widget.setting.row) ?? 3;
 
-    _numbers = [];
+    numbers = [];
 
     if (row == 3) {
       _randomQuestion3rows(digit1, digit2);
@@ -69,23 +69,23 @@ class _LowerAndUpperScreenState extends State<LowerAndUpperScreen> {
       _randomQuestion6rows(digit1, digit2);
     }
 
-    _currentStep = 0;
-    _showAnswer = false;
-    _waitingToShowAnswer = false;
-    _showSmallWrongIcon = false;
-    _showAnswerText = false;
-    _inputAnsController.clear();
+    currentStep = 0;
+    showAnswer = false;
+    waitingToShowAnswer = false;
+    showSmallWrongIcon = false;
+    showAnswerText = false;
+    inputAnsController.clear();
     setState(() {
-      // Determine _isShowAll here based on the current setting
-      _isShowAll = widget.setting.display.toLowerCase() == 'show all';
+      // Determine isShowAll here based on the current setting
+      isShowAll = widget.setting.display.toLowerCase() == 'show all';
     });
-    if (!_isShowAll) {
-      _shouldContinueFlashCard = true;
+    if (!isShowAll) {
+      shouldContinueFlashCard = true;
       _startFlashCard();
     } else {
-      // If in show all mode, reset _currentStep and immediately update UI
+      // If in show all mode, reset currentStep and immediately update UI
       setState(() {
-        _currentStep = 0; // Not strictly needed for showAll but good practice
+        currentStep = 0; // Not strictly needed for showAll but good practice
       });
     }
   }
@@ -136,10 +136,10 @@ class _LowerAndUpperScreenState extends State<LowerAndUpperScreen> {
       }
     }
     if (currentQ != null) {
-      _numbers.add(currentQ.digit1);
-      _numbers.add(currentQ.digit2);
-      _numbers.add(currentQ.digit3);
-      _answer = currentQ.ans;
+      numbers.add(currentQ.digit1);
+      numbers.add(currentQ.digit2);
+      numbers.add(currentQ.digit3);
+      answer = currentQ.ans;
     }
   }
 
@@ -189,11 +189,11 @@ class _LowerAndUpperScreenState extends State<LowerAndUpperScreen> {
       }
     }
     if (currentQ != null) {
-      _numbers.add(currentQ.digit1);
-      _numbers.add(currentQ.digit2);
-      _numbers.add(currentQ.digit3);
-      _numbers.add(currentQ.digit4);
-      _answer = currentQ.ans;
+      numbers.add(currentQ.digit1);
+      numbers.add(currentQ.digit2);
+      numbers.add(currentQ.digit3);
+      numbers.add(currentQ.digit4);
+      answer = currentQ.ans;
     }
   }
 
@@ -243,12 +243,12 @@ class _LowerAndUpperScreenState extends State<LowerAndUpperScreen> {
       }
     }
     if (currentQ != null) {
-      _numbers.add(currentQ.digit1);
-      _numbers.add(currentQ.digit2);
-      _numbers.add(currentQ.digit3);
-      _numbers.add(currentQ.digit4);
-      _numbers.add(currentQ.digit5);
-      _answer = currentQ.ans;
+      numbers.add(currentQ.digit1);
+      numbers.add(currentQ.digit2);
+      numbers.add(currentQ.digit3);
+      numbers.add(currentQ.digit4);
+      numbers.add(currentQ.digit5);
+      answer = currentQ.ans;
     }
   }
 
@@ -298,54 +298,54 @@ class _LowerAndUpperScreenState extends State<LowerAndUpperScreen> {
       }
     }
     if (currentQ != null) {
-      _numbers.add(currentQ.digit1);
-      _numbers.add(currentQ.digit2);
-      _numbers.add(currentQ.digit3);
-      _numbers.add(currentQ.digit4);
-      _numbers.add(currentQ.digit5);
-      _numbers.add(currentQ.digit6);
-      _answer = currentQ.ans;
+      numbers.add(currentQ.digit1);
+      numbers.add(currentQ.digit2);
+      numbers.add(currentQ.digit3);
+      numbers.add(currentQ.digit4);
+      numbers.add(currentQ.digit5);
+      numbers.add(currentQ.digit6);
+      answer = currentQ.ans;
     }
   }
 
   Future<void> _startFlashCard() async {
     setState(() {
-      _isFlashCardAnimating = true; // Disable button during animation
-      _waitingToShowAnswer = false; // Hide '?' during flash card display
-      _showAnswer = false; // Hide wrong _answer feedback
-      _inputAnsController.clear(); // Clear input field
+      isFlashCardAnimating = true; // Disable button during animation
+      waitingToShowAnswer = false; // Hide '?' during flash card display
+      showAnswer = false; // Hide wrong answer feedback
+      inputAnsController.clear(); // Clear input field
     });
 
     final int delaySeconds = int.tryParse(widget.setting.time.toString()) ?? 1;
     final Duration delayDuration = Duration(seconds: delaySeconds);
 
     // *** THIS IS THE KEY CHANGE ***
-    // The loop now starts from the '_currentStep' instead of '0'
-    for (int i = _currentStep; i < _numbers.length; i++) {
-      if (!mounted || !_shouldContinueFlashCard) {
+    // The loop now starts from the 'currentStep' instead of '0'
+    for (int i = currentStep; i < numbers.length; i++) {
+      if (!mounted || !shouldContinueFlashCard) {
         // If the widget is unmounted or we've been told to stop (e.g., paused)
         return;
       }
-      while (_isPaused && mounted) {
-        // If paused, wait here without incrementing 'i' or '_currentStep'
+      while (isPaused && mounted) {
+        // If paused, wait here without incrementing 'i' or 'currentStep'
         await Future.delayed(const Duration(milliseconds: 100));
       }
-      if (!mounted || !_shouldContinueFlashCard) {
+      if (!mounted || !shouldContinueFlashCard) {
         // Check again after resuming, in case the state changed while paused
         return;
       }
       setState(() {
-        _currentStep = i; // Update _currentStep to the number being displayed
+        currentStep = i; // Update currentStep to the number being displayed
       });
       await Future.delayed(delayDuration);
     }
 
-    if (!mounted || !_shouldContinueFlashCard) {
+    if (!mounted || !shouldContinueFlashCard) {
       return;
     }
     setState(() {
-      _waitingToShowAnswer = true; // Show '?' after all _numbers are flashed
-      _isFlashCardAnimating = false; // Enable button after animation
+      waitingToShowAnswer = true; // Show '?' after all numbers are flashed
+      isFlashCardAnimating = false; // Enable button after animation
     });
   }
 
@@ -356,28 +356,28 @@ class _LowerAndUpperScreenState extends State<LowerAndUpperScreen> {
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
-        builder: (context) => SummaryScreen(answerCorrect: _countAnsCorrect),
+        builder: (context) => SummaryScreen(answerCorrect: countAnsCorrect),
       ),
     );
   }
 
   void _nextStep() {
-    if (_showAnswer) {
+    if (showAnswer) {
       _restart();
       return;
     }
 
-    String input = _inputAnsController.text;
+    String input = inputAnsController.text;
     int? userAnswer;
     if (input.isNotEmpty) {
       userAnswer = int.tryParse(input);
     }
     if (userAnswer != null) {
-      if (userAnswer == _answer) {
+      if (userAnswer == answer) {
         // ตอบถูก
-        _countAnsCorrect++;
-        _questionsAttempted++;
-        if (_questionsAttempted >= _questionLimit) {
+        countAnsCorrect++;
+        questionsAttempted++;
+        if (questionsAttempted >= questionLimit) {
           _goSummaryPage();
           return;
         }
@@ -385,29 +385,29 @@ class _LowerAndUpperScreenState extends State<LowerAndUpperScreen> {
       } else {
         //ตอบผิด
         setState(() {
-          _showAnswer = true;
-          _showSmallWrongIcon = false;
-          _showAnswerText = false;
+          showAnswer = true;
+          showSmallWrongIcon = false;
+          showAnswerText = false;
         });
         Future.delayed(const Duration(seconds: 1), () {
           if (!mounted) return;
           setState(() {
-            _showSmallWrongIcon = true;
+            showSmallWrongIcon = true;
           });
 
           // --- Second Delay: For the answer text to appear (e.g., 200 milliseconds) ---
           Future.delayed(const Duration(milliseconds: 200), () {
             if (!mounted) return;
             setState(() {
-              _showAnswerText = true; // NEW: Now show the answer text
+              showAnswerText = true; // NEW: Now show the answer text
             });
 
             // --- Third Delay: For the entire feedback display (2 seconds) ---
             Future.delayed(const Duration(seconds: 2), () {
-              if (mounted && _showAnswer) {
+              if (mounted && showAnswer) {
                 // Ensure still in feedback state
-                _questionsAttempted++;
-                if (_questionsAttempted >= _questionLimit) {
+                questionsAttempted++;
+                if (questionsAttempted >= questionLimit) {
                   _goSummaryPage();
                   return;
                 }
@@ -428,63 +428,26 @@ class _LowerAndUpperScreenState extends State<LowerAndUpperScreen> {
 
   void _playPauseFlashCard() {
     setState(() {
-      _isPaused = !_isPaused;
-      _shouldContinueFlashCard = !_isPaused; // Control the animation loop
+      isPaused = !isPaused;
+      shouldContinueFlashCard = !isPaused; // Control the animation loop
     });
-    if (!_isPaused) {
+    if (!isPaused) {
       _startFlashCard(); // Resume the flashcard animation if unpaused
     }
-  }
-
-  Widget buildOutlinedText(
-    String text, {
-    double fontSize = 60,
-    double strokeWidthRatio = 0.25,
-    Color strokeColor = Colors.black,
-    Color fillColor = Colors.white,
-  }) {
-    final strokeWidth = fontSize * strokeWidthRatio;
-
-    return Stack(
-      children: [
-        Text(
-          text,
-          style: TextStyle(
-            fontSize: fontSize,
-            fontWeight: FontWeight.bold,
-            height: 1.3,
-            foreground: Paint()
-              ..style = PaintingStyle.stroke
-              ..strokeWidth = strokeWidth
-              ..color = strokeColor
-              ..strokeJoin = StrokeJoin.round,
-          ),
-        ),
-        Text(
-          text,
-          style: TextStyle(
-            fontSize: fontSize,
-            fontWeight: FontWeight.bold,
-            height: 1.3,
-            color: fillColor,
-          ),
-        ),
-      ],
-    );
   }
 
   @override
   Widget build(BuildContext context) {
     // Determine if the Next button should be enabled
     bool isNextButtonEnabled = true;
-    if (!_isShowAll && _isFlashCardAnimating) {
+    if (!isShowAll && isFlashCardAnimating) {
       isNextButtonEnabled = false; // Disable during flash card animation
-    } else if (!_isShowAll && !_waitingToShowAnswer && !_showAnswer) {
-      // In flash card mode, if not showing '?' or _answer, button is disabled (waiting for sequence to finish)
-      // This case is actually covered by _isFlashCardAnimating now.
+    } else if (!isShowAll && !waitingToShowAnswer && !showAnswer) {
+      // In flash card mode, if not showing '?' or answer, button is disabled (waiting for sequence to finish)
+      // This case is actually covered by isFlashCardAnimating now.
     }
 
-    return LowerUpperWrapper(
+    return WidgetWrapper(
       userName: auth.currentUser == null
           ? ''
           : auth.currentUser!.email!.substring(
@@ -493,22 +456,23 @@ class _LowerAndUpperScreenState extends State<LowerAndUpperScreen> {
             ),
       avatarImg: null,
       displayMode: widget.setting.display,
-      inputAnsController: _inputAnsController,
+      inputAnsController: inputAnsController,
       onNextPressed: isNextButtonEnabled
-          ? (_showAnswer ? _restart : _nextStep)
+          ? (showAnswer ? _restart : _nextStep)
           : null,
       onPlayPauseFlashCard: _playPauseFlashCard,
-      isPaused: _isPaused,
-      currentStep: _currentStep,
-      totalNumbers: _numbers.length,
-      isFlashCardAnimating: _isFlashCardAnimating,
-      showAnswer: _showAnswer,
-      showAnswerText: _showAnswerText,
-      waitingToShowAnswer: _waitingToShowAnswer,
-      showSmallWrongIcon: _showSmallWrongIcon,
-      answerText: _answer.toString(),
+      isPaused: isPaused,
+      currentStep: currentStep,
+      totalNumbers: numbers.length,
+      isFlashCardAnimating: isFlashCardAnimating,
+      showAnswer: showAnswer,
+      showAnswerText: showAnswerText,
+      waitingToShowAnswer: waitingToShowAnswer,
+      showSmallWrongIcon: showSmallWrongIcon,
+      answerText: answer.toString(),
       currentMenuImage: 'assets/images/lowerandupper.png',
-      child: _numbers.isEmpty
+      isShowMode: true,
+      child: numbers.isEmpty
           ? Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -526,10 +490,10 @@ class _LowerAndUpperScreenState extends State<LowerAndUpperScreen> {
               ],
             )
           : Center(
-              child: _isShowAll
+              child: isShowAll
                   ? () {
                       // คำนวณ fontSize ให้เหมาะสมกับทุกขนาดหน้าจอ
-                      final rowCount = _numbers.length;
+                      final rowCount = numbers.length;
                       final screenHeight = MediaQuery.of(context).size.height;
                       final screenWidth = MediaQuery.of(context).size.width;
                       final availableHeight = screenHeight * 0.45;
@@ -553,7 +517,7 @@ class _LowerAndUpperScreenState extends State<LowerAndUpperScreen> {
 
                       return Column(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: _numbers.map((e) {
+                        children: numbers.map((e) {
                           return Padding(
                             padding: const EdgeInsets.symmetric(vertical: 1),
                             child: buildOutlinedText("$e", fontSize: fontSize),
@@ -561,12 +525,9 @@ class _LowerAndUpperScreenState extends State<LowerAndUpperScreen> {
                         }).toList(),
                       );
                     }()
-                  : _isFlashCardAnimating
-                  ? buildOutlinedText(
-                      "${_numbers[_currentStep]}",
-                      fontSize: 160,
-                    )
-                  : _showAnswer || _waitingToShowAnswer
+                  : isFlashCardAnimating
+                  ? buildOutlinedText("${numbers[currentStep]}", fontSize: 160)
+                  : showAnswer || waitingToShowAnswer
                   ? buildOutlinedText("?", fontSize: 160)
                   : Container(),
             ),

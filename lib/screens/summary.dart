@@ -108,11 +108,6 @@ class _SummaryScreenState extends State<SummaryScreen> {
             child: Image.asset('assets/images/logo.png', width: 60),
           ),
           Positioned(
-            top: 110,
-            left: 20,
-            child: Image.asset('assets/images/upper.png', width: 150),
-          ),
-          Positioned(
             top: 10,
             left: 100,
             child: Center(

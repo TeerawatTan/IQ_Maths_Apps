@@ -2,6 +2,8 @@ import 'dart:math';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:iq_maths_apps/models/maths_setting.dart';
+import 'package:iq_maths_apps/screens/summary.dart';
+import 'package:iq_maths_apps/widgets/widget_wrapper.dart';
 
 class DivisionScreen extends StatefulWidget {
   final MathsSetting setting;
@@ -13,510 +15,261 @@ class DivisionScreen extends StatefulWidget {
 }
 
 class _DivisionScreenState extends State<DivisionScreen> {
+  static const int questionLimit = 10;
+  List<List<int>> numbers = [];
   int currentStep = 0;
   bool showAnswer = false;
   bool isSoundOn = true;
   bool isPaused = false;
   bool waitingToShowAnswer = false;
-  bool isLoading = true;
-  List<List<int>> divisionProblems = [];
-  bool _isLoggingOut = false; // State to manage logout loading
+  bool isShowAll = false;
+  int answer = 0;
+  int questionLimitAnsCorrect = 0;
+  int questionsAttempted = 0;
+  bool isFlashCardAnimating = false;
+  final TextEditingController inputAnsController = TextEditingController();
+  bool shouldContinueFlashCard = false;
+  bool showSmallWrongIcon = false;
+  bool showAnswerText = false;
+  bool isLoggingOut = false; // State to manage logout loading
   final auth = FirebaseAuth.instance;
 
   @override
   void initState() {
     super.initState();
-    _generateNumbers();
+    widget.setting.display = "show all";
+    _generateRandomNumbers();
   }
 
-  void _generateNumbers() async {
-    setState(() => isLoading = true);
-    divisionProblems = await _generateRandomNumbers();
-    setState(() {
-      currentStep = 0;
-      showAnswer = false;
-      isLoading = false;
-    });
+  @override
+  void dispose() {
+    inputAnsController.dispose();
+    shouldContinueFlashCard = false;
+    super.dispose();
   }
 
-  Future<List<List<int>>> _generateRandomNumbers() async {
+  void _generateRandomNumbers() {
     final digit1 = int.tryParse(widget.setting.digit1) ?? 2;
     final digit2 = int.tryParse(widget.setting.digit2) ?? 1;
-    final count = 10;
+
+    numbers = [];
 
     final minDividend = pow(10, digit1 - 1).toInt();
     final maxDividend = pow(10, digit1).toInt() - 1;
     final minDivisor = pow(10, digit2 - 1).toInt();
     final maxDivisor = pow(10, digit2).toInt() - 1;
+
     final random = Random();
 
-    List<List<int>> results = [];
     int attempt = 0;
 
-    while (results.length < count && attempt < count * 20) {
+    while (numbers.length < questionLimit && attempt < questionLimit * 20) {
       attempt++;
       int divisor = random.nextInt(maxDivisor - minDivisor + 1) + minDivisor;
       int quotient = random.nextInt(9) + 1;
       int dividend = divisor * quotient;
 
       if (dividend >= minDividend && dividend <= maxDividend) {
-        results.add([dividend, divisor]);
+        numbers.add([dividend, divisor]);
       }
     }
 
-    while (results.length < count) {
-      results.add([minDividend, minDivisor]);
+    while (numbers.length < questionLimit) {
+      numbers.add([minDividend, minDivisor]);
     }
 
-    return results;
+    final p = numbers[currentStep];
+    answer = p[0] ~/ p[1];
+
+    currentStep = 0;
+    showAnswer = false;
+    waitingToShowAnswer = false;
+    showSmallWrongIcon = false;
+    showAnswerText = false;
+    inputAnsController.clear();
+    setState(() {
+      // Determine _isShowAll here based on the current setting
+      isShowAll = widget.setting.display.toLowerCase() == 'show all';
+    });
+    if (!isShowAll) {
+      shouldContinueFlashCard = true;
+    } else {
+      // If in show all mode, reset _currentStep and immediately update UI
+      setState(() {
+        currentStep = 0; // Not strictly needed for showAll but good practice
+      });
+    }
   }
 
-  void _startFlashCard() {
-    final time = 1.5;
-    Future.delayed(Duration(milliseconds: (time * 1000).toInt()), () {
-      if (!mounted || isPaused) return;
-
-      _nextStep();
-
-      if (currentStep < divisionProblems.length && !isPaused) {
-        _startFlashCard();
-      }
-    });
+  void _goSummaryPage() {
+    if (!mounted) {
+      return;
+    }
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (context) =>
+            SummaryScreen(answerCorrect: questionLimitAnsCorrect),
+      ),
+    );
   }
 
   void _nextStep() {
-    setState(() {
-      if (waitingToShowAnswer) {
-        showAnswer = true;
-        waitingToShowAnswer = false;
-      } else if (currentStep < divisionProblems.length) {
-        currentStep++;
-        if (currentStep == divisionProblems.length) {
-          waitingToShowAnswer = true;
+    if (showAnswer) {
+      _restart();
+      return;
+    }
+
+    String input = inputAnsController.text;
+    int? userAnswer;
+    if (input.isNotEmpty) {
+      userAnswer = int.tryParse(input);
+    }
+    if (userAnswer != null) {
+      if (userAnswer == answer) {
+        // ตอบถูก
+        questionLimitAnsCorrect++;
+        questionsAttempted++;
+        if (questionsAttempted >= questionLimit) {
+          _goSummaryPage();
+          return;
         }
-      }
-    });
-  }
-
-  void _restart() {
-    setState(() {
-      currentStep = 0;
-      showAnswer = false;
-      waitingToShowAnswer = false;
-      _generateNumbers();
-    });
-  }
-
-  int getCurrentAnswer() {
-    final p = divisionProblems[currentStep];
-    return p[0] ~/ p[1];
-  }
-
-  // Function to handle user logout
-  Future<void> _logout() async {
-    setState(() {
-      _isLoggingOut = true; // Show loading indicator
-    });
-
-    try {
-      await FirebaseAuth.instance.signOut(); // Sign out the current user
-      // After successful logout, navigate back to the login screen
-      if (mounted) {
-        // Check if the widget is still in the tree
-        Navigator.pushReplacementNamed(
-          context,
-          '/',
-        ); // Assuming '/' is your login route
-      }
-    } on FirebaseAuthException catch (e) {
-      if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error logging out: ${e.message}')),
-        );
-      }
-    } catch (e) {
-      if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('An unexpected error occurred: $e')),
-        );
-      }
-    } finally {
-      if (mounted) {
+        _generateRandomNumbers();
+      } else {
+        //ตอบผิด
         setState(() {
-          _isLoggingOut = false; // Hide loading indicator
+          showAnswer = true;
+          showSmallWrongIcon = false;
+          showAnswerText = false;
+        });
+        Future.delayed(const Duration(seconds: 1), () {
+          if (!mounted) return;
+          setState(() {
+            showSmallWrongIcon = true;
+          });
+
+          // --- Second Delay: For the answer text to appear (e.g., 200 milliseconds) ---
+          Future.delayed(const Duration(milliseconds: 200), () {
+            if (!mounted) return;
+            setState(() {
+              showAnswerText = true; // NEW: Now show the answer text
+            });
+
+            // --- Third Delay: For the entire feedback display (2 seconds) ---
+            Future.delayed(const Duration(seconds: 2), () {
+              if (mounted && showAnswer) {
+                // Ensure still in feedback state
+                questionsAttempted++;
+                if (questionsAttempted >= questionLimit) {
+                  _goSummaryPage();
+                  return;
+                }
+                _generateRandomNumbers(); // Generate new question (resets all flags)
+              }
+            });
+          });
         });
       }
+    } else {
+      return;
     }
   }
 
-  Widget buildOutlinedText(
-    String text, {
-    double fontSize = 60,
-    double strokeWidthRatio = 0.2,
-    Color strokeColor = Colors.black,
-    Color fillColor = Colors.white,
-  }) {
-    final strokeWidth = fontSize * strokeWidthRatio;
-    return Stack(
-      children: [
-        Text(
-          text,
-          style: TextStyle(
-            fontSize: fontSize,
-            fontWeight: FontWeight.bold,
-            height: 1.3,
-            foreground: Paint()
-              ..style = PaintingStyle.stroke
-              ..strokeWidth = strokeWidth
-              ..color = strokeColor
-              ..strokeJoin = StrokeJoin.round,
-          ),
-          textHeightBehavior: const TextHeightBehavior(
-            applyHeightToFirstAscent: false,
-            applyHeightToLastDescent: false,
-          ),
-        ),
-        Text(
-          text,
-          style: TextStyle(
-            fontSize: fontSize,
-            fontWeight: FontWeight.bold,
-            height: 1.3,
-            color: fillColor,
-          ),
-          textHeightBehavior: const TextHeightBehavior(
-            applyHeightToFirstAscent: false,
-            applyHeightToLastDescent: false,
-          ),
-        ),
-      ],
-    );
+  void _restart() {
+    _generateRandomNumbers();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
-        children: [
-          Positioned.fill(
-            child: Image.asset('assets/images/bg4.png', fit: BoxFit.cover),
-          ),
-          Positioned(
-            top: 30,
-            left: 20,
-            child: Image.asset('assets/images/logo.png', width: 60),
-          ),
-          Positioned(
-            top: 110,
-            left: 20,
-            child: Image.asset('assets/images/division.png', width: 170),
-          ),
-          Positioned(
-            top: 10,
-            left: 100,
-            child: Center(
-              child: Image.asset('assets/images/iq_maths_icon.png', width: 130),
+    bool isNextButtonEnabled = true;
+    if (!isShowAll && isFlashCardAnimating) {
+      isNextButtonEnabled = false; // Disable during flash card animation
+    } else if (!isShowAll && !waitingToShowAnswer && !showAnswer) {
+      // In flash card mode, if not showing '?' or _answer, button is disabled (waiting for sequence to finish)
+      // This case is actually covered by _isFlashCardAnimating now.
+    }
+
+    return WidgetWrapper(
+      userName: auth.currentUser == null
+          ? ''
+          : auth.currentUser!.email!.substring(
+              0,
+              auth.currentUser!.email!.indexOf('@'),
             ),
-          ),
-          Positioned(
-            bottom: 40,
-            left: 20,
-            child: Image.asset('assets/images/owl.png', width: 120),
-          ),
-
-          Positioned(
-            top: 30,
-            right: 20,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
+      avatarImg: null,
+      displayMode: '',
+      inputAnsController: inputAnsController,
+      onNextPressed: isNextButtonEnabled
+          ? (showAnswer ? _restart : _nextStep)
+          : null,
+      onPlayPauseFlashCard: null,
+      isPaused: isPaused,
+      currentStep: currentStep,
+      totalNumbers: numbers.length,
+      isFlashCardAnimating: isFlashCardAnimating,
+      showAnswer: showAnswer,
+      showAnswerText: showAnswerText,
+      waitingToShowAnswer: waitingToShowAnswer,
+      showSmallWrongIcon: showSmallWrongIcon,
+      answerText: answer.toString(),
+      currentMenuImage: 'assets/images/division.png',
+      isShowMode: false,
+      child: numbers.isEmpty
+          ? Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
-                  decoration: BoxDecoration(
-                    color: Colors.cyan[100],
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 12,
-                    vertical: 4,
-                  ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text(
-                        "ID : ${auth.currentUser == null ? '' : auth.currentUser!.email!.substring(0, auth.currentUser!.email!.indexOf('@'))}",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.pink,
-                        ),
-                      ),
-                      const SizedBox(width: 8),
-                      CircleAvatar(
-                        radius: 18,
-                        backgroundColor: Colors.black12,
-                        child: Icon(Icons.person, color: Colors.black),
-                      ),
-                      _isLoggingOut
-                          ? const SizedBox(
-                              width: 30, // Match icon size
-                              height: 30, // Match icon size
-                              child: CircularProgressIndicator(
-                                strokeWidth: 3,
-                                valueColor: AlwaysStoppedAnimation<Color>(
-                                  Color.fromARGB(255, 235, 99, 144),
-                                ),
-                              ),
-                            )
-                          : IconButton(
-                              icon: const Icon(Icons.logout), // Logout icon
-                              iconSize: 30.0, // Adjust icon size as needed
-                              color: const Color.fromARGB(
-                                255,
-                                235,
-                                99,
-                                144,
-                              ), // Icon color
-                              onPressed: _logout, // Call the _logout function
-                              tooltip:
-                                  'Logout', // Text that appears on long press
-                            ),
-                    ],
-                  ),
-                ),
-                const SizedBox(height: 6),
-
-                Padding(
-                  padding: const EdgeInsets.only(top: 0),
-                  child: IconButton(
-                    icon: Image.asset(
-                      isPaused
-                          ? 'assets/images/play_icon.png'
-                          : 'assets/images/pause_icon.png',
-                      width: 100,
-                      height: 100,
-                    ),
-                    onPressed: () {
-                      setState(() {
-                        isPaused = !isPaused;
-                        if (!isPaused &&
-                            widget.setting.display.toLowerCase() ==
-                                "Flash card") {
-                          _startFlashCard();
-                        }
-                      });
-                    },
+                Center(child: buildOutlinedText("No data", fontSize: 60)),
+                const SizedBox(height: 30),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: const Text(
+                    "Play Again",
+                    style: TextStyle(fontSize: 20),
                   ),
                 ),
               ],
-            ),
-          ),
+            )
+          : Center(
+              child: isShowAll
+                  ? () {
+                      // คำนวณ fontSize ให้เหมาะสมกับทุกขนาดหน้าจอ
+                      final screenWidth = MediaQuery.of(context).size.width;
+                      double fontSize = 140;
+                      // ปรับแต่งเพิ่มเติมตามขนาดหน้าจอ
+                      if (screenWidth < 400) {
+                        // Pixel รุ่นแรก และหน้าจอเล็ก
+                        fontSize = fontSize * 0.8;
+                      } else if (screenWidth >= 400 && screenWidth < 500) {
+                        // Pixel 6 และหน้าจอขนาดกลาง
+                        fontSize = fontSize * 0.85;
+                      } else if (screenWidth >= 500 && screenWidth < 700) {
+                        // หน้าจอใหญ่ แต่ยังเป็น Phone
+                        fontSize = fontSize * 0.9;
+                      } else {
+                        // Tablet (> 700px)
+                        fontSize = fontSize * 1.3;
+                      }
 
-          Column(
-            children: [
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 50),
-                  child: Center(
-                    child: divisionProblems.isEmpty
-                        ? const Text(
-                            "Loading...",
-                            style: TextStyle(fontSize: 40, color: Colors.red),
-                          )
-                        : Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              buildOutlinedText(
-                                "${divisionProblems[currentStep][0]} ÷ ${divisionProblems[currentStep][1]}",
-                                fontSize: 120,
-                              ),
-                            ],
-                          ),
-                  ),
-                ),
-              ),
+                      fontSize = fontSize.clamp(25, 140);
 
-              Padding(
-                padding: const EdgeInsets.only(bottom: 5.0),
-                child: Row(
-                  children: [
-                    const SizedBox(width: 150),
-                    Expanded(
-                      child: Center(
-                        child: Container(
-                          width: 350,
-                          height: 60,
-                          padding: const EdgeInsets.fromLTRB(20, 7, 0, 0),
-                          decoration: BoxDecoration(
-                            color: Colors.yellow[600],
-                            borderRadius: BorderRadius.circular(50),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.orange.shade200,
-                                offset: const Offset(4, 4),
-                                blurRadius: 6,
-                                spreadRadius: 1,
-                              ),
-                            ],
-                          ),
-                          child: Stack(
-                            children: [
-                              Text(
-                                "Ans",
-                                style: TextStyle(
-                                  fontSize: 36,
-                                  fontWeight: FontWeight.bold,
-                                  foreground: Paint()
-                                    ..style = PaintingStyle.stroke
-                                    ..strokeWidth = 10
-                                    ..color = Colors.black
-                                    ..strokeJoin = StrokeJoin.round,
-                                ),
-                              ),
-                              const Text(
-                                "Ans",
-                                style: TextStyle(
-                                  fontSize: 36,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white,
-                                ),
-                              ),
-                              if (showAnswer)
-                                Align(
-                                  alignment: Alignment.center,
-                                  child: Stack(
-                                    children: [
-                                      Text(
-                                        "${getCurrentAnswer()}",
-                                        style: TextStyle(
-                                          fontSize: 36,
-                                          fontWeight: FontWeight.bold,
-                                          foreground: Paint()
-                                            ..style = PaintingStyle.stroke
-                                            ..strokeWidth = 10
-                                            ..color = Colors.red
-                                            ..strokeJoin = StrokeJoin.round,
-                                        ),
-                                      ),
-                                      Text(
-                                        "${getCurrentAnswer()}",
-                                        style: const TextStyle(
-                                          fontSize: 36,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-
-                    const SizedBox(width: 12),
-                    ElevatedButton(
-                      onPressed: () {
-                        setState(() {
-                          if (!showAnswer) {
-                            showAnswer = true; // แสดงคำตอบ
-                          } else {
-                            // ไปข้อถัดไป
-                            if (currentStep < divisionProblems.length - 1) {
-                              currentStep++;
-                              showAnswer = false;
-                            } else {
-                              // จบ → เริ่มใหม่
-                              _restart();
-                            }
-                          }
-                        });
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.transparent,
-                        elevation: 0,
-                        padding: EdgeInsets.zero,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30),
-                        ),
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
+                      return Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Image.asset('assets/images/Next.png', width: 150),
+                          buildOutlinedText(
+                            "${numbers[currentStep][0]} ÷ ${numbers[currentStep][1]}",
+                            fontSize: fontSize,
+                          ),
                         ],
-                      ),
-                    ),
-                    const SizedBox(width: 12),
-                  ],
-                ),
-              ),
-
-              Container(
-                height: 42,
-                color: Colors.lightBlueAccent,
-                padding: const EdgeInsets.symmetric(horizontal: 12),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Text(
-                      "Intelligent Quick Maths ( IQM )",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    // Row(
-                    //   children: [
-                    //     const Text(
-                    //       "Sound ",
-                    //       style: TextStyle(
-                    //         color: Colors.white,
-                    //         fontWeight: FontWeight.bold,
-                    //       ),
-                    //     ),
-                    //     const SizedBox(width: 4),
-                    //     Image.asset(
-                    //       'assets/images/sound_icon.png',
-                    //       width: 22,
-                    //       height: 22,
-                    //     ),
-                    //     const SizedBox(width: 4),
-                    //     Transform.scale(
-                    //       scale: 0.8,
-                    //       child: Switch(
-                    //         value: isSoundOn,
-                    //         onChanged: (value) {
-                    //           setState(() {
-                    //             isSoundOn = value;
-                    //           });
-                    //         },
-                    //         activeColor: Colors.white,
-                    //         inactiveThumbColor: Colors.red,
-                    //         inactiveTrackColor: const Color.fromARGB(
-                    //           255,
-                    //           235,
-                    //           116,
-                    //           107,
-                    //         ),
-                    //       ),
-                    //     ),
-                    //     const SizedBox(width: 4),
-                    //     Text(
-                    //       isSoundOn ? "ON" : "OFF",
-                    //       style: TextStyle(
-                    //         color: isSoundOn ? Colors.white : Colors.white,
-                    //         fontWeight: FontWeight.bold,
-                    //       ),
-                    //     ),
-                    //   ],
-                    // ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ],
-      ),
+                      );
+                    }()
+                  : isFlashCardAnimating
+                  ? buildOutlinedText("${numbers[currentStep]}", fontSize: 160)
+                  : showAnswer || waitingToShowAnswer
+                  ? buildOutlinedText("?", fontSize: 160)
+                  : Container(),
+            ),
     );
   }
 }
