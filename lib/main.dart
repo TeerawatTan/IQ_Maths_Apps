@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:iq_maths_apps/screens/five_buddy.dart';
+import 'package:iq_maths_apps/screens/ten_couple.dart';
 import '../models/maths_setting.dart';
 import 'screens/login.dart';
 import 'screens/register.dart';
@@ -60,6 +62,18 @@ class MyApp extends StatelessWidget {
           return MaterialPageRoute(builder: (_) => const SettingScreen());
         } else if (settings.name == '/Register') {
           return MaterialPageRoute(builder: (_) => const RegisterScreen());
+        } else if (settings.name == '/FiveBuddy') {
+          // wait screen and data
+          final mathsSetting = settings.arguments as MathsSetting;
+          return MaterialPageRoute(
+            builder: (_) => FiveBuddyScreen(setting: mathsSetting),
+          );
+        } else if (settings.name == '/TenCouple') {
+          // wait screen and data
+          final mathsSetting = settings.arguments as MathsSetting;
+          return MaterialPageRoute(
+            builder: (_) => TenCoupleScreen(setting: mathsSetting),
+          );
         }
         return MaterialPageRoute(builder: (_) => const SettingScreen());
       },

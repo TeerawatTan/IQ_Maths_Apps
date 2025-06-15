@@ -90,9 +90,9 @@ class SubOptionsFive extends StatelessWidget {
           padding: const EdgeInsets.only(right: 10),
           child: SubOptionButton(
             label: "Five $suffix",
-            route: '/',
+            route: '/FiveBuddy',
             color: const Color(0xFFA3DEE8),
-            onPressed: () => onNavigate('/'),
+            onPressed: () => onNavigate('/FiveBuddy'),
           ),
         );
       }).toList(),

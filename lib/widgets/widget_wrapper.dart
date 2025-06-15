@@ -169,7 +169,7 @@ class _WidgetWrapperState extends State<WidgetWrapper> {
 
               // Logo
               Positioned(
-                top: isSmallScreen ? 25 : 30,
+                top: isSmallScreen ? 20 : 25,
                 left: isSmallScreen ? 15 : 20,
                 child: Image.asset(
                   'assets/images/logo.png',
@@ -189,7 +189,7 @@ class _WidgetWrapperState extends State<WidgetWrapper> {
 
               // IQ Maths Icon
               Positioned(
-                top: isSmallScreen ? 8 : 10,
+                top: isSmallScreen ? 2 : 4,
                 left: isSmallScreen ? 80 : 100,
                 child: Center(
                   child: Image.asset(
@@ -211,77 +211,71 @@ class _WidgetWrapperState extends State<WidgetWrapper> {
 
               // Top Right User Info and Controls
               Positioned(
-                top: isSmallScreen ? 25 : 30,
-                right: isSmallScreen ? 15 : 30,
+                top: isSmallScreen ? 20 : 25,
+                right: 0,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     // User Info Container
-                    Container(
-                      decoration: BoxDecoration(
-                        color: Colors.cyan[100],
-                        borderRadius: BorderRadius.circular(
-                          isSmallScreen ? 15 : 20,
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20.0, right: 0),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.cyan[100],
+                          borderRadius: const BorderRadius.only(
+                            topLeft: Radius.circular(30),
+                            bottomLeft: Radius.circular(30),
+                          ),
                         ),
-                      ),
-                      padding: EdgeInsets.symmetric(
-                        horizontal: isSmallScreen ? 8 : 12,
-                        vertical: isSmallScreen ? 3 : 4,
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Text(
-                            "ID : ${widget.userName}",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.pink,
-                              fontSize: isSmallScreen ? 12 : 14,
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 12,
+                          vertical: 4,
+                        ),
+                        child: Row(
+                          children: [
+                            Text(
+                              "ID : ${widget.userName}",
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.pink,
+                              ),
                             ),
-                          ),
-                          SizedBox(width: isSmallScreen ? 6 : 8),
-                          CircleAvatar(
-                            radius: isSmallScreen ? 15 : 18,
-                            backgroundColor: Colors.black12,
-                            child: widget.avatarImg == null
-                                ? Icon(
-                                    Icons.person,
-                                    color: Colors.black,
-                                    size: isSmallScreen ? 20 : 24,
+                            Image.asset(
+                              'assets/images/user_icon.png',
+                              width: 70,
+                              fit: BoxFit.cover,
+                            ),
+                            _isLoggingOut
+                                ? const SizedBox(
+                                    width: 30, // Match icon size
+                                    height: 30, // Match icon size
+                                    child: CircularProgressIndicator(
+                                      strokeWidth: 3,
+                                      valueColor: AlwaysStoppedAnimation<Color>(
+                                        Color.fromARGB(255, 235, 99, 144),
+                                      ),
+                                    ),
                                   )
-                                : ClipOval(
-                                    child: Image.asset(
-                                      widget.avatarImg!,
-                                      fit: BoxFit.cover,
-                                      width: isSmallScreen ? 30 : 36,
-                                      height: isSmallScreen ? 30 : 36,
-                                    ),
+                                : IconButton(
+                                    icon: const Icon(
+                                      Icons.logout,
+                                    ), // Logout icon
+                                    iconSize:
+                                        30.0, // Adjust icon size as needed
+                                    color: const Color.fromARGB(
+                                      255,
+                                      235,
+                                      99,
+                                      144,
+                                    ), // Icon color
+                                    onPressed:
+                                        _logout, // Call the _logout function
+                                    tooltip:
+                                        'Logout', // Text that appears on long press
                                   ),
-                          ),
-                          _isLoggingOut
-                              ? SizedBox(
-                                  width: isSmallScreen ? 25 : 30,
-                                  height: isSmallScreen ? 25 : 30,
-                                  child: const CircularProgressIndicator(
-                                    strokeWidth: 3,
-                                    valueColor: AlwaysStoppedAnimation<Color>(
-                                      Color.fromARGB(255, 235, 99, 144),
-                                    ),
-                                  ),
-                                )
-                              : IconButton(
-                                  icon: const Icon(Icons.logout),
-                                  iconSize: isSmallScreen ? 25.0 : 30.0,
-                                  color: const Color.fromARGB(
-                                    255,
-                                    235,
-                                    99,
-                                    144,
-                                  ),
-                                  onPressed: _logout,
-                                  tooltip: 'Logout',
-                                ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
 
@@ -289,42 +283,45 @@ class _WidgetWrapperState extends State<WidgetWrapper> {
 
                     // Display Mode Text
                     if (widget.isShowMode)
-                      Stack(
-                        children: [
-                          Text(
-                            "Display : ${widget.displayMode}",
-                            style: TextStyle(
-                              fontSize: _getResponsiveTextSize(
-                                24,
-                                isSmallScreen,
+                      Padding(
+                        padding: const EdgeInsets.only(right: 30),
+                        child: Stack(
+                          children: [
+                            Text(
+                              "Display : ${widget.displayMode}",
+                              style: TextStyle(
+                                fontSize: _getResponsiveTextSize(
+                                  24,
+                                  isSmallScreen,
+                                ),
+                                fontWeight: FontWeight.bold,
+                                foreground: Paint()
+                                  ..style = PaintingStyle.stroke
+                                  ..strokeWidth = isSmallScreen ? 5 : 7
+                                  ..color = Colors.black
+                                  ..strokeJoin = StrokeJoin.round,
                               ),
-                              fontWeight: FontWeight.bold,
-                              foreground: Paint()
-                                ..style = PaintingStyle.stroke
-                                ..strokeWidth = isSmallScreen ? 5 : 7
-                                ..color = Colors.black
-                                ..strokeJoin = StrokeJoin.round,
                             ),
-                          ),
-                          Text(
-                            "Display : ${widget.displayMode}",
-                            style: TextStyle(
-                              fontSize: _getResponsiveTextSize(
-                                24,
-                                isSmallScreen,
+                            Text(
+                              "Display : ${widget.displayMode}",
+                              style: TextStyle(
+                                fontSize: _getResponsiveTextSize(
+                                  24,
+                                  isSmallScreen,
+                                ),
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
                               ),
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
 
                     // Flash Card Controls
                     if (widget.displayMode.toLowerCase() == "flash card" &&
                         !widget.waitingToShowAnswer)
                       Padding(
-                        padding: const EdgeInsets.only(top: 0),
+                        padding: const EdgeInsets.only(right: 30),
                         child: IconButton(
                           icon: Image.asset(
                             widget.isPaused
@@ -342,7 +339,7 @@ class _WidgetWrapperState extends State<WidgetWrapper> {
                     if (widget.isPaused &&
                         widget.displayMode.toLowerCase() == "flash card")
                       Padding(
-                        padding: const EdgeInsets.only(top: 8.0),
+                        padding: const EdgeInsets.only(right: 60),
                         child: buildOutlinedText(
                           '${widget.currentStep! + 1}/${widget.totalNumbers!}',
                           fontSize: _getResponsiveTextSize(30, isSmallScreen),

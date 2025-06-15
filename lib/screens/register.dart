@@ -127,10 +127,20 @@ class _RegisterScreenState extends State<RegisterScreen> {
           ),
 
           // Icons เหมือน login
+          // Positioned(
+          //   top: 40,
+          //   left: 20,
+          //   child: Image.asset('assets/images/logo.png', width: 100),
+          // ),
           Positioned(
             top: 40,
             left: 20,
-            child: Image.asset('assets/images/logo.png', width: 100),
+            child: InkWell(
+              onTap: () {
+                Navigator.pop(context); // เมื่อกดที่ logo จะย้อนกลับ
+              },
+              child: Image.asset('assets/images/logo.png', width: 100),
+            ),
           ),
           Positioned(
             top: 40,
@@ -235,11 +245,24 @@ class _RegisterScreenState extends State<RegisterScreen> {
               child: const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    "Intelligent Quick Maths (IQM)",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
+                  Padding(
+                    padding: EdgeInsets.only(left: 16),
+                    child: Text(
+                      "Intelligent Quick Maths (IQM)",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(right: 16),
+                    child: Text(
+                      "v.1.0.0",
+                      style: TextStyle(
+                        color: Colors.white10,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ],

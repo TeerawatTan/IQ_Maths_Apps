@@ -110,9 +110,9 @@ class SubOptionsTenMinus extends StatelessWidget {
           padding: const EdgeInsets.only(right: 10),
           child: SubOptionButton(
             label: suffix == "Random" ? "Random Lesson" : "Ten $suffix",
-            route: '/',
+            route: '/TenCouple',
             color: suffix == "Random" ? Colors.red : const Color(0xFF5271FF),
-            onPressed: () => onNavigate('/'),
+            onPressed: () => onNavigate('/TenCouple'),
           ),
         );
       }).toList(),

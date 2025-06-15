@@ -239,61 +239,32 @@ class _SummaryScreenState extends State<SummaryScreen> {
                     ),
                   ],
                 ),
-                // child: Padding(
-                //   padding: const EdgeInsets.only(top: 16),
-                //   child: Center(
-                //     child: Row(
-                //       mainAxisSize: MainAxisSize.max,
-                //       mainAxisAlignment: MainAxisAlignment.center,
-                //       children: <Widget>[
-                //         Image.asset(
-                //           'assets/images/correct.png',
-                //           width: 120,
-                //           height: 120,
-                //         ),
-                //         Flexible(
-                //           child: Stack(
-                //             children: [
-                //               Text(
-                //                 "ตอบถูก $answerCorrect ข้อ",
-                //                 style: TextStyle(
-                //                   fontSize: 70,
-                //                   fontWeight: FontWeight.bold,
-                //                   foreground: Paint()
-                //                     ..style = PaintingStyle.stroke
-                //                     ..strokeWidth = 10
-                //                     ..color = Colors.black
-                //                     ..strokeJoin = StrokeJoin.round,
-                //                 ),
-                //               ),
-                //               Text(
-                //                 "ตอบถูก $answerCorrect ข้อ",
-                //                 style: const TextStyle(
-                //                   fontSize: 70,
-                //                   fontWeight: FontWeight.bold,
-                //                   color: Colors.white,
-                //                 ),
-                //               ),
-                //             ],
-                //           ),
-                //         ),
-                //       ],
-                //     ),
-                //   ),
-                // ),
               ),
+              // Bottom Bar
               Container(
-                height: 42,
-                color: Colors.lightBlueAccent,
-                padding: const EdgeInsets.symmetric(horizontal: 12),
+                height: 35,
+                color: Colors.blue[300],
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text(
-                      "Intelligent Quick Maths ( IQM )",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
+                    Padding(
+                      padding: EdgeInsets.only(left: 16),
+                      child: Text(
+                        "Intelligent Quick Maths (IQM)",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(right: 16),
+                      child: Text(
+                        "v.1.0.0",
+                        style: TextStyle(
+                          color: Colors.white10,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ],

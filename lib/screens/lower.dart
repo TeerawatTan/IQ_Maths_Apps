@@ -4,6 +4,7 @@ import 'package:iq_maths_apps/datas/lower.dart';
 import 'package:iq_maths_apps/datas/random_question.dart';
 import 'package:iq_maths_apps/models/lower_upper.dart';
 import 'package:iq_maths_apps/models/maths_setting.dart';
+import 'package:iq_maths_apps/screens/no_data.dart';
 import 'package:iq_maths_apps/screens/summary.dart';
 import 'package:iq_maths_apps/widgets/widget_wrapper.dart';
 
@@ -379,22 +380,7 @@ class _LowerScreenState extends State<LowerScreen> {
       currentMenuImage: 'assets/images/lower.png',
       isShowMode: true,
       child: numbers.isEmpty
-          ? Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Center(child: buildOutlinedText("No data", fontSize: 60)),
-                const SizedBox(height: 30),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  child: const Text(
-                    "Play Again",
-                    style: TextStyle(fontSize: 20),
-                  ),
-                ),
-              ],
-            )
+          ? const NoDataScreen()
           : Center(
               child: isShowAll
                   ? () {

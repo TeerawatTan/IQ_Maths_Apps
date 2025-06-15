@@ -6,16 +6,16 @@ import 'package:iq_maths_apps/screens/no_data.dart';
 import 'package:iq_maths_apps/screens/summary.dart';
 import 'package:iq_maths_apps/widgets/widget_wrapper.dart';
 
-class MultiplicationScreen extends StatefulWidget {
+class FiveBuddyScreen extends StatefulWidget {
   final MathsSetting setting;
 
-  const MultiplicationScreen({super.key, required this.setting});
+  const FiveBuddyScreen({super.key, required this.setting});
 
   @override
-  State<MultiplicationScreen> createState() => _MultiplicationScreenState();
+  State<FiveBuddyScreen> createState() => _FiveBuddyScreenState();
 }
 
-class _MultiplicationScreenState extends State<MultiplicationScreen> {
+class _FiveBuddyScreenState extends State<FiveBuddyScreen> {
   static const int questionLimit = 10;
   List<List<int>> numbers = [];
   int currentStep = 0;
@@ -25,7 +25,7 @@ class _MultiplicationScreenState extends State<MultiplicationScreen> {
   bool waitingToShowAnswer = false;
   bool isShowAll = false;
   int answer = 0;
-  int countAnsCorrect = 0;
+  int questionLimitAnsCorrect = 0;
   int questionsAttempted = 0;
   bool isFlashCardAnimating = false;
   final TextEditingController inputAnsController = TextEditingController();
@@ -50,26 +50,37 @@ class _MultiplicationScreenState extends State<MultiplicationScreen> {
   }
 
   void _generateRandomNumbers() {
-    final digit1 = int.tryParse(widget.setting.digit1) ?? 1;
+    final digit1 = int.tryParse(widget.setting.digit1) ?? 2;
     final digit2 = int.tryParse(widget.setting.digit2) ?? 1;
 
     numbers = [];
 
-    final min1 = pow(10, digit1 - 1).toInt();
-    final max1 = pow(10, digit1).toInt() - 1;
-    final min2 = pow(10, digit2 - 1).toInt();
-    final max2 = pow(10, digit2).toInt() - 1;
+    // final minDividend = pow(10, digit1 - 1).toInt();
+    // final maxDividend = pow(10, digit1).toInt() - 1;
+    // final minDivisor = pow(10, digit2 - 1).toInt();
+    // final maxDivisor = pow(10, digit2).toInt() - 1;
 
-    final random = Random();
+    // final random = Random();
 
-    numbers = List.generate(questionLimit, (_) {
-      final a = random.nextInt(max1 - min1 + 1) + min1;
-      final b = random.nextInt(max2 - min2 + 1) + min2;
-      return [a, b];
-    });
+    // int attempt = 0;
 
-    final p = numbers[currentStep];
-    answer = p[0] * p[1];
+    // while (numbers.length < questionLimit && attempt < questionLimit * 20) {
+    //   attempt++;
+    //   int divisor = random.nextInt(maxDivisor - minDivisor + 1) + minDivisor;
+    //   int quotient = random.nextInt(9) + 1;
+    //   int dividend = divisor * quotient;
+
+    //   if (dividend >= minDividend && dividend <= maxDividend) {
+    //     numbers.add([dividend, divisor]);
+    //   }
+    // }
+
+    // while (numbers.length < questionLimit) {
+    //   numbers.add([minDividend, minDivisor]);
+    // }
+
+    // final p = numbers[currentStep];
+    // answer = p[0] ~/ p[1];
 
     currentStep = 0;
     showAnswer = false;
@@ -98,7 +109,8 @@ class _MultiplicationScreenState extends State<MultiplicationScreen> {
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
-        builder: (context) => SummaryScreen(answerCorrect: countAnsCorrect),
+        builder: (context) =>
+            SummaryScreen(answerCorrect: questionLimitAnsCorrect),
       ),
     );
   }
@@ -117,7 +129,7 @@ class _MultiplicationScreenState extends State<MultiplicationScreen> {
     if (userAnswer != null) {
       if (userAnswer == answer) {
         // ตอบถูก
-        countAnsCorrect++;
+        questionLimitAnsCorrect++;
         questionsAttempted++;
         if (questionsAttempted >= questionLimit) {
           _goSummaryPage();
@@ -201,48 +213,48 @@ class _MultiplicationScreenState extends State<MultiplicationScreen> {
       waitingToShowAnswer: waitingToShowAnswer,
       showSmallWrongIcon: showSmallWrongIcon,
       answerText: answer.toString(),
-      currentMenuImage: 'assets/images/multiplication.png',
+      currentMenuImage: 'assets/images/lower.png',
       isShowMode: false,
       child: numbers.isEmpty
           ? const NoDataScreen()
           : Center(
-              child: isShowAll
-                  ? () {
-                      // คำนวณ fontSize ให้เหมาะสมกับทุกขนาดหน้าจอ
-                      final screenWidth = MediaQuery.of(context).size.width;
-                      double fontSize = 140;
-                      // ปรับแต่งเพิ่มเติมตามขนาดหน้าจอ
-                      if (screenWidth < 400) {
-                        // Pixel รุ่นแรก และหน้าจอเล็ก
-                        fontSize = fontSize * 0.8;
-                      } else if (screenWidth >= 400 && screenWidth < 500) {
-                        // Pixel 6 และหน้าจอขนาดกลาง
-                        fontSize = fontSize * 0.85;
-                      } else if (screenWidth >= 500 && screenWidth < 700) {
-                        // หน้าจอใหญ่ แต่ยังเป็น Phone
-                        fontSize = fontSize * 0.9;
-                      } else {
-                        // Tablet (> 700px)
-                        fontSize = fontSize * 1.3;
-                      }
+              // child: isShowAll
+              //     ? () {
+              //         // คำนวณ fontSize ให้เหมาะสมกับทุกขนาดหน้าจอ
+              //         final screenWidth = MediaQuery.of(context).size.width;
+              //         double fontSize = 140;
+              //         // ปรับแต่งเพิ่มเติมตามขนาดหน้าจอ
+              //         if (screenWidth < 400) {
+              //           // Pixel รุ่นแรก และหน้าจอเล็ก
+              //           fontSize = fontSize * 0.8;
+              //         } else if (screenWidth >= 400 && screenWidth < 500) {
+              //           // Pixel 6 และหน้าจอขนาดกลาง
+              //           fontSize = fontSize * 0.85;
+              //         } else if (screenWidth >= 500 && screenWidth < 700) {
+              //           // หน้าจอใหญ่ แต่ยังเป็น Phone
+              //           fontSize = fontSize * 0.9;
+              //         } else {
+              //           // Tablet (> 700px)
+              //           fontSize = fontSize * 1.3;
+              //         }
 
-                      fontSize = fontSize.clamp(25, 140);
+              //         fontSize = fontSize.clamp(25, 140);
 
-                      return Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          buildOutlinedText(
-                            "${numbers[currentStep][0]} × ${numbers[currentStep][1]}",
-                            fontSize: fontSize,
-                          ),
-                        ],
-                      );
-                    }()
-                  : isFlashCardAnimating
-                  ? buildOutlinedText("${numbers[currentStep]}", fontSize: 160)
-                  : showAnswer || waitingToShowAnswer
-                  ? buildOutlinedText("?", fontSize: 160)
-                  : Container(),
+              //         return Column(
+              //           mainAxisAlignment: MainAxisAlignment.center,
+              //           children: [
+              //             buildOutlinedText(
+              //               "${numbers[currentStep][0]} ÷ ${numbers[currentStep][1]}",
+              //               fontSize: fontSize,
+              //             ),
+              //           ],
+              //         );
+              //       }()
+              //     : isFlashCardAnimating
+              //     ? buildOutlinedText("${numbers[currentStep]}", fontSize: 160)
+              //     : showAnswer || waitingToShowAnswer
+              //     ? buildOutlinedText("?", fontSize: 160)
+              //     : Container(),
             ),
     );
   }

@@ -2,6 +2,7 @@ import 'dart:math';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:iq_maths_apps/models/maths_setting.dart';
+import 'package:iq_maths_apps/screens/no_data.dart';
 import 'package:iq_maths_apps/screens/summary.dart';
 import 'package:iq_maths_apps/widgets/widget_wrapper.dart';
 
@@ -215,22 +216,7 @@ class _DivisionScreenState extends State<DivisionScreen> {
       currentMenuImage: 'assets/images/division.png',
       isShowMode: false,
       child: numbers.isEmpty
-          ? Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Center(child: buildOutlinedText("No data", fontSize: 60)),
-                const SizedBox(height: 30),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  child: const Text(
-                    "Play Again",
-                    style: TextStyle(fontSize: 20),
-                  ),
-                ),
-              ],
-            )
+          ? const NoDataScreen()
           : Center(
               child: isShowAll
                   ? () {

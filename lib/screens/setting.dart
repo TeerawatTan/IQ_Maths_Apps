@@ -188,51 +188,71 @@ class _SettingScreenState extends State<SettingScreen> {
   );
 
   Widget _buildHeader() => Positioned(
-    top: 30,
+    top: 20,
     left: 20,
     child: Image.asset('assets/images/logo.png', width: 70),
   );
 
   Widget _buildUserInfo() => Positioned(
-    top: 30,
-    right: 20,
-    child: Container(
-      decoration: BoxDecoration(
-        color: Colors.cyan[100],
-        borderRadius: BorderRadius.circular(20),
-      ),
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-      child: Row(
-        children: [
-          Text(
-            "ID : $uname",
-            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.pink),
+    top: 20,
+    right: 0,
+    child: Padding(
+      padding: const EdgeInsets.only(left: 20.0, right: 0),
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.cyan[100],
+          borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(30),
+            bottomLeft: Radius.circular(30),
           ),
-          const SizedBox(width: 8),
-          const CircleAvatar(
-            radius: 18,
-            backgroundColor: Colors.black12,
-            child: Icon(Icons.person, color: Colors.black),
-          ),
-          _isLoggingOut
-              ? const SizedBox(
-                  width: 30, // Match icon size
-                  height: 30, // Match icon size
-                  child: CircularProgressIndicator(
-                    strokeWidth: 3,
-                    valueColor: AlwaysStoppedAnimation<Color>(
-                      Color.fromARGB(255, 235, 99, 144),
+        ),
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+        child: Row(
+          children: [
+            Text(
+              "ID : $uname",
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: Colors.pink,
+              ),
+            ),
+            // const SizedBox(width: 8),
+            // CircleAvatar(
+            //   radius: 18,
+            //   backgroundColor: Colors.black12,
+            //   child: Icon(Icons.person, color: Colors.black),
+            // ),
+            Image.asset(
+              'assets/images/user_icon.png',
+              width: 70,
+              fit: BoxFit.cover,
+            ),
+            _isLoggingOut
+                ? const SizedBox(
+                    width: 30, // Match icon size
+                    height: 30, // Match icon size
+                    child: CircularProgressIndicator(
+                      strokeWidth: 3,
+                      valueColor: AlwaysStoppedAnimation<Color>(
+                        Color.fromARGB(255, 235, 99, 144),
+                      ),
                     ),
+                  )
+                : IconButton(
+                    icon: const Icon(Icons.logout), // Logout icon
+                    iconSize: 30.0, // Adjust icon size as needed
+                    color: const Color.fromARGB(
+                      255,
+                      235,
+                      99,
+                      144,
+                    ), // Icon color
+                    onPressed: _logout, // Call the _logout function
+                    tooltip: 'Logout', // Text that appears on long press
                   ),
-                )
-              : IconButton(
-                  icon: const Icon(Icons.logout), // Logout icon
-                  iconSize: 30.0, // Adjust icon size as needed
-                  color: const Color.fromARGB(255, 235, 99, 144), // Icon color
-                  onPressed: _logout, // Call the _logout function
-                  tooltip: 'Logout', // Text that appears on long press
-                ),
-        ],
+          ],
+        ),
       ),
     ),
   );
@@ -276,7 +296,8 @@ class _SettingScreenState extends State<SettingScreen> {
             color: const Color(0xFFC4A5FF),
             onPressed: () => selectMenu('DIV'),
           ),
-          if (uname.isNotEmpty && uname.toLowerCase() == "iqmaths.official")
+          if (uname.isNotEmpty && (uname.toLowerCase() == "iqmaths.official") ||
+              uname.toLowerCase() == "test")
             MenuButton(
               title: 'Register',
               color: Colors.white,
