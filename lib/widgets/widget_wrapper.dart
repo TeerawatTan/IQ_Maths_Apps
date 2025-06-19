@@ -76,6 +76,13 @@ class WidgetWrapper extends StatefulWidget {
   final String currentMenuImage;
   final bool isShowMode;
   final Widget child;
+  final bool showAnswerInput;
+  final VoidCallback? onExitPressed;
+  final bool showExitButton;
+  final VoidCallback? onCheckPressed;
+  final VoidCallback? onNextsPressed;
+  final VoidCallback? onBackPressed;
+  final bool showRightButtons;
 
   const WidgetWrapper({
     super.key,
@@ -97,6 +104,13 @@ class WidgetWrapper extends StatefulWidget {
     required this.currentMenuImage,
     required this.isShowMode,
     required this.child,
+    this.showAnswerInput = true,
+    this.onExitPressed,
+    this.showExitButton = true,
+    this.onCheckPressed,
+    this.onNextsPressed,
+    this.onBackPressed,
+    this.showRightButtons = false,
   });
 
   @override
@@ -316,6 +330,81 @@ class _WidgetWrapperState extends State<WidgetWrapper> {
                           ],
                         ),
                       ),
+                    if (widget.showRightButtons)
+                      Positioned(
+                        top: 0,
+                        right: 0,
+                        child: Container(
+                          padding: const EdgeInsets.only(top: 30, right: 10),
+                          child: Column(
+                            children: [
+                              ElevatedButton(
+                                onPressed: widget.onCheckPressed,
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.transparent,
+                                  elevation: 0,
+                                  padding: EdgeInsets.zero,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                ),
+                                child: Image.asset(
+                                  'assets/images/check_icon.png',
+                                  width: 70,
+                                ),
+                              ),
+                              const SizedBox(height: 1),
+                              ElevatedButton(
+                                onPressed: widget.onNextsPressed,
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.transparent,
+                                  elevation: 0,
+                                  padding: EdgeInsets.zero,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                ),
+                                child: Image.asset(
+                                  'assets/images/Next_icon.png',
+                                  width: 120,
+                                ),
+                              ),
+                              const SizedBox(height: 1),
+                              ElevatedButton(
+                                onPressed: widget.onBackPressed,
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.transparent,
+                                  elevation: 0,
+                                  padding: EdgeInsets.zero,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                ),
+                                child: Image.asset(
+                                  'assets/images/back_icon.png',
+                                  width: 120,
+                                ),
+                              ),
+                              const SizedBox(height: 1),
+                              ElevatedButton(
+                                onPressed: widget.onExitPressed,
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.transparent,
+                                  elevation: 0,
+                                  padding: EdgeInsets.zero,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                ),
+                                child: Image.asset(
+                                  'assets/images/exit.png',
+                                  width: 90,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
 
                     // Flash Card Controls
                     if (widget.displayMode.toLowerCase() == "flash card" &&
@@ -362,18 +451,18 @@ class _WidgetWrapperState extends State<WidgetWrapper> {
                   ),
 
                   // Answer Input and Next Button Section - Responsive
-                  Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: isSmallScreen ? 8.0 : 16.0,
-                      vertical: 5.0,
+                  if (widget.showAnswerInput && widget.totalNumbers! > 0)
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: isSmallScreen ? 8.0 : 16.0,
+                        vertical: 5.0,
+                      ),
+                      child: _buildResponsiveInputSection(
+                        isSmallScreen,
+                        constraints,
+                      ),
                     ),
-                    child: widget.totalNumbers! > 0
-                        ? _buildResponsiveInputSection(
-                            isSmallScreen,
-                            constraints,
-                          )
-                        : const SizedBox.shrink(),
-                  ),
+
                   // const SizedBox(height: 5),
                   // Bottom Bar
                   Container(

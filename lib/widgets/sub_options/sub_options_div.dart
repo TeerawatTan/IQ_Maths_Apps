@@ -38,6 +38,13 @@ class SubOptionsDiv extends StatelessWidget {
                 color: const Color(0xFFC4A5FF),
                 onPressed: () => onNavigate('/Division'),
               ),
+              const SizedBox(width: 40),
+              SubOptionButton(
+                label: 'DivisionRendomTable',
+                route: '/DivisionRendomTable',
+                color: const Color(0xFFC4A5FF),
+                onPressed: () => onNavigate('/DivisionRendomTable'),
+              ),
             ],
           ),
           const SizedBox(height: 15),

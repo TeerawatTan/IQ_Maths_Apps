@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:iq_maths_apps/screens/divisionrandomtable.dart';
 import 'package:iq_maths_apps/screens/five_buddy.dart';
+import 'package:iq_maths_apps/screens/multiplicationrandomtable.dart';
 import 'package:iq_maths_apps/screens/ten_couple.dart';
 import '../models/maths_setting.dart';
 import 'screens/login.dart';
@@ -53,10 +55,21 @@ class MyApp extends StatelessWidget {
           return MaterialPageRoute(
             builder: (_) => MultiplicationScreen(setting: mathsSetting),
           );
+        } else if (settings.name == '/MultiplicationRendomTable') {
+          final mathsSetting = settings.arguments as MathsSetting;
+          return MaterialPageRoute(
+            builder: (_) =>
+                MultiplicationRandomTableScreen(setting: mathsSetting),
+          );
         } else if (settings.name == '/Division') {
           final mathsSetting = settings.arguments as MathsSetting;
           return MaterialPageRoute(
             builder: (_) => DivisionScreen(setting: mathsSetting),
+          );
+        } else if (settings.name == '/DivisionRendomTable') {
+          final mathsSetting = settings.arguments as MathsSetting;
+          return MaterialPageRoute(
+            builder: (_) => DivisionRandomTableScreen(setting: mathsSetting),
           );
         } else if (settings.name == '/Setting') {
           return MaterialPageRoute(builder: (_) => const SettingScreen());

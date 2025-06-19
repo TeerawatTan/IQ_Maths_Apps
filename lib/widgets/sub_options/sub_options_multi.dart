@@ -38,6 +38,13 @@ class SubOptionsMulti extends StatelessWidget {
                 color: const Color(0xFF7ED957),
                 onPressed: () => onNavigate('/Multiplication'),
               ),
+              const SizedBox(width: 40),
+              SubOptionButton(
+                label: 'MultiplicationRendomTable',
+                route: '/MultiplicationRendomTable',
+                color: const Color(0xFF7ED957),
+                onPressed: () => onNavigate('/MultiplicationRendomTable'),
+              ),
             ],
           ),
           const SizedBox(height: 15),
