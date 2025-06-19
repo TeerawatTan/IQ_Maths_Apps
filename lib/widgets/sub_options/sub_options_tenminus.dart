@@ -25,53 +25,58 @@ class SubOptionsTenMinus extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.7,
+    return Container(
+      padding: const EdgeInsets.all(10),
       child: SingleChildScrollView(
-        padding: const EdgeInsets.all(12),
-        child: Container(
-          decoration: BoxDecoration(
-            color: Colors.white10,
-            borderRadius: BorderRadius.circular(12),
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _buildSectionTitle("TEN COUPLE -"),
-              _buildRow(["-9", "-8", "-7", "-6", "-5"]),
-              _buildRow(["-4", "-3", "-2", "-1", "Random"]),
-              const SizedBox(height: 10),
-              _buildSectionTitle("FIVE & TEN COUPLE -"),
-              _buildRow(["-9", "-8", "-7", "-6", "Random"]),
-              const SizedBox(height: 15),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text(
-                      "Setting",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18,
-                      ),
-                    ),
-                    const SizedBox(height: 10),
-                    SettingForm(
-                      selectedDigit1: digit1,
-                      selectedDigit2: digit2,
-                      selectedDisplay: display,
-                      selectedRow: row,
-                      selectedTime: time,
-                      onChanged: onSettingChanged,
-                      showDisplay: true,
-                      showRow: true,
-                    ),
-                  ],
-                ),
+        padding: const EdgeInsets.all(10),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            _buildSectionTitle("TEN COUPLE -"),
+            Wrap(
+              spacing: 10,
+              runSpacing: 10,
+              children: _generateTenCoupleMinusButtons(),
+            ),
+            const SizedBox(height: 10),
+            _buildSectionTitle("FIVE & TEN COUPLE -"),
+            Wrap(
+              spacing: 10,
+              runSpacing: 10,
+              children: _generateFiveTenCoupleMinusButtons(),
+            ),
+            const SizedBox(height: 15),
+            Wrap(
+              spacing: 10,
+              runSpacing: 10,
+              children: _buildRow(["Random Exercise"]),
+            ),
+            const SizedBox(height: 15),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    "Setting",
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                  ),
+                  const SizedBox(height: 10),
+                  SettingForm(
+                    selectedDigit1: digit1,
+                    selectedDigit2: digit2,
+                    selectedDisplay: display,
+                    selectedRow: row,
+                    selectedTime: time,
+                    onChanged: onSettingChanged,
+                    showDisplay: true,
+                    showRow: true,
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
@@ -103,19 +108,46 @@ class SubOptionsTenMinus extends StatelessWidget {
     );
   }
 
-  Widget _buildRow(List<String> suffixes) {
-    return Row(
-      children: suffixes.map((suffix) {
-        return Padding(
-          padding: const EdgeInsets.only(right: 10),
-          child: SubOptionButton(
-            label: suffix == "Random" ? "Random Lesson" : "Ten $suffix",
-            route: '/TenCouple',
-            color: suffix == "Random" ? Colors.red : const Color(0xFF5271FF),
-            onPressed: () => onNavigate('/TenCouple'),
-          ),
-        );
-      }).toList(),
-    );
+  // ฟังก์ชันใหม่สำหรับ TEN COUPLE -
+  List<Widget> _generateTenCoupleMinusButtons() {
+    List<String> suffixes = [];
+    for (int i = 9; i >= 1; i--) {
+      // Loop จาก 9 ลงไปถึง 1
+      suffixes.add("Ten -$i");
+    }
+    suffixes.add("Random Lesson"); // เพิ่มปุ่ม Random เข้าไปท้ายสุด
+    return _buildRow(suffixes);
+  }
+
+  // ฟังก์ชันใหม่สำหรับ FIVE & TEN COUPLE -
+  List<Widget> _generateFiveTenCoupleMinusButtons() {
+    List<String> suffixes = [];
+    for (int i = 9; i >= 6; i--) {
+      // Loop จาก 9 ลงไปถึง 6
+      suffixes.add("Five&Ten -$i");
+    }
+    return _buildRow(suffixes);
+  }
+
+  List<Widget> _buildRow(List<String> suffixes) {
+    return suffixes.map((suffix) {
+      return Padding(
+        padding: const EdgeInsets.only(right: 10),
+        child: SubOptionButton(
+          label: suffix,
+          route: '/TenCouple',
+          color: suffix.startsWith("Ten")
+              ? const Color(0xFF2196F3)
+              : suffix.startsWith("Five&Ten")
+              ? const Color(0xFF51E4D6)
+              : suffix == "Random Lesson"
+              ? Colors.red
+              : suffix == "Random Exercise"
+              ? const Color(0xFFF9CA24)
+              : Colors.white,
+          onPressed: () => onNavigate('/TenCouple'),
+        ),
+      );
+    }).toList();
   }
 }

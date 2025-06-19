@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:iq_maths_apps/widgets/setting_menu_button.dart';
 import 'package:iq_maths_apps/widgets/sub_options/sub_options_lp.dart';
 import 'package:iq_maths_apps/widgets/sub_options/sub_options_five.dart';
@@ -175,6 +176,7 @@ class _SettingScreenState extends State<SettingScreen> {
               if (selectedMenu == 'TEN-') _buildSubOptionsTenMinus(),
               if (selectedMenu == 'MULTI') _buildSubOptionsMulti(),
               if (selectedMenu == 'DIV') _buildSubOptionsDiv(),
+              _buildRightButton(),
               _buildFooter(isSmallScreen),
             ],
           );
@@ -308,6 +310,29 @@ class _SettingScreenState extends State<SettingScreen> {
     ),
   );
 
+  Widget _buildRightButton() => Positioned(
+    top: 250,
+    right: 10,
+    child: Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        InkWell(
+          onTap: () {
+            // Navigator.pop(context);
+          },
+          child: Image.asset('assets/images/start.png', width: 120),
+        ),
+        SizedBox(height: 10),
+        InkWell(
+          onTap: () {
+            SystemNavigator.pop();
+          },
+          child: Image.asset('assets/images/exit.png', width: 120),
+        ),
+      ],
+    ),
+  );
+
   Widget _buildSubOptionsLP() => Positioned(
     top: 115,
     left: 270,
@@ -339,6 +364,8 @@ class _SettingScreenState extends State<SettingScreen> {
   Widget _buildSubOptionsTenPlus() => Positioned(
     top: 90,
     left: 270,
+    right: 120,
+    bottom: 30,
     child: SubOptionsTenPlus(
       onNavigate: navigateToRoute,
       digit1: selectedDigit1,
@@ -353,6 +380,8 @@ class _SettingScreenState extends State<SettingScreen> {
   Widget _buildSubOptionsTenMinus() => Positioned(
     top: 90,
     left: 270,
+    right: 120,
+    bottom: 30,
     child: SubOptionsTenMinus(
       onNavigate: navigateToRoute,
       digit1: selectedDigit1,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:iq_maths_apps/widgets/widget_menu.dart';
 
 class SubOptionButton extends StatelessWidget {
   final String label;
@@ -16,25 +17,6 @@ class SubOptionButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        backgroundColor: color,
-        foregroundColor: Colors.black,
-        elevation: 2,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
-          side: const BorderSide(color: Colors.white, width: 2),
-        ),
-        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-        textStyle: const TextStyle(
-          fontFamily: 'PoetsenOn',
-          fontSize: 16,
-          fontWeight: FontWeight.w700,
-          letterSpacing: 0.5,
-        ),
-      ),
-      onPressed: onPressed,
-      child: Text(label),
-    );
+    return WidgetMenu(label: label, color: color, onPressed: onPressed);
   }
 }

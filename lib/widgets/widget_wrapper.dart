@@ -195,9 +195,14 @@ class _WidgetWrapperState extends State<WidgetWrapper> {
               Positioned(
                 top: isSmallScreen ? 90 : 110,
                 left: isSmallScreen ? 15 : 20,
-                child: Image.asset(
-                  widget.currentMenuImage,
-                  width: _getResponsiveImageSize(150, isSmallScreen),
+                child: InkWell(
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                  child: Image.asset(
+                    widget.currentMenuImage,
+                    width: _getResponsiveImageSize(190, isSmallScreen),
+                  ),
                 ),
               ),
 
