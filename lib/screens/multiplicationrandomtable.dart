@@ -261,7 +261,7 @@ class _MultiplicationRandomTableScreenState
     return WidgetWrapper(
       userName: auth.currentUser?.email?.split('@').first ?? '',
       avatarImg: null,
-      displayMode: 'show all',
+      displayMode: '',
       inputAnsController: TextEditingController(),
       onNextPressed: _submitAnswers,
       onNextsPressed: _nextQuestion,
@@ -279,45 +279,128 @@ class _MultiplicationRandomTableScreenState
       showSmallWrongIcon: false,
       answerText: '',
       currentMenuImage: 'assets/images/multiplicationrandomtable.png',
-      isShowMode: true,
+      isShowMode: false,
       child: numbers.isEmpty
           ? const NoDataScreen()
-          : Container(
-              margin: const EdgeInsets.only(
-                left: 180,
-                right: 250,
-                top: 60,
-                bottom: 10,
-              ),
-              height: 350,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(7),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.1),
-                    blurRadius: 20,
-                    offset: Offset(0, 8),
-                    spreadRadius: 2,
-                  ),
-                ],
-              ),
-              child: Column(
-                children: [
-                  _buildHeaderRow(),
-                  Expanded(
-                    child: SingleChildScrollView(
-                      child: Column(
-                        children: List.generate(
-                          questionLimit,
-                          _buildQuestionRow,
+          : LayoutBuilder(
+              builder: (context, constraints) {
+                final width = constraints.maxWidth;
+                final deviceType =
+                    MediaQuery.of(context).size.shortestSide < 600
+                    ? 'phone'
+                    : 'tablet';
+
+                EdgeInsets containerMargin;
+                double containerHeight;
+
+                if (deviceType == 'phone') {
+                  if (width < 400) {
+                    containerMargin = const EdgeInsets.symmetric(
+                      horizontal: 60,
+                      vertical: 60,
+                    );
+                    containerHeight = 420;
+                  } else if (width < 600) {
+                    containerMargin = const EdgeInsets.only(
+                      left: 50,
+                      right: 40,
+                      top: 40,
+                      bottom: 20,
+                    );
+                    containerHeight = 430;
+                  } else {
+                    // Pixel 6 (แนวตั้ง) หรือจอใหญ่
+                    containerMargin = const EdgeInsets.only(
+                      left: 220,
+                      right: 220,
+                      top: 60,
+                      bottom: 10,
+                    );
+                    containerHeight = 440;
+                  }
+                } else {
+                  // Tablet
+                  containerMargin = const EdgeInsets.symmetric(
+                    horizontal: 230,
+                    vertical: 30,
+                  );
+                  containerHeight = 530;
+                }
+
+                return Center(
+                  child: Container(
+                    margin: containerMargin,
+                    height: containerHeight,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(7),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.1),
+                          blurRadius: 20,
+                          offset: const Offset(0, 8),
+                          spreadRadius: 2,
                         ),
-                      ),
+                      ],
+                    ),
+                    child: Column(
+                      children: [
+                        _buildHeaderRow(),
+                        Expanded(
+                          child: SingleChildScrollView(
+                            child: Column(
+                              children: List.generate(
+                                questionLimit,
+                                _buildQuestionRow,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                ],
-              ),
+                );
+              },
             ),
+
+      // child: numbers.isEmpty
+      //     ? const NoDataScreen()
+      //     : Container(
+      //         margin: const EdgeInsets.only(
+      //           left: 180,
+      //           right: 250,
+      //           top: 60,
+      //           bottom: 10,
+      //         ),
+      //         height: 350,
+      //         decoration: BoxDecoration(
+      //           color: Colors.white,
+      //           borderRadius: BorderRadius.circular(7),
+      //           boxShadow: [
+      //             BoxShadow(
+      //               color: Colors.black.withOpacity(0.1),
+      //               blurRadius: 20,
+      //               offset: Offset(0, 8),
+      //               spreadRadius: 2,
+      //             ),
+      //           ],
+      //         ),
+      //         child: Column(
+      //           children: [
+      //             _buildHeaderRow(),
+      //             Expanded(
+      //               child: SingleChildScrollView(
+      //                 child: Column(
+      //                   children: List.generate(
+      //                     questionLimit,
+      //                     _buildQuestionRow,
+      //                   ),
+      //                 ),
+      //               ),
+      //             ),
+      //           ],
+      //         ),
+      //       ),
       onBackPressed: () {
         showDialog(
           context: context,

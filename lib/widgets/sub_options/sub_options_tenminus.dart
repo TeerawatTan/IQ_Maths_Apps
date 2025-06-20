@@ -131,21 +131,26 @@ class SubOptionsTenMinus extends StatelessWidget {
 
   List<Widget> _buildRow(List<String> suffixes) {
     return suffixes.map((suffix) {
+      final route = suffix == "Random Exercise"
+          ? '/RandomExercise'
+          : '/TenCouple';
+      final color = suffix.startsWith("Ten")
+          ? const Color(0xFF2196F3)
+          : suffix.startsWith("Five&Ten")
+          ? const Color(0xFF51E4D6)
+          : suffix == "Random Lesson"
+          ? Colors.red
+          : suffix == "Random Exercise"
+          ? const Color(0xFFF9CA24)
+          : Colors.white;
+
       return Padding(
         padding: const EdgeInsets.only(right: 10),
         child: SubOptionButton(
           label: suffix,
-          route: '/TenCouple',
-          color: suffix.startsWith("Ten")
-              ? const Color(0xFF2196F3)
-              : suffix.startsWith("Five&Ten")
-              ? const Color(0xFF51E4D6)
-              : suffix == "Random Lesson"
-              ? Colors.red
-              : suffix == "Random Exercise"
-              ? const Color(0xFFF9CA24)
-              : Colors.white,
-          onPressed: () => onNavigate('/TenCouple'),
+          route: route,
+          color: color,
+          onPressed: () => onNavigate(route),
         ),
       );
     }).toList();

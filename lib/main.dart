@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:iq_maths_apps/screens/divisionrandomtable.dart';
 import 'package:iq_maths_apps/screens/five_buddy.dart';
 import 'package:iq_maths_apps/screens/multiplicationrandomtable.dart';
+import 'package:iq_maths_apps/screens/random_exercise.dart';
 import 'package:iq_maths_apps/screens/ten_couple.dart';
 import '../models/maths_setting.dart';
 import 'screens/login.dart';
@@ -86,6 +87,11 @@ class MyApp extends StatelessWidget {
           final mathsSetting = settings.arguments as MathsSetting;
           return MaterialPageRoute(
             builder: (_) => TenCoupleScreen(setting: mathsSetting),
+          );
+        } else if (settings.name == '/RandomExercise') {
+          final mathsSetting = settings.arguments as MathsSetting;
+          return MaterialPageRoute(
+            builder: (_) => RandomExerciseScreen(setting: mathsSetting),
           );
         }
         return MaterialPageRoute(builder: (_) => const SettingScreen());
