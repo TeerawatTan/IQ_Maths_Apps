@@ -1,3 +1,4 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:iq_maths_apps/datas/lower_upper.dart';
@@ -34,6 +35,10 @@ class _LowerAndUpperScreenState extends State<LowerAndUpperScreen> {
   bool showSmallWrongIcon = false;
   bool showAnswerText = false;
   final auth = FirebaseAuth.instance;
+  bool isSoundOn = true;
+  final AudioPlayer audioPlayer = AudioPlayer();
+  bool isAnswerCorrect = false;
+  bool hasCheckedAnswer = false;
 
   @override
   void initState() {
@@ -50,7 +55,15 @@ class _LowerAndUpperScreenState extends State<LowerAndUpperScreen> {
   void dispose() {
     inputAnsController.dispose();
     shouldContinueFlashCard = false;
+    audioPlayer.dispose();
     super.dispose();
+  }
+
+  void _playTikSound() async {
+    if (isSoundOn) {
+      await audioPlayer.stop();
+      await audioPlayer.play(AssetSource('files/sound_tik.mp3'));
+    }
   }
 
   void _generateRandomNumbers() {
@@ -76,6 +89,8 @@ class _LowerAndUpperScreenState extends State<LowerAndUpperScreen> {
     showSmallWrongIcon = false;
     showAnswerText = false;
     inputAnsController.clear();
+    isAnswerCorrect = false;
+    hasCheckedAnswer = false;
     setState(() {
       // Determine isShowAll here based on the current setting
       isShowAll = widget.setting.display.toLowerCase() == 'show all';
@@ -88,6 +103,7 @@ class _LowerAndUpperScreenState extends State<LowerAndUpperScreen> {
       setState(() {
         currentStep = 0; // Not strictly needed for showAll but good practice
       });
+      _playTikSound();
     }
   }
 
@@ -315,6 +331,7 @@ class _LowerAndUpperScreenState extends State<LowerAndUpperScreen> {
       waitingToShowAnswer = false; // Hide '?' during flash card display
       showAnswer = false; // Hide wrong answer feedback
       inputAnsController.clear(); // Clear input field
+      hasCheckedAnswer = false;
     });
 
     final int delaySeconds = int.tryParse(widget.setting.time.toString()) ?? 1;
@@ -338,6 +355,7 @@ class _LowerAndUpperScreenState extends State<LowerAndUpperScreen> {
       setState(() {
         currentStep = i; // Update currentStep to the number being displayed
       });
+      _playTikSound();
       await Future.delayed(delayDuration);
     }
 
@@ -362,65 +380,54 @@ class _LowerAndUpperScreenState extends State<LowerAndUpperScreen> {
     );
   }
 
-  void _nextStep() {
-    if (showAnswer) {
-      _restart();
-      return;
-    }
-
+  void _checkAnswer() {
     String input = inputAnsController.text;
     int? userAnswer;
     if (input.isNotEmpty) {
       userAnswer = int.tryParse(input);
-    }
-    if (userAnswer != null) {
-      if (userAnswer == answer) {
-        // ตอบถูก
-        countAnsCorrect++;
-        questionsAttempted++;
-        if (questionsAttempted >= questionLimit) {
-          _goSummaryPage();
-          return;
-        }
-        _generateRandomNumbers();
-      } else {
-        //ตอบผิด
-        setState(() {
-          showAnswer = true;
-          showSmallWrongIcon = false;
-          showAnswerText = false;
-        });
-        Future.delayed(const Duration(seconds: 1), () {
-          if (!mounted) return;
-          setState(() {
-            showSmallWrongIcon = true;
-          });
-
-          // --- Second Delay: For the answer text to appear (e.g., 200 milliseconds) ---
-          Future.delayed(const Duration(milliseconds: 200), () {
-            if (!mounted) return;
-            setState(() {
-              showAnswerText = true; // NEW: Now show the answer text
-            });
-
-            // --- Third Delay: For the entire feedback display (2 seconds) ---
-            Future.delayed(const Duration(seconds: 2), () {
-              if (mounted && showAnswer) {
-                // Ensure still in feedback state
-                questionsAttempted++;
-                if (questionsAttempted >= questionLimit) {
-                  _goSummaryPage();
-                  return;
-                }
-                _generateRandomNumbers(); // Generate new question (resets all flags)
-              }
-            });
-          });
-        });
-      }
     } else {
       return;
     }
+
+    setState(() {
+      hasCheckedAnswer = true; // Mark that an answer has been checked
+    });
+
+    if (userAnswer != null && userAnswer == answer) {
+      setState(() {
+        isAnswerCorrect = true;
+      });
+      // Optionally add a short delay before moving to the next question
+    } else {
+      setState(() {
+        isAnswerCorrect = false;
+        showAnswer = true;
+        showAnswerText = false;
+        showSmallWrongIcon = false;
+      });
+      Future.delayed(const Duration(seconds: 1), () {
+        if (!mounted) return;
+        setState(() {
+          showSmallWrongIcon = true;
+        });
+
+        Future.delayed(const Duration(milliseconds: 50), () {
+          if (!mounted) return;
+          setState(() {
+            showAnswerText = true;
+          });
+        });
+      });
+    }
+  }
+
+  void _nextStep() {
+    questionsAttempted++;
+    if (questionsAttempted >= questionLimit) {
+      _goSummaryPage();
+      return;
+    }
+    _generateRandomNumbers();
   }
 
   void _restart() {
@@ -439,13 +446,11 @@ class _LowerAndUpperScreenState extends State<LowerAndUpperScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // Determine if the Next button should be enabled
     bool isNextButtonEnabled = true;
     if (!isShowAll && isFlashCardAnimating) {
       isNextButtonEnabled = false; // Disable during flash card animation
     } else if (!isShowAll && !waitingToShowAnswer && !showAnswer) {
-      // In flash card mode, if not showing '?' or answer, button is disabled (waiting for sequence to finish)
-      // This case is actually covered by isFlashCardAnimating now.
+      isNextButtonEnabled = false;
     }
 
     return WidgetWrapper(
@@ -458,9 +463,8 @@ class _LowerAndUpperScreenState extends State<LowerAndUpperScreen> {
       avatarImg: null,
       displayMode: widget.setting.display,
       inputAnsController: inputAnsController,
-      onNextPressed: isNextButtonEnabled
-          ? (showAnswer ? _restart : _nextStep)
-          : null,
+      onNextPressed: _nextStep,
+      onCheckPressed: isNextButtonEnabled ? _checkAnswer : null,
       onPlayPauseFlashCard: _playPauseFlashCard,
       isPaused: isPaused,
       currentStep: currentStep,
@@ -473,6 +477,14 @@ class _LowerAndUpperScreenState extends State<LowerAndUpperScreen> {
       answerText: answer.toString(),
       currentMenuImage: 'assets/images/lowerandupper.png',
       isShowMode: true,
+      isSoundOn: isSoundOn,
+      onSoundToggle: (newValue) {
+        setState(() {
+          isSoundOn = newValue;
+        });
+      },
+      isAnswerCorrect: isAnswerCorrect,
+      hasCheckedAnswer: hasCheckedAnswer,
       child: numbers.isEmpty
           ? const NoDataScreen()
           : Center(

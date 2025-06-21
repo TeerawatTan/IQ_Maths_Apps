@@ -257,16 +257,6 @@ class _SummaryScreenState extends State<SummaryScreen> {
                         ),
                       ),
                     ),
-                    Padding(
-                      padding: EdgeInsets.only(right: 16),
-                      child: Text(
-                        "v.1.0.0",
-                        style: TextStyle(
-                          color: Colors.white10,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
                   ],
                 ),
               ),

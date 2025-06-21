@@ -1,3 +1,4 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:iq_maths_apps/models/maths_setting.dart';
@@ -32,6 +33,10 @@ class _RandomExerciseScreenState extends State<RandomExerciseScreen> {
   bool showSmallWrongIcon = false;
   bool showAnswerText = false;
   final auth = FirebaseAuth.instance;
+  bool isSoundOn = true;
+  final AudioPlayer audioPlayer = AudioPlayer();
+  bool isAnswerCorrect = false;
+  bool hasCheckedAnswer = false;
 
   @override
   void initState() {
@@ -48,7 +53,15 @@ class _RandomExerciseScreenState extends State<RandomExerciseScreen> {
   void dispose() {
     inputAnsController.dispose();
     shouldContinueFlashCard = false;
+    audioPlayer.dispose();
     super.dispose();
+  }
+
+  void _playTikSound() async {
+    if (isSoundOn) {
+      await audioPlayer.stop();
+      await audioPlayer.play(AssetSource('files/sound_tik.mp3'));
+    }
   }
 
   void _generateRandomNumbers() {
@@ -83,14 +96,18 @@ class _RandomExerciseScreenState extends State<RandomExerciseScreen> {
     showSmallWrongIcon = false;
     showAnswerText = false;
     inputAnsController.clear();
-
+    isAnswerCorrect = false;
+    hasCheckedAnswer = false;
     setState(() {
       isShowAll = widget.setting.display.toLowerCase() == 'show all';
     });
-
     if (!isShowAll) {
       shouldContinueFlashCard = true;
-      _startFlashCard();
+    } else {
+      setState(() {
+        currentStep = 0;
+      });
+      _playTikSound();
     }
   }
 
@@ -100,6 +117,7 @@ class _RandomExerciseScreenState extends State<RandomExerciseScreen> {
       waitingToShowAnswer = false;
       showAnswer = false;
       inputAnsController.clear();
+      hasCheckedAnswer = false;
     });
 
     final delaySeconds = int.tryParse(widget.setting.time.toString()) ?? 1;
@@ -112,6 +130,7 @@ class _RandomExerciseScreenState extends State<RandomExerciseScreen> {
       }
       if (!mounted || !shouldContinueFlashCard) return;
       setState(() => currentStep = i);
+      _playTikSound();
       await Future.delayed(delayDuration);
     }
 
@@ -133,51 +152,54 @@ class _RandomExerciseScreenState extends State<RandomExerciseScreen> {
     );
   }
 
-  void _nextStep() {
-    if (showAnswer) {
-      _restart();
+  void _checkAnswer() {
+    String input = inputAnsController.text;
+    int? userAnswer;
+    if (input.isNotEmpty) {
+      userAnswer = int.tryParse(input);
+    } else {
       return;
     }
 
-    final input = inputAnsController.text;
-    final userAnswer = int.tryParse(input);
+    setState(() {
+      hasCheckedAnswer = true; // Mark that an answer has been checked
+    });
 
-    if (userAnswer != null) {
-      if (userAnswer == answer) {
-        countAnsCorrect++;
-        questionsAttempted++;
-        if (questionsAttempted >= questionLimit) {
-          _goSummaryPage();
-        } else {
-          _generateRandomNumbers();
-        }
-      } else {
+    if (userAnswer != null && userAnswer == answer) {
+      setState(() {
+        isAnswerCorrect = true;
+      });
+      // Optionally add a short delay before moving to the next question
+    } else {
+      setState(() {
+        isAnswerCorrect = false;
+        showAnswer = true;
+        showAnswerText = false;
+        showSmallWrongIcon = false;
+      });
+      Future.delayed(const Duration(seconds: 1), () {
+        if (!mounted) return;
         setState(() {
-          showAnswer = true;
-          showSmallWrongIcon = false;
-          showAnswerText = false;
+          showSmallWrongIcon = true;
         });
-        Future.delayed(const Duration(seconds: 1), () {
+
+        Future.delayed(const Duration(milliseconds: 50), () {
           if (!mounted) return;
-          setState(() => showSmallWrongIcon = true);
-
-          Future.delayed(const Duration(milliseconds: 200), () {
-            if (!mounted) return;
-            setState(() => showAnswerText = true);
-
-            Future.delayed(const Duration(seconds: 2), () {
-              if (!mounted || !showAnswer) return;
-              questionsAttempted++;
-              if (questionsAttempted >= questionLimit) {
-                _goSummaryPage();
-              } else {
-                _generateRandomNumbers();
-              }
-            });
+          setState(() {
+            showAnswerText = true;
           });
         });
-      }
+      });
     }
+  }
+
+  void _nextStep() {
+    questionsAttempted++;
+    if (questionsAttempted >= questionLimit) {
+      _goSummaryPage();
+      return;
+    }
+    _generateRandomNumbers();
   }
 
   void _restart() {
@@ -194,13 +216,11 @@ class _RandomExerciseScreenState extends State<RandomExerciseScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // Determine if the Next button should be enabled
     bool isNextButtonEnabled = true;
     if (!isShowAll && isFlashCardAnimating) {
       isNextButtonEnabled = false; // Disable during flash card animation
     } else if (!isShowAll && !waitingToShowAnswer && !showAnswer) {
-      // In flash card mode, if not showing '?' or answer, button is disabled (waiting for sequence to finish)
-      // This case is actually covered by isFlashCardAnimating now.
+      isNextButtonEnabled = false;
     }
 
     return WidgetWrapper(
@@ -213,9 +233,8 @@ class _RandomExerciseScreenState extends State<RandomExerciseScreen> {
       avatarImg: null,
       displayMode: widget.setting.display,
       inputAnsController: inputAnsController,
-      onNextPressed: isNextButtonEnabled
-          ? (showAnswer ? _restart : _nextStep)
-          : null,
+      onNextPressed: _nextStep,
+      onCheckPressed: isNextButtonEnabled ? _checkAnswer : null,
       onPlayPauseFlashCard: _playPauseFlashCard,
       isPaused: isPaused,
       currentStep: currentStep,
@@ -228,6 +247,14 @@ class _RandomExerciseScreenState extends State<RandomExerciseScreen> {
       answerText: answer.toString(),
       currentMenuImage: 'assets/images/RandomExercise.png',
       isShowMode: true,
+      isSoundOn: isSoundOn,
+      onSoundToggle: (newValue) {
+        setState(() {
+          isSoundOn = newValue;
+        });
+      },
+      isAnswerCorrect: isAnswerCorrect,
+      hasCheckedAnswer: hasCheckedAnswer,
       child: numbers.isEmpty
           ? const NoDataScreen()
           : Center(

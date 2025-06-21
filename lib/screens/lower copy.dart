@@ -37,8 +37,6 @@ class _LowerScreenState extends State<LowerScreen> {
   final auth = FirebaseAuth.instance;
   bool isSoundOn = true;
   final AudioPlayer audioPlayer = AudioPlayer();
-  bool isAnswerCorrect = false;
-  bool hasCheckedAnswer = false;
 
   @override
   void initState() {
@@ -60,6 +58,7 @@ class _LowerScreenState extends State<LowerScreen> {
   }
 
   void _playTikSound() async {
+    print("isSoundOn : ${isSoundOn ? "On" : "Off"}");
     if (isSoundOn) {
       await audioPlayer.stop();
       await audioPlayer.play(AssetSource('files/sound_tik.mp3'));
@@ -88,18 +87,18 @@ class _LowerScreenState extends State<LowerScreen> {
     waitingToShowAnswer = false;
     showSmallWrongIcon = false;
     showAnswerText = false;
-    isAnswerCorrect = false;
-    hasCheckedAnswer = false;
     inputAnsController.clear();
     setState(() {
+      // Determine isShowAll here based on the current setting
       isShowAll = widget.setting.display.toLowerCase() == 'show all';
     });
     if (!isShowAll) {
       shouldContinueFlashCard = true;
       _startFlashCard();
     } else {
+      // If in show all mode, reset currentStep and immediately update UI
       setState(() {
-        currentStep = 0;
+        currentStep = 0; // Not strictly needed for showAll but good practice
       });
       _playTikSound();
     }
@@ -235,7 +234,6 @@ class _LowerScreenState extends State<LowerScreen> {
       waitingToShowAnswer = false; // Hide '?' during flash card display
       showAnswer = false; // Hide wrong answer feedback
       inputAnsController.clear(); // Clear input field
-      hasCheckedAnswer = false; // Reset when starting flash card
     });
 
     final int delaySeconds = int.tryParse(widget.setting.time.toString()) ?? 1;
@@ -284,54 +282,65 @@ class _LowerScreenState extends State<LowerScreen> {
     );
   }
 
-  void _checkAnswer() {
+  void _nextStep() {
+    if (showAnswer) {
+      _restart();
+      return;
+    }
+
     String input = inputAnsController.text;
     int? userAnswer;
     if (input.isNotEmpty) {
       userAnswer = int.tryParse(input);
-    } else {
-      return;
     }
-
-    setState(() {
-      hasCheckedAnswer = true; // Mark that an answer has been checked
-    });
-
-    if (userAnswer != null && userAnswer == answer) {
-      setState(() {
-        isAnswerCorrect = true;
-      });
-      // Optionally add a short delay before moving to the next question
-    } else {
-      setState(() {
-        isAnswerCorrect = false;
-        showAnswer = true;
-        showAnswerText = false;
-        showSmallWrongIcon = false;
-      });
-      Future.delayed(const Duration(seconds: 1), () {
-        if (!mounted) return;
+    if (userAnswer != null) {
+      if (userAnswer == answer) {
+        // ตอบถูก
+        countAnsCorrect++;
+        questionsAttempted++;
+        if (questionsAttempted >= questionLimit) {
+          _goSummaryPage();
+          return;
+        }
+        _generateRandomNumbers();
+      } else {
+        //ตอบผิด
         setState(() {
-          showSmallWrongIcon = true;
+          showAnswer = true;
+          showSmallWrongIcon = false;
+          showAnswerText = false;
         });
-
-        Future.delayed(const Duration(milliseconds: 50), () {
+        Future.delayed(const Duration(seconds: 1), () {
           if (!mounted) return;
           setState(() {
-            showAnswerText = true;
+            showSmallWrongIcon = true;
+          });
+
+          // --- Second Delay: For the answer text to appear (e.g., 200 milliseconds) ---
+          Future.delayed(const Duration(milliseconds: 200), () {
+            if (!mounted) return;
+            setState(() {
+              showAnswerText = true; // NEW: Now show the answer text
+            });
+
+            // --- Third Delay: For the entire feedback display (2 seconds) ---
+            Future.delayed(const Duration(seconds: 2), () {
+              if (mounted && showAnswer) {
+                // Ensure still in feedback state
+                questionsAttempted++;
+                if (questionsAttempted >= questionLimit) {
+                  _goSummaryPage();
+                  return;
+                }
+                _generateRandomNumbers(); // Generate new question (resets all flags)
+              }
+            });
           });
         });
-      });
-    }
-  }
-
-  void _nextStep() {
-    questionsAttempted++;
-    if (questionsAttempted >= questionLimit) {
-      _goSummaryPage();
+      }
+    } else {
       return;
     }
-    _generateRandomNumbers();
   }
 
   void _restart() {
@@ -355,7 +364,8 @@ class _LowerScreenState extends State<LowerScreen> {
     if (!isShowAll && isFlashCardAnimating) {
       isNextButtonEnabled = false; // Disable during flash card animation
     } else if (!isShowAll && !waitingToShowAnswer && !showAnswer) {
-      isNextButtonEnabled = false;
+      // In flash card mode, if not showing '?' or answer, button is disabled (waiting for sequence to finish)
+      // This case is actually covered by isFlashCardAnimating now.
     }
 
     return WidgetWrapper(
@@ -368,8 +378,9 @@ class _LowerScreenState extends State<LowerScreen> {
       avatarImg: null,
       displayMode: widget.setting.display,
       inputAnsController: inputAnsController,
-      onNextPressed: _nextStep,
-      onCheckPressed: isNextButtonEnabled ? _checkAnswer : null,
+      onNextPressed: isNextButtonEnabled
+          ? (showAnswer ? _restart : _nextStep)
+          : null,
       onPlayPauseFlashCard: _playPauseFlashCard,
       isPaused: isPaused,
       currentStep: currentStep,
@@ -388,8 +399,6 @@ class _LowerScreenState extends State<LowerScreen> {
           isSoundOn = newValue;
         });
       },
-      isAnswerCorrect: isAnswerCorrect,
-      hasCheckedAnswer: hasCheckedAnswer,
       child: numbers.isEmpty
           ? const NoDataScreen()
           : Center(

@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'package:audioplayers/audioplayers.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:iq_maths_apps/models/maths_setting.dart';
@@ -34,6 +35,9 @@ class _DivisionScreenState extends State<DivisionScreen> {
   bool showAnswerText = false;
   bool isLoggingOut = false; // State to manage logout loading
   final auth = FirebaseAuth.instance;
+  final AudioPlayer audioPlayer = AudioPlayer();
+  bool isAnswerCorrect = false;
+  bool hasCheckedAnswer = false;
 
   @override
   void initState() {
@@ -46,7 +50,15 @@ class _DivisionScreenState extends State<DivisionScreen> {
   void dispose() {
     inputAnsController.dispose();
     shouldContinueFlashCard = false;
+    audioPlayer.dispose();
     super.dispose();
+  }
+
+  void _playTikSound() async {
+    if (isSoundOn) {
+      await audioPlayer.stop();
+      await audioPlayer.play(AssetSource('files/sound_tik.mp3'));
+    }
   }
 
   void _generateRandomNumbers() {
@@ -88,6 +100,8 @@ class _DivisionScreenState extends State<DivisionScreen> {
     showSmallWrongIcon = false;
     showAnswerText = false;
     inputAnsController.clear();
+    isAnswerCorrect = false;
+    hasCheckedAnswer = false;
     setState(() {
       // Determine _isShowAll here based on the current setting
       isShowAll = widget.setting.display.toLowerCase() == 'show all';
@@ -99,6 +113,7 @@ class _DivisionScreenState extends State<DivisionScreen> {
       setState(() {
         currentStep = 0; // Not strictly needed for showAll but good practice
       });
+      _playTikSound();
     }
   }
 
@@ -115,65 +130,54 @@ class _DivisionScreenState extends State<DivisionScreen> {
     );
   }
 
-  void _nextStep() {
-    if (showAnswer) {
-      _restart();
-      return;
-    }
-
+  void _checkAnswer() {
     String input = inputAnsController.text;
     int? userAnswer;
     if (input.isNotEmpty) {
       userAnswer = int.tryParse(input);
-    }
-    if (userAnswer != null) {
-      if (userAnswer == answer) {
-        // ตอบถูก
-        questionLimitAnsCorrect++;
-        questionsAttempted++;
-        if (questionsAttempted >= questionLimit) {
-          _goSummaryPage();
-          return;
-        }
-        _generateRandomNumbers();
-      } else {
-        //ตอบผิด
-        setState(() {
-          showAnswer = true;
-          showSmallWrongIcon = false;
-          showAnswerText = false;
-        });
-        Future.delayed(const Duration(seconds: 1), () {
-          if (!mounted) return;
-          setState(() {
-            showSmallWrongIcon = true;
-          });
-
-          // --- Second Delay: For the answer text to appear (e.g., 200 milliseconds) ---
-          Future.delayed(const Duration(milliseconds: 200), () {
-            if (!mounted) return;
-            setState(() {
-              showAnswerText = true; // NEW: Now show the answer text
-            });
-
-            // --- Third Delay: For the entire feedback display (2 seconds) ---
-            Future.delayed(const Duration(seconds: 2), () {
-              if (mounted && showAnswer) {
-                // Ensure still in feedback state
-                questionsAttempted++;
-                if (questionsAttempted >= questionLimit) {
-                  _goSummaryPage();
-                  return;
-                }
-                _generateRandomNumbers(); // Generate new question (resets all flags)
-              }
-            });
-          });
-        });
-      }
     } else {
       return;
     }
+
+    setState(() {
+      hasCheckedAnswer = true; // Mark that an answer has been checked
+    });
+
+    if (userAnswer != null && userAnswer == answer) {
+      setState(() {
+        isAnswerCorrect = true;
+      });
+      // Optionally add a short delay before moving to the next question
+    } else {
+      setState(() {
+        isAnswerCorrect = false;
+        showAnswer = true;
+        showAnswerText = false;
+        showSmallWrongIcon = false;
+      });
+      Future.delayed(const Duration(seconds: 1), () {
+        if (!mounted) return;
+        setState(() {
+          showSmallWrongIcon = true;
+        });
+
+        Future.delayed(const Duration(milliseconds: 50), () {
+          if (!mounted) return;
+          setState(() {
+            showAnswerText = true;
+          });
+        });
+      });
+    }
+  }
+
+  void _nextStep() {
+    questionsAttempted++;
+    if (questionsAttempted >= questionLimit) {
+      _goSummaryPage();
+      return;
+    }
+    _generateRandomNumbers();
   }
 
   void _restart() {
@@ -186,8 +190,7 @@ class _DivisionScreenState extends State<DivisionScreen> {
     if (!isShowAll && isFlashCardAnimating) {
       isNextButtonEnabled = false; // Disable during flash card animation
     } else if (!isShowAll && !waitingToShowAnswer && !showAnswer) {
-      // In flash card mode, if not showing '?' or _answer, button is disabled (waiting for sequence to finish)
-      // This case is actually covered by _isFlashCardAnimating now.
+      isNextButtonEnabled = false;
     }
 
     return WidgetWrapper(
@@ -200,9 +203,8 @@ class _DivisionScreenState extends State<DivisionScreen> {
       avatarImg: null,
       displayMode: '',
       inputAnsController: inputAnsController,
-      onNextPressed: isNextButtonEnabled
-          ? (showAnswer ? _restart : _nextStep)
-          : null,
+      onNextPressed: _nextStep,
+      onCheckPressed: isNextButtonEnabled ? _checkAnswer : null,
       onPlayPauseFlashCard: null,
       isPaused: isPaused,
       currentStep: currentStep,
@@ -215,6 +217,14 @@ class _DivisionScreenState extends State<DivisionScreen> {
       answerText: answer.toString(),
       currentMenuImage: 'assets/images/division.png',
       isShowMode: false,
+      isSoundOn: isSoundOn,
+      onSoundToggle: (newValue) {
+        setState(() {
+          isSoundOn = newValue;
+        });
+      },
+      isAnswerCorrect: isAnswerCorrect,
+      hasCheckedAnswer: hasCheckedAnswer,
       child: numbers.isEmpty
           ? const NoDataScreen()
           : Center(

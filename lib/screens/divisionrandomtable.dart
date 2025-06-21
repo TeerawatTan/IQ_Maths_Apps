@@ -276,7 +276,6 @@ class _DivisionRandomTableScreenState extends State<DivisionRandomTableScreen> {
       onNextPressed: _submitAnswers,
       onNextsPressed: _nextQuestion,
       onCheckPressed: _submitAnswers,
-      showRightButtons: true,
       onPlayPauseFlashCard: null,
       isPaused: isPaused,
       currentStep: 0,
@@ -372,57 +371,6 @@ class _DivisionRandomTableScreenState extends State<DivisionRandomTableScreen> {
                 );
               },
             ),
-
-      onBackPressed: () {
-        showDialog(
-          context: context,
-          builder: (_) => AlertDialog(
-            title: const Text("Confirm Back"),
-            content: const Text(
-              "Are you sure you want to leave this exercise?",
-            ),
-            actions: [
-              TextButton(
-                child: const Text("Cancel"),
-                onPressed: () => Navigator.pop(context),
-              ),
-              TextButton(
-                child: const Text("Back"),
-                onPressed: () {
-                  Navigator.pop(context); // Close dialog
-                  Navigator.pop(context); // Go back to previous screen
-                },
-              ),
-            ],
-          ),
-        );
-      },
-      onExitPressed: () {
-        showDialog(
-          context: context,
-          builder: (_) => AlertDialog(
-            title: const Text("Exit App"),
-            content: const Text("Are you sure you want to exit the app?"),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.pop(context),
-                child: const Text("Cancel"),
-              ),
-              TextButton(
-                child: const Text("Exit"),
-                onPressed: () {
-                  Navigator.pop(context);
-                  if (Platform.isAndroid) {
-                    SystemNavigator.pop();
-                  } else if (Platform.isIOS) {
-                    exit(0);
-                  }
-                },
-              ),
-            ],
-          ),
-        );
-      },
     );
   }
 }

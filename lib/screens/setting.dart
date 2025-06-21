@@ -442,7 +442,7 @@ class _SettingScreenState extends State<SettingScreen> {
               MenuButton(
                 title: 'Register',
                 color: Colors.white,
-                onPressed: () => selectMenu('Register'),
+                onPressed: () => Navigator.pushNamed(context, "/Register"),
                 isSelected: selectedMenu == 'Register',
               ),
           ],

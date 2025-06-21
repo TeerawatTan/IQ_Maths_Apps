@@ -85,8 +85,6 @@ class WidgetWrapper extends StatefulWidget {
   final bool showRightButtons;
   final bool isSoundOn;
   final ValueChanged<bool>? onSoundToggle;
-  final bool isAnswerCorrect;
-  final bool hasCheckedAnswer;
 
   const WidgetWrapper({
     super.key,
@@ -117,8 +115,6 @@ class WidgetWrapper extends StatefulWidget {
     this.showRightButtons = false,
     this.isSoundOn = true,
     this.onSoundToggle,
-    this.isAnswerCorrect = false,
-    this.hasCheckedAnswer = false,
   });
 
   @override
@@ -573,12 +569,6 @@ class _WidgetWrapperState extends State<WidgetWrapper> {
     bool isSmallScreen,
     BoxConstraints constraints,
   ) {
-    Widget actionButtonImage;
-    if (widget.hasCheckedAnswer) {
-      actionButtonImage = Image.asset('assets/images/next.png', width: 120);
-    } else {
-      actionButtonImage = Image.asset('assets/images/check.png', width: 120);
-    }
     if (isSmallScreen) {
       // Layout แบบ Column สำหรับหน้าจอเล็ก
       return Column(
@@ -654,57 +644,51 @@ class _WidgetWrapperState extends State<WidgetWrapper> {
                     },
                   ),
                 ),
-                Positioned(
-                  right: 15,
-                  top: 0,
-                  bottom: 0,
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      if (!widget.showAnswer && widget.isAnswerCorrect)
-                        Image.asset(
-                          'assets/images/correct.png',
-                          width: 35,
-                          height: 35,
-                        ),
-                      if (widget.showSmallWrongIcon &&
-                          widget.showAnswer &&
-                          !widget.isAnswerCorrect)
-                        Image.asset(
-                          'assets/images/wrong.png',
-                          width: 35,
-                          height: 35,
-                        ),
-                      if (widget.showAnswerText && !widget.isAnswerCorrect)
-                        const SizedBox(width: 3),
-                      if (widget.showAnswerText && !widget.isAnswerCorrect)
-                        Stack(
-                          children: [
-                            Text(
-                              widget.answerText!,
-                              style: TextStyle(
-                                fontSize: 28,
-                                fontWeight: FontWeight.bold,
-                                foreground: Paint()
-                                  ..style = PaintingStyle.stroke
-                                  ..strokeWidth = 8
-                                  ..color = Colors.red
-                                  ..strokeJoin = StrokeJoin.round,
+
+                // Answer Display
+                if (widget.showAnswer)
+                  Positioned(
+                    right: 15,
+                    top: 0,
+                    bottom: 0,
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        if (widget.showSmallWrongIcon)
+                          Image.asset(
+                            'assets/images/wrong.png',
+                            width: 35,
+                            height: 35,
+                          ),
+                        if (widget.showSmallWrongIcon) const SizedBox(width: 3),
+                        if (widget.showAnswerText)
+                          Stack(
+                            children: [
+                              Text(
+                                widget.answerText!,
+                                style: TextStyle(
+                                  fontSize: 28,
+                                  fontWeight: FontWeight.bold,
+                                  foreground: Paint()
+                                    ..style = PaintingStyle.stroke
+                                    ..strokeWidth = 8
+                                    ..color = Colors.red
+                                    ..strokeJoin = StrokeJoin.round,
+                                ),
                               ),
-                            ),
-                            Text(
-                              widget.answerText!,
-                              style: const TextStyle(
-                                fontSize: 28,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white,
+                              Text(
+                                widget.answerText!,
+                                style: const TextStyle(
+                                  fontSize: 28,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                    ],
+                            ],
+                          ),
+                      ],
+                    ),
                   ),
-                ),
               ],
             ),
           ),
@@ -713,15 +697,7 @@ class _WidgetWrapperState extends State<WidgetWrapper> {
 
           // Next Button
           ElevatedButton(
-            onPressed: () {
-              if (widget.hasCheckedAnswer) {
-                widget.onNextPressed
-                    ?.call(); // Call onNextPressed if already checked
-              } else {
-                widget.onCheckPressed
-                    ?.call(); // Call onCheckPressed if not yet checked
-              }
-            },
+            onPressed: widget.onNextPressed as void Function()?,
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.transparent,
               elevation: 0,
@@ -731,7 +707,7 @@ class _WidgetWrapperState extends State<WidgetWrapper> {
                 borderRadius: BorderRadius.circular(30),
               ),
             ),
-            child: actionButtonImage,
+            child: Image.asset('assets/images/Next.png', width: 120),
           ),
         ],
       );
@@ -805,56 +781,51 @@ class _WidgetWrapperState extends State<WidgetWrapper> {
                         },
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(right: 20.0),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: <Widget>[
-                          if (!widget.showAnswer && widget.isAnswerCorrect)
-                            Image.asset(
-                              'assets/images/correct.png',
-                              width: 50,
-                              height: 50,
-                            ),
-                          if (widget.showAnswer && !widget.isAnswerCorrect)
-                            Image.asset(
-                              'assets/images/wrong.png',
-                              width: 50,
-                              height: 50,
-                            ),
-                          if (widget.showAnswerText && !widget.isAnswerCorrect)
-                            const SizedBox(width: 5),
-                          if (widget.showAnswerText && !widget.isAnswerCorrect)
-                            Flexible(
-                              child: Stack(
-                                children: [
-                                  Text(
-                                    widget.answerText!,
-                                    style: TextStyle(
-                                      fontSize: 36,
-                                      fontWeight: FontWeight.bold,
-                                      foreground: Paint()
-                                        ..style = PaintingStyle.stroke
-                                        ..strokeWidth = 10
-                                        ..color = Colors.red
-                                        ..strokeJoin = StrokeJoin.round,
-                                    ),
-                                  ),
-                                  Text(
-                                    widget.answerText!,
-                                    style: const TextStyle(
-                                      fontSize: 36,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                ],
+                    if (widget.showAnswer)
+                      Padding(
+                        padding: const EdgeInsets.only(right: 20.0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: <Widget>[
+                            if (widget.showSmallWrongIcon)
+                              Image.asset(
+                                'assets/images/wrong.png',
+                                width: 50,
+                                height: 50,
                               ),
-                            ),
-                        ],
+                            if (widget.showSmallWrongIcon)
+                              const SizedBox(width: 5),
+                            if (widget.showAnswerText)
+                              Flexible(
+                                child: Stack(
+                                  children: [
+                                    Text(
+                                      widget.answerText!,
+                                      style: TextStyle(
+                                        fontSize: 36,
+                                        fontWeight: FontWeight.bold,
+                                        foreground: Paint()
+                                          ..style = PaintingStyle.stroke
+                                          ..strokeWidth = 10
+                                          ..color = Colors.red
+                                          ..strokeJoin = StrokeJoin.round,
+                                      ),
+                                    ),
+                                    Text(
+                                      widget.answerText!,
+                                      style: const TextStyle(
+                                        fontSize: 36,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                          ],
+                        ),
                       ),
-                    ),
                   ],
                 ),
               ),
@@ -862,15 +833,7 @@ class _WidgetWrapperState extends State<WidgetWrapper> {
           ),
           const SizedBox(width: 12),
           ElevatedButton(
-            onPressed: () {
-              if (widget.hasCheckedAnswer) {
-                widget.onNextPressed
-                    ?.call(); // Call onNextPressed if already checked
-              } else {
-                widget.onCheckPressed
-                    ?.call(); // Call onCheckPressed if not yet checked
-              }
-            },
+            onPressed: widget.onNextPressed as void Function()?,
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.transparent,
               elevation: 0,
@@ -880,7 +843,7 @@ class _WidgetWrapperState extends State<WidgetWrapper> {
                 borderRadius: BorderRadius.circular(30),
               ),
             ),
-            child: actionButtonImage,
+            child: Image.asset('assets/images/Next.png', width: 150),
           ),
           const SizedBox(width: 12),
         ],

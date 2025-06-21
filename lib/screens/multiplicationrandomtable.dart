@@ -266,7 +266,6 @@ class _MultiplicationRandomTableScreenState
       onNextPressed: _submitAnswers,
       onNextsPressed: _nextQuestion,
       onCheckPressed: _submitAnswers,
-      showRightButtons: true,
       onPlayPauseFlashCard: null,
       isPaused: isPaused,
       currentStep: 0,
@@ -362,95 +361,6 @@ class _MultiplicationRandomTableScreenState
                 );
               },
             ),
-
-      // child: numbers.isEmpty
-      //     ? const NoDataScreen()
-      //     : Container(
-      //         margin: const EdgeInsets.only(
-      //           left: 180,
-      //           right: 250,
-      //           top: 60,
-      //           bottom: 10,
-      //         ),
-      //         height: 350,
-      //         decoration: BoxDecoration(
-      //           color: Colors.white,
-      //           borderRadius: BorderRadius.circular(7),
-      //           boxShadow: [
-      //             BoxShadow(
-      //               color: Colors.black.withOpacity(0.1),
-      //               blurRadius: 20,
-      //               offset: Offset(0, 8),
-      //               spreadRadius: 2,
-      //             ),
-      //           ],
-      //         ),
-      //         child: Column(
-      //           children: [
-      //             _buildHeaderRow(),
-      //             Expanded(
-      //               child: SingleChildScrollView(
-      //                 child: Column(
-      //                   children: List.generate(
-      //                     questionLimit,
-      //                     _buildQuestionRow,
-      //                   ),
-      //                 ),
-      //               ),
-      //             ),
-      //           ],
-      //         ),
-      //       ),
-      onBackPressed: () {
-        showDialog(
-          context: context,
-          builder: (_) => AlertDialog(
-            title: const Text("Confirm Back"),
-            content: const Text(
-              "Are you sure you want to leave this exercise?",
-            ),
-            actions: [
-              TextButton(
-                child: const Text("Cancel"),
-                onPressed: () => Navigator.pop(context),
-              ),
-              TextButton(
-                child: const Text("Back"),
-                onPressed: () {
-                  Navigator.pop(context); // Close dialog
-                  Navigator.pop(context); // Go back to previous screen
-                },
-              ),
-            ],
-          ),
-        );
-      },
-      onExitPressed: () {
-        showDialog(
-          context: context,
-          builder: (_) => AlertDialog(
-            title: const Text("Exit App"),
-            content: const Text("Are you sure you want to exit the app?"),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.pop(context),
-                child: const Text("Cancel"),
-              ),
-              TextButton(
-                child: const Text("Exit"),
-                onPressed: () {
-                  Navigator.pop(context);
-                  if (Platform.isAndroid) {
-                    SystemNavigator.pop();
-                  } else if (Platform.isIOS) {
-                    exit(0);
-                  }
-                },
-              ),
-            ],
-          ),
-        );
-      },
     );
   }
 }
