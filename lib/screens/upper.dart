@@ -354,10 +354,6 @@ class _UpperScreenState extends State<UpperScreen> {
     _generateRandomNumbers();
   }
 
-  void _restart() {
-    _generateRandomNumbers();
-  }
-
   void _playPauseFlashCard() {
     setState(() {
       isPaused = !isPaused;

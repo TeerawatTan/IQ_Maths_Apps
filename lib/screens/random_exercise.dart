@@ -202,10 +202,6 @@ class _RandomExerciseScreenState extends State<RandomExerciseScreen> {
     _generateRandomNumbers();
   }
 
-  void _restart() {
-    _generateRandomNumbers();
-  }
-
   void _playPauseFlashCard() {
     setState(() {
       isPaused = !isPaused;

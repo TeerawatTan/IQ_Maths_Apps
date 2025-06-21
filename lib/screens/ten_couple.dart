@@ -50,8 +50,8 @@ class _TenCoupleScreenState extends State<TenCoupleScreen> {
   }
 
   void _generateRandomNumbers() {
-    final digit1 = int.tryParse(widget.setting.digit1) ?? 2;
-    final digit2 = int.tryParse(widget.setting.digit2) ?? 1;
+    // final digit1 = int.tryParse(widget.setting.digit1) ?? 2;
+    // final digit2 = int.tryParse(widget.setting.digit2) ?? 1;
 
     numbers = [];
 

@@ -1,6 +1,4 @@
-import 'dart:io';
 import 'dart:math';
-import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:iq_maths_apps/models/maths_setting.dart';
@@ -345,7 +343,7 @@ class _DivisionRandomTableScreenState extends State<DivisionRandomTableScreen> {
                       borderRadius: BorderRadius.circular(7),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.black.withOpacity(0.1),
+                          color: Colors.black.withAlpha((255.0 * 0.1).round()),
                           blurRadius: 20,
                           offset: const Offset(0, 8),
                           spreadRadius: 2,

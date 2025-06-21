@@ -430,10 +430,6 @@ class _LowerAndUpperScreenState extends State<LowerAndUpperScreen> {
     _generateRandomNumbers();
   }
 
-  void _restart() {
-    _generateRandomNumbers();
-  }
-
   void _playPauseFlashCard() {
     setState(() {
       isPaused = !isPaused;

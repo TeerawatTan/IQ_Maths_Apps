@@ -1,4 +1,3 @@
-import 'dart:math';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:iq_maths_apps/models/maths_setting.dart';
@@ -50,8 +49,8 @@ class _FiveBuddyScreenState extends State<FiveBuddyScreen> {
   }
 
   void _generateRandomNumbers() {
-    final digit1 = int.tryParse(widget.setting.digit1) ?? 2;
-    final digit2 = int.tryParse(widget.setting.digit2) ?? 1;
+    // final digit1 = int.tryParse(widget.setting.digit1) ?? 2;
+    // final digit2 = int.tryParse(widget.setting.digit2) ?? 1;
 
     numbers = [];
 

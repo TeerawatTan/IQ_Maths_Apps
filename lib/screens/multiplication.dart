@@ -168,10 +168,6 @@ class _MultiplicationScreenState extends State<MultiplicationScreen> {
     _generateRandomNumbers();
   }
 
-  void _restart() {
-    _generateRandomNumbers();
-  }
-
   @override
   Widget build(BuildContext context) {
     bool isNextButtonEnabled = true;

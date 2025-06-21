@@ -180,10 +180,6 @@ class _DivisionScreenState extends State<DivisionScreen> {
     _generateRandomNumbers();
   }
 
-  void _restart() {
-    _generateRandomNumbers();
-  }
-
   @override
   Widget build(BuildContext context) {
     bool isNextButtonEnabled = true;
