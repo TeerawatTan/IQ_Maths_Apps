@@ -26,12 +26,12 @@ class _SettingScreenState extends State<SettingScreen> {
   String selectedTime = '';
   bool isSoundOn = true;
   bool isLoggingOut = false;
-  String? _selectedSubOptionLPLabel;
-  String? _selectedSubOptionFiveLabel;
-  String? _selectedSubOptionTenPlusLabel;
-  String? _selectedSubOptionTenMinusLabel;
-  String? _selectedSubOptionMultiLabel;
-  String? _selectedSubOptionDivLabel;
+  String? selectedSubOptionLPLabel;
+  String? selectedSubOptionFiveLabel;
+  String? selectedSubOptionTenPlusLabel;
+  String? selectedSubOptionTenMinusLabel;
+  String? selectedSubOptionMultiLabel;
+  String? selectedSubOptionDivLabel;
 
   String uname = FirebaseAuth.instance.currentUser == null
       ? ''
@@ -55,17 +55,17 @@ class _SettingScreenState extends State<SettingScreen> {
   bool _isSubOptionSelected() {
     switch (selectedMenu) {
       case 'LP':
-        return _selectedSubOptionLPLabel != null;
+        return selectedSubOptionLPLabel != null;
       case 'FIVE':
-        return _selectedSubOptionFiveLabel != null;
+        return selectedSubOptionFiveLabel != null;
       case 'TEN+':
-        return _selectedSubOptionTenPlusLabel != null;
+        return selectedSubOptionTenPlusLabel != null;
       case 'TEN-':
-        return _selectedSubOptionTenMinusLabel != null;
+        return selectedSubOptionTenMinusLabel != null;
       case 'MULTI':
-        return _selectedSubOptionMultiLabel != null;
+        return selectedSubOptionMultiLabel != null;
       case 'DIV':
-        return _selectedSubOptionDivLabel != null;
+        return selectedSubOptionDivLabel != null;
       default:
         return false;
     }
@@ -79,12 +79,12 @@ class _SettingScreenState extends State<SettingScreen> {
       selectedRow = '';
       selectedTime = '';
       // เคลียร์ค่าปุ่มย่อยที่ถูกเลือกด้วย
-      _selectedSubOptionLPLabel = null;
-      _selectedSubOptionFiveLabel = null;
-      _selectedSubOptionTenPlusLabel = null;
-      _selectedSubOptionTenMinusLabel = null;
-      _selectedSubOptionMultiLabel = null;
-      _selectedSubOptionDivLabel = null;
+      selectedSubOptionLPLabel = null;
+      selectedSubOptionFiveLabel = null;
+      selectedSubOptionTenPlusLabel = null;
+      selectedSubOptionTenMinusLabel = null;
+      selectedSubOptionMultiLabel = null;
+      selectedSubOptionDivLabel = null;
     });
   }
 
@@ -103,22 +103,22 @@ class _SettingScreenState extends State<SettingScreen> {
     setState(() {
       switch (menuKey) {
         case 'LP':
-          _selectedSubOptionLPLabel = label;
+          selectedSubOptionLPLabel = label;
           break;
         case 'FIVE':
-          _selectedSubOptionFiveLabel = label;
+          selectedSubOptionFiveLabel = label;
           break;
         case 'TEN+':
-          _selectedSubOptionTenPlusLabel = label;
+          selectedSubOptionTenPlusLabel = label;
           break;
         case 'TEN-':
-          _selectedSubOptionTenMinusLabel = label;
+          selectedSubOptionTenMinusLabel = label;
           break;
         case 'MULTI': // สำหรับปุ่มย่อยของ Multi
-          _selectedSubOptionMultiLabel = label;
+          selectedSubOptionMultiLabel = label;
           break;
         case 'DIV': // สำหรับปุ่มย่อยของ Div
-          _selectedSubOptionDivLabel = label;
+          selectedSubOptionDivLabel = label;
           break;
       }
     });
@@ -149,30 +149,30 @@ class _SettingScreenState extends State<SettingScreen> {
     // กำหนด route ตาม selectedMenu และ _selectedSubOptionXXXLabel
     switch (selectedMenu) {
       case 'LP':
-        if (_selectedSubOptionLPLabel == 'Lower') {
+        if (selectedSubOptionLPLabel == 'Lower') {
           routeToNavigate = '/Lower';
-        } else if (_selectedSubOptionLPLabel == 'Upper') {
+        } else if (selectedSubOptionLPLabel == 'Upper') {
           routeToNavigate = '/Upper';
-        } else if (_selectedSubOptionLPLabel == 'Lower&Upper') {
+        } else if (selectedSubOptionLPLabel == 'Lower&Upper') {
           routeToNavigate = '/LowerAndUpper';
         }
         break;
       case 'FIVE':
-        // if (_selectedSubOptionFiveLabel == 'Five +') {
+        // if (selectedSubOptionFiveLabel == 'Five +') {
         //   routeToNavigate = '/fivePlusRoute';
-        // } else if (_selectedSubOptionFiveLabel == 'Five -') {
+        // } else if (selectedSubOptionFiveLabel == 'Five -') {
         //   routeToNavigate = '/fiveMinusRoute';
-        // } else if (_selectedSubOptionFiveLabel == 'Five +-') {
+        // } else if (selectedSubOptionFiveLabel == 'Five +-') {
         //   routeToNavigate = '/fivePlusMinusRoute';
         // }
         routeToNavigate = '/FiveBuddy'; // No design
         break;
       case 'TEN+':
-        // if (_selectedSubOptionTenPlusLabel == '+9') {
+        // if (selectedSubOptionTenPlusLabel == '+9') {
         //   routeToNavigate = '/tenPlus9Route';
-        // } else if (_selectedSubOptionTenPlusLabel == '+8') {
+        // } else if (selectedSubOptionTenPlusLabel == '+8') {
         //   routeToNavigate = '/tenPlus8Route';
-        // } else if (_selectedSubOptionTenPlusLabel == 'Random Lesson') {
+        // } else if (selectedSubOptionTenPlusLabel == 'Random Lesson') {
         //   routeToNavigate = '/tenPlusRandomRoute';
         // }
         routeToNavigate = '/TenCouple';
@@ -181,17 +181,16 @@ class _SettingScreenState extends State<SettingScreen> {
         routeToNavigate = '/TenCouple';
         break;
       case 'MULTI':
-        if (_selectedSubOptionMultiLabel == 'Multiplication') {
+        if (selectedSubOptionMultiLabel == 'Multiplication') {
           routeToNavigate = '/Multiplication';
-        } else if (_selectedSubOptionMultiLabel ==
-            'MultiplicationRendomTable') {
+        } else if (selectedSubOptionMultiLabel == 'MultiplicationRendomTable') {
           routeToNavigate = '/MultiplicationRendomTable';
         }
         break;
       case 'DIV':
-        if (_selectedSubOptionDivLabel == 'Division') {
+        if (selectedSubOptionDivLabel == 'Division') {
           routeToNavigate = '/Division';
-        } else if (_selectedSubOptionMultiLabel == 'DivisionRandomTable') {
+        } else if (selectedSubOptionMultiLabel == 'DivisionRandomTable') {
           routeToNavigate = '/DivisionRandomTable';
         }
         break;
@@ -305,7 +304,7 @@ class _SettingScreenState extends State<SettingScreen> {
               if (selectedMenu == 'TEN-') _buildSubOptionsTenMinus(),
               if (selectedMenu == 'MULTI') _buildSubOptionsMulti(),
               if (selectedMenu == 'DIV') _buildSubOptionsDiv(),
-              _buildRightButton(),
+              if (selectedMenu.isNotEmpty) _buildRightButton(),
               _buildFooter(isSmallScreen),
             ],
           );
@@ -486,7 +485,7 @@ class _SettingScreenState extends State<SettingScreen> {
         padding: const EdgeInsets.all(12),
         child: SubOptionsLP(
           onSubOptionSelected: (label) => _onSubOptionSelected('LP', label),
-          selectedSubOptionLabel: _selectedSubOptionLPLabel,
+          selectedSubOptionLabel: selectedSubOptionLPLabel,
           digit1: selectedDigit1,
           digit2: selectedDigit2,
           display: selectedDisplay,
@@ -512,7 +511,7 @@ class _SettingScreenState extends State<SettingScreen> {
         padding: const EdgeInsets.all(12),
         child: SubOptionsFive(
           onSubOptionSelected: (label) => _onSubOptionSelected('FIVE', label),
-          selectedSubOptionLabel: _selectedSubOptionFiveLabel,
+          selectedSubOptionLabel: selectedSubOptionFiveLabel,
           digit1: selectedDigit1,
           digit2: selectedDigit2,
           display: selectedDisplay,
@@ -538,7 +537,7 @@ class _SettingScreenState extends State<SettingScreen> {
         padding: const EdgeInsets.all(12),
         child: SubOptionsTenPlus(
           onSubOptionSelected: (label) => _onSubOptionSelected('TEN+', label),
-          selectedSubOptionLabel: _selectedSubOptionTenPlusLabel,
+          selectedSubOptionLabel: selectedSubOptionTenPlusLabel,
           digit1: selectedDigit1,
           digit2: selectedDigit2,
           display: selectedDisplay,
@@ -564,7 +563,7 @@ class _SettingScreenState extends State<SettingScreen> {
         padding: const EdgeInsets.all(12),
         child: SubOptionsTenMinus(
           onSubOptionSelected: (label) => _onSubOptionSelected('TEN-', label),
-          selectedSubOptionLabel: _selectedSubOptionTenMinusLabel,
+          selectedSubOptionLabel: selectedSubOptionTenMinusLabel,
           digit1: selectedDigit1,
           digit2: selectedDigit2,
           display: selectedDisplay,
@@ -590,7 +589,7 @@ class _SettingScreenState extends State<SettingScreen> {
         padding: const EdgeInsets.all(12),
         child: SubOptionsMulti(
           onSubOptionSelected: (label) => _onSubOptionSelected('MULTI', label),
-          selectedSubOptionLabel: _selectedSubOptionMultiLabel,
+          selectedSubOptionLabel: selectedSubOptionMultiLabel,
           digit1: selectedDigit1,
           digit2: selectedDigit2,
           onSettingChanged: handleSettingChanged,
@@ -613,7 +612,7 @@ class _SettingScreenState extends State<SettingScreen> {
         padding: const EdgeInsets.all(12),
         child: SubOptionsDiv(
           onSubOptionSelected: (label) => _onSubOptionSelected('DIV', label),
-          selectedSubOptionLabel: _selectedSubOptionDivLabel,
+          selectedSubOptionLabel: selectedSubOptionDivLabel,
           digit1: selectedDigit1,
           digit2: selectedDigit2,
           onSettingChanged: handleSettingChanged,

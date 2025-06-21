@@ -35,30 +35,31 @@ class SubOptionsDiv extends StatelessWidget {
           ],
         ),
         const SizedBox(height: 15),
-        Align(
-          alignment: Alignment.centerLeft,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text(
-                "Setting",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-              ),
-              const SizedBox(height: 10),
-              SettingForm(
-                selectedDigit1: digit1,
-                selectedDigit2: digit2,
-                selectedDisplay: null,
-                selectedRow: null,
-                // selectedTime: time,
-                onChanged: onSettingChanged,
-                showDisplay: false,
-                showRow: false,
-                timeNextToDigit2: true,
-              ),
-            ],
+        if (selectedSubOptionLabel != null)
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  "Setting",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                ),
+                const SizedBox(height: 10),
+                SettingForm(
+                  selectedDigit1: digit1,
+                  selectedDigit2: digit2,
+                  selectedDisplay: null,
+                  selectedRow: null,
+                  // selectedTime: time,
+                  onChanged: onSettingChanged,
+                  showDisplay: false,
+                  showRow: false,
+                  showTime: false,
+                ),
+              ],
+            ),
           ),
-        ),
       ],
     );
   }

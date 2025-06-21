@@ -12,7 +12,7 @@ class SettingForm extends StatelessWidget {
 
   final bool showDisplay;
   final bool showRow;
-  final bool timeNextToDigit2;
+  final bool showTime;
 
   const SettingForm({
     super.key,
@@ -24,7 +24,7 @@ class SettingForm extends StatelessWidget {
     required this.onChanged,
     this.showDisplay = true,
     this.showRow = true,
-    this.timeNextToDigit2 = false,
+    required this.showTime,
   });
 
   @override
@@ -54,7 +54,7 @@ class SettingForm extends StatelessWidget {
               onChanged: (v) => onChanged("Digit 2", v ?? ''),
             ),
             const SizedBox(width: 10),
-            if (timeNextToDigit2)
+            if (!showRow && showDisplay && showTime)
               SettingDropdown(
                 label: "Time",
                 options: _timeOptions(),
@@ -73,25 +73,25 @@ class SettingForm extends StatelessWidget {
 
         const SizedBox(height: 10),
 
-        if (!timeNextToDigit2)
-          Row(
-            children: [
-              if (showRow)
-                SettingDropdown(
-                  label: "Row",
-                  options: _rowOptions(),
-                  selectedValue: selectedRow,
-                  onChanged: (v) => onChanged("Row", v ?? ''),
-                ),
-              if (showRow) const SizedBox(width: 10),
+        Row(
+          children: [
+            if (showRow)
+              SettingDropdown(
+                label: "Row",
+                options: _rowOptions(),
+                selectedValue: selectedRow,
+                onChanged: (v) => onChanged("Row", v ?? ''),
+              ),
+            if (showRow) const SizedBox(width: 10),
+            if (showRow && showTime)
               SettingDropdown(
                 label: "Time",
                 options: _timeOptions(),
                 selectedValue: selectedTime,
                 onChanged: (v) => onChanged("Time", v ?? ''),
               ),
-            ],
-          ),
+          ],
+        ),
       ],
     );
   }

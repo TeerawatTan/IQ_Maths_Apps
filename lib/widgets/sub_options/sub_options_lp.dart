@@ -41,29 +41,31 @@ class SubOptionsLP extends StatelessWidget {
         ),
         const SizedBox(height: 15),
         // Setting Section
-        Align(
-          alignment: Alignment.centerLeft,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text(
-                "Setting",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-              ),
-              const SizedBox(height: 10),
-              SettingForm(
-                selectedDigit1: digit1,
-                selectedDigit2: digit2,
-                selectedDisplay: display,
-                selectedRow: row,
-                selectedTime: time,
-                onChanged: onSettingChanged,
-                showDisplay: true,
-                showRow: true,
-              ),
-            ],
+        if (selectedSubOptionLabel != null)
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  "Setting",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                ),
+                const SizedBox(height: 10),
+                SettingForm(
+                  selectedDigit1: digit1,
+                  selectedDigit2: digit2,
+                  selectedDisplay: display,
+                  selectedRow: row,
+                  selectedTime: time,
+                  onChanged: onSettingChanged,
+                  showDisplay: true,
+                  showRow: true,
+                  showTime: true,
+                ),
+              ],
+            ),
           ),
-        ),
       ],
     );
   }

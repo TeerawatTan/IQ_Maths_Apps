@@ -44,29 +44,31 @@ class SubOptionsTenPlus extends StatelessWidget {
           children: _generateFiveTenCouplePlusButtons(),
         ),
         const SizedBox(height: 15),
-        Align(
-          alignment: Alignment.centerLeft,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text(
-                "Setting",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-              ),
-              const SizedBox(height: 10),
-              SettingForm(
-                selectedDigit1: digit1,
-                selectedDigit2: digit2,
-                selectedDisplay: display,
-                selectedRow: row,
-                selectedTime: time,
-                onChanged: onSettingChanged,
-                showDisplay: true,
-                showRow: true,
-              ),
-            ],
+        if (selectedSubOptionLabel != null)
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  "Setting",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                ),
+                const SizedBox(height: 10),
+                SettingForm(
+                  selectedDigit1: digit1,
+                  selectedDigit2: digit2,
+                  selectedDisplay: display,
+                  selectedRow: row,
+                  selectedTime: time,
+                  onChanged: onSettingChanged,
+                  showDisplay: true,
+                  showRow: true,
+                  showTime: true,
+                ),
+              ],
+            ),
           ),
-        ),
       ],
     );
   }
@@ -104,7 +106,7 @@ class SubOptionsTenPlus extends StatelessWidget {
       // Loop จาก 9 ลงไปถึง 1
       suffixes.add("Ten +$i");
     }
-    suffixes.add("Random Lesson"); // เพิ่มปุ่ม Random เข้าไปท้ายสุด
+    suffixes.add("Random Lesson Ten +"); // เพิ่มปุ่ม Random เข้าไปท้ายสุด
     return _buildRow(suffixes);
   }
 
@@ -115,7 +117,7 @@ class SubOptionsTenPlus extends StatelessWidget {
       // Loop จาก 9 ลงไปถึง 6
       suffixes.add("Five&Ten +$i");
     }
-    suffixes.add("Random Lesson"); // เพิ่มปุ่ม Random เข้าไปท้ายสุด
+    suffixes.add("Random Lesson Five&Ten +"); // เพิ่มปุ่ม Random เข้าไปท้ายสุด
     return _buildRow(suffixes);
   }
 
@@ -128,7 +130,8 @@ class SubOptionsTenPlus extends StatelessWidget {
             ? const Color(0xFF5271FF)
             : suffix.startsWith("Five&Ten")
             ? const Color(0xFF51E4D6)
-            : suffix == "Random Lesson"
+            : suffix == "Random Lesson Ten +" ||
+                  suffix == "Random Lesson Five&Ten +"
             ? Colors.red
             : Colors.white,
         onPressed: () => onSubOptionSelected(suffix),
