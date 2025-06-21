@@ -3,8 +3,8 @@ import '../setting_sub_option_button.dart';
 import '../setting_form.dart';
 
 class SubOptionsTenMinus extends StatelessWidget {
-  final void Function(String route) onNavigate;
-
+  final void Function(String label) onSubOptionSelected;
+  final String? selectedSubOptionLabel;
   final String? digit1;
   final String? digit2;
   final String? display;
@@ -14,7 +14,8 @@ class SubOptionsTenMinus extends StatelessWidget {
 
   const SubOptionsTenMinus({
     super.key,
-    required this.onNavigate,
+    required this.onSubOptionSelected,
+    required this.selectedSubOptionLabel,
     required this.digit1,
     required this.digit2,
     required this.display,
@@ -25,60 +26,54 @@ class SubOptionsTenMinus extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(10),
-      child: SingleChildScrollView(
-        padding: const EdgeInsets.all(10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            _buildSectionTitle("TEN COUPLE -"),
-            Wrap(
-              spacing: 10,
-              runSpacing: 10,
-              children: _generateTenCoupleMinusButtons(),
-            ),
-            const SizedBox(height: 10),
-            _buildSectionTitle("FIVE & TEN COUPLE -"),
-            Wrap(
-              spacing: 10,
-              runSpacing: 10,
-              children: _generateFiveTenCoupleMinusButtons(),
-            ),
-            const SizedBox(height: 15),
-            Wrap(
-              spacing: 10,
-              runSpacing: 10,
-              children: _buildRow(["Random Exercise"]),
-            ),
-            const SizedBox(height: 15),
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
-                    "Setting",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-                  ),
-                  const SizedBox(height: 10),
-                  SettingForm(
-                    selectedDigit1: digit1,
-                    selectedDigit2: digit2,
-                    selectedDisplay: display,
-                    selectedRow: row,
-                    selectedTime: time,
-                    onChanged: onSettingChanged,
-                    showDisplay: true,
-                    showRow: true,
-                  ),
-                ],
-              ),
-            ),
-          ],
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        _buildSectionTitle("TEN COUPLE -"),
+        Wrap(
+          spacing: 10,
+          runSpacing: 10,
+          children: _generateTenCoupleMinusButtons(),
         ),
-      ),
+        const SizedBox(height: 10),
+        _buildSectionTitle("FIVE & TEN COUPLE -"),
+        Wrap(
+          spacing: 10,
+          runSpacing: 10,
+          children: _generateFiveTenCoupleMinusButtons(),
+        ),
+        const SizedBox(height: 15),
+        Wrap(
+          spacing: 10,
+          runSpacing: 10,
+          children: _buildRow(["Random Exercise"]),
+        ),
+        const SizedBox(height: 15),
+        Align(
+          alignment: Alignment.centerLeft,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                "Setting",
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+              ),
+              const SizedBox(height: 10),
+              SettingForm(
+                selectedDigit1: digit1,
+                selectedDigit2: digit2,
+                selectedDisplay: display,
+                selectedRow: row,
+                selectedTime: time,
+                onChanged: onSettingChanged,
+                showDisplay: true,
+                showRow: true,
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 
@@ -131,22 +126,20 @@ class SubOptionsTenMinus extends StatelessWidget {
 
   List<Widget> _buildRow(List<String> suffixes) {
     return suffixes.map((suffix) {
-      return Padding(
-        padding: const EdgeInsets.only(right: 10),
-        child: SubOptionButton(
-          label: suffix,
-          route: '/TenCouple',
-          color: suffix.startsWith("Ten")
-              ? const Color(0xFF2196F3)
-              : suffix.startsWith("Five&Ten")
-              ? const Color(0xFF51E4D6)
-              : suffix == "Random Lesson"
-              ? Colors.red
-              : suffix == "Random Exercise"
-              ? const Color(0xFFF9CA24)
-              : Colors.white,
-          onPressed: () => onNavigate('/TenCouple'),
-        ),
+      bool isSelected = selectedSubOptionLabel == suffix;
+      return SubOptionButton(
+        label: suffix,
+        color: suffix.startsWith("Ten")
+            ? const Color(0xFF2196F3)
+            : suffix.startsWith("Five&Ten")
+            ? const Color(0xFF51E4D6)
+            : suffix == "Random Lesson"
+            ? Colors.red
+            : suffix == "Random Exercise"
+            ? const Color(0xFFF9CA24)
+            : Colors.white,
+        onPressed: () => onSubOptionSelected(suffix),
+        isHighlighted: isSelected,
       );
     }).toList();
   }

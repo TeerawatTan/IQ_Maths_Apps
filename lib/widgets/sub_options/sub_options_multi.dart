@@ -3,8 +3,8 @@ import '../setting_sub_option_button.dart';
 import '../setting_form.dart';
 
 class SubOptionsMulti extends StatelessWidget {
-  final void Function(String route) onNavigate;
-
+  final void Function(String label) onSubOptionSelected;
+  final String? selectedSubOptionLabel;
   final String? digit1;
   final String? digit2;
   // final String? time;
@@ -12,7 +12,8 @@ class SubOptionsMulti extends StatelessWidget {
 
   const SubOptionsMulti({
     super.key,
-    required this.onNavigate,
+    required this.onSubOptionSelected,
+    required this.selectedSubOptionLabel,
     required this.digit1,
     required this.digit2,
     // required this.time,
@@ -21,59 +22,54 @@ class SubOptionsMulti extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(12),
-      decoration: BoxDecoration(
-        color: Colors.white10,
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Wrap(
+          spacing: 10,
+          runSpacing: 10,
+          children: [
+            _buildButton('Multiplication'),
+            _buildButton('MultiplicationRendomTable'),
+          ],
+        ),
+        const SizedBox(height: 15),
+        Align(
+          alignment: Alignment.centerLeft,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SubOptionButton(
-                label: 'Multiplication',
-                route: '/Multiplication',
-                color: const Color(0xFF7ED957),
-                onPressed: () => onNavigate('/Multiplication'),
+              const Text(
+                "Setting",
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
               ),
-              const SizedBox(width: 40),
-              SubOptionButton(
-                label: 'MultiplicationRendomTable',
-                route: '/MultiplicationRendomTable',
-                color: const Color(0xFF7ED957),
-                onPressed: () => onNavigate('/MultiplicationRendomTable'),
+              const SizedBox(height: 10),
+              SettingForm(
+                selectedDigit1: digit1,
+                selectedDigit2: digit2,
+                selectedDisplay: null,
+                selectedRow: null,
+                // selectedTime: time,
+                onChanged: onSettingChanged,
+                showDisplay: false,
+                showRow: false,
+                timeNextToDigit2: true,
               ),
             ],
           ),
-          const SizedBox(height: 15),
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  "Setting",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-                ),
-                const SizedBox(height: 10),
-                SettingForm(
-                  selectedDigit1: digit1,
-                  selectedDigit2: digit2,
-                  selectedDisplay: null,
-                  selectedRow: null,
-                  // selectedTime: time,
-                  onChanged: onSettingChanged,
-                  showDisplay: false,
-                  showRow: false,
-                  timeNextToDigit2: true,
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildButton(String label) {
+    bool isSelected = selectedSubOptionLabel == label;
+    return SubOptionButton(
+      label: label,
+      color: const Color(0xFF7ED957),
+      onPressed: () => onSubOptionSelected(label),
+      isHighlighted: isSelected,
     );
   }
 }

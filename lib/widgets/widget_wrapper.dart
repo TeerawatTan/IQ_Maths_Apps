@@ -83,6 +83,8 @@ class WidgetWrapper extends StatefulWidget {
   final VoidCallback? onNextsPressed;
   final VoidCallback? onBackPressed;
   final bool showRightButtons;
+  final bool isSoundOn;
+  final ValueChanged<bool>? onSoundToggle;
 
   const WidgetWrapper({
     super.key,
@@ -111,6 +113,8 @@ class WidgetWrapper extends StatefulWidget {
     this.onNextsPressed,
     this.onBackPressed,
     this.showRightButtons = false,
+    this.isSoundOn = true,
+    this.onSoundToggle,
   });
 
   @override
@@ -119,6 +123,13 @@ class WidgetWrapper extends StatefulWidget {
 
 class _WidgetWrapperState extends State<WidgetWrapper> {
   bool _isLoggingOut = false;
+  late bool _currentIsSoundOn;
+
+  @override
+  void initState() {
+    super.initState();
+    _currentIsSoundOn = widget.isSoundOn;
+  }
 
   // Function สำหรับปรับขนาดฟอนต์ตามหน้าจอ
   double _getResponsiveFontSize(int textLength, bool isSmallScreen) {
@@ -490,16 +501,56 @@ class _WidgetWrapperState extends State<WidgetWrapper> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.only(
-                            right: isSmallScreen ? 10 : 16,
-                          ),
-                          child: Text(
-                            "v.1.0.0",
-                            style: TextStyle(
-                              color: Colors.white10,
-                              fontWeight: FontWeight.bold,
-                              fontSize: isSmallScreen ? 14 : 16,
-                            ),
+                          padding: EdgeInsets.only(right: 30),
+                          child: Row(
+                            children: [
+                              Text(
+                                "Sound ",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: isSmallScreen ? 14 : 16,
+                                ),
+                              ),
+                              Image.asset(
+                                'assets/images/sound_icon.png',
+                                width: 22,
+                                height: 22,
+                              ),
+                              Transform.scale(
+                                scale: 0.8,
+                                child: Switch(
+                                  value: _currentIsSoundOn,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      _currentIsSoundOn = value;
+                                      if (widget.onSoundToggle != null) {
+                                        widget.onSoundToggle!(
+                                          value,
+                                        ); // <--- เรียก callback เพื่อส่งค่ากลับไป
+                                      }
+                                    });
+                                  },
+                                  activeColor: Colors.white,
+                                  inactiveThumbColor: Colors.red,
+                                  inactiveTrackColor: const Color.fromARGB(
+                                    255,
+                                    235,
+                                    116,
+                                    107,
+                                  ),
+                                ),
+                              ),
+                              Text(
+                                _currentIsSoundOn ? "ON" : "OFF",
+                                style: TextStyle(
+                                  color: _currentIsSoundOn
+                                      ? Colors.white
+                                      : Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ],

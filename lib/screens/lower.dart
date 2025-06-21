@@ -1,3 +1,4 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:iq_maths_apps/datas/lower.dart';
@@ -34,6 +35,8 @@ class _LowerScreenState extends State<LowerScreen> {
   bool showSmallWrongIcon = false;
   bool showAnswerText = false;
   final auth = FirebaseAuth.instance;
+  bool isSoundOn = true;
+  final AudioPlayer audioPlayer = AudioPlayer();
 
   @override
   void initState() {
@@ -50,7 +53,16 @@ class _LowerScreenState extends State<LowerScreen> {
   void dispose() {
     inputAnsController.dispose();
     shouldContinueFlashCard = false;
+    audioPlayer.dispose();
     super.dispose();
+  }
+
+  void _playTikSound() async {
+    print("isSoundOn : ${isSoundOn ? "On" : "Off"}");
+    if (isSoundOn) {
+      await audioPlayer.stop();
+      await audioPlayer.play(AssetSource('files/sound_tik.mp3'));
+    }
   }
 
   void _generateRandomNumbers() {
@@ -88,6 +100,7 @@ class _LowerScreenState extends State<LowerScreen> {
       setState(() {
         currentStep = 0; // Not strictly needed for showAll but good practice
       });
+      _playTikSound();
     }
   }
 
@@ -244,6 +257,7 @@ class _LowerScreenState extends State<LowerScreen> {
       setState(() {
         currentStep = i; // Update currentStep to the number being displayed
       });
+      _playTikSound();
       await Future.delayed(delayDuration);
     }
 
@@ -379,6 +393,12 @@ class _LowerScreenState extends State<LowerScreen> {
       answerText: answer.toString(),
       currentMenuImage: 'assets/images/lower.png',
       isShowMode: true,
+      isSoundOn: isSoundOn,
+      onSoundToggle: (newValue) {
+        setState(() {
+          isSoundOn = newValue;
+        });
+      },
       child: numbers.isEmpty
           ? const NoDataScreen()
           : Center(

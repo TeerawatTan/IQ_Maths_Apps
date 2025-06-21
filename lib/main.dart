@@ -66,7 +66,7 @@ class MyApp extends StatelessWidget {
           return MaterialPageRoute(
             builder: (_) => DivisionScreen(setting: mathsSetting),
           );
-        } else if (settings.name == '/DivisionRendomTable') {
+        } else if (settings.name == '/DivisionRandomTable') {
           final mathsSetting = settings.arguments as MathsSetting;
           return MaterialPageRoute(
             builder: (_) => DivisionRandomTableScreen(setting: mathsSetting),

@@ -25,7 +25,14 @@ class _SettingScreenState extends State<SettingScreen> {
   String selectedRow = '';
   String selectedTime = '';
   bool isSoundOn = true;
-  bool _isLoggingOut = false; // State to manage logout loading
+  bool isLoggingOut = false;
+  String? _selectedSubOptionLPLabel;
+  String? _selectedSubOptionFiveLabel;
+  String? _selectedSubOptionTenPlusLabel;
+  String? _selectedSubOptionTenMinusLabel;
+  String? _selectedSubOptionMultiLabel;
+  String? _selectedSubOptionDivLabel;
+
   String uname = FirebaseAuth.instance.currentUser == null
       ? ''
       : FirebaseAuth.instance.currentUser!.email!.substring(
@@ -36,14 +43,32 @@ class _SettingScreenState extends State<SettingScreen> {
   bool isSettingValid() {
     if (selectedMenu == 'MULTI' || selectedMenu == 'DIV') {
       return selectedDigit1.isNotEmpty && selectedDigit2.isNotEmpty;
-      // && selectedTime.isNotEmpty;
     }
     return selectedDigit1.isNotEmpty &&
         selectedDigit2.isNotEmpty &&
         selectedDisplay.isNotEmpty &&
         selectedRow.isNotEmpty &&
-        (selectedDisplay == 'Show all' ? true : selectedTime.isNotEmpty);
-    //selectedTime.isNotEmpty;
+        (selectedDisplay == 'Show all' ? true : selectedTime.isNotEmpty) &&
+        _isSubOptionSelected();
+  }
+
+  bool _isSubOptionSelected() {
+    switch (selectedMenu) {
+      case 'LP':
+        return _selectedSubOptionLPLabel != null;
+      case 'FIVE':
+        return _selectedSubOptionFiveLabel != null;
+      case 'TEN+':
+        return _selectedSubOptionTenPlusLabel != null;
+      case 'TEN-':
+        return _selectedSubOptionTenMinusLabel != null;
+      case 'MULTI':
+        return _selectedSubOptionMultiLabel != null;
+      case 'DIV':
+        return _selectedSubOptionDivLabel != null;
+      default:
+        return false;
+    }
   }
 
   void clearSetting() {
@@ -53,6 +78,13 @@ class _SettingScreenState extends State<SettingScreen> {
       selectedDisplay = '';
       selectedRow = '';
       selectedTime = '';
+      // เคลียร์ค่าปุ่มย่อยที่ถูกเลือกด้วย
+      _selectedSubOptionLPLabel = null;
+      _selectedSubOptionFiveLabel = null;
+      _selectedSubOptionTenPlusLabel = null;
+      _selectedSubOptionTenMinusLabel = null;
+      _selectedSubOptionMultiLabel = null;
+      _selectedSubOptionDivLabel = null;
     });
   }
 
@@ -67,7 +99,32 @@ class _SettingScreenState extends State<SettingScreen> {
     });
   }
 
-  void navigateToRoute(String route) {
+  void _onSubOptionSelected(String menuKey, String label) {
+    setState(() {
+      switch (menuKey) {
+        case 'LP':
+          _selectedSubOptionLPLabel = label;
+          break;
+        case 'FIVE':
+          _selectedSubOptionFiveLabel = label;
+          break;
+        case 'TEN+':
+          _selectedSubOptionTenPlusLabel = label;
+          break;
+        case 'TEN-':
+          _selectedSubOptionTenMinusLabel = label;
+          break;
+        case 'MULTI': // สำหรับปุ่มย่อยของ Multi
+          _selectedSubOptionMultiLabel = label;
+          break;
+        case 'DIV': // สำหรับปุ่มย่อยของ Div
+          _selectedSubOptionDivLabel = label;
+          break;
+      }
+    });
+  }
+
+  void navigateToRoute() {
     if (!isSettingValid()) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
@@ -88,15 +145,87 @@ class _SettingScreenState extends State<SettingScreen> {
       return;
     }
 
-    final setting = MathsSetting(
-      digit1: selectedDigit1,
-      digit2: selectedDigit2,
-      display: selectedDisplay,
-      row: selectedRow,
-      time: selectedTime,
-    );
+    String? routeToNavigate;
+    // กำหนด route ตาม selectedMenu และ _selectedSubOptionXXXLabel
+    switch (selectedMenu) {
+      case 'LP':
+        if (_selectedSubOptionLPLabel == 'Lower') {
+          routeToNavigate = '/Lower';
+        } else if (_selectedSubOptionLPLabel == 'Upper') {
+          routeToNavigate = '/Upper';
+        } else if (_selectedSubOptionLPLabel == 'Lower&Upper') {
+          routeToNavigate = '/LowerAndUpper';
+        }
+        break;
+      case 'FIVE':
+        // if (_selectedSubOptionFiveLabel == 'Five +') {
+        //   routeToNavigate = '/fivePlusRoute';
+        // } else if (_selectedSubOptionFiveLabel == 'Five -') {
+        //   routeToNavigate = '/fiveMinusRoute';
+        // } else if (_selectedSubOptionFiveLabel == 'Five +-') {
+        //   routeToNavigate = '/fivePlusMinusRoute';
+        // }
+        routeToNavigate = '/FiveBuddy'; // No design
+        break;
+      case 'TEN+':
+        // if (_selectedSubOptionTenPlusLabel == '+9') {
+        //   routeToNavigate = '/tenPlus9Route';
+        // } else if (_selectedSubOptionTenPlusLabel == '+8') {
+        //   routeToNavigate = '/tenPlus8Route';
+        // } else if (_selectedSubOptionTenPlusLabel == 'Random Lesson') {
+        //   routeToNavigate = '/tenPlusRandomRoute';
+        // }
+        routeToNavigate = '/TenCouple';
+        break;
+      case 'TEN-':
+        routeToNavigate = '/TenCouple';
+        break;
+      case 'MULTI':
+        if (_selectedSubOptionMultiLabel == 'Multiplication') {
+          routeToNavigate = '/Multiplication';
+        } else if (_selectedSubOptionMultiLabel ==
+            'MultiplicationRendomTable') {
+          routeToNavigate = '/MultiplicationRendomTable';
+        }
+        break;
+      case 'DIV':
+        if (_selectedSubOptionDivLabel == 'Division') {
+          routeToNavigate = '/Division';
+        } else if (_selectedSubOptionMultiLabel == 'DivisionRandomTable') {
+          routeToNavigate = '/DivisionRandomTable';
+        }
+        break;
+      default:
+        break;
+    }
 
-    Navigator.pushNamed(context, route, arguments: setting);
+    if (routeToNavigate != null) {
+      final setting = MathsSetting(
+        digit1: selectedDigit1,
+        digit2: selectedDigit2,
+        display: selectedDisplay,
+        row: selectedRow,
+        time: selectedTime,
+      );
+      Navigator.pushNamed(context, routeToNavigate, arguments: setting);
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Center(
+            child: Text(
+              'Please select a sub-option or complete settings.',
+              style: TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
+            ),
+          ),
+          backgroundColor: Colors.orange,
+          duration: Duration(seconds: 2),
+        ),
+      );
+    }
   }
 
   void handleSettingChanged(String label, String value) {
@@ -124,7 +253,7 @@ class _SettingScreenState extends State<SettingScreen> {
   // Function to handle user logout
   Future<void> _logout() async {
     setState(() {
-      _isLoggingOut = true; // Show loading indicator
+      isLoggingOut = true; // Show loading indicator
     });
 
     try {
@@ -152,7 +281,7 @@ class _SettingScreenState extends State<SettingScreen> {
     } finally {
       if (mounted) {
         setState(() {
-          _isLoggingOut = false; // Hide loading indicator
+          isLoggingOut = false; // Hide loading indicator
         });
       }
     }
@@ -230,7 +359,7 @@ class _SettingScreenState extends State<SettingScreen> {
               width: 70,
               fit: BoxFit.cover,
             ),
-            _isLoggingOut
+            isLoggingOut
                 ? const SizedBox(
                     width: 30, // Match icon size
                     height: 30, // Match icon size
@@ -260,52 +389,64 @@ class _SettingScreenState extends State<SettingScreen> {
   );
 
   Widget _buildMainMenu() => Positioned(
-    top: 120,
+    top: 110,
     left: 50,
     right: 20,
     bottom: 50,
     child: SingleChildScrollView(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          MenuButton(
-            title: 'LOWER & UPPER',
-            color: const Color(0xFFFA7D9D),
-            onPressed: () => selectMenu('LP'),
-          ),
-          MenuButton(
-            title: 'FIVE BUDDY + -',
-            color: const Color(0xFF5CE1E6),
-            onPressed: () => selectMenu('FIVE'),
-          ),
-          MenuButton(
-            title: 'TEN COUPLE +',
-            color: const Color(0xFF5271FF),
-            onPressed: () => selectMenu('TEN+'),
-          ),
-          MenuButton(
-            title: 'TEN COUPLE -',
-            color: const Color(0xFF38B6FF),
-            onPressed: () => selectMenu('TEN-'),
-          ),
-          MenuButton(
-            title: 'Multiplication x',
-            color: const Color(0xFF7ED957),
-            onPressed: () => selectMenu('MULTI'),
-          ),
-          MenuButton(
-            title: 'Division',
-            color: const Color(0xFFC4A5FF),
-            onPressed: () => selectMenu('DIV'),
-          ),
-          if (uname.isNotEmpty && (uname.toLowerCase() == "iqmaths.official") ||
-              uname.toLowerCase() == "test")
+      child: Padding(
+        padding: const EdgeInsets.only(left: 8),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
             MenuButton(
-              title: 'Register',
-              color: Colors.white,
-              onPressed: () => Navigator.pushNamed(context, '/Register'),
+              title: 'LOWER & UPPER',
+              color: const Color(0xFFFA7D9D),
+              onPressed: () => selectMenu('LP'),
+              isSelected: selectedMenu == 'LP',
             ),
-        ],
+            MenuButton(
+              title: 'FIVE BUDDY + -',
+              color: const Color(0xFF5CE1E6),
+              onPressed: () => selectMenu('FIVE'),
+              isSelected: selectedMenu == 'FIVE',
+            ),
+            MenuButton(
+              title: 'TEN COUPLE +',
+              color: const Color(0xFF5271FF),
+              onPressed: () => selectMenu('TEN+'),
+              isSelected: selectedMenu == 'TEN+',
+            ),
+            MenuButton(
+              title: 'TEN COUPLE -',
+              color: const Color(0xFF38B6FF),
+              onPressed: () => selectMenu('TEN-'),
+              isSelected: selectedMenu == 'TEN-',
+            ),
+            MenuButton(
+              title: 'Multiplication x',
+              color: const Color(0xFF7ED957),
+              onPressed: () => selectMenu('MULTI'),
+              isSelected: selectedMenu == 'MULTI',
+            ),
+            MenuButton(
+              title: 'Division',
+              color: const Color(0xFFC4A5FF),
+              onPressed: () => selectMenu('DIV'),
+              isSelected: selectedMenu == 'DIV',
+            ),
+            if (uname.isNotEmpty &&
+                    (uname.toLowerCase() == "iqmaths.official") ||
+                uname.toLowerCase() == "test")
+              MenuButton(
+                title: 'Register',
+                color: Colors.white,
+                onPressed: () => selectMenu('Register'),
+                isSelected: selectedMenu == 'Register',
+              ),
+          ],
+        ),
       ),
     ),
   );
@@ -317,9 +458,7 @@ class _SettingScreenState extends State<SettingScreen> {
       mainAxisSize: MainAxisSize.min,
       children: [
         InkWell(
-          onTap: () {
-            // Navigator.pop(context);
-          },
+          onTap: navigateToRoute,
           child: Image.asset('assets/images/start.png', width: 120),
         ),
         SizedBox(height: 10),
@@ -334,86 +473,152 @@ class _SettingScreenState extends State<SettingScreen> {
   );
 
   Widget _buildSubOptionsLP() => Positioned(
-    top: 115,
+    top: 100,
     left: 270,
-    child: SubOptionsLP(
-      onNavigate: navigateToRoute,
-      digit1: selectedDigit1,
-      digit2: selectedDigit2,
-      display: selectedDisplay,
-      row: selectedRow,
-      time: selectedTime,
-      onSettingChanged: handleSettingChanged,
+    right: 120,
+    bottom: 50,
+    child: Container(
+      decoration: BoxDecoration(
+        color: Colors.white10,
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: SingleChildScrollView(
+        padding: const EdgeInsets.all(12),
+        child: SubOptionsLP(
+          onSubOptionSelected: (label) => _onSubOptionSelected('LP', label),
+          selectedSubOptionLabel: _selectedSubOptionLPLabel,
+          digit1: selectedDigit1,
+          digit2: selectedDigit2,
+          display: selectedDisplay,
+          row: selectedRow,
+          time: selectedTime,
+          onSettingChanged: handleSettingChanged,
+        ),
+      ),
     ),
   );
 
   Widget _buildSubOptionsFive() => Positioned(
-    top: 90,
+    top: 100,
     left: 270,
-    child: SubOptionsFive(
-      onNavigate: navigateToRoute,
-      digit1: selectedDigit1,
-      digit2: selectedDigit2,
-      display: selectedDisplay,
-      row: selectedRow,
-      time: selectedTime,
-      onSettingChanged: handleSettingChanged,
+    right: 120,
+    bottom: 50,
+    child: Container(
+      decoration: BoxDecoration(
+        color: Colors.white10,
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: SingleChildScrollView(
+        padding: const EdgeInsets.all(12),
+        child: SubOptionsFive(
+          onSubOptionSelected: (label) => _onSubOptionSelected('FIVE', label),
+          selectedSubOptionLabel: _selectedSubOptionFiveLabel,
+          digit1: selectedDigit1,
+          digit2: selectedDigit2,
+          display: selectedDisplay,
+          row: selectedRow,
+          time: selectedTime,
+          onSettingChanged: handleSettingChanged,
+        ),
+      ),
     ),
   );
 
   Widget _buildSubOptionsTenPlus() => Positioned(
-    top: 90,
+    top: 100,
     left: 270,
     right: 120,
-    bottom: 30,
-    child: SubOptionsTenPlus(
-      onNavigate: navigateToRoute,
-      digit1: selectedDigit1,
-      digit2: selectedDigit2,
-      display: selectedDisplay,
-      row: selectedRow,
-      time: selectedTime,
-      onSettingChanged: handleSettingChanged,
+    bottom: 50,
+    child: Container(
+      decoration: BoxDecoration(
+        color: Colors.white10,
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: SingleChildScrollView(
+        padding: const EdgeInsets.all(12),
+        child: SubOptionsTenPlus(
+          onSubOptionSelected: (label) => _onSubOptionSelected('TEN+', label),
+          selectedSubOptionLabel: _selectedSubOptionTenPlusLabel,
+          digit1: selectedDigit1,
+          digit2: selectedDigit2,
+          display: selectedDisplay,
+          row: selectedRow,
+          time: selectedTime,
+          onSettingChanged: handleSettingChanged,
+        ),
+      ),
     ),
   );
 
   Widget _buildSubOptionsTenMinus() => Positioned(
-    top: 90,
+    top: 100,
     left: 270,
     right: 120,
-    bottom: 30,
-    child: SubOptionsTenMinus(
-      onNavigate: navigateToRoute,
-      digit1: selectedDigit1,
-      digit2: selectedDigit2,
-      display: selectedDisplay,
-      row: selectedRow,
-      time: selectedTime,
-      onSettingChanged: handleSettingChanged,
+    bottom: 50,
+    child: Container(
+      decoration: BoxDecoration(
+        color: Colors.white10,
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: SingleChildScrollView(
+        padding: const EdgeInsets.all(12),
+        child: SubOptionsTenMinus(
+          onSubOptionSelected: (label) => _onSubOptionSelected('TEN-', label),
+          selectedSubOptionLabel: _selectedSubOptionTenMinusLabel,
+          digit1: selectedDigit1,
+          digit2: selectedDigit2,
+          display: selectedDisplay,
+          row: selectedRow,
+          time: selectedTime,
+          onSettingChanged: handleSettingChanged,
+        ),
+      ),
     ),
   );
 
   Widget _buildSubOptionsMulti() => Positioned(
-    top: 115,
+    top: 100,
     left: 270,
-    child: SubOptionsMulti(
-      onNavigate: navigateToRoute,
-      digit1: selectedDigit1,
-      digit2: selectedDigit2,
-      // time: selectedTime,
-      onSettingChanged: handleSettingChanged,
+    right: 120,
+    bottom: 50,
+    child: Container(
+      decoration: BoxDecoration(
+        color: Colors.white10,
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: SingleChildScrollView(
+        padding: const EdgeInsets.all(12),
+        child: SubOptionsMulti(
+          onSubOptionSelected: (label) => _onSubOptionSelected('MULTI', label),
+          selectedSubOptionLabel: _selectedSubOptionMultiLabel,
+          digit1: selectedDigit1,
+          digit2: selectedDigit2,
+          onSettingChanged: handleSettingChanged,
+        ),
+      ),
     ),
   );
 
   Widget _buildSubOptionsDiv() => Positioned(
-    top: 115,
+    top: 100,
     left: 270,
-    child: SubOptionsDiv(
-      onNavigate: navigateToRoute,
-      digit1: selectedDigit1,
-      digit2: selectedDigit2,
-      // time: selectedTime,
-      onSettingChanged: handleSettingChanged,
+    right: 120,
+    bottom: 50,
+    child: Container(
+      decoration: BoxDecoration(
+        color: Colors.white10,
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: SingleChildScrollView(
+        padding: const EdgeInsets.all(12),
+        child: SubOptionsDiv(
+          onSubOptionSelected: (label) => _onSubOptionSelected('DIV', label),
+          selectedSubOptionLabel: _selectedSubOptionDivLabel,
+          digit1: selectedDigit1,
+          digit2: selectedDigit2,
+          onSettingChanged: handleSettingChanged,
+        ),
+      ),
     ),
   );
 
