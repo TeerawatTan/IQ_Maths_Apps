@@ -96,6 +96,12 @@ class _SummaryScreenState extends State<SummaryScreen> {
 
   @override
   Widget build(BuildContext context) {
+    String userName = auth.currentUser == null
+        ? ''
+        : auth.currentUser!.email!.substring(
+            0,
+            auth.currentUser!.email!.indexOf('@'),
+          );
     return Scaffold(
       body: Stack(
         children: [
@@ -120,61 +126,66 @@ class _SummaryScreenState extends State<SummaryScreen> {
             child: Image.asset('assets/images/owl.png', width: 120),
           ),
           Positioned(
-            top: 30,
-            right: 20,
+            top: 25,
+            right: 0,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                Container(
-                  decoration: BoxDecoration(
-                    color: Colors.cyan[100],
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 12,
-                    vertical: 4,
-                  ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text(
-                        "ID : ${auth.currentUser == null ? '' : auth.currentUser!.email!.substring(0, auth.currentUser!.email!.indexOf('@'))}",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.pink,
+                Padding(
+                  padding: const EdgeInsets.only(left: 20.0, right: 0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.cyan[100],
+                      borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(30),
+                        bottomLeft: Radius.circular(30),
+                      ),
+                    ),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 12,
+                      vertical: 4,
+                    ),
+                    child: Row(
+                      children: [
+                        Text(
+                          "ID : $userName",
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.pink,
+                          ),
                         ),
-                      ),
-                      const SizedBox(width: 8),
-                      CircleAvatar(
-                        radius: 18,
-                        backgroundColor: Colors.black12,
-                        child: Icon(Icons.person, color: Colors.black),
-                      ),
-                      _isLoggingOut
-                          ? const SizedBox(
-                              width: 30, // Match icon size
-                              height: 30, // Match icon size
-                              child: CircularProgressIndicator(
-                                strokeWidth: 3,
-                                valueColor: AlwaysStoppedAnimation<Color>(
-                                  Color.fromARGB(255, 235, 99, 144),
+                        Image.asset(
+                          'assets/images/user_icon.png',
+                          width: 70,
+                          fit: BoxFit.cover,
+                        ),
+                        _isLoggingOut
+                            ? const SizedBox(
+                                width: 30, // Match icon size
+                                height: 30, // Match icon size
+                                child: CircularProgressIndicator(
+                                  strokeWidth: 3,
+                                  valueColor: AlwaysStoppedAnimation<Color>(
+                                    Color.fromARGB(255, 235, 99, 144),
+                                  ),
                                 ),
+                              )
+                            : IconButton(
+                                icon: const Icon(Icons.logout), // Logout icon
+                                iconSize: 30.0, // Adjust icon size as needed
+                                color: const Color.fromARGB(
+                                  255,
+                                  235,
+                                  99,
+                                  144,
+                                ), // Icon color
+                                onPressed: _logout, // Call the _logout function
+                                tooltip:
+                                    'Logout', // Text that appears on long press
                               ),
-                            )
-                          : IconButton(
-                              icon: const Icon(Icons.logout), // Logout icon
-                              iconSize: 30.0, // Adjust icon size as needed
-                              color: const Color.fromARGB(
-                                255,
-                                235,
-                                99,
-                                144,
-                              ), // Icon color
-                              onPressed: _logout, // Call the _logout function
-                              tooltip:
-                                  'Logout', // Text that appears on long press
-                            ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ],

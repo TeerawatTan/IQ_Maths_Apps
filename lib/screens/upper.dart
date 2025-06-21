@@ -318,6 +318,7 @@ class _UpperScreenState extends State<UpperScreen> {
     });
 
     if (userAnswer != null && userAnswer == answer) {
+      countAnsCorrect++;
       setState(() {
         isAnswerCorrect = true;
       });

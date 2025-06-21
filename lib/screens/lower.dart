@@ -298,6 +298,7 @@ class _LowerScreenState extends State<LowerScreen> {
     });
 
     if (userAnswer != null && userAnswer == answer) {
+      countAnsCorrect++;
       setState(() {
         isAnswerCorrect = true;
       });

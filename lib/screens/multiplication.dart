@@ -132,6 +132,7 @@ class _MultiplicationScreenState extends State<MultiplicationScreen> {
     });
 
     if (userAnswer != null && userAnswer == answer) {
+      countAnsCorrect++;
       setState(() {
         isAnswerCorrect = true;
       });

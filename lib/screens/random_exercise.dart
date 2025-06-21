@@ -166,6 +166,7 @@ class _RandomExerciseScreenState extends State<RandomExerciseScreen> {
     });
 
     if (userAnswer != null && userAnswer == answer) {
+      countAnsCorrect++;
       setState(() {
         isAnswerCorrect = true;
       });

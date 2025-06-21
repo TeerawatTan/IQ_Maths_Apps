@@ -394,6 +394,7 @@ class _LowerAndUpperScreenState extends State<LowerAndUpperScreen> {
     });
 
     if (userAnswer != null && userAnswer == answer) {
+      countAnsCorrect++;
       setState(() {
         isAnswerCorrect = true;
       });
