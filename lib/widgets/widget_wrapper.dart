@@ -365,7 +365,7 @@ class _WidgetWrapperState extends State<WidgetWrapper> {
                                   ),
                                 ),
                                 child: Image.asset(
-                                  'assets/images/check_icon.png',
+                                  'assets/images/check.png',
                                   width: 70,
                                 ),
                               ),
@@ -381,7 +381,7 @@ class _WidgetWrapperState extends State<WidgetWrapper> {
                                   ),
                                 ),
                                 child: Image.asset(
-                                  'assets/images/Next_icon.png',
+                                  'assets/images/Next.png',
                                   width: 120,
                                 ),
                               ),
@@ -707,7 +707,7 @@ class _WidgetWrapperState extends State<WidgetWrapper> {
                 borderRadius: BorderRadius.circular(30),
               ),
             ),
-            child: Image.asset('assets/images/next.png', width: 120),
+            child: Image.asset('assets/images/Next.png', width: 120),
           ),
         ],
       );
@@ -843,7 +843,7 @@ class _WidgetWrapperState extends State<WidgetWrapper> {
                 borderRadius: BorderRadius.circular(30),
               ),
             ),
-            child: Image.asset('assets/images/next.png', width: 150),
+            child: Image.asset('assets/images/Next.png', width: 150),
           ),
           const SizedBox(width: 12),
         ],
