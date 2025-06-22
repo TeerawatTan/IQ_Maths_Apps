@@ -161,12 +161,14 @@ class _MultiplicationScreenState extends State<MultiplicationScreen> {
   }
 
   void _nextStep() {
-    questionsAttempted++;
-    if (questionsAttempted >= questionLimit) {
-      _goSummaryPage();
-      return;
-    }
-    _generateRandomNumbers();
+    Future.delayed(const Duration(seconds: 1), () {
+      questionsAttempted++;
+      if (questionsAttempted >= questionLimit) {
+        _goSummaryPage();
+        return;
+      }
+      _generateRandomNumbers();
+    });
   }
 
   @override
@@ -188,7 +190,7 @@ class _MultiplicationScreenState extends State<MultiplicationScreen> {
       avatarImg: null,
       displayMode: '',
       inputAnsController: inputAnsController,
-      onNextPressed: showAnswerText ? _nextStep : null,
+      onNextPressed: isAnswerCorrect || showAnswerText ? _nextStep : null,
       onCheckPressed: isNextButtonEnabled ? _checkAnswer : null,
       onPlayPauseFlashCard: null,
       isPaused: isPaused,

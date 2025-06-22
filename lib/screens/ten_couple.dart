@@ -325,12 +325,14 @@ class _TenCoupleScreenState extends State<TenCoupleScreen> {
   }
 
   void _nextStep() {
-    questionsAttempted++;
-    if (questionsAttempted >= questionLimit) {
-      _goSummaryPage();
-      return;
-    }
-    _generateRandomNumbers();
+    Future.delayed(const Duration(seconds: 1), () {
+      questionsAttempted++;
+      if (questionsAttempted >= questionLimit) {
+        _goSummaryPage();
+        return;
+      }
+      _generateRandomNumbers();
+    });
   }
 
   void _playPauseFlashCard() {
@@ -362,7 +364,7 @@ class _TenCoupleScreenState extends State<TenCoupleScreen> {
       avatarImg: null,
       displayMode: '',
       inputAnsController: inputAnsController,
-      onNextPressed: showAnswerText ? _nextStep : null,
+      onNextPressed: isAnswerCorrect || showAnswerText ? _nextStep : null,
       onCheckPressed: isNextButtonEnabled ? _checkAnswer : null,
       onPlayPauseFlashCard: _playPauseFlashCard,
       isPaused: isPaused,

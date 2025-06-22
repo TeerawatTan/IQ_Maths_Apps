@@ -452,7 +452,7 @@ class _SettingScreenState extends State<SettingScreen> {
   );
 
   Widget _buildStartButton() => Positioned(
-    top: 250,
+    bottom: 110,
     right: 10,
     child: InkWell(
       onTap: navigateToRoute,
