@@ -304,7 +304,8 @@ class _SettingScreenState extends State<SettingScreen> {
               if (selectedMenu == 'TEN-') _buildSubOptionsTenMinus(),
               if (selectedMenu == 'MULTI') _buildSubOptionsMulti(),
               if (selectedMenu == 'DIV') _buildSubOptionsDiv(),
-              if (selectedMenu.isNotEmpty) _buildRightButton(),
+              if (selectedMenu.isNotEmpty) _buildStartButton(),
+              _buildExitAppButton(),
               _buildFooter(isSmallScreen),
             ],
           );
@@ -450,24 +451,23 @@ class _SettingScreenState extends State<SettingScreen> {
     ),
   );
 
-  Widget _buildRightButton() => Positioned(
+  Widget _buildStartButton() => Positioned(
     top: 250,
     right: 10,
-    child: Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        InkWell(
-          onTap: navigateToRoute,
-          child: Image.asset('assets/images/start.png', width: 120),
-        ),
-        SizedBox(height: 10),
-        InkWell(
-          onTap: () {
-            SystemNavigator.pop();
-          },
-          child: Image.asset('assets/images/exit.png', width: 120),
-        ),
-      ],
+    child: InkWell(
+      onTap: navigateToRoute,
+      child: Image.asset('assets/images/start.png', width: 120),
+    ),
+  );
+
+  Widget _buildExitAppButton() => Positioned(
+    bottom: 50,
+    right: 10,
+    child: InkWell(
+      onTap: () {
+        SystemNavigator.pop();
+      },
+      child: Image.asset('assets/images/exit.png', width: 120),
     ),
   );
 

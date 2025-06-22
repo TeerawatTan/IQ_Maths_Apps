@@ -365,7 +365,7 @@ class _LowerScreenState extends State<LowerScreen> {
       avatarImg: null,
       displayMode: widget.setting.display,
       inputAnsController: inputAnsController,
-      onNextPressed: _nextStep,
+      onNextPressed: showAnswerText ? _nextStep : null,
       onCheckPressed: isNextButtonEnabled ? _checkAnswer : null,
       onPlayPauseFlashCard: _playPauseFlashCard,
       isPaused: isPaused,

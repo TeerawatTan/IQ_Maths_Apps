@@ -362,7 +362,7 @@ class _TenCoupleScreenState extends State<TenCoupleScreen> {
       avatarImg: null,
       displayMode: '',
       inputAnsController: inputAnsController,
-      onNextPressed: _nextStep,
+      onNextPressed: showAnswerText ? _nextStep : null,
       onCheckPressed: isNextButtonEnabled ? _checkAnswer : null,
       onPlayPauseFlashCard: _playPauseFlashCard,
       isPaused: isPaused,

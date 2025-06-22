@@ -188,7 +188,7 @@ class _MultiplicationScreenState extends State<MultiplicationScreen> {
       avatarImg: null,
       displayMode: '',
       inputAnsController: inputAnsController,
-      onNextPressed: _nextStep,
+      onNextPressed: showAnswerText ? _nextStep : null,
       onCheckPressed: isNextButtonEnabled ? _checkAnswer : null,
       onPlayPauseFlashCard: null,
       isPaused: isPaused,
