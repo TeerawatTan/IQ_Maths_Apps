@@ -123,6 +123,7 @@ class _LoginScreenState extends State<LoginScreen> {
           );
         }
         if (snapshot.connectionState == ConnectionState.done) {
+          bool isShowKeyboard = MediaQuery.of(context).viewInsets.bottom != 0;
           return Scaffold(
             body: Stack(
               children: [
@@ -132,46 +133,67 @@ class _LoginScreenState extends State<LoginScreen> {
                     fit: BoxFit.cover,
                   ),
                 ),
-                Positioned(
-                  top: 40,
-                  left: 20,
-                  child: Image.asset('assets/images/logo.png', width: 100),
-                ),
-                Positioned(
-                  top: 40,
-                  right: 20,
-                  child: Image.asset(
-                    'assets/images/maths_icon3.png',
-                    width: 90,
+                if (!isShowKeyboard)
+                  Positioned(
+                    top: 40,
+                    left: 20,
+                    child: Image.asset('assets/images/logo.png', width: 100),
                   ),
-                ),
-                Positioned(
-                  bottom: 40,
-                  left: 0,
-                  child: Image.asset(
-                    'assets/images/maths_icon2.png',
-                    width: 150,
-                  ),
-                ),
-                Positioned(
-                  bottom: 40,
-                  right: 0,
-                  child: Image.asset(
-                    'assets/images/maths_icon4.png',
-                    width: 120,
-                  ),
-                ),
-                Positioned(
-                  top: -8,
-                  left: 0,
-                  right: 0,
-                  child: Center(
+                if (!isShowKeyboard)
+                  Positioned(
+                    top: 40,
+                    right: 20,
                     child: Image.asset(
-                      'assets/images/iq_maths_icon.png',
-                      width: 150,
+                      'assets/images/maths_icon3.png',
+                      width: 90,
                     ),
                   ),
-                ),
+                if (!isShowKeyboard)
+                  Positioned(
+                    top: -8,
+                    left: 0,
+                    right: 0,
+                    child: Center(
+                      child: Image.asset(
+                        'assets/images/iq_maths_icon.png',
+                        width: 150,
+                      ),
+                    ),
+                  ),
+                !isShowKeyboard
+                    ? Positioned(
+                        bottom: 40,
+                        left: 0,
+                        child: Image.asset(
+                          'assets/images/maths_icon2.png',
+                          width: 150,
+                        ),
+                      )
+                    : Positioned(
+                        bottom: 0,
+                        left: 0,
+                        child: Image.asset(
+                          'assets/images/maths_icon2.png',
+                          width: 150,
+                        ),
+                      ),
+                !isShowKeyboard
+                    ? Positioned(
+                        bottom: 40,
+                        right: 0,
+                        child: Image.asset(
+                          'assets/images/maths_icon4.png',
+                          width: 120,
+                        ),
+                      )
+                    : Positioned(
+                        bottom: 0,
+                        right: 0,
+                        child: Image.asset(
+                          'assets/images/maths_icon4.png',
+                          width: 120,
+                        ),
+                      ),
                 Center(
                   child: Form(
                     key: formKey,
@@ -264,35 +286,36 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                 ),
-                Positioned(
-                  bottom: 0,
-                  left: 0,
-                  right: 0,
-                  child: Container(
-                    color: Colors.lightBlueAccent,
-                    height: 40,
-                    padding: const EdgeInsets.symmetric(horizontal: 12),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Text(
-                          "Intelligent Quick Maths (IQM)",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
+                if (!isShowKeyboard)
+                  Positioned(
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    child: Container(
+                      color: Colors.lightBlueAccent,
+                      height: 40,
+                      padding: const EdgeInsets.symmetric(horizontal: 12),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Text(
+                            "Intelligent Quick Maths (IQM)",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
-                        ),
-                        const Text(
-                          "v.1.0.0",
-                          style: TextStyle(
-                            color: Colors.white10,
-                            fontWeight: FontWeight.bold,
+                          const Text(
+                            "v.1.0.0",
+                            style: TextStyle(
+                              color: Colors.white10,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
-                ),
               ],
             ),
           );

@@ -81,8 +81,6 @@ class WidgetWrapper extends StatefulWidget {
   final bool showExitButton;
   final VoidCallback? onCheckPressed;
   final VoidCallback? onNextsPressed;
-  final VoidCallback? onBackPressed;
-  final bool showRightButtons;
   final bool isSoundOn;
   final ValueChanged<bool>? onSoundToggle;
   final bool isAnswerCorrect;
@@ -113,8 +111,6 @@ class WidgetWrapper extends StatefulWidget {
     this.showExitButton = true,
     this.onCheckPressed,
     this.onNextsPressed,
-    this.onBackPressed,
-    this.showRightButtons = false,
     this.isSoundOn = true,
     this.onSoundToggle,
     this.isAnswerCorrect = false,
@@ -350,99 +346,6 @@ class _WidgetWrapperState extends State<WidgetWrapper> {
                           ],
                         ),
                       ),
-                    if (widget.showRightButtons)
-                      Positioned(
-                        top: 0,
-                        right: 0,
-                        child: Container(
-                          padding: const EdgeInsets.only(top: 30, right: 10),
-                          child: Column(
-                            children: [
-                              ElevatedButton(
-                                onPressed: widget.onCheckPressed,
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.transparent,
-                                  elevation: 0,
-                                  padding: EdgeInsets.zero,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(8),
-                                  ),
-                                ),
-                                child: Image.asset(
-                                  'assets/images/check.png',
-                                  width: 70,
-                                ),
-                              ),
-                              const SizedBox(height: 1),
-                              ElevatedButton(
-                                onPressed: widget.onNextsPressed,
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.transparent,
-                                  elevation: 0,
-                                  padding: EdgeInsets.zero,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(8),
-                                  ),
-                                ),
-                                child: Image.asset(
-                                  'assets/images/Next.png',
-                                  width: 120,
-                                ),
-                              ),
-                              const SizedBox(height: 1),
-                              ElevatedButton(
-                                onPressed: widget.onBackPressed,
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.transparent,
-                                  elevation: 0,
-                                  padding: EdgeInsets.zero,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(8),
-                                  ),
-                                ),
-                                child: Image.asset(
-                                  'assets/images/back_icon.png',
-                                  width: 120,
-                                ),
-                              ),
-                              const SizedBox(height: 1),
-                              ElevatedButton(
-                                onPressed: widget.onExitPressed,
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.transparent,
-                                  elevation: 0,
-                                  padding: EdgeInsets.zero,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(8),
-                                  ),
-                                ),
-                                child: Image.asset(
-                                  'assets/images/exit.png',
-                                  width: 90,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-
-                    // Flash Card Controls
-                    if (widget.displayMode.toLowerCase() == "flash card" &&
-                        !widget.waitingToShowAnswer)
-                      Padding(
-                        padding: const EdgeInsets.only(right: 30),
-                        child: IconButton(
-                          icon: Image.asset(
-                            widget.isPaused
-                                ? 'assets/images/play_icon.png'
-                                : 'assets/images/pause_icon.png',
-                            width: _getResponsiveImageSize(100, isSmallScreen),
-                            height: _getResponsiveImageSize(100, isSmallScreen),
-                          ),
-                          onPressed:
-                              widget.onPlayPauseFlashCard as void Function()?,
-                        ),
-                      ),
 
                     // Step Counter
                     if (widget.isPaused &&
@@ -483,7 +386,6 @@ class _WidgetWrapperState extends State<WidgetWrapper> {
                       ),
                     ),
 
-                  // const SizedBox(height: 5),
                   // Bottom Bar
                   Container(
                     height: isSmallScreen ? 32 : 35,
@@ -579,6 +481,7 @@ class _WidgetWrapperState extends State<WidgetWrapper> {
     } else {
       actionButtonImage = Image.asset('assets/images/check.png', width: 120);
     }
+
     if (isSmallScreen) {
       // Layout แบบ Column สำหรับหน้าจอเล็ก
       return Column(

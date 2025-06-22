@@ -416,14 +416,21 @@ class _LowerScreenState extends State<LowerScreen> {
 
                       fontSize = fontSize.clamp(25, 120);
 
-                      return Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: numbers.map((e) {
-                          return Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 1),
-                            child: buildOutlinedText("$e", fontSize: fontSize),
-                          );
-                        }).toList(),
+                      return SingleChildScrollView(
+                        reverse: true,
+                        padding: EdgeInsets.all(10),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: numbers.map((e) {
+                            return Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 1),
+                              child: buildOutlinedText(
+                                "$e",
+                                fontSize: fontSize,
+                              ),
+                            );
+                          }).toList(),
+                        ),
                       );
                     }()
                   : isFlashCardAnimating
