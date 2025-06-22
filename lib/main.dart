@@ -73,7 +73,8 @@ class MyApp extends StatelessWidget {
             builder: (_) => DivisionRandomTableScreen(setting: mathsSetting),
           );
         } else if (settings.name == '/Setting') {
-          return MaterialPageRoute(builder: (_) => const SettingScreen());
+          final uid = settings.arguments as String?;
+          return MaterialPageRoute(builder: (_) => SettingScreen(uid: uid));
         } else if (settings.name == '/Register') {
           return MaterialPageRoute(builder: (_) => const RegisterScreen());
         } else if (settings.name == '/FiveBuddy') {

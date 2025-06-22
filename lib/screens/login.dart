@@ -1,6 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:iq_maths_apps/services/auth_service.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -66,48 +67,32 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   Future<void> _login() async {
-    // Use custom validation instead of form validation
-    if (_validateInputs()) {
-      setState(() {
-        _isLoading = true; // Start loading
-      });
+    if (!_validateInputs()) return;
 
-      try {
-        await FirebaseAuth.instance.signInWithEmailAndPassword(
-          email: emailController.text.trim(),
-          password: passwordController.text.trim(),
+    setState(() => _isLoading = true);
+
+    final AuthService authService = AuthService();
+
+    bool success = await authService.login(
+      emailController.text.trim(),
+      passwordController.text,
+    );
+
+    setState(() => _isLoading = false);
+
+    if (success) {
+      User? user = FirebaseAuth.instance.currentUser;
+      if (user != null) {
+        Navigator.pushReplacementNamed(
+          context,
+          '/Setting',
+          arguments: user.uid,
         );
-        // If login is successful, navigate to the Setting screen
-        if (mounted) {
-          Navigator.pushReplacementNamed(context, '/Setting');
-        }
-      } on FirebaseAuthException catch (e) {
-        String message;
-        if (e.code == 'user-not-found') {
-          message = 'No user found for that email.';
-        } else if (e.code == 'wrong-password') {
-          message = 'Wrong password provided for that user.';
-        } else if (e.code == 'invalid-email') {
-          message = 'The email address is not valid.';
-        } else {
-          message = 'Login failed: ${e.message}';
-        }
-        if (mounted) {
-          ScaffoldMessenger.of(
-            context,
-          ).showSnackBar(SnackBar(content: Text(message)));
-        }
-      } catch (e) {
-        if (mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('An unexpected error occurred: $e')),
-          );
-        }
-      } finally {
-        setState(() {
-          _isLoading = false; // Stop loading
-        });
       }
+    } else {
+      _showValidationError(
+        "บัญชีนี้ถูกใช้งานจากอุปกรณ์อื่น หรือข้อมูลไม่ถูกต้อง",
+      );
     }
   }
 

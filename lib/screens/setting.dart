@@ -1,6 +1,10 @@
+import 'dart:async';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:iq_maths_apps/services/auth_service.dart';
 import 'package:iq_maths_apps/widgets/setting_menu_button.dart';
 import 'package:iq_maths_apps/widgets/sub_options/sub_options_lp.dart';
 import 'package:iq_maths_apps/widgets/sub_options/sub_options_five.dart';
@@ -11,7 +15,8 @@ import 'package:iq_maths_apps/widgets/sub_options/sub_options_div.dart';
 import 'package:iq_maths_apps/models/maths_setting.dart';
 
 class SettingScreen extends StatefulWidget {
-  const SettingScreen({super.key});
+  final String? uid;
+  const SettingScreen({super.key, this.uid});
 
   @override
   State<SettingScreen> createState() => _SettingScreenState();
@@ -39,6 +44,59 @@ class _SettingScreenState extends State<SettingScreen> {
           0,
           FirebaseAuth.instance.currentUser!.email!.indexOf('@'),
         );
+
+  StreamSubscription<DocumentSnapshot>? _sessionListener;
+
+  @override
+  void initState() {
+    super.initState();
+    final uid = widget.uid;
+    if (uid != null) {
+      listenForSessionChanges(context, uid);
+    }
+  }
+
+  @override
+  void dispose() {
+    _sessionListener?.cancel();
+    super.dispose();
+  }
+
+  Future<void> listenForSessionChanges(BuildContext context, String uid) async {
+    final currentDeviceId = await AuthService().getDeviceId();
+
+    _sessionListener = FirebaseFirestore.instance
+        .collection('users')
+        .doc(uid)
+        .snapshots()
+        .listen((doc) async {
+          if (doc.exists) {
+            final remoteDeviceId = doc.get('deviceId');
+            if (remoteDeviceId != currentDeviceId) {
+              await FirebaseAuth.instance.signOut();
+              _sessionListener?.cancel();
+
+              if (context.mounted) {
+                showDialog(
+                  context: context,
+                  builder: (_) => AlertDialog(
+                    title: Text('บัญชีถูกใช้งานจากอุปกรณ์อื่น'),
+                    content: Text('คุณถูกออกจากระบบ'),
+                    actions: [
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pushReplacementNamed(context, '/');
+                        },
+                        child: Text('ตกลง'),
+                      ),
+                    ],
+                  ),
+                );
+              }
+            }
+          }
+        });
+  }
 
   bool isSettingValid() {
     if (selectedMenu == 'MULTI' || selectedMenu == 'DIV') {
