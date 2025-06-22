@@ -112,7 +112,7 @@ class SubOptionsTenMinus extends StatelessWidget {
       // Loop จาก 9 ลงไปถึง 1
       suffixes.add("Ten -$i");
     }
-    suffixes.add("Random Lesson"); // เพิ่มปุ่ม Random เข้าไปท้ายสุด
+    suffixes.add("Random Lesson Ten -"); // เพิ่มปุ่ม Random เข้าไปท้ายสุด
     return _buildRow(suffixes);
   }
 
@@ -135,7 +135,7 @@ class SubOptionsTenMinus extends StatelessWidget {
             ? const Color(0xFF2196F3)
             : suffix.startsWith("Five&Ten")
             ? const Color(0xFF51E4D6)
-            : suffix == "Random Lesson"
+            : suffix == "Random Lesson Ten -"
             ? Colors.red
             : suffix == "Random Exercise"
             ? const Color(0xFFF9CA24)
