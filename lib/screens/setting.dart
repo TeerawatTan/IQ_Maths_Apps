@@ -494,15 +494,15 @@ class _SettingScreenState extends State<SettingScreen> {
               onPressed: () => selectMenu('DIV'),
               isSelected: selectedMenu == 'DIV',
             ),
-            if (uname.isNotEmpty &&
-                    (uname.toLowerCase() == "iqmaths.official") ||
-                uname.toLowerCase() == "test")
-              MenuButton(
-                title: 'Register',
-                color: Colors.white,
-                onPressed: () => Navigator.pushNamed(context, "/Register"),
-                isSelected: selectedMenu == 'Register',
-              ),
+            // if (uname.isNotEmpty &&
+            //         (uname.toLowerCase() == "iqmaths.official") ||
+            //     uname.toLowerCase() == "test")
+            //   MenuButton(
+            //     title: 'Register',
+            //     color: Colors.white,
+            //     onPressed: () => Navigator.pushNamed(context, "/Register"),
+            //     isSelected: selectedMenu == 'Register',
+            //   ),
           ],
         ),
       ),

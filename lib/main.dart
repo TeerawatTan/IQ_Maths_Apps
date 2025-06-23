@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:iq_maths_apps/screens/divisionrandomtable.dart';
@@ -7,7 +9,6 @@ import 'package:iq_maths_apps/screens/random_exercise.dart';
 import 'package:iq_maths_apps/screens/ten_couple.dart';
 import '../models/maths_setting.dart';
 import 'screens/login.dart';
-import 'screens/register.dart';
 import 'screens/setting.dart';
 import 'screens/lower.dart';
 import 'screens/upper.dart';
@@ -22,7 +23,35 @@ void main() async {
     DeviceOrientation.landscapeRight,
   ]);
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
-  runApp(const MyApp());
+  runApp(const AppLauncher());
+}
+
+class AppLauncher extends StatelessWidget {
+  const AppLauncher({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder(
+      future: Firebase.initializeApp(),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const MaterialApp(
+            home: Scaffold(body: Center(child: CircularProgressIndicator())),
+          );
+        } else if (snapshot.hasError) {
+          return MaterialApp(
+            home: Scaffold(
+              body: Center(
+                child: Text('Firebase Init Error: ${snapshot.error}'),
+              ),
+            ),
+          );
+        }
+
+        return const MyApp();
+      },
+    );
+  }
 }
 
 class MyApp extends StatelessWidget {
@@ -30,11 +59,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final currentUser = FirebaseAuth.instance.currentUser;
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'IQ Maths',
       theme: ThemeData(fontFamily: 'PoetsenOn', useMaterial3: true),
-      home: const LoginScreen(),
+      home: currentUser == null
+          ? const LoginScreen()
+          : SettingScreen(uid: currentUser.uid),
       onGenerateRoute: (settings) {
         if (settings.name == '/Lower') {
           final mathsSetting = settings.arguments as MathsSetting;
@@ -75,9 +108,11 @@ class MyApp extends StatelessWidget {
         } else if (settings.name == '/Setting') {
           final uid = settings.arguments as String?;
           return MaterialPageRoute(builder: (_) => SettingScreen(uid: uid));
-        } else if (settings.name == '/Register') {
-          return MaterialPageRoute(builder: (_) => const RegisterScreen());
-        } else if (settings.name == '/FiveBuddy') {
+        }
+        // else if (settings.name == '/Register') {
+        //   return MaterialPageRoute(builder: (_) => const RegisterScreen());
+        // }
+        else if (settings.name == '/FiveBuddy') {
           // wait screen and data
           final mathsSetting = settings.arguments as MathsSetting;
           return MaterialPageRoute(
