@@ -219,7 +219,7 @@ class _SummaryScreenState extends State<SummaryScreen> {
                                   foreground: Paint()
                                     ..style = PaintingStyle.stroke
                                     ..strokeWidth = 10
-                                    ..color = Colors.black
+                                    ..color = Colors.white
                                     ..strokeJoin = StrokeJoin.round,
                                 ),
                               ),
@@ -228,7 +228,7 @@ class _SummaryScreenState extends State<SummaryScreen> {
                                 style: const TextStyle(
                                   fontSize: 70,
                                   fontWeight: FontWeight.bold,
-                                  color: Colors.white,
+                                  color: Colors.red,
                                 ),
                               ),
                             ],

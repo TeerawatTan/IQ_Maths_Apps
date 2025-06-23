@@ -204,6 +204,7 @@ class _SettingScreenState extends State<SettingScreen> {
     }
 
     String? routeToNavigate;
+    String? currentSelectedSubOptionLabel; // เพิ่มตัวแปรนี้
     // กำหนด route ตาม selectedMenu และ _selectedSubOptionXXXLabel
     switch (selectedMenu) {
       case 'LP':
@@ -216,6 +217,7 @@ class _SettingScreenState extends State<SettingScreen> {
         }
         break;
       case 'FIVE':
+        currentSelectedSubOptionLabel = selectedSubOptionFiveLabel;
         // if (selectedSubOptionFiveLabel == 'Five +') {
         //   routeToNavigate = '/fivePlusRoute';
         // } else if (selectedSubOptionFiveLabel == 'Five -') {
@@ -248,7 +250,7 @@ class _SettingScreenState extends State<SettingScreen> {
       case 'DIV':
         if (selectedSubOptionDivLabel == 'Division') {
           routeToNavigate = '/Division';
-        } else if (selectedSubOptionMultiLabel == 'DivisionRandomTable') {
+        } else if (selectedSubOptionDivLabel == 'DivisionRandomTable') {
           routeToNavigate = '/DivisionRandomTable';
         }
         break;
@@ -263,6 +265,7 @@ class _SettingScreenState extends State<SettingScreen> {
         display: selectedDisplay,
         row: selectedRow,
         time: selectedTime,
+        selectedSubOptionLabel: currentSelectedSubOptionLabel ?? '',
       );
       Navigator.pushNamed(context, routeToNavigate, arguments: setting);
     } else {

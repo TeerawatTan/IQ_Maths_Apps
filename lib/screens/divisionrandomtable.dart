@@ -20,10 +20,13 @@ class _DivisionRandomTableScreenState extends State<DivisionRandomTableScreen> {
   int currentIndex = 0;
   final int questionLimit = 10;
   List<List<int>> numbers = [];
+  List<bool?> answerStatus = [];
   List<TextEditingController> controllers = [];
   final auth = FirebaseAuth.instance;
   bool isPaused = false;
   bool isSoundOn = true;
+  bool isAnswerChecked = false;
+  bool hasCheckedAnswer = false;
 
   @override
   void initState() {
@@ -69,6 +72,26 @@ class _DivisionRandomTableScreenState extends State<DivisionRandomTableScreen> {
       numbers.add([minDividend, minDivisor]);
     }
     controllers = List.generate(questionLimit, (_) => TextEditingController());
+    answerStatus = List.generate(questionLimit, (_) => null);
+    isAnswerChecked = false;
+    hasCheckedAnswer = false;
+  }
+
+  void _checkAnswers() {
+    setState(() {
+      for (int i = 0; i < questionLimit; i++) {
+        final correct = numbers[i][0] ~/ numbers[i][1];
+        final userInput = int.tryParse(controllers[i].text.trim());
+
+        if (userInput != null && userInput == correct) {
+          answerStatus[i] = true;
+        } else {
+          answerStatus[i] = false;
+        }
+      }
+      isAnswerChecked = true;
+      hasCheckedAnswer = true;
+    });
   }
 
   void _nextQuestion() {
@@ -254,6 +277,33 @@ class _DivisionRandomTableScreenState extends State<DivisionRandomTableScreen> {
                         ),
                       ),
                     ),
+                    if (answerStatus[index] != null)
+                      Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          // แสดงไอคอนผลลัพธ์
+                          Padding(
+                            padding: const EdgeInsets.only(right: 8),
+                            child: Image.asset(
+                              answerStatus[index]!
+                                  ? 'assets/images/correct.png'
+                                  : 'assets/images/wrong.png',
+                              width: 24,
+                              height: 24,
+                            ),
+                          ),
+                          // แสดงเฉลยถ้าตอบผิด
+                          if (answerStatus[index] == false)
+                            Text(
+                              '${numbers[index][0] ~/ numbers[index][1]}',
+                              style: TextStyle(
+                                fontSize: 18,
+                                color: Colors.red,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                        ],
+                      ),
                   ],
                 ),
               ),
@@ -272,8 +322,8 @@ class _DivisionRandomTableScreenState extends State<DivisionRandomTableScreen> {
       displayMode: 'show all',
       inputAnsController: TextEditingController(),
       onNextPressed: _submitAnswers,
+      onCheckPressed: _checkAnswers,
       onNextsPressed: _nextQuestion,
-      onCheckPressed: _submitAnswers,
       onPlayPauseFlashCard: null,
       isPaused: isPaused,
       currentStep: 0,
@@ -281,12 +331,15 @@ class _DivisionRandomTableScreenState extends State<DivisionRandomTableScreen> {
       isFlashCardAnimating: false,
       showAnswer: false,
       showAnswerText: false,
-      showAnswerInput: false,
+      showAnswerInput: true,
       waitingToShowAnswer: false,
       showSmallWrongIcon: false,
       answerText: '',
       currentMenuImage: 'assets/images/divisionrandomtable.png',
       isShowMode: false,
+      hasCheckedAnswer: hasCheckedAnswer,
+      isAnswerCorrect: false,
+      hideAnsLabel: true, // ซ่อน "Ans" label
       child: numbers.isEmpty
           ? const NoDataScreen()
           : LayoutBuilder(

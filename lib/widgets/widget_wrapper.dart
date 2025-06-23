@@ -85,6 +85,7 @@ class WidgetWrapper extends StatefulWidget {
   final ValueChanged<bool>? onSoundToggle;
   final bool isAnswerCorrect;
   final bool hasCheckedAnswer;
+  final bool hideAnsLabel; // เพิ่ม parameter นี้
 
   const WidgetWrapper({
     super.key,
@@ -115,6 +116,7 @@ class WidgetWrapper extends StatefulWidget {
     this.onSoundToggle,
     this.isAnswerCorrect = false,
     this.hasCheckedAnswer = false,
+    this.hideAnsLabel = false, // default value
   });
 
   @override
@@ -373,14 +375,16 @@ class _WidgetWrapperState extends State<WidgetWrapper> {
                     ),
                   ),
 
-                  // Answer Input and Next Button Section - Responsive
-                  if (widget.showAnswerInput && widget.totalNumbers! > 0)
+                  // Answer Input แบบเดิมเมื่อ hideAnsLabel = false (ไม่ได้ใช้ในตาราง)
+                  if (widget.showAnswerInput &&
+                      (widget.totalNumbers ?? 0) > 0 &&
+                      !widget.hideAnsLabel)
                     Padding(
                       padding: EdgeInsets.symmetric(
                         horizontal: isSmallScreen ? 8.0 : 16.0,
                         vertical: 5.0,
                       ),
-                      child: _buildResponsiveInputSection(
+                      child: _buildOriginalInputSection(
                         isSmallScreen,
                         constraints,
                       ),
@@ -464,10 +468,49 @@ class _WidgetWrapperState extends State<WidgetWrapper> {
                   ),
                 ],
               ),
+
+              // ปุ่ม Check/Next แบบ overlay สำหรับตาราง (เมื่อ hideAnsLabel = true)
+              if (widget.showAnswerInput &&
+                  (widget.totalNumbers ?? 0) > 0 &&
+                  widget.hideAnsLabel)
+                Positioned(
+                  bottom: isSmallScreen
+                      ? 40
+                      : 45, // ลงมาใกล้ bottom bar มากขึ้น
+                  right: 20,
+                  child: _buildFloatingButton(),
+                ),
             ],
           );
         },
       ),
+    );
+  }
+
+  Widget _buildFloatingButton() {
+    Widget actionButtonImage;
+    if (widget.hasCheckedAnswer) {
+      actionButtonImage = Image.asset('assets/images/Next.png', width: 120);
+    } else {
+      actionButtonImage = Image.asset('assets/images/check.png', width: 120);
+    }
+
+    return ElevatedButton(
+      onPressed: () {
+        if (widget.hasCheckedAnswer) {
+          widget.onNextPressed?.call();
+        } else {
+          widget.onCheckPressed?.call();
+        }
+      },
+      style: ElevatedButton.styleFrom(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        shadowColor: Colors.transparent,
+        padding: EdgeInsets.zero,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+      ),
+      child: actionButtonImage,
     );
   }
 
@@ -477,11 +520,45 @@ class _WidgetWrapperState extends State<WidgetWrapper> {
   ) {
     Widget actionButtonImage;
     if (widget.hasCheckedAnswer) {
-      actionButtonImage = Image.asset('assets/images/next.png', width: 120);
+      actionButtonImage = Image.asset('assets/images/Next.png', width: 120);
     } else {
       actionButtonImage = Image.asset('assets/images/check.png', width: 120);
     }
 
+    // Layout สำหรับการแสดงปุ่มที่ขวาล่าง
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(right: 20.0),
+          child: ElevatedButton(
+            onPressed: () {
+              if (widget.hasCheckedAnswer) {
+                widget.onNextPressed?.call();
+              } else {
+                widget.onCheckPressed?.call();
+              }
+            },
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.transparent,
+              elevation: 0,
+              shadowColor: Colors.transparent,
+              padding: EdgeInsets.zero,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(30),
+              ),
+            ),
+            child: actionButtonImage,
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildOriginalInputSection(
+    bool isSmallScreen,
+    BoxConstraints constraints,
+  ) {
     if (isSmallScreen) {
       // Layout แบบ Column สำหรับหน้าจอเล็ก
       return Column(
@@ -618,11 +695,9 @@ class _WidgetWrapperState extends State<WidgetWrapper> {
           ElevatedButton(
             onPressed: () {
               if (widget.hasCheckedAnswer) {
-                widget.onNextPressed
-                    ?.call(); // Call onNextPressed if already checked
+                widget.onNextPressed?.call();
               } else {
-                widget.onCheckPressed
-                    ?.call(); // Call onCheckPressed if not yet checked
+                widget.onCheckPressed?.call();
               }
             },
             style: ElevatedButton.styleFrom(
@@ -634,7 +709,12 @@ class _WidgetWrapperState extends State<WidgetWrapper> {
                 borderRadius: BorderRadius.circular(30),
               ),
             ),
-            child: actionButtonImage,
+            child: Image.asset(
+              widget.hasCheckedAnswer
+                  ? 'assets/images/Next.png'
+                  : 'assets/images/check.png',
+              width: 120,
+            ),
           ),
         ],
       );
@@ -767,11 +847,9 @@ class _WidgetWrapperState extends State<WidgetWrapper> {
           ElevatedButton(
             onPressed: () {
               if (widget.hasCheckedAnswer) {
-                widget.onNextPressed
-                    ?.call(); // Call onNextPressed if already checked
+                widget.onNextPressed?.call();
               } else {
-                widget.onCheckPressed
-                    ?.call(); // Call onCheckPressed if not yet checked
+                widget.onCheckPressed?.call();
               }
             },
             style: ElevatedButton.styleFrom(
@@ -783,7 +861,12 @@ class _WidgetWrapperState extends State<WidgetWrapper> {
                 borderRadius: BorderRadius.circular(30),
               ),
             ),
-            child: actionButtonImage,
+            child: Image.asset(
+              widget.hasCheckedAnswer
+                  ? 'assets/images/Next.png'
+                  : 'assets/images/check.png',
+              width: 120,
+            ),
           ),
           const SizedBox(width: 12),
         ],

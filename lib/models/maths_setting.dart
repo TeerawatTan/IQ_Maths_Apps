@@ -4,6 +4,7 @@ class MathsSetting {
   String display;
   String row;
   String time;
+  String selectedSubOptionLabel;
 
   MathsSetting({
     this.digit1 = '',
@@ -11,6 +12,7 @@ class MathsSetting {
     this.display = '',
     this.row = '',
     this.time = '',
+    this.selectedSubOptionLabel = '',
   });
 
   bool isValid() {
