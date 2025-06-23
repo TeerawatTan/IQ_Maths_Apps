@@ -56,6 +56,7 @@ class SubOptionsMulti extends StatelessWidget {
                   showDisplay: false,
                   showRow: false,
                   showTime: false,
+                  onScreen: selectedSubOptionLabel,
                 ),
               ],
             ),

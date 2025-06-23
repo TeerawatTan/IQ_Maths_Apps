@@ -236,7 +236,9 @@ class _SettingScreenState extends State<SettingScreen> {
         routeToNavigate = '/TenCouple';
         break;
       case 'TEN-':
-        routeToNavigate = '/TenCouple';
+        if (selectedSubOptionTenMinusLabel == 'Random Exercise') {
+          routeToNavigate = '/RandomExercise';
+        }
         break;
       case 'MULTI':
         if (selectedSubOptionMultiLabel == 'Multiplication') {
