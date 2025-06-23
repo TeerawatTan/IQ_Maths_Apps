@@ -105,6 +105,24 @@ class _SettingFormState extends State<SettingForm> {
 
   @override
   Widget build(BuildContext context) {
+    List<Map<String, String>> digit1Options = _filteredDigitOptions();
+    List<Map<String, String>> row1Options = _filteredRowOptions();
+    String? currentDigit1 = widget.selectedDigit1;
+    String? currentDigit2 = widget.selectedDigit2;
+    String? currentRow = widget.selectedRow;
+    if (currentDigit1 != null &&
+        !digit1Options.any((option) => option['value'] == currentDigit1)) {
+      currentDigit1 = null;
+    }
+    if (currentDigit2 != null &&
+        !digit1Options.any((option) => option['value'] == currentDigit2)) {
+      currentDigit2 = null;
+    }
+    if (currentRow != null &&
+        !row1Options.any((option) => option['value'] == currentRow)) {
+      currentRow = null;
+    }
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -112,8 +130,8 @@ class _SettingFormState extends State<SettingForm> {
           children: [
             SettingDropdown(
               label: "Digit 1",
-              options: _filteredDigitOptions(),
-              selectedValue: widget.selectedDigit1,
+              options: digit1Options,
+              selectedValue: currentDigit1,
               onChanged: (v) => widget.onChanged("Digit 1", v ?? ''),
             ),
             const SizedBox(width: 10),
@@ -125,8 +143,8 @@ class _SettingFormState extends State<SettingForm> {
           children: [
             SettingDropdown(
               label: "Digit 2",
-              options: _filteredDigitOptions(),
-              selectedValue: widget.selectedDigit2,
+              options: digit1Options,
+              selectedValue: currentDigit2,
               onChanged: (v) => widget.onChanged("Digit 2", v ?? ''),
             ),
             const SizedBox(width: 10),
@@ -154,8 +172,8 @@ class _SettingFormState extends State<SettingForm> {
             if (widget.showRow)
               SettingDropdown(
                 label: "Row",
-                options: _filteredRowOptions(),
-                selectedValue: widget.selectedRow,
+                options: row1Options,
+                selectedValue: currentRow,
                 onChanged: (v) => widget.onChanged("Row", v ?? ''),
               ),
             if (widget.showRow) const SizedBox(width: 10),
