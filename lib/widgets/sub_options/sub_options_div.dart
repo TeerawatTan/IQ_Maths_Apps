@@ -56,6 +56,7 @@ class SubOptionsDiv extends StatelessWidget {
                   showDisplay: false,
                   showRow: false,
                   showTime: false,
+                  onScreen: selectedSubOptionLabel,
                 ),
               ],
             ),

@@ -71,6 +71,7 @@ class SubOptionsTenMinus extends StatelessWidget {
                   showDisplay: true,
                   showRow: true,
                   showTime: true,
+                  onScreen: selectedSubOptionLabel,
                 ),
               ],
             ),
