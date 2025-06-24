@@ -211,24 +211,79 @@ class _SummaryScreenState extends State<SummaryScreen> {
                         Flexible(
                           child: Stack(
                             children: [
-                              Text(
-                                "ตอบถูก ${widget.answerCorrect} ข้อ",
-                                style: TextStyle(
-                                  fontSize: 70,
-                                  fontWeight: FontWeight.bold,
-                                  foreground: Paint()
-                                    ..style = PaintingStyle.stroke
-                                    ..strokeWidth = 10
-                                    ..color = Colors.white
-                                    ..strokeJoin = StrokeJoin.round,
+                              // Stroke (เส้นขอบสีขาว)
+                              RichText(
+                                text: TextSpan(
+                                  children: [
+                                    TextSpan(
+                                      text: "ตอบถูก ",
+                                      style: TextStyle(
+                                        fontSize: 60,
+                                        fontWeight: FontWeight.bold,
+                                        foreground: Paint()
+                                          ..style = PaintingStyle.stroke
+                                          ..strokeWidth = 10
+                                          ..color = Colors.white
+                                          ..strokeJoin = StrokeJoin.round,
+                                      ),
+                                    ),
+                                    TextSpan(
+                                      text: "${widget.answerCorrect}",
+                                      style: TextStyle(
+                                        fontSize: 125,
+                                        fontWeight: FontWeight.bold,
+                                        foreground: Paint()
+                                          ..style = PaintingStyle.stroke
+                                          ..strokeWidth = 10
+                                          ..color = Colors.white
+                                          ..strokeJoin = StrokeJoin.round,
+                                      ),
+                                    ),
+                                    TextSpan(
+                                      text: " ข้อ",
+                                      style: TextStyle(
+                                        fontSize: 60,
+                                        fontWeight: FontWeight.bold,
+                                        foreground: Paint()
+                                          ..style = PaintingStyle.stroke
+                                          ..strokeWidth = 10
+                                          ..color = Colors.white
+                                          ..strokeJoin = StrokeJoin.round,
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
-                              Text(
-                                "ตอบถูก ${widget.answerCorrect} ข้อ",
-                                style: const TextStyle(
-                                  fontSize: 70,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.red,
+                              // Fill (สีหลัก)
+                              RichText(
+                                text: TextSpan(
+                                  children: [
+                                    TextSpan(
+                                      text: "ตอบถูก ",
+                                      style: TextStyle(
+                                        fontSize: 60,
+                                        fontWeight: FontWeight.bold,
+                                        color:
+                                            Colors.grey, // "ตอบถูก" เป็นสีขาว
+                                      ),
+                                    ),
+                                    TextSpan(
+                                      text: "${widget.answerCorrect}",
+                                      style: TextStyle(
+                                        fontSize: 125,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.red, // ตัวเลขเป็นสีแดง
+                                      ),
+                                    ),
+                                    TextSpan(
+                                      text: " ข้อ",
+                                      style: TextStyle(
+                                        fontSize: 60,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.grey, // "ข้อ" เป็นสีขาว
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
                             ],

@@ -73,7 +73,7 @@ class WidgetWrapper extends StatefulWidget {
   final int? totalNumbers;
   final bool showSmallWrongIcon;
   final String? answerText;
-  final String currentMenuImage;
+  final String currentMenuButton;
   final bool isShowMode;
   final Widget child;
   final bool showAnswerInput;
@@ -104,7 +104,7 @@ class WidgetWrapper extends StatefulWidget {
     this.totalNumbers,
     this.showSmallWrongIcon = false,
     this.answerText,
-    required this.currentMenuImage,
+    required this.currentMenuButton,
     required this.isShowMode,
     required this.child,
     this.showAnswerInput = true,
@@ -147,6 +147,96 @@ class _WidgetWrapperState extends State<WidgetWrapper> {
   // Function สำหรับปรับขนาดฟอนต์ทั่วไปตามหน้าจอ
   double _getResponsiveTextSize(double baseSize, bool isSmallScreen) {
     return isSmallScreen ? baseSize * 0.8 : baseSize;
+  }
+
+  List<Color> _getButtonColors(String label) {
+    String ColorLabel = label.toLowerCase();
+
+    if (ColorLabel.contains('lower') ||
+        ColorLabel.contains('upper') ||
+        ColorLabel.contains('lower&upper')) {
+      return [const Color(0xFFFA7D9D), const Color(0xFFFA7D9D)];
+    } else if (ColorLabel.contains('five')) {
+      return [const Color(0xFFA3DEE8), const Color(0xFFA3DEE8)];
+    } else if (ColorLabel.contains('ten +')) {
+      return [const Color(0xFF5271FF), const Color(0xFF3F5AE0)];
+    } else if (ColorLabel.contains('five&ten +')) {
+      return [const Color(0xFF51E4D6), const Color(0xFF26D0CE)];
+    } else if (ColorLabel.contains('random lesson ten +') ||
+        ColorLabel.contains('random lesson five&ten +')) {
+      return [Colors.red.shade400, Colors.red.shade600];
+    } else if (ColorLabel.contains('ten -')) {
+      return [const Color(0xFF2196F3), const Color(0xFF2196F3)];
+    } else if (ColorLabel.contains('five&ten +')) {
+      return [const Color(0xFF51E4D6), const Color(0xFF51E4D6)];
+    } else if (ColorLabel.contains('random lesson ten -')) {
+      return [Colors.red.shade400, Colors.red.shade600];
+    } else if (ColorLabel.contains('random exercise')) {
+      return [const Color(0xFFF9CA24), const Color(0xFFF9CA24)];
+    } else if (label.toLowerCase().contains('multiplication')) {
+      return [const Color(0xFF7ED957), const Color(0xFF7ED957)];
+    } else if (ColorLabel.contains('division')) {
+      return [const Color(0xFFC4A5FF), const Color(0xFFC4A5FF)];
+    } else {
+      return [Colors.white, Colors.white];
+    }
+  }
+
+  TextStyle _getSmallTextStyle(bool isSmallScreen) {
+    return TextStyle(
+      fontSize: isSmallScreen ? 18 : 20,
+      fontWeight: FontWeight.bold,
+      color: Colors.black,
+      height: 1.4,
+      shadows: [
+        Shadow(
+          offset: Offset(1, 1),
+          blurRadius: 2,
+          color: Colors.black.withOpacity(0.5),
+        ),
+      ],
+    );
+  }
+
+  TextStyle _getNormalTextStyle(bool isSmallScreen) {
+    return TextStyle(
+      fontSize: isSmallScreen ? 20 : 22,
+      fontWeight: FontWeight.bold,
+      color: Colors.black,
+      shadows: [
+        Shadow(
+          offset: Offset(1, 1),
+          blurRadius: 2,
+          color: Colors.black.withOpacity(0.5),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildButtonText(String text, bool isSmallScreen) {
+    if (text == 'MultiplicationRendomTable') {
+      return Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text('Multiplication', style: _getSmallTextStyle(isSmallScreen)),
+          Text('Rendom Table', style: _getSmallTextStyle(isSmallScreen)),
+        ],
+      );
+    } else if (text == 'DivisionRandomTable') {
+      return Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text('Division', style: _getSmallTextStyle(isSmallScreen)),
+          Text('Random Table', style: _getSmallTextStyle(isSmallScreen)),
+        ],
+      );
+    } else {
+      return Text(text, style: _getNormalTextStyle(isSmallScreen));
+    }
+  }
+
+  bool _isMultiLineText(String text) {
+    return text == 'MultiplicationRendomTable' || text == 'DivisionRandomTable';
   }
 
   Future<void> _logout() async {
@@ -212,9 +302,34 @@ class _WidgetWrapperState extends State<WidgetWrapper> {
                   onTap: () {
                     Navigator.pop(context);
                   },
-                  child: Image.asset(
-                    widget.currentMenuImage,
-                    width: _getResponsiveImageSize(190, isSmallScreen),
+                  child: Container(
+                    width: _getResponsiveImageSize(195, isSmallScreen),
+                    height: _isMultiLineText(widget.currentMenuButton)
+                        ? (isSmallScreen ? 60 : 70)
+                        : (isSmallScreen ? 50 : 60),
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: _getButtonColors(widget.currentMenuButton),
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                      ),
+                      borderRadius: BorderRadius.circular(25),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.2),
+                          offset: Offset(2, 2),
+                          blurRadius: 4,
+                          spreadRadius: 1,
+                        ),
+                      ],
+                      border: Border.all(color: Colors.white, width: 2),
+                    ),
+                    child: Center(
+                      child: _buildButtonText(
+                        widget.currentMenuButton,
+                        isSmallScreen,
+                      ),
+                    ),
                   ),
                 ),
               ),
@@ -384,7 +499,7 @@ class _WidgetWrapperState extends State<WidgetWrapper> {
                         horizontal: isSmallScreen ? 8.0 : 16.0,
                         vertical: 5.0,
                       ),
-                      child: _buildOriginalInputSection(
+                      child: _buildResponsiveInputSection(
                         isSmallScreen,
                         constraints,
                       ),
@@ -515,47 +630,6 @@ class _WidgetWrapperState extends State<WidgetWrapper> {
   }
 
   Widget _buildResponsiveInputSection(
-    bool isSmallScreen,
-    BoxConstraints constraints,
-  ) {
-    Widget actionButtonImage;
-    if (widget.hasCheckedAnswer) {
-      actionButtonImage = Image.asset('assets/images/Next.png', width: 120);
-    } else {
-      actionButtonImage = Image.asset('assets/images/check.png', width: 120);
-    }
-
-    // Layout สำหรับการแสดงปุ่มที่ขวาล่าง
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.end,
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(right: 20.0),
-          child: ElevatedButton(
-            onPressed: () {
-              if (widget.hasCheckedAnswer) {
-                widget.onNextPressed?.call();
-              } else {
-                widget.onCheckPressed?.call();
-              }
-            },
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.transparent,
-              elevation: 0,
-              shadowColor: Colors.transparent,
-              padding: EdgeInsets.zero,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(30),
-              ),
-            ),
-            child: actionButtonImage,
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildOriginalInputSection(
     bool isSmallScreen,
     BoxConstraints constraints,
   ) {

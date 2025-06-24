@@ -215,6 +215,7 @@ class _SettingScreenState extends State<SettingScreen> {
         } else if (selectedSubOptionLPLabel == 'Lower&Upper') {
           routeToNavigate = '/LowerAndUpper';
         }
+        currentSelectedSubOptionLabel = selectedSubOptionLPLabel;
         break;
       case 'FIVE':
         if (selectedSubOptionFiveLabel!.startsWith('Five +')) {
@@ -235,11 +236,13 @@ class _SettingScreenState extends State<SettingScreen> {
         //   routeToNavigate = '/tenPlusRandomRoute';
         // }
         routeToNavigate = '/TenCouple';
+        currentSelectedSubOptionLabel = selectedSubOptionTenPlusLabel;
         break;
       case 'TEN-':
         if (selectedSubOptionTenMinusLabel == 'Random Exercise') {
           routeToNavigate = '/RandomExercise';
         }
+        currentSelectedSubOptionLabel = selectedSubOptionTenMinusLabel;
         break;
       case 'MULTI':
         if (selectedSubOptionMultiLabel == 'Multiplication') {
@@ -247,6 +250,7 @@ class _SettingScreenState extends State<SettingScreen> {
         } else if (selectedSubOptionMultiLabel == 'MultiplicationRendomTable') {
           routeToNavigate = '/MultiplicationRendomTable';
         }
+        currentSelectedSubOptionLabel = selectedSubOptionMultiLabel;
         break;
       case 'DIV':
         if (selectedSubOptionDivLabel == 'Division') {
@@ -254,6 +258,7 @@ class _SettingScreenState extends State<SettingScreen> {
         } else if (selectedSubOptionDivLabel == 'DivisionRandomTable') {
           routeToNavigate = '/DivisionRandomTable';
         }
+        currentSelectedSubOptionLabel = selectedSubOptionDivLabel;
         break;
       default:
         break;

@@ -304,6 +304,15 @@ class _MultiplicationRandomTableScreenState
     );
   }
 
+  String _getCurrentMenuLabel() {
+    final selectedLabel = widget.setting.selectedSubOptionLabel;
+
+    if (selectedLabel.isEmpty) {
+      return 'No Label'; // Default text instead of default image
+    }
+    return selectedLabel; // Return the label directly
+  }
+
   @override
   Widget build(BuildContext context) {
     return WidgetWrapper(
@@ -325,7 +334,7 @@ class _MultiplicationRandomTableScreenState
       waitingToShowAnswer: false,
       showSmallWrongIcon: false,
       answerText: '',
-      currentMenuImage: 'assets/images/multiplicationrandomtable.png',
+      currentMenuButton: _getCurrentMenuLabel(),
       isShowMode: false,
       hasCheckedAnswer: hasCheckedAnswer,
       isAnswerCorrect: false,

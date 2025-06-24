@@ -443,6 +443,15 @@ class _LowerAndUpperScreenState extends State<LowerAndUpperScreen> {
     }
   }
 
+  String _getCurrentMenuLabel() {
+    final selectedLabel = widget.setting.selectedSubOptionLabel;
+
+    if (selectedLabel.isEmpty) {
+      return 'No Label'; // Default text instead of default image
+    }
+    return selectedLabel; // Return the label directly
+  }
+
   @override
   Widget build(BuildContext context) {
     bool isNextButtonEnabled = true;
@@ -474,7 +483,7 @@ class _LowerAndUpperScreenState extends State<LowerAndUpperScreen> {
       waitingToShowAnswer: waitingToShowAnswer,
       showSmallWrongIcon: showSmallWrongIcon,
       answerText: answer.toString(),
-      currentMenuImage: 'assets/images/lowerandupper.png',
+      currentMenuButton: _getCurrentMenuLabel(),
       isShowMode: true,
       isSoundOn: isSoundOn,
       onSoundToggle: (newValue) {

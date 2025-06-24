@@ -130,7 +130,8 @@ class SubOptionsTenMinus extends StatelessWidget {
   List<Widget> _buildRow(List<String> suffixes) {
     return suffixes.map((suffix) {
       bool isSelected = selectedSubOptionLabel == suffix;
-      return SubOptionButton(
+
+      Widget button = SubOptionButton(
         label: suffix,
         color: suffix.startsWith("Ten")
             ? const Color(0xFF2196F3)
@@ -144,6 +145,24 @@ class SubOptionsTenMinus extends StatelessWidget {
         onPressed: () => onSubOptionSelected(suffix),
         isHighlighted: isSelected,
       );
+
+      // ขยายและเลื่อนปุ่ม Random Exercise ไปทางขวา
+      if (suffix == "Random Exercise") {
+        return Container(
+          width: double.infinity,
+          child: Row(
+            children: [
+              SizedBox(width: 30), // เว้นระยะจากซ้าย เพื่อเลื่อนไปขวา
+              Transform.scale(
+                scale: 1.3, // ขยาย 1.3 เท่า
+                child: button,
+              ),
+            ],
+          ),
+        );
+      }
+
+      return button;
     }).toList();
   }
 }

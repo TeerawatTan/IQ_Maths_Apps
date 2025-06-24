@@ -314,6 +314,15 @@ class _DivisionRandomTableScreenState extends State<DivisionRandomTableScreen> {
     );
   }
 
+  String _getCurrentMenuLabel() {
+    final selectedLabel = widget.setting.selectedSubOptionLabel;
+
+    if (selectedLabel.isEmpty) {
+      return 'No Label'; // Default text instead of default image
+    }
+    return selectedLabel; // Return the label directly
+  }
+
   @override
   Widget build(BuildContext context) {
     return WidgetWrapper(
@@ -335,7 +344,7 @@ class _DivisionRandomTableScreenState extends State<DivisionRandomTableScreen> {
       waitingToShowAnswer: false,
       showSmallWrongIcon: false,
       answerText: '',
-      currentMenuImage: 'assets/images/divisionrandomtable.png',
+      currentMenuButton: _getCurrentMenuLabel(),
       isShowMode: false,
       hasCheckedAnswer: hasCheckedAnswer,
       isAnswerCorrect: false,

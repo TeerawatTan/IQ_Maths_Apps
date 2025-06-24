@@ -182,6 +182,15 @@ class _DivisionScreenState extends State<DivisionScreen> {
     });
   }
 
+  String _getCurrentMenuLabel() {
+    final selectedLabel = widget.setting.selectedSubOptionLabel;
+
+    if (selectedLabel.isEmpty) {
+      return 'No Label'; // Default text instead of default image
+    }
+    return selectedLabel; // Return the label directly
+  }
+
   @override
   Widget build(BuildContext context) {
     bool isNextButtonEnabled = true;
@@ -213,7 +222,7 @@ class _DivisionScreenState extends State<DivisionScreen> {
       waitingToShowAnswer: waitingToShowAnswer,
       showSmallWrongIcon: showSmallWrongIcon,
       answerText: answer.toString(),
-      currentMenuImage: 'assets/images/division.png',
+      currentMenuButton: _getCurrentMenuLabel(),
       isShowMode: false,
       isSoundOn: isSoundOn,
       onSoundToggle: (newValue) {
