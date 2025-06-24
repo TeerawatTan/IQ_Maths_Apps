@@ -197,13 +197,13 @@ class _SummaryScreenState extends State<SummaryScreen> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Image.asset(
-                      widget.answerCorrect == 0
-                          ? 'assets/images/wrong.png'
-                          : 'assets/images/correct.png',
-                      width: 100,
-                      height: 100,
-                    ),
+                    // Image.asset(
+                    //   widget.answerCorrect == 0
+                    //       ? 'assets/images/wrong.png'
+                    //       : 'assets/images/correct.png',
+                    //   width: 100,
+                    //   height: 100,
+                    // ),
                     Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
