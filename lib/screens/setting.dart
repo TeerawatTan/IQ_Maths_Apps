@@ -204,7 +204,7 @@ class _SettingScreenState extends State<SettingScreen> {
     }
 
     String? routeToNavigate;
-    String? currentSelectedSubOptionLabel; // เพิ่มตัวแปรนี้
+    String? currentSelectedSubOptionLabel;
     // กำหนด route ตาม selectedMenu และ _selectedSubOptionXXXLabel
     switch (selectedMenu) {
       case 'LP':
@@ -217,15 +217,14 @@ class _SettingScreenState extends State<SettingScreen> {
         }
         break;
       case 'FIVE':
+        if (selectedSubOptionFiveLabel!.startsWith('Five +')) {
+          routeToNavigate = '/FiveBuddy';
+        } else if (selectedSubOptionFiveLabel!.startsWith('Five -')) {
+          routeToNavigate = '/FiveBuddy';
+        } else if (selectedSubOptionFiveLabel!.startsWith('Random Lesson')) {
+          // Wait design
+        }
         currentSelectedSubOptionLabel = selectedSubOptionFiveLabel;
-        // if (selectedSubOptionFiveLabel == 'Five +') {
-        //   routeToNavigate = '/fivePlusRoute';
-        // } else if (selectedSubOptionFiveLabel == 'Five -') {
-        //   routeToNavigate = '/fiveMinusRoute';
-        // } else if (selectedSubOptionFiveLabel == 'Five +-') {
-        //   routeToNavigate = '/fivePlusMinusRoute';
-        // }
-        routeToNavigate = '/FiveBuddy'; // No design
         break;
       case 'TEN+':
         // if (selectedSubOptionTenPlusLabel == '+9') {

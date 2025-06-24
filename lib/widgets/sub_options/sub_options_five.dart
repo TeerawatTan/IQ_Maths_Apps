@@ -85,7 +85,7 @@ class SubOptionsFive extends StatelessWidget {
       bool isSelected = selectedSubOptionLabel == suffix;
       return SubOptionButton(
         label: suffix,
-        color: const Color(0xFFA3DEE8),
+        color: suffix.startsWith("Five") ? const Color(0xFFA3DEE8) : Colors.red,
         onPressed: () => onSubOptionSelected(suffix),
         isHighlighted: isSelected,
       );
@@ -98,6 +98,7 @@ class SubOptionsFive extends StatelessWidget {
     for (int i = 4; i >= 1; i--) {
       suffixes.add("Five +$i");
     }
+    suffixes.add("Random Lesson Five +");
     return _buildRow(suffixes);
   }
 
@@ -107,6 +108,7 @@ class SubOptionsFive extends StatelessWidget {
     for (int i = 4; i >= 1; i--) {
       suffixes.add("Five -$i");
     }
+    suffixes.add("Random Lesson Five -");
     return _buildRow(suffixes);
   }
 }
