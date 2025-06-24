@@ -223,48 +223,18 @@ class _MultiplicationScreenState extends State<MultiplicationScreen> {
       hasCheckedAnswer: hasCheckedAnswer,
       child: numbers.isEmpty
           ? const NoDataScreen()
-          : Center(
-              child: isShowAll
-                  ? () {
-                      // คำนวณ fontSize ให้เหมาะสมกับทุกขนาดหน้าจอ
-                      final screenWidth = MediaQuery.of(context).size.width;
-                      double fontSize = 140;
-                      // ปรับแต่งเพิ่มเติมตามขนาดหน้าจอ
-                      if (screenWidth < 400) {
-                        // Pixel รุ่นแรก และหน้าจอเล็ก
-                        fontSize = fontSize * 0.8;
-                      } else if (screenWidth >= 400 && screenWidth < 500) {
-                        // Pixel 6 และหน้าจอขนาดกลาง
-                        fontSize = fontSize * 0.85;
-                      } else if (screenWidth >= 500 && screenWidth < 700) {
-                        // หน้าจอใหญ่ แต่ยังเป็น Phone
-                        fontSize = fontSize * 0.9;
-                      } else {
-                        // Tablet (> 700px)
-                        fontSize = fontSize * 1.3;
-                      }
-
-                      fontSize = fontSize.clamp(25, 140);
-
-                      return SingleChildScrollView(
-                        reverse: true,
-                        padding: EdgeInsets.all(10),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            buildOutlinedText(
-                              "${numbers[currentStep][0]} × ${numbers[currentStep][1]}",
-                              fontSize: fontSize,
-                            ),
-                          ],
-                        ),
-                      );
-                    }()
-                  : isFlashCardAnimating
-                  ? buildOutlinedText("${numbers[currentStep]}", fontSize: 160)
-                  : showAnswer || waitingToShowAnswer
-                  ? buildOutlinedText("?", fontSize: 160)
-                  : Container(),
+          : SizedBox(
+              width: 450,
+              height: 150,
+              child: Padding(
+                padding: const EdgeInsets.only(top: 80, left: 50),
+                child: FittedBox(
+                  fit: BoxFit.contain,
+                  child: buildOutlinedText(
+                    "${numbers[currentStep][0]} × ${numbers[currentStep][1]}",
+                  ),
+                ),
+              ),
             ),
     );
   }

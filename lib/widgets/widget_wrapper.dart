@@ -233,7 +233,7 @@ class _WidgetWrapperState extends State<WidgetWrapper> {
                 ),
               ),
 
-              // Menu Image
+              // Menu btn
               Positioned(
                 top: isSmallScreen ? 90 : 110,
                 left: isSmallScreen ? 15 : 20,
