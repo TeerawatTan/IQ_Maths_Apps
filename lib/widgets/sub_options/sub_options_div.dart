@@ -31,7 +31,7 @@ class SubOptionsDiv extends StatelessWidget {
           runSpacing: 10,
           children: [
             _buildButton('Division'),
-            _buildButton('DivisionRandomTable'),
+            _buildButton('Division Random Table'),
           ],
         ),
         const SizedBox(height: 15),

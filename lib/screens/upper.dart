@@ -407,7 +407,7 @@ class _UpperScreenState extends State<UpperScreen> {
       waitingToShowAnswer: waitingToShowAnswer,
       showSmallWrongIcon: showSmallWrongIcon,
       answerText: answer.toString(),
-      currentMenuButton: _getCurrentMenuLabel(),
+      currentMenuButtonLabel: _getCurrentMenuLabel(),
       isShowMode: true,
       isSoundOn: isSoundOn,
       onSoundToggle: (newValue) {

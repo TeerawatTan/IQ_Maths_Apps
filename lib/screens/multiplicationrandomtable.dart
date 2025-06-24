@@ -334,7 +334,7 @@ class _MultiplicationRandomTableScreenState
       waitingToShowAnswer: false,
       showSmallWrongIcon: false,
       answerText: '',
-      currentMenuButton: _getCurrentMenuLabel(),
+      currentMenuButtonLabel: _getCurrentMenuLabel(),
       isShowMode: false,
       hasCheckedAnswer: hasCheckedAnswer,
       isAnswerCorrect: false,

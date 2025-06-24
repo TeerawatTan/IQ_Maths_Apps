@@ -31,7 +31,7 @@ class SubOptionsMulti extends StatelessWidget {
           runSpacing: 10,
           children: [
             _buildButton('Multiplication'),
-            _buildButton('MultiplicationRendomTable'),
+            _buildButton('Multiplication Random Table'),
           ],
         ),
         const SizedBox(height: 15),

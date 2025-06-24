@@ -483,7 +483,7 @@ class _LowerAndUpperScreenState extends State<LowerAndUpperScreen> {
       waitingToShowAnswer: waitingToShowAnswer,
       showSmallWrongIcon: showSmallWrongIcon,
       answerText: answer.toString(),
-      currentMenuButton: _getCurrentMenuLabel(),
+      currentMenuButtonLabel: _getCurrentMenuLabel(),
       isShowMode: true,
       isSoundOn: isSoundOn,
       onSoundToggle: (newValue) {

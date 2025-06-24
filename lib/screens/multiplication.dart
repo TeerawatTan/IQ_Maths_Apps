@@ -211,7 +211,7 @@ class _MultiplicationScreenState extends State<MultiplicationScreen> {
       waitingToShowAnswer: waitingToShowAnswer,
       showSmallWrongIcon: showSmallWrongIcon,
       answerText: answer.toString(),
-      currentMenuButton: _getCurrentMenuLabel(),
+      currentMenuButtonLabel: _getCurrentMenuLabel(),
       isShowMode: false,
       isSoundOn: isSoundOn,
       onSoundToggle: (newValue) {

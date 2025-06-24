@@ -73,7 +73,7 @@ class WidgetWrapper extends StatefulWidget {
   final int? totalNumbers;
   final bool showSmallWrongIcon;
   final String? answerText;
-  final String currentMenuButton;
+  final String currentMenuButtonLabel;
   final bool isShowMode;
   final Widget child;
   final bool showAnswerInput;
@@ -104,7 +104,7 @@ class WidgetWrapper extends StatefulWidget {
     this.totalNumbers,
     this.showSmallWrongIcon = false,
     this.answerText,
-    required this.currentMenuButton,
+    required this.currentMenuButtonLabel,
     required this.isShowMode,
     required this.child,
     this.showAnswerInput = true,
@@ -149,94 +149,33 @@ class _WidgetWrapperState extends State<WidgetWrapper> {
     return isSmallScreen ? baseSize * 0.8 : baseSize;
   }
 
-  List<Color> _getButtonColors(String label) {
-    String ColorLabel = label.toLowerCase();
+  Color _getButtonColors(String label) {
+    String colorLabel = label.toLowerCase();
 
-    if (ColorLabel.contains('lower') ||
-        ColorLabel.contains('upper') ||
-        ColorLabel.contains('lower&upper')) {
-      return [const Color(0xFFFA7D9D), const Color(0xFFFA7D9D)];
-    } else if (ColorLabel.contains('five')) {
-      return [const Color(0xFFA3DEE8), const Color(0xFFA3DEE8)];
-    } else if (ColorLabel.contains('ten +')) {
-      return [const Color(0xFF5271FF), const Color(0xFF3F5AE0)];
-    } else if (ColorLabel.contains('five&ten +')) {
-      return [const Color(0xFF51E4D6), const Color(0xFF26D0CE)];
-    } else if (ColorLabel.contains('random lesson ten +') ||
-        ColorLabel.contains('random lesson five&ten +')) {
-      return [Colors.red.shade400, Colors.red.shade600];
-    } else if (ColorLabel.contains('ten -')) {
-      return [const Color(0xFF2196F3), const Color(0xFF2196F3)];
-    } else if (ColorLabel.contains('five&ten +')) {
-      return [const Color(0xFF51E4D6), const Color(0xFF51E4D6)];
-    } else if (ColorLabel.contains('random lesson ten -')) {
-      return [Colors.red.shade400, Colors.red.shade600];
-    } else if (ColorLabel.contains('random exercise')) {
-      return [const Color(0xFFF9CA24), const Color(0xFFF9CA24)];
-    } else if (label.toLowerCase().contains('multiplication')) {
-      return [const Color(0xFF7ED957), const Color(0xFF7ED957)];
-    } else if (ColorLabel.contains('division')) {
-      return [const Color(0xFFC4A5FF), const Color(0xFFC4A5FF)];
+    if (colorLabel == 'lower' ||
+        colorLabel == 'upper' ||
+        colorLabel == 'lower&upper') {
+      return const Color(0xFFFA7D9D);
+    } else if (colorLabel.startsWith('five')) {
+      return const Color(0xFFA3DEE8);
+    } else if (colorLabel.startsWith('ten +')) {
+      return const Color(0xFF5271FF);
+    } else if (colorLabel.startsWith('five&ten')) {
+      return const Color(0xFF51E4D6);
+    } else if (colorLabel.startsWith('random lesson ten') ||
+        colorLabel.startsWith('random lesson five')) {
+      return Colors.red.shade400;
+    } else if (colorLabel.startsWith('ten -')) {
+      return const Color(0xFF2196F3);
+    } else if (colorLabel == 'random exercise') {
+      return const Color(0xFFF9CA24);
+    } else if (colorLabel.startsWith('multiplication')) {
+      return const Color(0xFF7ED957);
+    } else if (colorLabel.startsWith('division')) {
+      return const Color(0xFFC4A5FF);
     } else {
-      return [Colors.white, Colors.white];
+      return Colors.white;
     }
-  }
-
-  TextStyle _getSmallTextStyle(bool isSmallScreen) {
-    return TextStyle(
-      fontSize: isSmallScreen ? 18 : 20,
-      fontWeight: FontWeight.bold,
-      color: Colors.black,
-      height: 1.4,
-      shadows: [
-        Shadow(
-          offset: Offset(1, 1),
-          blurRadius: 2,
-          color: Colors.black.withOpacity(0.5),
-        ),
-      ],
-    );
-  }
-
-  TextStyle _getNormalTextStyle(bool isSmallScreen) {
-    return TextStyle(
-      fontSize: isSmallScreen ? 20 : 22,
-      fontWeight: FontWeight.bold,
-      color: Colors.black,
-      shadows: [
-        Shadow(
-          offset: Offset(1, 1),
-          blurRadius: 2,
-          color: Colors.black.withOpacity(0.5),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildButtonText(String text, bool isSmallScreen) {
-    if (text == 'MultiplicationRendomTable') {
-      return Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text('Multiplication', style: _getSmallTextStyle(isSmallScreen)),
-          Text('Rendom Table', style: _getSmallTextStyle(isSmallScreen)),
-        ],
-      );
-    } else if (text == 'DivisionRandomTable') {
-      return Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text('Division', style: _getSmallTextStyle(isSmallScreen)),
-          Text('Random Table', style: _getSmallTextStyle(isSmallScreen)),
-        ],
-      );
-    } else {
-      return Text(text, style: _getNormalTextStyle(isSmallScreen));
-    }
-  }
-
-  bool _isMultiLineText(String text) {
-    return text == 'MultiplicationRendomTable' || text == 'DivisionRandomTable';
   }
 
   Future<void> _logout() async {
@@ -298,38 +237,40 @@ class _WidgetWrapperState extends State<WidgetWrapper> {
               Positioned(
                 top: isSmallScreen ? 90 : 110,
                 left: isSmallScreen ? 15 : 20,
-                child: InkWell(
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
-                  child: Container(
-                    width: _getResponsiveImageSize(195, isSmallScreen),
-                    height: _isMultiLineText(widget.currentMenuButton)
-                        ? (isSmallScreen ? 60 : 70)
-                        : (isSmallScreen ? 50 : 60),
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: _getButtonColors(widget.currentMenuButton),
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                      ),
-                      borderRadius: BorderRadius.circular(25),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.2),
-                          offset: Offset(2, 2),
-                          blurRadius: 4,
-                          spreadRadius: 1,
-                        ),
-                      ],
-                      border: Border.all(color: Colors.white, width: 2),
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: _getButtonColors(
+                      widget.currentMenuButtonLabel,
                     ),
-                    child: Center(
-                      child: _buildButtonText(
-                        widget.currentMenuButton,
-                        isSmallScreen,
-                      ),
+                    foregroundColor: Colors.black,
+                    elevation: 2,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(16),
                     ),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 24,
+                      vertical: 12,
+                    ),
+                    textStyle: const TextStyle(
+                      fontFamily: 'PoetsenOn',
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700,
+                      letterSpacing: 0.5,
+                    ),
+                    maximumSize: Size(
+                      _getResponsiveImageSize(195, isSmallScreen),
+                      widget.currentMenuButtonLabel.contains('Random')
+                          ? (isSmallScreen ? 60 : 70)
+                          : (isSmallScreen ? 50 : 60),
+                    ),
+                  ),
+                  onPressed: () => Navigator.pop(context),
+                  child: Text(
+                    widget.currentMenuButtonLabel,
+                    textAlign: TextAlign.center,
+                    softWrap: true,
+                    maxLines: 2,
+                    overflow: TextOverflow.fade,
                   ),
                 ),
               ),

@@ -218,13 +218,14 @@ class _SettingScreenState extends State<SettingScreen> {
         currentSelectedSubOptionLabel = selectedSubOptionLPLabel;
         break;
       case 'FIVE':
-        if (selectedSubOptionFiveLabel!.startsWith('Five +')) {
-          routeToNavigate = '/FiveBuddy';
-        } else if (selectedSubOptionFiveLabel!.startsWith('Five -')) {
-          routeToNavigate = '/FiveBuddy';
-        } else if (selectedSubOptionFiveLabel!.startsWith('Random Lesson')) {
-          // Wait design
-        }
+        // if (selectedSubOptionFiveLabel!.startsWith('Five +')) {
+        //   routeToNavigate = '/FiveBuddy';
+        // } else if (selectedSubOptionFiveLabel!.startsWith('Five -')) {
+        //   routeToNavigate = '/FiveBuddy';
+        // } else if (selectedSubOptionFiveLabel!.startsWith('Random Lesson')) {
+        //   // Wait design
+        // }
+        routeToNavigate = '/FiveBuddy';
         currentSelectedSubOptionLabel = selectedSubOptionFiveLabel;
         break;
       case 'TEN+':
@@ -241,13 +242,16 @@ class _SettingScreenState extends State<SettingScreen> {
       case 'TEN-':
         if (selectedSubOptionTenMinusLabel == 'Random Exercise') {
           routeToNavigate = '/RandomExercise';
+        } else {
+          routeToNavigate = '/TenCouple';
         }
         currentSelectedSubOptionLabel = selectedSubOptionTenMinusLabel;
         break;
       case 'MULTI':
         if (selectedSubOptionMultiLabel == 'Multiplication') {
           routeToNavigate = '/Multiplication';
-        } else if (selectedSubOptionMultiLabel == 'MultiplicationRendomTable') {
+        } else if (selectedSubOptionMultiLabel ==
+            'Multiplication Random Table') {
           routeToNavigate = '/MultiplicationRendomTable';
         }
         currentSelectedSubOptionLabel = selectedSubOptionMultiLabel;
@@ -255,7 +259,7 @@ class _SettingScreenState extends State<SettingScreen> {
       case 'DIV':
         if (selectedSubOptionDivLabel == 'Division') {
           routeToNavigate = '/Division';
-        } else if (selectedSubOptionDivLabel == 'DivisionRandomTable') {
+        } else if (selectedSubOptionDivLabel == 'Division Random Table') {
           routeToNavigate = '/DivisionRandomTable';
         }
         currentSelectedSubOptionLabel = selectedSubOptionDivLabel;

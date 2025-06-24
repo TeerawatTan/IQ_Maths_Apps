@@ -344,7 +344,7 @@ class _DivisionRandomTableScreenState extends State<DivisionRandomTableScreen> {
       waitingToShowAnswer: false,
       showSmallWrongIcon: false,
       answerText: '',
-      currentMenuButton: _getCurrentMenuLabel(),
+      currentMenuButtonLabel: _getCurrentMenuLabel(),
       isShowMode: false,
       hasCheckedAnswer: hasCheckedAnswer,
       isAnswerCorrect: false,

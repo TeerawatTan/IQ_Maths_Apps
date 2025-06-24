@@ -103,6 +103,7 @@ class _RandomExerciseScreenState extends State<RandomExerciseScreen> {
     });
     if (!isShowAll) {
       shouldContinueFlashCard = true;
+      _startFlashCard();
     } else {
       setState(() {
         currentStep = 0;
@@ -253,7 +254,7 @@ class _RandomExerciseScreenState extends State<RandomExerciseScreen> {
       waitingToShowAnswer: waitingToShowAnswer,
       showSmallWrongIcon: showSmallWrongIcon,
       answerText: answer.toString(),
-      currentMenuButton: _getCurrentMenuLabel(),
+      currentMenuButtonLabel: _getCurrentMenuLabel(),
       isShowMode: true,
       isSoundOn: isSoundOn,
       onSoundToggle: (newValue) {

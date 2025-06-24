@@ -388,7 +388,7 @@ class _FiveBuddyScreenState extends State<FiveBuddyScreen> {
       waitingToShowAnswer: waitingToShowAnswer,
       showSmallWrongIcon: showSmallWrongIcon,
       answerText: answer.toString(),
-      currentMenuButton: _getCurrentMenuLabel(),
+      currentMenuButtonLabel: _getCurrentMenuLabel(),
       isShowMode: false,
       isSoundOn: isSoundOn,
       onSoundToggle: (newValue) {
