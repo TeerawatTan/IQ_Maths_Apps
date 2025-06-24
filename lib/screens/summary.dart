@@ -126,7 +126,7 @@ class _SummaryScreenState extends State<SummaryScreen> {
             child: Image.asset('assets/images/owl.png', width: 120),
           ),
           Positioned(
-            top: 25,
+            top: 10,
             right: 0,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,

@@ -299,7 +299,7 @@ class _WidgetWrapperState extends State<WidgetWrapper> {
 
               // Top Right User Info and Controls
               Positioned(
-                top: isSmallScreen ? 20 : 25,
+                top: isSmallScreen ? 5 : 10,
                 right: 0,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.end,

@@ -396,7 +396,7 @@ class _SettingScreenState extends State<SettingScreen> {
   );
 
   Widget _buildUserInfo() => Positioned(
-    top: 20,
+    top: 10,
     right: 0,
     child: Padding(
       padding: const EdgeInsets.only(left: 20.0, right: 0),
