@@ -605,7 +605,7 @@ class _WidgetWrapperState extends State<WidgetWrapper> {
   Widget _buildFloatingButton() {
     Widget actionButtonImage;
     if (widget.hasCheckedAnswer) {
-      actionButtonImage = Image.asset('assets/images/Next.png', width: 120);
+      actionButtonImage = Image.asset('assets/images/next.png', width: 120);
     } else {
       actionButtonImage = Image.asset('assets/images/check.png', width: 120);
     }
@@ -785,7 +785,7 @@ class _WidgetWrapperState extends State<WidgetWrapper> {
             ),
             child: Image.asset(
               widget.hasCheckedAnswer
-                  ? 'assets/images/Next.png'
+                  ? 'assets/images/next.png'
                   : 'assets/images/check.png',
               width: 120,
             ),
@@ -937,7 +937,7 @@ class _WidgetWrapperState extends State<WidgetWrapper> {
             ),
             child: Image.asset(
               widget.hasCheckedAnswer
-                  ? 'assets/images/Next.png'
+                  ? 'assets/images/next.png'
                   : 'assets/images/check.png',
               width: 120,
             ),
