@@ -105,21 +105,21 @@ class _SettingFormState extends State<SettingForm> {
 
   @override
   Widget build(BuildContext context) {
-    List<Map<String, String>> digit1Options = _filteredDigitOptions();
-    List<Map<String, String>> row1Options = _filteredRowOptions();
+    List<Map<String, String>> digitOptions = _filteredDigitOptions();
+    List<Map<String, String>> rowOptions = _filteredRowOptions();
     String? currentDigit1 = widget.selectedDigit1;
     String? currentDigit2 = widget.selectedDigit2;
     String? currentRow = widget.selectedRow;
     if (currentDigit1 != null &&
-        !digit1Options.any((option) => option['value'] == currentDigit1)) {
+        !digitOptions.any((option) => option['value'] == currentDigit1)) {
       currentDigit1 = null;
     }
     if (currentDigit2 != null &&
-        !digit1Options.any((option) => option['value'] == currentDigit2)) {
+        !digitOptions.any((option) => option['value'] == currentDigit2)) {
       currentDigit2 = null;
     }
     if (currentRow != null &&
-        !row1Options.any((option) => option['value'] == currentRow)) {
+        !rowOptions.any((option) => option['value'] == currentRow)) {
       currentRow = null;
     }
 
@@ -130,7 +130,7 @@ class _SettingFormState extends State<SettingForm> {
           children: [
             SettingDropdown(
               label: "Digit 1",
-              options: digit1Options,
+              options: digitOptions,
               selectedValue: currentDigit1,
               onChanged: (v) => widget.onChanged("Digit 1", v ?? ''),
             ),
@@ -143,7 +143,7 @@ class _SettingFormState extends State<SettingForm> {
           children: [
             SettingDropdown(
               label: "Digit 2",
-              options: digit1Options,
+              options: digitOptions,
               selectedValue: currentDigit2,
               onChanged: (v) => widget.onChanged("Digit 2", v ?? ''),
             ),
@@ -172,7 +172,7 @@ class _SettingFormState extends State<SettingForm> {
             if (widget.showRow)
               SettingDropdown(
                 label: "Row",
-                options: row1Options,
+                options: rowOptions,
                 selectedValue: currentRow,
                 onChanged: (v) => widget.onChanged("Row", v ?? ''),
               ),

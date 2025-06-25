@@ -219,13 +219,18 @@ class _SettingScreenState extends State<SettingScreen> {
         case 'TEN-':
           selectedSubOptionTenMinusLabel = label;
           break;
-        case 'MULTI': // สำหรับปุ่มย่อยของ Multi
+        case 'MULTI':
           selectedSubOptionMultiLabel = label;
           break;
-        case 'DIV': // สำหรับปุ่มย่อยของ Div
+        case 'DIV':
           selectedSubOptionDivLabel = label;
           break;
       }
+      selectedDigit1 = '';
+      selectedDigit2 = '';
+      selectedDisplay = '';
+      selectedRow = '';
+      selectedTime = '';
     });
   }
 
