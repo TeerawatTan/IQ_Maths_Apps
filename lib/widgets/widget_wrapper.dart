@@ -803,11 +803,12 @@ class _WidgetWrapperState extends State<WidgetWrapper> {
                         },
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(right: 20.0),
+                    Positioned(
+                      right: 15,
+                      top: 0,
+                      bottom: 0,
                       child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.end,
+                        mainAxisSize: MainAxisSize.min,
                         children: <Widget>[
                           if (!widget.showAnswer && widget.isAnswerCorrect)
                             Image.asset(
@@ -815,39 +816,48 @@ class _WidgetWrapperState extends State<WidgetWrapper> {
                               width: 50,
                               height: 50,
                             ),
-                          if (widget.showAnswer && !widget.isAnswerCorrect)
+                          if (widget.showSmallWrongIcon &&
+                              widget.showAnswer &&
+                              !widget.isAnswerCorrect)
                             Image.asset(
                               'assets/images/wrong.png',
                               width: 50,
                               height: 50,
                             ),
                           if (widget.showAnswerText && !widget.isAnswerCorrect)
-                            const SizedBox(width: 5),
+                            const SizedBox(width: 3),
                           if (widget.showAnswerText && !widget.isAnswerCorrect)
-                            Flexible(
-                              child: Stack(
-                                children: [
-                                  Text(
-                                    widget.answerText!,
-                                    style: TextStyle(
-                                      fontSize: 36,
-                                      fontWeight: FontWeight.bold,
-                                      foreground: Paint()
-                                        ..style = PaintingStyle.stroke
-                                        ..strokeWidth = 10
-                                        ..color = Colors.red
-                                        ..strokeJoin = StrokeJoin.round,
+                            SizedBox(
+                              width: 55, // กำหนดความกว้างสูงสุดของ answer text
+                              height: 80, // กำหนดความสูงสูงสุดของ answer text
+                              child: FittedBox(
+                                fit: BoxFit.contain,
+                                child: Stack(
+                                  children: [
+                                    Text(
+                                      widget.answerText!,
+                                      style: TextStyle(
+                                        fontSize:
+                                            36, // ขนาดเริ่มต้น (จะถูกปรับโดย FittedBox)
+                                        fontWeight: FontWeight.bold,
+                                        foreground: Paint()
+                                          ..style = PaintingStyle.stroke
+                                          ..strokeWidth = 8
+                                          ..color = Colors.red
+                                          ..strokeJoin = StrokeJoin.round,
+                                      ),
                                     ),
-                                  ),
-                                  Text(
-                                    widget.answerText!,
-                                    style: const TextStyle(
-                                      fontSize: 36,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white,
+                                    Text(
+                                      widget.answerText!,
+                                      style: const TextStyle(
+                                        fontSize:
+                                            36, // ขนาดเริ่มต้น (จะถูกปรับโดย FittedBox)
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white,
+                                      ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
                             ),
                         ],

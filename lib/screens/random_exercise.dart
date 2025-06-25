@@ -311,9 +311,29 @@ class _RandomExerciseScreenState extends State<RandomExerciseScreen> {
                       );
                     }()
                   : isFlashCardAnimating
-                  ? buildOutlinedText("${numbers[currentStep]}", fontSize: 160)
+                  ? SizedBox(
+                      width: 450,
+                      height: 200,
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 60, left: 50),
+                        child: FittedBox(
+                          fit: BoxFit.contain,
+                          child: buildOutlinedText("${numbers[currentStep]}"),
+                        ),
+                      ),
+                    )
                   : showAnswer || waitingToShowAnswer
-                  ? buildOutlinedText("?", fontSize: 160)
+                  ? SizedBox(
+                      width: 450,
+                      height: 200,
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 60, left: 50),
+                        child: FittedBox(
+                          fit: BoxFit.contain,
+                          child: buildOutlinedText("?"),
+                        ),
+                      ),
+                    )
                   : Container(),
             ),
     );

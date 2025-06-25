@@ -234,48 +234,73 @@ class _DivisionScreenState extends State<DivisionScreen> {
       hasCheckedAnswer: hasCheckedAnswer,
       child: numbers.isEmpty
           ? const NoDataScreen()
-          : Center(
-              child: isShowAll
-                  ? () {
-                      // คำนวณ fontSize ให้เหมาะสมกับทุกขนาดหน้าจอ
-                      final screenWidth = MediaQuery.of(context).size.width;
-                      double fontSize = 140;
-                      // ปรับแต่งเพิ่มเติมตามขนาดหน้าจอ
-                      if (screenWidth < 400) {
-                        // Pixel รุ่นแรก และหน้าจอเล็ก
-                        fontSize = fontSize * 0.8;
-                      } else if (screenWidth >= 400 && screenWidth < 500) {
-                        // Pixel 6 และหน้าจอขนาดกลาง
-                        fontSize = fontSize * 0.85;
-                      } else if (screenWidth >= 500 && screenWidth < 700) {
-                        // หน้าจอใหญ่ แต่ยังเป็น Phone
-                        fontSize = fontSize * 0.9;
-                      } else {
-                        // Tablet (> 700px)
-                        fontSize = fontSize * 1.3;
-                      }
+          : Builder(
+              builder: (context) {
+                // ดึงขนาดหน้าจอปัจจุบัน
+                final screenWidth = MediaQuery.of(context).size.width;
+                final screenHeight = MediaQuery.of(context).size.height;
 
-                      fontSize = fontSize.clamp(25, 140);
+                // คำนวณด้านสั้นและด้านยาวของหน้าจอ (รองรับการหมุนหน้าจอ)
+                final shortSide = screenWidth < screenHeight
+                    ? screenWidth
+                    : screenHeight;
+                final longSide = screenWidth > screenHeight
+                    ? screenWidth
+                    : screenHeight;
 
-                      return SingleChildScrollView(
-                        reverse: true,
-                        padding: EdgeInsets.all(10),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            buildOutlinedText(
-                              "${numbers[currentStep][0]} ÷ ${numbers[currentStep][1]}",
-                              fontSize: fontSize,
-                            ),
-                          ],
-                        ),
-                      );
-                    }()
-                  : isFlashCardAnimating
-                  ? buildOutlinedText("${numbers[currentStep]}", fontSize: 160)
-                  : showAnswer || waitingToShowAnswer
-                  ? buildOutlinedText("?", fontSize: 160)
-                  : Container(),
+                double width;
+                double height;
+                EdgeInsets padding;
+                double maxFontSize;
+
+                // ตรวจสอบประเภทอุปกรณ์และกำหนดค่า
+                if (shortSide <= 400 && longSide <= 850) {
+                  // Medium Phone (เช่น iPhone SE, Galaxy S20 mini)
+                  height = 120;
+                  width = screenWidth.toDouble();
+                  padding = EdgeInsets.only(top: 25, left: 30);
+                  maxFontSize = 70;
+                } else if (shortSide <= 600 && longSide <= 1300) {
+                  // Big Phone (เช่น iPhone Pro Max, Galaxy Note)
+                  height = 150;
+                  width = screenWidth.toDouble();
+                  padding = EdgeInsets.only(top: 35, left: 40);
+                  maxFontSize = 130;
+                } else {
+                  // Tablet (เช่น iPad, Galaxy Tab) อุปกรณ์ที่มีขนาดใหญ่กว่าเงื่อนไขข้างบน
+                  height = 300;
+                  width = screenWidth.toDouble();
+                  padding = EdgeInsets.only(top: 60, left: 60);
+                  maxFontSize = 180;
+                }
+
+                // คำนวณขนาดตัวหนังสือตามความยาวของข้อความ
+                final text =
+                    "${numbers[currentStep][0]} × ${numbers[currentStep][1]}";
+                final textLength = text.length;
+                double fontSize;
+
+                if (textLength <= 5) {
+                  // ข้อความสั้น (เช่น "2 × 3") - เพิ่มขนาด 40%
+                  fontSize = maxFontSize * 1.4;
+                } else if (textLength <= 7) {
+                  // ข้อความกลาง (เช่น "12 × 34") - เพิ่มขนาด 30%
+                  fontSize = maxFontSize * 1.3;
+                } else {
+                  // ข้อความยาว (เช่น "123 × 456") - ใช้ขนาดสูงสุด
+                  fontSize = maxFontSize;
+                }
+                return SizedBox(
+                  width: width,
+                  height: height,
+                  child: Padding(
+                    padding: padding,
+                    child: Center(
+                      child: buildOutlinedText(text, fontSize: fontSize),
+                    ),
+                  ),
+                );
+              },
             ),
     );
   }
