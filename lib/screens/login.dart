@@ -1,6 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:iq_maths_apps/services/auth_service.dart';
+import 'package:image_picker/image_picker.dart'; // นำเข้า image_picker สำหรับเลือกรูปภาพ
+import 'package:shared_preferences/shared_preferences.dart'; // นำเข้า shared_preferences สำหรับเก็บข้อมูล
+import 'dart:io'; // จำเป็นสำหรับคลาส File
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -17,6 +20,39 @@ class _LoginScreenState extends State<LoginScreen> {
 
   bool isSoundOn = true;
   bool _isLoading = false;
+  String?
+  _profileImagePath; // สำหรับเก็บเส้นทางไฟล์รูปภาพ (อาจเป็น asset หรือ file path)
+  bool _isAssetImage = true; // ระบุว่าเป็นรูปจาก asset หรือไม่
+
+  static const String _profileImagePathKey =
+      'profileImagePath'; // คีย์สำหรับ SharedPreferences
+  static const String _isAssetImageKey =
+      'isAssetImage'; // คีย์สำหรับ SharedPreferences
+
+  // รายการรูปภาพ Avatar เริ่มต้น
+  final List<String> _defaultAvatars = [
+    'assets/avatars/22.png',
+    'assets/avatars/21.png',
+    'assets/avatars/20.png',
+    'assets/avatars/19.png',
+    'assets/avatars/18.png',
+    'assets/avatars/17.png',
+    'assets/avatars/16.png',
+    'assets/avatars/15.png',
+    'assets/avatars/14.png',
+    'assets/avatars/13.png',
+    'assets/avatars/12.png',
+    'assets/avatars/11.png',
+    'assets/avatars/10.png',
+    'assets/avatars/9.png',
+    'assets/avatars/8.png',
+  ];
+
+  @override
+  void initState() {
+    super.initState();
+    _loadProfileImage(); // โหลดรูปภาพที่บันทึกไว้เมื่อเริ่มต้น
+  }
 
   @override
   void dispose() {
@@ -25,24 +61,155 @@ class _LoginScreenState extends State<LoginScreen> {
     super.dispose();
   }
 
-  // Custom validation function that shows ScaffoldMessenger
+  // โหลดเส้นทางรูปโปรไฟล์และประเภทรูปภาพจาก SharedPreferences
+  Future<void> _loadProfileImage() async {
+    final prefs = await SharedPreferences.getInstance();
+    final imagePath = prefs.getString(_profileImagePathKey);
+    final isAsset =
+        prefs.getBool(_isAssetImageKey) ?? true; // Default to true if not set
+
+    if (imagePath != null) {
+      setState(() {
+        _profileImagePath = imagePath;
+        _isAssetImage = isAsset;
+      });
+    }
+  }
+
+  // บันทึกเส้นทางรูปโปรไฟล์และประเภทรูปภาพลง SharedPreferences
+  Future<void> _saveProfileImage(String path, bool isAsset) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString(_profileImagePathKey, path);
+    await prefs.setBool(_isAssetImageKey, isAsset);
+  }
+
+  // ฟังก์ชันสำหรับเลือกรูปภาพจากแกลเลอรี
+  Future<void> _pickImageFromGallery() async {
+    final ImagePicker picker = ImagePicker();
+    final XFile? image = await picker.pickImage(source: ImageSource.gallery);
+
+    if (image != null) {
+      setState(() {
+        _profileImagePath = image.path;
+        _isAssetImage = false;
+      });
+      await _saveProfileImage(image.path, false);
+    }
+  }
+
+  // ฟังก์ชันสำหรับเลือกรูปภาพจาก Avatar
+  void _pickImageFromAvatar(String avatarPath) {
+    setState(() {
+      _profileImagePath = avatarPath;
+      _isAssetImage = true;
+    });
+    _saveProfileImage(avatarPath, true);
+  }
+
+  void _showImageSourceSelectionSheet() {
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext bc) {
+        return SafeArea(
+          child: Wrap(
+            children: <Widget>[
+              ListTile(
+                leading: const Icon(Icons.person_outline),
+                title: const Text('เลือกจาก Avatar'),
+                onTap: () {
+                  Navigator.pop(context);
+                  _showAvatarSelectionDialog();
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.photo_library),
+                title: const Text('เลือกจากอัลบั้ม'),
+                onTap: () {
+                  Navigator.pop(context);
+                  _pickImageFromGallery();
+                },
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  void _showAvatarSelectionDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('เลือก Avatar'),
+          content: SizedBox(
+            width: double.maxFinite,
+            height: MediaQuery.of(context).size.height * 0.5,
+            child: GridView.builder(
+              shrinkWrap: true,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 8,
+                crossAxisSpacing: 10,
+                mainAxisSpacing: 10,
+              ),
+              itemCount: _defaultAvatars.length,
+              itemBuilder: (context, index) {
+                final avatarPath = _defaultAvatars[index];
+                return GestureDetector(
+                  onTap: () {
+                    _pickImageFromAvatar(avatarPath);
+                    Navigator.pop(context); // ปิด Dialog
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(
+                        color: _profileImagePath == avatarPath
+                            ? const Color.fromARGB(255, 235, 99, 144)
+                            : Colors.transparent,
+                        width: 3,
+                      ),
+                    ),
+                    child: CircleAvatar(
+                      radius: 30,
+                      backgroundImage: AssetImage(avatarPath),
+                    ),
+                  ),
+                );
+              },
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: const Text('ยกเลิก'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  // ฟังก์ชันตรวจสอบความถูกต้องของข้อมูลแบบกำหนดเองที่แสดง ScaffoldMessenger
   bool _validateInputs() {
     String? emailError;
     String? passwordError;
 
-    // Validate email
+    // ตรวจสอบอีเมล
     if (emailController.text.isEmpty) {
-      emailError = 'Please enter your email';
+      emailError = 'กรุณาใส่อีเมลของคุณ';
     } else if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(emailController.text)) {
-      emailError = 'Please enter a valid email';
+      emailError = 'กรุณาใส่อีเมลที่ถูกต้อง';
     }
 
-    // Validate password
+    // ตรวจสอบรหัสผ่าน
     if (passwordController.text.isEmpty) {
-      passwordError = 'Please enter your password';
+      passwordError = 'กรุณาใส่รหัสผ่านของคุณ';
     }
 
-    // Show error message if validation fails
+    // แสดงข้อความผิดพลาดหากการตรวจสอบไม่สำเร็จ
     if (emailError != null) {
       _showValidationError(emailError);
       return false;
@@ -169,28 +336,63 @@ class _LoginScreenState extends State<LoginScreen> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     const SizedBox(height: 70),
-                    Container(
-                      width: 100,
-                      height: 90,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        image: DecorationImage(
-                          image: AssetImage('assets/images/user_icon.png'),
-                          fit: BoxFit.cover,
+                    GestureDetector(
+                      // ครอบรูปภาพด้วย GestureDetector
+                      onTap:
+                          _showImageSourceSelectionSheet, // เรียกฟังก์ชันแสดงตัวเลือกการเลือกรูป
+                      child: Container(
+                        width: 100,
+                        height: 90,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          // แสดงรูปภาพที่เลือกหรือไอคอนผู้ใช้เริ่มต้น
+                          image: _profileImagePath != null
+                              ? (_isAssetImage
+                                    ? DecorationImage(
+                                        image: AssetImage(_profileImagePath!),
+                                        fit: BoxFit.cover,
+                                      )
+                                    : DecorationImage(
+                                        image: FileImage(
+                                          File(_profileImagePath!),
+                                        ),
+                                        fit: BoxFit.cover,
+                                      ))
+                              : const DecorationImage(
+                                  image: AssetImage(
+                                    'assets/images/user_icon.png',
+                                  ),
+                                  fit: BoxFit.cover,
+                                ),
+                        ),
+                        // เพิ่มไอคอนแก้ไขเล็กๆ เพื่อบ่งชี้ว่าสามารถแตะได้
+                        child: Align(
+                          alignment: Alignment.bottomRight,
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Colors.white.withOpacity(0.8),
+                              shape: BoxShape.circle,
+                            ),
+                            child: const Icon(
+                              Icons.camera_alt,
+                              color: Color.fromARGB(255, 235, 99, 144),
+                              size: 20,
+                            ),
+                          ),
                         ),
                       ),
                     ),
 
                     const SizedBox(height: 12),
                     _buildLoginField(
-                      label: "Email :",
+                      label: "อีเมล :",
                       controller: emailController,
                       icon: Icons.email,
                     ),
 
                     const SizedBox(height: 8),
                     _buildLoginField(
-                      label: "Password :",
+                      label: "รหัสผ่าน :",
                       controller: passwordController,
                       icon: Icons.lock,
                       isPassword: true,
@@ -233,7 +435,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     ),
                                   ),
                                   child: const Text(
-                                    "LOGIN",
+                                    "เข้าสู่ระบบ",
                                     style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                     ),
@@ -257,17 +459,17 @@ class _LoginScreenState extends State<LoginScreen> {
                 color: Colors.lightBlueAccent,
                 height: 40,
                 padding: const EdgeInsets.symmetric(horizontal: 12),
-                child: Row(
+                child: const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text(
+                    Text(
                       "Intelligent Quick Maths (IQM)",
                       style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    const Text(
+                    Text(
                       "v.1.0.0",
                       style: TextStyle(
                         color: Colors.white10,
@@ -295,7 +497,7 @@ class _LoginScreenState extends State<LoginScreen> {
       decoration: BoxDecoration(
         color: const Color.fromARGB(255, 147, 217, 250),
         borderRadius: BorderRadius.circular(30),
-        boxShadow: [
+        boxShadow: const [
           BoxShadow(color: Colors.black26, blurRadius: 4, offset: Offset(0, 2)),
         ],
       ),

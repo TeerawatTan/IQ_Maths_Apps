@@ -66,7 +66,7 @@ class MyApp extends StatelessWidget {
       title: 'IQ Maths',
       theme: ThemeData(fontFamily: 'PoetsenOn', useMaterial3: true),
       home: currentUser == null
-          ? const LoginScreen()
+          ? LoginScreen()
           : SettingScreen(uid: currentUser.uid),
       onGenerateRoute: (settings) {
         if (settings.name == '/Lower') {
