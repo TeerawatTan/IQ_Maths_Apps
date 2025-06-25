@@ -223,69 +223,30 @@ class _MultiplicationScreenState extends State<MultiplicationScreen> {
       hasCheckedAnswer: hasCheckedAnswer,
       child: numbers.isEmpty
           ? const NoDataScreen()
-          : Builder(
-              builder: (context) {
-                // ดึงขนาดหน้าจอปัจจุบัน
-                final screenWidth = MediaQuery.of(context).size.width;
-                final screenHeight = MediaQuery.of(context).size.height;
+          : LayoutBuilder(
+              builder: (context, constraints) {
+                final shortSide = MediaQuery.of(context).size.shortestSide;
 
-                // คำนวณด้านสั้นและด้านยาวของหน้าจอ (รองรับการหมุนหน้าจอ)
-                final shortSide = screenWidth < screenHeight
-                    ? screenWidth
-                    : screenHeight;
-                final longSide = screenWidth > screenHeight
-                    ? screenWidth
-                    : screenHeight;
+                final isTablet = shortSide >= 950;
 
-                double width;
-                double height;
-                EdgeInsets padding;
-                double maxFontSize;
+                final boxWidth = isTablet ? 700.0 : 450.0;
+                final boxHeight = isTablet ? 300.0 : 150.0;
+                final paddingTop = isTablet ? 40.0 : 80.0;
+                final paddingLeft = isTablet ? 25.0 : 50.0;
 
-                // ตรวจสอบประเภทอุปกรณ์และกำหนดค่า
-                if (shortSide <= 400 && longSide <= 850) {
-                  // Medium Phone (เช่น iPhone SE, Galaxy S20 mini)
-                  height = 120;
-                  width = screenWidth.toDouble();
-                  padding = EdgeInsets.only(top: 25, left: 30);
-                  maxFontSize = 70;
-                } else if (shortSide <= 600 && longSide <= 1300) {
-                  // Big Phone (เช่น iPhone Pro Max, Galaxy Note)
-                  height = 150;
-                  width = screenWidth.toDouble();
-                  padding = EdgeInsets.only(top: 35, left: 40);
-                  maxFontSize = 130;
-                } else {
-                  // Tablet (เช่น iPad, Galaxy Tab) อุปกรณ์ที่มีขนาดใหญ่กว่าเงื่อนไขข้างบน
-                  height = 300;
-                  width = screenWidth.toDouble();
-                  padding = EdgeInsets.only(top: 60, left: 60);
-                  maxFontSize = 180;
-                }
-
-                // คำนวณขนาดตัวหนังสือตามความยาวของข้อความ
-                final text =
-                    "${numbers[currentStep][0]} × ${numbers[currentStep][1]}";
-                final textLength = text.length;
-                double fontSize;
-
-                if (textLength <= 5) {
-                  // ข้อความสั้น (เช่น "2 × 3") - เพิ่มขนาด 40%
-                  fontSize = maxFontSize * 1.4;
-                } else if (textLength <= 7) {
-                  // ข้อความกลาง (เช่น "12 × 34") - เพิ่มขนาด 30%
-                  fontSize = maxFontSize * 1.3;
-                } else {
-                  // ข้อความยาว (เช่น "123 × 456") - ใช้ขนาดสูงสุด
-                  fontSize = maxFontSize;
-                }
                 return SizedBox(
-                  width: width,
-                  height: height,
+                  width: boxWidth,
+                  height: boxHeight,
                   child: Padding(
-                    padding: padding,
-                    child: Center(
-                      child: buildOutlinedText(text, fontSize: fontSize),
+                    padding: EdgeInsets.only(
+                      top: paddingTop,
+                      left: paddingLeft,
+                    ),
+                    child: FittedBox(
+                      fit: BoxFit.contain,
+                      child: buildOutlinedText(
+                        "${numbers[currentStep][0]} × ${numbers[currentStep][1]}",
+                      ),
                     ),
                   ),
                 );
