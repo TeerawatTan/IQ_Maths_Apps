@@ -1,5 +1,9 @@
+import 'dart:io';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:iq_maths_apps/services/auth_service.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SummaryScreen extends StatefulWidget {
   final int answerCorrect;
@@ -12,7 +16,47 @@ class SummaryScreen extends StatefulWidget {
 
 class _SummaryScreenState extends State<SummaryScreen> {
   bool _isLoggingOut = false; // State to manage logout loading
+  final AuthService authService = AuthService();
   final auth = FirebaseAuth.instance;
+  static const String profileImagePathKey =
+      'profileImagePath'; // คีย์สำหรับ SharedPreferences
+  static const String isAssetImageKey =
+      'isAssetImage'; // คีย์สำหรับ SharedPreferences
+  String? profileImagePath;
+  bool isAssetImage = true;
+  ImageProvider? profileImage;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadProfileImage(); // โหลดรูปภาพที่บันทึกไว้เมื่อเริ่มต้น
+  }
+
+  Future<void> _loadProfileImage() async {
+    final prefs = await SharedPreferences.getInstance();
+    final imagePath = prefs.getString(profileImagePathKey);
+    final isAsset =
+        prefs.getBool(isAssetImageKey) ?? true; // Default to true if not set
+
+    if (imagePath != null) {
+      setState(() {
+        profileImagePath = imagePath;
+        isAssetImage = isAsset;
+        // กำหนด profileImage ตรงนี้ด้วย
+        if (isAssetImage) {
+          profileImage = AssetImage(profileImagePath!);
+        } else {
+          profileImage = FileImage(File(profileImagePath!));
+        }
+      });
+    } else {
+      setState(() {
+        profileImagePath = null;
+        isAssetImage = true;
+        profileImage = const AssetImage('assets/images/user_icon.png');
+      });
+    }
+  }
 
   Widget buildOutlinedText(
     String text, {
@@ -64,14 +108,9 @@ class _SummaryScreenState extends State<SummaryScreen> {
     });
 
     try {
-      await FirebaseAuth.instance.signOut(); // Sign out the current user
-      // After successful logout, navigate back to the login screen
+      await authService.logout();
       if (mounted) {
-        // Check if the widget is still in the tree
-        Navigator.pushReplacementNamed(
-          context,
-          '/',
-        ); // Assuming '/' is your login route
+        Navigator.pushReplacementNamed(context, '/');
       }
     } on FirebaseAuthException catch (e) {
       if (mounted) {
@@ -155,11 +194,8 @@ class _SummaryScreenState extends State<SummaryScreen> {
                             color: Colors.pink,
                           ),
                         ),
-                        Image.asset(
-                          'assets/images/user_icon.png',
-                          width: 70,
-                          fit: BoxFit.cover,
-                        ),
+                        SizedBox(width: 10),
+                        CircleAvatar(radius: 25, backgroundImage: profileImage),
                         _isLoggingOut
                             ? const SizedBox(
                                 width: 30, // Match icon size

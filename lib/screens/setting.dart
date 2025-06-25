@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -13,6 +14,7 @@ import 'package:iq_maths_apps/widgets/sub_options/sub_options_tenminus.dart';
 import 'package:iq_maths_apps/widgets/sub_options/sub_options_multi.dart';
 import 'package:iq_maths_apps/widgets/sub_options/sub_options_div.dart';
 import 'package:iq_maths_apps/models/maths_setting.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SettingScreen extends StatefulWidget {
   final String? uid;
@@ -45,7 +47,15 @@ class _SettingScreenState extends State<SettingScreen> {
           FirebaseAuth.instance.currentUser!.email!.indexOf('@'),
         );
 
-  StreamSubscription<DocumentSnapshot>? _sessionListener;
+  StreamSubscription<DocumentSnapshot>? sessionListener;
+  final AuthService authService = AuthService();
+  static const String profileImagePathKey =
+      'profileImagePath'; // คีย์สำหรับ SharedPreferences
+  static const String isAssetImageKey =
+      'isAssetImage'; // คีย์สำหรับ SharedPreferences
+  String? profileImagePath;
+  bool isAssetImage = true;
+  ImageProvider? profileImage;
 
   @override
   void initState() {
@@ -54,48 +64,85 @@ class _SettingScreenState extends State<SettingScreen> {
     if (uid != null) {
       listenForSessionChanges(context, uid);
     }
+    _loadProfileImage(); // โหลดรูปภาพที่บันทึกไว้เมื่อเริ่มต้น
   }
 
   @override
   void dispose() {
-    _sessionListener?.cancel();
+    sessionListener?.cancel();
     super.dispose();
   }
 
   Future<void> listenForSessionChanges(BuildContext context, String uid) async {
     final currentDeviceId = await AuthService().getDeviceId();
 
-    _sessionListener = FirebaseFirestore.instance
+    sessionListener = FirebaseFirestore.instance
         .collection('users')
         .doc(uid)
         .snapshots()
         .listen((doc) async {
-          if (doc.exists) {
-            final remoteDeviceId = doc.get('deviceId');
-            if (remoteDeviceId != currentDeviceId) {
-              await FirebaseAuth.instance.signOut();
-              _sessionListener?.cancel();
+          if (!doc.exists) {
+            if (FirebaseAuth.instance.currentUser != null) {
+              await authService.logout();
+            }
+            sessionListener?.cancel();
+            if (context.mounted) {
+              Navigator.pushReplacementNamed(context, '/');
+            }
+            return;
+          }
+          final remoteDeviceId = doc.get('deviceId');
+          if (remoteDeviceId != currentDeviceId) {
+            if (FirebaseAuth.instance.currentUser != null) {
+              await authService.logout();
+            }
+            sessionListener?.cancel();
 
-              if (context.mounted) {
-                showDialog(
-                  context: context,
-                  builder: (_) => AlertDialog(
-                    title: Text('บัญชีถูกใช้งานจากอุปกรณ์อื่น'),
-                    content: Text('คุณถูกออกจากระบบ'),
-                    actions: [
-                      TextButton(
-                        onPressed: () {
-                          Navigator.pushReplacementNamed(context, '/');
-                        },
-                        child: Text('ตกลง'),
-                      ),
-                    ],
-                  ),
-                );
-              }
+            if (context.mounted) {
+              showDialog(
+                context: context,
+                builder: (_) => AlertDialog(
+                  title: const Text('บัญชีถูกใช้งานจากอุปกรณ์อื่น'),
+                  content: const Text('คุณถูกออกจากระบบ'),
+                  actions: [
+                    TextButton(
+                      onPressed: () {
+                        Navigator.pushReplacementNamed(context, '/');
+                      },
+                      child: const Text('ตกลง'),
+                    ),
+                  ],
+                ),
+              );
             }
           }
         });
+  }
+
+  Future<void> _loadProfileImage() async {
+    final prefs = await SharedPreferences.getInstance();
+    final imagePath = prefs.getString(profileImagePathKey);
+    final isAsset =
+        prefs.getBool(isAssetImageKey) ?? true; // Default to true if not set
+
+    if (imagePath != null) {
+      setState(() {
+        profileImagePath = imagePath;
+        isAssetImage = isAsset;
+        // กำหนด profileImage ตรงนี้ด้วย
+        if (isAssetImage) {
+          profileImage = AssetImage(profileImagePath!);
+        } else {
+          profileImage = FileImage(File(profileImagePath!));
+        }
+      });
+    } else {
+      setState(() {
+        profileImagePath = null;
+        isAssetImage = true;
+        profileImage = const AssetImage('assets/images/user_icon.png');
+      });
+    }
   }
 
   bool isSettingValid() {
@@ -320,21 +367,15 @@ class _SettingScreenState extends State<SettingScreen> {
     });
   }
 
-  // Function to handle user logout
   Future<void> _logout() async {
     setState(() {
-      isLoggingOut = true; // Show loading indicator
+      isLoggingOut = true;
     });
 
     try {
-      await FirebaseAuth.instance.signOut(); // Sign out the current user
-      // After successful logout, navigate back to the login screen
+      await authService.logout();
       if (mounted) {
-        // Check if the widget is still in the tree
-        Navigator.pushReplacementNamed(
-          context,
-          '/',
-        ); // Assuming '/' is your login route
+        Navigator.pushReplacementNamed(context, '/');
       }
     } on FirebaseAuthException catch (e) {
       if (mounted) {
@@ -351,7 +392,7 @@ class _SettingScreenState extends State<SettingScreen> {
     } finally {
       if (mounted) {
         setState(() {
-          isLoggingOut = false; // Hide loading indicator
+          isLoggingOut = false;
         });
       }
     }
@@ -419,17 +460,8 @@ class _SettingScreenState extends State<SettingScreen> {
                 color: Colors.pink,
               ),
             ),
-            // const SizedBox(width: 8),
-            // CircleAvatar(
-            //   radius: 18,
-            //   backgroundColor: Colors.black12,
-            //   child: Icon(Icons.person, color: Colors.black),
-            // ),
-            Image.asset(
-              'assets/images/user_icon.png',
-              width: 70,
-              fit: BoxFit.cover,
-            ),
+            SizedBox(width: 10),
+            CircleAvatar(radius: 25, backgroundImage: profileImage),
             isLoggingOut
                 ? const SizedBox(
                     width: 30, // Match icon size

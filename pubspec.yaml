@@ -40,6 +40,8 @@ dependencies:
   audioplayers: ^6.5.0
   cloud_firestore: ^5.6.9
   device_info_plus: ^11.5.0
+  image_picker: ^1.1.2
+  shared_preferences: ^2.5.3
 
 dev_dependencies:
   flutter_test:
@@ -79,6 +81,7 @@ flutter:
   assets:
     - assets/images/
     - assets/files/
+    - assets/avatars/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
