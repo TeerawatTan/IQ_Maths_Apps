@@ -454,7 +454,7 @@ class _SettingScreenState extends State<SettingScreen> {
             bottomLeft: Radius.circular(30),
           ),
         ),
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 1),
         child: Row(
           children: [
             Text(

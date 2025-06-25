@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:iq_maths_apps/models/maths_setting.dart';
@@ -27,6 +28,7 @@ class _DivisionRandomTableScreenState extends State<DivisionRandomTableScreen> {
   bool isSoundOn = true;
   bool isAnswerChecked = false;
   bool hasCheckedAnswer = false;
+  final AudioPlayer audioPlayer = AudioPlayer();
 
   @override
   void initState() {
@@ -40,7 +42,15 @@ class _DivisionRandomTableScreenState extends State<DivisionRandomTableScreen> {
     for (var controller in controllers) {
       controller.dispose();
     }
+    audioPlayer.dispose();
     super.dispose();
+  }
+
+  void _playTikSound() async {
+    if (isSoundOn) {
+      await audioPlayer.stop();
+      await audioPlayer.play(AssetSource('files/sound_tik.mp3'));
+    }
   }
 
   void _generateRandomNumbers() {
@@ -75,6 +85,8 @@ class _DivisionRandomTableScreenState extends State<DivisionRandomTableScreen> {
     answerStatus = List.generate(questionLimit, (_) => null);
     isAnswerChecked = false;
     hasCheckedAnswer = false;
+
+    _playTikSound();
   }
 
   void _checkAnswers() {

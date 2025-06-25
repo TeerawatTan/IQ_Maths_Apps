@@ -355,8 +355,8 @@ class _WidgetWrapperState extends State<WidgetWrapper> {
                           ),
                         ),
                         padding: const EdgeInsets.symmetric(
-                          horizontal: 12,
-                          vertical: 4,
+                          horizontal: 10,
+                          vertical: 1,
                         ),
                         child: Row(
                           children: [
