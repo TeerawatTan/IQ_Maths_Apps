@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:audioplayers/audioplayers.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -405,7 +403,6 @@ class _FiveBuddyScreenState extends State<FiveBuddyScreen> {
                       fontSize = fontSize.clamp(25, 120);
 
                       return SingleChildScrollView(
-                        reverse: true,
                         padding: EdgeInsets.all(10),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,

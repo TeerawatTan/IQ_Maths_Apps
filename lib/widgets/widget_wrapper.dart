@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:iq_maths_apps/helpers/format_input_number.dart';
 import 'package:iq_maths_apps/services/auth_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -660,7 +661,7 @@ class _WidgetWrapperState extends State<WidgetWrapper> {
 
                 // Input Field
                 Padding(
-                  padding: const EdgeInsets.only(left: 80.0, right: 80),
+                  padding: const EdgeInsets.only(left: 80.0, right: 110),
                   child: TextField(
                     keyboardType: TextInputType.number,
                     controller: widget.inputAnsController,
@@ -680,8 +681,9 @@ class _WidgetWrapperState extends State<WidgetWrapper> {
                     showCursor: false,
                     inputFormatters: <TextInputFormatter>[
                       FilteringTextInputFormatter.digitsOnly,
+                      NumberInputFormatter(),
                     ],
-                    maxLength: 7,
+                    maxLength: 10,
                     enabled: !widget.isFlashCardAnimating,
                     onChanged: (value) {
                       setState(() {});
@@ -780,7 +782,7 @@ class _WidgetWrapperState extends State<WidgetWrapper> {
           Expanded(
             child: Center(
               child: Container(
-                width: 400,
+                width: 450,
                 height: 60,
                 padding: const EdgeInsets.fromLTRB(20, 7, 0, 0),
                 decoration: BoxDecoration(
@@ -818,7 +820,7 @@ class _WidgetWrapperState extends State<WidgetWrapper> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 100.0, right: 100),
+                      padding: const EdgeInsets.only(left: 80.0, right: 110),
                       child: TextField(
                         keyboardType: TextInputType.number,
                         controller: widget.inputAnsController,
@@ -834,8 +836,9 @@ class _WidgetWrapperState extends State<WidgetWrapper> {
                         showCursor: false,
                         inputFormatters: <TextInputFormatter>[
                           FilteringTextInputFormatter.digitsOnly,
+                          NumberInputFormatter(),
                         ],
-                        maxLength: 7,
+                        maxLength: 10,
                         enabled: !widget.isFlashCardAnimating,
                         onChanged: (value) {
                           setState(() {});

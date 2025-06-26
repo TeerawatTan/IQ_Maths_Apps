@@ -2,6 +2,7 @@ import 'dart:math';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:iq_maths_apps/helpers/format_number.dart';
 import 'package:iq_maths_apps/models/maths_setting.dart';
 import 'package:iq_maths_apps/screens/no_data.dart';
 import 'package:iq_maths_apps/screens/summary.dart';
@@ -230,7 +231,7 @@ class _MultiplicationScreenState extends State<MultiplicationScreen> {
 
                 // สร้างข้อความที่จะแสดง
                 final displayText =
-                    "${numbers[currentStep][0]} × ${numbers[currentStep][1]}";
+                    "${formatNumber(numbers[currentStep][0].toString())} × ${formatNumber(numbers[currentStep][1].toString())}";
                 final textLength = displayText.length;
 
                 // กำหนดขนาดตามจำนวนตัวอักษร

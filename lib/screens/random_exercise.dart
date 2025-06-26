@@ -1,6 +1,7 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:iq_maths_apps/helpers/format_number.dart';
 import 'package:iq_maths_apps/models/maths_setting.dart';
 import 'package:iq_maths_apps/screens/no_data.dart';
 import 'package:iq_maths_apps/screens/summary.dart';
@@ -57,22 +58,6 @@ class _RandomExerciseScreenState extends State<RandomExerciseScreen> {
     super.dispose();
   }
 
-  String _formatNumber(int number) {
-    String numStr = number.toString();
-    bool isNegative = numStr.startsWith('-');
-
-    if (isNegative) {
-      numStr = numStr.substring(1);
-    }
-
-    String formatted = numStr.replaceAllMapped(
-      RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'),
-      (Match m) => '${m[1]},',
-    );
-
-    return isNegative ? '-$formatted' : formatted;
-  }
-
   void _playTikSound() async {
     if (isSoundOn) {
       await audioPlayer.stop();
@@ -91,24 +76,55 @@ class _RandomExerciseScreenState extends State<RandomExerciseScreen> {
     final rand = Random();
     int total = -1;
 
-    while (total <= 0) {
-      numbers = [];
+    final maxDigitLength = max(digit1, digit2);
+    final maxAllowedAnswerValue = pow(10, maxDigitLength).toInt() - 1;
 
-      final firstDigit = rand.nextBool() ? digit1 : digit2;
-      final firstMin = getMin(firstDigit);
-      final firstMax = getMax(firstDigit);
-      final firstNumber = rand.nextInt(firstMax - firstMin + 1) + firstMin;
-      numbers.add(firstNumber);
+    const int maxAttempts = 1000;
+    int currentAttempts = 0;
 
-      for (int i = 1; i < row; i++) {
-        final useDigit = rand.nextBool() ? digit1 : digit2;
-        final min = getMin(useDigit);
-        final max = getMax(useDigit);
-        final value = rand.nextInt(max - min + 1) + min;
-
-        numbers.add(rand.nextBool() ? value : -value);
+    while (total <= 0 || total > maxAllowedAnswerValue) {
+      currentAttempts++;
+      if (currentAttempts > maxAttempts) {
+        int fallbackNumber =
+            rand.nextInt(getMax(maxDigitLength) - getMin(maxDigitLength) + 1) +
+            getMin(maxDigitLength);
+        numbers = [fallbackNumber];
+        total = fallbackNumber;
+        break;
       }
 
+      numbers = [];
+
+      if (digit1 != digit2 && row >= 2) {
+        int val1 =
+            rand.nextInt(getMax(digit1) - getMin(digit1) + 1) + getMin(digit1);
+        numbers.add(val1);
+
+        int val2 =
+            rand.nextInt(getMax(digit2) - getMin(digit2) + 1) + getMin(digit2);
+        numbers.add(rand.nextBool() ? val2 : -val2);
+
+        for (int i = 2; i < row; i++) {
+          final useDigit = rand.nextBool() ? digit1 : digit2;
+          final value =
+              rand.nextInt(getMax(useDigit) - getMin(useDigit) + 1) +
+              getMin(useDigit);
+          numbers.add(rand.nextBool() ? value : -value);
+        }
+      } else {
+        final firstUseDigit = rand.nextBool() ? digit1 : digit2;
+        final firstValue =
+            rand.nextInt(getMax(firstUseDigit) - getMin(firstUseDigit) + 1) +
+            getMin(firstUseDigit);
+        numbers.add(firstValue);
+        for (int i = 1; i < row; i++) {
+          final useDigit = rand.nextBool() ? digit1 : digit2;
+          final value =
+              rand.nextInt(getMax(useDigit) - getMin(useDigit) + 1) +
+              getMin(useDigit);
+          numbers.add(rand.nextBool() ? value : -value);
+        }
+      }
       total = numbers.reduce((a, b) => a + b);
     }
 
@@ -276,7 +292,7 @@ class _RandomExerciseScreenState extends State<RandomExerciseScreen> {
       showAnswerText: showAnswerText,
       waitingToShowAnswer: waitingToShowAnswer,
       showSmallWrongIcon: showSmallWrongIcon,
-      answerText: _formatNumber(answer),
+      answerText: formatNumber(answer.toString()),
       currentMenuButtonLabel: _getCurrentMenuLabel(),
       isShowMode: true,
       isSoundOn: isSoundOn,
@@ -317,15 +333,14 @@ class _RandomExerciseScreenState extends State<RandomExerciseScreen> {
                       fontSize = fontSize.clamp(25, 120);
 
                       return SingleChildScrollView(
-                        reverse: true,
-                        padding: EdgeInsets.all(10),
+                        padding: EdgeInsets.only(top: 50),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: numbers.map((e) {
                             return Padding(
                               padding: const EdgeInsets.symmetric(vertical: 1),
                               child: buildOutlinedText(
-                                _formatNumber(e),
+                                formatNumber(e.toString()),
                                 fontSize: fontSize,
                               ),
                             );
@@ -342,7 +357,7 @@ class _RandomExerciseScreenState extends State<RandomExerciseScreen> {
                         child: FittedBox(
                           fit: BoxFit.contain,
                           child: buildOutlinedText(
-                            _formatNumber(numbers[currentStep]),
+                            formatNumber(numbers[currentStep].toString()),
                           ),
                         ),
                       ),

@@ -2,6 +2,7 @@ import 'dart:math';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:iq_maths_apps/helpers/format_number.dart';
 import 'package:iq_maths_apps/models/maths_setting.dart';
 import 'package:iq_maths_apps/screens/no_data.dart';
 import 'package:iq_maths_apps/screens/summary.dart';
@@ -26,7 +27,7 @@ class _DivisionScreenState extends State<DivisionScreen> {
   bool waitingToShowAnswer = false;
   bool isShowAll = false;
   int answer = 0;
-  int questionLimitAnsCorrect = 0;
+  int countAnsCorrect = 0;
   int questionsAttempted = 0;
   bool isFlashCardAnimating = false;
   final TextEditingController inputAnsController = TextEditingController();
@@ -44,6 +45,7 @@ class _DivisionScreenState extends State<DivisionScreen> {
     super.initState();
     widget.setting.display = "show all";
     _generateRandomNumbers();
+    _updateCurrentQuestion();
   }
 
   @override
@@ -65,7 +67,7 @@ class _DivisionScreenState extends State<DivisionScreen> {
     final digit1 = int.tryParse(widget.setting.digit1) ?? 2;
     final digit2 = int.tryParse(widget.setting.digit2) ?? 1;
 
-    numbers = [];
+    numbers = []; // เคลียร์ list ก่อน generate ใหม่
 
     final minDividend = pow(10, digit1 - 1).toInt();
     final maxDividend = pow(10, digit1).toInt() - 1;
@@ -75,14 +77,21 @@ class _DivisionScreenState extends State<DivisionScreen> {
     final random = Random();
 
     int attempt = 0;
-
-    while (numbers.length < questionLimit && attempt < questionLimit * 20) {
+    while (numbers.length < questionLimit && attempt < questionLimit * 50) {
       attempt++;
       int divisor = random.nextInt(maxDivisor - minDivisor + 1) + minDivisor;
-      int quotient = random.nextInt(9) + 1;
+      final int minQuotient = 1;
+      final int maxQuotientForThisDivisor = (maxDividend / divisor).floor();
+      if (maxQuotientForThisDivisor < minQuotient) {}
+
+      int quotient =
+          random.nextInt(maxQuotientForThisDivisor - minQuotient + 1) +
+          minQuotient;
       int dividend = divisor * quotient;
 
-      if (dividend >= minDividend && dividend <= maxDividend) {
+      if (dividend >= minDividend &&
+          dividend <= maxDividend &&
+          dividend != divisor) {
         numbers.add([dividend, divisor]);
       }
     }
@@ -90,29 +99,33 @@ class _DivisionScreenState extends State<DivisionScreen> {
     while (numbers.length < questionLimit) {
       numbers.add([minDividend, minDivisor]);
     }
+  }
+
+  void _updateCurrentQuestion() {
+    if (numbers.isEmpty) {
+      setState(() {
+        // Perhaps set a flag to show NoDataScreen
+      });
+      return;
+    }
 
     final p = numbers[currentStep];
     answer = p[0] ~/ p[1];
 
-    currentStep = 0;
-    showAnswer = false;
-    waitingToShowAnswer = false;
-    showSmallWrongIcon = false;
-    showAnswerText = false;
-    inputAnsController.clear();
-    isAnswerCorrect = false;
-    hasCheckedAnswer = false;
     setState(() {
-      // Determine _isShowAll here based on the current setting
+      showAnswer = false;
+      waitingToShowAnswer = false;
+      showSmallWrongIcon = false;
+      showAnswerText = false;
+      inputAnsController.clear();
+      isAnswerCorrect = false;
+      hasCheckedAnswer = false;
       isShowAll = widget.setting.display.toLowerCase() == 'show all';
     });
+
     if (!isShowAll) {
       shouldContinueFlashCard = true;
     } else {
-      // If in show all mode, reset _currentStep and immediately update UI
-      setState(() {
-        currentStep = 0; // Not strictly needed for showAll but good practice
-      });
       _playTikSound();
     }
   }
@@ -124,8 +137,7 @@ class _DivisionScreenState extends State<DivisionScreen> {
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
-        builder: (context) =>
-            SummaryScreen(answerCorrect: questionLimitAnsCorrect),
+        builder: (context) => SummaryScreen(answerCorrect: countAnsCorrect),
       ),
     );
   }
@@ -140,14 +152,14 @@ class _DivisionScreenState extends State<DivisionScreen> {
     }
 
     setState(() {
-      hasCheckedAnswer = true; // Mark that an answer has been checked
+      hasCheckedAnswer = true;
     });
 
     if (userAnswer != null && userAnswer == answer) {
+      countAnsCorrect++;
       setState(() {
         isAnswerCorrect = true;
       });
-      // Optionally add a short delay before moving to the next question
     } else {
       setState(() {
         isAnswerCorrect = false;
@@ -221,7 +233,7 @@ class _DivisionScreenState extends State<DivisionScreen> {
       showAnswerText: showAnswerText,
       waitingToShowAnswer: waitingToShowAnswer,
       showSmallWrongIcon: showSmallWrongIcon,
-      answerText: answer.toString(),
+      answerText: formatNumber(answer.toString()),
       currentMenuButtonLabel: _getCurrentMenuLabel(),
       isShowMode: false,
       isSoundOn: isSoundOn,
@@ -241,7 +253,7 @@ class _DivisionScreenState extends State<DivisionScreen> {
 
                 // สร้างข้อความที่จะแสดง
                 final displayText =
-                    "${numbers[currentStep][0]} ÷ ${numbers[currentStep][1]}";
+                    "${formatNumber(numbers[currentStep][0].toString())} ÷ ${formatNumber(numbers[currentStep][1].toString())}";
                 final textLength = displayText.length;
 
                 // กำหนดขนาดตามจำนวนตัวอักษร
