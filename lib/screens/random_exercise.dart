@@ -57,6 +57,22 @@ class _RandomExerciseScreenState extends State<RandomExerciseScreen> {
     super.dispose();
   }
 
+  String _formatNumber(int number) {
+    String numStr = number.toString();
+    bool isNegative = numStr.startsWith('-');
+
+    if (isNegative) {
+      numStr = numStr.substring(1);
+    }
+
+    String formatted = numStr.replaceAllMapped(
+      RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'),
+      (Match m) => '${m[1]},',
+    );
+
+    return isNegative ? '-$formatted' : formatted;
+  }
+
   void _playTikSound() async {
     if (isSoundOn) {
       await audioPlayer.stop();
@@ -260,7 +276,7 @@ class _RandomExerciseScreenState extends State<RandomExerciseScreen> {
       showAnswerText: showAnswerText,
       waitingToShowAnswer: waitingToShowAnswer,
       showSmallWrongIcon: showSmallWrongIcon,
-      answerText: answer.toString(),
+      answerText: _formatNumber(answer),
       currentMenuButtonLabel: _getCurrentMenuLabel(),
       isShowMode: true,
       isSoundOn: isSoundOn,
@@ -309,7 +325,7 @@ class _RandomExerciseScreenState extends State<RandomExerciseScreen> {
                             return Padding(
                               padding: const EdgeInsets.symmetric(vertical: 1),
                               child: buildOutlinedText(
-                                "$e",
+                                _formatNumber(e),
                                 fontSize: fontSize,
                               ),
                             );
@@ -325,7 +341,9 @@ class _RandomExerciseScreenState extends State<RandomExerciseScreen> {
                         padding: const EdgeInsets.only(top: 60, left: 50),
                         child: FittedBox(
                           fit: BoxFit.contain,
-                          child: buildOutlinedText("${numbers[currentStep]}"),
+                          child: buildOutlinedText(
+                            _formatNumber(numbers[currentStep]),
+                          ),
                         ),
                       ),
                     )
