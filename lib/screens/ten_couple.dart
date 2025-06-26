@@ -104,7 +104,7 @@ class _TenCoupleScreenState extends State<TenCoupleScreen> {
   }
 
   void _randomQuestion3rows(int d1, int d2) {
-    // LowerUpper3Row? currentQ;
+    // ThreeDigit? currentQ;
     // if (d1 == 1) {
     //   if (d2 == 1) {}
     // } else if (d1 == 2) {
@@ -129,7 +129,7 @@ class _TenCoupleScreenState extends State<TenCoupleScreen> {
   }
 
   void _randomQuestion4rows(int d1, int d2) {
-    // FiveTen4Row? currentQ;
+    // FourDigit? currentQ;
     // if (d1 == 1) {
     //   if (d2 == 1) {
     //     RandomQuestionRow selector = RandomQuestionRow(questions: fivePlusFour4Row11);
@@ -161,7 +161,7 @@ class _TenCoupleScreenState extends State<TenCoupleScreen> {
   }
 
   void _randomQuestion5rows(int d1, int d2) {
-    // FiveTen5Row? currentQ;
+    // FiveDigit? currentQ;
     // if (d1 == 1) {
     //   if (d2 == 1) {
     //     RandomQuestionRow selector = RandomQuestionRow(questions: fivePlusFour5Row11);
@@ -194,7 +194,7 @@ class _TenCoupleScreenState extends State<TenCoupleScreen> {
   }
 
   void _randomQuestion6rows(int d1, int d2) {
-    // FiveTen6Row? currentQ;
+    // SixDigit? currentQ;
     // if (d1 == 1) {
     //   if (d2 == 1) {
     //     RandomQuestionRow selector = RandomQuestionRow(questions: fivePlusFour6Row11);

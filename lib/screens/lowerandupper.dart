@@ -2,8 +2,8 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:iq_maths_apps/datas/lower_upper.dart';
-import 'package:iq_maths_apps/datas/random_question.dart';
-import 'package:iq_maths_apps/models/lower_upper.dart';
+import 'package:iq_maths_apps/helpers/random_question.dart';
+import 'package:iq_maths_apps/models/digit_model.dart';
 import 'package:iq_maths_apps/models/maths_setting.dart';
 import 'package:iq_maths_apps/screens/no_data.dart';
 import 'package:iq_maths_apps/screens/summary.dart';
@@ -108,60 +108,60 @@ class _LowerAndUpperScreenState extends State<LowerAndUpperScreen> {
   }
 
   void _randomQuestion3rows(int d1, int d2) {
-    LowerUpper3Row? currentQ;
-    if (d1 == 1) {
-      if (d2 == 1) {
-        RandomQuestionRow selector = RandomQuestionRow(
-          questions: lowerUpper3Row11,
-        );
-        selector.selectRandomQuestion();
-        currentQ = selector.getCurrentQuestion();
-      } else if (d2 == 2) {
-        RandomQuestionRow selector = RandomQuestionRow(
-          questions: lowerUpper3Row21,
-        );
-        selector.selectRandomQuestion();
-        currentQ = selector.getCurrentQuestion();
-      }
-    } else if (d1 == 2) {
-      if (d2 == 1) {
-        RandomQuestionRow selector = RandomQuestionRow(
-          questions: lowerUpper3Row21,
-        );
-        selector.selectRandomQuestion();
-        currentQ = selector.getCurrentQuestion();
-      } else if (d2 == 2) {
-        RandomQuestionRow selector = RandomQuestionRow(
-          questions: lowerUpper3Row22,
-        );
-        selector.selectRandomQuestion();
-        currentQ = selector.getCurrentQuestion();
-      }
-    } else if (d1 == 3) {
-      if (d2 == 2) {
-        RandomQuestionRow selector = RandomQuestionRow(
-          questions: lowerUpper3Row32,
-        );
-        selector.selectRandomQuestion();
-        currentQ = selector.getCurrentQuestion();
-      } else if (d2 == 3) {
-        RandomQuestionRow selector = RandomQuestionRow(
-          questions: lowerUpper3Row33,
-        );
-        selector.selectRandomQuestion();
-        currentQ = selector.getCurrentQuestion();
-      }
-    }
-    if (currentQ != null) {
-      numbers.add(currentQ.digit1);
-      numbers.add(currentQ.digit2);
-      numbers.add(currentQ.digit3);
-      answer = currentQ.ans;
-    }
+    // ThreeDigit? currentQ;
+    // if (d1 == 1) {
+    //   if (d2 == 1) {
+    //     RandomQuestionRow selector = RandomQuestionRow(
+    //       questions: lowerUpper3Row11,
+    //     );
+    //     selector.selectRandomQuestion();
+    //     currentQ = selector.getCurrentQuestion();
+    //   } else if (d2 == 2) {
+    //     RandomQuestionRow selector = RandomQuestionRow(
+    //       questions: lowerUpper3Row21,
+    //     );
+    //     selector.selectRandomQuestion();
+    //     currentQ = selector.getCurrentQuestion();
+    //   }
+    // } else if (d1 == 2) {
+    //   if (d2 == 1) {
+    //     RandomQuestionRow selector = RandomQuestionRow(
+    //       questions: lowerUpper3Row21,
+    //     );
+    //     selector.selectRandomQuestion();
+    //     currentQ = selector.getCurrentQuestion();
+    //   } else if (d2 == 2) {
+    //     RandomQuestionRow selector = RandomQuestionRow(
+    //       questions: lowerUpper3Row22,
+    //     );
+    //     selector.selectRandomQuestion();
+    //     currentQ = selector.getCurrentQuestion();
+    //   }
+    // } else if (d1 == 3) {
+    //   if (d2 == 2) {
+    //     RandomQuestionRow selector = RandomQuestionRow(
+    //       questions: lowerUpper3Row32,
+    //     );
+    //     selector.selectRandomQuestion();
+    //     currentQ = selector.getCurrentQuestion();
+    //   } else if (d2 == 3) {
+    //     RandomQuestionRow selector = RandomQuestionRow(
+    //       questions: lowerUpper3Row33,
+    //     );
+    //     selector.selectRandomQuestion();
+    //     currentQ = selector.getCurrentQuestion();
+    //   }
+    // }
+    // if (currentQ != null) {
+    //   numbers.add(currentQ.digit1);
+    //   numbers.add(currentQ.digit2);
+    //   numbers.add(currentQ.digit3);
+    //   answer = currentQ.ans;
+    // }
   }
 
   void _randomQuestion4rows(int d1, int d2) {
-    LowerUpper4Row? currentQ;
+    FourDigit? currentQ;
     if (d1 == 1) {
       if (d2 == 1) {
         RandomQuestionRow selector = RandomQuestionRow(
@@ -190,20 +190,6 @@ class _LowerAndUpperScreenState extends State<LowerAndUpperScreen> {
         selector.selectRandomQuestion();
         currentQ = selector.getCurrentQuestion();
       }
-    } else if (d1 == 3) {
-      if (d2 == 2) {
-        RandomQuestionRow selector = RandomQuestionRow(
-          questions: lowerUpper4Row32,
-        );
-        selector.selectRandomQuestion();
-        currentQ = selector.getCurrentQuestion();
-      } else if (d2 == 3) {
-        RandomQuestionRow selector = RandomQuestionRow(
-          questions: lowerUpper4Row33,
-        );
-        selector.selectRandomQuestion();
-        currentQ = selector.getCurrentQuestion();
-      }
     }
     if (currentQ != null) {
       numbers.add(currentQ.digit1);
@@ -215,7 +201,7 @@ class _LowerAndUpperScreenState extends State<LowerAndUpperScreen> {
   }
 
   void _randomQuestion5rows(int d1, int d2) {
-    LowerUpper5Row? currentQ;
+    FiveDigit? currentQ;
     if (d1 == 1) {
       if (d2 == 1) {
         RandomQuestionRow selector = RandomQuestionRow(
@@ -244,20 +230,6 @@ class _LowerAndUpperScreenState extends State<LowerAndUpperScreen> {
         selector.selectRandomQuestion();
         currentQ = selector.getCurrentQuestion();
       }
-    } else if (d1 == 3) {
-      if (d2 == 2) {
-        RandomQuestionRow selector = RandomQuestionRow(
-          questions: lowerUpper5Row32,
-        );
-        selector.selectRandomQuestion();
-        currentQ = selector.getCurrentQuestion();
-      } else if (d2 == 3) {
-        RandomQuestionRow selector = RandomQuestionRow(
-          questions: lowerUpper5Row33,
-        );
-        selector.selectRandomQuestion();
-        currentQ = selector.getCurrentQuestion();
-      }
     }
     if (currentQ != null) {
       numbers.add(currentQ.digit1);
@@ -270,7 +242,7 @@ class _LowerAndUpperScreenState extends State<LowerAndUpperScreen> {
   }
 
   void _randomQuestion6rows(int d1, int d2) {
-    LowerUpper6Row? currentQ;
+    SixDigit? currentQ;
     if (d1 == 1) {
       if (d2 == 1) {
         RandomQuestionRow selector = RandomQuestionRow(
@@ -295,20 +267,6 @@ class _LowerAndUpperScreenState extends State<LowerAndUpperScreen> {
       } else if (d2 == 2) {
         RandomQuestionRow selector = RandomQuestionRow(
           questions: lowerUpper6Row22,
-        );
-        selector.selectRandomQuestion();
-        currentQ = selector.getCurrentQuestion();
-      }
-    } else if (d1 == 3) {
-      if (d2 == 2) {
-        RandomQuestionRow selector = RandomQuestionRow(
-          questions: lowerUpper6Row32,
-        );
-        selector.selectRandomQuestion();
-        currentQ = selector.getCurrentQuestion();
-      } else if (d2 == 3) {
-        RandomQuestionRow selector = RandomQuestionRow(
-          questions: lowerUpper6Row33,
         );
         selector.selectRandomQuestion();
         currentQ = selector.getCurrentQuestion();

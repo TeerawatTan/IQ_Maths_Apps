@@ -1,1303 +1,456 @@
-import 'package:iq_maths_apps/models/lower_upper.dart';
+import 'package:iq_maths_apps/models/digit_model.dart';
 
-List<LowerUpper4Row> lower4Row11 = [
-  LowerUpper4Row(digit1: 4, digit2: -3, digit3: 2, digit4: 1, ans: 4),
-  LowerUpper4Row(digit1: 3, digit2: 1, digit3: -2, digit4: -2, ans: 0),
-  LowerUpper4Row(digit1: 2, digit2: 2, digit3: -3, digit4: 1, ans: 2),
-  LowerUpper4Row(digit1: 1, digit2: 3, digit3: -2, digit4: -1, ans: 1),
-  LowerUpper4Row(digit1: 4, digit2: -2, digit3: 1, digit4: -3, ans: 0),
-  LowerUpper4Row(digit1: 3, digit2: -1, digit3: 2, digit4: -4, ans: 0),
-  LowerUpper4Row(digit1: 2, digit2: 1, digit3: -3, digit4: 4, ans: 4),
-  LowerUpper4Row(digit1: 4, digit2: -3, digit3: 2, digit4: 1, ans: 4),
-  LowerUpper4Row(digit1: 3, digit2: -2, digit3: 1, digit4: 2, ans: 4),
-  LowerUpper4Row(digit1: 2, digit2: 2, digit3: -4, digit4: 3, ans: 3),
-  LowerUpper4Row(digit1: 1, digit2: 1, digit3: 2, digit4: -3, ans: 1),
-  LowerUpper4Row(digit1: 4, digit2: -4, digit3: 3, digit4: 1, ans: 4),
-  LowerUpper4Row(digit1: 3, digit2: -1, digit3: 2, digit4: -4, ans: 0),
-  LowerUpper4Row(digit1: 2, digit2: -2, digit3: 4, digit4: -3, ans: 1),
-  LowerUpper4Row(digit1: 1, digit2: 3, digit3: -4, digit4: 2, ans: 2),
-  LowerUpper4Row(digit1: 4, digit2: -1, digit3: -2, digit4: 3, ans: 4),
-  LowerUpper4Row(digit1: 3, digit2: 1, digit3: -4, digit4: 2, ans: 2),
-  LowerUpper4Row(digit1: 2, digit2: -1, digit3: 3, digit4: -2, ans: 2),
-  LowerUpper4Row(digit1: 4, digit2: -3, digit3: -1, digit4: 2, ans: 2),
-  LowerUpper4Row(digit1: 1, digit2: 2, digit3: 1, digit4: -3, ans: 1),
-  LowerUpper4Row(digit1: 2, digit2: 2, digit3: -3, digit4: 1, ans: 2),
-  LowerUpper4Row(digit1: 1, digit2: 2, digit3: 1, digit4: -3, ans: 1),
-  LowerUpper4Row(digit1: 3, digit2: -2, digit3: 3, digit4: -4, ans: 0),
-  LowerUpper4Row(digit1: 4, digit2: -3, digit3: 1, digit4: 2, ans: 4),
-  LowerUpper4Row(digit1: 1, digit2: 1, digit3: -2, digit4: 4, ans: 4),
-  LowerUpper4Row(digit1: 2, digit2: 2, digit3: -3, digit4: 1, ans: 2),
-  LowerUpper4Row(digit1: 3, digit2: -1, digit3: 2, digit4: -4, ans: 0),
-  LowerUpper4Row(digit1: 4, digit2: -1, digit3: -2, digit4: 3, ans: 4),
-  LowerUpper4Row(digit1: 2, digit2: 1, digit3: -2, digit4: 3, ans: 4),
-  LowerUpper4Row(digit1: 1, digit2: 3, digit3: -2, digit4: -1, ans: 1),
-  LowerUpper4Row(digit1: 2, digit2: 2, digit3: -4, digit4: 3, ans: 3),
-  LowerUpper4Row(digit1: 4, digit2: -1, digit3: -2, digit4: 3, ans: 4),
-  LowerUpper4Row(digit1: 1, digit2: 2, digit3: 1, digit4: -3, ans: 1),
-  LowerUpper4Row(digit1: 3, digit2: 1, digit3: -4, digit4: 2, ans: 2),
-  LowerUpper4Row(digit1: 2, digit2: 2, digit3: -1, digit4: -2, ans: 1),
-  LowerUpper4Row(digit1: 4, digit2: -3, digit3: 2, digit4: 1, ans: 4),
-  LowerUpper4Row(digit1: 3, digit2: -3, digit3: 4, digit4: -2, ans: 2),
-  LowerUpper4Row(digit1: 1, digit2: 1, digit3: 2, digit4: -3, ans: 1),
-  LowerUpper4Row(digit1: 2, digit2: 2, digit3: -4, digit4: 3, ans: 3),
-  LowerUpper4Row(digit1: 3, digit2: -1, digit3: 2, digit4: -4, ans: 0),
-  LowerUpper4Row(digit1: 4, digit2: -3, digit3: 2, digit4: -3, ans: 0),
-  LowerUpper4Row(digit1: 2, digit2: 2, digit3: -1, digit4: -2, ans: 1),
-  LowerUpper4Row(digit1: 1, digit2: -1, digit3: 2, digit4: 2, ans: 4),
-  LowerUpper4Row(digit1: 3, digit2: -3, digit3: 4, digit4: -2, ans: 2),
-  LowerUpper4Row(digit1: 4, digit2: -2, digit3: -2, digit4: 3, ans: 3),
-  LowerUpper4Row(digit1: 2, digit2: 2, digit3: -2, digit4: 2, ans: 4),
-  LowerUpper4Row(digit1: 1, digit2: 2, digit3: -3, digit4: 4, ans: 4),
-  LowerUpper4Row(digit1: 3, digit2: -1, digit3: 2, digit4: -3, ans: 1),
-  LowerUpper4Row(digit1: 4, digit2: -1, digit3: -2, digit4: 3, ans: 4),
-  LowerUpper4Row(digit1: 2, digit2: 1, digit3: 1, digit4: -4, ans: 0),
-  LowerUpper4Row(digit1: 1, digit2: -1, digit3: 4, digit4: -2, ans: 2),
-  LowerUpper4Row(digit1: 3, digit2: -3, digit3: 4, digit4: -1, ans: 3),
-  LowerUpper4Row(digit1: 4, digit2: -4, digit3: 2, digit4: 2, ans: 4),
-  LowerUpper4Row(digit1: 2, digit2: -2, digit3: 3, digit4: 1, ans: 4),
-  LowerUpper4Row(digit1: 1, digit2: 3, digit3: -4, digit4: 2, ans: 2),
-  LowerUpper4Row(digit1: 3, digit2: 1, digit3: -4, digit4: 2, ans: 2),
-  LowerUpper4Row(digit1: 4, digit2: -2, digit3: 1, digit4: 1, ans: 4),
-  LowerUpper4Row(digit1: 2, digit2: 2, digit3: -3, digit4: 2, ans: 3),
-  LowerUpper4Row(digit1: 3, digit2: 1, digit3: -4, digit4: 2, ans: 2),
-  LowerUpper4Row(digit1: 1, digit2: 2, digit3: -1, digit4: 2, ans: 4),
-  LowerUpper4Row(digit1: 2, digit2: 2, digit3: -3, digit4: 1, ans: 2),
-  LowerUpper4Row(digit1: 1, digit2: 1, digit3: 2, digit4: -1, ans: 3),
-  LowerUpper4Row(digit1: 3, digit2: -2, digit3: 1, digit4: -2, ans: 0),
-  LowerUpper4Row(digit1: 4, digit2: -1, digit3: -3, digit4: 4, ans: 4),
-  LowerUpper4Row(digit1: 3, digit2: 1, digit3: -2, digit4: -1, ans: 1),
-  LowerUpper4Row(digit1: 2, digit2: 2, digit3: -3, digit4: 3, ans: 4),
-  LowerUpper4Row(digit1: 1, digit2: 3, digit3: -4, digit4: 2, ans: 2),
-  LowerUpper4Row(digit1: 4, digit2: -3, digit3: 1, digit4: -2, ans: 0),
-  LowerUpper4Row(digit1: 3, digit2: -1, digit3: 2, digit4: -4, ans: 0),
-  LowerUpper4Row(digit1: 2, digit2: 1, digit3: -3, digit4: 2, ans: 2),
-  LowerUpper4Row(digit1: 1, digit2: 3, digit3: -2, digit4: -1, ans: 1),
-  LowerUpper4Row(digit1: 4, digit2: -2, digit3: 1, digit4: -3, ans: 0),
-  LowerUpper4Row(digit1: 3, digit2: -1, digit3: 2, digit4: -1, ans: 3),
-  LowerUpper4Row(digit1: 2, digit2: 2, digit3: -3, digit4: 1, ans: 2),
-  LowerUpper4Row(digit1: 1, digit2: 1, digit3: 1, digit4: -2, ans: 1),
-  LowerUpper4Row(digit1: 4, digit2: -1, digit3: -3, digit4: 2, ans: 2),
-  LowerUpper4Row(digit1: 3, digit2: -2, digit3: 1, digit4: -2, ans: 0),
-  LowerUpper4Row(digit1: 2, digit2: 1, digit3: 1, digit4: -3, ans: 1),
-  LowerUpper4Row(digit1: 1, digit2: 3, digit3: -2, digit4: -1, ans: 1),
-  LowerUpper4Row(digit1: 4, digit2: -3, digit3: 1, digit4: -2, ans: 0),
-  LowerUpper4Row(digit1: 3, digit2: 1, digit3: -4, digit4: 2, ans: 2),
-  LowerUpper4Row(digit1: 2, digit2: 2, digit3: -1, digit4: -3, ans: 0),
-  LowerUpper4Row(digit1: 1, digit2: -1, digit3: 3, digit4: -2, ans: 1),
-  LowerUpper4Row(digit1: 4, digit2: -1, digit3: -1, digit4: 2, ans: 4),
-  LowerUpper4Row(digit1: 3, digit2: -2, digit3: 1, digit4: 1, ans: 3),
-  LowerUpper4Row(digit1: 2, digit2: 1, digit3: 1, digit4: -4, ans: 0),
-  LowerUpper4Row(digit1: 1, digit2: 1, digit3: 1, digit4: -3, ans: 0),
-  LowerUpper4Row(digit1: 4, digit2: -3, digit3: 2, digit4: -3, ans: 0),
-  LowerUpper4Row(digit1: 3, digit2: 1, digit3: -2, digit4: -1, ans: 1),
-  LowerUpper4Row(digit1: 2, digit2: 2, digit3: -3, digit4: 2, ans: 3),
-  LowerUpper4Row(digit1: 1, digit2: 3, digit3: -2, digit4: 1, ans: 3),
-  LowerUpper4Row(digit1: 4, digit2: -2, digit3: 1, digit4: -3, ans: 0),
-  LowerUpper4Row(digit1: 3, digit2: -2, digit3: 1, digit4: 2, ans: 4),
-  LowerUpper4Row(digit1: 2, digit2: -1, digit3: 3, digit4: -2, ans: 2),
-  LowerUpper4Row(digit1: 1, digit2: 3, digit3: -1, digit4: -3, ans: 0),
-  LowerUpper4Row(digit1: 4, digit2: -2, digit3: -1, digit4: 3, ans: 4),
-  LowerUpper4Row(digit1: 3, digit2: -2, digit3: 3, digit4: -1, ans: 3),
-  LowerUpper4Row(digit1: 2, digit2: 2, digit3: -4, digit4: 3, ans: 3),
-  LowerUpper4Row(digit1: 1, digit2: 3, digit3: -2, digit4: -2, ans: 0),
-  LowerUpper4Row(digit1: 4, digit2: -3, digit3: 2, digit4: 1, ans: 4),
-  LowerUpper4Row(digit1: 2, digit2: 1, digit3: 1, digit4: -3, ans: 1),
-  LowerUpper4Row(digit1: 4, digit2: -2, digit3: -1, digit4: 2, ans: 3),
-  LowerUpper4Row(digit1: 3, digit2: -2, digit3: 3, digit4: -2, ans: 2),
-  LowerUpper4Row(digit1: 1, digit2: 2, digit3: -1, digit4: 2, ans: 4),
-  LowerUpper4Row(digit1: 4, digit2: -4, digit3: 3, digit4: 1, ans: 4),
-  LowerUpper4Row(digit1: 2, digit2: 1, digit3: 1, digit4: -2, ans: 2),
-  LowerUpper4Row(digit1: 3, digit2: -2, digit3: -1, digit4: 4, ans: 4),
-  LowerUpper4Row(digit1: 1, digit2: 1, digit3: -2, digit4: 3, ans: 3),
-  LowerUpper4Row(digit1: 4, digit2: -3, digit3: 1, digit4: 2, ans: 4),
-  LowerUpper4Row(digit1: 2, digit2: -1, digit3: 2, digit4: 1, ans: 4),
-  LowerUpper4Row(digit1: 3, digit2: -1, digit3: 2, digit4: -3, ans: 1),
-  LowerUpper4Row(digit1: 4, digit2: -1, digit3: -2, digit4: 3, ans: 4),
-  LowerUpper4Row(digit1: 2, digit2: 2, digit3: -3, digit4: 1, ans: 2),
-  LowerUpper4Row(digit1: 1, digit2: 3, digit3: -2, digit4: -2, ans: 0),
-  LowerUpper4Row(digit1: 4, digit2: -3, digit3: 1, digit4: 2, ans: 4),
-  LowerUpper4Row(digit1: 2, digit2: 1, digit3: 1, digit4: -3, ans: 1),
-  LowerUpper4Row(digit1: 3, digit2: 1, digit3: -4, digit4: 2, ans: 2),
-  LowerUpper4Row(digit1: 4, digit2: -2, digit3: -2, digit4: 4, ans: 4),
-  LowerUpper4Row(digit1: 1, digit2: -1, digit3: 2, digit4: 2, ans: 4),
-  LowerUpper4Row(digit1: 3, digit2: 1, digit3: -2, digit4: 2, ans: 4),
+List<FourDigit> lower4Row11 = [
+  FourDigit(digit1: 4, digit2: -3, digit3: 2, digit4: 1, ans: 4),
+  FourDigit(digit1: 3, digit2: 1, digit3: -2, digit4: -2, ans: 0),
+  FourDigit(digit1: 2, digit2: 2, digit3: -3, digit4: 1, ans: 2),
+  FourDigit(digit1: 1, digit2: 3, digit3: -2, digit4: -1, ans: 1),
+  FourDigit(digit1: 4, digit2: -2, digit3: 1, digit4: -3, ans: 0),
+  FourDigit(digit1: 3, digit2: -1, digit3: 2, digit4: -4, ans: 0),
+  FourDigit(digit1: 2, digit2: 1, digit3: -3, digit4: 4, ans: 4),
+  FourDigit(digit1: 4, digit2: -3, digit3: 2, digit4: 1, ans: 4),
+  FourDigit(digit1: 3, digit2: -2, digit3: 1, digit4: 2, ans: 4),
+  FourDigit(digit1: 2, digit2: 2, digit3: -4, digit4: 3, ans: 3),
+  FourDigit(digit1: 1, digit2: 1, digit3: 2, digit4: -3, ans: 1),
+  FourDigit(digit1: 4, digit2: -4, digit3: 3, digit4: 1, ans: 4),
+  FourDigit(digit1: 3, digit2: -1, digit3: 2, digit4: -4, ans: 0),
+  FourDigit(digit1: 2, digit2: -2, digit3: 4, digit4: -3, ans: 1),
+  FourDigit(digit1: 1, digit2: 3, digit3: -4, digit4: 2, ans: 2),
+  FourDigit(digit1: 4, digit2: -1, digit3: -2, digit4: 3, ans: 4),
+  FourDigit(digit1: 3, digit2: 1, digit3: -4, digit4: 2, ans: 2),
+  FourDigit(digit1: 2, digit2: -1, digit3: 3, digit4: -2, ans: 2),
+  FourDigit(digit1: 4, digit2: -3, digit3: -1, digit4: 2, ans: 2),
+  FourDigit(digit1: 1, digit2: 2, digit3: 1, digit4: -3, ans: 1),
+  FourDigit(digit1: 2, digit2: 2, digit3: -3, digit4: 1, ans: 2),
+  FourDigit(digit1: 1, digit2: 2, digit3: 1, digit4: -3, ans: 1),
+  FourDigit(digit1: 3, digit2: -2, digit3: 3, digit4: -4, ans: 0),
+  FourDigit(digit1: 4, digit2: -3, digit3: 1, digit4: 2, ans: 4),
+  FourDigit(digit1: 1, digit2: 1, digit3: -2, digit4: 4, ans: 4),
+  FourDigit(digit1: 2, digit2: 2, digit3: -3, digit4: 1, ans: 2),
+  FourDigit(digit1: 3, digit2: -1, digit3: 2, digit4: -4, ans: 0),
+  FourDigit(digit1: 4, digit2: -1, digit3: -2, digit4: 3, ans: 4),
+  FourDigit(digit1: 2, digit2: 1, digit3: -2, digit4: 3, ans: 4),
+  FourDigit(digit1: 1, digit2: 3, digit3: -2, digit4: -1, ans: 1),
+  FourDigit(digit1: 2, digit2: 2, digit3: -4, digit4: 3, ans: 3),
+  FourDigit(digit1: 4, digit2: -1, digit3: -2, digit4: 3, ans: 4),
+  FourDigit(digit1: 1, digit2: 2, digit3: 1, digit4: -3, ans: 1),
+  FourDigit(digit1: 3, digit2: 1, digit3: -4, digit4: 2, ans: 2),
+  FourDigit(digit1: 2, digit2: 2, digit3: -1, digit4: -2, ans: 1),
+  FourDigit(digit1: 4, digit2: -3, digit3: 2, digit4: 1, ans: 4),
+  FourDigit(digit1: 3, digit2: -3, digit3: 4, digit4: -2, ans: 2),
+  FourDigit(digit1: 1, digit2: 1, digit3: 2, digit4: -3, ans: 1),
+  FourDigit(digit1: 2, digit2: 2, digit3: -4, digit4: 3, ans: 3),
+  FourDigit(digit1: 3, digit2: -1, digit3: 2, digit4: -4, ans: 0),
+  FourDigit(digit1: 4, digit2: -3, digit3: 2, digit4: -3, ans: 0),
+  FourDigit(digit1: 2, digit2: 2, digit3: -1, digit4: -2, ans: 1),
+  FourDigit(digit1: 1, digit2: -1, digit3: 2, digit4: 2, ans: 4),
+  FourDigit(digit1: 3, digit2: -3, digit3: 4, digit4: -2, ans: 2),
+  FourDigit(digit1: 4, digit2: -2, digit3: -2, digit4: 3, ans: 3),
+  FourDigit(digit1: 2, digit2: 2, digit3: -2, digit4: 2, ans: 4),
+  FourDigit(digit1: 1, digit2: 2, digit3: -3, digit4: 4, ans: 4),
+  FourDigit(digit1: 3, digit2: -1, digit3: 2, digit4: -3, ans: 1),
+  FourDigit(digit1: 4, digit2: -1, digit3: -2, digit4: 3, ans: 4),
+  FourDigit(digit1: 2, digit2: 1, digit3: 1, digit4: -4, ans: 0),
+  FourDigit(digit1: 1, digit2: -1, digit3: 4, digit4: -2, ans: 2),
+  FourDigit(digit1: 3, digit2: -3, digit3: 4, digit4: -1, ans: 3),
+  FourDigit(digit1: 4, digit2: -4, digit3: 2, digit4: 2, ans: 4),
+  FourDigit(digit1: 2, digit2: -2, digit3: 3, digit4: 1, ans: 4),
+  FourDigit(digit1: 1, digit2: 3, digit3: -4, digit4: 2, ans: 2),
+  FourDigit(digit1: 3, digit2: 1, digit3: -4, digit4: 2, ans: 2),
+  FourDigit(digit1: 4, digit2: -2, digit3: 1, digit4: 1, ans: 4),
+  FourDigit(digit1: 2, digit2: 2, digit3: -3, digit4: 2, ans: 3),
+  FourDigit(digit1: 3, digit2: 1, digit3: -4, digit4: 2, ans: 2),
+  FourDigit(digit1: 1, digit2: 2, digit3: -1, digit4: 2, ans: 4),
+  FourDigit(digit1: 2, digit2: 2, digit3: -3, digit4: 1, ans: 2),
+  FourDigit(digit1: 1, digit2: 1, digit3: 2, digit4: -1, ans: 3),
+  FourDigit(digit1: 3, digit2: -2, digit3: 1, digit4: -2, ans: 0),
+  FourDigit(digit1: 4, digit2: -1, digit3: -3, digit4: 4, ans: 4),
+  FourDigit(digit1: 3, digit2: 1, digit3: -2, digit4: -1, ans: 1),
+  FourDigit(digit1: 2, digit2: 2, digit3: -3, digit4: 3, ans: 4),
+  FourDigit(digit1: 1, digit2: 3, digit3: -4, digit4: 2, ans: 2),
+  FourDigit(digit1: 4, digit2: -3, digit3: 1, digit4: -2, ans: 0),
+  FourDigit(digit1: 3, digit2: -1, digit3: 2, digit4: -4, ans: 0),
+  FourDigit(digit1: 2, digit2: 1, digit3: -3, digit4: 2, ans: 2),
+  FourDigit(digit1: 1, digit2: 3, digit3: -2, digit4: -1, ans: 1),
+  FourDigit(digit1: 4, digit2: -2, digit3: 1, digit4: -3, ans: 0),
+  FourDigit(digit1: 3, digit2: -1, digit3: 2, digit4: -1, ans: 3),
+  FourDigit(digit1: 2, digit2: 2, digit3: -3, digit4: 1, ans: 2),
+  FourDigit(digit1: 1, digit2: 1, digit3: 1, digit4: -2, ans: 1),
+  FourDigit(digit1: 4, digit2: -1, digit3: -3, digit4: 2, ans: 2),
+  FourDigit(digit1: 3, digit2: -2, digit3: 1, digit4: -2, ans: 0),
+  FourDigit(digit1: 2, digit2: 1, digit3: 1, digit4: -3, ans: 1),
+  FourDigit(digit1: 1, digit2: 3, digit3: -2, digit4: -1, ans: 1),
+  FourDigit(digit1: 4, digit2: -3, digit3: 1, digit4: -2, ans: 0),
+  FourDigit(digit1: 3, digit2: 1, digit3: -4, digit4: 2, ans: 2),
+  FourDigit(digit1: 2, digit2: 2, digit3: -1, digit4: -3, ans: 0),
+  FourDigit(digit1: 1, digit2: -1, digit3: 3, digit4: -2, ans: 1),
+  FourDigit(digit1: 4, digit2: -1, digit3: -1, digit4: 2, ans: 4),
+  FourDigit(digit1: 3, digit2: -2, digit3: 1, digit4: 1, ans: 3),
+  FourDigit(digit1: 2, digit2: 1, digit3: 1, digit4: -4, ans: 0),
+  FourDigit(digit1: 1, digit2: 1, digit3: 1, digit4: -3, ans: 0),
+  FourDigit(digit1: 4, digit2: -3, digit3: 2, digit4: -3, ans: 0),
+  FourDigit(digit1: 3, digit2: 1, digit3: -2, digit4: -1, ans: 1),
+  FourDigit(digit1: 2, digit2: 2, digit3: -3, digit4: 2, ans: 3),
+  FourDigit(digit1: 1, digit2: 3, digit3: -2, digit4: 1, ans: 3),
+  FourDigit(digit1: 4, digit2: -2, digit3: 1, digit4: -3, ans: 0),
+  FourDigit(digit1: 3, digit2: -2, digit3: 1, digit4: 2, ans: 4),
+  FourDigit(digit1: 2, digit2: -1, digit3: 3, digit4: -2, ans: 2),
+  FourDigit(digit1: 1, digit2: 3, digit3: -1, digit4: -3, ans: 0),
+  FourDigit(digit1: 4, digit2: -2, digit3: -1, digit4: 3, ans: 4),
+  FourDigit(digit1: 3, digit2: -2, digit3: 3, digit4: -1, ans: 3),
+  FourDigit(digit1: 2, digit2: 2, digit3: -4, digit4: 3, ans: 3),
+  FourDigit(digit1: 1, digit2: 3, digit3: -2, digit4: -2, ans: 0),
+  FourDigit(digit1: 4, digit2: -3, digit3: 2, digit4: 1, ans: 4),
+  FourDigit(digit1: 2, digit2: 1, digit3: 1, digit4: -3, ans: 1),
+  FourDigit(digit1: 4, digit2: -2, digit3: -1, digit4: 2, ans: 3),
+  FourDigit(digit1: 3, digit2: -2, digit3: 3, digit4: -2, ans: 2),
+  FourDigit(digit1: 1, digit2: 2, digit3: -1, digit4: 2, ans: 4),
+  FourDigit(digit1: 4, digit2: -4, digit3: 3, digit4: 1, ans: 4),
+  FourDigit(digit1: 2, digit2: 1, digit3: 1, digit4: -2, ans: 2),
+  FourDigit(digit1: 3, digit2: -2, digit3: -1, digit4: 4, ans: 4),
+  FourDigit(digit1: 1, digit2: 1, digit3: -2, digit4: 3, ans: 3),
+  FourDigit(digit1: 4, digit2: -3, digit3: 1, digit4: 2, ans: 4),
+  FourDigit(digit1: 2, digit2: -1, digit3: 2, digit4: 1, ans: 4),
+  FourDigit(digit1: 3, digit2: -1, digit3: 2, digit4: -3, ans: 1),
+  FourDigit(digit1: 4, digit2: -1, digit3: -2, digit4: 3, ans: 4),
+  FourDigit(digit1: 2, digit2: 2, digit3: -3, digit4: 1, ans: 2),
+  FourDigit(digit1: 1, digit2: 3, digit3: -2, digit4: -2, ans: 0),
+  FourDigit(digit1: 4, digit2: -3, digit3: 1, digit4: 2, ans: 4),
+  FourDigit(digit1: 2, digit2: 1, digit3: 1, digit4: -3, ans: 1),
+  FourDigit(digit1: 3, digit2: 1, digit3: -4, digit4: 2, ans: 2),
+  FourDigit(digit1: 4, digit2: -2, digit3: -2, digit4: 4, ans: 4),
+  FourDigit(digit1: 1, digit2: -1, digit3: 2, digit4: 2, ans: 4),
+  FourDigit(digit1: 3, digit2: 1, digit3: -2, digit4: 2, ans: 4),
 ];
-List<LowerUpper4Row> lower4Row21 = [
-  LowerUpper4Row(digit1: 14, digit2: -3, digit3: 22, digit4: 1, ans: 34),
-  LowerUpper4Row(digit1: 23, digit2: 11, digit3: -2, digit4: -12, ans: 20),
-  LowerUpper4Row(digit1: 12, digit2: 2, digit3: -13, digit4: 21, ans: 22),
-  LowerUpper4Row(digit1: 31, digit2: 3, digit3: -22, digit4: -1, ans: 11),
-  LowerUpper4Row(digit1: 44, digit2: -12, digit3: 1, digit4: -23, ans: 10),
-  LowerUpper4Row(digit1: 13, digit2: -1, digit3: 12, digit4: -4, ans: 20),
-  LowerUpper4Row(digit1: 22, digit2: 11, digit3: -3, digit4: 14, ans: 44),
-  LowerUpper4Row(digit1: 24, digit2: -3, digit3: 22, digit4: 1, ans: 44),
-  LowerUpper4Row(digit1: 33, digit2: -12, digit3: 1, digit4: 12, ans: 34),
-  LowerUpper4Row(digit1: 12, digit2: 12, digit3: -4, digit4: 3, ans: 23),
-  LowerUpper4Row(digit1: 21, digit2: 1, digit3: 12, digit4: -3, ans: 31),
-  LowerUpper4Row(digit1: 44, digit2: -4, digit3: 3, digit4: -11, ans: 32),
-  LowerUpper4Row(digit1: 13, digit2: -1, digit3: 12, digit4: -4, ans: 20),
-  LowerUpper4Row(digit1: 22, digit2: -2, digit3: 14, digit4: -3, ans: 31),
-  LowerUpper4Row(digit1: 21, digit2: 13, digit3: -4, digit4: 2, ans: 32),
-  LowerUpper4Row(digit1: 24, digit2: -11, digit3: -2, digit4: 13, ans: 24),
-  LowerUpper4Row(digit1: 13, digit2: 1, digit3: -14, digit4: 22, ans: 22),
-  LowerUpper4Row(digit1: 32, digit2: -1, digit3: 13, digit4: -2, ans: 42),
-  LowerUpper4Row(digit1: 24, digit2: -3, digit3: -11, digit4: 4, ans: 14),
-  LowerUpper4Row(digit1: 11, digit2: 2, digit3: 11, digit4: -3, ans: 21),
-  LowerUpper4Row(digit1: 22, digit2: 2, digit3: -13, digit4: 1, ans: 12),
-  LowerUpper4Row(digit1: 31, digit2: 2, digit3: 11, digit4: -13, ans: 31),
-  LowerUpper4Row(digit1: 13, digit2: -2, digit3: 23, digit4: -14, ans: 20),
-  LowerUpper4Row(digit1: 24, digit2: -3, digit3: 21, digit4: 2, ans: 44),
-  LowerUpper4Row(digit1: 21, digit2: 1, digit3: -12, digit4: 14, ans: 24),
-  LowerUpper4Row(digit1: 12, digit2: 2, digit3: -13, digit4: 11, ans: 12),
-  LowerUpper4Row(digit1: 13, digit2: -1, digit3: 12, digit4: -4, ans: 20),
-  LowerUpper4Row(digit1: 24, digit2: -1, digit3: -12, digit4: 3, ans: 14),
-  LowerUpper4Row(digit1: 32, digit2: 11, digit3: -2, digit4: 3, ans: 44),
-  LowerUpper4Row(digit1: 11, digit2: 13, digit3: -2, digit4: -21, ans: 1),
-  LowerUpper4Row(digit1: 22, digit2: 2, digit3: -14, digit4: 23, ans: 33),
-  LowerUpper4Row(digit1: 34, digit2: -1, digit3: -12, digit4: 3, ans: 24),
-  LowerUpper4Row(digit1: 21, digit2: 2, digit3: 21, digit4: -13, ans: 31),
-  LowerUpper4Row(digit1: 13, digit2: 21, digit3: -4, digit4: 12, ans: 42),
-  LowerUpper4Row(digit1: 22, digit2: 2, digit3: -11, digit4: -12, ans: 1),
-  LowerUpper4Row(digit1: 44, digit2: -13, digit3: 2, digit4: 1, ans: 34),
-  LowerUpper4Row(digit1: 33, digit2: -3, digit3: 14, digit4: -2, ans: 42),
-  LowerUpper4Row(digit1: 31, digit2: 1, digit3: 12, digit4: -3, ans: 41),
-  LowerUpper4Row(digit1: 42, digit2: 2, digit3: -14, digit4: 3, ans: 33),
-  LowerUpper4Row(digit1: 13, digit2: -1, digit3: 22, digit4: -14, ans: 20),
-  LowerUpper4Row(digit1: 34, digit2: -13, digit3: 2, digit4: -3, ans: 20),
-  LowerUpper4Row(digit1: 32, digit2: 2, digit3: -11, digit4: -2, ans: 21),
-  LowerUpper4Row(digit1: 21, digit2: -1, digit3: 22, digit4: 2, ans: 44),
-  LowerUpper4Row(digit1: 33, digit2: -13, digit3: 4, digit4: -12, ans: 12),
-  LowerUpper4Row(digit1: 44, digit2: -2, digit3: -12, digit4: 3, ans: 33),
-  LowerUpper4Row(digit1: 22, digit2: 2, digit3: -12, digit4: 32, ans: 44),
-  LowerUpper4Row(digit1: 21, digit2: 2, digit3: -13, digit4: 24, ans: 34),
-  LowerUpper4Row(digit1: 33, digit2: -11, digit3: 2, digit4: -13, ans: 11),
-  LowerUpper4Row(digit1: 24, digit2: -1, digit3: -2, digit4: 23, ans: 44),
-  LowerUpper4Row(digit1: 22, digit2: 11, digit3: 1, digit4: -14, ans: 20),
-  LowerUpper4Row(digit1: 41, digit2: -11, digit3: 4, digit4: -12, ans: 22),
-  LowerUpper4Row(digit1: 33, digit2: -3, digit3: 14, digit4: -1, ans: 43),
-  LowerUpper4Row(digit1: 24, digit2: -4, digit3: 12, digit4: 2, ans: 34),
-  LowerUpper4Row(digit1: 32, digit2: -2, digit3: 13, digit4: 1, ans: 44),
-  LowerUpper4Row(digit1: 41, digit2: 3, digit3: -14, digit4: 12, ans: 42),
-  LowerUpper4Row(digit1: 33, digit2: 11, digit3: -4, digit4: 2, ans: 42),
-  LowerUpper4Row(digit1: 24, digit2: -2, digit3: 21, digit4: 1, ans: 44),
-  LowerUpper4Row(digit1: 32, digit2: 12, digit3: -3, digit4: 2, ans: 43),
-  LowerUpper4Row(digit1: 43, digit2: 1, digit3: -24, digit4: 2, ans: 22),
-  LowerUpper4Row(digit1: 31, digit2: 2, digit3: -21, digit4: 12, ans: 24),
-  LowerUpper4Row(digit1: 22, digit2: 2, digit3: -13, digit4: 1, ans: 12),
-  LowerUpper4Row(digit1: 21, digit2: 11, digit3: 2, digit4: -21, ans: 13),
-  LowerUpper4Row(digit1: 13, digit2: -2, digit3: 21, digit4: -12, ans: 20),
-  LowerUpper4Row(digit1: 24, digit2: -1, digit3: -13, digit4: 34, ans: 44),
-  LowerUpper4Row(digit1: 43, digit2: 1, digit3: -22, digit4: -1, ans: 21),
-  LowerUpper4Row(digit1: 32, digit2: 2, digit3: -13, digit4: 3, ans: 24),
-  LowerUpper4Row(digit1: 21, digit2: 13, digit3: -4, digit4: 12, ans: 42),
-  LowerUpper4Row(digit1: 14, digit2: -3, digit3: 31, digit4: -12, ans: 30),
-  LowerUpper4Row(digit1: 33, digit2: -11, digit3: 2, digit4: -14, ans: 10),
-  LowerUpper4Row(digit1: 12, digit2: 21, digit3: -3, digit4: 12, ans: 42),
-  LowerUpper4Row(digit1: 11, digit2: 3, digit3: -12, digit4: -1, ans: 1),
-  LowerUpper4Row(digit1: 34, digit2: -2, digit3: 11, digit4: -3, ans: 40),
-  LowerUpper4Row(digit1: 13, digit2: -1, digit3: 22, digit4: -1, ans: 33),
-  LowerUpper4Row(digit1: 22, digit2: 2, digit3: -13, digit4: 21, ans: 32),
-  LowerUpper4Row(digit1: 11, digit2: 21, digit3: 1, digit4: -12, ans: 21),
-  LowerUpper4Row(digit1: 24, digit2: -1, digit3: -13, digit4: 2, ans: 12),
-  LowerUpper4Row(digit1: 23, digit2: -2, digit3: 21, digit4: -2, ans: 40),
-  LowerUpper4Row(digit1: 12, digit2: 21, digit3: 1, digit4: -13, ans: 21),
-  LowerUpper4Row(digit1: 41, digit2: 3, digit3: -22, digit4: -1, ans: 21),
-  LowerUpper4Row(digit1: 44, digit2: -23, digit3: 1, digit4: -12, ans: 10),
-  LowerUpper4Row(digit1: 23, digit2: 11, digit3: -4, digit4: 2, ans: 32),
-  LowerUpper4Row(digit1: 12, digit2: 22, digit3: -1, digit4: -3, ans: 30),
-  LowerUpper4Row(digit1: 21, digit2: -1, digit3: 13, digit4: -2, ans: 31),
-  LowerUpper4Row(digit1: 34, digit2: -11, digit3: -1, digit4: 22, ans: 44),
-  LowerUpper4Row(digit1: 43, digit2: -2, digit3: 3, digit4: -24, ans: 20),
-  LowerUpper4Row(digit1: 22, digit2: 2, digit3: -11, digit4: -2, ans: 11),
-  LowerUpper4Row(digit1: 31, digit2: 2, digit3: 1, digit4: -23, ans: 11),
-  LowerUpper4Row(digit1: 14, digit2: -3, digit3: 22, digit4: -3, ans: 30),
-  LowerUpper4Row(digit1: 13, digit2: 21, digit3: -2, digit4: -11, ans: 21),
-  LowerUpper4Row(digit1: 22, digit2: 2, digit3: -13, digit4: 2, ans: 13),
-  LowerUpper4Row(digit1: 11, digit2: 23, digit3: -2, digit4: 1, ans: 33),
-  LowerUpper4Row(digit1: 44, digit2: -12, digit3: 1, digit4: -13, ans: 20),
-  LowerUpper4Row(digit1: 13, digit2: -2, digit3: 31, digit4: 2, ans: 44),
-  LowerUpper4Row(digit1: 22, digit2: -1, digit3: 13, digit4: -22, ans: 12),
-  LowerUpper4Row(digit1: 31, digit2: 3, digit3: -21, digit4: -3, ans: 10),
-  LowerUpper4Row(digit1: 44, digit2: -2, digit3: -11, digit4: 3, ans: 34),
-  LowerUpper4Row(digit1: 33, digit2: -12, digit3: 3, digit4: -11, ans: 13),
-  LowerUpper4Row(digit1: 22, digit2: 2, digit3: -14, digit4: 33, ans: 43),
-  LowerUpper4Row(digit1: 11, digit2: 13, digit3: -2, digit4: -2, ans: 20),
-  LowerUpper4Row(digit1: 34, digit2: -3, digit3: 12, digit4: 1, ans: 44),
+List<FourDigit> lower4Row21 = [
+  FourDigit(digit1: 14, digit2: -3, digit3: 22, digit4: 1, ans: 34),
+  FourDigit(digit1: 23, digit2: 11, digit3: -2, digit4: -12, ans: 20),
+  FourDigit(digit1: 12, digit2: 2, digit3: -13, digit4: 21, ans: 22),
+  FourDigit(digit1: 31, digit2: 3, digit3: -22, digit4: -1, ans: 11),
+  FourDigit(digit1: 44, digit2: -12, digit3: 1, digit4: -23, ans: 10),
+  FourDigit(digit1: 13, digit2: -1, digit3: 12, digit4: -4, ans: 20),
+  FourDigit(digit1: 22, digit2: 11, digit3: -3, digit4: 14, ans: 44),
+  FourDigit(digit1: 24, digit2: -3, digit3: 22, digit4: 1, ans: 44),
+  FourDigit(digit1: 33, digit2: -12, digit3: 1, digit4: 12, ans: 34),
+  FourDigit(digit1: 12, digit2: 12, digit3: -4, digit4: 3, ans: 23),
+  FourDigit(digit1: 21, digit2: 1, digit3: 12, digit4: -3, ans: 31),
+  FourDigit(digit1: 44, digit2: -4, digit3: 3, digit4: -11, ans: 32),
+  FourDigit(digit1: 13, digit2: -1, digit3: 12, digit4: -4, ans: 20),
+  FourDigit(digit1: 22, digit2: -2, digit3: 14, digit4: -3, ans: 31),
+  FourDigit(digit1: 21, digit2: 13, digit3: -4, digit4: 2, ans: 32),
+  FourDigit(digit1: 24, digit2: -11, digit3: -2, digit4: 13, ans: 24),
+  FourDigit(digit1: 13, digit2: 1, digit3: -14, digit4: 22, ans: 22),
+  FourDigit(digit1: 32, digit2: -1, digit3: 13, digit4: -2, ans: 42),
+  FourDigit(digit1: 24, digit2: -3, digit3: -11, digit4: 4, ans: 14),
+  FourDigit(digit1: 11, digit2: 2, digit3: 11, digit4: -3, ans: 21),
+  FourDigit(digit1: 22, digit2: 2, digit3: -13, digit4: 1, ans: 12),
+  FourDigit(digit1: 31, digit2: 2, digit3: 11, digit4: -13, ans: 31),
+  FourDigit(digit1: 13, digit2: -2, digit3: 23, digit4: -14, ans: 20),
+  FourDigit(digit1: 24, digit2: -3, digit3: 21, digit4: 2, ans: 44),
+  FourDigit(digit1: 21, digit2: 1, digit3: -12, digit4: 14, ans: 24),
+  FourDigit(digit1: 12, digit2: 2, digit3: -13, digit4: 11, ans: 12),
+  FourDigit(digit1: 13, digit2: -1, digit3: 12, digit4: -4, ans: 20),
+  FourDigit(digit1: 24, digit2: -1, digit3: -12, digit4: 3, ans: 14),
+  FourDigit(digit1: 32, digit2: 11, digit3: -2, digit4: 3, ans: 44),
+  FourDigit(digit1: 11, digit2: 13, digit3: -2, digit4: -21, ans: 1),
+  FourDigit(digit1: 22, digit2: 2, digit3: -14, digit4: 23, ans: 33),
+  FourDigit(digit1: 34, digit2: -1, digit3: -12, digit4: 3, ans: 24),
+  FourDigit(digit1: 21, digit2: 2, digit3: 21, digit4: -13, ans: 31),
+  FourDigit(digit1: 13, digit2: 21, digit3: -4, digit4: 12, ans: 42),
+  FourDigit(digit1: 22, digit2: 2, digit3: -11, digit4: -12, ans: 1),
+  FourDigit(digit1: 44, digit2: -13, digit3: 2, digit4: 1, ans: 34),
+  FourDigit(digit1: 33, digit2: -3, digit3: 14, digit4: -2, ans: 42),
+  FourDigit(digit1: 31, digit2: 1, digit3: 12, digit4: -3, ans: 41),
+  FourDigit(digit1: 42, digit2: 2, digit3: -14, digit4: 3, ans: 33),
+  FourDigit(digit1: 13, digit2: -1, digit3: 22, digit4: -14, ans: 20),
+  FourDigit(digit1: 34, digit2: -13, digit3: 2, digit4: -3, ans: 20),
+  FourDigit(digit1: 32, digit2: 2, digit3: -11, digit4: -2, ans: 21),
+  FourDigit(digit1: 21, digit2: -1, digit3: 22, digit4: 2, ans: 44),
+  FourDigit(digit1: 33, digit2: -13, digit3: 4, digit4: -12, ans: 12),
+  FourDigit(digit1: 44, digit2: -2, digit3: -12, digit4: 3, ans: 33),
+  FourDigit(digit1: 22, digit2: 2, digit3: -12, digit4: 32, ans: 44),
+  FourDigit(digit1: 21, digit2: 2, digit3: -13, digit4: 24, ans: 34),
+  FourDigit(digit1: 33, digit2: -11, digit3: 2, digit4: -13, ans: 11),
+  FourDigit(digit1: 24, digit2: -1, digit3: -2, digit4: 23, ans: 44),
+  FourDigit(digit1: 22, digit2: 11, digit3: 1, digit4: -14, ans: 20),
+  FourDigit(digit1: 41, digit2: -11, digit3: 4, digit4: -12, ans: 22),
+  FourDigit(digit1: 33, digit2: -3, digit3: 14, digit4: -1, ans: 43),
+  FourDigit(digit1: 24, digit2: -4, digit3: 12, digit4: 2, ans: 34),
+  FourDigit(digit1: 32, digit2: -2, digit3: 13, digit4: 1, ans: 44),
+  FourDigit(digit1: 41, digit2: 3, digit3: -14, digit4: 12, ans: 42),
+  FourDigit(digit1: 33, digit2: 11, digit3: -4, digit4: 2, ans: 42),
+  FourDigit(digit1: 24, digit2: -2, digit3: 21, digit4: 1, ans: 44),
+  FourDigit(digit1: 32, digit2: 12, digit3: -3, digit4: 2, ans: 43),
+  FourDigit(digit1: 43, digit2: 1, digit3: -24, digit4: 2, ans: 22),
+  FourDigit(digit1: 31, digit2: 2, digit3: -21, digit4: 12, ans: 24),
+  FourDigit(digit1: 22, digit2: 2, digit3: -13, digit4: 1, ans: 12),
+  FourDigit(digit1: 21, digit2: 11, digit3: 2, digit4: -21, ans: 13),
+  FourDigit(digit1: 13, digit2: -2, digit3: 21, digit4: -12, ans: 20),
+  FourDigit(digit1: 24, digit2: -1, digit3: -13, digit4: 34, ans: 44),
+  FourDigit(digit1: 43, digit2: 1, digit3: -22, digit4: -1, ans: 21),
+  FourDigit(digit1: 32, digit2: 2, digit3: -13, digit4: 3, ans: 24),
+  FourDigit(digit1: 21, digit2: 13, digit3: -4, digit4: 12, ans: 42),
+  FourDigit(digit1: 14, digit2: -3, digit3: 31, digit4: -12, ans: 30),
+  FourDigit(digit1: 33, digit2: -11, digit3: 2, digit4: -14, ans: 10),
+  FourDigit(digit1: 12, digit2: 21, digit3: -3, digit4: 12, ans: 42),
+  FourDigit(digit1: 11, digit2: 3, digit3: -12, digit4: -1, ans: 1),
+  FourDigit(digit1: 34, digit2: -2, digit3: 11, digit4: -3, ans: 40),
+  FourDigit(digit1: 13, digit2: -1, digit3: 22, digit4: -1, ans: 33),
+  FourDigit(digit1: 22, digit2: 2, digit3: -13, digit4: 21, ans: 32),
+  FourDigit(digit1: 11, digit2: 21, digit3: 1, digit4: -12, ans: 21),
+  FourDigit(digit1: 24, digit2: -1, digit3: -13, digit4: 2, ans: 12),
+  FourDigit(digit1: 23, digit2: -2, digit3: 21, digit4: -2, ans: 40),
+  FourDigit(digit1: 12, digit2: 21, digit3: 1, digit4: -13, ans: 21),
+  FourDigit(digit1: 41, digit2: 3, digit3: -22, digit4: -1, ans: 21),
+  FourDigit(digit1: 44, digit2: -23, digit3: 1, digit4: -12, ans: 10),
+  FourDigit(digit1: 23, digit2: 11, digit3: -4, digit4: 2, ans: 32),
+  FourDigit(digit1: 12, digit2: 22, digit3: -1, digit4: -3, ans: 30),
+  FourDigit(digit1: 21, digit2: -1, digit3: 13, digit4: -2, ans: 31),
+  FourDigit(digit1: 34, digit2: -11, digit3: -1, digit4: 22, ans: 44),
+  FourDigit(digit1: 43, digit2: -2, digit3: 3, digit4: -24, ans: 20),
+  FourDigit(digit1: 22, digit2: 2, digit3: -11, digit4: -2, ans: 11),
+  FourDigit(digit1: 31, digit2: 2, digit3: 1, digit4: -23, ans: 11),
+  FourDigit(digit1: 14, digit2: -3, digit3: 22, digit4: -3, ans: 30),
+  FourDigit(digit1: 13, digit2: 21, digit3: -2, digit4: -11, ans: 21),
+  FourDigit(digit1: 22, digit2: 2, digit3: -13, digit4: 2, ans: 13),
+  FourDigit(digit1: 11, digit2: 23, digit3: -2, digit4: 1, ans: 33),
+  FourDigit(digit1: 44, digit2: -12, digit3: 1, digit4: -13, ans: 20),
+  FourDigit(digit1: 13, digit2: -2, digit3: 31, digit4: 2, ans: 44),
+  FourDigit(digit1: 22, digit2: -1, digit3: 13, digit4: -22, ans: 12),
+  FourDigit(digit1: 31, digit2: 3, digit3: -21, digit4: -3, ans: 10),
+  FourDigit(digit1: 44, digit2: -2, digit3: -11, digit4: 3, ans: 34),
+  FourDigit(digit1: 33, digit2: -12, digit3: 3, digit4: -11, ans: 13),
+  FourDigit(digit1: 22, digit2: 2, digit3: -14, digit4: 33, ans: 43),
+  FourDigit(digit1: 11, digit2: 13, digit3: -2, digit4: -2, ans: 20),
+  FourDigit(digit1: 34, digit2: -3, digit3: 12, digit4: 1, ans: 44),
 ];
-List<LowerUpper4Row> lower4Row22 = [
-  LowerUpper4Row(digit1: 44, digit2: -32, digit3: 21, digit4: -11, ans: 22),
-  LowerUpper4Row(digit1: 23, digit2: -12, digit3: 31, digit4: -32, ans: 10),
-  LowerUpper4Row(digit1: 31, digit2: 12, digit3: -22, digit4: 13, ans: 34),
-  LowerUpper4Row(digit1: 12, digit2: 21, digit3: -32, digit4: 23, ans: 24),
-  LowerUpper4Row(digit1: 43, digit2: -23, digit3: 14, digit4: -12, ans: 22),
-  LowerUpper4Row(digit1: 32, digit2: -11, digit3: 21, digit4: -31, ans: 11),
-  LowerUpper4Row(digit1: 34, digit2: -23, digit3: 31, digit4: -12, ans: 30),
-  LowerUpper4Row(digit1: 21, digit2: 12, digit3: -22, digit4: 33, ans: 44),
-  LowerUpper4Row(digit1: 31, digit2: -21, digit3: 23, digit4: -22, ans: 11),
-  LowerUpper4Row(digit1: 24, digit2: -13, digit3: 21, digit4: 12, ans: 44),
-  LowerUpper4Row(digit1: 44, digit2: -23, digit3: 22, digit4: -31, ans: 12),
-  LowerUpper4Row(digit1: 11, digit2: 21, digit3: 12, digit4: -44, ans: 0),
-  LowerUpper4Row(digit1: 34, digit2: -13, digit3: 22, digit4: -42, ans: 1),
-  LowerUpper4Row(digit1: 14, digit2: 20, digit3: -23, digit4: 21, ans: 32),
-  LowerUpper4Row(digit1: 22, digit2: -12, digit3: 34, digit4: -23, ans: 21),
-  LowerUpper4Row(digit1: 33, digit2: -13, digit3: 14, digit4: -21, ans: 13),
-  LowerUpper4Row(digit1: 41, digit2: -20, digit3: 13, digit4: -23, ans: 11),
-  LowerUpper4Row(digit1: 32, digit2: -21, digit3: 13, digit4: 10, ans: 34),
-  LowerUpper4Row(digit1: 34, digit2: -12, digit3: 22, digit4: -34, ans: 10),
-  LowerUpper4Row(digit1: 11, digit2: 32, digit3: -21, digit4: 12, ans: 34),
-  LowerUpper4Row(digit1: 23, digit2: 11, digit3: -24, digit4: 32, ans: 42),
-  LowerUpper4Row(digit1: 33, digit2: -21, digit3: 22, digit4: -23, ans: 11),
-  LowerUpper4Row(digit1: 42, digit2: -31, digit3: 23, digit4: -13, ans: 21),
-  LowerUpper4Row(digit1: 14, digit2: 20, digit3: -13, digit4: 23, ans: 44),
-  LowerUpper4Row(digit1: 32, digit2: -12, digit3: 14, digit4: -21, ans: 13),
-  LowerUpper4Row(digit1: 24, digit2: 10, digit3: -23, digit4: 32, ans: 43),
-  LowerUpper4Row(digit1: 43, digit2: -21, digit3: -12, digit4: 23, ans: 33),
-  LowerUpper4Row(digit1: 31, digit2: 12, digit3: -32, digit4: 23, ans: 34),
-  LowerUpper4Row(digit1: 12, digit2: 21, digit3: -13, digit4: 23, ans: 43),
-  LowerUpper4Row(digit1: 21, digit2: 13, digit3: -21, digit4: 31, ans: 44),
-  LowerUpper4Row(digit1: 34, digit2: -23, digit3: 31, digit4: -42, ans: 0),
-  LowerUpper4Row(digit1: 33, digit2: -12, digit3: 21, digit4: -31, ans: 11),
-  LowerUpper4Row(digit1: 44, digit2: -21, digit3: -12, digit4: 22, ans: 33),
-  LowerUpper4Row(digit1: 32, digit2: 11, digit3: -43, digit4: 34, ans: 34),
-  LowerUpper4Row(digit1: 21, digit2: 13, digit3: -34, digit4: 44, ans: 44),
-  LowerUpper4Row(digit1: 23, digit2: 21, digit3: -32, digit4: 12, ans: 24),
-  LowerUpper4Row(digit1: 42, digit2: -31, digit3: -11, digit4: 34, ans: 34),
-  LowerUpper4Row(digit1: 33, digit2: -12, digit3: -21, digit4: 43, ans: 43),
-  LowerUpper4Row(digit1: 31, digit2: 12, digit3: -32, digit4: 23, ans: 34),
-  LowerUpper4Row(digit1: 13, digit2: 21, digit3: -34, digit4: 43, ans: 43),
-  LowerUpper4Row(digit1: 22, digit2: 21, digit3: -43, digit4: 32, ans: 32),
-  LowerUpper4Row(digit1: 32, digit2: 11, digit3: -23, digit4: 14, ans: 34),
-  LowerUpper4Row(digit1: 30, digit2: -20, digit3: 24, digit4: -23, ans: 11),
-  LowerUpper4Row(digit1: 44, digit2: -23, digit3: 12, digit4: -22, ans: 11),
-  LowerUpper4Row(digit1: 34, digit2: -12, digit3: 21, digit4: -33, ans: 10),
-  LowerUpper4Row(digit1: 21, digit2: 13, digit3: -34, digit4: 44, ans: 44),
-  LowerUpper4Row(digit1: 43, digit2: -21, digit3: 22, digit4: -44, ans: 0),
-  LowerUpper4Row(digit1: 12, digit2: 21, digit3: -23, digit4: 32, ans: 42),
-  LowerUpper4Row(digit1: 32, digit2: 11, digit3: -21, digit4: 12, ans: 34),
-  LowerUpper4Row(digit1: 23, digit2: 21, digit3: -44, digit4: 32, ans: 32),
-  LowerUpper4Row(digit1: 34, digit2: -23, digit3: -11, digit4: 44, ans: 44),
-  LowerUpper4Row(digit1: 12, digit2: 31, digit3: -21, digit4: -12, ans: 10),
-  LowerUpper4Row(digit1: 43, digit2: -21, digit3: 12, digit4: -23, ans: 11),
-  LowerUpper4Row(digit1: 32, digit2: -21, digit3: 33, digit4: -44, ans: 0),
-  LowerUpper4Row(digit1: 42, digit2: -31, digit3: 12, digit4: -13, ans: 10),
-  LowerUpper4Row(digit1: 24, digit2: -13, digit3: 21, digit4: -32, ans: 0),
-  LowerUpper4Row(digit1: 41, digit2: -20, digit3: 13, digit4: -12, ans: 22),
-  LowerUpper4Row(digit1: 32, digit2: -21, digit3: -11, digit4: 43, ans: 43),
-  LowerUpper4Row(digit1: 13, digit2: 21, digit3: -24, digit4: 32, ans: 42),
-  LowerUpper4Row(digit1: 34, digit2: -23, digit3: 22, digit4: -21, ans: 12),
-  LowerUpper4Row(digit1: 21, digit2: 12, digit3: -33, digit4: 42, ans: 42),
-  LowerUpper4Row(digit1: 32, digit2: -21, digit3: 23, digit4: -13, ans: 21),
-  LowerUpper4Row(digit1: 24, digit2: -13, digit3: 32, digit4: -21, ans: 22),
-  LowerUpper4Row(digit1: 43, digit2: -12, digit3: -21, digit4: 33, ans: 43),
-  LowerUpper4Row(digit1: 31, digit2: -20, digit3: 32, digit4: -22, ans: 21),
-  LowerUpper4Row(digit1: 14, digit2: 20, digit3: -21, digit4: 30, ans: 43),
-  LowerUpper4Row(digit1: 23, digit2: 21, digit3: -42, digit4: 31, ans: 33),
-  LowerUpper4Row(digit1: 34, digit2: -12, digit3: 21, digit4: -43, ans: 0),
-  LowerUpper4Row(digit1: 21, digit2: -11, digit3: 32, digit4: -21, ans: 21),
-  LowerUpper4Row(digit1: 33, digit2: -23, digit3: 34, digit4: -14, ans: 30),
-  LowerUpper4Row(digit1: 24, digit2: -12, digit3: 21, digit4: -33, ans: 0),
-  LowerUpper4Row(digit1: 42, digit2: -31, digit3: 12, digit4: 21, ans: 44),
-  LowerUpper4Row(digit1: 14, digit2: 20, digit3: -23, digit4: 31, ans: 42),
-  LowerUpper4Row(digit1: 32, digit2: -21, digit3: 32, digit4: -11, ans: 32),
-  LowerUpper4Row(digit1: 24, digit2: -13, digit3: 12, digit4: -11, ans: 12),
-  LowerUpper4Row(digit1: 31, digit2: 13, digit3: -24, digit4: 12, ans: 32),
-  LowerUpper4Row(digit1: 42, digit2: -31, digit3: 21, digit4: -22, ans: 10),
-  LowerUpper4Row(digit1: 21, digit2: 22, digit3: -31, digit4: 12, ans: 24),
-  LowerUpper4Row(digit1: 31, digit2: 12, digit3: -23, digit4: 14, ans: 34),
-  LowerUpper4Row(digit1: 43, digit2: -31, digit3: 12, digit4: -13, ans: 11),
-  LowerUpper4Row(digit1: 34, digit2: -21, digit3: 31, digit4: -43, ans: 1),
-  LowerUpper4Row(digit1: 12, digit2: 31, digit3: -22, digit4: 13, ans: 34),
-  LowerUpper4Row(digit1: 41, digit2: -30, digit3: 23, digit4: -24, ans: 10),
-  LowerUpper4Row(digit1: 21, digit2: 13, digit3: -34, digit4: 43, ans: 43),
-  LowerUpper4Row(digit1: 32, digit2: 11, digit3: -33, digit4: 24, ans: 34),
-  LowerUpper4Row(digit1: 11, digit2: 32, digit3: -21, digit4: -12, ans: 10),
-  LowerUpper4Row(digit1: 22, digit2: 12, digit3: -24, digit4: 31, ans: 41),
-  LowerUpper4Row(digit1: 44, digit2: -23, digit3: 12, digit4: -21, ans: 12),
-  LowerUpper4Row(digit1: 33, digit2: -12, digit3: 23, digit4: -44, ans: 0),
-  LowerUpper4Row(digit1: 24, digit2: 10, digit3: -21, digit4: 11, ans: 24),
-  LowerUpper4Row(digit1: 32, digit2: -21, digit3: 13, digit4: -14, ans: 10),
-  LowerUpper4Row(digit1: 23, digit2: 11, digit3: -22, digit4: 31, ans: 43),
-  LowerUpper4Row(digit1: 14, digit2: 30, digit3: -23, digit4: 11, ans: 32),
-  LowerUpper4Row(digit1: 44, digit2: -31, digit3: 10, digit4: -21, ans: 2),
-  LowerUpper4Row(digit1: 22, digit2: 11, digit3: -21, digit4: 31, ans: 43),
-  LowerUpper4Row(digit1: 34, digit2: -23, digit3: 12, digit4: 11, ans: 34),
-  LowerUpper4Row(digit1: 43, digit2: -31, digit3: 21, digit4: -13, ans: 20),
-  LowerUpper4Row(digit1: 33, digit2: -23, digit3: 14, digit4: -12, ans: 12),
-  LowerUpper4Row(digit1: 23, digit2: 11, digit3: -20, digit4: 30, ans: 44),
-  LowerUpper4Row(digit1: 34, digit2: -21, digit3: 31, digit4: -42, ans: 2),
+List<FourDigit> lower4Row22 = [
+  FourDigit(digit1: 44, digit2: -32, digit3: 21, digit4: -11, ans: 22),
+  FourDigit(digit1: 23, digit2: -12, digit3: 31, digit4: -32, ans: 10),
+  FourDigit(digit1: 31, digit2: 12, digit3: -22, digit4: 13, ans: 34),
+  FourDigit(digit1: 12, digit2: 21, digit3: -32, digit4: 23, ans: 24),
+  FourDigit(digit1: 43, digit2: -23, digit3: 14, digit4: -12, ans: 22),
+  FourDigit(digit1: 32, digit2: -11, digit3: 21, digit4: -31, ans: 11),
+  FourDigit(digit1: 34, digit2: -23, digit3: 31, digit4: -12, ans: 30),
+  FourDigit(digit1: 21, digit2: 12, digit3: -22, digit4: 33, ans: 44),
+  FourDigit(digit1: 31, digit2: -21, digit3: 23, digit4: -22, ans: 11),
+  FourDigit(digit1: 24, digit2: -13, digit3: 21, digit4: 12, ans: 44),
+  FourDigit(digit1: 44, digit2: -23, digit3: 22, digit4: -31, ans: 12),
+  FourDigit(digit1: 11, digit2: 21, digit3: 12, digit4: -44, ans: 0),
+  FourDigit(digit1: 34, digit2: -13, digit3: 22, digit4: -42, ans: 1),
+  FourDigit(digit1: 14, digit2: 20, digit3: -23, digit4: 21, ans: 32),
+  FourDigit(digit1: 22, digit2: -12, digit3: 34, digit4: -23, ans: 21),
+  FourDigit(digit1: 33, digit2: -13, digit3: 14, digit4: -21, ans: 13),
+  FourDigit(digit1: 41, digit2: -20, digit3: 13, digit4: -23, ans: 11),
+  FourDigit(digit1: 32, digit2: -21, digit3: 13, digit4: 10, ans: 34),
+  FourDigit(digit1: 34, digit2: -12, digit3: 22, digit4: -34, ans: 10),
+  FourDigit(digit1: 11, digit2: 32, digit3: -21, digit4: 12, ans: 34),
+  FourDigit(digit1: 23, digit2: 11, digit3: -24, digit4: 32, ans: 42),
+  FourDigit(digit1: 33, digit2: -21, digit3: 22, digit4: -23, ans: 11),
+  FourDigit(digit1: 42, digit2: -31, digit3: 23, digit4: -13, ans: 21),
+  FourDigit(digit1: 14, digit2: 20, digit3: -13, digit4: 23, ans: 44),
+  FourDigit(digit1: 32, digit2: -12, digit3: 14, digit4: -21, ans: 13),
+  FourDigit(digit1: 24, digit2: 10, digit3: -23, digit4: 32, ans: 43),
+  FourDigit(digit1: 43, digit2: -21, digit3: -12, digit4: 23, ans: 33),
+  FourDigit(digit1: 31, digit2: 12, digit3: -32, digit4: 23, ans: 34),
+  FourDigit(digit1: 12, digit2: 21, digit3: -13, digit4: 23, ans: 43),
+  FourDigit(digit1: 21, digit2: 13, digit3: -21, digit4: 31, ans: 44),
+  FourDigit(digit1: 34, digit2: -23, digit3: 31, digit4: -42, ans: 0),
+  FourDigit(digit1: 33, digit2: -12, digit3: 21, digit4: -31, ans: 11),
+  FourDigit(digit1: 44, digit2: -21, digit3: -12, digit4: 22, ans: 33),
+  FourDigit(digit1: 32, digit2: 11, digit3: -43, digit4: 34, ans: 34),
+  FourDigit(digit1: 21, digit2: 13, digit3: -34, digit4: 44, ans: 44),
+  FourDigit(digit1: 23, digit2: 21, digit3: -32, digit4: 12, ans: 24),
+  FourDigit(digit1: 42, digit2: -31, digit3: -11, digit4: 34, ans: 34),
+  FourDigit(digit1: 33, digit2: -12, digit3: -21, digit4: 43, ans: 43),
+  FourDigit(digit1: 31, digit2: 12, digit3: -32, digit4: 23, ans: 34),
+  FourDigit(digit1: 13, digit2: 21, digit3: -34, digit4: 43, ans: 43),
+  FourDigit(digit1: 22, digit2: 21, digit3: -43, digit4: 32, ans: 32),
+  FourDigit(digit1: 32, digit2: 11, digit3: -23, digit4: 14, ans: 34),
+  FourDigit(digit1: 30, digit2: -20, digit3: 24, digit4: -23, ans: 11),
+  FourDigit(digit1: 44, digit2: -23, digit3: 12, digit4: -22, ans: 11),
+  FourDigit(digit1: 34, digit2: -12, digit3: 21, digit4: -33, ans: 10),
+  FourDigit(digit1: 21, digit2: 13, digit3: -34, digit4: 44, ans: 44),
+  FourDigit(digit1: 43, digit2: -21, digit3: 22, digit4: -44, ans: 0),
+  FourDigit(digit1: 12, digit2: 21, digit3: -23, digit4: 32, ans: 42),
+  FourDigit(digit1: 32, digit2: 11, digit3: -21, digit4: 12, ans: 34),
+  FourDigit(digit1: 23, digit2: 21, digit3: -44, digit4: 32, ans: 32),
+  FourDigit(digit1: 34, digit2: -23, digit3: -11, digit4: 44, ans: 44),
+  FourDigit(digit1: 12, digit2: 31, digit3: -21, digit4: -12, ans: 10),
+  FourDigit(digit1: 43, digit2: -21, digit3: 12, digit4: -23, ans: 11),
+  FourDigit(digit1: 32, digit2: -21, digit3: 33, digit4: -44, ans: 0),
+  FourDigit(digit1: 42, digit2: -31, digit3: 12, digit4: -13, ans: 10),
+  FourDigit(digit1: 24, digit2: -13, digit3: 21, digit4: -32, ans: 0),
+  FourDigit(digit1: 41, digit2: -20, digit3: 13, digit4: -12, ans: 22),
+  FourDigit(digit1: 32, digit2: -21, digit3: -11, digit4: 43, ans: 43),
+  FourDigit(digit1: 13, digit2: 21, digit3: -24, digit4: 32, ans: 42),
+  FourDigit(digit1: 34, digit2: -23, digit3: 22, digit4: -21, ans: 12),
+  FourDigit(digit1: 21, digit2: 12, digit3: -33, digit4: 42, ans: 42),
+  FourDigit(digit1: 32, digit2: -21, digit3: 23, digit4: -13, ans: 21),
+  FourDigit(digit1: 24, digit2: -13, digit3: 32, digit4: -21, ans: 22),
+  FourDigit(digit1: 43, digit2: -12, digit3: -21, digit4: 33, ans: 43),
+  FourDigit(digit1: 31, digit2: -20, digit3: 32, digit4: -22, ans: 21),
+  FourDigit(digit1: 14, digit2: 20, digit3: -21, digit4: 30, ans: 43),
+  FourDigit(digit1: 23, digit2: 21, digit3: -42, digit4: 31, ans: 33),
+  FourDigit(digit1: 34, digit2: -12, digit3: 21, digit4: -43, ans: 0),
+  FourDigit(digit1: 21, digit2: -11, digit3: 32, digit4: -21, ans: 21),
+  FourDigit(digit1: 33, digit2: -23, digit3: 34, digit4: -14, ans: 30),
+  FourDigit(digit1: 24, digit2: -12, digit3: 21, digit4: -33, ans: 0),
+  FourDigit(digit1: 42, digit2: -31, digit3: 12, digit4: 21, ans: 44),
+  FourDigit(digit1: 14, digit2: 20, digit3: -23, digit4: 31, ans: 42),
+  FourDigit(digit1: 32, digit2: -21, digit3: 32, digit4: -11, ans: 32),
+  FourDigit(digit1: 24, digit2: -13, digit3: 12, digit4: -11, ans: 12),
+  FourDigit(digit1: 31, digit2: 13, digit3: -24, digit4: 12, ans: 32),
+  FourDigit(digit1: 42, digit2: -31, digit3: 21, digit4: -22, ans: 10),
+  FourDigit(digit1: 21, digit2: 22, digit3: -31, digit4: 12, ans: 24),
+  FourDigit(digit1: 31, digit2: 12, digit3: -23, digit4: 14, ans: 34),
+  FourDigit(digit1: 43, digit2: -31, digit3: 12, digit4: -13, ans: 11),
+  FourDigit(digit1: 34, digit2: -21, digit3: 31, digit4: -43, ans: 1),
+  FourDigit(digit1: 12, digit2: 31, digit3: -22, digit4: 13, ans: 34),
+  FourDigit(digit1: 41, digit2: -30, digit3: 23, digit4: -24, ans: 10),
+  FourDigit(digit1: 21, digit2: 13, digit3: -34, digit4: 43, ans: 43),
+  FourDigit(digit1: 32, digit2: 11, digit3: -33, digit4: 24, ans: 34),
+  FourDigit(digit1: 11, digit2: 32, digit3: -21, digit4: -12, ans: 10),
+  FourDigit(digit1: 22, digit2: 12, digit3: -24, digit4: 31, ans: 41),
+  FourDigit(digit1: 44, digit2: -23, digit3: 12, digit4: -21, ans: 12),
+  FourDigit(digit1: 33, digit2: -12, digit3: 23, digit4: -44, ans: 0),
+  FourDigit(digit1: 24, digit2: 10, digit3: -21, digit4: 11, ans: 24),
+  FourDigit(digit1: 32, digit2: -21, digit3: 13, digit4: -14, ans: 10),
+  FourDigit(digit1: 23, digit2: 11, digit3: -22, digit4: 31, ans: 43),
+  FourDigit(digit1: 14, digit2: 30, digit3: -23, digit4: 11, ans: 32),
+  FourDigit(digit1: 44, digit2: -31, digit3: 10, digit4: -21, ans: 2),
+  FourDigit(digit1: 22, digit2: 11, digit3: -21, digit4: 31, ans: 43),
+  FourDigit(digit1: 34, digit2: -23, digit3: 12, digit4: 11, ans: 34),
+  FourDigit(digit1: 43, digit2: -31, digit3: 21, digit4: -13, ans: 20),
+  FourDigit(digit1: 33, digit2: -23, digit3: 14, digit4: -12, ans: 12),
+  FourDigit(digit1: 23, digit2: 11, digit3: -20, digit4: 30, ans: 44),
+  FourDigit(digit1: 34, digit2: -21, digit3: 31, digit4: -42, ans: 2),
 ];
-List<LowerUpper5Row> lower5Row11 = [
-  LowerUpper5Row(
-    digit1: 4,
-    digit2: -3,
-    digit3: 2,
-    digit4: 1,
-    digit5: -2,
-    ans: 2,
-  ),
-  LowerUpper5Row(
-    digit1: 3,
-    digit2: 1,
-    digit3: -2,
-    digit4: -2,
-    digit5: 4,
-    ans: 4,
-  ),
-  LowerUpper5Row(
-    digit1: 2,
-    digit2: 2,
-    digit3: -3,
-    digit4: 1,
-    digit5: 2,
-    ans: 4,
-  ),
-  LowerUpper5Row(
-    digit1: 1,
-    digit2: 3,
-    digit3: -2,
-    digit4: -1,
-    digit5: 2,
-    ans: 3,
-  ),
-  LowerUpper5Row(
-    digit1: 4,
-    digit2: -2,
-    digit3: 1,
-    digit4: -3,
-    digit5: 4,
-    ans: 4,
-  ),
-  LowerUpper5Row(
-    digit1: 3,
-    digit2: -1,
-    digit3: 2,
-    digit4: -4,
-    digit5: 3,
-    ans: 3,
-  ),
-  LowerUpper5Row(
-    digit1: 2,
-    digit2: 1,
-    digit3: -3,
-    digit4: 4,
-    digit5: -2,
-    ans: 2,
-  ),
-  LowerUpper5Row(
-    digit1: 4,
-    digit2: -3,
-    digit3: 2,
-    digit4: 1,
-    digit5: -3,
-    ans: 1,
-  ),
-  LowerUpper5Row(
-    digit1: 3,
-    digit2: -2,
-    digit3: 1,
-    digit4: 2,
-    digit5: -4,
-    ans: 0,
-  ),
-  LowerUpper5Row(
-    digit1: 2,
-    digit2: 2,
-    digit3: -4,
-    digit4: 3,
-    digit5: 1,
-    ans: 4,
-  ),
-  LowerUpper5Row(
-    digit1: 1,
-    digit2: 1,
-    digit3: 2,
-    digit4: -3,
-    digit5: 2,
-    ans: 3,
-  ),
-  LowerUpper5Row(
-    digit1: 4,
-    digit2: -4,
-    digit3: 3,
-    digit4: 1,
-    digit5: -2,
-    ans: 2,
-  ),
-  LowerUpper5Row(
-    digit1: 3,
-    digit2: -1,
-    digit3: 2,
-    digit4: -4,
-    digit5: 2,
-    ans: 2,
-  ),
-  LowerUpper5Row(
-    digit1: 2,
-    digit2: -2,
-    digit3: 4,
-    digit4: -3,
-    digit5: 2,
-    ans: 3,
-  ),
-  LowerUpper5Row(
-    digit1: 1,
-    digit2: 3,
-    digit3: -4,
-    digit4: 2,
-    digit5: 2,
-    ans: 4,
-  ),
-  LowerUpper5Row(
-    digit1: 4,
-    digit2: -1,
-    digit3: -2,
-    digit4: 3,
-    digit5: -4,
-    ans: 0,
-  ),
-  LowerUpper5Row(
-    digit1: 3,
-    digit2: 1,
-    digit3: -4,
-    digit4: 2,
-    digit5: 2,
-    ans: 4,
-  ),
-  LowerUpper5Row(
-    digit1: 2,
-    digit2: -1,
-    digit3: 3,
-    digit4: -2,
-    digit5: 1,
-    ans: 3,
-  ),
-  LowerUpper5Row(
-    digit1: 4,
-    digit2: -3,
-    digit3: -1,
-    digit4: 2,
-    digit5: 1,
-    ans: 3,
-  ),
-  LowerUpper5Row(
-    digit1: 1,
-    digit2: 2,
-    digit3: 1,
-    digit4: -3,
-    digit5: -1,
-    ans: 0,
-  ),
-  LowerUpper5Row(
-    digit1: 2,
-    digit2: 2,
-    digit3: -3,
-    digit4: 1,
-    digit5: 2,
-    ans: 4,
-  ),
-  LowerUpper5Row(
-    digit1: 1,
-    digit2: 2,
-    digit3: 1,
-    digit4: -3,
-    digit5: 2,
-    ans: 3,
-  ),
-  LowerUpper5Row(
-    digit1: 3,
-    digit2: -2,
-    digit3: 3,
-    digit4: -4,
-    digit5: 3,
-    ans: 3,
-  ),
-  LowerUpper5Row(
-    digit1: 4,
-    digit2: -3,
-    digit3: 1,
-    digit4: 2,
-    digit5: -4,
-    ans: 0,
-  ),
-  LowerUpper5Row(
-    digit1: 1,
-    digit2: 1,
-    digit3: -2,
-    digit4: 4,
-    digit5: -3,
-    ans: 1,
-  ),
-  LowerUpper5Row(
-    digit1: 2,
-    digit2: 2,
-    digit3: -3,
-    digit4: 1,
-    digit5: -2,
-    ans: 0,
-  ),
-  LowerUpper5Row(
-    digit1: 3,
-    digit2: -1,
-    digit3: 2,
-    digit4: -4,
-    digit5: 1,
-    ans: 1,
-  ),
-  LowerUpper5Row(
-    digit1: 4,
-    digit2: -1,
-    digit3: -2,
-    digit4: 3,
-    digit5: -4,
-    ans: 0,
-  ),
-  LowerUpper5Row(
-    digit1: 2,
-    digit2: 1,
-    digit3: -2,
-    digit4: 3,
-    digit5: -2,
-    ans: 2,
-  ),
-  LowerUpper5Row(
-    digit1: 1,
-    digit2: 3,
-    digit3: -2,
-    digit4: -1,
-    digit5: 2,
-    ans: 3,
-  ),
-  LowerUpper5Row(
-    digit1: 2,
-    digit2: 2,
-    digit3: -4,
-    digit4: 3,
-    digit5: -2,
-    ans: 1,
-  ),
-  LowerUpper5Row(
-    digit1: 4,
-    digit2: -1,
-    digit3: -2,
-    digit4: 3,
-    digit5: -2,
-    ans: 2,
-  ),
-  LowerUpper5Row(
-    digit1: 1,
-    digit2: 2,
-    digit3: 1,
-    digit4: -3,
-    digit5: 1,
-    ans: 2,
-  ),
-  LowerUpper5Row(
-    digit1: 3,
-    digit2: 1,
-    digit3: -4,
-    digit4: 2,
-    digit5: 2,
-    ans: 4,
-  ),
-  LowerUpper5Row(
-    digit1: 2,
-    digit2: 2,
-    digit3: -1,
-    digit4: -2,
-    digit5: 3,
-    ans: 4,
-  ),
-  LowerUpper5Row(
-    digit1: 4,
-    digit2: -3,
-    digit3: 2,
-    digit4: 1,
-    digit5: -2,
-    ans: 2,
-  ),
-  LowerUpper5Row(
-    digit1: 3,
-    digit2: -3,
-    digit3: 4,
-    digit4: -2,
-    digit5: -1,
-    ans: 1,
-  ),
-  LowerUpper5Row(
-    digit1: 1,
-    digit2: 1,
-    digit3: 2,
-    digit4: -3,
-    digit5: 3,
-    ans: 4,
-  ),
-  LowerUpper5Row(
-    digit1: 2,
-    digit2: 2,
-    digit3: -4,
-    digit4: 3,
-    digit5: -2,
-    ans: 1,
-  ),
-  LowerUpper5Row(
-    digit1: 3,
-    digit2: -1,
-    digit3: 2,
-    digit4: -4,
-    digit5: 2,
-    ans: 2,
-  ),
-  LowerUpper5Row(
-    digit1: 4,
-    digit2: -3,
-    digit3: 2,
-    digit4: -3,
-    digit5: 4,
-    ans: 4,
-  ),
-  LowerUpper5Row(
-    digit1: 2,
-    digit2: 2,
-    digit3: -1,
-    digit4: -2,
-    digit5: 3,
-    ans: 4,
-  ),
-  LowerUpper5Row(
-    digit1: 1,
-    digit2: -1,
-    digit3: 2,
-    digit4: 2,
-    digit5: -3,
-    ans: 1,
-  ),
-  LowerUpper5Row(
-    digit1: 3,
-    digit2: -3,
-    digit3: 4,
-    digit4: -2,
-    digit5: -2,
-    ans: 0,
-  ),
-  LowerUpper5Row(
-    digit1: 4,
-    digit2: -2,
-    digit3: -2,
-    digit4: 3,
-    digit5: 1,
-    ans: 4,
-  ),
-  LowerUpper5Row(
-    digit1: 2,
-    digit2: 2,
-    digit3: -2,
-    digit4: 2,
-    digit5: -3,
-    ans: 1,
-  ),
-  LowerUpper5Row(
-    digit1: 1,
-    digit2: 2,
-    digit3: -3,
-    digit4: 4,
-    digit5: -1,
-    ans: 3,
-  ),
-  LowerUpper5Row(
-    digit1: 3,
-    digit2: -1,
-    digit3: 2,
-    digit4: -3,
-    digit5: 3,
-    ans: 4,
-  ),
-  LowerUpper5Row(
-    digit1: 4,
-    digit2: -1,
-    digit3: -2,
-    digit4: 3,
-    digit5: -4,
-    ans: 0,
-  ),
-  LowerUpper5Row(
-    digit1: 2,
-    digit2: 1,
-    digit3: 1,
-    digit4: -4,
-    digit5: 3,
-    ans: 3,
-  ),
-  LowerUpper5Row(
-    digit1: 1,
-    digit2: -1,
-    digit3: 4,
-    digit4: -2,
-    digit5: -2,
-    ans: 0,
-  ),
-  LowerUpper5Row(
-    digit1: 3,
-    digit2: -3,
-    digit3: 4,
-    digit4: -1,
-    digit5: -2,
-    ans: 1,
-  ),
-  LowerUpper5Row(
-    digit1: 4,
-    digit2: -4,
-    digit3: 2,
-    digit4: 2,
-    digit5: -3,
-    ans: 1,
-  ),
-  LowerUpper5Row(
-    digit1: 2,
-    digit2: -2,
-    digit3: 3,
-    digit4: 1,
-    digit5: -2,
-    ans: 2,
-  ),
-  LowerUpper5Row(
-    digit1: 1,
-    digit2: 3,
-    digit3: -4,
-    digit4: 2,
-    digit5: 1,
-    ans: 3,
-  ),
-  LowerUpper5Row(
-    digit1: 3,
-    digit2: 1,
-    digit3: -4,
-    digit4: 2,
-    digit5: 2,
-    ans: 4,
-  ),
-  LowerUpper5Row(
-    digit1: 4,
-    digit2: -2,
-    digit3: 1,
-    digit4: 1,
-    digit5: -3,
-    ans: 1,
-  ),
-  LowerUpper5Row(
-    digit1: 2,
-    digit2: 2,
-    digit3: -3,
-    digit4: 2,
-    digit5: -3,
-    ans: 0,
-  ),
-  LowerUpper5Row(
-    digit1: 3,
-    digit2: 1,
-    digit3: -4,
-    digit4: 2,
-    digit5: 1,
-    ans: 3,
-  ),
-  LowerUpper5Row(
-    digit1: 1,
-    digit2: 2,
-    digit3: -1,
-    digit4: 2,
-    digit5: -4,
-    ans: 0,
-  ),
-  LowerUpper5Row(
-    digit1: 2,
-    digit2: 2,
-    digit3: -3,
-    digit4: 1,
-    digit5: 2,
-    ans: 4,
-  ),
-  LowerUpper5Row(
-    digit1: 1,
-    digit2: 1,
-    digit3: 2,
-    digit4: -1,
-    digit5: -2,
-    ans: 1,
-  ),
-  LowerUpper5Row(
-    digit1: 3,
-    digit2: -2,
-    digit3: 1,
-    digit4: -2,
-    digit5: 3,
-    ans: 3,
-  ),
-  LowerUpper5Row(
-    digit1: 4,
-    digit2: -1,
-    digit3: -3,
-    digit4: 4,
-    digit5: -2,
-    ans: 2,
-  ),
-  LowerUpper5Row(
-    digit1: 3,
-    digit2: 1,
-    digit3: -2,
-    digit4: -1,
-    digit5: 3,
-    ans: 4,
-  ),
-  LowerUpper5Row(
-    digit1: 2,
-    digit2: 2,
-    digit3: -3,
-    digit4: 3,
-    digit5: -2,
-    ans: 2,
-  ),
-  LowerUpper5Row(
-    digit1: 1,
-    digit2: 3,
-    digit3: -4,
-    digit4: 2,
-    digit5: 2,
-    ans: 4,
-  ),
-  LowerUpper5Row(
-    digit1: 4,
-    digit2: -3,
-    digit3: 1,
-    digit4: -2,
-    digit5: 3,
-    ans: 3,
-  ),
-  LowerUpper5Row(
-    digit1: 3,
-    digit2: -1,
-    digit3: 2,
-    digit4: -4,
-    digit5: 3,
-    ans: 3,
-  ),
-  LowerUpper5Row(
-    digit1: 2,
-    digit2: 1,
-    digit3: -3,
-    digit4: 2,
-    digit5: 1,
-    ans: 3,
-  ),
-  LowerUpper5Row(
-    digit1: 1,
-    digit2: 3,
-    digit3: -2,
-    digit4: -1,
-    digit5: 3,
-    ans: 4,
-  ),
-  LowerUpper5Row(
-    digit1: 4,
-    digit2: -2,
-    digit3: 1,
-    digit4: -3,
-    digit5: 4,
-    ans: 4,
-  ),
-  LowerUpper5Row(
-    digit1: 3,
-    digit2: -1,
-    digit3: 2,
-    digit4: -1,
-    digit5: -2,
-    ans: 1,
-  ),
-  LowerUpper5Row(
-    digit1: 2,
-    digit2: 2,
-    digit3: -3,
-    digit4: 1,
-    digit5: 2,
-    ans: 4,
-  ),
-  LowerUpper5Row(
-    digit1: 1,
-    digit2: 1,
-    digit3: 1,
-    digit4: -2,
-    digit5: 3,
-    ans: 4,
-  ),
-  LowerUpper5Row(
-    digit1: 4,
-    digit2: -1,
-    digit3: -3,
-    digit4: 2,
-    digit5: 2,
-    ans: 4,
-  ),
-  LowerUpper5Row(
-    digit1: 3,
-    digit2: -2,
-    digit3: 1,
-    digit4: -2,
-    digit5: 4,
-    ans: 4,
-  ),
-  LowerUpper5Row(
-    digit1: 2,
-    digit2: 1,
-    digit3: 1,
-    digit4: -3,
-    digit5: 2,
-    ans: 3,
-  ),
-  LowerUpper5Row(
-    digit1: 1,
-    digit2: 3,
-    digit3: -2,
-    digit4: -1,
-    digit5: 3,
-    ans: 4,
-  ),
-  LowerUpper5Row(
-    digit1: 4,
-    digit2: -3,
-    digit3: 1,
-    digit4: -2,
-    digit5: 3,
-    ans: 3,
-  ),
-  LowerUpper5Row(
-    digit1: 3,
-    digit2: 1,
-    digit3: -4,
-    digit4: 2,
-    digit5: 2,
-    ans: 4,
-  ),
-  LowerUpper5Row(
-    digit1: 2,
-    digit2: 2,
-    digit3: -1,
-    digit4: -3,
-    digit5: 2,
-    ans: 2,
-  ),
-  LowerUpper5Row(
-    digit1: 1,
-    digit2: -1,
-    digit3: 3,
-    digit4: -2,
-    digit5: 3,
-    ans: 4,
-  ),
-  LowerUpper5Row(
-    digit1: 4,
-    digit2: -1,
-    digit3: -1,
-    digit4: 2,
-    digit5: -3,
-    ans: 1,
-  ),
-  LowerUpper5Row(
-    digit1: 3,
-    digit2: -2,
-    digit3: 1,
-    digit4: 1,
-    digit5: -2,
-    ans: 1,
-  ),
-  LowerUpper5Row(
-    digit1: 2,
-    digit2: 1,
-    digit3: 1,
-    digit4: -4,
-    digit5: 2,
-    ans: 2,
-  ),
-  LowerUpper5Row(
-    digit1: 1,
-    digit2: 1,
-    digit3: 1,
-    digit4: -3,
-    digit5: 2,
-    ans: 2,
-  ),
-  LowerUpper5Row(
-    digit1: 4,
-    digit2: -3,
-    digit3: 2,
-    digit4: -3,
-    digit5: 2,
-    ans: 2,
-  ),
-  LowerUpper5Row(
-    digit1: 3,
-    digit2: 1,
-    digit3: -2,
-    digit4: -1,
-    digit5: 3,
-    ans: 4,
-  ),
-  LowerUpper5Row(
-    digit1: 2,
-    digit2: 2,
-    digit3: -3,
-    digit4: 2,
-    digit5: 1,
-    ans: 4,
-  ),
-  LowerUpper5Row(
-    digit1: 1,
-    digit2: 3,
-    digit3: -2,
-    digit4: 1,
-    digit5: -2,
-    ans: 1,
-  ),
-  LowerUpper5Row(
-    digit1: 4,
-    digit2: -2,
-    digit3: 1,
-    digit4: -3,
-    digit5: 2,
-    ans: 2,
-  ),
-  LowerUpper5Row(
-    digit1: 3,
-    digit2: -2,
-    digit3: 1,
-    digit4: 2,
-    digit5: -3,
-    ans: 1,
-  ),
-  LowerUpper5Row(
-    digit1: 2,
-    digit2: -1,
-    digit3: 3,
-    digit4: -2,
-    digit5: 2,
-    ans: 4,
-  ),
-  LowerUpper5Row(
-    digit1: 1,
-    digit2: 3,
-    digit3: -1,
-    digit4: -3,
-    digit5: 2,
-    ans: 2,
-  ),
-  LowerUpper5Row(
-    digit1: 4,
-    digit2: -2,
-    digit3: -1,
-    digit4: 3,
-    digit5: -4,
-    ans: 0,
-  ),
-  LowerUpper5Row(
-    digit1: 3,
-    digit2: -2,
-    digit3: 3,
-    digit4: -1,
-    digit5: -2,
-    ans: 1,
-  ),
-  LowerUpper5Row(
-    digit1: 2,
-    digit2: 2,
-    digit3: -4,
-    digit4: 3,
-    digit5: -1,
-    ans: 2,
-  ),
-  LowerUpper5Row(
-    digit1: 1,
-    digit2: 3,
-    digit3: -2,
-    digit4: -2,
-    digit5: 4,
-    ans: 4,
-  ),
-  LowerUpper5Row(
-    digit1: 4,
-    digit2: -3,
-    digit3: 2,
-    digit4: 1,
-    digit5: -3,
-    ans: 1,
-  ),
-  LowerUpper5Row(
-    digit1: 2,
-    digit2: 1,
-    digit3: 1,
-    digit4: -3,
-    digit5: 2,
-    ans: 3,
-  ),
-  LowerUpper5Row(
-    digit1: 4,
-    digit2: -2,
-    digit3: -1,
-    digit4: 2,
-    digit5: -3,
-    ans: 0,
-  ),
-  LowerUpper5Row(
-    digit1: 3,
-    digit2: -2,
-    digit3: 3,
-    digit4: -2,
-    digit5: -2,
-    ans: 0,
-  ),
-  LowerUpper5Row(
-    digit1: 1,
-    digit2: 2,
-    digit3: -1,
-    digit4: 2,
-    digit5: -3,
-    ans: 1,
-  ),
-  LowerUpper5Row(
-    digit1: 4,
-    digit2: -4,
-    digit3: 3,
-    digit4: 1,
-    digit5: -2,
-    ans: 2,
-  ),
-  LowerUpper5Row(
-    digit1: 2,
-    digit2: 1,
-    digit3: 1,
-    digit4: -2,
-    digit5: 1,
-    ans: 3,
-  ),
-  LowerUpper5Row(
-    digit1: 3,
-    digit2: -2,
-    digit3: -1,
-    digit4: 4,
-    digit5: -3,
-    ans: 1,
-  ),
-  LowerUpper5Row(
-    digit1: 1,
-    digit2: 1,
-    digit3: -2,
-    digit4: 3,
-    digit5: 1,
-    ans: 4,
-  ),
-  LowerUpper5Row(
-    digit1: 4,
-    digit2: -3,
-    digit3: 1,
-    digit4: 2,
-    digit5: -3,
-    ans: 1,
-  ),
-  LowerUpper5Row(
-    digit1: 2,
-    digit2: -1,
-    digit3: 2,
-    digit4: 1,
-    digit5: -4,
-    ans: 0,
-  ),
-  LowerUpper5Row(
-    digit1: 3,
-    digit2: -1,
-    digit3: 2,
-    digit4: -3,
-    digit5: 2,
-    ans: 3,
-  ),
-  LowerUpper5Row(
-    digit1: 4,
-    digit2: -1,
-    digit3: -2,
-    digit4: 3,
-    digit5: -1,
-    ans: 3,
-  ),
-  LowerUpper5Row(
-    digit1: 2,
-    digit2: 2,
-    digit3: -3,
-    digit4: 1,
-    digit5: 2,
-    ans: 4,
-  ),
-  LowerUpper5Row(
-    digit1: 1,
-    digit2: 3,
-    digit3: -2,
-    digit4: -2,
-    digit5: 4,
-    ans: 4,
-  ),
-  LowerUpper5Row(
-    digit1: 4,
-    digit2: -3,
-    digit3: 1,
-    digit4: 2,
-    digit5: -3,
-    ans: 1,
-  ),
-  LowerUpper5Row(
-    digit1: 2,
-    digit2: 1,
-    digit3: 1,
-    digit4: -3,
-    digit5: 2,
-    ans: 3,
-  ),
-  LowerUpper5Row(
-    digit1: 3,
-    digit2: 1,
-    digit3: -4,
-    digit4: 2,
-    digit5: 2,
-    ans: 4,
-  ),
-  LowerUpper5Row(
-    digit1: 4,
-    digit2: -2,
-    digit3: -2,
-    digit4: 4,
-    digit5: -3,
-    ans: 1,
-  ),
-  LowerUpper5Row(
-    digit1: 1,
-    digit2: -1,
-    digit3: 2,
-    digit4: 2,
-    digit5: -4,
-    ans: 0,
-  ),
-  LowerUpper5Row(
-    digit1: 3,
-    digit2: 1,
-    digit3: -2,
-    digit4: 2,
-    digit5: -4,
-    ans: 0,
-  ),
+List<FiveDigit> lower5Row11 = [
+  FiveDigit(digit1: 4, digit2: -3, digit3: 2, digit4: 1, digit5: -2, ans: 2),
+  FiveDigit(digit1: 3, digit2: 1, digit3: -2, digit4: -2, digit5: 4, ans: 4),
+  FiveDigit(digit1: 2, digit2: 2, digit3: -3, digit4: 1, digit5: 2, ans: 4),
+  FiveDigit(digit1: 1, digit2: 3, digit3: -2, digit4: -1, digit5: 2, ans: 3),
+  FiveDigit(digit1: 4, digit2: -2, digit3: 1, digit4: -3, digit5: 4, ans: 4),
+  FiveDigit(digit1: 3, digit2: -1, digit3: 2, digit4: -4, digit5: 3, ans: 3),
+  FiveDigit(digit1: 2, digit2: 1, digit3: -3, digit4: 4, digit5: -2, ans: 2),
+  FiveDigit(digit1: 4, digit2: -3, digit3: 2, digit4: 1, digit5: -3, ans: 1),
+  FiveDigit(digit1: 3, digit2: -2, digit3: 1, digit4: 2, digit5: -4, ans: 0),
+  FiveDigit(digit1: 2, digit2: 2, digit3: -4, digit4: 3, digit5: 1, ans: 4),
+  FiveDigit(digit1: 1, digit2: 1, digit3: 2, digit4: -3, digit5: 2, ans: 3),
+  FiveDigit(digit1: 4, digit2: -4, digit3: 3, digit4: 1, digit5: -2, ans: 2),
+  FiveDigit(digit1: 3, digit2: -1, digit3: 2, digit4: -4, digit5: 2, ans: 2),
+  FiveDigit(digit1: 2, digit2: -2, digit3: 4, digit4: -3, digit5: 2, ans: 3),
+  FiveDigit(digit1: 1, digit2: 3, digit3: -4, digit4: 2, digit5: 2, ans: 4),
+  FiveDigit(digit1: 4, digit2: -1, digit3: -2, digit4: 3, digit5: -4, ans: 0),
+  FiveDigit(digit1: 3, digit2: 1, digit3: -4, digit4: 2, digit5: 2, ans: 4),
+  FiveDigit(digit1: 2, digit2: -1, digit3: 3, digit4: -2, digit5: 1, ans: 3),
+  FiveDigit(digit1: 4, digit2: -3, digit3: -1, digit4: 2, digit5: 1, ans: 3),
+  FiveDigit(digit1: 1, digit2: 2, digit3: 1, digit4: -3, digit5: -1, ans: 0),
+  FiveDigit(digit1: 2, digit2: 2, digit3: -3, digit4: 1, digit5: 2, ans: 4),
+  FiveDigit(digit1: 1, digit2: 2, digit3: 1, digit4: -3, digit5: 2, ans: 3),
+  FiveDigit(digit1: 3, digit2: -2, digit3: 3, digit4: -4, digit5: 3, ans: 3),
+  FiveDigit(digit1: 4, digit2: -3, digit3: 1, digit4: 2, digit5: -4, ans: 0),
+  FiveDigit(digit1: 1, digit2: 1, digit3: -2, digit4: 4, digit5: -3, ans: 1),
+  FiveDigit(digit1: 2, digit2: 2, digit3: -3, digit4: 1, digit5: -2, ans: 0),
+  FiveDigit(digit1: 3, digit2: -1, digit3: 2, digit4: -4, digit5: 1, ans: 1),
+  FiveDigit(digit1: 4, digit2: -1, digit3: -2, digit4: 3, digit5: -4, ans: 0),
+  FiveDigit(digit1: 2, digit2: 1, digit3: -2, digit4: 3, digit5: -2, ans: 2),
+  FiveDigit(digit1: 1, digit2: 3, digit3: -2, digit4: -1, digit5: 2, ans: 3),
+  FiveDigit(digit1: 2, digit2: 2, digit3: -4, digit4: 3, digit5: -2, ans: 1),
+  FiveDigit(digit1: 4, digit2: -1, digit3: -2, digit4: 3, digit5: -2, ans: 2),
+  FiveDigit(digit1: 1, digit2: 2, digit3: 1, digit4: -3, digit5: 1, ans: 2),
+  FiveDigit(digit1: 3, digit2: 1, digit3: -4, digit4: 2, digit5: 2, ans: 4),
+  FiveDigit(digit1: 2, digit2: 2, digit3: -1, digit4: -2, digit5: 3, ans: 4),
+  FiveDigit(digit1: 4, digit2: -3, digit3: 2, digit4: 1, digit5: -2, ans: 2),
+  FiveDigit(digit1: 3, digit2: -3, digit3: 4, digit4: -2, digit5: -1, ans: 1),
+  FiveDigit(digit1: 1, digit2: 1, digit3: 2, digit4: -3, digit5: 3, ans: 4),
+  FiveDigit(digit1: 2, digit2: 2, digit3: -4, digit4: 3, digit5: -2, ans: 1),
+  FiveDigit(digit1: 3, digit2: -1, digit3: 2, digit4: -4, digit5: 2, ans: 2),
+  FiveDigit(digit1: 4, digit2: -3, digit3: 2, digit4: -3, digit5: 4, ans: 4),
+  FiveDigit(digit1: 2, digit2: 2, digit3: -1, digit4: -2, digit5: 3, ans: 4),
+  FiveDigit(digit1: 1, digit2: -1, digit3: 2, digit4: 2, digit5: -3, ans: 1),
+  FiveDigit(digit1: 3, digit2: -3, digit3: 4, digit4: -2, digit5: -2, ans: 0),
+  FiveDigit(digit1: 4, digit2: -2, digit3: -2, digit4: 3, digit5: 1, ans: 4),
+  FiveDigit(digit1: 2, digit2: 2, digit3: -2, digit4: 2, digit5: -3, ans: 1),
+  FiveDigit(digit1: 1, digit2: 2, digit3: -3, digit4: 4, digit5: -1, ans: 3),
+  FiveDigit(digit1: 3, digit2: -1, digit3: 2, digit4: -3, digit5: 3, ans: 4),
+  FiveDigit(digit1: 4, digit2: -1, digit3: -2, digit4: 3, digit5: -4, ans: 0),
+  FiveDigit(digit1: 2, digit2: 1, digit3: 1, digit4: -4, digit5: 3, ans: 3),
+  FiveDigit(digit1: 1, digit2: -1, digit3: 4, digit4: -2, digit5: -2, ans: 0),
+  FiveDigit(digit1: 3, digit2: -3, digit3: 4, digit4: -1, digit5: -2, ans: 1),
+  FiveDigit(digit1: 4, digit2: -4, digit3: 2, digit4: 2, digit5: -3, ans: 1),
+  FiveDigit(digit1: 2, digit2: -2, digit3: 3, digit4: 1, digit5: -2, ans: 2),
+  FiveDigit(digit1: 1, digit2: 3, digit3: -4, digit4: 2, digit5: 1, ans: 3),
+  FiveDigit(digit1: 3, digit2: 1, digit3: -4, digit4: 2, digit5: 2, ans: 4),
+  FiveDigit(digit1: 4, digit2: -2, digit3: 1, digit4: 1, digit5: -3, ans: 1),
+  FiveDigit(digit1: 2, digit2: 2, digit3: -3, digit4: 2, digit5: -3, ans: 0),
+  FiveDigit(digit1: 3, digit2: 1, digit3: -4, digit4: 2, digit5: 1, ans: 3),
+  FiveDigit(digit1: 1, digit2: 2, digit3: -1, digit4: 2, digit5: -4, ans: 0),
+  FiveDigit(digit1: 2, digit2: 2, digit3: -3, digit4: 1, digit5: 2, ans: 4),
+  FiveDigit(digit1: 1, digit2: 1, digit3: 2, digit4: -1, digit5: -2, ans: 1),
+  FiveDigit(digit1: 3, digit2: -2, digit3: 1, digit4: -2, digit5: 3, ans: 3),
+  FiveDigit(digit1: 4, digit2: -1, digit3: -3, digit4: 4, digit5: -2, ans: 2),
+  FiveDigit(digit1: 3, digit2: 1, digit3: -2, digit4: -1, digit5: 3, ans: 4),
+  FiveDigit(digit1: 2, digit2: 2, digit3: -3, digit4: 3, digit5: -2, ans: 2),
+  FiveDigit(digit1: 1, digit2: 3, digit3: -4, digit4: 2, digit5: 2, ans: 4),
+  FiveDigit(digit1: 4, digit2: -3, digit3: 1, digit4: -2, digit5: 3, ans: 3),
+  FiveDigit(digit1: 3, digit2: -1, digit3: 2, digit4: -4, digit5: 3, ans: 3),
+  FiveDigit(digit1: 2, digit2: 1, digit3: -3, digit4: 2, digit5: 1, ans: 3),
+  FiveDigit(digit1: 1, digit2: 3, digit3: -2, digit4: -1, digit5: 3, ans: 4),
+  FiveDigit(digit1: 4, digit2: -2, digit3: 1, digit4: -3, digit5: 4, ans: 4),
+  FiveDigit(digit1: 3, digit2: -1, digit3: 2, digit4: -1, digit5: -2, ans: 1),
+  FiveDigit(digit1: 2, digit2: 2, digit3: -3, digit4: 1, digit5: 2, ans: 4),
+  FiveDigit(digit1: 1, digit2: 1, digit3: 1, digit4: -2, digit5: 3, ans: 4),
+  FiveDigit(digit1: 4, digit2: -1, digit3: -3, digit4: 2, digit5: 2, ans: 4),
+  FiveDigit(digit1: 3, digit2: -2, digit3: 1, digit4: -2, digit5: 4, ans: 4),
+  FiveDigit(digit1: 2, digit2: 1, digit3: 1, digit4: -3, digit5: 2, ans: 3),
+  FiveDigit(digit1: 1, digit2: 3, digit3: -2, digit4: -1, digit5: 3, ans: 4),
+  FiveDigit(digit1: 4, digit2: -3, digit3: 1, digit4: -2, digit5: 3, ans: 3),
+  FiveDigit(digit1: 3, digit2: 1, digit3: -4, digit4: 2, digit5: 2, ans: 4),
+  FiveDigit(digit1: 2, digit2: 2, digit3: -1, digit4: -3, digit5: 2, ans: 2),
+  FiveDigit(digit1: 1, digit2: -1, digit3: 3, digit4: -2, digit5: 3, ans: 4),
+  FiveDigit(digit1: 4, digit2: -1, digit3: -1, digit4: 2, digit5: -3, ans: 1),
+  FiveDigit(digit1: 3, digit2: -2, digit3: 1, digit4: 1, digit5: -2, ans: 1),
+  FiveDigit(digit1: 2, digit2: 1, digit3: 1, digit4: -4, digit5: 2, ans: 2),
+  FiveDigit(digit1: 1, digit2: 1, digit3: 1, digit4: -3, digit5: 2, ans: 2),
+  FiveDigit(digit1: 4, digit2: -3, digit3: 2, digit4: -3, digit5: 2, ans: 2),
+  FiveDigit(digit1: 3, digit2: 1, digit3: -2, digit4: -1, digit5: 3, ans: 4),
+  FiveDigit(digit1: 2, digit2: 2, digit3: -3, digit4: 2, digit5: 1, ans: 4),
+  FiveDigit(digit1: 1, digit2: 3, digit3: -2, digit4: 1, digit5: -2, ans: 1),
+  FiveDigit(digit1: 4, digit2: -2, digit3: 1, digit4: -3, digit5: 2, ans: 2),
+  FiveDigit(digit1: 3, digit2: -2, digit3: 1, digit4: 2, digit5: -3, ans: 1),
+  FiveDigit(digit1: 2, digit2: -1, digit3: 3, digit4: -2, digit5: 2, ans: 4),
+  FiveDigit(digit1: 1, digit2: 3, digit3: -1, digit4: -3, digit5: 2, ans: 2),
+  FiveDigit(digit1: 4, digit2: -2, digit3: -1, digit4: 3, digit5: -4, ans: 0),
+  FiveDigit(digit1: 3, digit2: -2, digit3: 3, digit4: -1, digit5: -2, ans: 1),
+  FiveDigit(digit1: 2, digit2: 2, digit3: -4, digit4: 3, digit5: -1, ans: 2),
+  FiveDigit(digit1: 1, digit2: 3, digit3: -2, digit4: -2, digit5: 4, ans: 4),
+  FiveDigit(digit1: 4, digit2: -3, digit3: 2, digit4: 1, digit5: -3, ans: 1),
+  FiveDigit(digit1: 2, digit2: 1, digit3: 1, digit4: -3, digit5: 2, ans: 3),
+  FiveDigit(digit1: 4, digit2: -2, digit3: -1, digit4: 2, digit5: -3, ans: 0),
+  FiveDigit(digit1: 3, digit2: -2, digit3: 3, digit4: -2, digit5: -2, ans: 0),
+  FiveDigit(digit1: 1, digit2: 2, digit3: -1, digit4: 2, digit5: -3, ans: 1),
+  FiveDigit(digit1: 4, digit2: -4, digit3: 3, digit4: 1, digit5: -2, ans: 2),
+  FiveDigit(digit1: 2, digit2: 1, digit3: 1, digit4: -2, digit5: 1, ans: 3),
+  FiveDigit(digit1: 3, digit2: -2, digit3: -1, digit4: 4, digit5: -3, ans: 1),
+  FiveDigit(digit1: 1, digit2: 1, digit3: -2, digit4: 3, digit5: 1, ans: 4),
+  FiveDigit(digit1: 4, digit2: -3, digit3: 1, digit4: 2, digit5: -3, ans: 1),
+  FiveDigit(digit1: 2, digit2: -1, digit3: 2, digit4: 1, digit5: -4, ans: 0),
+  FiveDigit(digit1: 3, digit2: -1, digit3: 2, digit4: -3, digit5: 2, ans: 3),
+  FiveDigit(digit1: 4, digit2: -1, digit3: -2, digit4: 3, digit5: -1, ans: 3),
+  FiveDigit(digit1: 2, digit2: 2, digit3: -3, digit4: 1, digit5: 2, ans: 4),
+  FiveDigit(digit1: 1, digit2: 3, digit3: -2, digit4: -2, digit5: 4, ans: 4),
+  FiveDigit(digit1: 4, digit2: -3, digit3: 1, digit4: 2, digit5: -3, ans: 1),
+  FiveDigit(digit1: 2, digit2: 1, digit3: 1, digit4: -3, digit5: 2, ans: 3),
+  FiveDigit(digit1: 3, digit2: 1, digit3: -4, digit4: 2, digit5: 2, ans: 4),
+  FiveDigit(digit1: 4, digit2: -2, digit3: -2, digit4: 4, digit5: -3, ans: 1),
+  FiveDigit(digit1: 1, digit2: -1, digit3: 2, digit4: 2, digit5: -4, ans: 0),
+  FiveDigit(digit1: 3, digit2: 1, digit3: -2, digit4: 2, digit5: -4, ans: 0),
 ];
-List<LowerUpper5Row> lower5Row21 = [
-  LowerUpper5Row(
-    digit1: 14,
-    digit2: -3,
-    digit3: 22,
-    digit4: 1,
-    digit5: -2,
-    ans: 32,
-  ),
-  LowerUpper5Row(
+List<FiveDigit> lower5Row21 = [
+  FiveDigit(digit1: 14, digit2: -3, digit3: 22, digit4: 1, digit5: -2, ans: 32),
+  FiveDigit(
     digit1: 23,
     digit2: 11,
     digit3: -2,
@@ -1305,23 +458,9 @@ List<LowerUpper5Row> lower5Row21 = [
     digit5: 4,
     ans: 24,
   ),
-  LowerUpper5Row(
-    digit1: 12,
-    digit2: 2,
-    digit3: -13,
-    digit4: 21,
-    digit5: 2,
-    ans: 24,
-  ),
-  LowerUpper5Row(
-    digit1: 31,
-    digit2: 3,
-    digit3: -22,
-    digit4: -1,
-    digit5: 2,
-    ans: 13,
-  ),
-  LowerUpper5Row(
+  FiveDigit(digit1: 12, digit2: 2, digit3: -13, digit4: 21, digit5: 2, ans: 24),
+  FiveDigit(digit1: 31, digit2: 3, digit3: -22, digit4: -1, digit5: 2, ans: 13),
+  FiveDigit(
     digit1: 44,
     digit2: -12,
     digit3: 1,
@@ -1329,15 +468,8 @@ List<LowerUpper5Row> lower5Row21 = [
     digit5: 4,
     ans: 14,
   ),
-  LowerUpper5Row(
-    digit1: 13,
-    digit2: -1,
-    digit3: 12,
-    digit4: -4,
-    digit5: 3,
-    ans: 23,
-  ),
-  LowerUpper5Row(
+  FiveDigit(digit1: 13, digit2: -1, digit3: 12, digit4: -4, digit5: 3, ans: 23),
+  FiveDigit(
     digit1: 22,
     digit2: 11,
     digit3: -3,
@@ -1345,7 +477,7 @@ List<LowerUpper5Row> lower5Row21 = [
     digit5: -2,
     ans: 42,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 24,
     digit2: -3,
     digit3: 22,
@@ -1353,7 +485,7 @@ List<LowerUpper5Row> lower5Row21 = [
     digit5: -13,
     ans: 31,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 33,
     digit2: -12,
     digit3: 1,
@@ -1361,23 +493,9 @@ List<LowerUpper5Row> lower5Row21 = [
     digit5: -4,
     ans: 30,
   ),
-  LowerUpper5Row(
-    digit1: 12,
-    digit2: 12,
-    digit3: -4,
-    digit4: 3,
-    digit5: 11,
-    ans: 34,
-  ),
-  LowerUpper5Row(
-    digit1: 21,
-    digit2: 1,
-    digit3: 12,
-    digit4: -3,
-    digit5: 2,
-    ans: 33,
-  ),
-  LowerUpper5Row(
+  FiveDigit(digit1: 12, digit2: 12, digit3: -4, digit4: 3, digit5: 11, ans: 34),
+  FiveDigit(digit1: 21, digit2: 1, digit3: 12, digit4: -3, digit5: 2, ans: 33),
+  FiveDigit(
     digit1: 44,
     digit2: -4,
     digit3: 3,
@@ -1385,31 +503,10 @@ List<LowerUpper5Row> lower5Row21 = [
     digit5: -2,
     ans: 30,
   ),
-  LowerUpper5Row(
-    digit1: 13,
-    digit2: -1,
-    digit3: 12,
-    digit4: -4,
-    digit5: 2,
-    ans: 22,
-  ),
-  LowerUpper5Row(
-    digit1: 22,
-    digit2: -2,
-    digit3: 14,
-    digit4: -3,
-    digit5: 2,
-    ans: 33,
-  ),
-  LowerUpper5Row(
-    digit1: 21,
-    digit2: 13,
-    digit3: -4,
-    digit4: 2,
-    digit5: 12,
-    ans: 44,
-  ),
-  LowerUpper5Row(
+  FiveDigit(digit1: 13, digit2: -1, digit3: 12, digit4: -4, digit5: 2, ans: 22),
+  FiveDigit(digit1: 22, digit2: -2, digit3: 14, digit4: -3, digit5: 2, ans: 33),
+  FiveDigit(digit1: 21, digit2: 13, digit3: -4, digit4: 2, digit5: 12, ans: 44),
+  FiveDigit(
     digit1: 24,
     digit2: -11,
     digit3: -2,
@@ -1417,15 +514,8 @@ List<LowerUpper5Row> lower5Row21 = [
     digit5: -4,
     ans: 20,
   ),
-  LowerUpper5Row(
-    digit1: 13,
-    digit2: 1,
-    digit3: -14,
-    digit4: 22,
-    digit5: 2,
-    ans: 24,
-  ),
-  LowerUpper5Row(
+  FiveDigit(digit1: 13, digit2: 1, digit3: -14, digit4: 22, digit5: 2, ans: 24),
+  FiveDigit(
     digit1: 32,
     digit2: -1,
     digit3: 13,
@@ -1433,7 +523,7 @@ List<LowerUpper5Row> lower5Row21 = [
     digit5: -11,
     ans: 31,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 24,
     digit2: -3,
     digit3: -11,
@@ -1441,31 +531,10 @@ List<LowerUpper5Row> lower5Row21 = [
     digit5: 30,
     ans: 44,
   ),
-  LowerUpper5Row(
-    digit1: 11,
-    digit2: 2,
-    digit3: 11,
-    digit4: -3,
-    digit5: -21,
-    ans: 0,
-  ),
-  LowerUpper5Row(
-    digit1: 22,
-    digit2: 2,
-    digit3: -13,
-    digit4: 1,
-    digit5: 2,
-    ans: 14,
-  ),
-  LowerUpper5Row(
-    digit1: 31,
-    digit2: 2,
-    digit3: 11,
-    digit4: -13,
-    digit5: 2,
-    ans: 33,
-  ),
-  LowerUpper5Row(
+  FiveDigit(digit1: 11, digit2: 2, digit3: 11, digit4: -3, digit5: -21, ans: 0),
+  FiveDigit(digit1: 22, digit2: 2, digit3: -13, digit4: 1, digit5: 2, ans: 14),
+  FiveDigit(digit1: 31, digit2: 2, digit3: 11, digit4: -13, digit5: 2, ans: 33),
+  FiveDigit(
     digit1: 13,
     digit2: -2,
     digit3: 23,
@@ -1473,7 +542,7 @@ List<LowerUpper5Row> lower5Row21 = [
     digit5: 3,
     ans: 23,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 24,
     digit2: -3,
     digit3: 21,
@@ -1481,7 +550,7 @@ List<LowerUpper5Row> lower5Row21 = [
     digit5: -14,
     ans: 30,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 21,
     digit2: 1,
     digit3: -12,
@@ -1489,7 +558,7 @@ List<LowerUpper5Row> lower5Row21 = [
     digit5: -3,
     ans: 21,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 12,
     digit2: 2,
     digit3: -13,
@@ -1497,7 +566,7 @@ List<LowerUpper5Row> lower5Row21 = [
     digit5: -2,
     ans: 10,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 13,
     digit2: -1,
     digit3: 12,
@@ -1505,7 +574,7 @@ List<LowerUpper5Row> lower5Row21 = [
     digit5: 21,
     ans: 41,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 24,
     digit2: -1,
     digit3: -12,
@@ -1513,7 +582,7 @@ List<LowerUpper5Row> lower5Row21 = [
     digit5: -14,
     ans: 0,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 32,
     digit2: 11,
     digit3: -2,
@@ -1521,15 +590,8 @@ List<LowerUpper5Row> lower5Row21 = [
     digit5: -12,
     ans: 32,
   ),
-  LowerUpper5Row(
-    digit1: 11,
-    digit2: 13,
-    digit3: -2,
-    digit4: -21,
-    digit5: 2,
-    ans: 3,
-  ),
-  LowerUpper5Row(
+  FiveDigit(digit1: 11, digit2: 13, digit3: -2, digit4: -21, digit5: 2, ans: 3),
+  FiveDigit(
     digit1: 22,
     digit2: 2,
     digit3: -14,
@@ -1537,7 +599,7 @@ List<LowerUpper5Row> lower5Row21 = [
     digit5: -2,
     ans: 31,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 34,
     digit2: -1,
     digit3: -12,
@@ -1545,31 +607,10 @@ List<LowerUpper5Row> lower5Row21 = [
     digit5: -12,
     ans: 12,
   ),
-  LowerUpper5Row(
-    digit1: 21,
-    digit2: 2,
-    digit3: 21,
-    digit4: -13,
-    digit5: 1,
-    ans: 32,
-  ),
-  LowerUpper5Row(
-    digit1: 13,
-    digit2: 21,
-    digit3: -4,
-    digit4: 12,
-    digit5: 2,
-    ans: 44,
-  ),
-  LowerUpper5Row(
-    digit1: 22,
-    digit2: 2,
-    digit3: -11,
-    digit4: -12,
-    digit5: 3,
-    ans: 4,
-  ),
-  LowerUpper5Row(
+  FiveDigit(digit1: 21, digit2: 2, digit3: 21, digit4: -13, digit5: 1, ans: 32),
+  FiveDigit(digit1: 13, digit2: 21, digit3: -4, digit4: 12, digit5: 2, ans: 44),
+  FiveDigit(digit1: 22, digit2: 2, digit3: -11, digit4: -12, digit5: 3, ans: 4),
+  FiveDigit(
     digit1: 44,
     digit2: -13,
     digit3: 2,
@@ -1577,7 +618,7 @@ List<LowerUpper5Row> lower5Row21 = [
     digit5: -12,
     ans: 22,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 33,
     digit2: -3,
     digit3: 14,
@@ -1585,15 +626,8 @@ List<LowerUpper5Row> lower5Row21 = [
     digit5: -21,
     ans: 21,
   ),
-  LowerUpper5Row(
-    digit1: 31,
-    digit2: 1,
-    digit3: 12,
-    digit4: -3,
-    digit5: 3,
-    ans: 44,
-  ),
-  LowerUpper5Row(
+  FiveDigit(digit1: 31, digit2: 1, digit3: 12, digit4: -3, digit5: 3, ans: 44),
+  FiveDigit(
     digit1: 42,
     digit2: 2,
     digit3: -14,
@@ -1601,7 +635,7 @@ List<LowerUpper5Row> lower5Row21 = [
     digit5: -22,
     ans: 11,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 13,
     digit2: -1,
     digit3: 22,
@@ -1609,7 +643,7 @@ List<LowerUpper5Row> lower5Row21 = [
     digit5: 2,
     ans: 22,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 34,
     digit2: -13,
     digit3: 2,
@@ -1617,7 +651,7 @@ List<LowerUpper5Row> lower5Row21 = [
     digit5: 14,
     ans: 34,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 32,
     digit2: 2,
     digit3: -11,
@@ -1625,7 +659,7 @@ List<LowerUpper5Row> lower5Row21 = [
     digit5: 13,
     ans: 34,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 21,
     digit2: -1,
     digit3: 22,
@@ -1633,7 +667,7 @@ List<LowerUpper5Row> lower5Row21 = [
     digit5: -13,
     ans: 31,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 33,
     digit2: -13,
     digit3: 4,
@@ -1641,7 +675,7 @@ List<LowerUpper5Row> lower5Row21 = [
     digit5: -2,
     ans: 10,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 44,
     digit2: -2,
     digit3: -12,
@@ -1649,7 +683,7 @@ List<LowerUpper5Row> lower5Row21 = [
     digit5: 11,
     ans: 44,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 22,
     digit2: 2,
     digit3: -12,
@@ -1657,7 +691,7 @@ List<LowerUpper5Row> lower5Row21 = [
     digit5: -3,
     ans: 41,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 21,
     digit2: 2,
     digit3: -13,
@@ -1665,7 +699,7 @@ List<LowerUpper5Row> lower5Row21 = [
     digit5: -1,
     ans: 33,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 33,
     digit2: -11,
     digit3: 2,
@@ -1673,7 +707,7 @@ List<LowerUpper5Row> lower5Row21 = [
     digit5: 3,
     ans: 14,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 24,
     digit2: -1,
     digit3: -2,
@@ -1681,15 +715,8 @@ List<LowerUpper5Row> lower5Row21 = [
     digit5: -4,
     ans: 40,
   ),
-  LowerUpper5Row(
-    digit1: 22,
-    digit2: 11,
-    digit3: 1,
-    digit4: -14,
-    digit5: 3,
-    ans: 23,
-  ),
-  LowerUpper5Row(
+  FiveDigit(digit1: 22, digit2: 11, digit3: 1, digit4: -14, digit5: 3, ans: 23),
+  FiveDigit(
     digit1: 41,
     digit2: -11,
     digit3: 4,
@@ -1697,7 +724,7 @@ List<LowerUpper5Row> lower5Row21 = [
     digit5: -2,
     ans: 20,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 33,
     digit2: -3,
     digit3: 14,
@@ -1705,7 +732,7 @@ List<LowerUpper5Row> lower5Row21 = [
     digit5: -22,
     ans: 21,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 24,
     digit2: -4,
     digit3: 12,
@@ -1713,7 +740,7 @@ List<LowerUpper5Row> lower5Row21 = [
     digit5: -23,
     ans: 11,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 32,
     digit2: -2,
     digit3: 13,
@@ -1721,23 +748,9 @@ List<LowerUpper5Row> lower5Row21 = [
     digit5: -22,
     ans: 22,
   ),
-  LowerUpper5Row(
-    digit1: 41,
-    digit2: 3,
-    digit3: -14,
-    digit4: 12,
-    digit5: 1,
-    ans: 43,
-  ),
-  LowerUpper5Row(
-    digit1: 33,
-    digit2: 11,
-    digit3: -4,
-    digit4: 2,
-    digit5: 2,
-    ans: 44,
-  ),
-  LowerUpper5Row(
+  FiveDigit(digit1: 41, digit2: 3, digit3: -14, digit4: 12, digit5: 1, ans: 43),
+  FiveDigit(digit1: 33, digit2: 11, digit3: -4, digit4: 2, digit5: 2, ans: 44),
+  FiveDigit(
     digit1: 24,
     digit2: -2,
     digit3: 21,
@@ -1745,7 +758,7 @@ List<LowerUpper5Row> lower5Row21 = [
     digit5: -13,
     ans: 31,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 32,
     digit2: 12,
     digit3: -3,
@@ -1753,15 +766,8 @@ List<LowerUpper5Row> lower5Row21 = [
     digit5: -23,
     ans: 20,
   ),
-  LowerUpper5Row(
-    digit1: 43,
-    digit2: 1,
-    digit3: -24,
-    digit4: 2,
-    digit5: 1,
-    ans: 23,
-  ),
-  LowerUpper5Row(
+  FiveDigit(digit1: 43, digit2: 1, digit3: -24, digit4: 2, digit5: 1, ans: 23),
+  FiveDigit(
     digit1: 31,
     digit2: 2,
     digit3: -21,
@@ -1769,15 +775,8 @@ List<LowerUpper5Row> lower5Row21 = [
     digit5: -14,
     ans: 10,
   ),
-  LowerUpper5Row(
-    digit1: 22,
-    digit2: 2,
-    digit3: -13,
-    digit4: 1,
-    digit5: 22,
-    ans: 34,
-  ),
-  LowerUpper5Row(
+  FiveDigit(digit1: 22, digit2: 2, digit3: -13, digit4: 1, digit5: 22, ans: 34),
+  FiveDigit(
     digit1: 21,
     digit2: 11,
     digit3: 2,
@@ -1785,7 +784,7 @@ List<LowerUpper5Row> lower5Row21 = [
     digit5: -2,
     ans: 11,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 13,
     digit2: -2,
     digit3: 21,
@@ -1793,7 +792,7 @@ List<LowerUpper5Row> lower5Row21 = [
     digit5: 3,
     ans: 23,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 24,
     digit2: -1,
     digit3: -13,
@@ -1801,7 +800,7 @@ List<LowerUpper5Row> lower5Row21 = [
     digit5: -12,
     ans: 32,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 43,
     digit2: 1,
     digit3: -22,
@@ -1809,23 +808,9 @@ List<LowerUpper5Row> lower5Row21 = [
     digit5: 13,
     ans: 34,
   ),
-  LowerUpper5Row(
-    digit1: 32,
-    digit2: 2,
-    digit3: -13,
-    digit4: 3,
-    digit5: -22,
-    ans: 2,
-  ),
-  LowerUpper5Row(
-    digit1: 21,
-    digit2: 13,
-    digit3: -4,
-    digit4: 12,
-    digit5: 2,
-    ans: 44,
-  ),
-  LowerUpper5Row(
+  FiveDigit(digit1: 32, digit2: 2, digit3: -13, digit4: 3, digit5: -22, ans: 2),
+  FiveDigit(digit1: 21, digit2: 13, digit3: -4, digit4: 12, digit5: 2, ans: 44),
+  FiveDigit(
     digit1: 14,
     digit2: -3,
     digit3: 31,
@@ -1833,7 +818,7 @@ List<LowerUpper5Row> lower5Row21 = [
     digit5: 3,
     ans: 33,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 33,
     digit2: -11,
     digit3: 2,
@@ -1841,15 +826,8 @@ List<LowerUpper5Row> lower5Row21 = [
     digit5: 33,
     ans: 43,
   ),
-  LowerUpper5Row(
-    digit1: 12,
-    digit2: 21,
-    digit3: -3,
-    digit4: 12,
-    digit5: 1,
-    ans: 43,
-  ),
-  LowerUpper5Row(
+  FiveDigit(digit1: 12, digit2: 21, digit3: -3, digit4: 12, digit5: 1, ans: 43),
+  FiveDigit(
     digit1: 11,
     digit2: 3,
     digit3: -12,
@@ -1857,15 +835,8 @@ List<LowerUpper5Row> lower5Row21 = [
     digit5: 33,
     ans: 34,
   ),
-  LowerUpper5Row(
-    digit1: 34,
-    digit2: -2,
-    digit3: 11,
-    digit4: -3,
-    digit5: 4,
-    ans: 44,
-  ),
-  LowerUpper5Row(
+  FiveDigit(digit1: 34, digit2: -2, digit3: 11, digit4: -3, digit5: 4, ans: 44),
+  FiveDigit(
     digit1: 13,
     digit2: -1,
     digit3: 22,
@@ -1873,23 +844,9 @@ List<LowerUpper5Row> lower5Row21 = [
     digit5: -32,
     ans: 1,
   ),
-  LowerUpper5Row(
-    digit1: 22,
-    digit2: 2,
-    digit3: -13,
-    digit4: 21,
-    digit5: 2,
-    ans: 34,
-  ),
-  LowerUpper5Row(
-    digit1: 11,
-    digit2: 21,
-    digit3: 1,
-    digit4: -12,
-    digit5: 3,
-    ans: 24,
-  ),
-  LowerUpper5Row(
+  FiveDigit(digit1: 22, digit2: 2, digit3: -13, digit4: 21, digit5: 2, ans: 34),
+  FiveDigit(digit1: 11, digit2: 21, digit3: 1, digit4: -12, digit5: 3, ans: 24),
+  FiveDigit(
     digit1: 24,
     digit2: -1,
     digit3: -13,
@@ -1897,23 +854,9 @@ List<LowerUpper5Row> lower5Row21 = [
     digit5: 22,
     ans: 34,
   ),
-  LowerUpper5Row(
-    digit1: 23,
-    digit2: -2,
-    digit3: 21,
-    digit4: -2,
-    digit5: 4,
-    ans: 44,
-  ),
-  LowerUpper5Row(
-    digit1: 12,
-    digit2: 21,
-    digit3: 1,
-    digit4: -13,
-    digit5: 2,
-    ans: 23,
-  ),
-  LowerUpper5Row(
+  FiveDigit(digit1: 23, digit2: -2, digit3: 21, digit4: -2, digit5: 4, ans: 44),
+  FiveDigit(digit1: 12, digit2: 21, digit3: 1, digit4: -13, digit5: 2, ans: 23),
+  FiveDigit(
     digit1: 41,
     digit2: 3,
     digit3: -22,
@@ -1921,7 +864,7 @@ List<LowerUpper5Row> lower5Row21 = [
     digit5: 13,
     ans: 34,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 44,
     digit2: -23,
     digit3: 1,
@@ -1929,15 +872,8 @@ List<LowerUpper5Row> lower5Row21 = [
     digit5: 3,
     ans: 13,
   ),
-  LowerUpper5Row(
-    digit1: 23,
-    digit2: 11,
-    digit3: -4,
-    digit4: 2,
-    digit5: 2,
-    ans: 34,
-  ),
-  LowerUpper5Row(
+  FiveDigit(digit1: 23, digit2: 11, digit3: -4, digit4: 2, digit5: 2, ans: 34),
+  FiveDigit(
     digit1: 12,
     digit2: 22,
     digit3: -1,
@@ -1945,15 +881,8 @@ List<LowerUpper5Row> lower5Row21 = [
     digit5: 12,
     ans: 42,
   ),
-  LowerUpper5Row(
-    digit1: 21,
-    digit2: -1,
-    digit3: 13,
-    digit4: -2,
-    digit5: 3,
-    ans: 34,
-  ),
-  LowerUpper5Row(
+  FiveDigit(digit1: 21, digit2: -1, digit3: 13, digit4: -2, digit5: 3, ans: 34),
+  FiveDigit(
     digit1: 34,
     digit2: -11,
     digit3: -1,
@@ -1961,15 +890,8 @@ List<LowerUpper5Row> lower5Row21 = [
     digit5: -3,
     ans: 41,
   ),
-  LowerUpper5Row(
-    digit1: 43,
-    digit2: -2,
-    digit3: 3,
-    digit4: -24,
-    digit5: 3,
-    ans: 23,
-  ),
-  LowerUpper5Row(
+  FiveDigit(digit1: 43, digit2: -2, digit3: 3, digit4: -24, digit5: 3, ans: 23),
+  FiveDigit(
     digit1: 22,
     digit2: 2,
     digit3: -11,
@@ -1977,15 +899,8 @@ List<LowerUpper5Row> lower5Row21 = [
     digit5: 32,
     ans: 43,
   ),
-  LowerUpper5Row(
-    digit1: 31,
-    digit2: 2,
-    digit3: 1,
-    digit4: -23,
-    digit5: 2,
-    ans: 13,
-  ),
-  LowerUpper5Row(
+  FiveDigit(digit1: 31, digit2: 2, digit3: 1, digit4: -23, digit5: 2, ans: 13),
+  FiveDigit(
     digit1: 14,
     digit2: -3,
     digit3: 22,
@@ -1993,7 +908,7 @@ List<LowerUpper5Row> lower5Row21 = [
     digit5: 12,
     ans: 42,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 13,
     digit2: 21,
     digit3: -2,
@@ -2001,23 +916,9 @@ List<LowerUpper5Row> lower5Row21 = [
     digit5: 23,
     ans: 44,
   ),
-  LowerUpper5Row(
-    digit1: 22,
-    digit2: 2,
-    digit3: -13,
-    digit4: 2,
-    digit5: 21,
-    ans: 34,
-  ),
-  LowerUpper5Row(
-    digit1: 11,
-    digit2: 23,
-    digit3: -2,
-    digit4: 1,
-    digit5: -32,
-    ans: 1,
-  ),
-  LowerUpper5Row(
+  FiveDigit(digit1: 22, digit2: 2, digit3: -13, digit4: 2, digit5: 21, ans: 34),
+  FiveDigit(digit1: 11, digit2: 23, digit3: -2, digit4: 1, digit5: -32, ans: 1),
+  FiveDigit(
     digit1: 44,
     digit2: -12,
     digit3: 1,
@@ -2025,15 +926,8 @@ List<LowerUpper5Row> lower5Row21 = [
     digit5: 2,
     ans: 22,
   ),
-  LowerUpper5Row(
-    digit1: 13,
-    digit2: -2,
-    digit3: 31,
-    digit4: 2,
-    digit5: -3,
-    ans: 41,
-  ),
-  LowerUpper5Row(
+  FiveDigit(digit1: 13, digit2: -2, digit3: 31, digit4: 2, digit5: -3, ans: 41),
+  FiveDigit(
     digit1: 22,
     digit2: -1,
     digit3: 13,
@@ -2041,7 +935,7 @@ List<LowerUpper5Row> lower5Row21 = [
     digit5: 2,
     ans: 14,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 31,
     digit2: 3,
     digit3: -21,
@@ -2049,7 +943,7 @@ List<LowerUpper5Row> lower5Row21 = [
     digit5: 32,
     ans: 42,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 44,
     digit2: -2,
     digit3: -11,
@@ -2057,7 +951,7 @@ List<LowerUpper5Row> lower5Row21 = [
     digit5: -14,
     ans: 20,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 33,
     digit2: -12,
     digit3: 3,
@@ -2065,7 +959,7 @@ List<LowerUpper5Row> lower5Row21 = [
     digit5: -2,
     ans: 11,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 22,
     digit2: 2,
     digit3: -14,
@@ -2073,7 +967,7 @@ List<LowerUpper5Row> lower5Row21 = [
     digit5: -1,
     ans: 42,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 11,
     digit2: 13,
     digit3: -2,
@@ -2081,7 +975,7 @@ List<LowerUpper5Row> lower5Row21 = [
     digit5: 14,
     ans: 34,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 34,
     digit2: -3,
     digit3: 12,
@@ -2090,8 +984,8 @@ List<LowerUpper5Row> lower5Row21 = [
     ans: 31,
   ),
 ];
-List<LowerUpper5Row> lower5Row22 = [
-  LowerUpper5Row(
+List<FiveDigit> lower5Row22 = [
+  FiveDigit(
     digit1: 44,
     digit2: -32,
     digit3: 21,
@@ -2099,7 +993,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: 22,
     ans: 44,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 23,
     digit2: -12,
     digit3: 31,
@@ -2107,7 +1001,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: 34,
     ans: 44,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 31,
     digit2: 12,
     digit3: -22,
@@ -2115,7 +1009,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: -21,
     ans: 13,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 12,
     digit2: 21,
     digit3: -32,
@@ -2123,7 +1017,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: -12,
     ans: 12,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 43,
     digit2: -23,
     digit3: 14,
@@ -2131,7 +1025,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: 22,
     ans: 44,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 32,
     digit2: -11,
     digit3: 21,
@@ -2139,7 +1033,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: 23,
     ans: 34,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 34,
     digit2: -23,
     digit3: 31,
@@ -2147,7 +1041,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: 14,
     ans: 44,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 21,
     digit2: 12,
     digit3: -22,
@@ -2155,7 +1049,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: -32,
     ans: 12,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 31,
     digit2: -21,
     digit3: 23,
@@ -2163,7 +1057,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: 31,
     ans: 42,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 24,
     digit2: -13,
     digit3: 21,
@@ -2171,7 +1065,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: -23,
     ans: 21,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 44,
     digit2: -23,
     digit3: 22,
@@ -2179,7 +1073,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: 21,
     ans: 33,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 11,
     digit2: 21,
     digit3: 12,
@@ -2187,7 +1081,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: 21,
     ans: 21,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 34,
     digit2: -13,
     digit3: 22,
@@ -2195,7 +1089,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: 32,
     ans: 33,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 14,
     digit2: 20,
     digit3: -23,
@@ -2203,7 +1097,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: -11,
     ans: 21,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 22,
     digit2: -12,
     digit3: 34,
@@ -2211,7 +1105,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: 21,
     ans: 42,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 33,
     digit2: -13,
     digit3: 14,
@@ -2219,7 +1113,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: 31,
     ans: 44,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 41,
     digit2: -20,
     digit3: 13,
@@ -2227,7 +1121,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: 22,
     ans: 33,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 32,
     digit2: -21,
     digit3: 13,
@@ -2235,7 +1129,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: -24,
     ans: 10,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 34,
     digit2: -12,
     digit3: 22,
@@ -2243,7 +1137,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: 23,
     ans: 33,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 11,
     digit2: 32,
     digit3: -21,
@@ -2251,7 +1145,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: -23,
     ans: 11,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 23,
     digit2: 11,
     digit3: -24,
@@ -2259,7 +1153,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: -21,
     ans: 21,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 33,
     digit2: -21,
     digit3: 22,
@@ -2267,7 +1161,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: 31,
     ans: 42,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 42,
     digit2: -31,
     digit3: 23,
@@ -2275,7 +1169,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: 22,
     ans: 43,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 14,
     digit2: 20,
     digit3: -13,
@@ -2283,7 +1177,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: -41,
     ans: 3,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 32,
     digit2: -12,
     digit3: 14,
@@ -2291,7 +1185,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: 31,
     ans: 44,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 24,
     digit2: 10,
     digit3: -23,
@@ -2299,7 +1193,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: -21,
     ans: 22,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 43,
     digit2: -21,
     digit3: -12,
@@ -2307,7 +1201,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: -21,
     ans: 12,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 31,
     digit2: 12,
     digit3: -32,
@@ -2315,7 +1209,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: -22,
     ans: 12,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 12,
     digit2: 21,
     digit3: -13,
@@ -2323,7 +1217,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: -21,
     ans: 22,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 21,
     digit2: 13,
     digit3: -21,
@@ -2331,7 +1225,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: -44,
     ans: 0,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 34,
     digit2: -23,
     digit3: 31,
@@ -2339,7 +1233,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: 12,
     ans: 12,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 33,
     digit2: -12,
     digit3: 21,
@@ -2347,7 +1241,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: 13,
     ans: 24,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 44,
     digit2: -21,
     digit3: -12,
@@ -2355,7 +1249,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: -33,
     ans: 0,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 32,
     digit2: 11,
     digit3: -43,
@@ -2363,7 +1257,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: -23,
     ans: 11,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 21,
     digit2: 13,
     digit3: -34,
@@ -2371,7 +1265,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: -32,
     ans: 12,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 23,
     digit2: 21,
     digit3: -32,
@@ -2379,7 +1273,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: -24,
     ans: 0,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 42,
     digit2: -31,
     digit3: -11,
@@ -2387,7 +1281,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: -22,
     ans: 12,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 33,
     digit2: -12,
     digit3: -21,
@@ -2395,7 +1289,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: -31,
     ans: 12,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 31,
     digit2: 12,
     digit3: -32,
@@ -2403,7 +1297,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: -21,
     ans: 13,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 13,
     digit2: 21,
     digit3: -34,
@@ -2411,7 +1305,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: -31,
     ans: 12,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 22,
     digit2: 21,
     digit3: -43,
@@ -2419,7 +1313,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: -12,
     ans: 20,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 32,
     digit2: 11,
     digit3: -23,
@@ -2427,7 +1321,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: -31,
     ans: 3,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 30,
     digit2: -20,
     digit3: 24,
@@ -2435,7 +1329,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: 32,
     ans: 43,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 44,
     digit2: -23,
     digit3: 12,
@@ -2443,7 +1337,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: 31,
     ans: 42,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 34,
     digit2: -12,
     digit3: 21,
@@ -2451,7 +1345,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: 24,
     ans: 34,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 21,
     digit2: 13,
     digit3: -34,
@@ -2459,7 +1353,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: -21,
     ans: 23,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 43,
     digit2: -21,
     digit3: 22,
@@ -2467,7 +1361,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: 11,
     ans: 11,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 12,
     digit2: 21,
     digit3: -23,
@@ -2475,7 +1369,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: -31,
     ans: 11,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 32,
     digit2: 11,
     digit3: -21,
@@ -2483,7 +1377,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: -34,
     ans: 0,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 23,
     digit2: 21,
     digit3: -44,
@@ -2491,7 +1385,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: -11,
     ans: 21,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 34,
     digit2: -23,
     digit3: -11,
@@ -2499,7 +1393,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: -21,
     ans: 23,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 12,
     digit2: 31,
     digit3: -21,
@@ -2507,7 +1401,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: 33,
     ans: 43,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 43,
     digit2: -21,
     digit3: 12,
@@ -2515,7 +1409,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: 22,
     ans: 33,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 32,
     digit2: -21,
     digit3: 33,
@@ -2523,7 +1417,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: 13,
     ans: 13,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 42,
     digit2: -31,
     digit3: 12,
@@ -2531,7 +1425,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: 24,
     ans: 34,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 24,
     digit2: -13,
     digit3: 21,
@@ -2539,7 +1433,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: 34,
     ans: 34,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 41,
     digit2: -20,
     digit3: 13,
@@ -2547,7 +1441,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: 21,
     ans: 43,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 32,
     digit2: -21,
     digit3: -11,
@@ -2555,7 +1449,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: -32,
     ans: 11,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 13,
     digit2: 21,
     digit3: -24,
@@ -2563,7 +1457,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: -22,
     ans: 20,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 34,
     digit2: -23,
     digit3: 22,
@@ -2571,7 +1465,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: 31,
     ans: 43,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 21,
     digit2: 12,
     digit3: -33,
@@ -2579,7 +1473,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: -31,
     ans: 11,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 32,
     digit2: -21,
     digit3: 23,
@@ -2587,7 +1481,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: 21,
     ans: 42,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 24,
     digit2: -13,
     digit3: 32,
@@ -2595,7 +1489,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: 12,
     ans: 34,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 43,
     digit2: -12,
     digit3: -21,
@@ -2603,7 +1497,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: -43,
     ans: 0,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 31,
     digit2: -20,
     digit3: 32,
@@ -2611,7 +1505,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: 21,
     ans: 42,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 14,
     digit2: 20,
     digit3: -21,
@@ -2619,7 +1513,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: -11,
     ans: 32,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 23,
     digit2: 21,
     digit3: -42,
@@ -2627,7 +1521,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: -23,
     ans: 10,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 34,
     digit2: -12,
     digit3: 21,
@@ -2635,7 +1529,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: 44,
     ans: 44,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 21,
     digit2: -11,
     digit3: 32,
@@ -2643,7 +1537,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: 23,
     ans: 44,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 33,
     digit2: -23,
     digit3: 34,
@@ -2651,7 +1545,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: 13,
     ans: 43,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 24,
     digit2: -12,
     digit3: 21,
@@ -2659,7 +1553,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: 34,
     ans: 34,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 42,
     digit2: -31,
     digit3: 12,
@@ -2667,7 +1561,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: -43,
     ans: 1,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 14,
     digit2: 20,
     digit3: -23,
@@ -2675,7 +1569,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: -21,
     ans: 21,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 32,
     digit2: -21,
     digit3: 32,
@@ -2683,7 +1577,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: -22,
     ans: 10,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 24,
     digit2: -13,
     digit3: 12,
@@ -2691,7 +1585,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: 21,
     ans: 33,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 31,
     digit2: 13,
     digit3: -24,
@@ -2699,7 +1593,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: 12,
     ans: 44,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 42,
     digit2: -31,
     digit3: 21,
@@ -2707,7 +1601,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: 34,
     ans: 44,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 21,
     digit2: 22,
     digit3: -31,
@@ -2715,7 +1609,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: 20,
     ans: 44,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 31,
     digit2: 12,
     digit3: -23,
@@ -2723,7 +1617,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: -21,
     ans: 13,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 43,
     digit2: -31,
     digit3: 12,
@@ -2731,7 +1625,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: 21,
     ans: 32,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 34,
     digit2: -21,
     digit3: 31,
@@ -2739,7 +1633,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: 33,
     ans: 34,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 12,
     digit2: 31,
     digit3: -22,
@@ -2747,7 +1641,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: -22,
     ans: 12,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 41,
     digit2: -30,
     digit3: 23,
@@ -2755,7 +1649,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: 32,
     ans: 42,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 21,
     digit2: 13,
     digit3: -34,
@@ -2763,7 +1657,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: -21,
     ans: 22,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 32,
     digit2: 11,
     digit3: -33,
@@ -2771,7 +1665,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: -21,
     ans: 13,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 11,
     digit2: 32,
     digit3: -21,
@@ -2779,7 +1673,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: 34,
     ans: 44,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 22,
     digit2: 12,
     digit3: -24,
@@ -2787,7 +1681,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: -30,
     ans: 11,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 44,
     digit2: -23,
     digit3: 12,
@@ -2795,7 +1689,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: 32,
     ans: 44,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 33,
     digit2: -12,
     digit3: 23,
@@ -2803,7 +1697,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: 31,
     ans: 31,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 24,
     digit2: 10,
     digit3: -21,
@@ -2811,7 +1705,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: 10,
     ans: 34,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 32,
     digit2: -21,
     digit3: 13,
@@ -2819,7 +1713,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: 24,
     ans: 34,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 23,
     digit2: 11,
     digit3: -22,
@@ -2827,7 +1721,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: -21,
     ans: 22,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 14,
     digit2: 30,
     digit3: -23,
@@ -2835,7 +1729,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: -32,
     ans: 0,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 44,
     digit2: -31,
     digit3: 10,
@@ -2843,7 +1737,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: 32,
     ans: 34,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 22,
     digit2: 11,
     digit3: -21,
@@ -2851,7 +1745,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: -43,
     ans: 0,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 34,
     digit2: -23,
     digit3: 12,
@@ -2859,7 +1753,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: -24,
     ans: 10,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 43,
     digit2: -31,
     digit3: 21,
@@ -2867,7 +1761,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: 24,
     ans: 44,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 33,
     digit2: -23,
     digit3: 14,
@@ -2875,7 +1769,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: 31,
     ans: 43,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 23,
     digit2: 11,
     digit3: -20,
@@ -2883,7 +1777,7 @@ List<LowerUpper5Row> lower5Row22 = [
     digit5: -44,
     ans: 0,
   ),
-  LowerUpper5Row(
+  FiveDigit(
     digit1: 34,
     digit2: -21,
     digit3: 31,
@@ -2892,8 +1786,8 @@ List<LowerUpper5Row> lower5Row22 = [
     ans: 33,
   ),
 ];
-List<LowerUpper6Row> lower6Row11 = [
-  LowerUpper6Row(
+List<SixDigit> lower6Row11 = [
+  SixDigit(
     digit1: 4,
     digit2: -3,
     digit3: 2,
@@ -2902,7 +1796,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: -1,
     ans: 1,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 3,
     digit2: 1,
     digit3: -2,
@@ -2911,7 +1805,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: -3,
     ans: 1,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 2,
     digit2: 2,
     digit3: -3,
@@ -2920,7 +1814,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: -4,
     ans: 0,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 1,
     digit2: 3,
     digit3: -2,
@@ -2929,7 +1823,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: 1,
     ans: 4,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 4,
     digit2: -2,
     digit3: 1,
@@ -2938,7 +1832,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: -2,
     ans: 2,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 3,
     digit2: -1,
     digit3: 2,
@@ -2947,7 +1841,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: 1,
     ans: 4,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 2,
     digit2: 1,
     digit3: -3,
@@ -2956,7 +1850,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: 2,
     ans: 4,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 4,
     digit2: -3,
     digit3: 2,
@@ -2965,7 +1859,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: 1,
     ans: 2,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 3,
     digit2: -2,
     digit3: 1,
@@ -2974,7 +1868,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: 3,
     ans: 3,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 2,
     digit2: 2,
     digit3: -4,
@@ -2983,7 +1877,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: -2,
     ans: 2,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 1,
     digit2: 1,
     digit3: 2,
@@ -2992,7 +1886,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: 1,
     ans: 4,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 4,
     digit2: -4,
     digit3: 3,
@@ -3001,7 +1895,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: 2,
     ans: 4,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 3,
     digit2: -1,
     digit3: 2,
@@ -3010,7 +1904,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: 1,
     ans: 3,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 2,
     digit2: -2,
     digit3: 4,
@@ -3019,7 +1913,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: 1,
     ans: 4,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 1,
     digit2: 3,
     digit3: -4,
@@ -3028,7 +1922,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: -3,
     ans: 1,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 4,
     digit2: -1,
     digit3: -2,
@@ -3037,7 +1931,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: 2,
     ans: 2,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 3,
     digit2: 1,
     digit3: -4,
@@ -3046,7 +1940,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: -3,
     ans: 1,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 2,
     digit2: -1,
     digit3: 3,
@@ -3055,7 +1949,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: 1,
     ans: 4,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 4,
     digit2: -3,
     digit3: -1,
@@ -3064,7 +1958,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: -3,
     ans: 0,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 1,
     digit2: 2,
     digit3: 1,
@@ -3073,7 +1967,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: 4,
     ans: 4,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 2,
     digit2: 2,
     digit3: -3,
@@ -3082,7 +1976,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: -4,
     ans: 0,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 1,
     digit2: 2,
     digit3: 1,
@@ -3091,7 +1985,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: -1,
     ans: 2,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 3,
     digit2: -2,
     digit3: 3,
@@ -3100,7 +1994,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: -2,
     ans: 1,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 4,
     digit2: -3,
     digit3: 1,
@@ -3109,7 +2003,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: 3,
     ans: 3,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 1,
     digit2: 1,
     digit3: -2,
@@ -3118,7 +2012,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: 2,
     ans: 3,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 2,
     digit2: 2,
     digit3: -3,
@@ -3127,7 +2021,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: 4,
     ans: 4,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 3,
     digit2: -1,
     digit3: 2,
@@ -3136,7 +2030,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: 2,
     ans: 3,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 4,
     digit2: -1,
     digit3: -2,
@@ -3145,7 +2039,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: 2,
     ans: 2,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 2,
     digit2: 1,
     digit3: -2,
@@ -3154,7 +2048,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: 1,
     ans: 3,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 1,
     digit2: 3,
     digit3: -2,
@@ -3163,7 +2057,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: -3,
     ans: 0,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 2,
     digit2: 2,
     digit3: -4,
@@ -3172,7 +2066,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: 1,
     ans: 2,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 4,
     digit2: -1,
     digit3: -2,
@@ -3181,7 +2075,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: 1,
     ans: 3,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 1,
     digit2: 2,
     digit3: 1,
@@ -3190,7 +2084,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: 2,
     ans: 4,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 3,
     digit2: 1,
     digit3: -4,
@@ -3199,7 +2093,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: -3,
     ans: 1,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 2,
     digit2: 2,
     digit3: -1,
@@ -3208,7 +2102,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: -4,
     ans: 0,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 4,
     digit2: -3,
     digit3: 2,
@@ -3217,7 +2111,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: -1,
     ans: 1,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 3,
     digit2: -3,
     digit3: 4,
@@ -3226,7 +2120,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: 3,
     ans: 4,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 1,
     digit2: 1,
     digit3: 2,
@@ -3235,7 +2129,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: -2,
     ans: 2,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 2,
     digit2: 2,
     digit3: -4,
@@ -3244,7 +2138,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: 2,
     ans: 3,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 3,
     digit2: -1,
     digit3: 2,
@@ -3253,7 +2147,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: 2,
     ans: 4,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 4,
     digit2: -3,
     digit3: 2,
@@ -3262,7 +2156,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: -2,
     ans: 2,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 2,
     digit2: 2,
     digit3: -1,
@@ -3271,7 +2165,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: -1,
     ans: 3,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 1,
     digit2: -1,
     digit3: 2,
@@ -3280,7 +2174,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: 2,
     ans: 3,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 3,
     digit2: -3,
     digit3: 4,
@@ -3289,7 +2183,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: 4,
     ans: 4,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 4,
     digit2: -2,
     digit3: -2,
@@ -3298,7 +2192,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: -4,
     ans: 0,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 2,
     digit2: 2,
     digit3: -2,
@@ -3307,7 +2201,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: 1,
     ans: 2,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 1,
     digit2: 2,
     digit3: -3,
@@ -3316,7 +2210,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: -1,
     ans: 2,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 3,
     digit2: -1,
     digit3: 2,
@@ -3325,7 +2219,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: -1,
     ans: 3,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 4,
     digit2: -1,
     digit3: -2,
@@ -3334,7 +2228,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: 1,
     ans: 1,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 2,
     digit2: 1,
     digit3: 1,
@@ -3343,7 +2237,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: -2,
     ans: 1,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 1,
     digit2: -1,
     digit3: 4,
@@ -3352,7 +2246,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: 3,
     ans: 3,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 3,
     digit2: -3,
     digit3: 4,
@@ -3361,7 +2255,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: 3,
     ans: 4,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 4,
     digit2: -4,
     digit3: 2,
@@ -3370,7 +2264,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: 2,
     ans: 3,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 2,
     digit2: -2,
     digit3: 3,
@@ -3379,7 +2273,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: 2,
     ans: 4,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 1,
     digit2: 3,
     digit3: -4,
@@ -3388,7 +2282,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: -2,
     ans: 1,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 3,
     digit2: 1,
     digit3: -4,
@@ -3397,7 +2291,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: -1,
     ans: 3,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 4,
     digit2: -2,
     digit3: 1,
@@ -3406,7 +2300,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: 2,
     ans: 3,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 2,
     digit2: 2,
     digit3: -3,
@@ -3415,7 +2309,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: 4,
     ans: 4,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 3,
     digit2: 1,
     digit3: -4,
@@ -3424,7 +2318,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: -3,
     ans: 0,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 1,
     digit2: 2,
     digit3: -1,
@@ -3433,7 +2327,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: 2,
     ans: 2,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 2,
     digit2: 2,
     digit3: -3,
@@ -3442,7 +2336,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: -3,
     ans: 1,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 1,
     digit2: 1,
     digit3: 2,
@@ -3451,7 +2345,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: 3,
     ans: 4,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 3,
     digit2: -2,
     digit3: 1,
@@ -3460,7 +2354,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: -2,
     ans: 1,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 4,
     digit2: -1,
     digit3: -3,
@@ -3469,7 +2363,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: 1,
     ans: 3,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 3,
     digit2: 1,
     digit3: -2,
@@ -3478,7 +2372,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: -4,
     ans: 0,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 2,
     digit2: 2,
     digit3: -3,
@@ -3487,7 +2381,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: 1,
     ans: 3,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 1,
     digit2: 3,
     digit3: -4,
@@ -3496,7 +2390,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: -3,
     ans: 1,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 4,
     digit2: -3,
     digit3: 1,
@@ -3505,7 +2399,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: -1,
     ans: 2,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 3,
     digit2: -1,
     digit3: 2,
@@ -3514,7 +2408,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: 1,
     ans: 4,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 2,
     digit2: 1,
     digit3: -3,
@@ -3523,7 +2417,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: -2,
     ans: 1,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 1,
     digit2: 3,
     digit3: -2,
@@ -3532,7 +2426,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: -2,
     ans: 2,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 4,
     digit2: -2,
     digit3: 1,
@@ -3541,7 +2435,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: -1,
     ans: 3,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 3,
     digit2: -1,
     digit3: 2,
@@ -3550,7 +2444,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: 3,
     ans: 4,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 2,
     digit2: 2,
     digit3: -3,
@@ -3559,7 +2453,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: -3,
     ans: 1,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 1,
     digit2: 1,
     digit3: 1,
@@ -3568,7 +2462,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: -4,
     ans: 0,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 4,
     digit2: -1,
     digit3: -3,
@@ -3577,7 +2471,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: -1,
     ans: 3,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 3,
     digit2: -2,
     digit3: 1,
@@ -3586,7 +2480,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: -1,
     ans: 3,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 2,
     digit2: 1,
     digit3: 1,
@@ -3595,7 +2489,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: 1,
     ans: 4,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 1,
     digit2: 3,
     digit3: -2,
@@ -3604,7 +2498,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: -2,
     ans: 2,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 4,
     digit2: -3,
     digit3: 1,
@@ -3613,7 +2507,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: 1,
     ans: 4,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 3,
     digit2: 1,
     digit3: -4,
@@ -3622,7 +2516,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: -1,
     ans: 3,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 2,
     digit2: 2,
     digit3: -1,
@@ -3631,7 +2525,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: 2,
     ans: 4,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 1,
     digit2: -1,
     digit3: 3,
@@ -3640,7 +2534,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: -4,
     ans: 0,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 4,
     digit2: -1,
     digit3: -1,
@@ -3649,7 +2543,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: 2,
     ans: 3,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 3,
     digit2: -2,
     digit3: 1,
@@ -3658,7 +2552,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: 3,
     ans: 4,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 2,
     digit2: 1,
     digit3: 1,
@@ -3667,7 +2561,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: 1,
     ans: 3,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 1,
     digit2: 1,
     digit3: 1,
@@ -3676,7 +2570,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: 2,
     ans: 4,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 4,
     digit2: -3,
     digit3: 2,
@@ -3685,7 +2579,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: -1,
     ans: 1,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 3,
     digit2: 1,
     digit3: -2,
@@ -3694,7 +2588,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: -2,
     ans: 2,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 2,
     digit2: 2,
     digit3: -3,
@@ -3703,7 +2597,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: -3,
     ans: 1,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 1,
     digit2: 3,
     digit3: -2,
@@ -3712,7 +2606,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: 3,
     ans: 4,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 4,
     digit2: -2,
     digit3: 1,
@@ -3721,7 +2615,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: 1,
     ans: 3,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 3,
     digit2: -2,
     digit3: 1,
@@ -3730,7 +2624,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: 1,
     ans: 2,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 2,
     digit2: -1,
     digit3: 3,
@@ -3739,7 +2633,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: -3,
     ans: 1,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 1,
     digit2: 3,
     digit3: -1,
@@ -3748,7 +2642,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: 2,
     ans: 4,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 4,
     digit2: -2,
     digit3: -1,
@@ -3757,7 +2651,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: 2,
     ans: 2,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 3,
     digit2: -2,
     digit3: 3,
@@ -3766,7 +2660,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: 3,
     ans: 4,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 2,
     digit2: 2,
     digit3: -4,
@@ -3775,7 +2669,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: 2,
     ans: 4,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 1,
     digit2: 3,
     digit3: -2,
@@ -3784,7 +2678,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: -1,
     ans: 3,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 4,
     digit2: -3,
     digit3: 2,
@@ -3793,7 +2687,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: 2,
     ans: 3,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 2,
     digit2: 1,
     digit3: 1,
@@ -3802,7 +2696,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: -1,
     ans: 2,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 4,
     digit2: -2,
     digit3: -1,
@@ -3811,7 +2705,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: 4,
     ans: 4,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 3,
     digit2: -2,
     digit3: 3,
@@ -3820,7 +2714,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: 3,
     ans: 3,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 1,
     digit2: 2,
     digit3: -1,
@@ -3829,7 +2723,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: -1,
     ans: 0,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 4,
     digit2: -4,
     digit3: 3,
@@ -3838,7 +2732,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: 1,
     ans: 3,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 2,
     digit2: 1,
     digit3: 1,
@@ -3847,7 +2741,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: -3,
     ans: 0,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 3,
     digit2: -2,
     digit3: -1,
@@ -3856,7 +2750,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: 2,
     ans: 3,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 1,
     digit2: 1,
     digit3: -2,
@@ -3865,7 +2759,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: -2,
     ans: 2,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 4,
     digit2: -3,
     digit3: 1,
@@ -3874,7 +2768,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: 1,
     ans: 2,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 2,
     digit2: -1,
     digit3: 2,
@@ -3883,7 +2777,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: 3,
     ans: 3,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 3,
     digit2: -1,
     digit3: 2,
@@ -3892,7 +2786,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: 1,
     ans: 4,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 4,
     digit2: -1,
     digit3: -2,
@@ -3901,7 +2795,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: -2,
     ans: 1,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 2,
     digit2: 2,
     digit3: -3,
@@ -3910,7 +2804,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: -3,
     ans: 1,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 1,
     digit2: 3,
     digit3: -2,
@@ -3919,7 +2813,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: -1,
     ans: 3,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 4,
     digit2: -3,
     digit3: 1,
@@ -3928,7 +2822,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: 2,
     ans: 3,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 2,
     digit2: 1,
     digit3: 1,
@@ -3937,7 +2831,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: 1,
     ans: 4,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 3,
     digit2: 1,
     digit3: -4,
@@ -3946,7 +2840,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: -1,
     ans: 3,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 4,
     digit2: -2,
     digit3: -2,
@@ -3955,7 +2849,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: 1,
     ans: 2,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 1,
     digit2: -1,
     digit3: 2,
@@ -3964,7 +2858,7 @@ List<LowerUpper6Row> lower6Row11 = [
     digit6: 2,
     ans: 2,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 3,
     digit2: 1,
     digit3: -2,
@@ -3974,8 +2868,8 @@ List<LowerUpper6Row> lower6Row11 = [
     ans: 3,
   ),
 ];
-List<LowerUpper6Row> lower6Row21 = [
-  LowerUpper6Row(
+List<SixDigit> lower6Row21 = [
+  SixDigit(
     digit1: 14,
     digit2: -3,
     digit3: 22,
@@ -3984,7 +2878,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: -1,
     ans: 31,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 23,
     digit2: 11,
     digit3: -2,
@@ -3993,7 +2887,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: -3,
     ans: 21,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 12,
     digit2: 2,
     digit3: -13,
@@ -4002,7 +2896,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: -4,
     ans: 20,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 31,
     digit2: 3,
     digit3: -22,
@@ -4011,7 +2905,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: 1,
     ans: 14,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 44,
     digit2: -12,
     digit3: 1,
@@ -4020,7 +2914,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: -2,
     ans: 12,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 13,
     digit2: -1,
     digit3: 12,
@@ -4029,7 +2923,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: 1,
     ans: 24,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 22,
     digit2: 11,
     digit3: -3,
@@ -4038,7 +2932,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: -2,
     ans: 40,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 24,
     digit2: -3,
     digit3: 22,
@@ -4047,7 +2941,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: 1,
     ans: 32,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 33,
     digit2: -12,
     digit3: 1,
@@ -4056,7 +2950,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: 3,
     ans: 33,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 12,
     digit2: 12,
     digit3: -4,
@@ -4065,7 +2959,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: -2,
     ans: 32,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 21,
     digit2: 1,
     digit3: 12,
@@ -4074,7 +2968,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: 11,
     ans: 44,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 44,
     digit2: -4,
     digit3: 3,
@@ -4083,7 +2977,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: 4,
     ans: 34,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 13,
     digit2: -1,
     digit3: 12,
@@ -4092,7 +2986,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: 11,
     ans: 33,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 22,
     digit2: -2,
     digit3: 14,
@@ -4101,7 +2995,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: 1,
     ans: 34,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 21,
     digit2: 13,
     digit3: -4,
@@ -4110,7 +3004,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: -3,
     ans: 41,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 24,
     digit2: -11,
     digit3: -2,
@@ -4119,7 +3013,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: 2,
     ans: 22,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 13,
     digit2: 1,
     digit3: -14,
@@ -4128,7 +3022,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: -3,
     ans: 21,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 32,
     digit2: -1,
     digit3: 13,
@@ -4137,7 +3031,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: 3,
     ans: 34,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 24,
     digit2: -3,
     digit3: -11,
@@ -4146,7 +3040,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: -3,
     ans: 41,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 11,
     digit2: 2,
     digit3: 11,
@@ -4155,7 +3049,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: 4,
     ans: 4,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 22,
     digit2: 2,
     digit3: -13,
@@ -4164,7 +3058,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: -4,
     ans: 10,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 31,
     digit2: 2,
     digit3: 11,
@@ -4173,7 +3067,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: -11,
     ans: 22,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 13,
     digit2: -2,
     digit3: 23,
@@ -4182,7 +3076,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: -2,
     ans: 21,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 24,
     digit2: -3,
     digit3: 21,
@@ -4191,7 +3085,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: 3,
     ans: 33,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 21,
     digit2: 1,
     digit3: -12,
@@ -4200,7 +3094,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: 2,
     ans: 23,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 12,
     digit2: 2,
     digit3: -13,
@@ -4209,7 +3103,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: 14,
     ans: 24,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 13,
     digit2: -1,
     digit3: 12,
@@ -4218,7 +3112,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: 2,
     ans: 43,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 24,
     digit2: -1,
     digit3: -12,
@@ -4227,7 +3121,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: 2,
     ans: 2,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 32,
     digit2: 11,
     digit3: -2,
@@ -4236,7 +3130,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: 1,
     ans: 33,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 11,
     digit2: 13,
     digit3: -2,
@@ -4245,7 +3139,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: -3,
     ans: 0,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 22,
     digit2: 2,
     digit3: -14,
@@ -4254,7 +3148,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: 1,
     ans: 32,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 34,
     digit2: -1,
     digit3: -12,
@@ -4263,7 +3157,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: 1,
     ans: 13,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 21,
     digit2: 2,
     digit3: 21,
@@ -4272,7 +3166,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: 12,
     ans: 44,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 13,
     digit2: 21,
     digit3: -4,
@@ -4281,7 +3175,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: -13,
     ans: 31,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 22,
     digit2: 2,
     digit3: -11,
@@ -4290,7 +3184,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: -4,
     ans: 0,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 44,
     digit2: -13,
     digit3: 2,
@@ -4299,7 +3193,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: -1,
     ans: 21,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 33,
     digit2: -3,
     digit3: 14,
@@ -4308,7 +3202,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: 3,
     ans: 24,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 31,
     digit2: 1,
     digit3: 12,
@@ -4317,7 +3211,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: -32,
     ans: 12,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 42,
     digit2: 2,
     digit3: -14,
@@ -4326,7 +3220,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: 2,
     ans: 13,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 13,
     digit2: -1,
     digit3: 22,
@@ -4335,7 +3229,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: 2,
     ans: 24,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 34,
     digit2: -13,
     digit3: 2,
@@ -4344,7 +3238,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: -2,
     ans: 32,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 32,
     digit2: 2,
     digit3: -11,
@@ -4353,7 +3247,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: -1,
     ans: 33,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 21,
     digit2: -1,
     digit3: 22,
@@ -4362,7 +3256,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: 2,
     ans: 33,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 33,
     digit2: -13,
     digit3: 4,
@@ -4371,7 +3265,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: 24,
     ans: 34,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 44,
     digit2: -2,
     digit3: -12,
@@ -4380,7 +3274,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: -4,
     ans: 40,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 22,
     digit2: 2,
     digit3: -12,
@@ -4389,7 +3283,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: 1,
     ans: 42,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 21,
     digit2: 2,
     digit3: -13,
@@ -4398,7 +3292,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: -11,
     ans: 22,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 33,
     digit2: -11,
     digit3: 2,
@@ -4407,7 +3301,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: -1,
     ans: 13,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 24,
     digit2: -1,
     digit3: -2,
@@ -4416,7 +3310,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: 1,
     ans: 41,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 22,
     digit2: 11,
     digit3: 1,
@@ -4425,7 +3319,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: -12,
     ans: 11,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 41,
     digit2: -11,
     digit3: 4,
@@ -4434,7 +3328,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: 13,
     ans: 33,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 33,
     digit2: -3,
     digit3: 14,
@@ -4443,7 +3337,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: 3,
     ans: 24,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 24,
     digit2: -4,
     digit3: 12,
@@ -4452,7 +3346,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: 2,
     ans: 13,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 32,
     digit2: -2,
     digit3: 13,
@@ -4461,7 +3355,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: 2,
     ans: 24,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 41,
     digit2: 3,
     digit3: -14,
@@ -4470,7 +3364,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: -12,
     ans: 31,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 33,
     digit2: 11,
     digit3: -4,
@@ -4479,7 +3373,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: -21,
     ans: 23,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 24,
     digit2: -2,
     digit3: 21,
@@ -4488,7 +3382,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: 2,
     ans: 33,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 32,
     digit2: 12,
     digit3: -3,
@@ -4497,7 +3391,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: 4,
     ans: 24,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 43,
     digit2: 1,
     digit3: -24,
@@ -4506,7 +3400,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: -13,
     ans: 10,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 31,
     digit2: 2,
     digit3: -21,
@@ -4515,7 +3409,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: 2,
     ans: 12,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 22,
     digit2: 2,
     digit3: -13,
@@ -4524,7 +3418,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: -3,
     ans: 31,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 21,
     digit2: 11,
     digit3: 2,
@@ -4533,7 +3427,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: 13,
     ans: 24,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 13,
     digit2: -2,
     digit3: 21,
@@ -4542,7 +3436,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: -12,
     ans: 11,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 24,
     digit2: -1,
     digit3: -13,
@@ -4551,7 +3445,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: 1,
     ans: 33,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 43,
     digit2: 1,
     digit3: -22,
@@ -4560,7 +3454,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: -4,
     ans: 30,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 32,
     digit2: 2,
     digit3: -13,
@@ -4569,7 +3463,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: 31,
     ans: 33,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 21,
     digit2: 13,
     digit3: -4,
@@ -4578,7 +3472,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: -23,
     ans: 21,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 14,
     digit2: -3,
     digit3: 31,
@@ -4587,7 +3481,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: -21,
     ans: 12,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 33,
     digit2: -11,
     digit3: 2,
@@ -4596,7 +3490,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: 1,
     ans: 44,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 12,
     digit2: 21,
     digit3: -3,
@@ -4605,7 +3499,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: -32,
     ans: 11,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 11,
     digit2: 3,
     digit3: -12,
@@ -4614,7 +3508,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: -2,
     ans: 32,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 34,
     digit2: -2,
     digit3: 11,
@@ -4623,7 +3517,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: -31,
     ans: 13,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 13,
     digit2: -1,
     digit3: 22,
@@ -4632,7 +3526,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: 13,
     ans: 14,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 22,
     digit2: 2,
     digit3: -13,
@@ -4641,7 +3535,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: -13,
     ans: 21,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 11,
     digit2: 21,
     digit3: 1,
@@ -4650,7 +3544,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: -14,
     ans: 10,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 24,
     digit2: -1,
     digit3: -13,
@@ -4659,7 +3553,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: -1,
     ans: 33,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 23,
     digit2: -2,
     digit3: 21,
@@ -4668,7 +3562,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: -31,
     ans: 13,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 12,
     digit2: 21,
     digit3: 1,
@@ -4677,7 +3571,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: 21,
     ans: 44,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 41,
     digit2: 3,
     digit3: -22,
@@ -4686,7 +3580,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: -2,
     ans: 32,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 44,
     digit2: -23,
     digit3: 1,
@@ -4695,7 +3589,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: 21,
     ans: 34,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 23,
     digit2: 11,
     digit3: -4,
@@ -4704,7 +3598,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: -11,
     ans: 23,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 12,
     digit2: 22,
     digit3: -1,
@@ -4713,7 +3607,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: 2,
     ans: 44,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 21,
     digit2: -1,
     digit3: 13,
@@ -4722,7 +3616,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: -24,
     ans: 10,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 34,
     digit2: -11,
     digit3: -1,
@@ -4731,7 +3625,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: 2,
     ans: 43,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 43,
     digit2: -2,
     digit3: 3,
@@ -4740,7 +3634,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: -11,
     ans: 12,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 22,
     digit2: 2,
     digit3: -11,
@@ -4749,7 +3643,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: -13,
     ans: 30,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 31,
     digit2: 2,
     digit3: 1,
@@ -4758,7 +3652,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: -3,
     ans: 10,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 14,
     digit2: -3,
     digit3: 22,
@@ -4767,7 +3661,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: -1,
     ans: 41,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 13,
     digit2: 21,
     digit3: -2,
@@ -4776,7 +3670,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: -2,
     ans: 42,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 22,
     digit2: 2,
     digit3: -13,
@@ -4785,7 +3679,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: -3,
     ans: 31,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 11,
     digit2: 23,
     digit3: -2,
@@ -4794,7 +3688,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: 13,
     ans: 14,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 44,
     digit2: -12,
     digit3: 1,
@@ -4803,7 +3697,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: 21,
     ans: 43,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 13,
     digit2: -2,
     digit3: 31,
@@ -4812,7 +3706,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: -11,
     ans: 30,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 22,
     digit2: -1,
     digit3: 13,
@@ -4821,7 +3715,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: -3,
     ans: 11,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 31,
     digit2: 3,
     digit3: -21,
@@ -4830,7 +3724,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: 2,
     ans: 44,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 44,
     digit2: -2,
     digit3: -11,
@@ -4839,7 +3733,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: 2,
     ans: 22,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 33,
     digit2: -12,
     digit3: 3,
@@ -4848,7 +3742,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: 23,
     ans: 34,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 22,
     digit2: 2,
     digit3: -14,
@@ -4857,7 +3751,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: -11,
     ans: 31,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 11,
     digit2: 13,
     digit3: -2,
@@ -4866,7 +3760,7 @@ List<LowerUpper6Row> lower6Row21 = [
     digit6: -1,
     ans: 33,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 34,
     digit2: -3,
     digit3: 12,
@@ -4876,8 +3770,8 @@ List<LowerUpper6Row> lower6Row21 = [
     ans: 33,
   ),
 ];
-List<LowerUpper6Row> lower6Row22 = [
-  LowerUpper6Row(
+List<SixDigit> lower6Row22 = [
+  SixDigit(
     digit1: 44,
     digit2: -32,
     digit3: 21,
@@ -4886,7 +3780,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: -31,
     ans: 13,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 23,
     digit2: -12,
     digit3: 31,
@@ -4895,7 +3789,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: -22,
     ans: 22,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 31,
     digit2: 12,
     digit3: -22,
@@ -4904,7 +3798,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: 20,
     ans: 33,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 12,
     digit2: 21,
     digit3: -32,
@@ -4913,7 +3807,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: 11,
     ans: 23,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 43,
     digit2: -23,
     digit3: 14,
@@ -4922,7 +3816,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: -34,
     ans: 10,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 32,
     digit2: -11,
     digit3: 21,
@@ -4931,7 +3825,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: -12,
     ans: 22,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 34,
     digit2: -23,
     digit3: 31,
@@ -4940,7 +3834,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: -24,
     ans: 20,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 21,
     digit2: 12,
     digit3: -22,
@@ -4949,7 +3843,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: 12,
     ans: 24,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 31,
     digit2: -21,
     digit3: 23,
@@ -4958,7 +3852,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: -11,
     ans: 31,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 24,
     digit2: -13,
     digit3: 21,
@@ -4967,7 +3861,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: 22,
     ans: 43,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 44,
     digit2: -23,
     digit3: 22,
@@ -4976,7 +3870,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: -12,
     ans: 21,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 11,
     digit2: 21,
     digit3: 12,
@@ -4985,7 +3879,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: 23,
     ans: 44,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 34,
     digit2: -13,
     digit3: 22,
@@ -4994,7 +3888,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: -21,
     ans: 12,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 14,
     digit2: 20,
     digit3: -23,
@@ -5003,7 +3897,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: 13,
     ans: 34,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 22,
     digit2: -12,
     digit3: 34,
@@ -5012,7 +3906,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: -31,
     ans: 11,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 33,
     digit2: -13,
     digit3: 14,
@@ -5021,7 +3915,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: -21,
     ans: 23,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 41,
     digit2: -20,
     digit3: 13,
@@ -5030,7 +3924,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: -12,
     ans: 21,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 32,
     digit2: -21,
     digit3: 13,
@@ -5039,7 +3933,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: 21,
     ans: 31,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 34,
     digit2: -12,
     digit3: 22,
@@ -5048,7 +3942,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: -21,
     ans: 12,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 11,
     digit2: 32,
     digit3: -21,
@@ -5057,7 +3951,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: 11,
     ans: 22,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 23,
     digit2: 11,
     digit3: -24,
@@ -5066,7 +3960,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: 12,
     ans: 33,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 33,
     digit2: -21,
     digit3: 22,
@@ -5075,7 +3969,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: -12,
     ans: 30,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 42,
     digit2: -31,
     digit3: 23,
@@ -5084,7 +3978,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: -21,
     ans: 22,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 14,
     digit2: 20,
     digit3: -13,
@@ -5093,7 +3987,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: 31,
     ans: 34,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 32,
     digit2: -12,
     digit3: 14,
@@ -5102,7 +3996,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: -24,
     ans: 20,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 24,
     digit2: 10,
     digit3: -23,
@@ -5111,7 +4005,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: 12,
     ans: 34,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 43,
     digit2: -21,
     digit3: -12,
@@ -5120,7 +4014,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: 32,
     ans: 44,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 31,
     digit2: 12,
     digit3: -32,
@@ -5129,7 +4023,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: 31,
     ans: 43,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 12,
     digit2: 21,
     digit3: -13,
@@ -5138,7 +4032,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: 12,
     ans: 34,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 21,
     digit2: 13,
     digit3: -21,
@@ -5147,7 +4041,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: 13,
     ans: 13,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 34,
     digit2: -23,
     digit3: 31,
@@ -5156,7 +4050,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: 21,
     ans: 33,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 33,
     digit2: -12,
     digit3: 21,
@@ -5165,7 +4059,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: -11,
     ans: 13,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 44,
     digit2: -21,
     digit3: -12,
@@ -5174,7 +4068,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: 14,
     ans: 14,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 32,
     digit2: 11,
     digit3: -43,
@@ -5183,7 +4077,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: 12,
     ans: 23,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 21,
     digit2: 13,
     digit3: -34,
@@ -5192,7 +4086,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: 22,
     ans: 34,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 23,
     digit2: 21,
     digit3: -32,
@@ -5201,7 +4095,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: 21,
     ans: 21,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 42,
     digit2: -31,
     digit3: -11,
@@ -5210,7 +4104,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: 12,
     ans: 24,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 33,
     digit2: -12,
     digit3: -21,
@@ -5219,7 +4113,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: 21,
     ans: 33,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 31,
     digit2: 12,
     digit3: -32,
@@ -5228,7 +4122,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: 11,
     ans: 24,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 13,
     digit2: 21,
     digit3: -34,
@@ -5237,7 +4131,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: 20,
     ans: 32,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 22,
     digit2: 21,
     digit3: -43,
@@ -5246,7 +4140,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: 21,
     ans: 41,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 32,
     digit2: 11,
     digit3: -23,
@@ -5255,7 +4149,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: 20,
     ans: 23,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 30,
     digit2: -20,
     digit3: 24,
@@ -5264,7 +4158,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: -43,
     ans: 0,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 44,
     digit2: -23,
     digit3: 12,
@@ -5273,7 +4167,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: -30,
     ans: 12,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 34,
     digit2: -12,
     digit3: 21,
@@ -5282,7 +4176,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: -23,
     ans: 11,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 21,
     digit2: 13,
     digit3: -34,
@@ -5291,7 +4185,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: -12,
     ans: 11,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 43,
     digit2: -21,
     digit3: 22,
@@ -5300,7 +4194,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: 23,
     ans: 34,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 12,
     digit2: 21,
     digit3: -23,
@@ -5309,7 +4203,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: 12,
     ans: 23,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 32,
     digit2: 11,
     digit3: -21,
@@ -5318,7 +4212,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: 21,
     ans: 21,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 23,
     digit2: 21,
     digit3: -44,
@@ -5327,7 +4221,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: 13,
     ans: 34,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 34,
     digit2: -23,
     digit3: -11,
@@ -5336,7 +4230,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: -13,
     ans: 10,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 12,
     digit2: 31,
     digit3: -21,
@@ -5345,7 +4239,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: -21,
     ans: 22,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 43,
     digit2: -21,
     digit3: 12,
@@ -5354,7 +4248,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: -11,
     ans: 22,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 32,
     digit2: -21,
     digit3: 33,
@@ -5363,7 +4257,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: 21,
     ans: 34,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 42,
     digit2: -31,
     digit3: 12,
@@ -5372,7 +4266,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: -32,
     ans: 2,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 24,
     digit2: -13,
     digit3: 21,
@@ -5381,7 +4275,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: -30,
     ans: 4,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 41,
     digit2: -20,
     digit3: 13,
@@ -5390,7 +4284,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: -31,
     ans: 12,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 32,
     digit2: -21,
     digit3: -11,
@@ -5399,7 +4293,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: 13,
     ans: 24,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 13,
     digit2: 21,
     digit3: -24,
@@ -5408,7 +4302,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: 13,
     ans: 33,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 34,
     digit2: -23,
     digit3: 22,
@@ -5417,7 +4311,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: -42,
     ans: 1,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 21,
     digit2: 12,
     digit3: -33,
@@ -5426,7 +4320,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: 21,
     ans: 32,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 32,
     digit2: -21,
     digit3: 23,
@@ -5435,7 +4329,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: -40,
     ans: 2,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 24,
     digit2: -13,
     digit3: 32,
@@ -5444,7 +4338,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: -30,
     ans: 4,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 43,
     digit2: -12,
     digit3: -21,
@@ -5453,7 +4347,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: 23,
     ans: 23,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 31,
     digit2: -20,
     digit3: 32,
@@ -5462,7 +4356,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: -31,
     ans: 11,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 14,
     digit2: 20,
     digit3: -21,
@@ -5471,7 +4365,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: -22,
     ans: 10,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 23,
     digit2: 21,
     digit3: -42,
@@ -5480,7 +4374,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: 14,
     ans: 24,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 34,
     digit2: -12,
     digit3: 21,
@@ -5489,7 +4383,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: -22,
     ans: 22,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 21,
     digit2: -11,
     digit3: 32,
@@ -5498,7 +4392,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: -12,
     ans: 32,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 33,
     digit2: -23,
     digit3: 34,
@@ -5507,7 +4401,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: -22,
     ans: 21,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 24,
     digit2: -12,
     digit3: 21,
@@ -5516,7 +4410,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: -23,
     ans: 11,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 42,
     digit2: -31,
     digit3: 12,
@@ -5525,7 +4419,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: 13,
     ans: 14,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 14,
     digit2: 20,
     digit3: -23,
@@ -5534,7 +4428,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: 12,
     ans: 33,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 32,
     digit2: -21,
     digit3: 32,
@@ -5543,7 +4437,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: 34,
     ans: 44,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 24,
     digit2: -13,
     digit3: 12,
@@ -5552,7 +4446,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: -13,
     ans: 20,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 31,
     digit2: 13,
     digit3: -24,
@@ -5561,7 +4455,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: -14,
     ans: 30,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 42,
     digit2: -31,
     digit3: 21,
@@ -5570,7 +4464,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: -10,
     ans: 34,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 21,
     digit2: 22,
     digit3: -31,
@@ -5579,7 +4473,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: -32,
     ans: 12,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 31,
     digit2: 12,
     digit3: -23,
@@ -5588,7 +4482,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: 10,
     ans: 23,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 43,
     digit2: -31,
     digit3: 12,
@@ -5597,7 +4491,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: 11,
     ans: 43,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 34,
     digit2: -21,
     digit3: 31,
@@ -5606,7 +4500,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: -14,
     ans: 20,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 12,
     digit2: 31,
     digit3: -22,
@@ -5615,7 +4509,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: 21,
     ans: 33,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 41,
     digit2: -30,
     digit3: 23,
@@ -5624,7 +4518,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: -12,
     ans: 30,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 21,
     digit2: 13,
     digit3: -34,
@@ -5633,7 +4527,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: 12,
     ans: 34,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 32,
     digit2: 11,
     digit3: -33,
@@ -5642,7 +4536,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: 10,
     ans: 23,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 11,
     digit2: 32,
     digit3: -21,
@@ -5651,7 +4545,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: -44,
     ans: 0,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 22,
     digit2: 12,
     digit3: -24,
@@ -5660,7 +4554,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: 13,
     ans: 24,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 44,
     digit2: -23,
     digit3: 12,
@@ -5669,7 +4563,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: -12,
     ans: 32,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 33,
     digit2: -12,
     digit3: 23,
@@ -5678,7 +4572,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: 12,
     ans: 43,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 24,
     digit2: 10,
     digit3: -21,
@@ -5687,7 +4581,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: -23,
     ans: 11,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 32,
     digit2: -21,
     digit3: 13,
@@ -5696,7 +4590,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: -30,
     ans: 4,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 23,
     digit2: 11,
     digit3: -22,
@@ -5705,7 +4599,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: -20,
     ans: 2,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 14,
     digit2: 30,
     digit3: -23,
@@ -5714,7 +4608,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: 21,
     ans: 21,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 44,
     digit2: -31,
     digit3: 10,
@@ -5723,7 +4617,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: -24,
     ans: 10,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 22,
     digit2: 11,
     digit3: -21,
@@ -5732,7 +4626,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: 14,
     ans: 14,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 34,
     digit2: -23,
     digit3: 12,
@@ -5741,7 +4635,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: 33,
     ans: 43,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 43,
     digit2: -31,
     digit3: 21,
@@ -5750,7 +4644,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: -44,
     ans: 0,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 33,
     digit2: -23,
     digit3: 14,
@@ -5759,7 +4653,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: -21,
     ans: 22,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 23,
     digit2: 11,
     digit3: -20,
@@ -5768,7 +4662,7 @@ List<LowerUpper6Row> lower6Row22 = [
     digit6: 13,
     ans: 13,
   ),
-  LowerUpper6Row(
+  SixDigit(
     digit1: 34,
     digit2: -21,
     digit3: 31,

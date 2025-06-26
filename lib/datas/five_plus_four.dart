@@ -1,1024 +1,842 @@
-import 'package:iq_maths_apps/models/five_ten.dart';
+import 'package:iq_maths_apps/models/digit_model.dart';
 
-List<FiveTen4Row> fivePlusFour4Row11 = [
-  FiveTen4Row(digit1: 2, digit2: 5, digit3: -6, digit4: 4, ans: 5),
-  FiveTen4Row(digit1: 9, digit2: -5, digit3: 4, digit4: -6, ans: 2),
-  FiveTen4Row(digit1: 7, digit2: -1, digit3: -5, digit4: 4, ans: 5),
-  FiveTen4Row(digit1: 9, digit2: -7, digit3: 4, digit4: -5, ans: 1),
-  FiveTen4Row(digit1: 6, digit2: 2, digit3: -7, digit4: 4, ans: 5),
-  FiveTen4Row(digit1: 8, digit2: -3, digit3: -5, digit4: 4, ans: 4),
-  FiveTen4Row(digit1: 1, digit2: 2, digit3: -2, digit4: 3, ans: 4),
-  FiveTen4Row(digit1: 9, digit2: -5, digit3: 4, digit4: -3, ans: 5),
-  FiveTen4Row(digit1: 3, digit2: 4, digit3: -5, digit4: 4, ans: 6),
-  FiveTen4Row(digit1: 2, digit2: 1, digit3: 4, digit4: -5, ans: 2),
-  FiveTen4Row(digit1: 7, digit2: -5, digit3: 4, digit4: 2, ans: 8),
-  FiveTen4Row(digit1: 5, digit2: 4, digit3: -7, digit4: 4, ans: 6),
-  FiveTen4Row(digit1: 8, digit2: 1, digit3: -6, digit4: 4, ans: 7),
-  FiveTen4Row(digit1: 2, digit2: 2, digit3: 5, digit4: -6, ans: 3),
-  FiveTen4Row(digit1: 3, digit2: 1, digit3: 4, digit4: -7, ans: 1),
-  FiveTen4Row(digit1: 8, digit2: -7, digit3: 4, digit4: 4, ans: 9),
-  FiveTen4Row(digit1: 3, digit2: -2, digit3: 4, digit4: 2, ans: 7),
-  FiveTen4Row(digit1: 9, digit2: -6, digit3: 4, digit4: -5, ans: 2),
-  FiveTen4Row(digit1: 7, digit2: -5, digit3: 4, digit4: -6, ans: 0),
-  FiveTen4Row(digit1: 9, digit2: -5, digit3: 4, digit4: -7, ans: 1),
-  FiveTen4Row(digit1: 6, digit2: -5, digit3: 4, digit4: -5, ans: 0),
-  FiveTen4Row(digit1: 3, digit2: 4, digit3: -5, digit4: 2, ans: 4),
-  FiveTen4Row(digit1: 9, digit2: -6, digit3: 4, digit4: -6, ans: 1),
-  FiveTen4Row(digit1: 4, digit2: 4, digit3: -6, digit4: 5, ans: 7),
-  FiveTen4Row(digit1: 3, digit2: 5, digit3: -6, digit4: 4, ans: 6),
-  FiveTen4Row(digit1: 8, digit2: -7, digit3: 4, digit4: 2, ans: 7),
-  FiveTen4Row(digit1: 1, digit2: 4, digit3: 3, digit4: -6, ans: 2),
-  FiveTen4Row(digit1: 3, digit2: 1, digit3: 4, digit4: -5, ans: 3),
-  FiveTen4Row(digit1: 8, digit2: -5, digit3: 4, digit4: -5, ans: 2),
-  FiveTen4Row(digit1: 4, digit2: -3, digit3: 4, digit4: 3, ans: 8),
-  FiveTen4Row(digit1: 6, digit2: -5, digit3: 4, digit4: 2, ans: 7),
-  FiveTen4Row(digit1: 3, digit2: 1, digit3: 4, digit4: -7, ans: 1),
-  FiveTen4Row(digit1: 9, digit2: -7, digit3: 4, digit4: -5, ans: 1),
-  FiveTen4Row(digit1: 7, digit2: -5, digit3: 4, digit4: 3, ans: 9),
-  FiveTen4Row(digit1: 5, digit2: 3, digit3: -5, digit4: 4, ans: 7),
-  FiveTen4Row(digit1: 2, digit2: 4, digit3: 2, digit4: -5, ans: 3),
-  FiveTen4Row(digit1: 6, digit2: -5, digit3: 4, digit4: 2, ans: 7),
-  FiveTen4Row(digit1: 3, digit2: -1, digit3: 4, digit4: -5, ans: 1),
-  FiveTen4Row(digit1: 4, digit2: -2, digit3: 4, digit4: -6, ans: 0),
-  FiveTen4Row(digit1: 9, digit2: -5, digit3: 4, digit4: -5, ans: 3),
-  FiveTen4Row(digit1: 5, digit2: 3, digit3: -6, digit4: 4, ans: 6),
-  FiveTen4Row(digit1: 1, digit2: 2, digit3: 4, digit4: -5, ans: 2),
-  FiveTen4Row(digit1: 2, digit2: 4, digit3: -5, digit4: 4, ans: 5),
-  FiveTen4Row(digit1: 6, digit2: -5, digit3: 4, digit4: 3, ans: 8),
-  FiveTen4Row(digit1: 3, digit2: 4, digit3: -5, digit4: 2, ans: 4),
-  FiveTen4Row(digit1: 4, digit2: 4, digit3: -7, digit4: 5, ans: 6),
-  FiveTen4Row(digit1: 8, digit2: -2, digit3: -5, digit4: 4, ans: 5),
-  FiveTen4Row(digit1: 9, digit2: -7, digit3: 4, digit4: 3, ans: 9),
-  FiveTen4Row(digit1: 1, digit2: 5, digit3: 3, digit4: -7, ans: 2),
-  FiveTen4Row(digit1: 8, digit2: -3, digit3: 4, digit4: -7, ans: 2),
-  FiveTen4Row(digit1: 6, digit2: -5, digit3: 4, digit4: 3, ans: 8),
-  FiveTen4Row(digit1: 7, digit2: -5, digit3: 4, digit4: 3, ans: 9),
-  FiveTen4Row(digit1: 1, digit2: 2, digit3: 1, digit4: 4, ans: 8),
-  FiveTen4Row(digit1: 8, digit2: -3, digit3: 4, digit4: -6, ans: 3),
-  FiveTen4Row(digit1: 2, digit2: 2, digit3: 4, digit4: -5, ans: 3),
-  FiveTen4Row(digit1: 6, digit2: -5, digit3: 4, digit4: 3, ans: 8),
-  FiveTen4Row(digit1: 9, digit2: -6, digit3: -3, digit4: 4, ans: 4),
-  FiveTen4Row(digit1: 4, digit2: -2, digit3: -1, digit4: 8, ans: 9),
-  FiveTen4Row(digit1: 5, digit2: 2, digit3: -5, digit4: 4, ans: 6),
-  FiveTen4Row(digit1: 3, digit2: 4, digit3: -5, digit4: 2, ans: 4),
-  FiveTen4Row(digit1: 3, digit2: 1, digit3: 4, digit4: -5, ans: 3),
-  FiveTen4Row(digit1: 8, digit2: -5, digit3: 4, digit4: -5, ans: 2),
-  FiveTen4Row(digit1: 4, digit2: -2, digit3: -1, digit4: 4, ans: 5),
-  FiveTen4Row(digit1: 6, digit2: -5, digit3: 4, digit4: 3, ans: 8),
-  FiveTen4Row(digit1: 1, digit2: 4, digit3: 3, digit4: -6, ans: 2),
-  FiveTen4Row(digit1: 3, digit2: -2, digit3: 4, digit4: 4, ans: 9),
-  FiveTen4Row(digit1: 6, digit2: -1, digit3: 3, digit4: -7, ans: 1),
-  FiveTen4Row(digit1: 6, digit2: -5, digit3: 4, digit4: 3, ans: 8),
-  FiveTen4Row(digit1: 2, digit2: 4, digit3: -5, digit4: 4, ans: 5),
-  FiveTen4Row(digit1: 9, digit2: -6, digit3: 4, digit4: -6, ans: 1),
-  FiveTen4Row(digit1: 3, digit2: 5, digit3: -7, digit4: 4, ans: 5),
-  FiveTen4Row(digit1: 1, digit2: 4, digit3: 3, digit4: -6, ans: 2),
-  FiveTen4Row(digit1: 5, digit2: 3, digit3: -5, digit4: 4, ans: 7),
-  FiveTen4Row(digit1: 3, digit2: -2, digit3: 1, digit4: 1, ans: 3),
-  FiveTen4Row(digit1: 4, digit2: -2, digit3: 4, digit4: 3, ans: 9),
-  FiveTen4Row(digit1: 8, digit2: -5, digit3: 4, digit4: 2, ans: 9),
-  FiveTen4Row(digit1: 6, digit2: 2, digit3: -5, digit4: 4, ans: 7),
-  FiveTen4Row(digit1: 3, digit2: 1, digit3: 4, digit4: -5, ans: 3),
-  FiveTen4Row(digit1: 4, digit2: -1, digit3: -2, digit4: 4, ans: 5),
-  FiveTen4Row(digit1: 5, digit2: 3, digit3: -6, digit4: 4, ans: 6),
-  FiveTen4Row(digit1: 5, digit2: 2, digit3: 1, digit4: -5, ans: 3),
-  FiveTen4Row(digit1: 2, digit2: 1, digit3: 4, digit4: -5, ans: 2),
-  FiveTen4Row(digit1: 2, digit2: 1, digit3: 3, digit4: -5, ans: 1),
-  FiveTen4Row(digit1: 6, digit2: -5, digit3: 4, digit4: 3, ans: 8),
-  FiveTen4Row(digit1: 2, digit2: 5, digit3: -6, digit4: 4, ans: 5),
-  FiveTen4Row(digit1: 3, digit2: 1, digit3: -2, digit4: 4, ans: 6),
-  FiveTen4Row(digit1: 9, digit2: -5, digit3: 4, digit4: -6, ans: 2),
-  FiveTen4Row(digit1: 4, digit2: 4, digit3: -6, digit4: 4, ans: 6),
-  FiveTen4Row(digit1: 1, digit2: 4, digit3: 2, digit4: -5, ans: 2),
-  FiveTen4Row(digit1: 7, digit2: -6, digit3: 4, digit4: 3, ans: 8),
-  FiveTen4Row(digit1: 4, digit2: -3, digit3: 4, digit4: 2, ans: 7),
-  FiveTen4Row(digit1: 8, digit2: -5, digit3: 4, digit4: -6, ans: 1),
-  FiveTen4Row(digit1: 2, digit2: 5, digit3: 2, digit4: -5, ans: 4),
-  FiveTen4Row(digit1: 6, digit2: -5, digit3: 3, digit4: 4, ans: 8),
-  FiveTen4Row(digit1: 4, digit2: -2, digit3: 4, digit4: -5, ans: 1),
-  FiveTen4Row(digit1: 2, digit2: 2, digit3: 5, digit4: -7, ans: 2),
-  FiveTen4Row(digit1: 3, digit2: -2, digit3: 3, digit4: 4, ans: 8),
-  FiveTen4Row(digit1: 9, digit2: -6, digit3: 4, digit4: 2, ans: 9),
-  FiveTen4Row(digit1: 1, digit2: 4, digit3: 3, digit4: -6, ans: 2),
-  FiveTen4Row(digit1: 9, digit2: -5, digit3: 4, digit4: 1, ans: 9),
-  FiveTen4Row(digit1: 3, digit2: -2, digit3: 4, digit4: 4, ans: 9),
-  FiveTen4Row(digit1: 5, digit2: 4, digit3: -7, digit4: 4, ans: 6),
-  FiveTen4Row(digit1: 8, digit2: -6, digit3: 4, digit4: -5, ans: 1),
-  FiveTen4Row(digit1: 7, digit2: -6, digit3: 4, digit4: 2, ans: 7),
-  FiveTen4Row(digit1: 3, digit2: -1, digit3: 4, digit4: -5, ans: 1),
-  FiveTen4Row(digit1: 7, digit2: -5, digit3: 6, digit4: -3, ans: 5),
-  FiveTen4Row(digit1: 4, digit2: 4, digit3: -5, digit4: 4, ans: 7),
-  FiveTen4Row(digit1: 9, digit2: -6, digit3: 5, digit4: -7, ans: 1),
-  FiveTen4Row(digit1: 8, digit2: -5, digit3: 4, digit4: 2, ans: 9),
-  FiveTen4Row(digit1: 2, digit2: 2, digit3: 5, digit4: -8, ans: 1),
-  FiveTen4Row(digit1: 7, digit2: -5, digit3: 4, digit4: 2, ans: 8),
-  FiveTen4Row(digit1: 3, digit2: 5, digit3: -6, digit4: 4, ans: 6),
-  FiveTen4Row(digit1: 6, digit2: 2, digit3: 1, digit4: -6, ans: 3),
-  FiveTen4Row(digit1: 1, digit2: 5, digit3: 3, digit4: -7, ans: 2),
-  FiveTen4Row(digit1: 2, digit2: 1, digit3: 1, digit4: 4, ans: 8),
-  FiveTen4Row(digit1: 3, digit2: 5, digit3: -6, digit4: 4, ans: 6),
-  FiveTen4Row(digit1: 8, digit2: -5, digit3: 4, digit4: -6, ans: 1),
-  FiveTen4Row(digit1: 2, digit2: 5, digit3: -5, digit4: 4, ans: 6),
-  FiveTen4Row(digit1: 2, digit2: 4, digit3: -5, digit4: 4, ans: 5),
-  FiveTen4Row(digit1: 6, digit2: 3, digit3: -8, digit4: 4, ans: 5),
-  FiveTen4Row(digit1: 8, digit2: -3, digit3: 4, digit4: -6, ans: 3),
-  FiveTen4Row(digit1: 5, digit2: 3, digit3: -5, digit4: 4, ans: 7),
-  FiveTen4Row(digit1: 2, digit2: 1, digit3: 5, digit4: -7, ans: 1),
-  FiveTen4Row(digit1: 4, digit2: -1, digit3: -2, digit4: 4, ans: 5),
-  FiveTen4Row(digit1: 7, digit2: -1, digit3: -1, digit4: 4, ans: 9),
-  FiveTen4Row(digit1: 5, digit2: 4, digit3: -6, digit4: 4, ans: 7),
-  FiveTen4Row(digit1: 2, digit2: 2, digit3: 5, digit4: -7, ans: 2),
-  FiveTen4Row(digit1: 2, digit2: 5, digit3: -6, digit4: 4, ans: 5),
-  FiveTen4Row(digit1: 5, digit2: 4, digit3: -7, digit4: 4, ans: 6),
-  FiveTen4Row(digit1: 4, digit2: 4, digit3: -7, digit4: 4, ans: 5),
-  FiveTen4Row(digit1: 9, digit2: -6, digit3: 3, digit4: 2, ans: 8),
-  FiveTen4Row(digit1: 3, digit2: 5, digit3: -6, digit4: 4, ans: 6),
-  FiveTen4Row(digit1: 6, digit2: -5, digit3: 4, digit4: 4, ans: 9),
-  FiveTen4Row(digit1: 2, digit2: 4, digit3: -5, digit4: 4, ans: 5),
-  FiveTen4Row(digit1: 1, digit2: 4, digit3: 3, digit4: -7, ans: 1),
-  FiveTen4Row(digit1: 3, digit2: -2, digit3: 4, digit4: 2, ans: 7),
-  FiveTen4Row(digit1: 1, digit2: 4, digit3: 4, digit4: -7, ans: 2),
-  FiveTen4Row(digit1: 9, digit2: -7, digit3: 6, digit4: -5, ans: 3),
-  FiveTen4Row(digit1: 1, digit2: 5, digit3: -5, digit4: 4, ans: 5),
-  FiveTen4Row(digit1: 8, digit2: -6, digit3: 4, digit4: 3, ans: 9),
-  FiveTen4Row(digit1: 4, digit2: -2, digit3: -1, digit4: 4, ans: 5),
-  FiveTen4Row(digit1: 8, digit2: -5, digit3: 4, digit4: 2, ans: 9),
-  FiveTen4Row(digit1: 5, digit2: 3, digit3: -6, digit4: 4, ans: 6),
-  FiveTen4Row(digit1: 6, digit2: -5, digit3: 4, digit4: 3, ans: 8),
-  FiveTen4Row(digit1: 5, digit2: 4, digit3: -5, digit4: 4, ans: 8),
-  FiveTen4Row(digit1: 6, digit2: -5, digit3: 4, digit4: 3, ans: 8),
-  FiveTen4Row(digit1: 1, digit2: 3, digit3: 4, digit4: -6, ans: 2),
-  FiveTen4Row(digit1: 8, digit2: -7, digit3: 4, digit4: 3, ans: 8),
-  FiveTen4Row(digit1: 2, digit2: 4, digit3: -5, digit4: 1, ans: 2),
-  FiveTen4Row(digit1: 7, digit2: -5, digit3: 4, digit4: 3, ans: 9),
-  FiveTen4Row(digit1: 2, digit2: 4, digit3: -5, digit4: 4, ans: 5),
-  FiveTen4Row(digit1: 6, digit2: -5, digit3: 3, digit4: 5, ans: 9),
-  FiveTen4Row(digit1: 8, digit2: -6, digit3: 4, digit4: -5, ans: 1),
-  FiveTen4Row(digit1: 4, digit2: -3, digit3: -1, digit4: 5, ans: 5),
-  FiveTen4Row(digit1: 7, digit2: -5, digit3: 4, digit4: 3, ans: 9),
-  FiveTen4Row(digit1: 1, digit2: 3, digit3: 4, digit4: -7, ans: 1),
-  FiveTen4Row(digit1: 1, digit2: 3, digit3: 5, digit4: -8, ans: 1),
-  FiveTen4Row(digit1: 1, digit2: 3, digit3: -2, digit4: 4, ans: 6),
-  FiveTen4Row(digit1: 6, digit2: 3, digit3: -7, digit4: 2, ans: 4),
-  FiveTen4Row(digit1: 3, digit2: 1, digit3: 4, digit4: -8, ans: 0),
-  FiveTen4Row(digit1: 2, digit2: 5, digit3: -6, digit4: 4, ans: 5),
-  FiveTen4Row(digit1: 8, digit2: 1, digit3: -5, digit4: 4, ans: 8),
-  FiveTen4Row(digit1: 3, digit2: 4, digit3: -5, digit4: 2, ans: 4),
-  FiveTen4Row(digit1: 1, digit2: 2, digit3: 4, digit4: -5, ans: 2),
-  FiveTen4Row(digit1: 9, digit2: -5, digit3: 4, digit4: -5, ans: 3),
-  FiveTen4Row(digit1: 2, digit2: -1, digit3: 3, digit4: 4, ans: 8),
-  FiveTen4Row(digit1: 4, digit2: 4, digit3: -6, digit4: 4, ans: 6),
-  FiveTen4Row(digit1: 7, digit2: -5, digit3: 7, digit4: -5, ans: 4),
-  FiveTen4Row(digit1: 5, digit2: 4, digit3: -8, digit4: 4, ans: 5),
-  FiveTen4Row(digit1: 3, digit2: -2, digit3: 4, digit4: 3, ans: 8),
-  FiveTen4Row(digit1: 2, digit2: 2, digit3: 4, digit4: -7, ans: 1),
-  FiveTen4Row(digit1: 6, digit2: -1, digit3: 3, digit4: -5, ans: 3),
-  FiveTen4Row(digit1: 3, digit2: -1, digit3: -1, digit4: 4, ans: 5),
-  FiveTen4Row(digit1: 8, digit2: -5, digit3: 4, digit4: 2, ans: 9),
-  FiveTen4Row(digit1: 3, digit2: -3, digit3: 5, digit4: 3, ans: 8),
-  FiveTen4Row(digit1: 7, digit2: -6, digit3: 5, digit4: 2, ans: 8),
-  FiveTen4Row(digit1: 9, digit2: -6, digit3: 4, digit4: 2, ans: 9),
-  FiveTen4Row(digit1: 3, digit2: 4, digit3: -5, digit4: 4, ans: 6),
-  FiveTen4Row(digit1: 1, digit2: 3, digit3: 4, digit4: -5, ans: 3),
-  FiveTen4Row(digit1: 9, digit2: -7, digit3: 4, digit4: 3, ans: 9),
-  FiveTen4Row(digit1: 8, digit2: 1, digit3: -5, digit4: 4, ans: 8),
-  FiveTen4Row(digit1: 2, digit2: 4, digit3: -5, digit4: 1, ans: 2),
-  FiveTen4Row(digit1: 4, digit2: -2, digit3: 4, digit4: -5, ans: 1),
-  FiveTen4Row(digit1: 3, digit2: 1, digit3: 5, digit4: -5, ans: 4),
-  FiveTen4Row(digit1: 6, digit2: -5, digit3: 4, digit4: 3, ans: 8),
-  FiveTen4Row(digit1: 5, digit2: 3, digit3: -2, digit4: -5, ans: 1),
-  FiveTen4Row(digit1: 5, digit2: -5, digit3: 5, digit4: 4, ans: 9),
-  FiveTen4Row(digit1: 7, digit2: -6, digit3: 4, digit4: 3, ans: 8),
-  FiveTen4Row(digit1: 8, digit2: -7, digit3: 4, digit4: 3, ans: 8),
-  FiveTen4Row(digit1: 3, digit2: 4, digit3: -5, digit4: 4, ans: 6),
-  FiveTen4Row(digit1: 9, digit2: -8, digit3: 4, digit4: 3, ans: 8),
-  FiveTen4Row(digit1: 4, digit2: 5, digit3: -6, digit4: 4, ans: 7),
-  FiveTen4Row(digit1: 2, digit2: 5, digit3: -5, digit4: 4, ans: 6),
-  FiveTen4Row(digit1: 1, digit2: 2, digit3: 1, digit4: 4, ans: 8),
-  FiveTen4Row(digit1: 7, digit2: -5, digit3: 4, digit4: 3, ans: 9),
-  FiveTen4Row(digit1: 1, digit2: 4, digit3: 2, digit4: -6, ans: 1),
-  FiveTen4Row(digit1: 8, digit2: -5, digit3: 4, digit4: 2, ans: 9),
-  FiveTen4Row(digit1: 4, digit2: -4, digit3: 5, digit4: 3, ans: 8),
-  FiveTen4Row(digit1: 6, digit2: 2, digit3: 1, digit4: -6, ans: 3),
-  FiveTen4Row(digit1: 5, digit2: 4, digit3: -7, digit4: 2, ans: 4),
+List<FourDigit> fivePlusFour4Row11 = [
+  FourDigit(digit1: 2, digit2: 5, digit3: -6, digit4: 4, ans: 5),
+  FourDigit(digit1: 9, digit2: -5, digit3: 4, digit4: -6, ans: 2),
+  FourDigit(digit1: 7, digit2: -1, digit3: -5, digit4: 4, ans: 5),
+  FourDigit(digit1: 9, digit2: -7, digit3: 4, digit4: -5, ans: 1),
+  FourDigit(digit1: 6, digit2: 2, digit3: -7, digit4: 4, ans: 5),
+  FourDigit(digit1: 8, digit2: -3, digit3: -5, digit4: 4, ans: 4),
+  FourDigit(digit1: 1, digit2: 2, digit3: -2, digit4: 3, ans: 4),
+  FourDigit(digit1: 9, digit2: -5, digit3: 4, digit4: -3, ans: 5),
+  FourDigit(digit1: 3, digit2: 4, digit3: -5, digit4: 4, ans: 6),
+  FourDigit(digit1: 2, digit2: 1, digit3: 4, digit4: -5, ans: 2),
+  FourDigit(digit1: 7, digit2: -5, digit3: 4, digit4: 2, ans: 8),
+  FourDigit(digit1: 5, digit2: 4, digit3: -7, digit4: 4, ans: 6),
+  FourDigit(digit1: 8, digit2: 1, digit3: -6, digit4: 4, ans: 7),
+  FourDigit(digit1: 2, digit2: 2, digit3: 5, digit4: -6, ans: 3),
+  FourDigit(digit1: 3, digit2: 1, digit3: 4, digit4: -7, ans: 1),
+  FourDigit(digit1: 8, digit2: -7, digit3: 4, digit4: 4, ans: 9),
+  FourDigit(digit1: 3, digit2: -2, digit3: 4, digit4: 2, ans: 7),
+  FourDigit(digit1: 9, digit2: -6, digit3: 4, digit4: -5, ans: 2),
+  FourDigit(digit1: 7, digit2: -5, digit3: 4, digit4: -6, ans: 0),
+  FourDigit(digit1: 9, digit2: -5, digit3: 4, digit4: -7, ans: 1),
+  FourDigit(digit1: 6, digit2: -5, digit3: 4, digit4: -5, ans: 0),
+  FourDigit(digit1: 3, digit2: 4, digit3: -5, digit4: 2, ans: 4),
+  FourDigit(digit1: 9, digit2: -6, digit3: 4, digit4: -6, ans: 1),
+  FourDigit(digit1: 4, digit2: 4, digit3: -6, digit4: 5, ans: 7),
+  FourDigit(digit1: 3, digit2: 5, digit3: -6, digit4: 4, ans: 6),
+  FourDigit(digit1: 8, digit2: -7, digit3: 4, digit4: 2, ans: 7),
+  FourDigit(digit1: 1, digit2: 4, digit3: 3, digit4: -6, ans: 2),
+  FourDigit(digit1: 3, digit2: 1, digit3: 4, digit4: -5, ans: 3),
+  FourDigit(digit1: 8, digit2: -5, digit3: 4, digit4: -5, ans: 2),
+  FourDigit(digit1: 4, digit2: -3, digit3: 4, digit4: 3, ans: 8),
+  FourDigit(digit1: 6, digit2: -5, digit3: 4, digit4: 2, ans: 7),
+  FourDigit(digit1: 3, digit2: 1, digit3: 4, digit4: -7, ans: 1),
+  FourDigit(digit1: 9, digit2: -7, digit3: 4, digit4: -5, ans: 1),
+  FourDigit(digit1: 7, digit2: -5, digit3: 4, digit4: 3, ans: 9),
+  FourDigit(digit1: 5, digit2: 3, digit3: -5, digit4: 4, ans: 7),
+  FourDigit(digit1: 2, digit2: 4, digit3: 2, digit4: -5, ans: 3),
+  FourDigit(digit1: 6, digit2: -5, digit3: 4, digit4: 2, ans: 7),
+  FourDigit(digit1: 3, digit2: -1, digit3: 4, digit4: -5, ans: 1),
+  FourDigit(digit1: 4, digit2: -2, digit3: 4, digit4: -6, ans: 0),
+  FourDigit(digit1: 9, digit2: -5, digit3: 4, digit4: -5, ans: 3),
+  FourDigit(digit1: 5, digit2: 3, digit3: -6, digit4: 4, ans: 6),
+  FourDigit(digit1: 1, digit2: 2, digit3: 4, digit4: -5, ans: 2),
+  FourDigit(digit1: 2, digit2: 4, digit3: -5, digit4: 4, ans: 5),
+  FourDigit(digit1: 6, digit2: -5, digit3: 4, digit4: 3, ans: 8),
+  FourDigit(digit1: 3, digit2: 4, digit3: -5, digit4: 2, ans: 4),
+  FourDigit(digit1: 4, digit2: 4, digit3: -7, digit4: 5, ans: 6),
+  FourDigit(digit1: 8, digit2: -2, digit3: -5, digit4: 4, ans: 5),
+  FourDigit(digit1: 9, digit2: -7, digit3: 4, digit4: 3, ans: 9),
+  FourDigit(digit1: 1, digit2: 5, digit3: 3, digit4: -7, ans: 2),
+  FourDigit(digit1: 8, digit2: -3, digit3: 4, digit4: -7, ans: 2),
+  FourDigit(digit1: 6, digit2: -5, digit3: 4, digit4: 3, ans: 8),
+  FourDigit(digit1: 7, digit2: -5, digit3: 4, digit4: 3, ans: 9),
+  FourDigit(digit1: 1, digit2: 2, digit3: 1, digit4: 4, ans: 8),
+  FourDigit(digit1: 8, digit2: -3, digit3: 4, digit4: -6, ans: 3),
+  FourDigit(digit1: 2, digit2: 2, digit3: 4, digit4: -5, ans: 3),
+  FourDigit(digit1: 6, digit2: -5, digit3: 4, digit4: 3, ans: 8),
+  FourDigit(digit1: 9, digit2: -6, digit3: -3, digit4: 4, ans: 4),
+  FourDigit(digit1: 4, digit2: -2, digit3: -1, digit4: 8, ans: 9),
+  FourDigit(digit1: 5, digit2: 2, digit3: -5, digit4: 4, ans: 6),
+  FourDigit(digit1: 3, digit2: 4, digit3: -5, digit4: 2, ans: 4),
+  FourDigit(digit1: 3, digit2: 1, digit3: 4, digit4: -5, ans: 3),
+  FourDigit(digit1: 8, digit2: -5, digit3: 4, digit4: -5, ans: 2),
+  FourDigit(digit1: 4, digit2: -2, digit3: -1, digit4: 4, ans: 5),
+  FourDigit(digit1: 6, digit2: -5, digit3: 4, digit4: 3, ans: 8),
+  FourDigit(digit1: 1, digit2: 4, digit3: 3, digit4: -6, ans: 2),
+  FourDigit(digit1: 3, digit2: -2, digit3: 4, digit4: 4, ans: 9),
+  FourDigit(digit1: 6, digit2: -1, digit3: 3, digit4: -7, ans: 1),
+  FourDigit(digit1: 6, digit2: -5, digit3: 4, digit4: 3, ans: 8),
+  FourDigit(digit1: 2, digit2: 4, digit3: -5, digit4: 4, ans: 5),
+  FourDigit(digit1: 9, digit2: -6, digit3: 4, digit4: -6, ans: 1),
+  FourDigit(digit1: 3, digit2: 5, digit3: -7, digit4: 4, ans: 5),
+  FourDigit(digit1: 1, digit2: 4, digit3: 3, digit4: -6, ans: 2),
+  FourDigit(digit1: 5, digit2: 3, digit3: -5, digit4: 4, ans: 7),
+  FourDigit(digit1: 3, digit2: -2, digit3: 1, digit4: 1, ans: 3),
+  FourDigit(digit1: 4, digit2: -2, digit3: 4, digit4: 3, ans: 9),
+  FourDigit(digit1: 8, digit2: -5, digit3: 4, digit4: 2, ans: 9),
+  FourDigit(digit1: 6, digit2: 2, digit3: -5, digit4: 4, ans: 7),
+  FourDigit(digit1: 3, digit2: 1, digit3: 4, digit4: -5, ans: 3),
+  FourDigit(digit1: 4, digit2: -1, digit3: -2, digit4: 4, ans: 5),
+  FourDigit(digit1: 5, digit2: 3, digit3: -6, digit4: 4, ans: 6),
+  FourDigit(digit1: 5, digit2: 2, digit3: 1, digit4: -5, ans: 3),
+  FourDigit(digit1: 2, digit2: 1, digit3: 4, digit4: -5, ans: 2),
+  FourDigit(digit1: 2, digit2: 1, digit3: 3, digit4: -5, ans: 1),
+  FourDigit(digit1: 6, digit2: -5, digit3: 4, digit4: 3, ans: 8),
+  FourDigit(digit1: 2, digit2: 5, digit3: -6, digit4: 4, ans: 5),
+  FourDigit(digit1: 3, digit2: 1, digit3: -2, digit4: 4, ans: 6),
+  FourDigit(digit1: 9, digit2: -5, digit3: 4, digit4: -6, ans: 2),
+  FourDigit(digit1: 4, digit2: 4, digit3: -6, digit4: 4, ans: 6),
+  FourDigit(digit1: 1, digit2: 4, digit3: 2, digit4: -5, ans: 2),
+  FourDigit(digit1: 7, digit2: -6, digit3: 4, digit4: 3, ans: 8),
+  FourDigit(digit1: 4, digit2: -3, digit3: 4, digit4: 2, ans: 7),
+  FourDigit(digit1: 8, digit2: -5, digit3: 4, digit4: -6, ans: 1),
+  FourDigit(digit1: 2, digit2: 5, digit3: 2, digit4: -5, ans: 4),
+  FourDigit(digit1: 6, digit2: -5, digit3: 3, digit4: 4, ans: 8),
+  FourDigit(digit1: 4, digit2: -2, digit3: 4, digit4: -5, ans: 1),
+  FourDigit(digit1: 2, digit2: 2, digit3: 5, digit4: -7, ans: 2),
+  FourDigit(digit1: 3, digit2: -2, digit3: 3, digit4: 4, ans: 8),
+  FourDigit(digit1: 9, digit2: -6, digit3: 4, digit4: 2, ans: 9),
+  FourDigit(digit1: 1, digit2: 4, digit3: 3, digit4: -6, ans: 2),
+  FourDigit(digit1: 9, digit2: -5, digit3: 4, digit4: 1, ans: 9),
+  FourDigit(digit1: 3, digit2: -2, digit3: 4, digit4: 4, ans: 9),
+  FourDigit(digit1: 5, digit2: 4, digit3: -7, digit4: 4, ans: 6),
+  FourDigit(digit1: 8, digit2: -6, digit3: 4, digit4: -5, ans: 1),
+  FourDigit(digit1: 7, digit2: -6, digit3: 4, digit4: 2, ans: 7),
+  FourDigit(digit1: 3, digit2: -1, digit3: 4, digit4: -5, ans: 1),
+  FourDigit(digit1: 7, digit2: -5, digit3: 6, digit4: -3, ans: 5),
+  FourDigit(digit1: 4, digit2: 4, digit3: -5, digit4: 4, ans: 7),
+  FourDigit(digit1: 9, digit2: -6, digit3: 5, digit4: -7, ans: 1),
+  FourDigit(digit1: 8, digit2: -5, digit3: 4, digit4: 2, ans: 9),
+  FourDigit(digit1: 2, digit2: 2, digit3: 5, digit4: -8, ans: 1),
+  FourDigit(digit1: 7, digit2: -5, digit3: 4, digit4: 2, ans: 8),
+  FourDigit(digit1: 3, digit2: 5, digit3: -6, digit4: 4, ans: 6),
+  FourDigit(digit1: 6, digit2: 2, digit3: 1, digit4: -6, ans: 3),
+  FourDigit(digit1: 1, digit2: 5, digit3: 3, digit4: -7, ans: 2),
+  FourDigit(digit1: 2, digit2: 1, digit3: 1, digit4: 4, ans: 8),
+  FourDigit(digit1: 3, digit2: 5, digit3: -6, digit4: 4, ans: 6),
+  FourDigit(digit1: 8, digit2: -5, digit3: 4, digit4: -6, ans: 1),
+  FourDigit(digit1: 2, digit2: 5, digit3: -5, digit4: 4, ans: 6),
+  FourDigit(digit1: 2, digit2: 4, digit3: -5, digit4: 4, ans: 5),
+  FourDigit(digit1: 6, digit2: 3, digit3: -8, digit4: 4, ans: 5),
+  FourDigit(digit1: 8, digit2: -3, digit3: 4, digit4: -6, ans: 3),
+  FourDigit(digit1: 5, digit2: 3, digit3: -5, digit4: 4, ans: 7),
+  FourDigit(digit1: 2, digit2: 1, digit3: 5, digit4: -7, ans: 1),
+  FourDigit(digit1: 4, digit2: -1, digit3: -2, digit4: 4, ans: 5),
+  FourDigit(digit1: 7, digit2: -1, digit3: -1, digit4: 4, ans: 9),
+  FourDigit(digit1: 5, digit2: 4, digit3: -6, digit4: 4, ans: 7),
+  FourDigit(digit1: 2, digit2: 2, digit3: 5, digit4: -7, ans: 2),
+  FourDigit(digit1: 2, digit2: 5, digit3: -6, digit4: 4, ans: 5),
+  FourDigit(digit1: 5, digit2: 4, digit3: -7, digit4: 4, ans: 6),
+  FourDigit(digit1: 4, digit2: 4, digit3: -7, digit4: 4, ans: 5),
+  FourDigit(digit1: 9, digit2: -6, digit3: 3, digit4: 2, ans: 8),
+  FourDigit(digit1: 3, digit2: 5, digit3: -6, digit4: 4, ans: 6),
+  FourDigit(digit1: 6, digit2: -5, digit3: 4, digit4: 4, ans: 9),
+  FourDigit(digit1: 2, digit2: 4, digit3: -5, digit4: 4, ans: 5),
+  FourDigit(digit1: 1, digit2: 4, digit3: 3, digit4: -7, ans: 1),
+  FourDigit(digit1: 3, digit2: -2, digit3: 4, digit4: 2, ans: 7),
+  FourDigit(digit1: 1, digit2: 4, digit3: 4, digit4: -7, ans: 2),
+  FourDigit(digit1: 9, digit2: -7, digit3: 6, digit4: -5, ans: 3),
+  FourDigit(digit1: 1, digit2: 5, digit3: -5, digit4: 4, ans: 5),
+  FourDigit(digit1: 8, digit2: -6, digit3: 4, digit4: 3, ans: 9),
+  FourDigit(digit1: 4, digit2: -2, digit3: -1, digit4: 4, ans: 5),
+  FourDigit(digit1: 8, digit2: -5, digit3: 4, digit4: 2, ans: 9),
+  FourDigit(digit1: 5, digit2: 3, digit3: -6, digit4: 4, ans: 6),
+  FourDigit(digit1: 6, digit2: -5, digit3: 4, digit4: 3, ans: 8),
+  FourDigit(digit1: 5, digit2: 4, digit3: -5, digit4: 4, ans: 8),
+  FourDigit(digit1: 6, digit2: -5, digit3: 4, digit4: 3, ans: 8),
+  FourDigit(digit1: 1, digit2: 3, digit3: 4, digit4: -6, ans: 2),
+  FourDigit(digit1: 8, digit2: -7, digit3: 4, digit4: 3, ans: 8),
+  FourDigit(digit1: 2, digit2: 4, digit3: -5, digit4: 1, ans: 2),
+  FourDigit(digit1: 7, digit2: -5, digit3: 4, digit4: 3, ans: 9),
+  FourDigit(digit1: 2, digit2: 4, digit3: -5, digit4: 4, ans: 5),
+  FourDigit(digit1: 6, digit2: -5, digit3: 3, digit4: 5, ans: 9),
+  FourDigit(digit1: 8, digit2: -6, digit3: 4, digit4: -5, ans: 1),
+  FourDigit(digit1: 4, digit2: -3, digit3: -1, digit4: 5, ans: 5),
+  FourDigit(digit1: 7, digit2: -5, digit3: 4, digit4: 3, ans: 9),
+  FourDigit(digit1: 1, digit2: 3, digit3: 4, digit4: -7, ans: 1),
+  FourDigit(digit1: 1, digit2: 3, digit3: 5, digit4: -8, ans: 1),
+  FourDigit(digit1: 1, digit2: 3, digit3: -2, digit4: 4, ans: 6),
+  FourDigit(digit1: 6, digit2: 3, digit3: -7, digit4: 2, ans: 4),
+  FourDigit(digit1: 3, digit2: 1, digit3: 4, digit4: -8, ans: 0),
+  FourDigit(digit1: 2, digit2: 5, digit3: -6, digit4: 4, ans: 5),
+  FourDigit(digit1: 8, digit2: 1, digit3: -5, digit4: 4, ans: 8),
+  FourDigit(digit1: 3, digit2: 4, digit3: -5, digit4: 2, ans: 4),
+  FourDigit(digit1: 1, digit2: 2, digit3: 4, digit4: -5, ans: 2),
+  FourDigit(digit1: 9, digit2: -5, digit3: 4, digit4: -5, ans: 3),
+  FourDigit(digit1: 2, digit2: -1, digit3: 3, digit4: 4, ans: 8),
+  FourDigit(digit1: 4, digit2: 4, digit3: -6, digit4: 4, ans: 6),
+  FourDigit(digit1: 7, digit2: -5, digit3: 7, digit4: -5, ans: 4),
+  FourDigit(digit1: 5, digit2: 4, digit3: -8, digit4: 4, ans: 5),
+  FourDigit(digit1: 3, digit2: -2, digit3: 4, digit4: 3, ans: 8),
+  FourDigit(digit1: 2, digit2: 2, digit3: 4, digit4: -7, ans: 1),
+  FourDigit(digit1: 6, digit2: -1, digit3: 3, digit4: -5, ans: 3),
+  FourDigit(digit1: 3, digit2: -1, digit3: -1, digit4: 4, ans: 5),
+  FourDigit(digit1: 8, digit2: -5, digit3: 4, digit4: 2, ans: 9),
+  FourDigit(digit1: 3, digit2: -3, digit3: 5, digit4: 3, ans: 8),
+  FourDigit(digit1: 7, digit2: -6, digit3: 5, digit4: 2, ans: 8),
+  FourDigit(digit1: 9, digit2: -6, digit3: 4, digit4: 2, ans: 9),
+  FourDigit(digit1: 3, digit2: 4, digit3: -5, digit4: 4, ans: 6),
+  FourDigit(digit1: 1, digit2: 3, digit3: 4, digit4: -5, ans: 3),
+  FourDigit(digit1: 9, digit2: -7, digit3: 4, digit4: 3, ans: 9),
+  FourDigit(digit1: 8, digit2: 1, digit3: -5, digit4: 4, ans: 8),
+  FourDigit(digit1: 2, digit2: 4, digit3: -5, digit4: 1, ans: 2),
+  FourDigit(digit1: 4, digit2: -2, digit3: 4, digit4: -5, ans: 1),
+  FourDigit(digit1: 3, digit2: 1, digit3: 5, digit4: -5, ans: 4),
+  FourDigit(digit1: 6, digit2: -5, digit3: 4, digit4: 3, ans: 8),
+  FourDigit(digit1: 5, digit2: 3, digit3: -2, digit4: -5, ans: 1),
+  FourDigit(digit1: 5, digit2: -5, digit3: 5, digit4: 4, ans: 9),
+  FourDigit(digit1: 7, digit2: -6, digit3: 4, digit4: 3, ans: 8),
+  FourDigit(digit1: 8, digit2: -7, digit3: 4, digit4: 3, ans: 8),
+  FourDigit(digit1: 3, digit2: 4, digit3: -5, digit4: 4, ans: 6),
+  FourDigit(digit1: 9, digit2: -8, digit3: 4, digit4: 3, ans: 8),
+  FourDigit(digit1: 4, digit2: 5, digit3: -6, digit4: 4, ans: 7),
+  FourDigit(digit1: 2, digit2: 5, digit3: -5, digit4: 4, ans: 6),
+  FourDigit(digit1: 1, digit2: 2, digit3: 1, digit4: 4, ans: 8),
+  FourDigit(digit1: 7, digit2: -5, digit3: 4, digit4: 3, ans: 9),
+  FourDigit(digit1: 1, digit2: 4, digit3: 2, digit4: -6, ans: 1),
+  FourDigit(digit1: 8, digit2: -5, digit3: 4, digit4: 2, ans: 9),
+  FourDigit(digit1: 4, digit2: -4, digit3: 5, digit4: 3, ans: 8),
+  FourDigit(digit1: 6, digit2: 2, digit3: 1, digit4: -6, ans: 3),
+  FourDigit(digit1: 5, digit2: 4, digit3: -7, digit4: 2, ans: 4),
 ];
-List<FiveTen4Row> fivePlusFour4Row21 = [
-  FiveTen4Row(digit1: 21, digit2: 4, digit3: 3, digit4: -6, ans: 22),
-  FiveTen4Row(digit1: 4, digit2: 14, digit3: -7, digit4: 4, ans: 15),
-  FiveTen4Row(digit1: 63, digit2: 5, digit3: -7, digit4: 4, ans: 65),
-  FiveTen4Row(digit1: 3, digit2: 4, digit3: 32, digit4: -5, ans: 34),
-  FiveTen4Row(digit1: 43, digit2: 4, digit3: -5, digit4: 4, ans: 46),
-  FiveTen4Row(digit1: 9, digit2: -5, digit3: 34, digit4: -6, ans: 32),
-  FiveTen4Row(digit1: 41, digit2: 4, digit3: 4, digit4: -6, ans: 43),
-  FiveTen4Row(digit1: 16, digit2: -5, digit3: 4, digit4: -5, ans: 10),
-  FiveTen4Row(digit1: 69, digit2: -3, digit3: 3, digit4: -5, ans: 64),
-  FiveTen4Row(digit1: 15, digit2: -5, digit3: 4, digit4: 4, ans: 18),
-  FiveTen4Row(digit1: 87, digit2: -5, digit3: 4, digit4: -6, ans: 80),
-  FiveTen4Row(digit1: 73, digit2: 5, digit3: -5, digit4: 4, ans: 77),
-  FiveTen4Row(digit1: 9, digit2: -6, digit3: 34, digit4: 2, ans: 39),
-  FiveTen4Row(digit1: 7, digit2: 22, digit3: -5, digit4: 4, ans: 28),
-  FiveTen4Row(digit1: 86, digit2: -5, digit3: 4, digit4: -1, ans: 84),
-  FiveTen4Row(digit1: 32, digit2: 5, digit3: -5, digit4: 4, ans: 36),
-  FiveTen4Row(digit1: 17, digit2: -5, digit3: 4, digit4: -1, ans: 15),
-  FiveTen4Row(digit1: 41, digit2: 4, digit3: -5, digit4: 3, ans: 43),
-  FiveTen4Row(digit1: 55, digit2: 4, digit3: -6, digit4: 4, ans: 57),
-  FiveTen4Row(digit1: 17, digit2: -5, digit3: 4, digit4: -5, ans: 11),
-  FiveTen4Row(digit1: 4, digit2: 24, digit3: -6, digit4: 54, ans: 76),
-  FiveTen4Row(digit1: 8, digit2: -5, digit3: 64, digit4: -6, ans: 61),
-  FiveTen4Row(digit1: 63, digit2: -12, digit3: 4, digit4: -50, ans: 5),
-  FiveTen4Row(digit1: 9, digit2: -5, digit3: 34, digit4: 11, ans: 49),
-  FiveTen4Row(digit1: 88, digit2: -53, digit3: 4, digit4: -6, ans: 33),
-  FiveTen4Row(digit1: 17, digit2: 2, digit3: -17, digit4: 44, ans: 46),
-  FiveTen4Row(digit1: 7, digit2: -5, digit3: 64, digit4: -26, ans: 40),
-  FiveTen4Row(digit1: 25, digit2: 4, digit3: -17, digit4: 54, ans: 66),
-  FiveTen4Row(digit1: 2, digit2: 54, digit3: -5, digit4: 14, ans: 65),
-  FiveTen4Row(digit1: 87, digit2: -35, digit3: 4, digit4: -5, ans: 51),
-  FiveTen4Row(digit1: 3, digit2: 14, digit3: -6, digit4: 44, ans: 55),
-  FiveTen4Row(digit1: 16, digit2: -5, digit3: 34, digit4: -20, ans: 25),
-  FiveTen4Row(digit1: 12, digit2: 4, digit3: -15, digit4: 4, ans: 5),
-  FiveTen4Row(digit1: 86, digit2: -1, digit3: -5, digit4: 4, ans: 84),
-  FiveTen4Row(digit1: 95, digit2: -5, digit3: 3, digit4: 4, ans: 97),
-  FiveTen4Row(digit1: 67, digit2: -5, digit3: 4, digit4: 3, ans: 69),
-  FiveTen4Row(digit1: 5, digit2: 42, digit3: -6, digit4: 4, ans: 45),
-  FiveTen4Row(digit1: 47, digit2: -5, digit3: -1, digit4: 4, ans: 45),
-  FiveTen4Row(digit1: 40, digit2: 5, digit3: 4, digit4: -6, ans: 43),
-  FiveTen4Row(digit1: 8, digit2: -7, digit3: 4, digit4: 14, ans: 19),
-  FiveTen4Row(digit1: 46, digit2: -5, digit3: 4, digit4: -5, ans: 40),
-  FiveTen4Row(digit1: 78, digit2: -6, digit3: 4, digit4: -5, ans: 71),
-  FiveTen4Row(digit1: 9, digit2: -6, digit3: 4, digit4: 42, ans: 49),
-  FiveTen4Row(digit1: 35, digit2: 2, digit3: -5, digit4: 4, ans: 36),
-  FiveTen4Row(digit1: 4, digit2: 24, digit3: -7, digit4: 4, ans: 25),
-  FiveTen4Row(digit1: 43, digit2: 1, digit3: 5, digit4: -7, ans: 42),
-  FiveTen4Row(digit1: 13, digit2: 4, digit3: -2, digit4: 3, ans: 18),
-  FiveTen4Row(digit1: 6, digit2: -5, digit3: 34, digit4: 2, ans: 37),
-  FiveTen4Row(digit1: 3, digit2: -1, digit3: 44, digit4: 2, ans: 48),
-  FiveTen4Row(digit1: 95, digit2: -5, digit3: 2, digit4: 4, ans: 96),
-  FiveTen4Row(digit1: 28, digit2: -5, digit3: 4, digit4: 2, ans: 29),
-  FiveTen4Row(digit1: 2, digit2: 4, digit3: -5, digit4: 24, ans: 25),
-  FiveTen4Row(digit1: 38, digit2: -6, digit3: 4, digit4: -5, ans: 31),
-  FiveTen4Row(digit1: 3, digit2: 4, digit3: 61, digit4: -5, ans: 63),
-  FiveTen4Row(digit1: 72, digit2: 4, digit3: -5, digit4: 2, ans: 73),
-  FiveTen4Row(digit1: 34, digit2: -2, digit3: 4, digit4: 2, ans: 38),
-  FiveTen4Row(digit1: 6, digit2: -5, digit3: 44, digit4: 3, ans: 48),
-  FiveTen4Row(digit1: 57, digit2: -6, digit3: 4, digit4: 4, ans: 59),
-  FiveTen4Row(digit1: 64, digit2: -2, digit3: 4, digit4: -5, ans: 61),
-  FiveTen4Row(digit1: 29, digit2: -6, digit3: 4, digit4: 2, ans: 29),
-  FiveTen4Row(digit1: 7, digit2: -5, digit3: 54, digit4: -6, ans: 50),
-  FiveTen4Row(digit1: 39, digit2: -6, digit3: 4, digit4: -5, ans: 32),
-  FiveTen4Row(digit1: 4, digit2: 4, digit3: 21, digit4: -7, ans: 22),
-  FiveTen4Row(digit1: 35, digit2: -5, digit3: 4, digit4: 4, ans: 38),
-  FiveTen4Row(digit1: 9, digit2: -5, digit3: 4, digit4: 11, ans: 19),
-  FiveTen4Row(digit1: 2, digit2: 75, digit3: -5, digit4: 4, ans: 76),
-  FiveTen4Row(digit1: 93, digit2: -2, digit3: 4, digit4: 4, ans: 99),
-  FiveTen4Row(digit1: 5, digit2: 24, digit3: -7, digit4: 4, ans: 26),
-  FiveTen4Row(digit1: 42, digit2: -1, digit3: 4, digit4: 41, ans: 86),
-  FiveTen4Row(digit1: 89, digit2: -5, digit3: 4, digit4: -6, ans: 82),
-  FiveTen4Row(digit1: 13, digit2: 4, digit3: -5, digit4: 4, ans: 16),
-  FiveTen4Row(digit1: 88, digit2: -5, digit3: 1, digit4: 4, ans: 88),
-  FiveTen4Row(digit1: 56, digit2: -5, digit3: 4, digit4: 3, ans: 58),
-  FiveTen4Row(digit1: 6, digit2: -5, digit3: 24, digit4: 3, ans: 28),
-  FiveTen4Row(digit1: 90, digit2: 4, digit3: -2, digit4: 4, ans: 96),
-  FiveTen4Row(digit1: 33, digit2: 5, digit3: -2, digit4: -5, ans: 31),
-  FiveTen4Row(digit1: 7, digit2: 2, digit3: 50, digit4: -7, ans: 52),
-  FiveTen4Row(digit1: 1, digit2: 4, digit3: 42, digit4: -6, ans: 41),
-  FiveTen4Row(digit1: 4, digit2: -2, digit3: 54, digit4: 3, ans: 59),
-  FiveTen4Row(digit1: 14, digit2: 4, digit3: -6, digit4: 4, ans: 16),
-  FiveTen4Row(digit1: 32, digit2: 4, digit3: -5, digit4: 6, ans: 37),
-  FiveTen4Row(digit1: 5, digit2: 1, digit3: 32, digit4: -5, ans: 33),
-  FiveTen4Row(digit1: 78, digit2: -5, digit3: -2, digit4: 4, ans: 75),
-  FiveTen4Row(digit1: 39, digit2: -5, digit3: 4, digit4: -5, ans: 33),
-  FiveTen4Row(digit1: 87, digit2: 2, digit3: -8, digit4: 4, ans: 85),
-  FiveTen4Row(digit1: 6, digit2: 3, digit3: -7, digit4: 54, ans: 56),
-  FiveTen4Row(digit1: 4, digit2: 64, digit3: -2, digit4: 3, ans: 69),
-  FiveTen4Row(digit1: 9, digit2: -4, digit3: 42, digit4: -6, ans: 41),
-  FiveTen4Row(digit1: 45, digit2: 4, digit3: -6, digit4: 4, ans: 47),
-  FiveTen4Row(digit1: 66, digit2: 3, digit3: -7, digit4: 4, ans: 66),
-  FiveTen4Row(digit1: 13, digit2: 4, digit3: -6, digit4: 2, ans: 13),
-  FiveTen4Row(digit1: 72, digit2: -1, digit3: 4, digit4: 4, ans: 79),
-  FiveTen4Row(digit1: 89, digit2: -6, digit3: 4, digit4: -6, ans: 81),
-  FiveTen4Row(digit1: 4, digit2: 4, digit3: 61, digit4: -4, ans: 65),
-  FiveTen4Row(digit1: 5, digit2: 73, digit3: -6, digit4: 4, ans: 76),
-  FiveTen4Row(digit1: 7, digit2: 42, digit3: -8, digit4: 4, ans: 45),
-  FiveTen4Row(digit1: 86, digit2: -5, digit3: 4, digit4: 2, ans: 87),
-  FiveTen4Row(digit1: 91, digit2: -1, digit3: 5, digit4: 3, ans: 98),
-  FiveTen4Row(digit1: 5, digit2: 2, digit3: 62, digit4: -7, ans: 62),
-  FiveTen4Row(digit1: 3, digit2: 4, digit3: 72, digit4: -6, ans: 73),
-  FiveTen4Row(digit1: 90, digit2: 8, digit3: -6, digit4: 4, ans: 96),
-  FiveTen4Row(digit1: 31, digit2: 4, digit3: 3, digit4: 1, ans: 39),
-  FiveTen4Row(digit1: 5, digit2: 4, digit3: -7, digit4: 54, ans: 56),
-  FiveTen4Row(digit1: 8, digit2: 61, digit3: -6, digit4: 4, ans: 67),
-  FiveTen4Row(digit1: 2, digit2: 5, digit3: 71, digit4: -6, ans: 72),
-  FiveTen4Row(digit1: 67, digit2: -5, digit3: 7, digit4: -4, ans: 65),
-  FiveTen4Row(digit1: 36, digit2: 3, digit3: -6, digit4: 4, ans: 37),
-  FiveTen4Row(digit1: 98, digit2: -6, digit3: 4, digit4: -5, ans: 91),
-  FiveTen4Row(digit1: 83, digit2: -2, digit3: 4, digit4: 4, ans: 89),
-  FiveTen4Row(digit1: 4, digit2: -2, digit3: 4, digit4: 52, ans: 58),
-  FiveTen4Row(digit1: 2, digit2: 1, digit3: 15, digit4: -7, ans: 11),
-  FiveTen4Row(digit1: 8, digit2: 41, digit3: -6, digit4: 4, ans: 47),
-  FiveTen4Row(digit1: 75, digit2: 4, digit3: -6, digit4: 4, ans: 77),
-  FiveTen4Row(digit1: 25, digit2: 2, digit3: -6, digit4: -1, ans: 20),
-  FiveTen4Row(digit1: 62, digit2: 4, digit3: -5, digit4: 4, ans: 65),
-  FiveTen4Row(digit1: 9, digit2: -2, digit3: 72, digit4: -5, ans: 74),
-  FiveTen4Row(digit1: 7, digit2: 81, digit3: -3, digit4: 2, ans: 87),
-  FiveTen4Row(digit1: 2, digit2: 66, digit3: -7, digit4: 4, ans: 65),
-  FiveTen4Row(digit1: 68, digit2: -5, digit3: 4, digit4: 2, ans: 69),
-  FiveTen4Row(digit1: 4, digit2: 4, digit3: 81, digit4: -5, ans: 84),
-  FiveTen4Row(digit1: 49, digit2: -5, digit3: 4, digit4: -7, ans: 41),
-  FiveTen4Row(digit1: 73, digit2: -2, digit3: 4, digit4: 2, ans: 77),
-  FiveTen4Row(digit1: 6, digit2: 3, digit3: -5, digit4: 34, ans: 38),
-  FiveTen4Row(digit1: 4, digit2: 65, digit3: -7, digit4: 4, ans: 66),
-  FiveTen4Row(digit1: 8, digit2: -5, digit3: 73, digit4: -1, ans: 75),
-  FiveTen4Row(digit1: 81, digit2: 6, digit3: -2, digit4: 2, ans: 87),
-  FiveTen4Row(digit1: 77, digit2: -6, digit3: 4, digit4: 3, ans: 78),
-  FiveTen4Row(digit1: 83, digit2: -2, digit3: 7, digit4: -5, ans: 83),
-  FiveTen4Row(digit1: 5, digit2: 2, digit3: 81, digit4: -3, ans: 85),
-  FiveTen4Row(digit1: 7, digit2: -5, digit3: 64, digit4: -5, ans: 61),
-  FiveTen4Row(digit1: 2, digit2: 5, digit3: 42, digit4: -7, ans: 42),
-  FiveTen4Row(digit1: 9, digit2: 60, digit3: -7, digit4: 4, ans: 66),
-  FiveTen4Row(digit1: 65, digit2: 4, digit3: -8, digit4: 4, ans: 65),
-  FiveTen4Row(digit1: 34, digit2: 5, digit3: -7, digit4: -1, ans: 31),
-  FiveTen4Row(digit1: 72, digit2: 6, digit3: -5, digit4: 4, ans: 77),
-  FiveTen4Row(digit1: 4, digit2: 34, digit3: -7, digit4: 7, ans: 38),
-  FiveTen4Row(digit1: 5, digit2: 2, digit3: 52, digit4: -8, ans: 51),
-  FiveTen4Row(digit1: 71, digit2: 4, digit3: 3, digit4: -6, ans: 72),
-  FiveTen4Row(digit1: 95, digit2: -5, digit3: 1, digit4: 4, ans: 95),
-  FiveTen4Row(digit1: 84, digit2: 4, digit3: -3, digit4: 3, ans: 88),
-  FiveTen4Row(digit1: 13, digit2: 4, digit3: -6, digit4: 4, ans: 15),
-  FiveTen4Row(digit1: 43, digit2: 5, digit3: -8, digit4: 4, ans: 44),
-  FiveTen4Row(digit1: 65, digit2: -5, digit3: 4, digit4: 4, ans: 68),
-  FiveTen4Row(digit1: 7, digit2: 71, digit3: -6, digit4: 4, ans: 76),
-  FiveTen4Row(digit1: 9, digit2: -5, digit3: 34, digit4: -5, ans: 33),
-  FiveTen4Row(digit1: 2, digit2: 4, digit3: 33, digit4: -7, ans: 32),
-  FiveTen4Row(digit1: 36, digit2: -5, digit3: 4, digit4: 3, ans: 38),
-  FiveTen4Row(digit1: 73, digit2: 5, digit3: -7, digit4: 4, ans: 75),
-  FiveTen4Row(digit1: 5, digit2: 3, digit3: -7, digit4: 74, ans: 75),
-  FiveTen4Row(digit1: 8, digit2: 41, digit3: -4, digit4: 3, ans: 48),
-  FiveTen4Row(digit1: 2, digit2: 5, digit3: 72, digit4: -8, ans: 71),
-  FiveTen4Row(digit1: 55, digit2: 3, digit3: -5, digit4: 4, ans: 57),
-  FiveTen4Row(digit1: 86, digit2: -1, digit3: 3, digit4: -5, ans: 83),
-  FiveTen4Row(digit1: 32, digit2: 2, digit3: 4, digit4: -7, ans: 31),
-  FiveTen4Row(digit1: 4, digit2: 74, digit3: -6, digit4: -1, ans: 71),
-  FiveTen4Row(digit1: 2, digit2: 5, digit3: 82, digit4: -5, ans: 84),
-  FiveTen4Row(digit1: 1, digit2: 4, digit3: 3, digit4: 51, ans: 59),
-  FiveTen4Row(digit1: 68, digit2: -6, digit3: 4, digit4: 3, ans: 69),
-  FiveTen4Row(digit1: 53, digit2: 4, digit3: 1, digit4: -2, ans: 56),
-  FiveTen4Row(digit1: 9, digit2: -6, digit3: 34, digit4: -5, ans: 32),
-  FiveTen4Row(digit1: 54, digit2: 4, digit3: -6, digit4: 2, ans: 54),
-  FiveTen4Row(digit1: 67, digit2: -6, digit3: 6, digit4: -2, ans: 65),
-  FiveTen4Row(digit1: 6, digit2: 72, digit3: -3, digit4: 3, ans: 78),
-  FiveTen4Row(digit1: 2, digit2: 4, digit3: 43, digit4: -4, ans: 45),
-  FiveTen4Row(digit1: 78, digit2: -6, digit3: -1, digit4: 4, ans: 75),
-  FiveTen4Row(digit1: 95, digit2: -5, digit3: 1, digit4: 4, ans: 95),
-  FiveTen4Row(digit1: 4, digit2: 4, digit3: -6, digit4: 52, ans: 54),
-  FiveTen4Row(digit1: 1, digit2: 8, digit3: 40, digit4: -6, ans: 43),
-  FiveTen4Row(digit1: 55, digit2: 3, digit3: -5, digit4: 4, ans: 57),
-  FiveTen4Row(digit1: 73, digit2: -2, digit3: 4, digit4: 3, ans: 78),
-  FiveTen4Row(digit1: 2, digit2: 4, digit3: 11, digit4: -6, ans: 11),
-  FiveTen4Row(digit1: 83, digit2: -2, digit3: 14, digit4: 2, ans: 97),
-  FiveTen4Row(digit1: 2, digit2: 4, digit3: 41, digit4: -7, ans: 40),
-  FiveTen4Row(digit1: 4, digit2: 34, digit3: -6, digit4: 4, ans: 36),
-  FiveTen4Row(digit1: 61, digit2: 5, digit3: 2, digit4: -5, ans: 63),
-  FiveTen4Row(digit1: 65, digit2: -5, digit3: 1, digit4: 4, ans: 65),
-  FiveTen4Row(digit1: 3, digit2: 4, digit3: 22, digit4: -6, ans: 23),
-  FiveTen4Row(digit1: 15, digit2: 4, digit3: -7, digit4: 4, ans: 16),
-  FiveTen4Row(digit1: 12, digit2: 4, digit3: 3, digit4: -7, ans: 12),
-  FiveTen4Row(digit1: 7, digit2: 12, digit3: -6, digit4: 4, ans: 17),
-  FiveTen4Row(digit1: 75, digit2: 3, digit3: -6, digit4: 4, ans: 76),
-  FiveTen4Row(digit1: 4, digit2: 34, digit3: -6, digit4: 4, ans: 36),
-  FiveTen4Row(digit1: 32, digit2: 7, digit3: -7, digit4: 4, ans: 36),
-  FiveTen4Row(digit1: 16, digit2: 3, digit3: -7, digit4: 2, ans: 14),
-  FiveTen4Row(digit1: 94, digit2: -2, digit3: 4, digit4: -5, ans: 91),
-  FiveTen4Row(digit1: 6, digit2: -5, digit3: 34, digit4: 2, ans: 37),
-  FiveTen4Row(digit1: 1, digit2: 8, digit3: -7, digit4: 44, ans: 46),
-  FiveTen4Row(digit1: 7, digit2: -5, digit3: 24, digit4: 3, ans: 29),
-  FiveTen4Row(digit1: 43, digit2: -1, digit3: 4, digit4: -5, ans: 41),
-  FiveTen4Row(digit1: 55, digit2: 2, digit3: -6, digit4: 4, ans: 55),
-  FiveTen4Row(digit1: 98, digit2: -5, digit3: 4, digit4: -6, ans: 91),
-  FiveTen4Row(digit1: 14, digit2: 4, digit3: 1, digit4: -7, ans: 12),
-  FiveTen4Row(digit1: 8, digit2: -5, digit3: 24, digit4: 2, ans: 29),
-  FiveTen4Row(digit1: 3, digit2: 4, digit3: 12, digit4: -6, ans: 13),
-  FiveTen4Row(digit1: 9, digit2: -7, digit3: 34, digit4: 2, ans: 38),
-  FiveTen4Row(digit1: 45, digit2: -5, digit3: 3, digit4: 4, ans: 47),
-  FiveTen4Row(digit1: 62, digit2: 4, digit3: -1, digit4: 2, ans: 67),
-  FiveTen4Row(digit1: 47, digit2: -6, digit3: 4, digit4: -5, ans: 40),
-  FiveTen4Row(digit1: 87, digit2: -6, digit3: 4, digit4: -5, ans: 80),
-  FiveTen4Row(digit1: 6, digit2: -5, digit3: 4, digit4: 24, ans: 29),
+List<FourDigit> fivePlusFour4Row21 = [
+  FourDigit(digit1: 21, digit2: 4, digit3: 3, digit4: -6, ans: 22),
+  FourDigit(digit1: 4, digit2: 14, digit3: -7, digit4: 4, ans: 15),
+  FourDigit(digit1: 63, digit2: 5, digit3: -7, digit4: 4, ans: 65),
+  FourDigit(digit1: 3, digit2: 4, digit3: 32, digit4: -5, ans: 34),
+  FourDigit(digit1: 43, digit2: 4, digit3: -5, digit4: 4, ans: 46),
+  FourDigit(digit1: 9, digit2: -5, digit3: 34, digit4: -6, ans: 32),
+  FourDigit(digit1: 41, digit2: 4, digit3: 4, digit4: -6, ans: 43),
+  FourDigit(digit1: 16, digit2: -5, digit3: 4, digit4: -5, ans: 10),
+  FourDigit(digit1: 69, digit2: -3, digit3: 3, digit4: -5, ans: 64),
+  FourDigit(digit1: 15, digit2: -5, digit3: 4, digit4: 4, ans: 18),
+  FourDigit(digit1: 87, digit2: -5, digit3: 4, digit4: -6, ans: 80),
+  FourDigit(digit1: 73, digit2: 5, digit3: -5, digit4: 4, ans: 77),
+  FourDigit(digit1: 9, digit2: -6, digit3: 34, digit4: 2, ans: 39),
+  FourDigit(digit1: 7, digit2: 22, digit3: -5, digit4: 4, ans: 28),
+  FourDigit(digit1: 86, digit2: -5, digit3: 4, digit4: -1, ans: 84),
+  FourDigit(digit1: 32, digit2: 5, digit3: -5, digit4: 4, ans: 36),
+  FourDigit(digit1: 17, digit2: -5, digit3: 4, digit4: -1, ans: 15),
+  FourDigit(digit1: 41, digit2: 4, digit3: -5, digit4: 3, ans: 43),
+  FourDigit(digit1: 55, digit2: 4, digit3: -6, digit4: 4, ans: 57),
+  FourDigit(digit1: 17, digit2: -5, digit3: 4, digit4: -5, ans: 11),
+  FourDigit(digit1: 4, digit2: 24, digit3: -6, digit4: 54, ans: 76),
+  FourDigit(digit1: 8, digit2: -5, digit3: 64, digit4: -6, ans: 61),
+  FourDigit(digit1: 63, digit2: -12, digit3: 4, digit4: -50, ans: 5),
+  FourDigit(digit1: 9, digit2: -5, digit3: 34, digit4: 11, ans: 49),
+  FourDigit(digit1: 88, digit2: -53, digit3: 4, digit4: -6, ans: 33),
+  FourDigit(digit1: 17, digit2: 2, digit3: -17, digit4: 44, ans: 46),
+  FourDigit(digit1: 7, digit2: -5, digit3: 64, digit4: -26, ans: 40),
+  FourDigit(digit1: 25, digit2: 4, digit3: -17, digit4: 54, ans: 66),
+  FourDigit(digit1: 2, digit2: 54, digit3: -5, digit4: 14, ans: 65),
+  FourDigit(digit1: 87, digit2: -35, digit3: 4, digit4: -5, ans: 51),
+  FourDigit(digit1: 3, digit2: 14, digit3: -6, digit4: 44, ans: 55),
+  FourDigit(digit1: 16, digit2: -5, digit3: 34, digit4: -20, ans: 25),
+  FourDigit(digit1: 12, digit2: 4, digit3: -15, digit4: 4, ans: 5),
+  FourDigit(digit1: 86, digit2: -1, digit3: -5, digit4: 4, ans: 84),
+  FourDigit(digit1: 95, digit2: -5, digit3: 3, digit4: 4, ans: 97),
+  FourDigit(digit1: 67, digit2: -5, digit3: 4, digit4: 3, ans: 69),
+  FourDigit(digit1: 5, digit2: 42, digit3: -6, digit4: 4, ans: 45),
+  FourDigit(digit1: 47, digit2: -5, digit3: -1, digit4: 4, ans: 45),
+  FourDigit(digit1: 40, digit2: 5, digit3: 4, digit4: -6, ans: 43),
+  FourDigit(digit1: 8, digit2: -7, digit3: 4, digit4: 14, ans: 19),
+  FourDigit(digit1: 46, digit2: -5, digit3: 4, digit4: -5, ans: 40),
+  FourDigit(digit1: 78, digit2: -6, digit3: 4, digit4: -5, ans: 71),
+  FourDigit(digit1: 9, digit2: -6, digit3: 4, digit4: 42, ans: 49),
+  FourDigit(digit1: 35, digit2: 2, digit3: -5, digit4: 4, ans: 36),
+  FourDigit(digit1: 4, digit2: 24, digit3: -7, digit4: 4, ans: 25),
+  FourDigit(digit1: 43, digit2: 1, digit3: 5, digit4: -7, ans: 42),
+  FourDigit(digit1: 13, digit2: 4, digit3: -2, digit4: 3, ans: 18),
+  FourDigit(digit1: 6, digit2: -5, digit3: 34, digit4: 2, ans: 37),
+  FourDigit(digit1: 3, digit2: -1, digit3: 44, digit4: 2, ans: 48),
+  FourDigit(digit1: 95, digit2: -5, digit3: 2, digit4: 4, ans: 96),
+  FourDigit(digit1: 28, digit2: -5, digit3: 4, digit4: 2, ans: 29),
+  FourDigit(digit1: 2, digit2: 4, digit3: -5, digit4: 24, ans: 25),
+  FourDigit(digit1: 38, digit2: -6, digit3: 4, digit4: -5, ans: 31),
+  FourDigit(digit1: 3, digit2: 4, digit3: 61, digit4: -5, ans: 63),
+  FourDigit(digit1: 72, digit2: 4, digit3: -5, digit4: 2, ans: 73),
+  FourDigit(digit1: 34, digit2: -2, digit3: 4, digit4: 2, ans: 38),
+  FourDigit(digit1: 6, digit2: -5, digit3: 44, digit4: 3, ans: 48),
+  FourDigit(digit1: 57, digit2: -6, digit3: 4, digit4: 4, ans: 59),
+  FourDigit(digit1: 64, digit2: -2, digit3: 4, digit4: -5, ans: 61),
+  FourDigit(digit1: 29, digit2: -6, digit3: 4, digit4: 2, ans: 29),
+  FourDigit(digit1: 7, digit2: -5, digit3: 54, digit4: -6, ans: 50),
+  FourDigit(digit1: 39, digit2: -6, digit3: 4, digit4: -5, ans: 32),
+  FourDigit(digit1: 4, digit2: 4, digit3: 21, digit4: -7, ans: 22),
+  FourDigit(digit1: 35, digit2: -5, digit3: 4, digit4: 4, ans: 38),
+  FourDigit(digit1: 9, digit2: -5, digit3: 4, digit4: 11, ans: 19),
+  FourDigit(digit1: 2, digit2: 75, digit3: -5, digit4: 4, ans: 76),
+  FourDigit(digit1: 93, digit2: -2, digit3: 4, digit4: 4, ans: 99),
+  FourDigit(digit1: 5, digit2: 24, digit3: -7, digit4: 4, ans: 26),
+  FourDigit(digit1: 42, digit2: -1, digit3: 4, digit4: 41, ans: 86),
+  FourDigit(digit1: 89, digit2: -5, digit3: 4, digit4: -6, ans: 82),
+  FourDigit(digit1: 13, digit2: 4, digit3: -5, digit4: 4, ans: 16),
+  FourDigit(digit1: 88, digit2: -5, digit3: 1, digit4: 4, ans: 88),
+  FourDigit(digit1: 56, digit2: -5, digit3: 4, digit4: 3, ans: 58),
+  FourDigit(digit1: 6, digit2: -5, digit3: 24, digit4: 3, ans: 28),
+  FourDigit(digit1: 90, digit2: 4, digit3: -2, digit4: 4, ans: 96),
+  FourDigit(digit1: 33, digit2: 5, digit3: -2, digit4: -5, ans: 31),
+  FourDigit(digit1: 7, digit2: 2, digit3: 50, digit4: -7, ans: 52),
+  FourDigit(digit1: 1, digit2: 4, digit3: 42, digit4: -6, ans: 41),
+  FourDigit(digit1: 4, digit2: -2, digit3: 54, digit4: 3, ans: 59),
+  FourDigit(digit1: 14, digit2: 4, digit3: -6, digit4: 4, ans: 16),
+  FourDigit(digit1: 32, digit2: 4, digit3: -5, digit4: 6, ans: 37),
+  FourDigit(digit1: 5, digit2: 1, digit3: 32, digit4: -5, ans: 33),
+  FourDigit(digit1: 78, digit2: -5, digit3: -2, digit4: 4, ans: 75),
+  FourDigit(digit1: 39, digit2: -5, digit3: 4, digit4: -5, ans: 33),
+  FourDigit(digit1: 87, digit2: 2, digit3: -8, digit4: 4, ans: 85),
+  FourDigit(digit1: 6, digit2: 3, digit3: -7, digit4: 54, ans: 56),
+  FourDigit(digit1: 4, digit2: 64, digit3: -2, digit4: 3, ans: 69),
+  FourDigit(digit1: 9, digit2: -4, digit3: 42, digit4: -6, ans: 41),
+  FourDigit(digit1: 45, digit2: 4, digit3: -6, digit4: 4, ans: 47),
+  FourDigit(digit1: 66, digit2: 3, digit3: -7, digit4: 4, ans: 66),
+  FourDigit(digit1: 13, digit2: 4, digit3: -6, digit4: 2, ans: 13),
+  FourDigit(digit1: 72, digit2: -1, digit3: 4, digit4: 4, ans: 79),
+  FourDigit(digit1: 89, digit2: -6, digit3: 4, digit4: -6, ans: 81),
+  FourDigit(digit1: 4, digit2: 4, digit3: 61, digit4: -4, ans: 65),
+  FourDigit(digit1: 5, digit2: 73, digit3: -6, digit4: 4, ans: 76),
+  FourDigit(digit1: 7, digit2: 42, digit3: -8, digit4: 4, ans: 45),
+  FourDigit(digit1: 86, digit2: -5, digit3: 4, digit4: 2, ans: 87),
+  FourDigit(digit1: 91, digit2: -1, digit3: 5, digit4: 3, ans: 98),
+  FourDigit(digit1: 5, digit2: 2, digit3: 62, digit4: -7, ans: 62),
+  FourDigit(digit1: 3, digit2: 4, digit3: 72, digit4: -6, ans: 73),
+  FourDigit(digit1: 90, digit2: 8, digit3: -6, digit4: 4, ans: 96),
+  FourDigit(digit1: 31, digit2: 4, digit3: 3, digit4: 1, ans: 39),
+  FourDigit(digit1: 5, digit2: 4, digit3: -7, digit4: 54, ans: 56),
+  FourDigit(digit1: 8, digit2: 61, digit3: -6, digit4: 4, ans: 67),
+  FourDigit(digit1: 2, digit2: 5, digit3: 71, digit4: -6, ans: 72),
+  FourDigit(digit1: 67, digit2: -5, digit3: 7, digit4: -4, ans: 65),
+  FourDigit(digit1: 36, digit2: 3, digit3: -6, digit4: 4, ans: 37),
+  FourDigit(digit1: 98, digit2: -6, digit3: 4, digit4: -5, ans: 91),
+  FourDigit(digit1: 83, digit2: -2, digit3: 4, digit4: 4, ans: 89),
+  FourDigit(digit1: 4, digit2: -2, digit3: 4, digit4: 52, ans: 58),
+  FourDigit(digit1: 2, digit2: 1, digit3: 15, digit4: -7, ans: 11),
+  FourDigit(digit1: 8, digit2: 41, digit3: -6, digit4: 4, ans: 47),
+  FourDigit(digit1: 75, digit2: 4, digit3: -6, digit4: 4, ans: 77),
+  FourDigit(digit1: 25, digit2: 2, digit3: -6, digit4: -1, ans: 20),
+  FourDigit(digit1: 62, digit2: 4, digit3: -5, digit4: 4, ans: 65),
+  FourDigit(digit1: 9, digit2: -2, digit3: 72, digit4: -5, ans: 74),
+  FourDigit(digit1: 7, digit2: 81, digit3: -3, digit4: 2, ans: 87),
+  FourDigit(digit1: 2, digit2: 66, digit3: -7, digit4: 4, ans: 65),
+  FourDigit(digit1: 68, digit2: -5, digit3: 4, digit4: 2, ans: 69),
+  FourDigit(digit1: 4, digit2: 4, digit3: 81, digit4: -5, ans: 84),
+  FourDigit(digit1: 49, digit2: -5, digit3: 4, digit4: -7, ans: 41),
+  FourDigit(digit1: 73, digit2: -2, digit3: 4, digit4: 2, ans: 77),
+  FourDigit(digit1: 6, digit2: 3, digit3: -5, digit4: 34, ans: 38),
+  FourDigit(digit1: 4, digit2: 65, digit3: -7, digit4: 4, ans: 66),
+  FourDigit(digit1: 8, digit2: -5, digit3: 73, digit4: -1, ans: 75),
+  FourDigit(digit1: 81, digit2: 6, digit3: -2, digit4: 2, ans: 87),
+  FourDigit(digit1: 77, digit2: -6, digit3: 4, digit4: 3, ans: 78),
+  FourDigit(digit1: 83, digit2: -2, digit3: 7, digit4: -5, ans: 83),
+  FourDigit(digit1: 5, digit2: 2, digit3: 81, digit4: -3, ans: 85),
+  FourDigit(digit1: 7, digit2: -5, digit3: 64, digit4: -5, ans: 61),
+  FourDigit(digit1: 2, digit2: 5, digit3: 42, digit4: -7, ans: 42),
+  FourDigit(digit1: 9, digit2: 60, digit3: -7, digit4: 4, ans: 66),
+  FourDigit(digit1: 65, digit2: 4, digit3: -8, digit4: 4, ans: 65),
+  FourDigit(digit1: 34, digit2: 5, digit3: -7, digit4: -1, ans: 31),
+  FourDigit(digit1: 72, digit2: 6, digit3: -5, digit4: 4, ans: 77),
+  FourDigit(digit1: 4, digit2: 34, digit3: -7, digit4: 7, ans: 38),
+  FourDigit(digit1: 5, digit2: 2, digit3: 52, digit4: -8, ans: 51),
+  FourDigit(digit1: 71, digit2: 4, digit3: 3, digit4: -6, ans: 72),
+  FourDigit(digit1: 95, digit2: -5, digit3: 1, digit4: 4, ans: 95),
+  FourDigit(digit1: 84, digit2: 4, digit3: -3, digit4: 3, ans: 88),
+  FourDigit(digit1: 13, digit2: 4, digit3: -6, digit4: 4, ans: 15),
+  FourDigit(digit1: 43, digit2: 5, digit3: -8, digit4: 4, ans: 44),
+  FourDigit(digit1: 65, digit2: -5, digit3: 4, digit4: 4, ans: 68),
+  FourDigit(digit1: 7, digit2: 71, digit3: -6, digit4: 4, ans: 76),
+  FourDigit(digit1: 9, digit2: -5, digit3: 34, digit4: -5, ans: 33),
+  FourDigit(digit1: 2, digit2: 4, digit3: 33, digit4: -7, ans: 32),
+  FourDigit(digit1: 36, digit2: -5, digit3: 4, digit4: 3, ans: 38),
+  FourDigit(digit1: 73, digit2: 5, digit3: -7, digit4: 4, ans: 75),
+  FourDigit(digit1: 5, digit2: 3, digit3: -7, digit4: 74, ans: 75),
+  FourDigit(digit1: 8, digit2: 41, digit3: -4, digit4: 3, ans: 48),
+  FourDigit(digit1: 2, digit2: 5, digit3: 72, digit4: -8, ans: 71),
+  FourDigit(digit1: 55, digit2: 3, digit3: -5, digit4: 4, ans: 57),
+  FourDigit(digit1: 86, digit2: -1, digit3: 3, digit4: -5, ans: 83),
+  FourDigit(digit1: 32, digit2: 2, digit3: 4, digit4: -7, ans: 31),
+  FourDigit(digit1: 4, digit2: 74, digit3: -6, digit4: -1, ans: 71),
+  FourDigit(digit1: 2, digit2: 5, digit3: 82, digit4: -5, ans: 84),
+  FourDigit(digit1: 1, digit2: 4, digit3: 3, digit4: 51, ans: 59),
+  FourDigit(digit1: 68, digit2: -6, digit3: 4, digit4: 3, ans: 69),
+  FourDigit(digit1: 53, digit2: 4, digit3: 1, digit4: -2, ans: 56),
+  FourDigit(digit1: 9, digit2: -6, digit3: 34, digit4: -5, ans: 32),
+  FourDigit(digit1: 54, digit2: 4, digit3: -6, digit4: 2, ans: 54),
+  FourDigit(digit1: 67, digit2: -6, digit3: 6, digit4: -2, ans: 65),
+  FourDigit(digit1: 6, digit2: 72, digit3: -3, digit4: 3, ans: 78),
+  FourDigit(digit1: 2, digit2: 4, digit3: 43, digit4: -4, ans: 45),
+  FourDigit(digit1: 78, digit2: -6, digit3: -1, digit4: 4, ans: 75),
+  FourDigit(digit1: 95, digit2: -5, digit3: 1, digit4: 4, ans: 95),
+  FourDigit(digit1: 4, digit2: 4, digit3: -6, digit4: 52, ans: 54),
+  FourDigit(digit1: 1, digit2: 8, digit3: 40, digit4: -6, ans: 43),
+  FourDigit(digit1: 55, digit2: 3, digit3: -5, digit4: 4, ans: 57),
+  FourDigit(digit1: 73, digit2: -2, digit3: 4, digit4: 3, ans: 78),
+  FourDigit(digit1: 2, digit2: 4, digit3: 11, digit4: -6, ans: 11),
+  FourDigit(digit1: 83, digit2: -2, digit3: 14, digit4: 2, ans: 97),
+  FourDigit(digit1: 2, digit2: 4, digit3: 41, digit4: -7, ans: 40),
+  FourDigit(digit1: 4, digit2: 34, digit3: -6, digit4: 4, ans: 36),
+  FourDigit(digit1: 61, digit2: 5, digit3: 2, digit4: -5, ans: 63),
+  FourDigit(digit1: 65, digit2: -5, digit3: 1, digit4: 4, ans: 65),
+  FourDigit(digit1: 3, digit2: 4, digit3: 22, digit4: -6, ans: 23),
+  FourDigit(digit1: 15, digit2: 4, digit3: -7, digit4: 4, ans: 16),
+  FourDigit(digit1: 12, digit2: 4, digit3: 3, digit4: -7, ans: 12),
+  FourDigit(digit1: 7, digit2: 12, digit3: -6, digit4: 4, ans: 17),
+  FourDigit(digit1: 75, digit2: 3, digit3: -6, digit4: 4, ans: 76),
+  FourDigit(digit1: 4, digit2: 34, digit3: -6, digit4: 4, ans: 36),
+  FourDigit(digit1: 32, digit2: 7, digit3: -7, digit4: 4, ans: 36),
+  FourDigit(digit1: 16, digit2: 3, digit3: -7, digit4: 2, ans: 14),
+  FourDigit(digit1: 94, digit2: -2, digit3: 4, digit4: -5, ans: 91),
+  FourDigit(digit1: 6, digit2: -5, digit3: 34, digit4: 2, ans: 37),
+  FourDigit(digit1: 1, digit2: 8, digit3: -7, digit4: 44, ans: 46),
+  FourDigit(digit1: 7, digit2: -5, digit3: 24, digit4: 3, ans: 29),
+  FourDigit(digit1: 43, digit2: -1, digit3: 4, digit4: -5, ans: 41),
+  FourDigit(digit1: 55, digit2: 2, digit3: -6, digit4: 4, ans: 55),
+  FourDigit(digit1: 98, digit2: -5, digit3: 4, digit4: -6, ans: 91),
+  FourDigit(digit1: 14, digit2: 4, digit3: 1, digit4: -7, ans: 12),
+  FourDigit(digit1: 8, digit2: -5, digit3: 24, digit4: 2, ans: 29),
+  FourDigit(digit1: 3, digit2: 4, digit3: 12, digit4: -6, ans: 13),
+  FourDigit(digit1: 9, digit2: -7, digit3: 34, digit4: 2, ans: 38),
+  FourDigit(digit1: 45, digit2: -5, digit3: 3, digit4: 4, ans: 47),
+  FourDigit(digit1: 62, digit2: 4, digit3: -1, digit4: 2, ans: 67),
+  FourDigit(digit1: 47, digit2: -6, digit3: 4, digit4: -5, ans: 40),
+  FourDigit(digit1: 87, digit2: -6, digit3: 4, digit4: -5, ans: 80),
+  FourDigit(digit1: 6, digit2: -5, digit3: 4, digit4: 24, ans: 29),
 ];
-List<FiveTen4Row> fivePlusFour4Row22 = [
-  FiveTen4Row(digit1: 62, digit2: 24, digit3: -51, digit4: 14, ans: 49),
-  FiveTen4Row(digit1: 98, digit2: -55, digit3: 41, digit4: 14, ans: 98),
-  FiveTen4Row(digit1: 12, digit2: 35, digit3: -25, digit4: 45, ans: 67),
-  FiveTen4Row(digit1: 87, digit2: -65, digit3: 42, digit4: 15, ans: 79),
-  FiveTen4Row(digit1: 23, digit2: 45, digit3: -57, digit4: 43, ans: 54),
-  FiveTen4Row(digit1: 66, digit2: -51, digit3: 40, digit4: 23, ans: 78),
-  FiveTen4Row(digit1: 49, digit2: -25, digit3: 45, digit4: -57, ans: 12),
-  FiveTen4Row(digit1: 31, digit2: 45, digit3: -51, digit4: 43, ans: 68),
-  FiveTen4Row(digit1: 16, digit2: 42, digit3: 31, digit4: -76, ans: 13),
-  FiveTen4Row(digit1: 54, digit2: 24, digit3: -51, digit4: 42, ans: 69),
-  FiveTen4Row(digit1: 87, digit2: -52, digit3: 41, digit4: -55, ans: 21),
-  FiveTen4Row(digit1: 37, digit2: 11, digit3: 41, digit4: -67, ans: 22),
-  FiveTen4Row(digit1: 13, digit2: 41, digit3: -52, digit4: 84, ans: 86),
-  FiveTen4Row(digit1: 72, digit2: -51, digit3: 44, digit4: -15, ans: 50),
-  FiveTen4Row(digit1: 94, digit2: -72, digit3: 41, digit4: 14, ans: 77),
-  FiveTen4Row(digit1: 63, digit2: -52, digit3: 47, digit4: 41, ans: 99),
-  FiveTen4Row(digit1: 61, digit2: 24, digit3: -60, digit4: 43, ans: 68),
-  FiveTen4Row(digit1: 59, digit2: 20, digit3: -57, digit4: 46, ans: 68),
-  FiveTen4Row(digit1: 73, digit2: -52, digit3: 43, digit4: 24, ans: 88),
-  FiveTen4Row(digit1: 84, digit2: -53, digit3: 44, digit4: -25, ans: 50),
-  FiveTen4Row(digit1: 45, digit2: 53, digit3: -66, digit4: 44, ans: 76),
-  FiveTen4Row(digit1: 19, digit2: 40, digit3: 20, digit4: -67, ans: 12),
-  FiveTen4Row(digit1: 57, digit2: 12, digit3: -57, digit4: 41, ans: 53),
-  FiveTen4Row(digit1: 35, digit2: 14, digit3: -27, digit4: 45, ans: 67),
-  FiveTen4Row(digit1: 86, digit2: -51, digit3: 42, digit4: -52, ans: 25),
-  FiveTen4Row(digit1: 38, digit2: 11, digit3: -49, digit4: 34, ans: 34),
-  FiveTen4Row(digit1: 91, digit2: -60, digit3: 42, digit4: -23, ans: 50),
-  FiveTen4Row(digit1: 65, digit2: 20, digit3: -50, digit4: 43, ans: 78),
-  FiveTen4Row(digit1: 31, digit2: 14, digit3: 52, digit4: -65, ans: 32),
-  FiveTen4Row(digit1: 63, digit2: -52, digit3: 43, digit4: 24, ans: 78),
-  FiveTen4Row(digit1: 57, digit2: -52, digit3: 43, digit4: -27, ans: 21),
-  FiveTen4Row(digit1: 25, digit2: 13, digit3: 41, digit4: -65, ans: 14),
-  FiveTen4Row(digit1: 96, digit2: -51, digit3: 42, digit4: -52, ans: 35),
-  FiveTen4Row(digit1: 42, digit2: 41, digit3: -61, digit4: 54, ans: 76),
-  FiveTen4Row(digit1: 87, digit2: -56, digit3: 44, digit4: -50, ans: 25),
-  FiveTen4Row(digit1: 96, digit2: -55, digit3: 43, digit4: -62, ans: 22),
-  FiveTen4Row(digit1: 34, digit2: 44, digit3: -57, digit4: 26, ans: 47),
-  FiveTen4Row(digit1: 85, digit2: -50, digit3: 43, digit4: -65, ans: 13),
-  FiveTen4Row(digit1: 79, digit2: -56, digit3: 45, digit4: -47, ans: 21),
-  FiveTen4Row(digit1: 57, digit2: 31, digit3: -53, digit4: 42, ans: 77),
-  FiveTen4Row(digit1: 93, digit2: -62, digit3: 44, digit4: -50, ans: 25),
-  FiveTen4Row(digit1: 75, digit2: 14, digit3: -56, digit4: 45, ans: 78),
-  FiveTen4Row(digit1: 32, digit2: 41, digit3: -52, digit4: 76, ans: 97),
-  FiveTen4Row(digit1: 97, digit2: -52, digit3: 43, digit4: -67, ans: 21),
-  FiveTen4Row(digit1: 12, digit2: 45, digit3: 12, digit4: -58, ans: 11),
-  FiveTen4Row(digit1: 74, digit2: -64, digit3: 45, digit4: 23, ans: 78),
-  FiveTen4Row(digit1: 87, digit2: -55, digit3: 42, digit4: -53, ans: 21),
-  FiveTen4Row(digit1: 28, digit2: -15, digit3: 46, digit4: 20, ans: 79),
-  FiveTen4Row(digit1: 91, digit2: -50, digit3: 43, digit4: -32, ans: 52),
-  FiveTen4Row(digit1: 74, digit2: -52, digit3: 64, digit4: -55, ans: 31),
-  FiveTen4Row(digit1: 17, digit2: 42, digit3: -53, digit4: 62, ans: 68),
-  FiveTen4Row(digit1: 23, digit2: 45, digit3: -53, digit4: 41, ans: 56),
-  FiveTen4Row(digit1: 68, digit2: -53, digit3: 42, digit4: 21, ans: 78),
-  FiveTen4Row(digit1: 15, digit2: 24, digit3: -26, digit4: 44, ans: 57),
-  FiveTen4Row(digit1: 82, digit2: -51, digit3: 43, digit4: -52, ans: 22),
-  FiveTen4Row(digit1: 74, digit2: -52, digit3: 15, digit4: 12, ans: 49),
-  FiveTen4Row(digit1: 61, digit2: 23, digit3: -52, digit4: 14, ans: 46),
-  FiveTen4Row(digit1: 75, digit2: 24, digit3: -54, digit4: 41, ans: 86),
-  FiveTen4Row(digit1: 32, digit2: 15, digit3: -26, digit4: 74, ans: 95),
-  FiveTen4Row(digit1: 27, digit2: 12, digit3: -24, digit4: 44, ans: 59),
-  FiveTen4Row(digit1: 62, digit2: -51, digit3: 76, digit4: -52, ans: 35),
-  FiveTen4Row(digit1: 94, digit2: -42, digit3: 14, digit4: -50, ans: 16),
-  FiveTen4Row(digit1: 71, digit2: 14, digit3: -65, digit4: 43, ans: 63),
-  FiveTen4Row(digit1: 90, digit2: -50, digit3: 46, digit4: -51, ans: 35),
-  FiveTen4Row(digit1: 16, digit2: 42, digit3: 21, digit4: -68, ans: 11),
-  FiveTen4Row(digit1: 23, digit2: 41, digit3: -53, digit4: 46, ans: 57),
-  FiveTen4Row(digit1: 47, digit2: -26, digit3: 45, digit4: 32, ans: 98),
-  FiveTen4Row(digit1: 52, digit2: 41, digit3: -51, digit4: 46, ans: 88),
-  FiveTen4Row(digit1: 28, digit2: -15, digit3: 44, digit4: 21, ans: 78),
-  FiveTen4Row(digit1: 64, digit2: 15, digit3: -58, digit4: 24, ans: 45),
-  FiveTen4Row(digit1: 50, digit2: 34, digit3: -62, digit4: 41, ans: 63),
-  FiveTen4Row(digit1: 93, digit2: -61, digit3: 45, digit4: -51, ans: 26),
-  FiveTen4Row(digit1: 74, digit2: -23, digit3: 34, digit4: -61, ans: 24),
-  FiveTen4Row(digit1: 44, digit2: 45, digit3: -67, digit4: 25, ans: 47),
-  FiveTen4Row(digit1: 53, digit2: 24, digit3: -56, digit4: 42, ans: 63),
-  FiveTen4Row(digit1: 34, digit2: 54, digit3: -53, digit4: 51, ans: 86),
-  FiveTen4Row(digit1: 76, digit2: -25, digit3: 44, digit4: -60, ans: 35),
-  FiveTen4Row(digit1: 64, digit2: -52, digit3: 46, digit4: 31, ans: 89),
-  FiveTen4Row(digit1: 29, digit2: -17, digit3: 46, digit4: 10, ans: 68),
-  FiveTen4Row(digit1: 43, digit2: -32, digit3: 61, digit4: 14, ans: 86),
-  FiveTen4Row(digit1: 84, digit2: -52, digit3: 41, digit4: -62, ans: 11),
-  FiveTen4Row(digit1: 67, digit2: -12, digit3: 33, digit4: -53, ans: 35),
-  FiveTen4Row(digit1: 94, digit2: -82, digit3: 42, digit4: 45, ans: 99),
-  FiveTen4Row(digit1: 69, digit2: -51, digit3: 40, digit4: 11, ans: 69),
-  FiveTen4Row(digit1: 33, digit2: 12, digit3: 43, digit4: -53, ans: 35),
-  FiveTen4Row(digit1: 71, digit2: -50, digit3: 43, digit4: 14, ans: 78),
-  FiveTen4Row(digit1: 95, digit2: -40, digit3: 24, digit4: -67, ans: 12),
-  FiveTen4Row(digit1: 67, digit2: -56, digit3: 54, digit4: 13, ans: 78),
-  FiveTen4Row(digit1: 40, digit2: 56, digit3: -65, digit4: 44, ans: 75),
-  FiveTen4Row(digit1: 37, digit2: -25, digit3: 45, digit4: 12, ans: 69),
-  FiveTen4Row(digit1: 54, digit2: 24, digit3: -56, digit4: 46, ans: 68),
-  FiveTen4Row(digit1: 16, digit2: 23, digit3: 40, digit4: -51, ans: 28),
-  FiveTen4Row(digit1: 42, digit2: -31, digit3: 24, digit4: 43, ans: 78),
-  FiveTen4Row(digit1: 98, digit2: -63, digit3: 42, digit4: -51, ans: 26),
-  FiveTen4Row(digit1: 84, digit2: -63, digit3: 44, digit4: -50, ans: 15),
-  FiveTen4Row(digit1: 54, digit2: 24, digit3: -56, digit4: 42, ans: 64),
-  FiveTen4Row(digit1: 79, digit2: -63, digit3: 42, digit4: 31, ans: 89),
-  FiveTen4Row(digit1: 64, digit2: -52, digit3: 41, digit4: 24, ans: 77),
-  FiveTen4Row(digit1: 74, digit2: -52, digit3: 46, digit4: 21, ans: 89),
-  FiveTen4Row(digit1: 92, digit2: -71, digit3: 46, digit4: -52, ans: 15),
-  FiveTen4Row(digit1: 95, digit2: -80, digit3: 64, digit4: -54, ans: 25),
-  FiveTen4Row(digit1: 70, digit2: 25, digit3: -60, digit4: 44, ans: 79),
-  FiveTen4Row(digit1: 63, digit2: -51, digit3: 42, digit4: 15, ans: 69),
-  FiveTen4Row(digit1: 83, digit2: -51, digit3: 46, digit4: -63, ans: 15),
-  FiveTen4Row(digit1: 98, digit2: -43, digit3: 12, digit4: -56, ans: 11),
-  FiveTen4Row(digit1: 83, digit2: -32, digit3: 42, digit4: -73, ans: 20),
-  FiveTen4Row(digit1: 27, digit2: 41, digit3: -53, digit4: 42, ans: 57),
-  FiveTen4Row(digit1: 43, digit2: -21, digit3: 56, digit4: -53, ans: 25),
-  FiveTen4Row(digit1: 54, digit2: 24, digit3: -56, digit4: 24, ans: 46),
-  FiveTen4Row(digit1: 67, digit2: -52, digit3: 43, digit4: 21, ans: 79),
-  FiveTen4Row(digit1: 55, digit2: 32, digit3: -67, digit4: 43, ans: 63),
-  FiveTen4Row(digit1: 29, digit2: -17, digit3: 46, digit4: 21, ans: 79),
-  FiveTen4Row(digit1: 51, digit2: 24, digit3: -60, digit4: 43, ans: 58),
-  FiveTen4Row(digit1: 40, digit2: 36, digit3: -55, digit4: 43, ans: 64),
-  FiveTen4Row(digit1: 84, digit2: -64, digit3: 49, digit4: -53, ans: 16),
-  FiveTen4Row(digit1: 73, digit2: -52, digit3: 41, digit4: 34, ans: 96),
-  FiveTen4Row(digit1: 92, digit2: -61, digit3: 42, digit4: 24, ans: 97),
-  FiveTen4Row(digit1: 62, digit2: -50, digit3: 46, digit4: 21, ans: 79),
-  FiveTen4Row(digit1: 50, digit2: 37, digit3: -65, digit4: 24, ans: 46),
-  FiveTen4Row(digit1: 41, digit2: 43, digit3: -60, digit4: 44, ans: 68),
-  FiveTen4Row(digit1: 20, digit2: 46, digit3: -51, digit4: 47, ans: 62),
-  FiveTen4Row(digit1: 83, digit2: -52, digit3: 43, digit4: -61, ans: 13),
-  FiveTen4Row(digit1: 64, digit2: -53, digit3: 57, digit4: -16, ans: 52),
-  FiveTen4Row(digit1: 59, digit2: 20, digit3: -63, digit4: 42, ans: 58),
-  FiveTen4Row(digit1: 77, digit2: 12, digit3: -64, digit4: 43, ans: 68),
-  FiveTen4Row(digit1: 82, digit2: -31, digit3: 41, digit4: -81, ans: 11),
-  FiveTen4Row(digit1: 85, digit2: -50, digit3: 42, digit4: -51, ans: 26),
-  FiveTen4Row(digit1: 58, digit2: 21, digit3: -67, digit4: 42, ans: 54),
-  FiveTen4Row(digit1: 37, digit2: 42, digit3: -63, digit4: 51, ans: 67),
-  FiveTen4Row(digit1: 92, digit2: -81, digit3: 64, digit4: -50, ans: 25),
-  FiveTen4Row(digit1: 14, digit2: 14, digit3: -16, digit4: 46, ans: 58),
-  FiveTen4Row(digit1: 57, digit2: 21, digit3: -52, digit4: 43, ans: 69),
-  FiveTen4Row(digit1: 64, digit2: -52, digit3: 35, digit4: -26, ans: 21),
-  FiveTen4Row(digit1: 20, digit2: 46, digit3: -51, digit4: 42, ans: 57),
-  FiveTen4Row(digit1: 42, digit2: 42, digit3: -53, digit4: 12, ans: 43),
-  FiveTen4Row(digit1: 79, digit2: -54, digit3: 42, digit4: -16, ans: 51),
-  FiveTen4Row(digit1: 25, digit2: 43, digit3: -67, digit4: 44, ans: 45),
-  FiveTen4Row(digit1: 24, digit2: 45, digit3: -51, digit4: 41, ans: 59),
-  FiveTen4Row(digit1: 31, digit2: -20, digit3: 46, digit4: 21, ans: 78),
-  FiveTen4Row(digit1: 98, digit2: -63, digit3: 42, digit4: -52, ans: 25),
-  FiveTen4Row(digit1: 83, digit2: -52, digit3: 41, digit4: -61, ans: 11),
-  FiveTen4Row(digit1: 72, digit2: -61, digit3: 43, digit4: 25, ans: 79),
-  FiveTen4Row(digit1: 32, digit2: -10, digit3: 46, digit4: -57, ans: 11),
-  FiveTen4Row(digit1: 56, digit2: 23, digit3: -52, digit4: 41, ans: 68),
-  FiveTen4Row(digit1: 17, digit2: 42, digit3: 30, digit4: -57, ans: 32),
-  FiveTen4Row(digit1: 94, digit2: -82, digit3: 41, digit4: 42, ans: 95),
-  FiveTen4Row(digit1: 67, digit2: -55, digit3: 42, digit4: 14, ans: 68),
-  FiveTen4Row(digit1: 73, digit2: -52, digit3: 41, digit4: -50, ans: 12),
-  FiveTen4Row(digit1: 26, digit2: 43, digit3: -57, digit4: 41, ans: 53),
-  FiveTen4Row(digit1: 94, digit2: -62, digit3: 52, digit4: -62, ans: 22),
-  FiveTen4Row(digit1: 31, digit2: 45, digit3: -25, digit4: 34, ans: 85),
-  FiveTen4Row(digit1: 52, digit2: 44, digit3: -85, digit4: 46, ans: 57),
-  FiveTen4Row(digit1: 67, digit2: -51, digit3: 43, digit4: 30, ans: 89),
-  FiveTen4Row(digit1: 23, digit2: 45, digit3: -56, digit4: 42, ans: 54),
-  FiveTen4Row(digit1: 47, digit2: -25, digit3: 46, digit4: -52, ans: 16),
-  FiveTen4Row(digit1: 68, digit2: -56, digit3: 44, digit4: 13, ans: 69),
-  FiveTen4Row(digit1: 97, digit2: -65, digit3: 46, digit4: -56, ans: 22),
-  FiveTen4Row(digit1: 25, digit2: 43, digit3: -57, digit4: 46, ans: 57),
-  FiveTen4Row(digit1: 63, digit2: -52, digit3: 48, digit4: 20, ans: 79),
-  FiveTen4Row(digit1: 53, digit2: 24, digit3: -52, digit4: 12, ans: 37),
-  FiveTen4Row(digit1: 42, digit2: 42, digit3: -51, digit4: 46, ans: 79),
-  FiveTen4Row(digit1: 85, digit2: -50, digit3: 42, digit4: -52, ans: 25),
-  FiveTen4Row(digit1: 64, digit2: -52, digit3: 42, digit4: 15, ans: 69),
-  FiveTen4Row(digit1: 79, digit2: -64, digit3: 42, digit4: 12, ans: 69),
-  FiveTen4Row(digit1: 53, digit2: 14, digit3: -55, digit4: 41, ans: 53),
-  FiveTen4Row(digit1: 34, digit2: 14, digit3: 51, digit4: -67, ans: 32),
-  FiveTen4Row(digit1: 72, digit2: -51, digit3: 46, digit4: -41, ans: 26),
-  FiveTen4Row(digit1: 67, digit2: -52, digit3: 42, digit4: 21, ans: 78),
-  FiveTen4Row(digit1: 35, digit2: 42, digit3: -65, digit4: 46, ans: 58),
-  FiveTen4Row(digit1: 65, digit2: 13, digit3: -65, digit4: 45, ans: 58),
-  FiveTen4Row(digit1: 54, digit2: 15, digit3: -57, digit4: 42, ans: 54),
-  FiveTen4Row(digit1: 58, digit2: 21, digit3: -64, digit4: 43, ans: 58),
-  FiveTen4Row(digit1: 95, digit2: -60, digit3: 42, digit4: -51, ans: 26),
-  FiveTen4Row(digit1: 73, digit2: -62, digit3: 46, digit4: 21, ans: 78),
-  FiveTen4Row(digit1: 53, digit2: 24, digit3: -26, digit4: 13, ans: 64),
-  FiveTen4Row(digit1: 28, digit2: 40, digit3: -56, digit4: 42, ans: 54),
-  FiveTen4Row(digit1: 82, digit2: -51, digit3: 43, digit4: 15, ans: 89),
-  FiveTen4Row(digit1: 61, digit2: -50, digit3: 43, digit4: 25, ans: 79),
-  FiveTen4Row(digit1: 19, digit2: 40, digit3: 20, digit4: -57, ans: 22),
-  FiveTen4Row(digit1: 92, digit2: -61, digit3: 43, digit4: -51, ans: 23),
-  FiveTen4Row(digit1: 78, digit2: -25, digit3: 46, digit4: -53, ans: 46),
-  FiveTen4Row(digit1: 34, digit2: 15, digit3: -27, digit4: 46, ans: 68),
-  FiveTen4Row(digit1: 27, digit2: 41, digit3: -55, digit4: 41, ans: 54),
-  FiveTen4Row(digit1: 63, digit2: 14, digit3: 21, digit4: -65, ans: 33),
-  FiveTen4Row(digit1: 58, digit2: 30, digit3: -53, digit4: -10, ans: 25),
-  FiveTen4Row(digit1: 69, digit2: -57, digit3: 45, digit4: 21, ans: 78),
-  FiveTen4Row(digit1: 52, digit2: 15, digit3: -52, digit4: 42, ans: 57),
-  FiveTen4Row(digit1: 46, digit2: -25, digit3: 46, digit4: -55, ans: 12),
-  FiveTen4Row(digit1: 31, digit2: 42, digit3: -62, digit4: 53, ans: 64),
-  FiveTen4Row(digit1: 95, digit2: -60, digit3: 42, digit4: -52, ans: 25),
-  FiveTen4Row(digit1: 63, digit2: -52, digit3: 43, digit4: 25, ans: 79),
-  FiveTen4Row(digit1: 79, digit2: -64, digit3: 42, digit4: 12, ans: 69),
-  FiveTen4Row(digit1: 46, digit2: 42, digit3: -63, digit4: 42, ans: 67),
-  FiveTen4Row(digit1: 96, digit2: -75, digit3: 46, digit4: 21, ans: 88),
-  FiveTen4Row(digit1: 42, digit2: -22, digit3: 46, digit4: -51, ans: 15),
-  FiveTen4Row(digit1: 63, digit2: -52, digit3: 43, digit4: 25, ans: 79),
-  FiveTen4Row(digit1: 75, digit2: -50, digit3: 42, digit4: 12, ans: 79),
-  FiveTen4Row(digit1: 99, digit2: -53, digit3: 41, digit4: -65, ans: 22),
-  FiveTen4Row(digit1: 60, digit2: 36, digit3: -62, digit4: 44, ans: 78),
-  FiveTen4Row(digit1: 65, digit2: -50, digit3: 43, digit4: 10, ans: 68),
+List<FourDigit> fivePlusFour4Row22 = [
+  FourDigit(digit1: 62, digit2: 24, digit3: -51, digit4: 14, ans: 49),
+  FourDigit(digit1: 98, digit2: -55, digit3: 41, digit4: 14, ans: 98),
+  FourDigit(digit1: 12, digit2: 35, digit3: -25, digit4: 45, ans: 67),
+  FourDigit(digit1: 87, digit2: -65, digit3: 42, digit4: 15, ans: 79),
+  FourDigit(digit1: 23, digit2: 45, digit3: -57, digit4: 43, ans: 54),
+  FourDigit(digit1: 66, digit2: -51, digit3: 40, digit4: 23, ans: 78),
+  FourDigit(digit1: 49, digit2: -25, digit3: 45, digit4: -57, ans: 12),
+  FourDigit(digit1: 31, digit2: 45, digit3: -51, digit4: 43, ans: 68),
+  FourDigit(digit1: 16, digit2: 42, digit3: 31, digit4: -76, ans: 13),
+  FourDigit(digit1: 54, digit2: 24, digit3: -51, digit4: 42, ans: 69),
+  FourDigit(digit1: 87, digit2: -52, digit3: 41, digit4: -55, ans: 21),
+  FourDigit(digit1: 37, digit2: 11, digit3: 41, digit4: -67, ans: 22),
+  FourDigit(digit1: 13, digit2: 41, digit3: -52, digit4: 84, ans: 86),
+  FourDigit(digit1: 72, digit2: -51, digit3: 44, digit4: -15, ans: 50),
+  FourDigit(digit1: 94, digit2: -72, digit3: 41, digit4: 14, ans: 77),
+  FourDigit(digit1: 63, digit2: -52, digit3: 47, digit4: 41, ans: 99),
+  FourDigit(digit1: 61, digit2: 24, digit3: -60, digit4: 43, ans: 68),
+  FourDigit(digit1: 59, digit2: 20, digit3: -57, digit4: 46, ans: 68),
+  FourDigit(digit1: 73, digit2: -52, digit3: 43, digit4: 24, ans: 88),
+  FourDigit(digit1: 84, digit2: -53, digit3: 44, digit4: -25, ans: 50),
+  FourDigit(digit1: 45, digit2: 53, digit3: -66, digit4: 44, ans: 76),
+  FourDigit(digit1: 19, digit2: 40, digit3: 20, digit4: -67, ans: 12),
+  FourDigit(digit1: 57, digit2: 12, digit3: -57, digit4: 41, ans: 53),
+  FourDigit(digit1: 35, digit2: 14, digit3: -27, digit4: 45, ans: 67),
+  FourDigit(digit1: 86, digit2: -51, digit3: 42, digit4: -52, ans: 25),
+  FourDigit(digit1: 38, digit2: 11, digit3: -49, digit4: 34, ans: 34),
+  FourDigit(digit1: 91, digit2: -60, digit3: 42, digit4: -23, ans: 50),
+  FourDigit(digit1: 65, digit2: 20, digit3: -50, digit4: 43, ans: 78),
+  FourDigit(digit1: 31, digit2: 14, digit3: 52, digit4: -65, ans: 32),
+  FourDigit(digit1: 63, digit2: -52, digit3: 43, digit4: 24, ans: 78),
+  FourDigit(digit1: 57, digit2: -52, digit3: 43, digit4: -27, ans: 21),
+  FourDigit(digit1: 25, digit2: 13, digit3: 41, digit4: -65, ans: 14),
+  FourDigit(digit1: 96, digit2: -51, digit3: 42, digit4: -52, ans: 35),
+  FourDigit(digit1: 42, digit2: 41, digit3: -61, digit4: 54, ans: 76),
+  FourDigit(digit1: 87, digit2: -56, digit3: 44, digit4: -50, ans: 25),
+  FourDigit(digit1: 96, digit2: -55, digit3: 43, digit4: -62, ans: 22),
+  FourDigit(digit1: 34, digit2: 44, digit3: -57, digit4: 26, ans: 47),
+  FourDigit(digit1: 85, digit2: -50, digit3: 43, digit4: -65, ans: 13),
+  FourDigit(digit1: 79, digit2: -56, digit3: 45, digit4: -47, ans: 21),
+  FourDigit(digit1: 57, digit2: 31, digit3: -53, digit4: 42, ans: 77),
+  FourDigit(digit1: 93, digit2: -62, digit3: 44, digit4: -50, ans: 25),
+  FourDigit(digit1: 75, digit2: 14, digit3: -56, digit4: 45, ans: 78),
+  FourDigit(digit1: 32, digit2: 41, digit3: -52, digit4: 76, ans: 97),
+  FourDigit(digit1: 97, digit2: -52, digit3: 43, digit4: -67, ans: 21),
+  FourDigit(digit1: 12, digit2: 45, digit3: 12, digit4: -58, ans: 11),
+  FourDigit(digit1: 74, digit2: -64, digit3: 45, digit4: 23, ans: 78),
+  FourDigit(digit1: 87, digit2: -55, digit3: 42, digit4: -53, ans: 21),
+  FourDigit(digit1: 28, digit2: -15, digit3: 46, digit4: 20, ans: 79),
+  FourDigit(digit1: 91, digit2: -50, digit3: 43, digit4: -32, ans: 52),
+  FourDigit(digit1: 74, digit2: -52, digit3: 64, digit4: -55, ans: 31),
+  FourDigit(digit1: 17, digit2: 42, digit3: -53, digit4: 62, ans: 68),
+  FourDigit(digit1: 23, digit2: 45, digit3: -53, digit4: 41, ans: 56),
+  FourDigit(digit1: 68, digit2: -53, digit3: 42, digit4: 21, ans: 78),
+  FourDigit(digit1: 15, digit2: 24, digit3: -26, digit4: 44, ans: 57),
+  FourDigit(digit1: 82, digit2: -51, digit3: 43, digit4: -52, ans: 22),
+  FourDigit(digit1: 74, digit2: -52, digit3: 15, digit4: 12, ans: 49),
+  FourDigit(digit1: 61, digit2: 23, digit3: -52, digit4: 14, ans: 46),
+  FourDigit(digit1: 75, digit2: 24, digit3: -54, digit4: 41, ans: 86),
+  FourDigit(digit1: 32, digit2: 15, digit3: -26, digit4: 74, ans: 95),
+  FourDigit(digit1: 27, digit2: 12, digit3: -24, digit4: 44, ans: 59),
+  FourDigit(digit1: 62, digit2: -51, digit3: 76, digit4: -52, ans: 35),
+  FourDigit(digit1: 94, digit2: -42, digit3: 14, digit4: -50, ans: 16),
+  FourDigit(digit1: 71, digit2: 14, digit3: -65, digit4: 43, ans: 63),
+  FourDigit(digit1: 90, digit2: -50, digit3: 46, digit4: -51, ans: 35),
+  FourDigit(digit1: 16, digit2: 42, digit3: 21, digit4: -68, ans: 11),
+  FourDigit(digit1: 23, digit2: 41, digit3: -53, digit4: 46, ans: 57),
+  FourDigit(digit1: 47, digit2: -26, digit3: 45, digit4: 32, ans: 98),
+  FourDigit(digit1: 52, digit2: 41, digit3: -51, digit4: 46, ans: 88),
+  FourDigit(digit1: 28, digit2: -15, digit3: 44, digit4: 21, ans: 78),
+  FourDigit(digit1: 64, digit2: 15, digit3: -58, digit4: 24, ans: 45),
+  FourDigit(digit1: 50, digit2: 34, digit3: -62, digit4: 41, ans: 63),
+  FourDigit(digit1: 93, digit2: -61, digit3: 45, digit4: -51, ans: 26),
+  FourDigit(digit1: 74, digit2: -23, digit3: 34, digit4: -61, ans: 24),
+  FourDigit(digit1: 44, digit2: 45, digit3: -67, digit4: 25, ans: 47),
+  FourDigit(digit1: 53, digit2: 24, digit3: -56, digit4: 42, ans: 63),
+  FourDigit(digit1: 34, digit2: 54, digit3: -53, digit4: 51, ans: 86),
+  FourDigit(digit1: 76, digit2: -25, digit3: 44, digit4: -60, ans: 35),
+  FourDigit(digit1: 64, digit2: -52, digit3: 46, digit4: 31, ans: 89),
+  FourDigit(digit1: 29, digit2: -17, digit3: 46, digit4: 10, ans: 68),
+  FourDigit(digit1: 43, digit2: -32, digit3: 61, digit4: 14, ans: 86),
+  FourDigit(digit1: 84, digit2: -52, digit3: 41, digit4: -62, ans: 11),
+  FourDigit(digit1: 67, digit2: -12, digit3: 33, digit4: -53, ans: 35),
+  FourDigit(digit1: 94, digit2: -82, digit3: 42, digit4: 45, ans: 99),
+  FourDigit(digit1: 69, digit2: -51, digit3: 40, digit4: 11, ans: 69),
+  FourDigit(digit1: 33, digit2: 12, digit3: 43, digit4: -53, ans: 35),
+  FourDigit(digit1: 71, digit2: -50, digit3: 43, digit4: 14, ans: 78),
+  FourDigit(digit1: 95, digit2: -40, digit3: 24, digit4: -67, ans: 12),
+  FourDigit(digit1: 67, digit2: -56, digit3: 54, digit4: 13, ans: 78),
+  FourDigit(digit1: 40, digit2: 56, digit3: -65, digit4: 44, ans: 75),
+  FourDigit(digit1: 37, digit2: -25, digit3: 45, digit4: 12, ans: 69),
+  FourDigit(digit1: 54, digit2: 24, digit3: -56, digit4: 46, ans: 68),
+  FourDigit(digit1: 16, digit2: 23, digit3: 40, digit4: -51, ans: 28),
+  FourDigit(digit1: 42, digit2: -31, digit3: 24, digit4: 43, ans: 78),
+  FourDigit(digit1: 98, digit2: -63, digit3: 42, digit4: -51, ans: 26),
+  FourDigit(digit1: 84, digit2: -63, digit3: 44, digit4: -50, ans: 15),
+  FourDigit(digit1: 54, digit2: 24, digit3: -56, digit4: 42, ans: 64),
+  FourDigit(digit1: 79, digit2: -63, digit3: 42, digit4: 31, ans: 89),
+  FourDigit(digit1: 64, digit2: -52, digit3: 41, digit4: 24, ans: 77),
+  FourDigit(digit1: 74, digit2: -52, digit3: 46, digit4: 21, ans: 89),
+  FourDigit(digit1: 92, digit2: -71, digit3: 46, digit4: -52, ans: 15),
+  FourDigit(digit1: 95, digit2: -80, digit3: 64, digit4: -54, ans: 25),
+  FourDigit(digit1: 70, digit2: 25, digit3: -60, digit4: 44, ans: 79),
+  FourDigit(digit1: 63, digit2: -51, digit3: 42, digit4: 15, ans: 69),
+  FourDigit(digit1: 83, digit2: -51, digit3: 46, digit4: -63, ans: 15),
+  FourDigit(digit1: 98, digit2: -43, digit3: 12, digit4: -56, ans: 11),
+  FourDigit(digit1: 83, digit2: -32, digit3: 42, digit4: -73, ans: 20),
+  FourDigit(digit1: 27, digit2: 41, digit3: -53, digit4: 42, ans: 57),
+  FourDigit(digit1: 43, digit2: -21, digit3: 56, digit4: -53, ans: 25),
+  FourDigit(digit1: 54, digit2: 24, digit3: -56, digit4: 24, ans: 46),
+  FourDigit(digit1: 67, digit2: -52, digit3: 43, digit4: 21, ans: 79),
+  FourDigit(digit1: 55, digit2: 32, digit3: -67, digit4: 43, ans: 63),
+  FourDigit(digit1: 29, digit2: -17, digit3: 46, digit4: 21, ans: 79),
+  FourDigit(digit1: 51, digit2: 24, digit3: -60, digit4: 43, ans: 58),
+  FourDigit(digit1: 40, digit2: 36, digit3: -55, digit4: 43, ans: 64),
+  FourDigit(digit1: 84, digit2: -64, digit3: 49, digit4: -53, ans: 16),
+  FourDigit(digit1: 73, digit2: -52, digit3: 41, digit4: 34, ans: 96),
+  FourDigit(digit1: 92, digit2: -61, digit3: 42, digit4: 24, ans: 97),
+  FourDigit(digit1: 62, digit2: -50, digit3: 46, digit4: 21, ans: 79),
+  FourDigit(digit1: 50, digit2: 37, digit3: -65, digit4: 24, ans: 46),
+  FourDigit(digit1: 41, digit2: 43, digit3: -60, digit4: 44, ans: 68),
+  FourDigit(digit1: 20, digit2: 46, digit3: -51, digit4: 47, ans: 62),
+  FourDigit(digit1: 83, digit2: -52, digit3: 43, digit4: -61, ans: 13),
+  FourDigit(digit1: 64, digit2: -53, digit3: 57, digit4: -16, ans: 52),
+  FourDigit(digit1: 59, digit2: 20, digit3: -63, digit4: 42, ans: 58),
+  FourDigit(digit1: 77, digit2: 12, digit3: -64, digit4: 43, ans: 68),
+  FourDigit(digit1: 82, digit2: -31, digit3: 41, digit4: -81, ans: 11),
+  FourDigit(digit1: 85, digit2: -50, digit3: 42, digit4: -51, ans: 26),
+  FourDigit(digit1: 58, digit2: 21, digit3: -67, digit4: 42, ans: 54),
+  FourDigit(digit1: 37, digit2: 42, digit3: -63, digit4: 51, ans: 67),
+  FourDigit(digit1: 92, digit2: -81, digit3: 64, digit4: -50, ans: 25),
+  FourDigit(digit1: 14, digit2: 14, digit3: -16, digit4: 46, ans: 58),
+  FourDigit(digit1: 57, digit2: 21, digit3: -52, digit4: 43, ans: 69),
+  FourDigit(digit1: 64, digit2: -52, digit3: 35, digit4: -26, ans: 21),
+  FourDigit(digit1: 20, digit2: 46, digit3: -51, digit4: 42, ans: 57),
+  FourDigit(digit1: 42, digit2: 42, digit3: -53, digit4: 12, ans: 43),
+  FourDigit(digit1: 79, digit2: -54, digit3: 42, digit4: -16, ans: 51),
+  FourDigit(digit1: 25, digit2: 43, digit3: -67, digit4: 44, ans: 45),
+  FourDigit(digit1: 24, digit2: 45, digit3: -51, digit4: 41, ans: 59),
+  FourDigit(digit1: 31, digit2: -20, digit3: 46, digit4: 21, ans: 78),
+  FourDigit(digit1: 98, digit2: -63, digit3: 42, digit4: -52, ans: 25),
+  FourDigit(digit1: 83, digit2: -52, digit3: 41, digit4: -61, ans: 11),
+  FourDigit(digit1: 72, digit2: -61, digit3: 43, digit4: 25, ans: 79),
+  FourDigit(digit1: 32, digit2: -10, digit3: 46, digit4: -57, ans: 11),
+  FourDigit(digit1: 56, digit2: 23, digit3: -52, digit4: 41, ans: 68),
+  FourDigit(digit1: 17, digit2: 42, digit3: 30, digit4: -57, ans: 32),
+  FourDigit(digit1: 94, digit2: -82, digit3: 41, digit4: 42, ans: 95),
+  FourDigit(digit1: 67, digit2: -55, digit3: 42, digit4: 14, ans: 68),
+  FourDigit(digit1: 73, digit2: -52, digit3: 41, digit4: -50, ans: 12),
+  FourDigit(digit1: 26, digit2: 43, digit3: -57, digit4: 41, ans: 53),
+  FourDigit(digit1: 94, digit2: -62, digit3: 52, digit4: -62, ans: 22),
+  FourDigit(digit1: 31, digit2: 45, digit3: -25, digit4: 34, ans: 85),
+  FourDigit(digit1: 52, digit2: 44, digit3: -85, digit4: 46, ans: 57),
+  FourDigit(digit1: 67, digit2: -51, digit3: 43, digit4: 30, ans: 89),
+  FourDigit(digit1: 23, digit2: 45, digit3: -56, digit4: 42, ans: 54),
+  FourDigit(digit1: 47, digit2: -25, digit3: 46, digit4: -52, ans: 16),
+  FourDigit(digit1: 68, digit2: -56, digit3: 44, digit4: 13, ans: 69),
+  FourDigit(digit1: 97, digit2: -65, digit3: 46, digit4: -56, ans: 22),
+  FourDigit(digit1: 25, digit2: 43, digit3: -57, digit4: 46, ans: 57),
+  FourDigit(digit1: 63, digit2: -52, digit3: 48, digit4: 20, ans: 79),
+  FourDigit(digit1: 53, digit2: 24, digit3: -52, digit4: 12, ans: 37),
+  FourDigit(digit1: 42, digit2: 42, digit3: -51, digit4: 46, ans: 79),
+  FourDigit(digit1: 85, digit2: -50, digit3: 42, digit4: -52, ans: 25),
+  FourDigit(digit1: 64, digit2: -52, digit3: 42, digit4: 15, ans: 69),
+  FourDigit(digit1: 79, digit2: -64, digit3: 42, digit4: 12, ans: 69),
+  FourDigit(digit1: 53, digit2: 14, digit3: -55, digit4: 41, ans: 53),
+  FourDigit(digit1: 34, digit2: 14, digit3: 51, digit4: -67, ans: 32),
+  FourDigit(digit1: 72, digit2: -51, digit3: 46, digit4: -41, ans: 26),
+  FourDigit(digit1: 67, digit2: -52, digit3: 42, digit4: 21, ans: 78),
+  FourDigit(digit1: 35, digit2: 42, digit3: -65, digit4: 46, ans: 58),
+  FourDigit(digit1: 65, digit2: 13, digit3: -65, digit4: 45, ans: 58),
+  FourDigit(digit1: 54, digit2: 15, digit3: -57, digit4: 42, ans: 54),
+  FourDigit(digit1: 58, digit2: 21, digit3: -64, digit4: 43, ans: 58),
+  FourDigit(digit1: 95, digit2: -60, digit3: 42, digit4: -51, ans: 26),
+  FourDigit(digit1: 73, digit2: -62, digit3: 46, digit4: 21, ans: 78),
+  FourDigit(digit1: 53, digit2: 24, digit3: -26, digit4: 13, ans: 64),
+  FourDigit(digit1: 28, digit2: 40, digit3: -56, digit4: 42, ans: 54),
+  FourDigit(digit1: 82, digit2: -51, digit3: 43, digit4: 15, ans: 89),
+  FourDigit(digit1: 61, digit2: -50, digit3: 43, digit4: 25, ans: 79),
+  FourDigit(digit1: 19, digit2: 40, digit3: 20, digit4: -57, ans: 22),
+  FourDigit(digit1: 92, digit2: -61, digit3: 43, digit4: -51, ans: 23),
+  FourDigit(digit1: 78, digit2: -25, digit3: 46, digit4: -53, ans: 46),
+  FourDigit(digit1: 34, digit2: 15, digit3: -27, digit4: 46, ans: 68),
+  FourDigit(digit1: 27, digit2: 41, digit3: -55, digit4: 41, ans: 54),
+  FourDigit(digit1: 63, digit2: 14, digit3: 21, digit4: -65, ans: 33),
+  FourDigit(digit1: 58, digit2: 30, digit3: -53, digit4: -10, ans: 25),
+  FourDigit(digit1: 69, digit2: -57, digit3: 45, digit4: 21, ans: 78),
+  FourDigit(digit1: 52, digit2: 15, digit3: -52, digit4: 42, ans: 57),
+  FourDigit(digit1: 46, digit2: -25, digit3: 46, digit4: -55, ans: 12),
+  FourDigit(digit1: 31, digit2: 42, digit3: -62, digit4: 53, ans: 64),
+  FourDigit(digit1: 95, digit2: -60, digit3: 42, digit4: -52, ans: 25),
+  FourDigit(digit1: 63, digit2: -52, digit3: 43, digit4: 25, ans: 79),
+  FourDigit(digit1: 79, digit2: -64, digit3: 42, digit4: 12, ans: 69),
+  FourDigit(digit1: 46, digit2: 42, digit3: -63, digit4: 42, ans: 67),
+  FourDigit(digit1: 96, digit2: -75, digit3: 46, digit4: 21, ans: 88),
+  FourDigit(digit1: 42, digit2: -22, digit3: 46, digit4: -51, ans: 15),
+  FourDigit(digit1: 63, digit2: -52, digit3: 43, digit4: 25, ans: 79),
+  FourDigit(digit1: 75, digit2: -50, digit3: 42, digit4: 12, ans: 79),
+  FourDigit(digit1: 99, digit2: -53, digit3: 41, digit4: -65, ans: 22),
+  FourDigit(digit1: 60, digit2: 36, digit3: -62, digit4: 44, ans: 78),
+  FourDigit(digit1: 65, digit2: -50, digit3: 43, digit4: 10, ans: 68),
 ];
-List<FiveTen5Row> fivePlusFour5Row11 = [
-  FiveTen5Row(digit1: 2, digit2: 5, digit3: -6, digit4: 4, digit5: 3, ans: 8),
-  FiveTen5Row(digit1: 9, digit2: -5, digit3: 4, digit4: -6, digit5: 2, ans: 4),
-  FiveTen5Row(digit1: 7, digit2: -1, digit3: -5, digit4: 4, digit5: 3, ans: 8),
-  FiveTen5Row(digit1: 9, digit2: -7, digit3: 4, digit4: -5, digit5: 6, ans: 7),
-  FiveTen5Row(digit1: 6, digit2: 2, digit3: -7, digit4: 4, digit5: 2, ans: 7),
-  FiveTen5Row(digit1: 8, digit2: -3, digit3: -5, digit4: 4, digit5: 4, ans: 8),
-  FiveTen5Row(digit1: 1, digit2: 2, digit3: -2, digit4: 3, digit5: 4, ans: 8),
-  FiveTen5Row(digit1: 9, digit2: -5, digit3: 4, digit4: -3, digit5: 2, ans: 7),
-  FiveTen5Row(digit1: 3, digit2: 4, digit3: -5, digit4: 4, digit5: -1, ans: 5),
-  FiveTen5Row(digit1: 2, digit2: 1, digit3: 4, digit4: -5, digit5: 2, ans: 4),
-  FiveTen5Row(digit1: 7, digit2: -5, digit3: 4, digit4: 2, digit5: -6, ans: 2),
-  FiveTen5Row(digit1: 5, digit2: 4, digit3: -7, digit4: 4, digit5: -5, ans: 1),
-  FiveTen5Row(digit1: 8, digit2: 1, digit3: -6, digit4: 4, digit5: -5, ans: 2),
-  FiveTen5Row(digit1: 2, digit2: 2, digit3: 5, digit4: -6, digit5: 4, ans: 7),
-  FiveTen5Row(digit1: 3, digit2: 1, digit3: 4, digit4: -7, digit5: 4, ans: 5),
-  FiveTen5Row(digit1: 8, digit2: -7, digit3: 4, digit4: 4, digit5: -8, ans: 1),
-  FiveTen5Row(digit1: 3, digit2: -2, digit3: 4, digit4: 2, digit5: -6, ans: 1),
-  FiveTen5Row(digit1: 9, digit2: -6, digit3: 4, digit4: -5, digit5: 4, ans: 6),
-  FiveTen5Row(digit1: 7, digit2: -5, digit3: 4, digit4: -6, digit5: 2, ans: 2),
-  FiveTen5Row(digit1: 9, digit2: -5, digit3: 4, digit4: -7, digit5: 4, ans: 5),
-  FiveTen5Row(digit1: 6, digit2: -5, digit3: 4, digit4: -5, digit5: 7, ans: 7),
-  FiveTen5Row(digit1: 3, digit2: 4, digit3: -5, digit4: 2, digit5: 4, ans: 8),
-  FiveTen5Row(digit1: 9, digit2: -6, digit3: 4, digit4: -6, digit5: 4, ans: 5),
-  FiveTen5Row(digit1: 4, digit2: 4, digit3: -6, digit4: 5, digit5: -5, ans: 2),
-  FiveTen5Row(digit1: 3, digit2: 5, digit3: -6, digit4: 4, digit5: 3, ans: 9),
-  FiveTen5Row(digit1: 8, digit2: -7, digit3: 4, digit4: 2, digit5: -5, ans: 2),
-  FiveTen5Row(digit1: 1, digit2: 4, digit3: 3, digit4: -6, digit5: 2, ans: 4),
-  FiveTen5Row(digit1: 3, digit2: 1, digit3: 4, digit4: -5, digit5: 4, ans: 7),
-  FiveTen5Row(digit1: 8, digit2: -5, digit3: 4, digit4: -5, digit5: 4, ans: 6),
-  FiveTen5Row(digit1: 4, digit2: -3, digit3: 4, digit4: 3, digit5: -7, ans: 1),
-  FiveTen5Row(digit1: 6, digit2: -5, digit3: 4, digit4: 2, digit5: -5, ans: 2),
-  FiveTen5Row(digit1: 3, digit2: 1, digit3: 4, digit4: -7, digit5: 4, ans: 5),
-  FiveTen5Row(digit1: 9, digit2: -7, digit3: 4, digit4: -5, digit5: 4, ans: 5),
-  FiveTen5Row(digit1: 7, digit2: -5, digit3: 4, digit4: 3, digit5: -8, ans: 1),
-  FiveTen5Row(digit1: 5, digit2: 3, digit3: -5, digit4: 4, digit5: -2, ans: 5),
-  FiveTen5Row(digit1: 2, digit2: 4, digit3: 2, digit4: -5, digit5: 4, ans: 7),
-  FiveTen5Row(digit1: 6, digit2: -5, digit3: 4, digit4: 2, digit5: -6, ans: 1),
-  FiveTen5Row(digit1: 3, digit2: -1, digit3: 4, digit4: -5, digit5: 2, ans: 3),
-  FiveTen5Row(digit1: 4, digit2: -2, digit3: 4, digit4: -6, digit5: 5, ans: 5),
-  FiveTen5Row(digit1: 9, digit2: -5, digit3: 4, digit4: -5, digit5: 6, ans: 9),
-  FiveTen5Row(digit1: 5, digit2: 3, digit3: -6, digit4: 4, digit5: 2, ans: 8),
-  FiveTen5Row(digit1: 1, digit2: 2, digit3: 4, digit4: -5, digit5: 4, ans: 6),
-  FiveTen5Row(digit1: 2, digit2: 4, digit3: -5, digit4: 4, digit5: 2, ans: 7),
-  FiveTen5Row(digit1: 6, digit2: -5, digit3: 4, digit4: 3, digit5: -7, ans: 1),
-  FiveTen5Row(digit1: 3, digit2: 4, digit3: -5, digit4: 2, digit5: 4, ans: 8),
-  FiveTen5Row(digit1: 4, digit2: 4, digit3: -7, digit4: 5, digit5: 3, ans: 9),
-  FiveTen5Row(digit1: 8, digit2: -2, digit3: -5, digit4: 4, digit5: 3, ans: 8),
-  FiveTen5Row(digit1: 9, digit2: -7, digit3: 4, digit4: 3, digit5: -6, ans: 3),
-  FiveTen5Row(digit1: 1, digit2: 5, digit3: 3, digit4: -7, digit5: 4, ans: 6),
-  FiveTen5Row(digit1: 8, digit2: -3, digit3: 4, digit4: -7, digit5: 4, ans: 6),
-  FiveTen5Row(digit1: 6, digit2: -5, digit3: 4, digit4: 3, digit5: -6, ans: 2),
-  FiveTen5Row(digit1: 7, digit2: -5, digit3: 4, digit4: 3, digit5: -7, ans: 2),
-  FiveTen5Row(digit1: 1, digit2: 2, digit3: 1, digit4: 4, digit5: -6, ans: 2),
-  FiveTen5Row(digit1: 8, digit2: -3, digit3: 4, digit4: -6, digit5: 1, ans: 4),
-  FiveTen5Row(digit1: 2, digit2: 2, digit3: 4, digit4: -5, digit5: 4, ans: 7),
-  FiveTen5Row(digit1: 6, digit2: -5, digit3: 4, digit4: 3, digit5: -6, ans: 2),
-  FiveTen5Row(digit1: 9, digit2: -6, digit3: -3, digit4: 4, digit5: 4, ans: 8),
-  FiveTen5Row(digit1: 4, digit2: -2, digit3: -1, digit4: 8, digit5: -5, ans: 4),
-  FiveTen5Row(digit1: 5, digit2: 2, digit3: -5, digit4: 4, digit5: 3, ans: 9),
-  FiveTen5Row(digit1: 3, digit2: 4, digit3: -5, digit4: 2, digit5: 4, ans: 8),
-  FiveTen5Row(digit1: 3, digit2: 1, digit3: 4, digit4: -5, digit5: 4, ans: 7),
-  FiveTen5Row(digit1: 8, digit2: -5, digit3: 4, digit4: -5, digit5: 4, ans: 6),
-  FiveTen5Row(digit1: 4, digit2: -2, digit3: -1, digit4: 4, digit5: 4, ans: 9),
-  FiveTen5Row(digit1: 6, digit2: -5, digit3: 4, digit4: 3, digit5: -7, ans: 1),
-  FiveTen5Row(digit1: 1, digit2: 4, digit3: 3, digit4: -6, digit5: 4, ans: 6),
-  FiveTen5Row(digit1: 3, digit2: -2, digit3: 4, digit4: 4, digit5: -7, ans: 2),
-  FiveTen5Row(digit1: 6, digit2: -1, digit3: 3, digit4: -7, digit5: 4, ans: 5),
-  FiveTen5Row(digit1: 6, digit2: -5, digit3: 4, digit4: 3, digit5: -7, ans: 1),
-  FiveTen5Row(digit1: 2, digit2: 4, digit3: -5, digit4: 4, digit5: 3, ans: 8),
-  FiveTen5Row(digit1: 9, digit2: -6, digit3: 4, digit4: -6, digit5: 5, ans: 6),
-  FiveTen5Row(digit1: 3, digit2: 5, digit3: -7, digit4: 4, digit5: 3, ans: 8),
-  FiveTen5Row(digit1: 1, digit2: 4, digit3: 3, digit4: -6, digit5: 4, ans: 6),
-  FiveTen5Row(digit1: 5, digit2: 3, digit3: -5, digit4: 4, digit5: -5, ans: 2),
-  FiveTen5Row(digit1: 3, digit2: -2, digit3: 1, digit4: 1, digit5: 4, ans: 7),
-  FiveTen5Row(digit1: 4, digit2: -2, digit3: 4, digit4: 3, digit5: -6, ans: 3),
-  FiveTen5Row(digit1: 8, digit2: -5, digit3: 4, digit4: 2, digit5: -4, ans: 5),
-  FiveTen5Row(digit1: 6, digit2: 2, digit3: -5, digit4: 4, digit5: 2, ans: 9),
-  FiveTen5Row(digit1: 3, digit2: 1, digit3: 4, digit4: -5, digit5: 5, ans: 8),
-  FiveTen5Row(digit1: 4, digit2: -1, digit3: -2, digit4: 4, digit5: 3, ans: 8),
-  FiveTen5Row(digit1: 5, digit2: 3, digit3: -6, digit4: 4, digit5: 3, ans: 9),
-  FiveTen5Row(digit1: 5, digit2: 2, digit3: 1, digit4: -5, digit5: 4, ans: 7),
-  FiveTen5Row(digit1: 2, digit2: 1, digit3: 4, digit4: -5, digit5: 4, ans: 6),
-  FiveTen5Row(digit1: 2, digit2: 1, digit3: 3, digit4: -5, digit5: 4, ans: 5),
-  FiveTen5Row(digit1: 6, digit2: -5, digit3: 4, digit4: 3, digit5: 1, ans: 9),
-  FiveTen5Row(digit1: 2, digit2: 5, digit3: -6, digit4: 4, digit5: 3, ans: 8),
-  FiveTen5Row(digit1: 3, digit2: 1, digit3: -2, digit4: 4, digit5: -5, ans: 1),
-  FiveTen5Row(digit1: 9, digit2: -5, digit3: 4, digit4: -6, digit5: 4, ans: 6),
-  FiveTen5Row(digit1: 4, digit2: 4, digit3: -6, digit4: 4, digit5: 3, ans: 9),
-  FiveTen5Row(digit1: 1, digit2: 4, digit3: 2, digit4: -5, digit5: 4, ans: 6),
-  FiveTen5Row(digit1: 7, digit2: -6, digit3: 4, digit4: 3, digit5: -7, ans: 1),
-  FiveTen5Row(digit1: 4, digit2: -3, digit3: 4, digit4: 2, digit5: -6, ans: 1),
-  FiveTen5Row(digit1: 8, digit2: -5, digit3: 4, digit4: -6, digit5: 4, ans: 5),
-  FiveTen5Row(digit1: 2, digit2: 5, digit3: 2, digit4: -5, digit5: 4, ans: 8),
-  FiveTen5Row(digit1: 6, digit2: -5, digit3: 3, digit4: 4, digit5: -6, ans: 2),
-  FiveTen5Row(digit1: 4, digit2: -2, digit3: 4, digit4: -5, digit5: 4, ans: 5),
-  FiveTen5Row(digit1: 2, digit2: 2, digit3: 5, digit4: -7, digit5: 4, ans: 6),
-  FiveTen5Row(digit1: 3, digit2: -2, digit3: 3, digit4: 4, digit5: -6, ans: 2),
-  FiveTen5Row(digit1: 9, digit2: -6, digit3: 4, digit4: 2, digit5: -7, ans: 2),
-  FiveTen5Row(digit1: 1, digit2: 4, digit3: 3, digit4: -6, digit5: 2, ans: 4),
-  FiveTen5Row(digit1: 9, digit2: -5, digit3: 4, digit4: 1, digit5: -6, ans: 3),
-  FiveTen5Row(digit1: 3, digit2: -2, digit3: 4, digit4: 4, digit5: -7, ans: 2),
-  FiveTen5Row(digit1: 5, digit2: 4, digit3: -7, digit4: 4, digit5: 3, ans: 9),
-  FiveTen5Row(digit1: 8, digit2: -6, digit3: 4, digit4: -5, digit5: 4, ans: 5),
-  FiveTen5Row(digit1: 7, digit2: -6, digit3: 4, digit4: 2, digit5: -5, ans: 2),
-  FiveTen5Row(digit1: 3, digit2: -1, digit3: 4, digit4: -5, digit5: 2, ans: 3),
-  FiveTen5Row(digit1: 7, digit2: -5, digit3: 6, digit4: -3, digit5: 2, ans: 7),
-  FiveTen5Row(digit1: 4, digit2: 4, digit3: -5, digit4: 4, digit5: 2, ans: 9),
-  FiveTen5Row(digit1: 9, digit2: -6, digit3: 5, digit4: -7, digit5: 4, ans: 5),
-  FiveTen5Row(digit1: 8, digit2: -5, digit3: 4, digit4: 2, digit5: -5, ans: 4),
-  FiveTen5Row(digit1: 2, digit2: 2, digit3: 5, digit4: -8, digit5: 4, ans: 5),
-  FiveTen5Row(digit1: 7, digit2: -5, digit3: 4, digit4: 2, digit5: -6, ans: 2),
-  FiveTen5Row(digit1: 3, digit2: 5, digit3: -6, digit4: 4, digit5: -5, ans: 1),
-  FiveTen5Row(digit1: 6, digit2: 2, digit3: 1, digit4: -6, digit5: 4, ans: 7),
-  FiveTen5Row(digit1: 1, digit2: 5, digit3: 3, digit4: -7, digit5: 4, ans: 6),
-  FiveTen5Row(digit1: 2, digit2: 1, digit3: 1, digit4: 4, digit5: -5, ans: 3),
-  FiveTen5Row(digit1: 3, digit2: 5, digit3: -6, digit4: 4, digit5: -5, ans: 1),
-  FiveTen5Row(digit1: 8, digit2: -5, digit3: 4, digit4: -6, digit5: 4, ans: 5),
-  FiveTen5Row(digit1: 2, digit2: 5, digit3: -5, digit4: 4, digit5: 1, ans: 7),
-  FiveTen5Row(digit1: 2, digit2: 4, digit3: -5, digit4: 4, digit5: 3, ans: 8),
-  FiveTen5Row(digit1: 6, digit2: 3, digit3: -8, digit4: 4, digit5: 2, ans: 7),
-  FiveTen5Row(digit1: 8, digit2: -3, digit3: 4, digit4: -6, digit5: 4, ans: 7),
-  FiveTen5Row(digit1: 5, digit2: 3, digit3: -5, digit4: 4, digit5: -6, ans: 1),
-  FiveTen5Row(digit1: 2, digit2: 1, digit3: 5, digit4: -7, digit5: 4, ans: 5),
-  FiveTen5Row(digit1: 4, digit2: -1, digit3: -2, digit4: 4, digit5: 3, ans: 8),
-  FiveTen5Row(digit1: 7, digit2: -1, digit3: -1, digit4: 4, digit5: -6, ans: 3),
-  FiveTen5Row(digit1: 5, digit2: 4, digit3: -6, digit4: 4, digit5: 2, ans: 9),
-  FiveTen5Row(digit1: 2, digit2: 2, digit3: 5, digit4: -7, digit5: 4, ans: 6),
-  FiveTen5Row(digit1: 2, digit2: 5, digit3: -6, digit4: 4, digit5: 2, ans: 7),
-  FiveTen5Row(digit1: 5, digit2: 4, digit3: -7, digit4: 4, digit5: 3, ans: 9),
-  FiveTen5Row(digit1: 4, digit2: 4, digit3: -7, digit4: 4, digit5: 3, ans: 8),
-  FiveTen5Row(digit1: 9, digit2: -6, digit3: 3, digit4: 2, digit5: -7, ans: 1),
-  FiveTen5Row(digit1: 3, digit2: 5, digit3: -6, digit4: 4, digit5: 3, ans: 9),
-  FiveTen5Row(digit1: 6, digit2: -5, digit3: 4, digit4: 4, digit5: -7, ans: 2),
-  FiveTen5Row(digit1: 2, digit2: 4, digit3: -5, digit4: 4, digit5: 3, ans: 8),
-  FiveTen5Row(digit1: 1, digit2: 4, digit3: 3, digit4: -7, digit5: 4, ans: 5),
-  FiveTen5Row(digit1: 3, digit2: -2, digit3: 4, digit4: 2, digit5: -5, ans: 2),
-  FiveTen5Row(digit1: 1, digit2: 4, digit3: 4, digit4: -7, digit5: 4, ans: 6),
-  FiveTen5Row(digit1: 9, digit2: -7, digit3: 6, digit4: -5, digit5: 4, ans: 7),
-  FiveTen5Row(digit1: 1, digit2: 5, digit3: -5, digit4: 4, digit5: 3, ans: 8),
-  FiveTen5Row(digit1: 8, digit2: -6, digit3: 4, digit4: 3, digit5: -7, ans: 2),
-  FiveTen5Row(digit1: 4, digit2: -2, digit3: -1, digit4: 4, digit5: 2, ans: 7),
-  FiveTen5Row(digit1: 8, digit2: -5, digit3: 4, digit4: 2, digit5: -7, ans: 2),
-  FiveTen5Row(digit1: 5, digit2: 3, digit3: -6, digit4: 4, digit5: 3, ans: 9),
-  FiveTen5Row(digit1: 6, digit2: -5, digit3: 4, digit4: 3, digit5: 1, ans: 9),
-  FiveTen5Row(digit1: 5, digit2: 4, digit3: -5, digit4: 4, digit5: -7, ans: 1),
-  FiveTen5Row(digit1: 6, digit2: -5, digit3: 4, digit4: 3, digit5: -5, ans: 3),
-  FiveTen5Row(digit1: 1, digit2: 3, digit3: 4, digit4: -6, digit5: 4, ans: 6),
-  FiveTen5Row(digit1: 8, digit2: -7, digit3: 4, digit4: 3, digit5: -6, ans: 2),
-  FiveTen5Row(digit1: 2, digit2: 4, digit3: -5, digit4: 1, digit5: 2, ans: 4),
-  FiveTen5Row(digit1: 7, digit2: -5, digit3: 4, digit4: 3, digit5: -8, ans: 1),
-  FiveTen5Row(digit1: 2, digit2: 4, digit3: -5, digit4: 4, digit5: 1, ans: 6),
-  FiveTen5Row(digit1: 6, digit2: -5, digit3: 3, digit4: 5, digit5: -7, ans: 2),
-  FiveTen5Row(digit1: 8, digit2: -6, digit3: 4, digit4: -5, digit5: 4, ans: 5),
-  FiveTen5Row(digit1: 4, digit2: -3, digit3: -1, digit4: 5, digit5: 3, ans: 8),
-  FiveTen5Row(digit1: 7, digit2: -5, digit3: 4, digit4: 3, digit5: -5, ans: 4),
-  FiveTen5Row(digit1: 1, digit2: 3, digit3: 4, digit4: -7, digit5: 4, ans: 5),
-  FiveTen5Row(digit1: 1, digit2: 3, digit3: 5, digit4: -8, digit5: 4, ans: 5),
-  FiveTen5Row(digit1: 1, digit2: 3, digit3: -2, digit4: 4, digit5: 3, ans: 9),
-  FiveTen5Row(digit1: 6, digit2: 3, digit3: -7, digit4: 2, digit5: 5, ans: 9),
-  FiveTen5Row(digit1: 3, digit2: 1, digit3: 4, digit4: -8, digit5: 9, ans: 9),
-  FiveTen5Row(digit1: 2, digit2: 5, digit3: -6, digit4: 4, digit5: 4, ans: 9),
-  FiveTen5Row(digit1: 8, digit2: 1, digit3: -5, digit4: 4, digit5: 1, ans: 9),
-  FiveTen5Row(digit1: 3, digit2: 4, digit3: -5, digit4: 2, digit5: 4, ans: 8),
-  FiveTen5Row(digit1: 1, digit2: 2, digit3: 4, digit4: -5, digit5: 4, ans: 6),
-  FiveTen5Row(digit1: 9, digit2: -5, digit3: 4, digit4: -5, digit5: 4, ans: 7),
-  FiveTen5Row(digit1: 2, digit2: -1, digit3: 3, digit4: 4, digit5: -7, ans: 1),
-  FiveTen5Row(digit1: 4, digit2: 4, digit3: -6, digit4: 4, digit5: -5, ans: 1),
-  FiveTen5Row(digit1: 7, digit2: -5, digit3: 7, digit4: -5, digit5: 4, ans: 8),
-  FiveTen5Row(digit1: 5, digit2: 4, digit3: -8, digit4: 4, digit5: 4, ans: 9),
-  FiveTen5Row(digit1: 3, digit2: -2, digit3: 4, digit4: 3, digit5: -5, ans: 3),
-  FiveTen5Row(digit1: 2, digit2: 2, digit3: 4, digit4: -7, digit5: 4, ans: 5),
-  FiveTen5Row(digit1: 6, digit2: -1, digit3: 3, digit4: -5, digit5: 4, ans: 7),
-  FiveTen5Row(digit1: 3, digit2: -1, digit3: -1, digit4: 4, digit5: 3, ans: 8),
-  FiveTen5Row(digit1: 8, digit2: -5, digit3: 4, digit4: 2, digit5: -5, ans: 4),
-  FiveTen5Row(digit1: 3, digit2: -3, digit3: 5, digit4: 3, digit5: -6, ans: 2),
-  FiveTen5Row(digit1: 7, digit2: -6, digit3: 5, digit4: 2, digit5: -5, ans: 3),
-  FiveTen5Row(digit1: 9, digit2: -6, digit3: 4, digit4: 2, digit5: -5, ans: 4),
-  FiveTen5Row(digit1: 3, digit2: 4, digit3: -5, digit4: 4, digit5: 1, ans: 7),
-  FiveTen5Row(digit1: 1, digit2: 3, digit3: 4, digit4: -5, digit5: 4, ans: 7),
-  FiveTen5Row(digit1: 9, digit2: -7, digit3: 4, digit4: 3, digit5: -7, ans: 2),
-  FiveTen5Row(digit1: 8, digit2: 1, digit3: -5, digit4: 4, digit5: 1, ans: 9),
-  FiveTen5Row(digit1: 2, digit2: 4, digit3: -5, digit4: 1, digit5: 1, ans: 3),
-  FiveTen5Row(digit1: 4, digit2: -2, digit3: 4, digit4: -5, digit5: 7, ans: 8),
-  FiveTen5Row(digit1: 3, digit2: 1, digit3: 5, digit4: -5, digit5: 4, ans: 8),
-  FiveTen5Row(digit1: 6, digit2: -5, digit3: 4, digit4: 3, digit5: -7, ans: 1),
-  FiveTen5Row(digit1: 5, digit2: 3, digit3: -2, digit4: -5, digit5: 4, ans: 5),
-  FiveTen5Row(digit1: 5, digit2: -5, digit3: 5, digit4: 4, digit5: -7, ans: 2),
-  FiveTen5Row(digit1: 7, digit2: -6, digit3: 4, digit4: 3, digit5: -7, ans: 1),
-  FiveTen5Row(digit1: 8, digit2: -7, digit3: 4, digit4: 3, digit5: -7, ans: 1),
-  FiveTen5Row(digit1: 3, digit2: 4, digit3: -5, digit4: 4, digit5: 2, ans: 8),
-  FiveTen5Row(digit1: 9, digit2: -8, digit3: 4, digit4: 3, digit5: -6, ans: 2),
-  FiveTen5Row(digit1: 4, digit2: 5, digit3: -6, digit4: 4, digit5: 1, ans: 8),
-  FiveTen5Row(digit1: 2, digit2: 5, digit3: -5, digit4: 4, digit5: 3, ans: 9),
-  FiveTen5Row(digit1: 1, digit2: 2, digit3: 1, digit4: 4, digit5: -6, ans: 2),
-  FiveTen5Row(digit1: 7, digit2: -5, digit3: 4, digit4: 3, digit5: -7, ans: 2),
-  FiveTen5Row(digit1: 1, digit2: 4, digit3: 2, digit4: -6, digit5: 4, ans: 5),
-  FiveTen5Row(digit1: 8, digit2: -5, digit3: 4, digit4: 2, digit5: -7, ans: 2),
-  FiveTen5Row(digit1: 4, digit2: -4, digit3: 5, digit4: 3, digit5: -5, ans: 3),
-  FiveTen5Row(digit1: 6, digit2: 2, digit3: 1, digit4: -6, digit5: 4, ans: 7),
-  FiveTen5Row(digit1: 5, digit2: 4, digit3: -7, digit4: 2, digit5: 4, ans: 8),
+List<FiveDigit> fivePlusFour5Row11 = [
+  FiveDigit(digit1: 2, digit2: 5, digit3: -6, digit4: 4, digit5: 3, ans: 8),
+  FiveDigit(digit1: 9, digit2: -5, digit3: 4, digit4: -6, digit5: 2, ans: 4),
+  FiveDigit(digit1: 7, digit2: -1, digit3: -5, digit4: 4, digit5: 3, ans: 8),
+  FiveDigit(digit1: 9, digit2: -7, digit3: 4, digit4: -5, digit5: 6, ans: 7),
+  FiveDigit(digit1: 6, digit2: 2, digit3: -7, digit4: 4, digit5: 2, ans: 7),
+  FiveDigit(digit1: 8, digit2: -3, digit3: -5, digit4: 4, digit5: 4, ans: 8),
+  FiveDigit(digit1: 1, digit2: 2, digit3: -2, digit4: 3, digit5: 4, ans: 8),
+  FiveDigit(digit1: 9, digit2: -5, digit3: 4, digit4: -3, digit5: 2, ans: 7),
+  FiveDigit(digit1: 3, digit2: 4, digit3: -5, digit4: 4, digit5: -1, ans: 5),
+  FiveDigit(digit1: 2, digit2: 1, digit3: 4, digit4: -5, digit5: 2, ans: 4),
+  FiveDigit(digit1: 7, digit2: -5, digit3: 4, digit4: 2, digit5: -6, ans: 2),
+  FiveDigit(digit1: 5, digit2: 4, digit3: -7, digit4: 4, digit5: -5, ans: 1),
+  FiveDigit(digit1: 8, digit2: 1, digit3: -6, digit4: 4, digit5: -5, ans: 2),
+  FiveDigit(digit1: 2, digit2: 2, digit3: 5, digit4: -6, digit5: 4, ans: 7),
+  FiveDigit(digit1: 3, digit2: 1, digit3: 4, digit4: -7, digit5: 4, ans: 5),
+  FiveDigit(digit1: 8, digit2: -7, digit3: 4, digit4: 4, digit5: -8, ans: 1),
+  FiveDigit(digit1: 3, digit2: -2, digit3: 4, digit4: 2, digit5: -6, ans: 1),
+  FiveDigit(digit1: 9, digit2: -6, digit3: 4, digit4: -5, digit5: 4, ans: 6),
+  FiveDigit(digit1: 7, digit2: -5, digit3: 4, digit4: -6, digit5: 2, ans: 2),
+  FiveDigit(digit1: 9, digit2: -5, digit3: 4, digit4: -7, digit5: 4, ans: 5),
+  FiveDigit(digit1: 6, digit2: -5, digit3: 4, digit4: -5, digit5: 7, ans: 7),
+  FiveDigit(digit1: 3, digit2: 4, digit3: -5, digit4: 2, digit5: 4, ans: 8),
+  FiveDigit(digit1: 9, digit2: -6, digit3: 4, digit4: -6, digit5: 4, ans: 5),
+  FiveDigit(digit1: 4, digit2: 4, digit3: -6, digit4: 5, digit5: -5, ans: 2),
+  FiveDigit(digit1: 3, digit2: 5, digit3: -6, digit4: 4, digit5: 3, ans: 9),
+  FiveDigit(digit1: 8, digit2: -7, digit3: 4, digit4: 2, digit5: -5, ans: 2),
+  FiveDigit(digit1: 1, digit2: 4, digit3: 3, digit4: -6, digit5: 2, ans: 4),
+  FiveDigit(digit1: 3, digit2: 1, digit3: 4, digit4: -5, digit5: 4, ans: 7),
+  FiveDigit(digit1: 8, digit2: -5, digit3: 4, digit4: -5, digit5: 4, ans: 6),
+  FiveDigit(digit1: 4, digit2: -3, digit3: 4, digit4: 3, digit5: -7, ans: 1),
+  FiveDigit(digit1: 6, digit2: -5, digit3: 4, digit4: 2, digit5: -5, ans: 2),
+  FiveDigit(digit1: 3, digit2: 1, digit3: 4, digit4: -7, digit5: 4, ans: 5),
+  FiveDigit(digit1: 9, digit2: -7, digit3: 4, digit4: -5, digit5: 4, ans: 5),
+  FiveDigit(digit1: 7, digit2: -5, digit3: 4, digit4: 3, digit5: -8, ans: 1),
+  FiveDigit(digit1: 5, digit2: 3, digit3: -5, digit4: 4, digit5: -2, ans: 5),
+  FiveDigit(digit1: 2, digit2: 4, digit3: 2, digit4: -5, digit5: 4, ans: 7),
+  FiveDigit(digit1: 6, digit2: -5, digit3: 4, digit4: 2, digit5: -6, ans: 1),
+  FiveDigit(digit1: 3, digit2: -1, digit3: 4, digit4: -5, digit5: 2, ans: 3),
+  FiveDigit(digit1: 4, digit2: -2, digit3: 4, digit4: -6, digit5: 5, ans: 5),
+  FiveDigit(digit1: 9, digit2: -5, digit3: 4, digit4: -5, digit5: 6, ans: 9),
+  FiveDigit(digit1: 5, digit2: 3, digit3: -6, digit4: 4, digit5: 2, ans: 8),
+  FiveDigit(digit1: 1, digit2: 2, digit3: 4, digit4: -5, digit5: 4, ans: 6),
+  FiveDigit(digit1: 2, digit2: 4, digit3: -5, digit4: 4, digit5: 2, ans: 7),
+  FiveDigit(digit1: 6, digit2: -5, digit3: 4, digit4: 3, digit5: -7, ans: 1),
+  FiveDigit(digit1: 3, digit2: 4, digit3: -5, digit4: 2, digit5: 4, ans: 8),
+  FiveDigit(digit1: 4, digit2: 4, digit3: -7, digit4: 5, digit5: 3, ans: 9),
+  FiveDigit(digit1: 8, digit2: -2, digit3: -5, digit4: 4, digit5: 3, ans: 8),
+  FiveDigit(digit1: 9, digit2: -7, digit3: 4, digit4: 3, digit5: -6, ans: 3),
+  FiveDigit(digit1: 1, digit2: 5, digit3: 3, digit4: -7, digit5: 4, ans: 6),
+  FiveDigit(digit1: 8, digit2: -3, digit3: 4, digit4: -7, digit5: 4, ans: 6),
+  FiveDigit(digit1: 6, digit2: -5, digit3: 4, digit4: 3, digit5: -6, ans: 2),
+  FiveDigit(digit1: 7, digit2: -5, digit3: 4, digit4: 3, digit5: -7, ans: 2),
+  FiveDigit(digit1: 1, digit2: 2, digit3: 1, digit4: 4, digit5: -6, ans: 2),
+  FiveDigit(digit1: 8, digit2: -3, digit3: 4, digit4: -6, digit5: 1, ans: 4),
+  FiveDigit(digit1: 2, digit2: 2, digit3: 4, digit4: -5, digit5: 4, ans: 7),
+  FiveDigit(digit1: 6, digit2: -5, digit3: 4, digit4: 3, digit5: -6, ans: 2),
+  FiveDigit(digit1: 9, digit2: -6, digit3: -3, digit4: 4, digit5: 4, ans: 8),
+  FiveDigit(digit1: 4, digit2: -2, digit3: -1, digit4: 8, digit5: -5, ans: 4),
+  FiveDigit(digit1: 5, digit2: 2, digit3: -5, digit4: 4, digit5: 3, ans: 9),
+  FiveDigit(digit1: 3, digit2: 4, digit3: -5, digit4: 2, digit5: 4, ans: 8),
+  FiveDigit(digit1: 3, digit2: 1, digit3: 4, digit4: -5, digit5: 4, ans: 7),
+  FiveDigit(digit1: 8, digit2: -5, digit3: 4, digit4: -5, digit5: 4, ans: 6),
+  FiveDigit(digit1: 4, digit2: -2, digit3: -1, digit4: 4, digit5: 4, ans: 9),
+  FiveDigit(digit1: 6, digit2: -5, digit3: 4, digit4: 3, digit5: -7, ans: 1),
+  FiveDigit(digit1: 1, digit2: 4, digit3: 3, digit4: -6, digit5: 4, ans: 6),
+  FiveDigit(digit1: 3, digit2: -2, digit3: 4, digit4: 4, digit5: -7, ans: 2),
+  FiveDigit(digit1: 6, digit2: -1, digit3: 3, digit4: -7, digit5: 4, ans: 5),
+  FiveDigit(digit1: 6, digit2: -5, digit3: 4, digit4: 3, digit5: -7, ans: 1),
+  FiveDigit(digit1: 2, digit2: 4, digit3: -5, digit4: 4, digit5: 3, ans: 8),
+  FiveDigit(digit1: 9, digit2: -6, digit3: 4, digit4: -6, digit5: 5, ans: 6),
+  FiveDigit(digit1: 3, digit2: 5, digit3: -7, digit4: 4, digit5: 3, ans: 8),
+  FiveDigit(digit1: 1, digit2: 4, digit3: 3, digit4: -6, digit5: 4, ans: 6),
+  FiveDigit(digit1: 5, digit2: 3, digit3: -5, digit4: 4, digit5: -5, ans: 2),
+  FiveDigit(digit1: 3, digit2: -2, digit3: 1, digit4: 1, digit5: 4, ans: 7),
+  FiveDigit(digit1: 4, digit2: -2, digit3: 4, digit4: 3, digit5: -6, ans: 3),
+  FiveDigit(digit1: 8, digit2: -5, digit3: 4, digit4: 2, digit5: -4, ans: 5),
+  FiveDigit(digit1: 6, digit2: 2, digit3: -5, digit4: 4, digit5: 2, ans: 9),
+  FiveDigit(digit1: 3, digit2: 1, digit3: 4, digit4: -5, digit5: 5, ans: 8),
+  FiveDigit(digit1: 4, digit2: -1, digit3: -2, digit4: 4, digit5: 3, ans: 8),
+  FiveDigit(digit1: 5, digit2: 3, digit3: -6, digit4: 4, digit5: 3, ans: 9),
+  FiveDigit(digit1: 5, digit2: 2, digit3: 1, digit4: -5, digit5: 4, ans: 7),
+  FiveDigit(digit1: 2, digit2: 1, digit3: 4, digit4: -5, digit5: 4, ans: 6),
+  FiveDigit(digit1: 2, digit2: 1, digit3: 3, digit4: -5, digit5: 4, ans: 5),
+  FiveDigit(digit1: 6, digit2: -5, digit3: 4, digit4: 3, digit5: 1, ans: 9),
+  FiveDigit(digit1: 2, digit2: 5, digit3: -6, digit4: 4, digit5: 3, ans: 8),
+  FiveDigit(digit1: 3, digit2: 1, digit3: -2, digit4: 4, digit5: -5, ans: 1),
+  FiveDigit(digit1: 9, digit2: -5, digit3: 4, digit4: -6, digit5: 4, ans: 6),
+  FiveDigit(digit1: 4, digit2: 4, digit3: -6, digit4: 4, digit5: 3, ans: 9),
+  FiveDigit(digit1: 1, digit2: 4, digit3: 2, digit4: -5, digit5: 4, ans: 6),
+  FiveDigit(digit1: 7, digit2: -6, digit3: 4, digit4: 3, digit5: -7, ans: 1),
+  FiveDigit(digit1: 4, digit2: -3, digit3: 4, digit4: 2, digit5: -6, ans: 1),
+  FiveDigit(digit1: 8, digit2: -5, digit3: 4, digit4: -6, digit5: 4, ans: 5),
+  FiveDigit(digit1: 2, digit2: 5, digit3: 2, digit4: -5, digit5: 4, ans: 8),
+  FiveDigit(digit1: 6, digit2: -5, digit3: 3, digit4: 4, digit5: -6, ans: 2),
+  FiveDigit(digit1: 4, digit2: -2, digit3: 4, digit4: -5, digit5: 4, ans: 5),
+  FiveDigit(digit1: 2, digit2: 2, digit3: 5, digit4: -7, digit5: 4, ans: 6),
+  FiveDigit(digit1: 3, digit2: -2, digit3: 3, digit4: 4, digit5: -6, ans: 2),
+  FiveDigit(digit1: 9, digit2: -6, digit3: 4, digit4: 2, digit5: -7, ans: 2),
+  FiveDigit(digit1: 1, digit2: 4, digit3: 3, digit4: -6, digit5: 2, ans: 4),
+  FiveDigit(digit1: 9, digit2: -5, digit3: 4, digit4: 1, digit5: -6, ans: 3),
+  FiveDigit(digit1: 3, digit2: -2, digit3: 4, digit4: 4, digit5: -7, ans: 2),
+  FiveDigit(digit1: 5, digit2: 4, digit3: -7, digit4: 4, digit5: 3, ans: 9),
+  FiveDigit(digit1: 8, digit2: -6, digit3: 4, digit4: -5, digit5: 4, ans: 5),
+  FiveDigit(digit1: 7, digit2: -6, digit3: 4, digit4: 2, digit5: -5, ans: 2),
+  FiveDigit(digit1: 3, digit2: -1, digit3: 4, digit4: -5, digit5: 2, ans: 3),
+  FiveDigit(digit1: 7, digit2: -5, digit3: 6, digit4: -3, digit5: 2, ans: 7),
+  FiveDigit(digit1: 4, digit2: 4, digit3: -5, digit4: 4, digit5: 2, ans: 9),
+  FiveDigit(digit1: 9, digit2: -6, digit3: 5, digit4: -7, digit5: 4, ans: 5),
+  FiveDigit(digit1: 8, digit2: -5, digit3: 4, digit4: 2, digit5: -5, ans: 4),
+  FiveDigit(digit1: 2, digit2: 2, digit3: 5, digit4: -8, digit5: 4, ans: 5),
+  FiveDigit(digit1: 7, digit2: -5, digit3: 4, digit4: 2, digit5: -6, ans: 2),
+  FiveDigit(digit1: 3, digit2: 5, digit3: -6, digit4: 4, digit5: -5, ans: 1),
+  FiveDigit(digit1: 6, digit2: 2, digit3: 1, digit4: -6, digit5: 4, ans: 7),
+  FiveDigit(digit1: 1, digit2: 5, digit3: 3, digit4: -7, digit5: 4, ans: 6),
+  FiveDigit(digit1: 2, digit2: 1, digit3: 1, digit4: 4, digit5: -5, ans: 3),
+  FiveDigit(digit1: 3, digit2: 5, digit3: -6, digit4: 4, digit5: -5, ans: 1),
+  FiveDigit(digit1: 8, digit2: -5, digit3: 4, digit4: -6, digit5: 4, ans: 5),
+  FiveDigit(digit1: 2, digit2: 5, digit3: -5, digit4: 4, digit5: 1, ans: 7),
+  FiveDigit(digit1: 2, digit2: 4, digit3: -5, digit4: 4, digit5: 3, ans: 8),
+  FiveDigit(digit1: 6, digit2: 3, digit3: -8, digit4: 4, digit5: 2, ans: 7),
+  FiveDigit(digit1: 8, digit2: -3, digit3: 4, digit4: -6, digit5: 4, ans: 7),
+  FiveDigit(digit1: 5, digit2: 3, digit3: -5, digit4: 4, digit5: -6, ans: 1),
+  FiveDigit(digit1: 2, digit2: 1, digit3: 5, digit4: -7, digit5: 4, ans: 5),
+  FiveDigit(digit1: 4, digit2: -1, digit3: -2, digit4: 4, digit5: 3, ans: 8),
+  FiveDigit(digit1: 7, digit2: -1, digit3: -1, digit4: 4, digit5: -6, ans: 3),
+  FiveDigit(digit1: 5, digit2: 4, digit3: -6, digit4: 4, digit5: 2, ans: 9),
+  FiveDigit(digit1: 2, digit2: 2, digit3: 5, digit4: -7, digit5: 4, ans: 6),
+  FiveDigit(digit1: 2, digit2: 5, digit3: -6, digit4: 4, digit5: 2, ans: 7),
+  FiveDigit(digit1: 5, digit2: 4, digit3: -7, digit4: 4, digit5: 3, ans: 9),
+  FiveDigit(digit1: 4, digit2: 4, digit3: -7, digit4: 4, digit5: 3, ans: 8),
+  FiveDigit(digit1: 9, digit2: -6, digit3: 3, digit4: 2, digit5: -7, ans: 1),
+  FiveDigit(digit1: 3, digit2: 5, digit3: -6, digit4: 4, digit5: 3, ans: 9),
+  FiveDigit(digit1: 6, digit2: -5, digit3: 4, digit4: 4, digit5: -7, ans: 2),
+  FiveDigit(digit1: 2, digit2: 4, digit3: -5, digit4: 4, digit5: 3, ans: 8),
+  FiveDigit(digit1: 1, digit2: 4, digit3: 3, digit4: -7, digit5: 4, ans: 5),
+  FiveDigit(digit1: 3, digit2: -2, digit3: 4, digit4: 2, digit5: -5, ans: 2),
+  FiveDigit(digit1: 1, digit2: 4, digit3: 4, digit4: -7, digit5: 4, ans: 6),
+  FiveDigit(digit1: 9, digit2: -7, digit3: 6, digit4: -5, digit5: 4, ans: 7),
+  FiveDigit(digit1: 1, digit2: 5, digit3: -5, digit4: 4, digit5: 3, ans: 8),
+  FiveDigit(digit1: 8, digit2: -6, digit3: 4, digit4: 3, digit5: -7, ans: 2),
+  FiveDigit(digit1: 4, digit2: -2, digit3: -1, digit4: 4, digit5: 2, ans: 7),
+  FiveDigit(digit1: 8, digit2: -5, digit3: 4, digit4: 2, digit5: -7, ans: 2),
+  FiveDigit(digit1: 5, digit2: 3, digit3: -6, digit4: 4, digit5: 3, ans: 9),
+  FiveDigit(digit1: 6, digit2: -5, digit3: 4, digit4: 3, digit5: 1, ans: 9),
+  FiveDigit(digit1: 5, digit2: 4, digit3: -5, digit4: 4, digit5: -7, ans: 1),
+  FiveDigit(digit1: 6, digit2: -5, digit3: 4, digit4: 3, digit5: -5, ans: 3),
+  FiveDigit(digit1: 1, digit2: 3, digit3: 4, digit4: -6, digit5: 4, ans: 6),
+  FiveDigit(digit1: 8, digit2: -7, digit3: 4, digit4: 3, digit5: -6, ans: 2),
+  FiveDigit(digit1: 2, digit2: 4, digit3: -5, digit4: 1, digit5: 2, ans: 4),
+  FiveDigit(digit1: 7, digit2: -5, digit3: 4, digit4: 3, digit5: -8, ans: 1),
+  FiveDigit(digit1: 2, digit2: 4, digit3: -5, digit4: 4, digit5: 1, ans: 6),
+  FiveDigit(digit1: 6, digit2: -5, digit3: 3, digit4: 5, digit5: -7, ans: 2),
+  FiveDigit(digit1: 8, digit2: -6, digit3: 4, digit4: -5, digit5: 4, ans: 5),
+  FiveDigit(digit1: 4, digit2: -3, digit3: -1, digit4: 5, digit5: 3, ans: 8),
+  FiveDigit(digit1: 7, digit2: -5, digit3: 4, digit4: 3, digit5: -5, ans: 4),
+  FiveDigit(digit1: 1, digit2: 3, digit3: 4, digit4: -7, digit5: 4, ans: 5),
+  FiveDigit(digit1: 1, digit2: 3, digit3: 5, digit4: -8, digit5: 4, ans: 5),
+  FiveDigit(digit1: 1, digit2: 3, digit3: -2, digit4: 4, digit5: 3, ans: 9),
+  FiveDigit(digit1: 6, digit2: 3, digit3: -7, digit4: 2, digit5: 5, ans: 9),
+  FiveDigit(digit1: 3, digit2: 1, digit3: 4, digit4: -8, digit5: 9, ans: 9),
+  FiveDigit(digit1: 2, digit2: 5, digit3: -6, digit4: 4, digit5: 4, ans: 9),
+  FiveDigit(digit1: 8, digit2: 1, digit3: -5, digit4: 4, digit5: 1, ans: 9),
+  FiveDigit(digit1: 3, digit2: 4, digit3: -5, digit4: 2, digit5: 4, ans: 8),
+  FiveDigit(digit1: 1, digit2: 2, digit3: 4, digit4: -5, digit5: 4, ans: 6),
+  FiveDigit(digit1: 9, digit2: -5, digit3: 4, digit4: -5, digit5: 4, ans: 7),
+  FiveDigit(digit1: 2, digit2: -1, digit3: 3, digit4: 4, digit5: -7, ans: 1),
+  FiveDigit(digit1: 4, digit2: 4, digit3: -6, digit4: 4, digit5: -5, ans: 1),
+  FiveDigit(digit1: 7, digit2: -5, digit3: 7, digit4: -5, digit5: 4, ans: 8),
+  FiveDigit(digit1: 5, digit2: 4, digit3: -8, digit4: 4, digit5: 4, ans: 9),
+  FiveDigit(digit1: 3, digit2: -2, digit3: 4, digit4: 3, digit5: -5, ans: 3),
+  FiveDigit(digit1: 2, digit2: 2, digit3: 4, digit4: -7, digit5: 4, ans: 5),
+  FiveDigit(digit1: 6, digit2: -1, digit3: 3, digit4: -5, digit5: 4, ans: 7),
+  FiveDigit(digit1: 3, digit2: -1, digit3: -1, digit4: 4, digit5: 3, ans: 8),
+  FiveDigit(digit1: 8, digit2: -5, digit3: 4, digit4: 2, digit5: -5, ans: 4),
+  FiveDigit(digit1: 3, digit2: -3, digit3: 5, digit4: 3, digit5: -6, ans: 2),
+  FiveDigit(digit1: 7, digit2: -6, digit3: 5, digit4: 2, digit5: -5, ans: 3),
+  FiveDigit(digit1: 9, digit2: -6, digit3: 4, digit4: 2, digit5: -5, ans: 4),
+  FiveDigit(digit1: 3, digit2: 4, digit3: -5, digit4: 4, digit5: 1, ans: 7),
+  FiveDigit(digit1: 1, digit2: 3, digit3: 4, digit4: -5, digit5: 4, ans: 7),
+  FiveDigit(digit1: 9, digit2: -7, digit3: 4, digit4: 3, digit5: -7, ans: 2),
+  FiveDigit(digit1: 8, digit2: 1, digit3: -5, digit4: 4, digit5: 1, ans: 9),
+  FiveDigit(digit1: 2, digit2: 4, digit3: -5, digit4: 1, digit5: 1, ans: 3),
+  FiveDigit(digit1: 4, digit2: -2, digit3: 4, digit4: -5, digit5: 7, ans: 8),
+  FiveDigit(digit1: 3, digit2: 1, digit3: 5, digit4: -5, digit5: 4, ans: 8),
+  FiveDigit(digit1: 6, digit2: -5, digit3: 4, digit4: 3, digit5: -7, ans: 1),
+  FiveDigit(digit1: 5, digit2: 3, digit3: -2, digit4: -5, digit5: 4, ans: 5),
+  FiveDigit(digit1: 5, digit2: -5, digit3: 5, digit4: 4, digit5: -7, ans: 2),
+  FiveDigit(digit1: 7, digit2: -6, digit3: 4, digit4: 3, digit5: -7, ans: 1),
+  FiveDigit(digit1: 8, digit2: -7, digit3: 4, digit4: 3, digit5: -7, ans: 1),
+  FiveDigit(digit1: 3, digit2: 4, digit3: -5, digit4: 4, digit5: 2, ans: 8),
+  FiveDigit(digit1: 9, digit2: -8, digit3: 4, digit4: 3, digit5: -6, ans: 2),
+  FiveDigit(digit1: 4, digit2: 5, digit3: -6, digit4: 4, digit5: 1, ans: 8),
+  FiveDigit(digit1: 2, digit2: 5, digit3: -5, digit4: 4, digit5: 3, ans: 9),
+  FiveDigit(digit1: 1, digit2: 2, digit3: 1, digit4: 4, digit5: -6, ans: 2),
+  FiveDigit(digit1: 7, digit2: -5, digit3: 4, digit4: 3, digit5: -7, ans: 2),
+  FiveDigit(digit1: 1, digit2: 4, digit3: 2, digit4: -6, digit5: 4, ans: 5),
+  FiveDigit(digit1: 8, digit2: -5, digit3: 4, digit4: 2, digit5: -7, ans: 2),
+  FiveDigit(digit1: 4, digit2: -4, digit3: 5, digit4: 3, digit5: -5, ans: 3),
+  FiveDigit(digit1: 6, digit2: 2, digit3: 1, digit4: -6, digit5: 4, ans: 7),
+  FiveDigit(digit1: 5, digit2: 4, digit3: -7, digit4: 2, digit5: 4, ans: 8),
 ];
-List<FiveTen5Row> fivePlusFour5Row21 = [
-  FiveTen5Row(
-    digit1: 21,
-    digit2: 4,
-    digit3: 3,
-    digit4: -16,
-    digit5: 4,
-    ans: 16,
-  ),
-  FiveTen5Row(
-    digit1: 4,
-    digit2: 14,
-    digit3: -7,
-    digit4: 54,
-    digit5: 2,
-    ans: 67,
-  ),
-  FiveTen5Row(
-    digit1: 63,
-    digit2: 5,
-    digit3: -17,
-    digit4: 4,
-    digit5: 4,
-    ans: 59,
-  ),
-  FiveTen5Row(
-    digit1: 3,
-    digit2: 4,
-    digit3: 32,
-    digit4: -25,
-    digit5: 5,
-    ans: 19,
-  ),
-  FiveTen5Row(
-    digit1: 43,
-    digit2: 4,
-    digit3: -15,
-    digit4: 4,
-    digit5: -5,
-    ans: 31,
-  ),
-  FiveTen5Row(
-    digit1: 9,
-    digit2: -5,
-    digit3: 34,
-    digit4: -16,
-    digit5: 4,
-    ans: 26,
-  ),
-  FiveTen5Row(
-    digit1: 41,
-    digit2: 4,
-    digit3: -20,
-    digit4: 4,
-    digit5: -7,
-    ans: 22,
-  ),
-  FiveTen5Row(
-    digit1: 16,
-    digit2: -5,
-    digit3: 54,
-    digit4: -5,
-    digit5: 3,
-    ans: 63,
-  ),
-  FiveTen5Row(
-    digit1: 69,
-    digit2: -53,
-    digit3: 3,
-    digit4: -5,
-    digit5: 4,
-    ans: 18,
-  ),
-  FiveTen5Row(
-    digit1: 15,
-    digit2: -3,
-    digit3: 44,
-    digit4: -5,
-    digit5: 4,
-    ans: 55,
-  ),
-  FiveTen5Row(
-    digit1: 87,
-    digit2: -35,
-    digit3: 4,
-    digit4: -6,
-    digit5: 2,
-    ans: 52,
-  ),
-  FiveTen5Row(
-    digit1: 73,
-    digit2: 5,
-    digit3: -25,
-    digit4: 4,
-    digit5: -5,
-    ans: 52,
-  ),
-  FiveTen5Row(
-    digit1: 9,
-    digit2: -6,
-    digit3: 34,
-    digit4: 2,
-    digit5: -18,
-    ans: 21,
-  ),
-  FiveTen5Row(
-    digit1: 7,
-    digit2: 22,
-    digit3: -5,
-    digit4: 4,
-    digit5: 11,
-    ans: 39,
-  ),
-  FiveTen5Row(
-    digit1: 86,
-    digit2: -25,
-    digit3: 1,
-    digit4: 4,
-    digit5: 3,
-    ans: 69,
-  ),
-  FiveTen5Row(
-    digit1: 32,
-    digit2: 5,
-    digit3: -12,
-    digit4: -5,
-    digit5: 1,
-    ans: 21,
-  ),
-  FiveTen5Row(
-    digit1: 17,
-    digit2: -5,
-    digit3: 34,
-    digit4: 1,
-    digit5: 2,
-    ans: 49,
-  ),
-  FiveTen5Row(
-    digit1: 41,
-    digit2: 4,
-    digit3: -15,
-    digit4: 3,
-    digit5: 4,
-    ans: 37,
-  ),
-  FiveTen5Row(digit1: 55, digit2: 4, digit3: -56, digit4: 4, digit5: 2, ans: 9),
-  FiveTen5Row(
-    digit1: 17,
-    digit2: -5,
-    digit3: 24,
-    digit4: -5,
-    digit5: 5,
-    ans: 36,
-  ),
-  FiveTen5Row(
-    digit1: 4,
-    digit2: 24,
-    digit3: -6,
-    digit4: 54,
-    digit5: 3,
-    ans: 79,
-  ),
-  FiveTen5Row(
-    digit1: 8,
-    digit2: -5,
-    digit3: 64,
-    digit4: -6,
-    digit5: 34,
-    ans: 95,
-  ),
-  FiveTen5Row(
-    digit1: 63,
-    digit2: -12,
-    digit3: 4,
-    digit4: -5,
-    digit5: 4,
-    ans: 54,
-  ),
-  FiveTen5Row(
-    digit1: 9,
-    digit2: -5,
-    digit3: 34,
-    digit4: 11,
-    digit5: -6,
-    ans: 43,
-  ),
-  FiveTen5Row(
-    digit1: 88,
-    digit2: -53,
-    digit3: 4,
-    digit4: -6,
-    digit5: 1,
-    ans: 34,
-  ),
-  FiveTen5Row(
-    digit1: 17,
-    digit2: 2,
-    digit3: -7,
-    digit4: 44,
-    digit5: 2,
-    ans: 58,
-  ),
-  FiveTen5Row(
-    digit1: 7,
-    digit2: -5,
-    digit3: 64,
-    digit4: -26,
-    digit5: 3,
-    ans: 43,
-  ),
-  FiveTen5Row(
+List<FiveDigit> fivePlusFour5Row21 = [
+  FiveDigit(digit1: 21, digit2: 4, digit3: 3, digit4: -16, digit5: 4, ans: 16),
+  FiveDigit(digit1: 4, digit2: 14, digit3: -7, digit4: 54, digit5: 2, ans: 67),
+  FiveDigit(digit1: 63, digit2: 5, digit3: -17, digit4: 4, digit5: 4, ans: 59),
+  FiveDigit(digit1: 3, digit2: 4, digit3: 32, digit4: -25, digit5: 5, ans: 19),
+  FiveDigit(digit1: 43, digit2: 4, digit3: -15, digit4: 4, digit5: -5, ans: 31),
+  FiveDigit(digit1: 9, digit2: -5, digit3: 34, digit4: -16, digit5: 4, ans: 26),
+  FiveDigit(digit1: 41, digit2: 4, digit3: -20, digit4: 4, digit5: -7, ans: 22),
+  FiveDigit(digit1: 16, digit2: -5, digit3: 54, digit4: -5, digit5: 3, ans: 63),
+  FiveDigit(digit1: 69, digit2: -53, digit3: 3, digit4: -5, digit5: 4, ans: 18),
+  FiveDigit(digit1: 15, digit2: -3, digit3: 44, digit4: -5, digit5: 4, ans: 55),
+  FiveDigit(digit1: 87, digit2: -35, digit3: 4, digit4: -6, digit5: 2, ans: 52),
+  FiveDigit(digit1: 73, digit2: 5, digit3: -25, digit4: 4, digit5: -5, ans: 52),
+  FiveDigit(digit1: 9, digit2: -6, digit3: 34, digit4: 2, digit5: -18, ans: 21),
+  FiveDigit(digit1: 7, digit2: 22, digit3: -5, digit4: 4, digit5: 11, ans: 39),
+  FiveDigit(digit1: 86, digit2: -25, digit3: 1, digit4: 4, digit5: 3, ans: 69),
+  FiveDigit(digit1: 32, digit2: 5, digit3: -12, digit4: -5, digit5: 1, ans: 21),
+  FiveDigit(digit1: 17, digit2: -5, digit3: 34, digit4: 1, digit5: 2, ans: 49),
+  FiveDigit(digit1: 41, digit2: 4, digit3: -15, digit4: 3, digit5: 4, ans: 37),
+  FiveDigit(digit1: 55, digit2: 4, digit3: -56, digit4: 4, digit5: 2, ans: 9),
+  FiveDigit(digit1: 17, digit2: -5, digit3: 24, digit4: -5, digit5: 5, ans: 36),
+  FiveDigit(digit1: 4, digit2: 24, digit3: -6, digit4: 54, digit5: 3, ans: 79),
+  FiveDigit(digit1: 8, digit2: -5, digit3: 64, digit4: -6, digit5: 34, ans: 95),
+  FiveDigit(digit1: 63, digit2: -12, digit3: 4, digit4: -5, digit5: 4, ans: 54),
+  FiveDigit(digit1: 9, digit2: -5, digit3: 34, digit4: 11, digit5: -6, ans: 43),
+  FiveDigit(digit1: 88, digit2: -53, digit3: 4, digit4: -6, digit5: 1, ans: 34),
+  FiveDigit(digit1: 17, digit2: 2, digit3: -7, digit4: 44, digit5: 2, ans: 58),
+  FiveDigit(digit1: 7, digit2: -5, digit3: 64, digit4: -26, digit5: 3, ans: 43),
+  FiveDigit(
     digit1: 25,
     digit2: 4,
     digit3: -17,
@@ -1026,176 +844,29 @@ List<FiveTen5Row> fivePlusFour5Row21 = [
     digit5: -5,
     ans: 61,
   ),
-  FiveTen5Row(
-    digit1: 2,
-    digit2: 54,
-    digit3: -5,
-    digit4: 14,
-    digit5: 3,
-    ans: 68,
-  ),
-  FiveTen5Row(
-    digit1: 87,
-    digit2: -35,
-    digit3: 4,
-    digit4: -5,
-    digit5: 2,
-    ans: 53,
-  ),
-  FiveTen5Row(
-    digit1: 3,
-    digit2: 14,
-    digit3: -6,
-    digit4: 44,
-    digit5: 3,
-    ans: 58,
-  ),
-  FiveTen5Row(
-    digit1: 16,
-    digit2: -5,
-    digit3: 34,
-    digit4: 4,
-    digit5: -7,
-    ans: 42,
-  ),
-  FiveTen5Row(digit1: 12, digit2: 4, digit3: -15, digit4: 4, digit5: 2, ans: 7),
-  FiveTen5Row(
-    digit1: 86,
-    digit2: -51,
-    digit3: -5,
-    digit4: 4,
-    digit5: 4,
-    ans: 38,
-  ),
-  FiveTen5Row(
-    digit1: 95,
-    digit2: -40,
-    digit3: 3,
-    digit4: -6,
-    digit5: 4,
-    ans: 56,
-  ),
-  FiveTen5Row(
-    digit1: 67,
-    digit2: -16,
-    digit3: 4,
-    digit4: 4,
-    digit5: -7,
-    ans: 52,
-  ),
-  FiveTen5Row(
-    digit1: 5,
-    digit2: 42,
-    digit3: -16,
-    digit4: 4,
-    digit5: 3,
-    ans: 38,
-  ),
-  FiveTen5Row(
-    digit1: 47,
-    digit2: -5,
-    digit3: -21,
-    digit4: 4,
-    digit5: 1,
-    ans: 26,
-  ),
-  FiveTen5Row(
-    digit1: 40,
-    digit2: 15,
-    digit3: 4,
-    digit4: -6,
-    digit5: 4,
-    ans: 57,
-  ),
-  FiveTen5Row(
-    digit1: 8,
-    digit2: -7,
-    digit3: 4,
-    digit4: 14,
-    digit5: 30,
-    ans: 49,
-  ),
-  FiveTen5Row(
-    digit1: 46,
-    digit2: -5,
-    digit3: 4,
-    digit4: -25,
-    digit5: 3,
-    ans: 23,
-  ),
-  FiveTen5Row(
-    digit1: 78,
-    digit2: -56,
-    digit3: 4,
-    digit4: -5,
-    digit5: 4,
-    ans: 25,
-  ),
-  FiveTen5Row(
-    digit1: 9,
-    digit2: -6,
-    digit3: 4,
-    digit4: 42,
-    digit5: -26,
-    ans: 23,
-  ),
-  FiveTen5Row(
-    digit1: 35,
-    digit2: 2,
-    digit3: -25,
-    digit4: 4,
-    digit5: -6,
-    ans: 10,
-  ),
-  FiveTen5Row(
-    digit1: 4,
-    digit2: 24,
-    digit3: -17,
-    digit4: 4,
-    digit5: 3,
-    ans: 18,
-  ),
-  FiveTen5Row(
-    digit1: 43,
-    digit2: 4,
-    digit3: -5,
-    digit4: 7,
-    digit5: -26,
-    ans: 23,
-  ),
-  FiveTen5Row(
-    digit1: 13,
-    digit2: 40,
-    digit3: 4,
-    digit4: -5,
-    digit5: 4,
-    ans: 56,
-  ),
-  FiveTen5Row(
-    digit1: 6,
-    digit2: -5,
-    digit3: 34,
-    digit4: 42,
-    digit5: -5,
-    ans: 72,
-  ),
-  FiveTen5Row(
-    digit1: 63,
-    digit2: -51,
-    digit3: 4,
-    digit4: 2,
-    digit5: -5,
-    ans: 13,
-  ),
-  FiveTen5Row(
-    digit1: 95,
-    digit2: -80,
-    digit3: 2,
-    digit4: -5,
-    digit5: 6,
-    ans: 18,
-  ),
-  FiveTen5Row(
+  FiveDigit(digit1: 2, digit2: 54, digit3: -5, digit4: 14, digit5: 3, ans: 68),
+  FiveDigit(digit1: 87, digit2: -35, digit3: 4, digit4: -5, digit5: 2, ans: 53),
+  FiveDigit(digit1: 3, digit2: 14, digit3: -6, digit4: 44, digit5: 3, ans: 58),
+  FiveDigit(digit1: 16, digit2: -5, digit3: 34, digit4: 4, digit5: -7, ans: 42),
+  FiveDigit(digit1: 12, digit2: 4, digit3: -15, digit4: 4, digit5: 2, ans: 7),
+  FiveDigit(digit1: 86, digit2: -51, digit3: -5, digit4: 4, digit5: 4, ans: 38),
+  FiveDigit(digit1: 95, digit2: -40, digit3: 3, digit4: -6, digit5: 4, ans: 56),
+  FiveDigit(digit1: 67, digit2: -16, digit3: 4, digit4: 4, digit5: -7, ans: 52),
+  FiveDigit(digit1: 5, digit2: 42, digit3: -16, digit4: 4, digit5: 3, ans: 38),
+  FiveDigit(digit1: 47, digit2: -5, digit3: -21, digit4: 4, digit5: 1, ans: 26),
+  FiveDigit(digit1: 40, digit2: 15, digit3: 4, digit4: -6, digit5: 4, ans: 57),
+  FiveDigit(digit1: 8, digit2: -7, digit3: 4, digit4: 14, digit5: 30, ans: 49),
+  FiveDigit(digit1: 46, digit2: -5, digit3: 4, digit4: -25, digit5: 3, ans: 23),
+  FiveDigit(digit1: 78, digit2: -56, digit3: 4, digit4: -5, digit5: 4, ans: 25),
+  FiveDigit(digit1: 9, digit2: -6, digit3: 4, digit4: 42, digit5: -26, ans: 23),
+  FiveDigit(digit1: 35, digit2: 2, digit3: -25, digit4: 4, digit5: -6, ans: 10),
+  FiveDigit(digit1: 4, digit2: 24, digit3: -17, digit4: 4, digit5: 3, ans: 18),
+  FiveDigit(digit1: 43, digit2: 4, digit3: -5, digit4: 7, digit5: -26, ans: 23),
+  FiveDigit(digit1: 13, digit2: 40, digit3: 4, digit4: -5, digit5: 4, ans: 56),
+  FiveDigit(digit1: 6, digit2: -5, digit3: 34, digit4: 42, digit5: -5, ans: 72),
+  FiveDigit(digit1: 63, digit2: -51, digit3: 4, digit4: 2, digit5: -5, ans: 13),
+  FiveDigit(digit1: 95, digit2: -80, digit3: 2, digit4: -5, digit5: 6, ans: 18),
+  FiveDigit(
     digit1: 28,
     digit2: -15,
     digit3: 4,
@@ -1203,463 +874,64 @@ List<FiveTen5Row> fivePlusFour5Row21 = [
     digit5: -5,
     ans: 54,
   ),
-  FiveTen5Row(
-    digit1: 2,
-    digit2: 4,
-    digit3: -5,
-    digit4: 24,
-    digit5: -10,
-    ans: 15,
-  ),
-  FiveTen5Row(
-    digit1: 38,
-    digit2: -6,
-    digit3: 14,
-    digit4: -5,
-    digit5: 4,
-    ans: 45,
-  ),
-  FiveTen5Row(
-    digit1: 3,
-    digit2: 4,
-    digit3: 61,
-    digit4: -55,
-    digit5: 5,
-    ans: 18,
-  ),
-  FiveTen5Row(
-    digit1: 72,
-    digit2: 4,
-    digit3: -25,
-    digit4: 2,
-    digit5: 4,
-    ans: 57,
-  ),
-  FiveTen5Row(
-    digit1: 34,
-    digit2: -22,
-    digit3: 4,
-    digit4: 2,
-    digit5: -7,
-    ans: 11,
-  ),
-  FiveTen5Row(
-    digit1: 6,
-    digit2: -5,
-    digit3: 44,
-    digit4: -20,
-    digit5: 2,
-    ans: 27,
-  ),
-  FiveTen5Row(
-    digit1: 57,
-    digit2: -6,
-    digit3: 4,
-    digit4: 24,
-    digit5: -8,
-    ans: 71,
-  ),
-  FiveTen5Row(
-    digit1: 64,
-    digit2: -12,
-    digit3: 4,
-    digit4: -5,
-    digit5: 3,
-    ans: 54,
-  ),
-  FiveTen5Row(
-    digit1: 29,
-    digit2: -16,
-    digit3: 4,
-    digit4: 2,
-    digit5: -5,
-    ans: 14,
-  ),
-  FiveTen5Row(
-    digit1: 7,
-    digit2: -5,
-    digit3: 54,
-    digit4: -6,
-    digit5: 11,
-    ans: 61,
-  ),
-  FiveTen5Row(
-    digit1: 39,
-    digit2: -16,
-    digit3: 4,
-    digit4: -5,
-    digit5: 4,
-    ans: 26,
-  ),
-  FiveTen5Row(
-    digit1: 4,
-    digit2: 4,
-    digit3: 21,
-    digit4: -7,
-    digit5: 74,
-    ans: 96,
-  ),
-  FiveTen5Row(
-    digit1: 35,
-    digit2: -10,
-    digit3: 4,
-    digit4: -6,
-    digit5: 4,
-    ans: 27,
-  ),
-  FiveTen5Row(
-    digit1: 9,
-    digit2: -5,
-    digit3: 4,
-    digit4: 11,
-    digit5: 80,
-    ans: 99,
-  ),
-  FiveTen5Row(
-    digit1: 2,
-    digit2: 75,
-    digit3: -5,
-    digit4: 4,
-    digit5: -5,
-    ans: 71,
-  ),
-  FiveTen5Row(
-    digit1: 93,
-    digit2: -72,
-    digit3: 4,
-    digit4: 4,
-    digit5: -6,
-    ans: 23,
-  ),
-  FiveTen5Row(
-    digit1: 5,
-    digit2: 24,
-    digit3: -7,
-    digit4: 4,
-    digit5: -15,
-    ans: 11,
-  ),
-  FiveTen5Row(
-    digit1: 42,
-    digit2: -31,
-    digit3: 4,
-    digit4: 1,
-    digit5: -6,
-    ans: 10,
-  ),
-  FiveTen5Row(
-    digit1: 89,
-    digit2: -65,
-    digit3: 4,
-    digit4: -6,
-    digit5: 7,
-    ans: 29,
-  ),
-  FiveTen5Row(
-    digit1: 13,
-    digit2: 4,
-    digit3: -5,
-    digit4: 4,
-    digit5: 13,
-    ans: 29,
-  ),
-  FiveTen5Row(
-    digit1: 88,
-    digit2: -35,
-    digit3: 1,
-    digit4: 4,
-    digit5: -7,
-    ans: 51,
-  ),
-  FiveTen5Row(
-    digit1: 56,
-    digit2: -5,
-    digit3: 4,
-    digit4: 23,
-    digit5: -6,
-    ans: 72,
-  ),
-  FiveTen5Row(
-    digit1: 6,
-    digit2: -5,
-    digit3: 24,
-    digit4: 3,
-    digit5: -15,
-    ans: 13,
-  ),
-  FiveTen5Row(
-    digit1: 90,
-    digit2: 4,
-    digit3: -52,
-    digit4: 4,
-    digit5: 3,
-    ans: 49,
-  ),
-  FiveTen5Row(
-    digit1: 33,
-    digit2: 15,
-    digit3: -2,
-    digit4: -5,
-    digit5: 4,
-    ans: 45,
-  ),
-  FiveTen5Row(
-    digit1: 7,
-    digit2: 2,
-    digit3: 50,
-    digit4: -7,
-    digit5: 34,
-    ans: 86,
-  ),
-  FiveTen5Row(
-    digit1: 1,
-    digit2: 4,
-    digit3: 42,
-    digit4: -6,
-    digit5: 44,
-    ans: 85,
-  ),
-  FiveTen5Row(
-    digit1: 4,
-    digit2: -2,
-    digit3: 54,
-    digit4: 23,
-    digit5: -6,
-    ans: 73,
-  ),
-  FiveTen5Row(
-    digit1: 14,
-    digit2: 4,
-    digit3: -6,
-    digit4: 74,
-    digit5: -5,
-    ans: 81,
-  ),
-  FiveTen5Row(
-    digit1: 32,
-    digit2: 14,
-    digit3: -5,
-    digit4: 6,
-    digit5: -7,
-    ans: 40,
-  ),
-  FiveTen5Row(
-    digit1: 5,
-    digit2: 1,
-    digit3: 32,
-    digit4: -15,
-    digit5: 74,
-    ans: 97,
-  ),
-  FiveTen5Row(
-    digit1: 78,
-    digit2: -15,
-    digit3: -2,
-    digit4: 4,
-    digit5: 3,
-    ans: 68,
-  ),
-  FiveTen5Row(
-    digit1: 39,
-    digit2: 40,
-    digit3: -6,
-    digit4: 5,
-    digit5: -7,
-    ans: 71,
-  ),
-  FiveTen5Row(
-    digit1: 87,
-    digit2: 2,
-    digit3: -8,
-    digit4: -50,
-    digit5: 4,
-    ans: 35,
-  ),
-  FiveTen5Row(
-    digit1: 6,
-    digit2: 3,
-    digit3: -7,
-    digit4: 54,
-    digit5: 23,
-    ans: 79,
-  ),
-  FiveTen5Row(
-    digit1: 4,
-    digit2: 64,
-    digit3: -52,
-    digit4: 3,
-    digit5: -7,
-    ans: 12,
-  ),
-  FiveTen5Row(
-    digit1: 29,
-    digit2: -4,
-    digit3: 42,
-    digit4: -6,
-    digit5: 4,
-    ans: 65,
-  ),
-  FiveTen5Row(
-    digit1: 45,
-    digit2: 4,
-    digit3: -26,
-    digit4: 4,
-    digit5: 2,
-    ans: 29,
-  ),
-  FiveTen5Row(
-    digit1: 66,
-    digit2: 3,
-    digit3: -57,
-    digit4: 4,
-    digit5: 3,
-    ans: 19,
-  ),
-  FiveTen5Row(
-    digit1: 13,
-    digit2: 44,
-    digit3: -6,
-    digit4: 2,
-    digit5: 4,
-    ans: 57,
-  ),
-  FiveTen5Row(
-    digit1: 72,
-    digit2: -51,
-    digit3: 4,
-    digit4: 4,
-    digit5: -7,
-    ans: 22,
-  ),
-  FiveTen5Row(
-    digit1: 89,
-    digit2: -36,
-    digit3: 4,
-    digit4: -6,
-    digit5: 4,
-    ans: 55,
-  ),
-  FiveTen5Row(
-    digit1: 4,
-    digit2: 4,
-    digit3: 61,
-    digit4: -54,
-    digit5: 3,
-    ans: 18,
-  ),
-  FiveTen5Row(
-    digit1: 5,
-    digit2: 73,
-    digit3: -26,
-    digit4: 4,
-    digit5: 2,
-    ans: 58,
-  ),
-  FiveTen5Row(
-    digit1: 7,
-    digit2: 42,
-    digit3: -28,
-    digit4: 4,
-    digit5: 3,
-    ans: 28,
-  ),
-  FiveTen5Row(
-    digit1: 86,
-    digit2: -5,
-    digit3: 4,
-    digit4: 2,
-    digit5: -36,
-    ans: 51,
-  ),
-  FiveTen5Row(
-    digit1: 91,
-    digit2: -61,
-    digit3: 5,
-    digit4: 3,
-    digit5: -6,
-    ans: 32,
-  ),
-  FiveTen5Row(
-    digit1: 5,
-    digit2: 2,
-    digit3: 62,
-    digit4: -57,
-    digit5: 4,
-    ans: 16,
-  ),
-  FiveTen5Row(
-    digit1: 3,
-    digit2: 4,
-    digit3: 72,
-    digit4: -56,
-    digit5: 4,
-    ans: 27,
-  ),
-  FiveTen5Row(
-    digit1: 90,
-    digit2: 8,
-    digit3: -56,
-    digit4: 4,
-    digit5: -5,
-    ans: 41,
-  ),
-  FiveTen5Row(
-    digit1: 31,
-    digit2: 15,
-    digit3: -6,
-    digit4: 1,
-    digit5: 4,
-    ans: 45,
-  ),
-  FiveTen5Row(
-    digit1: 5,
-    digit2: 4,
-    digit3: -7,
-    digit4: 54,
-    digit5: -5,
-    ans: 51,
-  ),
-  FiveTen5Row(
-    digit1: 8,
-    digit2: 61,
-    digit3: -56,
-    digit4: 4,
-    digit5: 2,
-    ans: 19,
-  ),
-  FiveTen5Row(
-    digit1: 2,
-    digit2: 5,
-    digit3: 71,
-    digit4: -16,
-    digit5: 4,
-    ans: 66,
-  ),
-  FiveTen5Row(
-    digit1: 67,
-    digit2: -5,
-    digit3: 37,
-    digit4: -4,
-    digit5: 2,
-    ans: 97,
-  ),
-  FiveTen5Row(
-    digit1: 36,
-    digit2: 3,
-    digit3: -26,
-    digit4: 4,
-    digit5: -2,
-    ans: 15,
-  ),
-  FiveTen5Row(
-    digit1: 98,
-    digit2: -56,
-    digit3: 4,
-    digit4: -5,
-    digit5: 4,
-    ans: 45,
-  ),
-  FiveTen5Row(
+  FiveDigit(digit1: 2, digit2: 4, digit3: -5, digit4: 24, digit5: -10, ans: 15),
+  FiveDigit(digit1: 38, digit2: -6, digit3: 14, digit4: -5, digit5: 4, ans: 45),
+  FiveDigit(digit1: 3, digit2: 4, digit3: 61, digit4: -55, digit5: 5, ans: 18),
+  FiveDigit(digit1: 72, digit2: 4, digit3: -25, digit4: 2, digit5: 4, ans: 57),
+  FiveDigit(digit1: 34, digit2: -22, digit3: 4, digit4: 2, digit5: -7, ans: 11),
+  FiveDigit(digit1: 6, digit2: -5, digit3: 44, digit4: -20, digit5: 2, ans: 27),
+  FiveDigit(digit1: 57, digit2: -6, digit3: 4, digit4: 24, digit5: -8, ans: 71),
+  FiveDigit(digit1: 64, digit2: -12, digit3: 4, digit4: -5, digit5: 3, ans: 54),
+  FiveDigit(digit1: 29, digit2: -16, digit3: 4, digit4: 2, digit5: -5, ans: 14),
+  FiveDigit(digit1: 7, digit2: -5, digit3: 54, digit4: -6, digit5: 11, ans: 61),
+  FiveDigit(digit1: 39, digit2: -16, digit3: 4, digit4: -5, digit5: 4, ans: 26),
+  FiveDigit(digit1: 4, digit2: 4, digit3: 21, digit4: -7, digit5: 74, ans: 96),
+  FiveDigit(digit1: 35, digit2: -10, digit3: 4, digit4: -6, digit5: 4, ans: 27),
+  FiveDigit(digit1: 9, digit2: -5, digit3: 4, digit4: 11, digit5: 80, ans: 99),
+  FiveDigit(digit1: 2, digit2: 75, digit3: -5, digit4: 4, digit5: -5, ans: 71),
+  FiveDigit(digit1: 93, digit2: -72, digit3: 4, digit4: 4, digit5: -6, ans: 23),
+  FiveDigit(digit1: 5, digit2: 24, digit3: -7, digit4: 4, digit5: -15, ans: 11),
+  FiveDigit(digit1: 42, digit2: -31, digit3: 4, digit4: 1, digit5: -6, ans: 10),
+  FiveDigit(digit1: 89, digit2: -65, digit3: 4, digit4: -6, digit5: 7, ans: 29),
+  FiveDigit(digit1: 13, digit2: 4, digit3: -5, digit4: 4, digit5: 13, ans: 29),
+  FiveDigit(digit1: 88, digit2: -35, digit3: 1, digit4: 4, digit5: -7, ans: 51),
+  FiveDigit(digit1: 56, digit2: -5, digit3: 4, digit4: 23, digit5: -6, ans: 72),
+  FiveDigit(digit1: 6, digit2: -5, digit3: 24, digit4: 3, digit5: -15, ans: 13),
+  FiveDigit(digit1: 90, digit2: 4, digit3: -52, digit4: 4, digit5: 3, ans: 49),
+  FiveDigit(digit1: 33, digit2: 15, digit3: -2, digit4: -5, digit5: 4, ans: 45),
+  FiveDigit(digit1: 7, digit2: 2, digit3: 50, digit4: -7, digit5: 34, ans: 86),
+  FiveDigit(digit1: 1, digit2: 4, digit3: 42, digit4: -6, digit5: 44, ans: 85),
+  FiveDigit(digit1: 4, digit2: -2, digit3: 54, digit4: 23, digit5: -6, ans: 73),
+  FiveDigit(digit1: 14, digit2: 4, digit3: -6, digit4: 74, digit5: -5, ans: 81),
+  FiveDigit(digit1: 32, digit2: 14, digit3: -5, digit4: 6, digit5: -7, ans: 40),
+  FiveDigit(digit1: 5, digit2: 1, digit3: 32, digit4: -15, digit5: 74, ans: 97),
+  FiveDigit(digit1: 78, digit2: -15, digit3: -2, digit4: 4, digit5: 3, ans: 68),
+  FiveDigit(digit1: 39, digit2: 40, digit3: -6, digit4: 5, digit5: -7, ans: 71),
+  FiveDigit(digit1: 87, digit2: 2, digit3: -8, digit4: -50, digit5: 4, ans: 35),
+  FiveDigit(digit1: 6, digit2: 3, digit3: -7, digit4: 54, digit5: 23, ans: 79),
+  FiveDigit(digit1: 4, digit2: 64, digit3: -52, digit4: 3, digit5: -7, ans: 12),
+  FiveDigit(digit1: 29, digit2: -4, digit3: 42, digit4: -6, digit5: 4, ans: 65),
+  FiveDigit(digit1: 45, digit2: 4, digit3: -26, digit4: 4, digit5: 2, ans: 29),
+  FiveDigit(digit1: 66, digit2: 3, digit3: -57, digit4: 4, digit5: 3, ans: 19),
+  FiveDigit(digit1: 13, digit2: 44, digit3: -6, digit4: 2, digit5: 4, ans: 57),
+  FiveDigit(digit1: 72, digit2: -51, digit3: 4, digit4: 4, digit5: -7, ans: 22),
+  FiveDigit(digit1: 89, digit2: -36, digit3: 4, digit4: -6, digit5: 4, ans: 55),
+  FiveDigit(digit1: 4, digit2: 4, digit3: 61, digit4: -54, digit5: 3, ans: 18),
+  FiveDigit(digit1: 5, digit2: 73, digit3: -26, digit4: 4, digit5: 2, ans: 58),
+  FiveDigit(digit1: 7, digit2: 42, digit3: -28, digit4: 4, digit5: 3, ans: 28),
+  FiveDigit(digit1: 86, digit2: -5, digit3: 4, digit4: 2, digit5: -36, ans: 51),
+  FiveDigit(digit1: 91, digit2: -61, digit3: 5, digit4: 3, digit5: -6, ans: 32),
+  FiveDigit(digit1: 5, digit2: 2, digit3: 62, digit4: -57, digit5: 4, ans: 16),
+  FiveDigit(digit1: 3, digit2: 4, digit3: 72, digit4: -56, digit5: 4, ans: 27),
+  FiveDigit(digit1: 90, digit2: 8, digit3: -56, digit4: 4, digit5: -5, ans: 41),
+  FiveDigit(digit1: 31, digit2: 15, digit3: -6, digit4: 1, digit5: 4, ans: 45),
+  FiveDigit(digit1: 5, digit2: 4, digit3: -7, digit4: 54, digit5: -5, ans: 51),
+  FiveDigit(digit1: 8, digit2: 61, digit3: -56, digit4: 4, digit5: 2, ans: 19),
+  FiveDigit(digit1: 2, digit2: 5, digit3: 71, digit4: -16, digit5: 4, ans: 66),
+  FiveDigit(digit1: 67, digit2: -5, digit3: 37, digit4: -4, digit5: 2, ans: 97),
+  FiveDigit(digit1: 36, digit2: 3, digit3: -26, digit4: 4, digit5: -2, ans: 15),
+  FiveDigit(digit1: 98, digit2: -56, digit3: 4, digit4: -5, digit5: 4, ans: 45),
+  FiveDigit(
     digit1: 83,
     digit2: -52,
     digit3: 12,
@@ -1667,143 +939,24 @@ List<FiveTen5Row> fivePlusFour5Row21 = [
     digit5: -7,
     ans: 41,
   ),
-  FiveTen5Row(
-    digit1: 4,
-    digit2: -2,
-    digit3: 14,
-    digit4: 52,
-    digit5: -7,
-    ans: 61,
-  ),
-  FiveTen5Row(
-    digit1: 32,
-    digit2: 1,
-    digit3: 15,
-    digit4: -7,
-    digit5: 4,
-    ans: 45,
-  ),
-  FiveTen5Row(
-    digit1: 8,
-    digit2: 41,
-    digit3: -26,
-    digit4: 4,
-    digit5: 2,
-    ans: 29,
-  ),
-  FiveTen5Row(
-    digit1: 75,
-    digit2: -50,
-    digit3: 4,
-    digit4: -6,
-    digit5: 4,
-    ans: 27,
-  ),
-  FiveTen5Row(
-    digit1: 25,
-    digit2: 42,
-    digit3: -6,
-    digit4: -1,
-    digit5: 5,
-    ans: 65,
-  ),
-  FiveTen5Row(
-    digit1: 62,
-    digit2: 4,
-    digit3: -15,
-    digit4: 4,
-    digit5: 4,
-    ans: 59,
-  ),
-  FiveTen5Row(
-    digit1: 9,
-    digit2: -2,
-    digit3: 72,
-    digit4: -65,
-    digit5: 4,
-    ans: 18,
-  ),
-  FiveTen5Row(
-    digit1: 7,
-    digit2: 81,
-    digit3: -53,
-    digit4: 2,
-    digit5: -6,
-    ans: 31,
-  ),
-  FiveTen5Row(
-    digit1: 2,
-    digit2: 66,
-    digit3: -17,
-    digit4: 4,
-    digit5: 3,
-    ans: 58,
-  ),
-  FiveTen5Row(
-    digit1: 68,
-    digit2: -15,
-    digit3: 4,
-    digit4: 2,
-    digit5: -7,
-    ans: 52,
-  ),
-  FiveTen5Row(
-    digit1: 4,
-    digit2: 4,
-    digit3: 81,
-    digit4: -55,
-    digit5: 4,
-    ans: 38,
-  ),
-  FiveTen5Row(
-    digit1: 49,
-    digit2: -25,
-    digit3: 4,
-    digit4: -7,
-    digit5: 4,
-    ans: 25,
-  ),
-  FiveTen5Row(
-    digit1: 73,
-    digit2: -62,
-    digit3: 5,
-    digit4: -5,
-    digit5: 4,
-    ans: 15,
-  ),
-  FiveTen5Row(
-    digit1: 6,
-    digit2: 3,
-    digit3: -5,
-    digit4: 34,
-    digit5: -22,
-    ans: 16,
-  ),
-  FiveTen5Row(
-    digit1: 4,
-    digit2: 65,
-    digit3: -7,
-    digit4: 4,
-    digit5: -51,
-    ans: 15,
-  ),
-  FiveTen5Row(
-    digit1: 8,
-    digit2: -5,
-    digit3: 73,
-    digit4: -51,
-    digit5: 4,
-    ans: 29,
-  ),
-  FiveTen5Row(
-    digit1: 81,
-    digit2: 6,
-    digit3: -52,
-    digit4: 2,
-    digit5: -6,
-    ans: 31,
-  ),
-  FiveTen5Row(
+  FiveDigit(digit1: 4, digit2: -2, digit3: 14, digit4: 52, digit5: -7, ans: 61),
+  FiveDigit(digit1: 32, digit2: 1, digit3: 15, digit4: -7, digit5: 4, ans: 45),
+  FiveDigit(digit1: 8, digit2: 41, digit3: -26, digit4: 4, digit5: 2, ans: 29),
+  FiveDigit(digit1: 75, digit2: -50, digit3: 4, digit4: -6, digit5: 4, ans: 27),
+  FiveDigit(digit1: 25, digit2: 42, digit3: -6, digit4: -1, digit5: 5, ans: 65),
+  FiveDigit(digit1: 62, digit2: 4, digit3: -15, digit4: 4, digit5: 4, ans: 59),
+  FiveDigit(digit1: 9, digit2: -2, digit3: 72, digit4: -65, digit5: 4, ans: 18),
+  FiveDigit(digit1: 7, digit2: 81, digit3: -53, digit4: 2, digit5: -6, ans: 31),
+  FiveDigit(digit1: 2, digit2: 66, digit3: -17, digit4: 4, digit5: 3, ans: 58),
+  FiveDigit(digit1: 68, digit2: -15, digit3: 4, digit4: 2, digit5: -7, ans: 52),
+  FiveDigit(digit1: 4, digit2: 4, digit3: 81, digit4: -55, digit5: 4, ans: 38),
+  FiveDigit(digit1: 49, digit2: -25, digit3: 4, digit4: -7, digit5: 4, ans: 25),
+  FiveDigit(digit1: 73, digit2: -62, digit3: 5, digit4: -5, digit5: 4, ans: 15),
+  FiveDigit(digit1: 6, digit2: 3, digit3: -5, digit4: 34, digit5: -22, ans: 16),
+  FiveDigit(digit1: 4, digit2: 65, digit3: -7, digit4: 4, digit5: -51, ans: 15),
+  FiveDigit(digit1: 8, digit2: -5, digit3: 73, digit4: -51, digit5: 4, ans: 29),
+  FiveDigit(digit1: 81, digit2: 6, digit3: -52, digit4: 2, digit5: -6, ans: 31),
+  FiveDigit(
     digit1: 77,
     digit2: -6,
     digit3: -21,
@@ -1811,359 +964,51 @@ List<FiveTen5Row> fivePlusFour5Row21 = [
     digit5: -5,
     ans: 51,
   ),
-  FiveTen5Row(
-    digit1: 83,
-    digit2: -32,
-    digit3: 7,
-    digit4: -5,
-    digit5: 4,
-    ans: 57,
-  ),
-  FiveTen5Row(
-    digit1: 5,
-    digit2: 2,
-    digit3: 81,
-    digit4: -53,
-    digit5: 4,
-    ans: 39,
-  ),
-  FiveTen5Row(
-    digit1: 7,
-    digit2: -5,
-    digit3: 64,
-    digit4: -5,
-    digit5: 31,
-    ans: 92,
-  ),
-  FiveTen5Row(
-    digit1: 2,
-    digit2: 5,
-    digit3: 42,
-    digit4: -27,
-    digit5: 4,
-    ans: 26,
-  ),
-  FiveTen5Row(
-    digit1: 9,
-    digit2: 60,
-    digit3: -7,
-    digit4: 4,
-    digit5: -45,
-    ans: 21,
-  ),
-  FiveTen5Row(
-    digit1: 65,
-    digit2: 4,
-    digit3: -8,
-    digit4: 4,
-    digit5: -10,
-    ans: 55,
-  ),
-  FiveTen5Row(
-    digit1: 34,
-    digit2: 55,
-    digit3: -7,
-    digit4: -1,
-    digit5: 4,
-    ans: 85,
-  ),
-  FiveTen5Row(
-    digit1: 72,
-    digit2: 6,
-    digit3: -55,
-    digit4: 4,
-    digit5: 1,
-    ans: 28,
-  ),
-  FiveTen5Row(
-    digit1: 4,
-    digit2: 34,
-    digit3: -7,
-    digit4: 17,
-    digit5: -5,
-    ans: 43,
-  ),
-  FiveTen5Row(
-    digit1: 5,
-    digit2: 22,
-    digit3: 52,
-    digit4: -8,
-    digit5: 4,
-    ans: 75,
-  ),
-  FiveTen5Row(
-    digit1: 71,
-    digit2: -20,
-    digit3: 4,
-    digit4: 3,
-    digit5: -7,
-    ans: 51,
-  ),
-  FiveTen5Row(
-    digit1: 95,
-    digit2: -50,
-    digit3: 3,
-    digit4: -6,
-    digit5: 4,
-    ans: 46,
-  ),
-  FiveTen5Row(
-    digit1: 84,
-    digit2: 4,
-    digit3: -53,
-    digit4: 3,
-    digit5: -5,
-    ans: 33,
-  ),
-  FiveTen5Row(
-    digit1: 13,
-    digit2: 4,
-    digit3: -6,
-    digit4: 54,
-    digit5: -5,
-    ans: 60,
-  ),
-  FiveTen5Row(
-    digit1: 43,
-    digit2: 5,
-    digit3: -28,
-    digit4: 4,
-    digit5: 4,
-    ans: 28,
-  ),
-  FiveTen5Row(
-    digit1: 65,
-    digit2: -15,
-    digit3: 4,
-    digit4: 4,
-    digit5: 1,
-    ans: 59,
-  ),
-  FiveTen5Row(
-    digit1: 7,
-    digit2: 71,
-    digit3: -6,
-    digit4: 4,
-    digit5: -55,
-    ans: 21,
-  ),
-  FiveTen5Row(
-    digit1: 9,
-    digit2: -5,
-    digit3: 34,
-    digit4: -5,
-    digit5: 24,
-    ans: 57,
-  ),
-  FiveTen5Row(
-    digit1: 2,
-    digit2: 4,
-    digit3: 33,
-    digit4: -27,
-    digit5: 6,
-    ans: 18,
-  ),
-  FiveTen5Row(
-    digit1: 36,
-    digit2: -15,
-    digit3: 4,
-    digit4: 3,
-    digit5: -3,
-    ans: 25,
-  ),
-  FiveTen5Row(
-    digit1: 73,
-    digit2: 5,
-    digit3: -67,
-    digit4: 4,
-    digit5: 1,
-    ans: 16,
-  ),
-  FiveTen5Row(
-    digit1: 5,
-    digit2: 3,
-    digit3: -7,
-    digit4: 74,
-    digit5: -50,
-    ans: 25,
-  ),
-  FiveTen5Row(
-    digit1: 8,
-    digit2: 41,
-    digit3: -24,
-    digit4: 3,
-    digit5: -5,
-    ans: 23,
-  ),
-  FiveTen5Row(
-    digit1: 2,
-    digit2: 5,
-    digit3: 72,
-    digit4: -28,
-    digit5: 34,
-    ans: 85,
-  ),
-  FiveTen5Row(
-    digit1: 55,
-    digit2: 43,
-    digit3: -5,
-    digit4: 4,
-    digit5: -5,
-    ans: 92,
-  ),
-  FiveTen5Row(
-    digit1: 86,
-    digit2: -51,
-    digit3: 3,
-    digit4: -5,
-    digit5: 4,
-    ans: 37,
-  ),
-  FiveTen5Row(
-    digit1: 32,
-    digit2: 12,
-    digit3: 4,
-    digit4: -7,
-    digit5: 5,
-    ans: 46,
-  ),
-  FiveTen5Row(
-    digit1: 4,
-    digit2: 74,
-    digit3: -6,
-    digit4: -51,
-    digit5: 4,
-    ans: 25,
-  ),
-  FiveTen5Row(
-    digit1: 2,
-    digit2: 5,
-    digit3: 82,
-    digit4: -35,
-    digit5: 4,
-    ans: 58,
-  ),
-  FiveTen5Row(
-    digit1: 1,
-    digit2: 14,
-    digit3: 3,
-    digit4: 51,
-    digit5: -5,
-    ans: 64,
-  ),
-  FiveTen5Row(
-    digit1: 68,
-    digit2: -16,
-    digit3: 4,
-    digit4: 3,
-    digit5: -2,
-    ans: 57,
-  ),
-  FiveTen5Row(
-    digit1: 53,
-    digit2: 4,
-    digit3: 21,
-    digit4: -2,
-    digit5: -5,
-    ans: 71,
-  ),
-  FiveTen5Row(
-    digit1: 9,
-    digit2: -6,
-    digit3: 34,
-    digit4: -15,
-    digit5: 4,
-    ans: 26,
-  ),
-  FiveTen5Row(
-    digit1: 54,
-    digit2: 14,
-    digit3: -6,
-    digit4: 2,
-    digit5: 4,
-    ans: 68,
-  ),
-  FiveTen5Row(
-    digit1: 67,
-    digit2: -6,
-    digit3: 6,
-    digit4: -52,
-    digit5: 2,
-    ans: 17,
-  ),
-  FiveTen5Row(
-    digit1: 6,
-    digit2: 72,
-    digit3: -53,
-    digit4: 3,
-    digit5: -6,
-    ans: 22,
-  ),
-  FiveTen5Row(
-    digit1: 2,
-    digit2: 4,
-    digit3: 43,
-    digit4: -24,
-    digit5: 2,
-    ans: 27,
-  ),
-  FiveTen5Row(
-    digit1: 78,
-    digit2: -6,
-    digit3: -21,
-    digit4: 4,
-    digit5: 3,
-    ans: 58,
-  ),
-  FiveTen5Row(
-    digit1: 95,
-    digit2: -45,
-    digit3: 8,
-    digit4: -5,
-    digit5: 4,
-    ans: 57,
-  ),
-  FiveTen5Row(
-    digit1: 4,
-    digit2: 4,
-    digit3: -6,
-    digit4: 52,
-    digit5: -51,
-    ans: 3,
-  ),
-  FiveTen5Row(
-    digit1: 1,
-    digit2: 8,
-    digit3: 40,
-    digit4: -26,
-    digit5: 4,
-    ans: 27,
-  ),
-  FiveTen5Row(
-    digit1: 55,
-    digit2: 43,
-    digit3: -2,
-    digit4: -5,
-    digit5: 4,
-    ans: 95,
-  ),
-  FiveTen5Row(
-    digit1: 73,
-    digit2: -52,
-    digit3: 3,
-    digit4: 3,
-    digit5: -6,
-    ans: 21,
-  ),
-  FiveTen5Row(
-    digit1: 2,
-    digit2: 6,
-    digit3: 11,
-    digit4: -6,
-    digit5: 24,
-    ans: 37,
-  ),
-  FiveTen5Row(
+  FiveDigit(digit1: 83, digit2: -32, digit3: 7, digit4: -5, digit5: 4, ans: 57),
+  FiveDigit(digit1: 5, digit2: 2, digit3: 81, digit4: -53, digit5: 4, ans: 39),
+  FiveDigit(digit1: 7, digit2: -5, digit3: 64, digit4: -5, digit5: 31, ans: 92),
+  FiveDigit(digit1: 2, digit2: 5, digit3: 42, digit4: -27, digit5: 4, ans: 26),
+  FiveDigit(digit1: 9, digit2: 60, digit3: -7, digit4: 4, digit5: -45, ans: 21),
+  FiveDigit(digit1: 65, digit2: 4, digit3: -8, digit4: 4, digit5: -10, ans: 55),
+  FiveDigit(digit1: 34, digit2: 55, digit3: -7, digit4: -1, digit5: 4, ans: 85),
+  FiveDigit(digit1: 72, digit2: 6, digit3: -55, digit4: 4, digit5: 1, ans: 28),
+  FiveDigit(digit1: 4, digit2: 34, digit3: -7, digit4: 17, digit5: -5, ans: 43),
+  FiveDigit(digit1: 5, digit2: 22, digit3: 52, digit4: -8, digit5: 4, ans: 75),
+  FiveDigit(digit1: 71, digit2: -20, digit3: 4, digit4: 3, digit5: -7, ans: 51),
+  FiveDigit(digit1: 95, digit2: -50, digit3: 3, digit4: -6, digit5: 4, ans: 46),
+  FiveDigit(digit1: 84, digit2: 4, digit3: -53, digit4: 3, digit5: -5, ans: 33),
+  FiveDigit(digit1: 13, digit2: 4, digit3: -6, digit4: 54, digit5: -5, ans: 60),
+  FiveDigit(digit1: 43, digit2: 5, digit3: -28, digit4: 4, digit5: 4, ans: 28),
+  FiveDigit(digit1: 65, digit2: -15, digit3: 4, digit4: 4, digit5: 1, ans: 59),
+  FiveDigit(digit1: 7, digit2: 71, digit3: -6, digit4: 4, digit5: -55, ans: 21),
+  FiveDigit(digit1: 9, digit2: -5, digit3: 34, digit4: -5, digit5: 24, ans: 57),
+  FiveDigit(digit1: 2, digit2: 4, digit3: 33, digit4: -27, digit5: 6, ans: 18),
+  FiveDigit(digit1: 36, digit2: -15, digit3: 4, digit4: 3, digit5: -3, ans: 25),
+  FiveDigit(digit1: 73, digit2: 5, digit3: -67, digit4: 4, digit5: 1, ans: 16),
+  FiveDigit(digit1: 5, digit2: 3, digit3: -7, digit4: 74, digit5: -50, ans: 25),
+  FiveDigit(digit1: 8, digit2: 41, digit3: -24, digit4: 3, digit5: -5, ans: 23),
+  FiveDigit(digit1: 2, digit2: 5, digit3: 72, digit4: -28, digit5: 34, ans: 85),
+  FiveDigit(digit1: 55, digit2: 43, digit3: -5, digit4: 4, digit5: -5, ans: 92),
+  FiveDigit(digit1: 86, digit2: -51, digit3: 3, digit4: -5, digit5: 4, ans: 37),
+  FiveDigit(digit1: 32, digit2: 12, digit3: 4, digit4: -7, digit5: 5, ans: 46),
+  FiveDigit(digit1: 4, digit2: 74, digit3: -6, digit4: -51, digit5: 4, ans: 25),
+  FiveDigit(digit1: 2, digit2: 5, digit3: 82, digit4: -35, digit5: 4, ans: 58),
+  FiveDigit(digit1: 1, digit2: 14, digit3: 3, digit4: 51, digit5: -5, ans: 64),
+  FiveDigit(digit1: 68, digit2: -16, digit3: 4, digit4: 3, digit5: -2, ans: 57),
+  FiveDigit(digit1: 53, digit2: 4, digit3: 21, digit4: -2, digit5: -5, ans: 71),
+  FiveDigit(digit1: 9, digit2: -6, digit3: 34, digit4: -15, digit5: 4, ans: 26),
+  FiveDigit(digit1: 54, digit2: 14, digit3: -6, digit4: 2, digit5: 4, ans: 68),
+  FiveDigit(digit1: 67, digit2: -6, digit3: 6, digit4: -52, digit5: 2, ans: 17),
+  FiveDigit(digit1: 6, digit2: 72, digit3: -53, digit4: 3, digit5: -6, ans: 22),
+  FiveDigit(digit1: 2, digit2: 4, digit3: 43, digit4: -24, digit5: 2, ans: 27),
+  FiveDigit(digit1: 78, digit2: -6, digit3: -21, digit4: 4, digit5: 3, ans: 58),
+  FiveDigit(digit1: 95, digit2: -45, digit3: 8, digit4: -5, digit5: 4, ans: 57),
+  FiveDigit(digit1: 4, digit2: 4, digit3: -6, digit4: 52, digit5: -51, ans: 3),
+  FiveDigit(digit1: 1, digit2: 8, digit3: 40, digit4: -26, digit5: 4, ans: 27),
+  FiveDigit(digit1: 55, digit2: 43, digit3: -2, digit4: -5, digit5: 4, ans: 95),
+  FiveDigit(digit1: 73, digit2: -52, digit3: 3, digit4: 3, digit5: -6, ans: 21),
+  FiveDigit(digit1: 2, digit2: 6, digit3: 11, digit4: -6, digit5: 24, ans: 37),
+  FiveDigit(
     digit1: 83,
     digit2: -52,
     digit3: 14,
@@ -2171,31 +1016,10 @@ List<FiveTen5Row> fivePlusFour5Row21 = [
     digit5: 6,
     ans: 49,
   ),
-  FiveTen5Row(
-    digit1: 2,
-    digit2: 6,
-    digit3: 41,
-    digit4: -27,
-    digit5: 4,
-    ans: 26,
-  ),
-  FiveTen5Row(
-    digit1: 4,
-    digit2: 34,
-    digit3: -26,
-    digit4: 4,
-    digit5: 3,
-    ans: 19,
-  ),
-  FiveTen5Row(
-    digit1: 61,
-    digit2: 5,
-    digit3: 2,
-    digit4: -55,
-    digit5: 4,
-    ans: 17,
-  ),
-  FiveTen5Row(
+  FiveDigit(digit1: 2, digit2: 6, digit3: 41, digit4: -27, digit5: 4, ans: 26),
+  FiveDigit(digit1: 4, digit2: 34, digit3: -26, digit4: 4, digit5: 3, ans: 19),
+  FiveDigit(digit1: 61, digit2: 5, digit3: 2, digit4: -55, digit5: 4, ans: 17),
+  FiveDigit(
     digit1: 65,
     digit2: -10,
     digit3: 23,
@@ -2203,201 +1027,33 @@ List<FiveTen5Row> fivePlusFour5Row21 = [
     digit5: -1,
     ans: 71,
   ),
-  FiveTen5Row(
-    digit1: 5,
-    digit2: 2,
-    digit3: 22,
-    digit4: -16,
-    digit5: 44,
-    ans: 57,
-  ),
-  FiveTen5Row(
-    digit1: 15,
-    digit2: 4,
-    digit3: -7,
-    digit4: 25,
-    digit5: -5,
-    ans: 32,
-  ),
-  FiveTen5Row(
-    digit1: 12,
-    digit2: 14,
-    digit3: 3,
-    digit4: -7,
-    digit5: 5,
-    ans: 27,
-  ),
-  FiveTen5Row(
-    digit1: 7,
-    digit2: 12,
-    digit3: -6,
-    digit4: 44,
-    digit5: -6,
-    ans: 51,
-  ),
-  FiveTen5Row(
-    digit1: 75,
-    digit2: 3,
-    digit3: -6,
-    digit4: -21,
-    digit5: 4,
-    ans: 55,
-  ),
-  FiveTen5Row(
-    digit1: 4,
-    digit2: 34,
-    digit3: -6,
-    digit4: 14,
-    digit5: -1,
-    ans: 45,
-  ),
-  FiveTen5Row(
-    digit1: 32,
-    digit2: 7,
-    digit3: -27,
-    digit4: 2,
-    digit5: -2,
-    ans: 12,
-  ),
-  FiveTen5Row(
-    digit1: 16,
-    digit2: 3,
-    digit3: -7,
-    digit4: 22,
-    digit5: 4,
-    ans: 38,
-  ),
-  FiveTen5Row(
-    digit1: 94,
-    digit2: -82,
-    digit3: 4,
-    digit4: -5,
-    digit5: 7,
-    ans: 18,
-  ),
-  FiveTen5Row(
-    digit1: 6,
-    digit2: -5,
-    digit3: 34,
-    digit4: 22,
-    digit5: -6,
-    ans: 51,
-  ),
-  FiveTen5Row(
-    digit1: 1,
-    digit2: 8,
-    digit3: -7,
-    digit4: 44,
-    digit5: -5,
-    ans: 41,
-  ),
-  FiveTen5Row(
-    digit1: 7,
-    digit2: -5,
-    digit3: 24,
-    digit4: 43,
-    digit5: -6,
-    ans: 63,
-  ),
-  FiveTen5Row(
-    digit1: 43,
-    digit2: -21,
-    digit3: 4,
-    digit4: -5,
-    digit5: 4,
-    ans: 25,
-  ),
-  FiveTen5Row(
-    digit1: 55,
-    digit2: 22,
-    digit3: -1,
-    digit4: 3,
-    digit5: -6,
-    ans: 73,
-  ),
-  FiveTen5Row(
-    digit1: 98,
-    digit2: -5,
-    digit3: 4,
-    digit4: -76,
-    digit5: 3,
-    ans: 24,
-  ),
-  FiveTen5Row(
-    digit1: 14,
-    digit2: 4,
-    digit3: 21,
-    digit4: -7,
-    digit5: 4,
-    ans: 36,
-  ),
-  FiveTen5Row(
-    digit1: 8,
-    digit2: -5,
-    digit3: 24,
-    digit4: 2,
-    digit5: -27,
-    ans: 2,
-  ),
-  FiveTen5Row(
-    digit1: 3,
-    digit2: 4,
-    digit3: 12,
-    digit4: -6,
-    digit5: 36,
-    ans: 49,
-  ),
-  FiveTen5Row(
-    digit1: 9,
-    digit2: -7,
-    digit3: 34,
-    digit4: 2,
-    digit5: -25,
-    ans: 13,
-  ),
-  FiveTen5Row(
-    digit1: 45,
-    digit2: -15,
-    digit3: 3,
-    digit4: 2,
-    digit5: -7,
-    ans: 28,
-  ),
-  FiveTen5Row(
-    digit1: 62,
-    digit2: 4,
-    digit3: -51,
-    digit4: 2,
-    digit5: -5,
-    ans: 12,
-  ),
-  FiveTen5Row(
-    digit1: 47,
-    digit2: -6,
-    digit3: 4,
-    digit4: -25,
-    digit5: 7,
-    ans: 27,
-  ),
-  FiveTen5Row(
-    digit1: 87,
-    digit2: -51,
-    digit3: 3,
-    digit4: -6,
-    digit5: 4,
-    ans: 37,
-  ),
-  FiveTen5Row(
-    digit1: 16,
-    digit2: -5,
-    digit3: 4,
-    digit4: 24,
-    digit5: -7,
-    ans: 32,
-  ),
+  FiveDigit(digit1: 5, digit2: 2, digit3: 22, digit4: -16, digit5: 44, ans: 57),
+  FiveDigit(digit1: 15, digit2: 4, digit3: -7, digit4: 25, digit5: -5, ans: 32),
+  FiveDigit(digit1: 12, digit2: 14, digit3: 3, digit4: -7, digit5: 5, ans: 27),
+  FiveDigit(digit1: 7, digit2: 12, digit3: -6, digit4: 44, digit5: -6, ans: 51),
+  FiveDigit(digit1: 75, digit2: 3, digit3: -6, digit4: -21, digit5: 4, ans: 55),
+  FiveDigit(digit1: 4, digit2: 34, digit3: -6, digit4: 14, digit5: -1, ans: 45),
+  FiveDigit(digit1: 32, digit2: 7, digit3: -27, digit4: 2, digit5: -2, ans: 12),
+  FiveDigit(digit1: 16, digit2: 3, digit3: -7, digit4: 22, digit5: 4, ans: 38),
+  FiveDigit(digit1: 94, digit2: -82, digit3: 4, digit4: -5, digit5: 7, ans: 18),
+  FiveDigit(digit1: 6, digit2: -5, digit3: 34, digit4: 22, digit5: -6, ans: 51),
+  FiveDigit(digit1: 1, digit2: 8, digit3: -7, digit4: 44, digit5: -5, ans: 41),
+  FiveDigit(digit1: 7, digit2: -5, digit3: 24, digit4: 43, digit5: -6, ans: 63),
+  FiveDigit(digit1: 43, digit2: -21, digit3: 4, digit4: -5, digit5: 4, ans: 25),
+  FiveDigit(digit1: 55, digit2: 22, digit3: -1, digit4: 3, digit5: -6, ans: 73),
+  FiveDigit(digit1: 98, digit2: -5, digit3: 4, digit4: -76, digit5: 3, ans: 24),
+  FiveDigit(digit1: 14, digit2: 4, digit3: 21, digit4: -7, digit5: 4, ans: 36),
+  FiveDigit(digit1: 8, digit2: -5, digit3: 24, digit4: 2, digit5: -27, ans: 2),
+  FiveDigit(digit1: 3, digit2: 4, digit3: 12, digit4: -6, digit5: 36, ans: 49),
+  FiveDigit(digit1: 9, digit2: -7, digit3: 34, digit4: 2, digit5: -25, ans: 13),
+  FiveDigit(digit1: 45, digit2: -15, digit3: 3, digit4: 2, digit5: -7, ans: 28),
+  FiveDigit(digit1: 62, digit2: 4, digit3: -51, digit4: 2, digit5: -5, ans: 12),
+  FiveDigit(digit1: 47, digit2: -6, digit3: 4, digit4: -25, digit5: 7, ans: 27),
+  FiveDigit(digit1: 87, digit2: -51, digit3: 3, digit4: -6, digit5: 4, ans: 37),
+  FiveDigit(digit1: 16, digit2: -5, digit3: 4, digit4: 24, digit5: -7, ans: 32),
 ];
-List<FiveTen5Row> fivePlusFour5Row22 = [
-  FiveTen5Row(
+List<FiveDigit> fivePlusFour5Row22 = [
+  FiveDigit(
     digit1: 62,
     digit2: 24,
     digit3: -51,
@@ -2405,7 +1061,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -25,
     ans: 24,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 98,
     digit2: -55,
     digit3: 41,
@@ -2413,7 +1069,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -35,
     ans: 63,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 12,
     digit2: 35,
     digit3: -25,
@@ -2421,7 +1077,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -15,
     ans: 52,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 87,
     digit2: -65,
     digit3: 42,
@@ -2429,7 +1085,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -58,
     ans: 21,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 23,
     digit2: 45,
     digit3: -57,
@@ -2437,7 +1093,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 15,
     ans: 69,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 66,
     digit2: -51,
     digit3: 40,
@@ -2445,7 +1101,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -67,
     ans: 11,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 49,
     digit2: -25,
     digit3: 45,
@@ -2453,7 +1109,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 41,
     ans: 53,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 31,
     digit2: 45,
     digit3: -51,
@@ -2461,7 +1117,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -57,
     ans: 11,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 16,
     digit2: 42,
     digit3: 31,
@@ -2469,7 +1125,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 44,
     ans: 57,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 54,
     digit2: 24,
     digit3: -51,
@@ -2477,7 +1133,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -15,
     ans: 54,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 87,
     digit2: -52,
     digit3: 41,
@@ -2485,7 +1141,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 44,
     ans: 65,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 37,
     digit2: 11,
     digit3: 41,
@@ -2493,7 +1149,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 54,
     ans: 76,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 13,
     digit2: 41,
     digit3: -52,
@@ -2501,7 +1157,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -61,
     ans: 25,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 72,
     digit2: -51,
     digit3: 44,
@@ -2509,7 +1165,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 23,
     ans: 73,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 94,
     digit2: -72,
     digit3: 41,
@@ -2517,7 +1173,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -52,
     ans: 25,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 63,
     digit2: -52,
     digit3: 47,
@@ -2525,7 +1181,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -54,
     ans: 45,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 61,
     digit2: 24,
     digit3: -60,
@@ -2533,7 +1189,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 11,
     ans: 79,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 59,
     digit2: 20,
     digit3: -57,
@@ -2541,7 +1197,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -15,
     ans: 53,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 73,
     digit2: -52,
     digit3: 43,
@@ -2549,7 +1205,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -53,
     ans: 35,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 84,
     digit2: -53,
     digit3: 44,
@@ -2557,7 +1213,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 14,
     ans: 64,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 45,
     digit2: 53,
     digit3: -66,
@@ -2565,7 +1221,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -25,
     ans: 51,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 19,
     digit2: 40,
     digit3: 20,
@@ -2573,7 +1229,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 42,
     ans: 54,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 57,
     digit2: 12,
     digit3: -57,
@@ -2581,7 +1237,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 21,
     ans: 74,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 35,
     digit2: 14,
     digit3: -27,
@@ -2589,7 +1245,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -55,
     ans: 12,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 86,
     digit2: -51,
     digit3: 42,
@@ -2597,7 +1253,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 43,
     ans: 68,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 38,
     digit2: 11,
     digit3: -49,
@@ -2605,7 +1261,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 45,
     ans: 79,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 91,
     digit2: -60,
     digit3: 42,
@@ -2613,7 +1269,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 34,
     ans: 84,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 65,
     digit2: 20,
     digit3: -50,
@@ -2621,7 +1277,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -25,
     ans: 53,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 31,
     digit2: 14,
     digit3: 52,
@@ -2629,7 +1285,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 44,
     ans: 76,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 63,
     digit2: -52,
     digit3: 43,
@@ -2637,7 +1293,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -56,
     ans: 22,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 57,
     digit2: -52,
     digit3: 43,
@@ -2645,7 +1301,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 44,
     ans: 65,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 25,
     digit2: 13,
     digit3: 41,
@@ -2653,7 +1309,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 44,
     ans: 58,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 96,
     digit2: -51,
     digit3: 42,
@@ -2661,7 +1317,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 40,
     ans: 75,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 42,
     digit2: 41,
     digit3: -61,
@@ -2669,7 +1325,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 13,
     ans: 89,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 87,
     digit2: -56,
     digit3: 44,
@@ -2677,7 +1333,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 43,
     ans: 68,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 96,
     digit2: -55,
     digit3: 43,
@@ -2685,7 +1341,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 40,
     ans: 62,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 34,
     digit2: 44,
     digit3: -57,
@@ -2693,7 +1349,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -22,
     ans: 25,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 85,
     digit2: -50,
     digit3: 43,
@@ -2701,7 +1357,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 41,
     ans: 54,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 79,
     digit2: -56,
     digit3: 45,
@@ -2709,7 +1365,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 24,
     ans: 75,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 57,
     digit2: 31,
     digit3: -53,
@@ -2717,7 +1373,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -51,
     ans: 26,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 93,
     digit2: -62,
     digit3: 44,
@@ -2725,7 +1381,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 43,
     ans: 68,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 75,
     digit2: 14,
     digit3: -56,
@@ -2733,7 +1389,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -61,
     ans: 17,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 32,
     digit2: 41,
     digit3: -52,
@@ -2741,7 +1397,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -46,
     ans: 51,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 97,
     digit2: -52,
     digit3: 43,
@@ -2749,7 +1405,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 42,
     ans: 63,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 12,
     digit2: 45,
     digit3: 12,
@@ -2757,7 +1413,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 43,
     ans: 54,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 74,
     digit2: -64,
     digit3: 45,
@@ -2765,7 +1421,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -52,
     ans: 26,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 87,
     digit2: -55,
     digit3: 42,
@@ -2773,7 +1429,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 46,
     ans: 67,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 28,
     digit2: -15,
     digit3: 46,
@@ -2781,7 +1437,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -57,
     ans: 22,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 91,
     digit2: -50,
     digit3: 43,
@@ -2789,7 +1445,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 16,
     ans: 68,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 74,
     digit2: -52,
     digit3: 64,
@@ -2797,7 +1453,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 41,
     ans: 72,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 17,
     digit2: 42,
     digit3: -53,
@@ -2805,7 +1461,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -55,
     ans: 13,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 23,
     digit2: 45,
     digit3: -53,
@@ -2813,7 +1469,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 12,
     ans: 68,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 68,
     digit2: -53,
     digit3: 42,
@@ -2821,7 +1477,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -53,
     ans: 25,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 15,
     digit2: 24,
     digit3: -26,
@@ -2829,7 +1485,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 21,
     ans: 78,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 82,
     digit2: -51,
     digit3: 43,
@@ -2837,7 +1493,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 67,
     ans: 89,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 74,
     digit2: -52,
     digit3: 15,
@@ -2845,7 +1501,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -28,
     ans: 21,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 61,
     digit2: 23,
     digit3: -52,
@@ -2853,7 +1509,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -26,
     ans: 20,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 75,
     digit2: 24,
     digit3: -54,
@@ -2861,7 +1517,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -16,
     ans: 70,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 32,
     digit2: 15,
     digit3: -26,
@@ -2869,7 +1525,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -55,
     ans: 40,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 27,
     digit2: 12,
     digit3: -24,
@@ -2877,7 +1533,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -56,
     ans: 3,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 62,
     digit2: -51,
     digit3: 76,
@@ -2885,7 +1541,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 43,
     ans: 78,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 94,
     digit2: -42,
     digit3: 14,
@@ -2893,7 +1549,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 43,
     ans: 59,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 71,
     digit2: 14,
     digit3: -65,
@@ -2901,7 +1557,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 24,
     ans: 87,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 90,
     digit2: -50,
     digit3: 46,
@@ -2909,7 +1565,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 43,
     ans: 78,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 16,
     digit2: 42,
     digit3: 21,
@@ -2917,7 +1573,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 43,
     ans: 54,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 23,
     digit2: 41,
     digit3: -53,
@@ -2925,7 +1581,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 22,
     ans: 79,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 47,
     digit2: -26,
     digit3: 45,
@@ -2933,7 +1589,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -57,
     ans: 41,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 52,
     digit2: 41,
     digit3: -51,
@@ -2941,7 +1597,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -67,
     ans: 21,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 28,
     digit2: -15,
     digit3: 44,
@@ -2949,7 +1605,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -63,
     ans: 15,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 64,
     digit2: 15,
     digit3: -58,
@@ -2957,7 +1613,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 51,
     ans: 96,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 50,
     digit2: 34,
     digit3: -62,
@@ -2965,7 +1621,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -52,
     ans: 11,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 93,
     digit2: -61,
     digit3: 45,
@@ -2973,7 +1629,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -15,
     ans: 11,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 74,
     digit2: -23,
     digit3: 34,
@@ -2981,7 +1637,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 15,
     ans: 35,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 44,
     digit2: 45,
     digit3: -67,
@@ -2989,7 +1645,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -26,
     ans: 21,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 53,
     digit2: 24,
     digit3: -56,
@@ -2997,7 +1653,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 14,
     ans: 77,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 34,
     digit2: 54,
     digit3: -53,
@@ -3005,7 +1661,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -65,
     ans: 21,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 76,
     digit2: -25,
     digit3: 44,
@@ -3013,7 +1669,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 22,
     ans: 57,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 64,
     digit2: -52,
     digit3: 46,
@@ -3021,7 +1677,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -76,
     ans: 13,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 29,
     digit2: -17,
     digit3: 46,
@@ -3029,7 +1685,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -57,
     ans: 11,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 43,
     digit2: -32,
     digit3: 61,
@@ -3037,7 +1693,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -55,
     ans: 31,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 84,
     digit2: -52,
     digit3: 41,
@@ -3045,7 +1701,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 46,
     ans: 57,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 67,
     digit2: -12,
     digit3: 33,
@@ -3053,7 +1709,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 32,
     ans: 67,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 94,
     digit2: -82,
     digit3: 42,
@@ -3061,7 +1717,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -45,
     ans: 54,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 69,
     digit2: -51,
     digit3: 40,
@@ -3069,7 +1725,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -57,
     ans: 12,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 33,
     digit2: 11,
     digit3: 45,
@@ -3077,7 +1733,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 43,
     ans: 79,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 71,
     digit2: -50,
     digit3: 43,
@@ -3085,7 +1741,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -52,
     ans: 26,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 95,
     digit2: -40,
     digit3: 24,
@@ -3093,7 +1749,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 47,
     ans: 59,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 67,
     digit2: -56,
     digit3: 54,
@@ -3101,7 +1757,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -62,
     ans: 16,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 40,
     digit2: 56,
     digit3: -65,
@@ -3109,7 +1765,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -60,
     ans: 15,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 37,
     digit2: -25,
     digit3: 45,
@@ -3117,7 +1773,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -56,
     ans: 13,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 54,
     digit2: 24,
     digit3: -56,
@@ -3125,7 +1781,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -16,
     ans: 52,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 16,
     digit2: 23,
     digit3: 40,
@@ -3133,7 +1789,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -16,
     ans: 12,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 42,
     digit2: -31,
     digit3: 24,
@@ -3141,7 +1797,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -53,
     ans: 25,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 98,
     digit2: -63,
     digit3: 42,
@@ -3149,7 +1805,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 43,
     ans: 69,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 84,
     digit2: -63,
     digit3: 44,
@@ -3157,7 +1813,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 43,
     ans: 58,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 54,
     digit2: 24,
     digit3: -56,
@@ -3165,7 +1821,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -53,
     ans: 11,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 79,
     digit2: -63,
     digit3: 42,
@@ -3173,7 +1829,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -67,
     ans: 22,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 64,
     digit2: -52,
     digit3: 41,
@@ -3181,7 +1837,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -51,
     ans: 26,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 74,
     digit2: -52,
     digit3: 46,
@@ -3189,7 +1845,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -68,
     ans: 21,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 92,
     digit2: -71,
     digit3: 46,
@@ -3197,7 +1853,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 43,
     ans: 58,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 95,
     digit2: -80,
     digit3: 64,
@@ -3205,7 +1861,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 42,
     ans: 67,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 70,
     digit2: 25,
     digit3: -60,
@@ -3213,7 +1869,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -67,
     ans: 12,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 63,
     digit2: -51,
     digit3: 42,
@@ -3221,7 +1877,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -57,
     ans: 12,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 83,
     digit2: -51,
     digit3: 46,
@@ -3229,7 +1885,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 42,
     ans: 57,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 98,
     digit2: -43,
     digit3: 12,
@@ -3237,7 +1893,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 34,
     ans: 45,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 83,
     digit2: -32,
     digit3: 42,
@@ -3245,7 +1901,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 46,
     ans: 66,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 27,
     digit2: 41,
     digit3: -53,
@@ -3253,7 +1909,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 12,
     ans: 69,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 43,
     digit2: -21,
     digit3: 56,
@@ -3261,7 +1917,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 42,
     ans: 67,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 54,
     digit2: 24,
     digit3: -56,
@@ -3269,7 +1925,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -15,
     ans: 31,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 67,
     digit2: -52,
     digit3: 43,
@@ -3277,7 +1933,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -56,
     ans: 23,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 55,
     digit2: 32,
     digit3: -67,
@@ -3285,7 +1941,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 24,
     ans: 87,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 29,
     digit2: -17,
     digit3: 46,
@@ -3293,7 +1949,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -57,
     ans: 22,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 51,
     digit2: 24,
     digit3: -60,
@@ -3301,7 +1957,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 21,
     ans: 79,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 40,
     digit2: 36,
     digit3: -55,
@@ -3309,7 +1965,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -53,
     ans: 11,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 84,
     digit2: -64,
     digit3: 49,
@@ -3317,7 +1973,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 41,
     ans: 57,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 73,
     digit2: -52,
     digit3: 41,
@@ -3325,7 +1981,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -75,
     ans: 21,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 92,
     digit2: -61,
     digit3: 42,
@@ -3333,7 +1989,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -75,
     ans: 22,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 62,
     digit2: -50,
     digit3: 46,
@@ -3341,7 +1997,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -57,
     ans: 22,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 50,
     digit2: 37,
     digit3: -65,
@@ -3349,7 +2005,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 52,
     ans: 98,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 41,
     digit2: 43,
     digit3: -60,
@@ -3357,7 +2013,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -57,
     ans: 11,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 20,
     digit2: 46,
     digit3: -51,
@@ -3365,7 +2021,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -22,
     ans: 25,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 83,
     digit2: -52,
     digit3: 43,
@@ -3373,7 +2029,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 45,
     ans: 58,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 64,
     digit2: -53,
     digit3: 57,
@@ -3381,7 +2037,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 24,
     ans: 76,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 59,
     digit2: 20,
     digit3: -63,
@@ -3389,7 +2045,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 10,
     ans: 68,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 77,
     digit2: 12,
     digit3: -64,
@@ -3397,7 +2053,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -55,
     ans: 13,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 82,
     digit2: -31,
     digit3: 41,
@@ -3405,7 +2061,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 42,
     ans: 53,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 85,
     digit2: -50,
     digit3: 42,
@@ -3413,7 +2069,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 43,
     ans: 69,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 58,
     digit2: 21,
     digit3: -67,
@@ -3421,7 +2077,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 25,
     ans: 79,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 37,
     digit2: 42,
     digit3: -63,
@@ -3429,7 +2085,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -52,
     ans: 15,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 92,
     digit2: -81,
     digit3: 64,
@@ -3437,7 +2093,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 64,
     ans: 89,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 14,
     digit2: 14,
     digit3: -16,
@@ -3445,7 +2101,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 20,
     ans: 78,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 57,
     digit2: 21,
     digit3: -52,
@@ -3453,7 +2109,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -58,
     ans: 11,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 64,
     digit2: -52,
     digit3: 35,
@@ -3461,7 +2117,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 46,
     ans: 67,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 20,
     digit2: 46,
     digit3: -51,
@@ -3469,7 +2125,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 12,
     ans: 69,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 42,
     digit2: 42,
     digit3: -53,
@@ -3477,7 +2133,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -21,
     ans: 22,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 79,
     digit2: -54,
     digit3: 42,
@@ -3485,7 +2141,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 42,
     ans: 93,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 25,
     digit2: 43,
     digit3: -67,
@@ -3493,7 +2149,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -20,
     ans: 25,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 24,
     digit2: 45,
     digit3: -51,
@@ -3501,7 +2157,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 20,
     ans: 79,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 31,
     digit2: -20,
     digit3: 46,
@@ -3509,7 +2165,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -57,
     ans: 21,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 98,
     digit2: -63,
     digit3: 42,
@@ -3517,7 +2173,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 43,
     ans: 68,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 83,
     digit2: -52,
     digit3: 41,
@@ -3525,7 +2181,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 56,
     ans: 67,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 72,
     digit2: -61,
     digit3: 43,
@@ -3533,7 +2189,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -67,
     ans: 12,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 32,
     digit2: -10,
     digit3: 46,
@@ -3541,7 +2197,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 52,
     ans: 63,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 56,
     digit2: 23,
     digit3: -52,
@@ -3549,7 +2205,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -62,
     ans: 6,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 17,
     digit2: 42,
     digit3: 30,
@@ -3557,7 +2213,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 45,
     ans: 77,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 94,
     digit2: -82,
     digit3: 41,
@@ -3565,7 +2221,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -60,
     ans: 34,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 67,
     digit2: -55,
     digit3: 42,
@@ -3573,7 +2229,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -56,
     ans: 12,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 73,
     digit2: -52,
     digit3: 41,
@@ -3581,7 +2237,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 46,
     ans: 58,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 26,
     digit2: 43,
     digit3: -57,
@@ -3589,7 +2245,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 21,
     ans: 74,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 94,
     digit2: -62,
     digit3: 52,
@@ -3597,7 +2253,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 44,
     ans: 66,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 31,
     digit2: 45,
     digit3: -25,
@@ -3605,7 +2261,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -35,
     ans: 50,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 52,
     digit2: 44,
     digit3: -85,
@@ -3613,7 +2269,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 21,
     ans: 78,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 67,
     digit2: -51,
     digit3: 43,
@@ -3621,7 +2277,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -75,
     ans: 14,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 23,
     digit2: 45,
     digit3: -56,
@@ -3629,7 +2285,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 14,
     ans: 68,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 47,
     digit2: -25,
     digit3: 46,
@@ -3637,7 +2293,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 42,
     ans: 58,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 68,
     digit2: -56,
     digit3: 44,
@@ -3645,7 +2301,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -56,
     ans: 13,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 97,
     digit2: -65,
     digit3: 46,
@@ -3653,7 +2309,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 45,
     ans: 67,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 25,
     digit2: 43,
     digit3: -57,
@@ -3661,7 +2317,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 12,
     ans: 69,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 63,
     digit2: -52,
     digit3: 48,
@@ -3669,7 +2325,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -67,
     ans: 12,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 53,
     digit2: 24,
     digit3: -52,
@@ -3677,7 +2333,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -17,
     ans: 20,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 42,
     digit2: 42,
     digit3: -51,
@@ -3685,7 +2341,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -67,
     ans: 12,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 85,
     digit2: -50,
     digit3: 42,
@@ -3693,7 +2349,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 43,
     ans: 68,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 64,
     digit2: -52,
     digit3: 42,
@@ -3701,7 +2357,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -14,
     ans: 55,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 79,
     digit2: -64,
     digit3: 42,
@@ -3709,7 +2365,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 30,
     ans: 99,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 53,
     digit2: 14,
     digit3: -55,
@@ -3717,7 +2373,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 15,
     ans: 68,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 34,
     digit2: 14,
     digit3: 51,
@@ -3725,7 +2381,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 45,
     ans: 77,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 72,
     digit2: -51,
     digit3: 46,
@@ -3733,7 +2389,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 42,
     ans: 97,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 67,
     digit2: -52,
     digit3: 42,
@@ -3741,7 +2397,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -56,
     ans: 22,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 35,
     digit2: 42,
     digit3: -65,
@@ -3749,7 +2405,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 10,
     ans: 68,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 65,
     digit2: 13,
     digit3: -65,
@@ -3757,7 +2413,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 11,
     ans: 69,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 54,
     digit2: 15,
     digit3: -57,
@@ -3765,7 +2421,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 15,
     ans: 69,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 58,
     digit2: 21,
     digit3: -64,
@@ -3773,7 +2429,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 21,
     ans: 79,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 95,
     digit2: -60,
     digit3: 42,
@@ -3781,7 +2437,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 41,
     ans: 67,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 73,
     digit2: -62,
     digit3: 46,
@@ -3789,7 +2445,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -56,
     ans: 22,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 53,
     digit2: 24,
     digit3: -26,
@@ -3797,7 +2453,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -53,
     ans: 11,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 28,
     digit2: 40,
     digit3: -56,
@@ -3805,7 +2461,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 15,
     ans: 69,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 82,
     digit2: -51,
     digit3: 43,
@@ -3813,7 +2469,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -67,
     ans: 22,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 61,
     digit2: -50,
     digit3: 43,
@@ -3821,7 +2477,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -67,
     ans: 12,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 19,
     digit2: 40,
     digit3: 20,
@@ -3829,7 +2485,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 15,
     ans: 37,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 92,
     digit2: -61,
     digit3: 43,
@@ -3837,7 +2493,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 24,
     ans: 47,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 78,
     digit2: -25,
     digit3: 46,
@@ -3845,7 +2501,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 42,
     ans: 88,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 34,
     digit2: 15,
     digit3: -27,
@@ -3853,7 +2509,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -57,
     ans: 11,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 27,
     digit2: 41,
     digit3: -55,
@@ -3861,7 +2517,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 15,
     ans: 69,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 63,
     digit2: 14,
     digit3: 21,
@@ -3869,7 +2525,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 41,
     ans: 74,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 58,
     digit2: 30,
     digit3: -53,
@@ -3877,7 +2533,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 13,
     ans: 38,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 69,
     digit2: -57,
     digit3: 45,
@@ -3885,7 +2541,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -53,
     ans: 25,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 52,
     digit2: 15,
     digit3: -52,
@@ -3893,7 +2549,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 31,
     ans: 88,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 46,
     digit2: -25,
     digit3: 46,
@@ -3901,7 +2557,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 44,
     ans: 56,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 31,
     digit2: 42,
     digit3: -62,
@@ -3909,7 +2565,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -14,
     ans: 50,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 95,
     digit2: -60,
     digit3: 42,
@@ -3917,7 +2573,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 13,
     ans: 38,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 63,
     digit2: -52,
     digit3: 43,
@@ -3925,7 +2581,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -63,
     ans: 16,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 79,
     digit2: -64,
     digit3: 42,
@@ -3933,7 +2589,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -57,
     ans: 12,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 46,
     digit2: 42,
     digit3: -63,
@@ -3941,7 +2597,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 12,
     ans: 79,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 96,
     digit2: -75,
     digit3: 46,
@@ -3949,7 +2605,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -35,
     ans: 53,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 42,
     digit2: -22,
     digit3: 46,
@@ -3957,7 +2613,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 63,
     ans: 78,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 63,
     digit2: -52,
     digit3: 43,
@@ -3965,7 +2621,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -56,
     ans: 23,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 75,
     digit2: -50,
     digit3: 42,
@@ -3973,7 +2629,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -56,
     ans: 23,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 99,
     digit2: -53,
     digit3: 41,
@@ -3981,7 +2637,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: 14,
     ans: 36,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 60,
     digit2: 36,
     digit3: -61,
@@ -3989,7 +2645,7 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     digit5: -57,
     ans: 22,
   ),
-  FiveTen5Row(
+  FiveDigit(
     digit1: 65,
     digit2: -50,
     digit3: 43,
@@ -3998,8 +2654,8 @@ List<FiveTen5Row> fivePlusFour5Row22 = [
     ans: 11,
   ),
 ];
-List<FiveTen6Row> fivePlusFour6Row11 = [
-  FiveTen6Row(
+List<SixDigit> fivePlusFour6Row11 = [
+  SixDigit(
     digit1: 2,
     digit2: 5,
     digit3: -6,
@@ -4008,7 +2664,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: -7,
     ans: 1,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 9,
     digit2: -5,
     digit3: 4,
@@ -4017,7 +2673,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 4,
     ans: 8,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 7,
     digit2: -1,
     digit3: -5,
@@ -4026,7 +2682,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: -5,
     ans: 3,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 9,
     digit2: -7,
     digit3: 4,
@@ -4035,7 +2691,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 1,
     ans: 8,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 6,
     digit2: 2,
     digit3: -7,
@@ -4044,7 +2700,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: -5,
     ans: 2,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 8,
     digit2: -3,
     digit3: -5,
@@ -4053,7 +2709,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: -6,
     ans: 2,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 1,
     digit2: 2,
     digit3: -2,
@@ -4062,7 +2718,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: -5,
     ans: 3,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 9,
     digit2: -5,
     digit3: 4,
@@ -4071,7 +2727,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: -5,
     ans: 2,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 3,
     digit2: 4,
     digit3: -5,
@@ -4080,7 +2736,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 4,
     ans: 9,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 2,
     digit2: 1,
     digit3: 4,
@@ -4089,7 +2745,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 4,
     ans: 8,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 7,
     digit2: -5,
     digit3: 4,
@@ -4098,7 +2754,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 4,
     ans: 6,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 5,
     digit2: 4,
     digit3: -7,
@@ -4107,7 +2763,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 4,
     ans: 5,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 8,
     digit2: 1,
     digit3: -6,
@@ -4116,7 +2772,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 4,
     ans: 6,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 2,
     digit2: 2,
     digit3: 5,
@@ -4125,7 +2781,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: -2,
     ans: 5,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 3,
     digit2: 1,
     digit3: 4,
@@ -4134,7 +2790,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 1,
     ans: 6,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 8,
     digit2: -7,
     digit3: 4,
@@ -4143,7 +2799,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 4,
     ans: 5,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 3,
     digit2: -2,
     digit3: 4,
@@ -4152,7 +2808,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 4,
     ans: 5,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 9,
     digit2: -6,
     digit3: 4,
@@ -4161,7 +2817,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: -1,
     ans: 5,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 7,
     digit2: -5,
     digit3: 4,
@@ -4170,7 +2826,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 4,
     ans: 6,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 9,
     digit2: -5,
     digit3: 4,
@@ -4179,7 +2835,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 4,
     ans: 9,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 6,
     digit2: -5,
     digit3: 4,
@@ -4188,7 +2844,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: -2,
     ans: 5,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 3,
     digit2: 4,
     digit3: -5,
@@ -4197,7 +2853,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: -5,
     ans: 3,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 9,
     digit2: -6,
     digit3: 4,
@@ -4206,7 +2862,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 3,
     ans: 8,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 4,
     digit2: 4,
     digit3: -6,
@@ -4215,7 +2871,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 4,
     ans: 6,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 3,
     digit2: 5,
     digit3: -6,
@@ -4224,7 +2880,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: -6,
     ans: 3,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 8,
     digit2: -7,
     digit3: 4,
@@ -4233,7 +2889,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 4,
     ans: 6,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 1,
     digit2: 4,
     digit3: 3,
@@ -4242,7 +2898,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 4,
     ans: 8,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 3,
     digit2: 1,
     digit3: 4,
@@ -4251,7 +2907,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: -6,
     ans: 1,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 8,
     digit2: -5,
     digit3: 4,
@@ -4260,7 +2916,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 2,
     ans: 8,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 4,
     digit2: -3,
     digit3: 4,
@@ -4269,7 +2925,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 4,
     ans: 5,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 6,
     digit2: -5,
     digit3: 4,
@@ -4278,7 +2934,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 1,
     ans: 3,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 3,
     digit2: 1,
     digit3: 4,
@@ -4287,7 +2943,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 1,
     ans: 6,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 9,
     digit2: -7,
     digit3: 4,
@@ -4296,7 +2952,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 3,
     ans: 8,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 7,
     digit2: -5,
     digit3: 4,
@@ -4305,7 +2961,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 2,
     ans: 3,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 5,
     digit2: 3,
     digit3: -5,
@@ -4314,7 +2970,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 1,
     ans: 6,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 2,
     digit2: 4,
     digit3: 2,
@@ -4323,7 +2979,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 1,
     ans: 8,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 6,
     digit2: -5,
     digit3: 4,
@@ -4332,7 +2988,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 4,
     ans: 5,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 3,
     digit2: -1,
     digit3: 4,
@@ -4341,7 +2997,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 4,
     ans: 7,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 4,
     digit2: -2,
     digit3: 4,
@@ -4350,7 +3006,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 2,
     ans: 7,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 9,
     digit2: -5,
     digit3: 4,
@@ -4359,7 +3015,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: -7,
     ans: 2,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 5,
     digit2: 3,
     digit3: -6,
@@ -4368,7 +3024,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: -7,
     ans: 1,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 1,
     digit2: 2,
     digit3: 4,
@@ -4377,7 +3033,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 2,
     ans: 8,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 2,
     digit2: 4,
     digit3: -5,
@@ -4386,7 +3042,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 1,
     ans: 8,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 6,
     digit2: -5,
     digit3: 4,
@@ -4395,7 +3051,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 4,
     ans: 5,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 3,
     digit2: 4,
     digit3: -5,
@@ -4404,7 +3060,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 1,
     ans: 9,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 4,
     digit2: 4,
     digit3: -7,
@@ -4413,7 +3069,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: -7,
     ans: 2,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 8,
     digit2: -2,
     digit3: -5,
@@ -4422,7 +3078,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: -5,
     ans: 3,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 9,
     digit2: -7,
     digit3: 4,
@@ -4431,7 +3087,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 4,
     ans: 7,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 1,
     digit2: 5,
     digit3: 3,
@@ -4440,7 +3096,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 2,
     ans: 8,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 8,
     digit2: -3,
     digit3: 4,
@@ -4449,7 +3105,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 1,
     ans: 7,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 6,
     digit2: -5,
     digit3: 4,
@@ -4458,7 +3114,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 4,
     ans: 6,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 7,
     digit2: -5,
     digit3: 4,
@@ -4467,7 +3123,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 4,
     ans: 6,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 1,
     digit2: 2,
     digit3: 1,
@@ -4476,7 +3132,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 4,
     ans: 6,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 8,
     digit2: -3,
     digit3: 4,
@@ -4485,7 +3141,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 4,
     ans: 8,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 2,
     digit2: 2,
     digit3: 4,
@@ -4494,7 +3150,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 1,
     ans: 8,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 6,
     digit2: -5,
     digit3: 4,
@@ -4503,7 +3159,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: -1,
     ans: 1,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 9,
     digit2: -6,
     digit3: -3,
@@ -4512,7 +3168,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: -7,
     ans: 1,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 4,
     digit2: -2,
     digit3: -1,
@@ -4521,7 +3177,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 4,
     ans: 8,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 5,
     digit2: 2,
     digit3: -5,
@@ -4530,7 +3186,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: -7,
     ans: 2,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 3,
     digit2: 4,
     digit3: -5,
@@ -4539,7 +3195,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: -5,
     ans: 3,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 3,
     digit2: 1,
     digit3: 4,
@@ -4548,7 +3204,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 5,
     ans: 12,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 8,
     digit2: -5,
     digit3: 4,
@@ -4557,7 +3213,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 2,
     ans: 8,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 4,
     digit2: -2,
     digit3: -1,
@@ -4566,7 +3222,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: -7,
     ans: 2,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 6,
     digit2: -5,
     digit3: 4,
@@ -4575,7 +3231,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 4,
     ans: 5,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 1,
     digit2: 4,
     digit3: 3,
@@ -4584,7 +3240,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 2,
     ans: 8,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 3,
     digit2: -2,
     digit3: 4,
@@ -4593,7 +3249,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: -1,
     ans: 1,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 6,
     digit2: -1,
     digit3: 3,
@@ -4602,7 +3258,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 2,
     ans: 7,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 6,
     digit2: -5,
     digit3: 4,
@@ -4611,7 +3267,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 4,
     ans: 5,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 2,
     digit2: 4,
     digit3: -5,
@@ -4620,7 +3276,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: -6,
     ans: 2,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 9,
     digit2: -6,
     digit3: 4,
@@ -4629,7 +3285,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 2,
     ans: 8,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 3,
     digit2: 5,
     digit3: -7,
@@ -4638,7 +3294,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: -5,
     ans: 3,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 1,
     digit2: 4,
     digit3: 3,
@@ -4647,7 +3303,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 1,
     ans: 7,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 5,
     digit2: 3,
     digit3: -5,
@@ -4656,7 +3312,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 4,
     ans: 6,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 3,
     digit2: -2,
     digit3: 1,
@@ -4665,7 +3321,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: -5,
     ans: 2,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 4,
     digit2: -2,
     digit3: 4,
@@ -4674,7 +3330,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 4,
     ans: 7,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 8,
     digit2: -5,
     digit3: 4,
@@ -4683,7 +3339,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 3,
     ans: 8,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 6,
     digit2: 2,
     digit3: -5,
@@ -4692,7 +3348,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: -8,
     ans: 1,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 3,
     digit2: 1,
     digit3: 4,
@@ -4701,7 +3357,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 1,
     ans: 9,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 4,
     digit2: -1,
     digit3: -2,
@@ -4710,7 +3366,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: -6,
     ans: 2,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 5,
     digit2: 3,
     digit3: -6,
@@ -4719,7 +3375,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: -6,
     ans: 3,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 5,
     digit2: 2,
     digit3: 1,
@@ -4728,7 +3384,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 2,
     ans: 9,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 2,
     digit2: 1,
     digit3: 4,
@@ -4737,7 +3393,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 2,
     ans: 8,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 2,
     digit2: 1,
     digit3: 3,
@@ -4746,7 +3402,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 3,
     ans: 8,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 6,
     digit2: -5,
     digit3: 4,
@@ -4755,7 +3411,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: -7,
     ans: 2,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 2,
     digit2: 5,
     digit3: -6,
@@ -4764,7 +3420,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: -6,
     ans: 2,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 3,
     digit2: 1,
     digit3: -2,
@@ -4773,7 +3429,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 4,
     ans: 5,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 9,
     digit2: -5,
     digit3: 4,
@@ -4782,7 +3438,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 2,
     ans: 8,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 4,
     digit2: 4,
     digit3: -6,
@@ -4791,7 +3447,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: -7,
     ans: 2,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 1,
     digit2: 4,
     digit3: 2,
@@ -4800,7 +3456,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 3,
     ans: 9,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 7,
     digit2: -6,
     digit3: 4,
@@ -4809,7 +3465,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 5,
     ans: 6,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 4,
     digit2: -3,
     digit3: 4,
@@ -4818,7 +3474,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 4,
     ans: 5,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 8,
     digit2: -5,
     digit3: 4,
@@ -4827,7 +3483,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 3,
     ans: 8,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 2,
     digit2: 5,
     digit3: 2,
@@ -4836,7 +3492,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 1,
     ans: 9,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 6,
     digit2: -5,
     digit3: 3,
@@ -4845,7 +3501,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 4,
     ans: 6,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 4,
     digit2: -2,
     digit3: 4,
@@ -4854,7 +3510,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 4,
     ans: 9,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 2,
     digit2: 2,
     digit3: 5,
@@ -4863,7 +3519,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 2,
     ans: 8,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 3,
     digit2: -2,
     digit3: 3,
@@ -4872,7 +3528,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 4,
     ans: 6,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 9,
     digit2: -6,
     digit3: 4,
@@ -4881,7 +3537,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 4,
     ans: 6,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 1,
     digit2: 4,
     digit3: 3,
@@ -4890,7 +3546,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 4,
     ans: 8,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 9,
     digit2: -5,
     digit3: 4,
@@ -4899,7 +3555,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 4,
     ans: 7,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 3,
     digit2: -2,
     digit3: 4,
@@ -4908,7 +3564,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 4,
     ans: 6,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 5,
     digit2: 4,
     digit3: -7,
@@ -4917,7 +3573,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: -5,
     ans: 4,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 8,
     digit2: -6,
     digit3: 4,
@@ -4926,7 +3582,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 3,
     ans: 8,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 7,
     digit2: -6,
     digit3: 4,
@@ -4935,7 +3591,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 4,
     ans: 6,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 3,
     digit2: -1,
     digit3: 4,
@@ -4944,7 +3600,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 1,
     ans: 4,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 7,
     digit2: -5,
     digit3: 6,
@@ -4953,7 +3609,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: -5,
     ans: 2,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 4,
     digit2: 4,
     digit3: -5,
@@ -4962,7 +3618,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: -5,
     ans: 4,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 9,
     digit2: -6,
     digit3: 5,
@@ -4971,7 +3627,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 3,
     ans: 8,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 8,
     digit2: -5,
     digit3: 4,
@@ -4980,7 +3636,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 4,
     ans: 8,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 2,
     digit2: 2,
     digit3: 5,
@@ -4989,7 +3645,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 3,
     ans: 8,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 7,
     digit2: -5,
     digit3: 4,
@@ -4998,7 +3654,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 4,
     ans: 6,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 3,
     digit2: 5,
     digit3: -6,
@@ -5007,7 +3663,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 8,
     ans: 9,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 6,
     digit2: 2,
     digit3: 1,
@@ -5016,7 +3672,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 2,
     ans: 9,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 1,
     digit2: 5,
     digit3: 3,
@@ -5025,7 +3681,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 2,
     ans: 8,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 2,
     digit2: 1,
     digit3: 1,
@@ -5034,7 +3690,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 4,
     ans: 7,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 3,
     digit2: 5,
     digit3: -6,
@@ -5043,7 +3699,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 3,
     ans: 4,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 8,
     digit2: -5,
     digit3: 4,
@@ -5052,7 +3708,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 3,
     ans: 8,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 2,
     digit2: 5,
     digit3: -5,
@@ -5061,7 +3717,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 2,
     ans: 9,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 2,
     digit2: 4,
     digit3: -5,
@@ -5070,7 +3726,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 1,
     ans: 9,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 6,
     digit2: 3,
     digit3: -8,
@@ -5079,7 +3735,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 2,
     ans: 9,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 8,
     digit2: -3,
     digit3: 4,
@@ -5088,7 +3744,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 2,
     ans: 9,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 5,
     digit2: 3,
     digit3: -5,
@@ -5097,7 +3753,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 4,
     ans: 5,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 2,
     digit2: 1,
     digit3: 5,
@@ -5106,7 +3762,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 2,
     ans: 7,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 4,
     digit2: -1,
     digit3: -2,
@@ -5115,7 +3771,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: -6,
     ans: 2,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 7,
     digit2: -1,
     digit3: -1,
@@ -5124,7 +3780,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 4,
     ans: 7,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 5,
     digit2: 4,
     digit3: -6,
@@ -5133,7 +3789,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: -4,
     ans: 5,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 2,
     digit2: 2,
     digit3: 5,
@@ -5142,7 +3798,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 3,
     ans: 9,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 2,
     digit2: 5,
     digit3: -6,
@@ -5151,7 +3807,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: -6,
     ans: 1,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 5,
     digit2: 4,
     digit3: -7,
@@ -5160,7 +3816,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: -7,
     ans: 2,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 4,
     digit2: 4,
     digit3: -7,
@@ -5169,7 +3825,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: -1,
     ans: 7,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 9,
     digit2: -6,
     digit3: 3,
@@ -5178,7 +3834,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 4,
     ans: 5,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 3,
     digit2: 5,
     digit3: -6,
@@ -5187,7 +3843,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: -7,
     ans: 2,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 6,
     digit2: -5,
     digit3: 4,
@@ -5196,7 +3852,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 4,
     ans: 6,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 2,
     digit2: 4,
     digit3: -5,
@@ -5205,7 +3861,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: -6,
     ans: 2,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 1,
     digit2: 4,
     digit3: 3,
@@ -5214,7 +3870,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 2,
     ans: 7,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 3,
     digit2: -2,
     digit3: 4,
@@ -5223,7 +3879,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 4,
     ans: 6,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 1,
     digit2: 4,
     digit3: 4,
@@ -5232,7 +3888,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 2,
     ans: 8,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 9,
     digit2: -7,
     digit3: 6,
@@ -5241,7 +3897,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 1,
     ans: 8,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 1,
     digit2: 5,
     digit3: -5,
@@ -5250,7 +3906,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: -7,
     ans: 1,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 8,
     digit2: -6,
     digit3: 4,
@@ -5259,7 +3915,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 6,
     ans: 8,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 4,
     digit2: -2,
     digit3: -1,
@@ -5268,7 +3924,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: -6,
     ans: 1,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 8,
     digit2: -5,
     digit3: 4,
@@ -5277,7 +3933,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 4,
     ans: 6,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 5,
     digit2: 3,
     digit3: -6,
@@ -5286,7 +3942,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: -7,
     ans: 2,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 6,
     digit2: -5,
     digit3: 4,
@@ -5295,7 +3951,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: -6,
     ans: 3,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 5,
     digit2: 4,
     digit3: -5,
@@ -5304,7 +3960,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 4,
     ans: 5,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 6,
     digit2: -5,
     digit3: 4,
@@ -5313,7 +3969,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 1,
     ans: 4,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 1,
     digit2: 3,
     digit3: 4,
@@ -5322,7 +3978,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 1,
     ans: 7,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 8,
     digit2: -7,
     digit3: 4,
@@ -5331,7 +3987,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 2,
     ans: 4,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 2,
     digit2: 4,
     digit3: -5,
@@ -5340,7 +3996,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 4,
     ans: 8,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 7,
     digit2: -5,
     digit3: 4,
@@ -5349,7 +4005,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 4,
     ans: 5,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 2,
     digit2: 4,
     digit3: -5,
@@ -5358,7 +4014,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 1,
     ans: 7,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 6,
     digit2: -5,
     digit3: 3,
@@ -5367,7 +4023,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 4,
     ans: 6,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 8,
     digit2: -6,
     digit3: 4,
@@ -5376,7 +4032,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 2,
     ans: 7,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 4,
     digit2: -3,
     digit3: -1,
@@ -5385,7 +4041,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: -7,
     ans: 1,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 7,
     digit2: -5,
     digit3: 4,
@@ -5394,7 +4050,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 4,
     ans: 8,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 1,
     digit2: 3,
     digit3: 4,
@@ -5403,7 +4059,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 2,
     ans: 7,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 1,
     digit2: 3,
     digit3: 5,
@@ -5412,7 +4068,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 2,
     ans: 7,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 1,
     digit2: 3,
     digit3: -2,
@@ -5421,7 +4077,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: -7,
     ans: 2,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 6,
     digit2: 3,
     digit3: -7,
@@ -5430,7 +4086,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: -5,
     ans: 4,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 3,
     digit2: 1,
     digit3: 4,
@@ -5439,7 +4095,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: -7,
     ans: 2,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 2,
     digit2: 5,
     digit3: -6,
@@ -5448,7 +4104,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: -5,
     ans: 4,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 8,
     digit2: 1,
     digit3: -5,
@@ -5457,7 +4113,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: -7,
     ans: 2,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 3,
     digit2: 4,
     digit3: -5,
@@ -5466,7 +4122,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 1,
     ans: 9,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 1,
     digit2: 2,
     digit3: 4,
@@ -5475,7 +4131,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 1,
     ans: 7,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 9,
     digit2: -5,
     digit3: 4,
@@ -5484,7 +4140,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 1,
     ans: 8,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 2,
     digit2: -1,
     digit3: 3,
@@ -5493,7 +4149,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 5,
     ans: 6,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 4,
     digit2: 4,
     digit3: -6,
@@ -5502,7 +4158,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 6,
     ans: 7,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 7,
     digit2: -5,
     digit3: 7,
@@ -5511,7 +4167,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: -3,
     ans: 5,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 5,
     digit2: 4,
     digit3: -8,
@@ -5520,7 +4176,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: -5,
     ans: 4,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 3,
     digit2: -2,
     digit3: 4,
@@ -5529,7 +4185,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 6,
     ans: 9,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 2,
     digit2: 2,
     digit3: 4,
@@ -5538,7 +4194,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 1,
     ans: 6,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 6,
     digit2: -1,
     digit3: 3,
@@ -5547,7 +4203,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 1,
     ans: 8,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 3,
     digit2: -1,
     digit3: -1,
@@ -5556,7 +4212,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: -5,
     ans: 3,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 8,
     digit2: -5,
     digit3: 4,
@@ -5565,7 +4221,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 4,
     ans: 8,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 3,
     digit2: -3,
     digit3: 5,
@@ -5574,7 +4230,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 4,
     ans: 6,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 7,
     digit2: -6,
     digit3: 5,
@@ -5583,7 +4239,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 4,
     ans: 7,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 9,
     digit2: -6,
     digit3: 4,
@@ -5592,7 +4248,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 4,
     ans: 8,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 3,
     digit2: 4,
     digit3: -5,
@@ -5601,7 +4257,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 2,
     ans: 9,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 1,
     digit2: 3,
     digit3: 4,
@@ -5610,7 +4266,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 1,
     ans: 8,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 9,
     digit2: -7,
     digit3: 4,
@@ -5619,7 +4275,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 4,
     ans: 6,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 8,
     digit2: 1,
     digit3: -5,
@@ -5628,7 +4284,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: -6,
     ans: 3,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 2,
     digit2: 4,
     digit3: -5,
@@ -5637,7 +4293,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 6,
     ans: 9,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 4,
     digit2: -2,
     digit3: 4,
@@ -5646,7 +4302,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: -7,
     ans: 1,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 3,
     digit2: 1,
     digit3: 5,
@@ -5655,7 +4311,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: -7,
     ans: 1,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 6,
     digit2: -5,
     digit3: 4,
@@ -5664,7 +4320,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 8,
     ans: 9,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 5,
     digit2: 3,
     digit3: -2,
@@ -5673,7 +4329,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 3,
     ans: 8,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 5,
     digit2: -5,
     digit3: 5,
@@ -5682,7 +4338,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 4,
     ans: 6,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 7,
     digit2: -6,
     digit3: 4,
@@ -5691,7 +4347,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 4,
     ans: 5,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 8,
     digit2: -7,
     digit3: 4,
@@ -5700,7 +4356,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 6,
     ans: 7,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 3,
     digit2: 4,
     digit3: -5,
@@ -5709,7 +4365,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 1,
     ans: 9,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 9,
     digit2: -8,
     digit3: 4,
@@ -5718,7 +4374,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 4,
     ans: 6,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 4,
     digit2: 5,
     digit3: -6,
@@ -5727,7 +4383,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: -6,
     ans: 2,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 2,
     digit2: 5,
     digit3: -5,
@@ -5736,7 +4392,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: -6,
     ans: 3,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 1,
     digit2: 2,
     digit3: 1,
@@ -5745,7 +4401,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 4,
     ans: 6,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 7,
     digit2: -5,
     digit3: 4,
@@ -5754,7 +4410,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 4,
     ans: 6,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 1,
     digit2: 4,
     digit3: 2,
@@ -5763,7 +4419,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 3,
     ans: 8,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 8,
     digit2: -5,
     digit3: 4,
@@ -5772,7 +4428,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 4,
     ans: 6,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 4,
     digit2: -4,
     digit3: 5,
@@ -5781,7 +4437,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 4,
     ans: 7,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 6,
     digit2: 2,
     digit3: 1,
@@ -5790,7 +4446,7 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     digit6: 1,
     ans: 8,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 5,
     digit2: 4,
     digit3: -7,
@@ -5800,8 +4456,8 @@ List<FiveTen6Row> fivePlusFour6Row11 = [
     ans: 3,
   ),
 ];
-List<FiveTen6Row> fivePlusFour6Row21 = [
-  FiveTen6Row(
+List<SixDigit> fivePlusFour6Row21 = [
+  SixDigit(
     digit1: 21,
     digit2: 4,
     digit3: 3,
@@ -5810,7 +4466,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 2,
     ans: 48,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 4,
     digit2: 14,
     digit3: -7,
@@ -5819,7 +4475,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -45,
     ans: 22,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 63,
     digit2: 5,
     digit3: -17,
@@ -5828,7 +4484,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -7,
     ans: 72,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 3,
     digit2: 4,
     digit3: 32,
@@ -5837,7 +4493,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -6,
     ans: 42,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 43,
     digit2: 4,
     digit3: -15,
@@ -5846,7 +4502,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 3,
     ans: 74,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 9,
     digit2: -5,
     digit3: 34,
@@ -5855,7 +4511,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 12,
     ans: 38,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 41,
     digit2: 4,
     digit3: -20,
@@ -5864,7 +4520,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 14,
     ans: 36,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 16,
     digit2: -5,
     digit3: 54,
@@ -5873,7 +4529,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 4,
     ans: 57,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 69,
     digit2: -53,
     digit3: 3,
@@ -5882,7 +4538,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -7,
     ans: 31,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 15,
     digit2: -3,
     digit3: 44,
@@ -5891,7 +4547,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 2,
     ans: 67,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 87,
     digit2: -35,
     digit3: 4,
@@ -5900,7 +4556,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 4,
     ans: 66,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 73,
     digit2: 5,
     digit3: -25,
@@ -5909,7 +4565,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 14,
     ans: 66,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 9,
     digit2: -6,
     digit3: 34,
@@ -5918,7 +4574,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 34,
     ans: 55,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 7,
     digit2: 22,
     digit3: -5,
@@ -5927,7 +4583,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -28,
     ans: 11,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 86,
     digit2: -25,
     digit3: 4,
@@ -5936,7 +4592,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 1,
     ans: 19,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 32,
     digit2: 5,
     digit3: -12,
@@ -5945,7 +4601,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 64,
     ans: 85,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 17,
     digit2: -5,
     digit3: 34,
@@ -5954,7 +4610,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -16,
     ans: 13,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 41,
     digit2: 4,
     digit3: -15,
@@ -5963,7 +4619,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -12,
     ans: 25,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 55,
     digit2: 4,
     digit3: -56,
@@ -5972,7 +4628,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -7,
     ans: 12,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 17,
     digit2: -5,
     digit3: 24,
@@ -5981,7 +4637,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -5,
     ans: 41,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 4,
     digit2: 24,
     digit3: -6,
@@ -5990,7 +4646,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 4,
     ans: 55,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 8,
     digit2: -5,
     digit3: 64,
@@ -5999,7 +4655,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -45,
     ans: 50,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 63,
     digit2: -12,
     digit3: 4,
@@ -6008,7 +4664,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -7,
     ans: 2,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 9,
     digit2: -5,
     digit3: 34,
@@ -6017,7 +4673,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 4,
     ans: 27,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 88,
     digit2: -53,
     digit3: 4,
@@ -6026,7 +4682,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -26,
     ans: 21,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 17,
     digit2: 2,
     digit3: -17,
@@ -6035,7 +4691,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 4,
     ans: 45,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 7,
     digit2: -5,
     digit3: 64,
@@ -6044,7 +4700,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 44,
     ans: 87,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 25,
     digit2: 4,
     digit3: -17,
@@ -6053,7 +4709,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 4,
     ans: 69,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 2,
     digit2: 54,
     digit3: -5,
@@ -6062,7 +4718,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 9,
     ans: 19,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 87,
     digit2: -35,
     digit3: 4,
@@ -6071,7 +4727,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 1,
     ans: 76,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 3,
     digit2: 14,
     digit3: -6,
@@ -6080,7 +4736,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -7,
     ans: 72,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 16,
     digit2: -5,
     digit3: 34,
@@ -6089,7 +4745,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -6,
     ans: 21,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 12,
     digit2: 4,
     digit3: -15,
@@ -6098,7 +4754,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 42,
     ans: 49,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 86,
     digit2: -51,
     digit3: -5,
@@ -6107,7 +4763,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -17,
     ans: 21,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 95,
     digit2: -40,
     digit3: 3,
@@ -6116,7 +4772,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -5,
     ans: 71,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 67,
     digit2: -16,
     digit3: 44,
@@ -6125,7 +4781,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 5,
     ans: 97,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 5,
     digit2: 42,
     digit3: -16,
@@ -6134,7 +4790,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -17,
     ans: 32,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 47,
     digit2: -5,
     digit3: -21,
@@ -6143,7 +4799,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -6,
     ans: 53,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 40,
     digit2: 15,
     digit3: 4,
@@ -6152,7 +4808,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 12,
     ans: 69,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 8,
     digit2: -7,
     digit3: 4,
@@ -6161,7 +4817,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -27,
     ans: 22,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 46,
     digit2: -5,
     digit3: 4,
@@ -6170,7 +4826,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 54,
     ans: 77,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 78,
     digit2: -56,
     digit3: 4,
@@ -6179,7 +4835,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -5,
     ans: 70,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 9,
     digit2: -6,
     digit3: 4,
@@ -6188,7 +4844,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 41,
     ans: 64,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 35,
     digit2: 42,
     digit3: -25,
@@ -6197,7 +4853,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 2,
     ans: 52,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 4,
     digit2: 24,
     digit3: -17,
@@ -6206,7 +4862,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -7,
     ans: 71,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 43,
     digit2: 41,
     digit3: 5,
@@ -6215,7 +4871,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 4,
     ans: 35,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 13,
     digit2: 40,
     digit3: -2,
@@ -6224,7 +4880,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 7,
     ans: 47,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 6,
     digit2: -5,
     digit3: 34,
@@ -6233,7 +4889,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 2,
     ans: 28,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 63,
     digit2: -51,
     digit3: 44,
@@ -6242,7 +4898,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 4,
     ans: 57,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 95,
     digit2: -80,
     digit3: 42,
@@ -6251,7 +4907,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -5,
     ans: 53,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 28,
     digit2: -15,
     digit3: 4,
@@ -6260,7 +4916,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -2,
     ans: 52,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 2,
     digit2: 4,
     digit3: -5,
@@ -6269,7 +4925,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 54,
     ans: 69,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 38,
     digit2: -6,
     digit3: 14,
@@ -6278,7 +4934,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 51,
     ans: 96,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 3,
     digit2: 4,
     digit3: 61,
@@ -6287,7 +4943,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 2,
     ans: 39,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 72,
     digit2: 4,
     digit3: -25,
@@ -6296,7 +4952,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -15,
     ans: 62,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 34,
     digit2: -22,
     digit3: 4,
@@ -6305,7 +4961,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 84,
     ans: 95,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 6,
     digit2: -5,
     digit3: 44,
@@ -6314,7 +4970,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -5,
     ans: 62,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 57,
     digit2: -6,
     digit3: 4,
@@ -6323,7 +4979,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 4,
     ans: 27,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 64,
     digit2: -12,
     digit3: 4,
@@ -6332,7 +4988,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 4,
     ans: 58,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 29,
     digit2: -16,
     digit3: 4,
@@ -6341,7 +4997,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -8,
     ans: 51,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 7,
     digit2: -5,
     digit3: 54,
@@ -6350,7 +5006,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 14,
     ans: 75,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 39,
     digit2: -16,
     digit3: 4,
@@ -6359,7 +5015,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 3,
     ans: 19,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 4,
     digit2: 4,
     digit3: 21,
@@ -6368,7 +5024,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -5,
     ans: 81,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 35,
     digit2: -10,
     digit3: 4,
@@ -6377,7 +5033,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -6,
     ans: 41,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 9,
     digit2: -5,
     digit3: 4,
@@ -6386,7 +5042,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -54,
     ans: 45,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 2,
     digit2: 75,
     digit3: -5,
@@ -6395,7 +5051,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 34,
     ans: 85,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 93,
     digit2: -72,
     digit3: 4,
@@ -6404,7 +5060,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 64,
     ans: 87,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 5,
     digit2: 24,
     digit3: -7,
@@ -6413,7 +5069,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 42,
     ans: 53,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 42,
     digit2: -31,
     digit3: 4,
@@ -6422,7 +5078,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 9,
     ans: 59,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 89,
     digit2: -65,
     digit3: 4,
@@ -6431,7 +5087,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -5,
     ans: 14,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 13,
     digit2: 4,
     digit3: -5,
@@ -6440,7 +5096,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -16,
     ans: 13,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 88,
     digit2: -35,
     digit3: 1,
@@ -6449,7 +5105,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 4,
     ans: 55,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 56,
     digit2: -5,
     digit3: 4,
@@ -6458,7 +5114,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 4,
     ans: 17,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 6,
     digit2: -5,
     digit3: 24,
@@ -6467,7 +5123,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 46,
     ans: 59,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 90,
     digit2: 4,
     digit3: -52,
@@ -6476,7 +5132,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 4,
     ans: 19,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 33,
     digit2: 15,
     digit3: -2,
@@ -6485,7 +5141,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -25,
     ans: 20,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 7,
     digit2: 2,
     digit3: 50,
@@ -6494,7 +5150,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -51,
     ans: 35,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 1,
     digit2: 4,
     digit3: 42,
@@ -6503,7 +5159,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -30,
     ans: 55,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 4,
     digit2: -2,
     digit3: 54,
@@ -6512,7 +5168,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 4,
     ans: 27,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 14,
     digit2: 4,
     digit3: -6,
@@ -6521,7 +5177,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 3,
     ans: 54,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 32,
     digit2: 14,
     digit3: -5,
@@ -6530,7 +5186,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 35,
     ans: 75,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 5,
     digit2: 1,
     digit3: 32,
@@ -6539,7 +5195,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -5,
     ans: 92,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 78,
     digit2: -15,
     digit3: -52,
@@ -6548,7 +5204,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -7,
     ans: 11,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 39,
     digit2: 40,
     digit3: -56,
@@ -6557,7 +5213,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 4,
     ans: 25,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 87,
     digit2: 2,
     digit3: -8,
@@ -6566,7 +5222,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -10,
     ans: 25,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 6,
     digit2: 3,
     digit3: -7,
@@ -6575,7 +5231,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -54,
     ans: 25,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 4,
     digit2: 64,
     digit3: -52,
@@ -6584,7 +5240,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 45,
     ans: 57,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 9,
     digit2: -4,
     digit3: 42,
@@ -6593,7 +5249,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -35,
     ans: 10,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 45,
     digit2: 4,
     digit3: -26,
@@ -6602,7 +5258,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -16,
     ans: 23,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 66,
     digit2: 23,
     digit3: -57,
@@ -6611,7 +5267,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -12,
     ans: 27,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 13,
     digit2: 44,
     digit3: -6,
@@ -6620,7 +5276,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -51,
     ans: 6,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 72,
     digit2: -51,
     digit3: 4,
@@ -6629,7 +5285,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 45,
     ans: 67,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 89,
     digit2: -36,
     digit3: 24,
@@ -6638,7 +5294,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 2,
     ans: 77,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 4,
     digit2: 4,
     digit3: 61,
@@ -6647,7 +5303,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -7,
     ans: 11,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 5,
     digit2: 73,
     digit3: -6,
@@ -6656,7 +5312,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -53,
     ans: 25,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 7,
     digit2: 42,
     digit3: -28,
@@ -6665,7 +5321,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -7,
     ans: 21,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 86,
     digit2: -5,
     digit3: 4,
@@ -6674,7 +5330,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 24,
     ans: 75,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 91,
     digit2: -61,
     digit3: 5,
@@ -6683,7 +5339,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 44,
     ans: 76,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 5,
     digit2: 2,
     digit3: 62,
@@ -6692,7 +5348,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 3,
     ans: 19,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 3,
     digit2: 4,
     digit3: 72,
@@ -6701,7 +5357,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 12,
     ans: 39,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 90,
     digit2: 8,
     digit3: -56,
@@ -6710,7 +5366,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 34,
     ans: 75,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 31,
     digit2: 25,
     digit3: -6,
@@ -6719,7 +5375,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 33,
     ans: 88,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 5,
     digit2: 4,
     digit3: -7,
@@ -6728,7 +5384,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 34,
     ans: 85,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 8,
     digit2: 61,
     digit3: -56,
@@ -6737,7 +5393,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 40,
     ans: 59,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 2,
     digit2: 5,
     digit3: 71,
@@ -6746,7 +5402,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -15,
     ans: 51,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 67,
     digit2: -5,
     digit3: 37,
@@ -6755,7 +5411,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -6,
     ans: 41,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 36,
     digit2: 13,
     digit3: -26,
@@ -6764,7 +5420,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 3,
     ans: 28,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 98,
     digit2: -56,
     digit3: 4,
@@ -6773,7 +5429,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -20,
     ans: 25,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 83,
     digit2: -52,
     digit3: 52,
@@ -6782,7 +5438,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 5,
     ans: 86,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 4,
     digit2: -2,
     digit3: 4,
@@ -6791,7 +5447,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 4,
     ans: 55,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 2,
     digit2: 1,
     digit3: 15,
@@ -6800,7 +5456,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 24,
     ans: 39,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 8,
     digit2: 41,
     digit3: -26,
@@ -6809,7 +5465,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -17,
     ans: 12,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 75,
     digit2: -50,
     digit3: 4,
@@ -6818,7 +5474,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 12,
     ans: 39,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 25,
     digit2: 42,
     digit3: -6,
@@ -6827,7 +5483,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 3,
     ans: 18,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 62,
     digit2: 4,
     digit3: -15,
@@ -6836,7 +5492,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 20,
     ans: 79,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 9,
     digit2: -2,
     digit3: 72,
@@ -6845,7 +5501,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 41,
     ans: 59,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 7,
     digit2: 81,
     digit3: -53,
@@ -6854,7 +5510,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 44,
     ans: 75,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 2,
     digit2: 66,
     digit3: -17,
@@ -6863,7 +5519,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -6,
     ans: 72,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 68,
     digit2: -15,
     digit3: 4,
@@ -6872,7 +5528,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 24,
     ans: 76,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 4,
     digit2: 4,
     digit3: 81,
@@ -6881,7 +5537,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -7,
     ans: 71,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 49,
     digit2: -25,
     digit3: 4,
@@ -6890,7 +5546,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -5,
     ans: 70,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 73,
     digit2: -62,
     digit3: 5,
@@ -6899,7 +5555,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 32,
     ans: 47,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 6,
     digit2: 3,
     digit3: -5,
@@ -6908,7 +5564,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 62,
     ans: 78,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 4,
     digit2: 65,
     digit3: -7,
@@ -6917,7 +5573,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 34,
     ans: 49,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 8,
     digit2: -5,
     digit3: 73,
@@ -6926,7 +5582,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -6,
     ans: 23,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 81,
     digit2: 6,
     digit3: -52,
@@ -6935,7 +5591,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 42,
     ans: 73,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 77,
     digit2: -6,
     digit3: -21,
@@ -6944,7 +5600,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 4,
     ans: 55,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 83,
     digit2: -32,
     digit3: 7,
@@ -6953,7 +5609,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -5,
     ans: 52,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 5,
     digit2: 2,
     digit3: 81,
@@ -6962,7 +5618,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -6,
     ans: 33,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 7,
     digit2: -5,
     digit3: 64,
@@ -6971,7 +5627,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 4,
     ans: 96,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 2,
     digit2: 5,
     digit3: 42,
@@ -6980,7 +5636,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -5,
     ans: 61,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 9,
     digit2: 60,
     digit3: -7,
@@ -6989,7 +5645,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 4,
     ans: 55,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 65,
     digit2: 4,
     digit3: -8,
@@ -6998,7 +5654,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 3,
     ans: 68,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 34,
     digit2: 55,
     digit3: -7,
@@ -7007,7 +5663,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 2,
     ans: 37,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 72,
     digit2: 6,
     digit3: -55,
@@ -7016,7 +5672,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -6,
     ans: 32,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 4,
     digit2: 34,
     digit3: -7,
@@ -7025,7 +5681,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 4,
     ans: 27,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 5,
     digit2: 2,
     digit3: 52,
@@ -7034,7 +5690,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 2,
     ans: 57,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 71,
     digit2: -20,
     digit3: 34,
@@ -7043,7 +5699,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 5,
     ans: 86,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 95,
     digit2: -50,
     digit3: 3,
@@ -7052,7 +5708,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 2,
     ans: 28,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 84,
     digit2: 4,
     digit3: -53,
@@ -7061,7 +5717,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 4,
     ans: 17,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 13,
     digit2: 4,
     digit3: -6,
@@ -7070,7 +5726,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 9,
     ans: 59,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 43,
     digit2: 5,
     digit3: -28,
@@ -7079,7 +5735,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -12,
     ans: 16,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 65,
     digit2: -15,
     digit3: 4,
@@ -7088,7 +5744,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -6,
     ans: 63,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 7,
     digit2: 71,
     digit3: -6,
@@ -7097,7 +5753,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 24,
     ans: 45,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 9,
     digit2: -5,
     digit3: 34,
@@ -7106,7 +5762,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -50,
     ans: 7,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 2,
     digit2: 4,
     digit3: 33,
@@ -7115,7 +5771,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -15,
     ans: 3,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 36,
     digit2: -15,
     digit3: 4,
@@ -7124,7 +5780,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 2,
     ans: 67,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 73,
     digit2: 5,
     digit3: -67,
@@ -7133,7 +5789,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 2,
     ans: 68,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 5,
     digit2: 3,
     digit3: -7,
@@ -7142,7 +5798,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 23,
     ans: 48,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 8,
     digit2: 41,
     digit3: -24,
@@ -7151,7 +5807,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 64,
     ans: 87,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 2,
     digit2: 5,
     digit3: 72,
@@ -7160,7 +5816,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -5,
     ans: 80,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 55,
     digit2: 43,
     digit3: -65,
@@ -7169,7 +5825,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 6,
     ans: 38,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 86,
     digit2: -51,
     digit3: 3,
@@ -7178,7 +5834,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 41,
     ans: 78,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 32,
     digit2: 12,
     digit3: 54,
@@ -7187,7 +5843,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -1,
     ans: 95,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 4,
     digit2: 74,
     digit3: -6,
@@ -7196,7 +5852,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 22,
     ans: 47,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 2,
     digit2: 5,
     digit3: 82,
@@ -7205,7 +5861,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -37,
     ans: 51,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 1,
     digit2: 4,
     digit3: 3,
@@ -7214,7 +5870,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -2,
     ans: 52,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 68,
     digit2: -16,
     digit3: 4,
@@ -7223,7 +5879,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -5,
     ans: 62,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 53,
     digit2: 4,
     digit3: 21,
@@ -7232,7 +5888,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 4,
     ans: 15,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 9,
     digit2: -6,
     digit3: 34,
@@ -7241,7 +5897,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -5,
     ans: 61,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 54,
     digit2: 14,
     digit3: -6,
@@ -7250,7 +5906,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 21,
     ans: 89,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 67,
     digit2: -6,
     digit3: 6,
@@ -7259,7 +5915,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 11,
     ans: 28,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 6,
     digit2: 72,
     digit3: -53,
@@ -7268,7 +5924,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 4,
     ans: 46,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 2,
     digit2: 4,
     digit3: 43,
@@ -7277,7 +5933,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -5,
     ans: 72,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 78,
     digit2: -6,
     digit3: -21,
@@ -7286,7 +5942,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -6,
     ans: 52,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 95,
     digit2: -45,
     digit3: 8,
@@ -7295,7 +5951,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 22,
     ans: 79,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 4,
     digit2: 4,
     digit3: -6,
@@ -7304,7 +5960,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 44,
     ans: 47,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 1,
     digit2: 8,
     digit3: 40,
@@ -7313,7 +5969,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 41,
     ans: 68,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 55,
     digit2: 43,
     digit3: -52,
@@ -7322,7 +5978,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -5,
     ans: 40,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 73,
     digit2: -52,
     digit3: 3,
@@ -7331,7 +5987,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 4,
     ans: 15,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 2,
     digit2: 6,
     digit3: 11,
@@ -7340,7 +5996,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 12,
     ans: 49,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 83,
     digit2: -52,
     digit3: 14,
@@ -7349,7 +6005,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -8,
     ans: 41,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 2,
     digit2: 6,
     digit3: 41,
@@ -7358,7 +6014,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -15,
     ans: 11,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 4,
     digit2: 34,
     digit3: -26,
@@ -7367,7 +6023,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -5,
     ans: 24,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 61,
     digit2: 5,
     digit3: 2,
@@ -7376,7 +6032,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 61,
     ans: 78,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 65,
     digit2: -50,
     digit3: 23,
@@ -7385,7 +6041,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 5,
     ans: 36,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 5,
     digit2: 2,
     digit3: 22,
@@ -7394,7 +6050,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -5,
     ans: 52,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 15,
     digit2: 4,
     digit3: -7,
@@ -7403,7 +6059,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 44,
     ans: 66,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 12,
     digit2: 14,
     digit3: 3,
@@ -7412,7 +6068,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -6,
     ans: 41,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 7,
     digit2: 12,
     digit3: -6,
@@ -7421,7 +6077,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 8,
     ans: 59,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 75,
     digit2: 3,
     digit3: -6,
@@ -7430,7 +6086,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 2,
     ans: 57,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 4,
     digit2: 34,
     digit3: -6,
@@ -7439,7 +6095,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -5,
     ans: 20,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 32,
     digit2: 7,
     digit3: -27,
@@ -7448,7 +6104,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 4,
     ans: 76,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 16,
     digit2: 3,
     digit3: -7,
@@ -7457,7 +6113,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -7,
     ans: 41,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 94,
     digit2: -82,
     digit3: 34,
@@ -7466,7 +6122,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -6,
     ans: 42,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 6,
     digit2: -5,
     digit3: 34,
@@ -7475,7 +6131,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 28,
     ans: 79,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 1,
     digit2: 8,
     digit3: -7,
@@ -7484,7 +6140,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -10,
     ans: 11,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 7,
     digit2: -5,
     digit3: 24,
@@ -7493,7 +6149,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 4,
     ans: 67,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 43,
     digit2: -21,
     digit3: 44,
@@ -7502,7 +6158,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 2,
     ans: 67,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 55,
     digit2: 22,
     digit3: -51,
@@ -7511,7 +6167,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 4,
     ans: 27,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 98,
     digit2: -5,
     digit3: 4,
@@ -7520,7 +6176,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 4,
     ans: 68,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 14,
     digit2: 4,
     digit3: 21,
@@ -7529,7 +6185,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -5,
     ans: 41,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 8,
     digit2: -5,
     digit3: 24,
@@ -7538,7 +6194,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 6,
     ans: 18,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 3,
     digit2: 4,
     digit3: 12,
@@ -7547,7 +6203,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -27,
     ans: 22,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 9,
     digit2: -7,
     digit3: 34,
@@ -7556,7 +6212,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 4,
     ans: 27,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 45,
     digit2: -15,
     digit3: 63,
@@ -7565,7 +6221,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 4,
     ans: 95,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 62,
     digit2: 4,
     digit3: -51,
@@ -7574,7 +6230,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 2,
     ans: 54,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 47,
     digit2: -6,
     digit3: 4,
@@ -7583,7 +6239,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: -5,
     ans: 22,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 87,
     digit2: -51,
     digit3: 3,
@@ -7592,7 +6248,7 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     digit6: 2,
     ans: 19,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 6,
     digit2: -5,
     digit3: 4,
@@ -7602,8 +6258,8 @@ List<FiveTen6Row> fivePlusFour6Row21 = [
     ans: 26,
   ),
 ];
-List<FiveTen6Row> fivePlusFour6Row22 = [
-  FiveTen6Row(
+List<SixDigit> fivePlusFour6Row22 = [
+  SixDigit(
     digit1: 62,
     digit2: 24,
     digit3: -51,
@@ -7612,7 +6268,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 54,
     ans: 78,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 98,
     digit2: -55,
     digit3: 41,
@@ -7621,7 +6277,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 34,
     ans: 97,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 12,
     digit2: 35,
     digit3: -25,
@@ -7630,7 +6286,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 14,
     ans: 66,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 87,
     digit2: -65,
     digit3: 42,
@@ -7639,7 +6295,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 44,
     ans: 65,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 23,
     digit2: 45,
     digit3: -57,
@@ -7648,7 +6304,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: -57,
     ans: 12,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 66,
     digit2: -51,
     digit3: 40,
@@ -7657,7 +6313,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 44,
     ans: 55,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 49,
     digit2: -25,
     digit3: 45,
@@ -7666,7 +6322,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 14,
     ans: 67,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 31,
     digit2: 45,
     digit3: -51,
@@ -7675,7 +6331,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 44,
     ans: 55,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 16,
     digit2: 42,
     digit3: 31,
@@ -7684,7 +6340,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 21,
     ans: 78,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 54,
     digit2: 24,
     digit3: -51,
@@ -7693,7 +6349,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 24,
     ans: 78,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 87,
     digit2: -52,
     digit3: 41,
@@ -7702,7 +6358,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 14,
     ans: 79,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 37,
     digit2: 11,
     digit3: 41,
@@ -7711,7 +6367,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: -25,
     ans: 51,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 13,
     digit2: 41,
     digit3: -52,
@@ -7720,7 +6376,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 43,
     ans: 68,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 72,
     digit2: -51,
     digit3: 44,
@@ -7729,7 +6385,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 24,
     ans: 97,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 94,
     digit2: -72,
     digit3: 41,
@@ -7738,7 +6394,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 43,
     ans: 68,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 63,
     digit2: -52,
     digit3: 47,
@@ -7747,7 +6403,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 40,
     ans: 85,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 61,
     digit2: 24,
     digit3: -60,
@@ -7756,7 +6412,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: -57,
     ans: 22,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 59,
     digit2: 20,
     digit3: -57,
@@ -7765,7 +6421,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 24,
     ans: 77,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 73,
     digit2: -52,
     digit3: 43,
@@ -7774,7 +6430,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 41,
     ans: 76,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 84,
     digit2: -53,
     digit3: 44,
@@ -7783,7 +6439,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 34,
     ans: 98,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 45,
     digit2: 53,
     digit3: -66,
@@ -7792,7 +6448,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 14,
     ans: 65,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 19,
     digit2: 40,
     digit3: 20,
@@ -7801,7 +6457,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 15,
     ans: 69,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 57,
     digit2: 12,
     digit3: -57,
@@ -7810,7 +6466,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 24,
     ans: 98,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 35,
     digit2: 14,
     digit3: -27,
@@ -7819,7 +6475,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 44,
     ans: 56,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 86,
     digit2: -51,
     digit3: 42,
@@ -7828,7 +6484,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: -53,
     ans: 15,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 38,
     digit2: 11,
     digit3: -49,
@@ -7837,7 +6493,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: -65,
     ans: 14,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 91,
     digit2: -60,
     digit3: 42,
@@ -7846,7 +6502,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 14,
     ans: 98,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 65,
     digit2: 20,
     digit3: -50,
@@ -7855,7 +6511,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 14,
     ans: 67,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 31,
     digit2: 14,
     digit3: 52,
@@ -7864,7 +6520,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: -55,
     ans: 21,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 63,
     digit2: -52,
     digit3: 43,
@@ -7873,7 +6529,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 24,
     ans: 46,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 57,
     digit2: -52,
     digit3: 43,
@@ -7882,7 +6538,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 13,
     ans: 78,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 25,
     digit2: 13,
     digit3: 41,
@@ -7891,7 +6547,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 11,
     ans: 69,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 96,
     digit2: -51,
     digit3: 42,
@@ -7900,7 +6556,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 10,
     ans: 85,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 42,
     digit2: 41,
     digit3: -61,
@@ -7909,7 +6565,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: -64,
     ans: 25,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 87,
     digit2: -56,
     digit3: 44,
@@ -7918,7 +6574,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 11,
     ans: 79,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 96,
     digit2: -55,
     digit3: 43,
@@ -7927,7 +6583,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 17,
     ans: 79,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 34,
     digit2: 44,
     digit3: -57,
@@ -7936,7 +6592,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 41,
     ans: 66,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 85,
     digit2: -50,
     digit3: 43,
@@ -7945,7 +6601,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 24,
     ans: 78,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 79,
     digit2: -56,
     digit3: 45,
@@ -7954,7 +6610,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: -20,
     ans: 55,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 57,
     digit2: 31,
     digit3: -53,
@@ -7963,7 +6619,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 13,
     ans: 39,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 93,
     digit2: -62,
     digit3: 44,
@@ -7972,7 +6628,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: -52,
     ans: 16,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 75,
     digit2: 14,
     digit3: -56,
@@ -7981,7 +6637,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 21,
     ans: 38,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 32,
     digit2: 41,
     digit3: -52,
@@ -7990,7 +6646,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 24,
     ans: 75,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 97,
     digit2: -52,
     digit3: 43,
@@ -7999,7 +6655,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 13,
     ans: 76,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 12,
     digit2: 45,
     digit3: 12,
@@ -8008,7 +6664,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 24,
     ans: 78,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 74,
     digit2: -64,
     digit3: 45,
@@ -8017,7 +6673,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 43,
     ans: 69,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 87,
     digit2: -55,
     digit3: 42,
@@ -8026,7 +6682,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 12,
     ans: 79,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 28,
     digit2: -15,
     digit3: 46,
@@ -8035,7 +6691,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 45,
     ans: 67,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 91,
     digit2: -50,
     digit3: 43,
@@ -8044,7 +6700,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: -53,
     ans: 15,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 74,
     digit2: -52,
     digit3: 64,
@@ -8053,7 +6709,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: -54,
     ans: 18,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 17,
     digit2: 42,
     digit3: -53,
@@ -8062,7 +6718,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 44,
     ans: 57,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 23,
     digit2: 45,
     digit3: -53,
@@ -8071,7 +6727,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: -55,
     ans: 13,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 68,
     digit2: -53,
     digit3: 42,
@@ -8080,7 +6736,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 42,
     ans: 67,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 15,
     digit2: 24,
     digit3: -26,
@@ -8089,7 +6745,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: -53,
     ans: 25,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 82,
     digit2: -51,
     digit3: 43,
@@ -8098,7 +6754,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: -54,
     ans: 35,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 74,
     digit2: -52,
     digit3: 15,
@@ -8107,7 +6763,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 43,
     ans: 64,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 61,
     digit2: 23,
     digit3: -52,
@@ -8116,7 +6772,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 43,
     ans: 63,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 75,
     digit2: 24,
     digit3: -54,
@@ -8125,7 +6781,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 17,
     ans: 87,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 32,
     digit2: 15,
     digit3: -26,
@@ -8134,7 +6790,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 46,
     ans: 86,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 27,
     digit2: 12,
     digit3: -24,
@@ -8143,7 +6799,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 74,
     ans: 77,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 62,
     digit2: -51,
     digit3: 76,
@@ -8152,7 +6808,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: -55,
     ans: 23,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 94,
     digit2: -42,
     digit3: 14,
@@ -8161,7 +6817,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 20,
     ans: 79,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 71,
     digit2: 14,
     digit3: -65,
@@ -8170,7 +6826,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: -52,
     ans: 35,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 90,
     digit2: -50,
     digit3: 46,
@@ -8179,7 +6835,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: -56,
     ans: 22,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 16,
     digit2: 42,
     digit3: 21,
@@ -8188,7 +6844,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 14,
     ans: 68,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 23,
     digit2: 41,
     digit3: -53,
@@ -8197,7 +6853,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: -54,
     ans: 25,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 47,
     digit2: -26,
     digit3: 45,
@@ -8206,7 +6862,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 14,
     ans: 55,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 52,
     digit2: 41,
     digit3: -51,
@@ -8215,7 +6871,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 44,
     ans: 65,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 28,
     digit2: -15,
     digit3: 44,
@@ -8224,7 +6880,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 42,
     ans: 57,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 64,
     digit2: 15,
     digit3: -58,
@@ -8233,7 +6889,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: -40,
     ans: 56,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 50,
     digit2: 34,
     digit3: -62,
@@ -8242,7 +6898,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 43,
     ans: 54,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 93,
     digit2: -61,
     digit3: 45,
@@ -8251,7 +6907,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 46,
     ans: 57,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 74,
     digit2: -23,
     digit3: 34,
@@ -8260,7 +6916,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: -10,
     ans: 25,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 44,
     digit2: 45,
     digit3: -67,
@@ -8269,7 +6925,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 43,
     ans: 64,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 53,
     digit2: 24,
     digit3: -56,
@@ -8278,7 +6934,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: -52,
     ans: 25,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 34,
     digit2: 54,
     digit3: -53,
@@ -8287,7 +6943,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 43,
     ans: 64,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 76,
     digit2: -25,
     digit3: 44,
@@ -8296,7 +6952,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 12,
     ans: 69,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 64,
     digit2: -52,
     digit3: 46,
@@ -8305,7 +6961,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 45,
     ans: 58,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 29,
     digit2: -17,
     digit3: 46,
@@ -8314,7 +6970,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 45,
     ans: 56,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 43,
     digit2: -32,
     digit3: 61,
@@ -8323,7 +6979,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 42,
     ans: 73,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 84,
     digit2: -52,
     digit3: 41,
@@ -8332,7 +6988,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 10,
     ans: 67,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 67,
     digit2: -12,
     digit3: 33,
@@ -8341,7 +6997,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: -56,
     ans: 11,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 94,
     digit2: -82,
     digit3: 42,
@@ -8350,7 +7006,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 34,
     ans: 88,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 69,
     digit2: -51,
     digit3: 40,
@@ -8359,7 +7015,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 46,
     ans: 58,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 33,
     digit2: 11,
     digit3: 45,
@@ -8368,7 +7024,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: -63,
     ans: 16,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 71,
     digit2: -50,
     digit3: 43,
@@ -8377,7 +7033,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 41,
     ans: 67,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 95,
     digit2: -40,
     digit3: 24,
@@ -8386,7 +7042,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 20,
     ans: 79,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 67,
     digit2: -56,
     digit3: 54,
@@ -8395,7 +7051,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 42,
     ans: 58,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 40,
     digit2: 56,
     digit3: -65,
@@ -8404,7 +7060,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 43,
     ans: 58,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 37,
     digit2: -25,
     digit3: 45,
@@ -8413,7 +7069,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 45,
     ans: 58,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 54,
     digit2: 24,
     digit3: -56,
@@ -8422,7 +7078,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 34,
     ans: 86,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 16,
     digit2: 23,
     digit3: 40,
@@ -8431,7 +7087,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 24,
     ans: 36,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 42,
     digit2: -31,
     digit3: 24,
@@ -8440,7 +7096,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 42,
     ans: 67,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 98,
     digit2: -63,
     digit3: 42,
@@ -8449,7 +7105,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: -67,
     ans: 2,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 84,
     digit2: -63,
     digit3: 44,
@@ -8458,7 +7114,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 21,
     ans: 79,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 54,
     digit2: 24,
     digit3: -56,
@@ -8467,7 +7123,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 46,
     ans: 57,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 79,
     digit2: -63,
     digit3: 42,
@@ -8476,7 +7132,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 44,
     ans: 66,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 64,
     digit2: -52,
     digit3: 41,
@@ -8485,7 +7141,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 43,
     ans: 69,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 74,
     digit2: -52,
     digit3: 46,
@@ -8494,7 +7150,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 43,
     ans: 64,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 92,
     digit2: -71,
     digit3: 46,
@@ -8503,7 +7159,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 31,
     ans: 89,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 95,
     digit2: -80,
     digit3: 64,
@@ -8512,7 +7168,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 13,
     ans: 80,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 70,
     digit2: 25,
     digit3: -60,
@@ -8521,7 +7177,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 42,
     ans: 54,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 63,
     digit2: -51,
     digit3: 42,
@@ -8530,7 +7186,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 45,
     ans: 57,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 83,
     digit2: -51,
     digit3: 46,
@@ -8539,7 +7195,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 42,
     ans: 99,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 98,
     digit2: -43,
     digit3: 12,
@@ -8548,7 +7204,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: -20,
     ans: 25,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 83,
     digit2: -32,
     digit3: 42,
@@ -8557,7 +7213,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: -51,
     ans: 15,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 27,
     digit2: 41,
     digit3: -53,
@@ -8566,7 +7222,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: -57,
     ans: 12,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 43,
     digit2: -21,
     digit3: 56,
@@ -8575,7 +7231,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 10,
     ans: 77,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 54,
     digit2: 24,
     digit3: -56,
@@ -8584,7 +7240,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 50,
     ans: 81,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 67,
     digit2: -52,
     digit3: 43,
@@ -8593,7 +7249,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 44,
     ans: 67,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 55,
     digit2: 32,
     digit3: -67,
@@ -8602,7 +7258,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: -72,
     ans: 15,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 29,
     digit2: -17,
     digit3: 46,
@@ -8611,7 +7267,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 64,
     ans: 86,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 51,
     digit2: 24,
     digit3: -60,
@@ -8620,7 +7276,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: -54,
     ans: 25,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 40,
     digit2: 36,
     digit3: -55,
@@ -8629,7 +7285,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 64,
     ans: 75,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 84,
     digit2: -64,
     digit3: 49,
@@ -8638,7 +7294,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 22,
     ans: 79,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 73,
     digit2: -52,
     digit3: 41,
@@ -8647,7 +7303,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 45,
     ans: 66,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 92,
     digit2: -61,
     digit3: 42,
@@ -8656,7 +7312,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 42,
     ans: 64,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 62,
     digit2: -50,
     digit3: 46,
@@ -8665,7 +7321,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 41,
     ans: 63,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 50,
     digit2: 37,
     digit3: -65,
@@ -8674,7 +7330,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: -57,
     ans: 41,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 41,
     digit2: 43,
     digit3: -60,
@@ -8683,7 +7339,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 34,
     ans: 45,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 20,
     digit2: 46,
     digit3: -51,
@@ -8692,7 +7348,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 53,
     ans: 78,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 83,
     digit2: -52,
     digit3: 43,
@@ -8701,7 +7357,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 21,
     ans: 79,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 64,
     digit2: -53,
     digit3: 57,
@@ -8710,7 +7366,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: -55,
     ans: 21,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 59,
     digit2: 20,
     digit3: -63,
@@ -8719,7 +7375,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: -65,
     ans: 3,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 77,
     digit2: 12,
     digit3: -64,
@@ -8728,7 +7384,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 41,
     ans: 54,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 82,
     digit2: -31,
     digit3: 41,
@@ -8737,7 +7393,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 30,
     ans: 83,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 85,
     digit2: -50,
     digit3: 42,
@@ -8746,7 +7402,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: -52,
     ans: 17,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 58,
     digit2: 21,
     digit3: -67,
@@ -8755,7 +7411,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: -67,
     ans: 12,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 37,
     digit2: 42,
     digit3: -63,
@@ -8764,7 +7420,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 43,
     ans: 58,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 92,
     digit2: -81,
     digit3: 64,
@@ -8773,7 +7429,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: -57,
     ans: 32,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 14,
     digit2: 14,
     digit3: -16,
@@ -8782,7 +7438,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: -56,
     ans: 22,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 57,
     digit2: 21,
     digit3: -52,
@@ -8791,7 +7447,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 41,
     ans: 52,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 64,
     digit2: -52,
     digit3: 35,
@@ -8800,7 +7456,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: -51,
     ans: 16,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 20,
     digit2: 46,
     digit3: -51,
@@ -8809,7 +7465,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: -54,
     ans: 15,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 42,
     digit2: 42,
     digit3: -53,
@@ -8818,7 +7474,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 46,
     ans: 68,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 79,
     digit2: -54,
     digit3: 42,
@@ -8827,7 +7483,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: -51,
     ans: 42,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 25,
     digit2: 43,
     digit3: -67,
@@ -8836,7 +7492,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 61,
     ans: 86,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 24,
     digit2: 45,
     digit3: -51,
@@ -8845,7 +7501,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: -57,
     ans: 22,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 31,
     digit2: -20,
     digit3: 46,
@@ -8854,7 +7510,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 43,
     ans: 64,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 98,
     digit2: -63,
     digit3: 42,
@@ -8863,7 +7519,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: -51,
     ans: 17,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 83,
     digit2: -52,
     digit3: 41,
@@ -8872,7 +7528,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: -52,
     ans: 15,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 72,
     digit2: -61,
     digit3: 43,
@@ -8881,7 +7537,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 42,
     ans: 54,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 32,
     digit2: -10,
     digit3: 46,
@@ -8890,7 +7546,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: -51,
     ans: 12,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 56,
     digit2: 23,
     digit3: -52,
@@ -8899,7 +7555,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 43,
     ans: 49,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 17,
     digit2: 42,
     digit3: 30,
@@ -8908,7 +7564,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: -51,
     ans: 26,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 94,
     digit2: -82,
     digit3: 41,
@@ -8917,7 +7573,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 45,
     ans: 79,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 67,
     digit2: -55,
     digit3: 42,
@@ -8926,7 +7582,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 46,
     ans: 58,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 73,
     digit2: -52,
     digit3: 41,
@@ -8935,7 +7591,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 21,
     ans: 79,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 26,
     digit2: 43,
     digit3: -57,
@@ -8944,7 +7600,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: -52,
     ans: 22,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 94,
     digit2: -62,
     digit3: 52,
@@ -8953,7 +7609,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: -11,
     ans: 55,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 31,
     digit2: 45,
     digit3: -25,
@@ -8962,7 +7618,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 42,
     ans: 92,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 52,
     digit2: 44,
     digit3: -85,
@@ -8971,7 +7627,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: -53,
     ans: 25,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 67,
     digit2: -51,
     digit3: 43,
@@ -8980,7 +7636,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 40,
     ans: 54,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 23,
     digit2: 45,
     digit3: -56,
@@ -8989,7 +7645,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: -57,
     ans: 11,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 47,
     digit2: -25,
     digit3: 46,
@@ -8998,7 +7654,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 11,
     ans: 69,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 68,
     digit2: -56,
     digit3: 44,
@@ -9007,7 +7663,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 45,
     ans: 58,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 97,
     digit2: -65,
     digit3: 46,
@@ -9016,7 +7672,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 12,
     ans: 79,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 25,
     digit2: 43,
     digit3: -57,
@@ -9025,7 +7681,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: -57,
     ans: 12,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 63,
     digit2: -52,
     digit3: 48,
@@ -9034,7 +7690,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 42,
     ans: 54,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 53,
     digit2: 24,
     digit3: -52,
@@ -9043,7 +7699,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 44,
     ans: 64,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 42,
     digit2: 42,
     digit3: -51,
@@ -9052,7 +7708,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 50,
     ans: 62,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 85,
     digit2: -50,
     digit3: 42,
@@ -9061,7 +7717,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: -17,
     ans: 51,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 64,
     digit2: -52,
     digit3: 42,
@@ -9070,7 +7726,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 33,
     ans: 88,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 79,
     digit2: -64,
     digit3: 42,
@@ -9079,7 +7735,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: -84,
     ans: 15,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 53,
     digit2: 14,
     digit3: -55,
@@ -9088,7 +7744,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: -17,
     ans: 51,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 34,
     digit2: 14,
     digit3: 51,
@@ -9097,7 +7753,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: -51,
     ans: 26,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 72,
     digit2: -51,
     digit3: 46,
@@ -9106,7 +7762,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: -26,
     ans: 71,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 67,
     digit2: -52,
     digit3: 42,
@@ -9115,7 +7771,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 42,
     ans: 64,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 35,
     digit2: 42,
     digit3: -65,
@@ -9124,7 +7780,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: -53,
     ans: 15,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 65,
     digit2: 13,
     digit3: -65,
@@ -9133,7 +7789,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 20,
     ans: 89,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 54,
     digit2: 15,
     digit3: -57,
@@ -9142,7 +7798,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: -52,
     ans: 17,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 58,
     digit2: 21,
     digit3: -64,
@@ -9151,7 +7807,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: -64,
     ans: 15,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 95,
     digit2: -60,
     digit3: 42,
@@ -9160,7 +7816,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: -52,
     ans: 15,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 73,
     digit2: -62,
     digit3: 46,
@@ -9169,7 +7825,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 44,
     ans: 66,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 53,
     digit2: 24,
     digit3: -26,
@@ -9178,7 +7834,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 62,
     ans: 73,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 28,
     digit2: 40,
     digit3: -56,
@@ -9187,7 +7843,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: -57,
     ans: 12,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 82,
     digit2: -51,
     digit3: 43,
@@ -9196,7 +7852,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 54,
     ans: 76,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 61,
     digit2: -50,
     digit3: 43,
@@ -9205,7 +7861,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 35,
     ans: 47,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 19,
     digit2: 40,
     digit3: 20,
@@ -9214,7 +7870,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 21,
     ans: 58,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 92,
     digit2: -61,
     digit3: 43,
@@ -9223,7 +7879,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 50,
     ans: 97,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 78,
     digit2: -25,
     digit3: 46,
@@ -9232,7 +7888,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: -75,
     ans: 13,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 34,
     digit2: 15,
     digit3: -27,
@@ -9241,7 +7897,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 42,
     ans: 53,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 27,
     digit2: 41,
     digit3: -55,
@@ -9250,7 +7906,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: -54,
     ans: 15,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 63,
     digit2: 14,
     digit3: 21,
@@ -9259,7 +7915,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: -60,
     ans: 14,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 58,
     digit2: 30,
     digit3: -53,
@@ -9268,7 +7924,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: -16,
     ans: 22,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 69,
     digit2: -57,
     digit3: 45,
@@ -9277,7 +7933,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 40,
     ans: 65,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 52,
     digit2: 15,
     digit3: -52,
@@ -9286,7 +7942,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: -26,
     ans: 62,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 46,
     digit2: -25,
     digit3: 46,
@@ -9295,7 +7951,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 23,
     ans: 79,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 31,
     digit2: 42,
     digit3: -62,
@@ -9304,7 +7960,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 43,
     ans: 93,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 95,
     digit2: -60,
     digit3: 42,
@@ -9313,7 +7969,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: -27,
     ans: 11,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 63,
     digit2: -52,
     digit3: 43,
@@ -9322,7 +7978,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 41,
     ans: 57,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 79,
     digit2: -64,
     digit3: 42,
@@ -9331,7 +7987,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 42,
     ans: 54,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 46,
     digit2: 42,
     digit3: -63,
@@ -9340,7 +7996,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: -64,
     ans: 15,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 96,
     digit2: -75,
     digit3: 46,
@@ -9349,7 +8005,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 14,
     ans: 67,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 42,
     digit2: -22,
     digit3: 46,
@@ -9358,7 +8014,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: -67,
     ans: 11,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 63,
     digit2: -52,
     digit3: 43,
@@ -9367,7 +8023,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 46,
     ans: 69,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 75,
     digit2: -50,
     digit3: 42,
@@ -9376,7 +8032,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 41,
     ans: 64,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 99,
     digit2: -53,
     digit3: 41,
@@ -9385,7 +8041,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 52,
     ans: 88,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 60,
     digit2: 36,
     digit3: -61,
@@ -9394,7 +8050,7 @@ List<FiveTen6Row> fivePlusFour6Row22 = [
     digit6: 61,
     ans: 83,
   ),
-  FiveTen6Row(
+  SixDigit(
     digit1: 65,
     digit2: -50,
     digit3: 43,

@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:iq_maths_apps/datas/five_plus_four.dart';
 import 'package:iq_maths_apps/datas/five_plus_three.dart';
 import 'package:iq_maths_apps/datas/five_plus_two.dart';
-import 'package:iq_maths_apps/datas/random_question.dart';
-import 'package:iq_maths_apps/models/five_ten.dart';
+import 'package:iq_maths_apps/helpers/random_question.dart';
+import 'package:iq_maths_apps/models/digit_model.dart';
 import 'package:iq_maths_apps/models/maths_setting.dart';
 import 'package:iq_maths_apps/screens/no_data.dart';
 import 'package:iq_maths_apps/screens/summary.dart';
@@ -158,7 +158,7 @@ class _FiveBuddyScreenState extends State<FiveBuddyScreen> {
   }
 
   void _randomQuestion4rows() {
-    FiveTen4Row? currentQ;
+    FourDigit? currentQ;
     RandomQuestionRow selector = RandomQuestionRow(questions: _getList());
     selector.selectRandomQuestion();
     currentQ = selector.getCurrentQuestion();
@@ -173,7 +173,7 @@ class _FiveBuddyScreenState extends State<FiveBuddyScreen> {
   }
 
   void _randomQuestion5rows() {
-    FiveTen5Row? currentQ;
+    FiveDigit? currentQ;
     RandomQuestionRow selector = RandomQuestionRow(questions: _getList());
     selector.selectRandomQuestion();
     currentQ = selector.getCurrentQuestion();
@@ -189,7 +189,7 @@ class _FiveBuddyScreenState extends State<FiveBuddyScreen> {
   }
 
   void _randomQuestion6rows() {
-    FiveTen6Row? currentQ;
+    SixDigit? currentQ;
     RandomQuestionRow selector = RandomQuestionRow(questions: _getList());
     selector.selectRandomQuestion();
     currentQ = selector.getCurrentQuestion();

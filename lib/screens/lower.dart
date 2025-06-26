@@ -2,8 +2,8 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:iq_maths_apps/datas/lower.dart';
-import 'package:iq_maths_apps/datas/random_question.dart';
-import 'package:iq_maths_apps/models/lower_upper.dart';
+import 'package:iq_maths_apps/helpers/random_question.dart';
+import 'package:iq_maths_apps/models/digit_model.dart';
 import 'package:iq_maths_apps/models/maths_setting.dart';
 import 'package:iq_maths_apps/screens/no_data.dart';
 import 'package:iq_maths_apps/screens/summary.dart';
@@ -106,7 +106,7 @@ class _LowerScreenState extends State<LowerScreen> {
   }
 
   void _randomQuestion3rows(int d1, int d2) {
-    // LowerUpper3Row? currentQ;
+    // ThreeDigit? currentQ;
     // if (d1 == 1) {
     //   if (d2 == 1) {}
     // } else if (d1 == 2) {
@@ -131,7 +131,7 @@ class _LowerScreenState extends State<LowerScreen> {
   }
 
   void _randomQuestion4rows(int d1, int d2) {
-    LowerUpper4Row? currentQ;
+    FourDigit? currentQ;
     if (d1 == 1) {
       if (d2 == 1) {
         RandomQuestionRow selector = RandomQuestionRow(questions: lower4Row11);
@@ -163,7 +163,7 @@ class _LowerScreenState extends State<LowerScreen> {
   }
 
   void _randomQuestion5rows(int d1, int d2) {
-    LowerUpper5Row? currentQ;
+    FiveDigit? currentQ;
     if (d1 == 1) {
       if (d2 == 1) {
         RandomQuestionRow selector = RandomQuestionRow(questions: lower5Row11);
@@ -196,7 +196,7 @@ class _LowerScreenState extends State<LowerScreen> {
   }
 
   void _randomQuestion6rows(int d1, int d2) {
-    LowerUpper6Row? currentQ;
+    SixDigit? currentQ;
     if (d1 == 1) {
       if (d2 == 1) {
         RandomQuestionRow selector = RandomQuestionRow(questions: lower6Row11);
