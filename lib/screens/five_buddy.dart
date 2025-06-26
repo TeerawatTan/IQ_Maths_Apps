@@ -1,7 +1,11 @@
+import 'dart:ffi';
+
 import 'package:audioplayers/audioplayers.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:iq_maths_apps/datas/five_plus_four.dart';
+import 'package:iq_maths_apps/datas/five_plus_three.dart';
+import 'package:iq_maths_apps/datas/five_plus_two.dart';
 import 'package:iq_maths_apps/datas/random_question.dart';
 import 'package:iq_maths_apps/models/five_ten.dart';
 import 'package:iq_maths_apps/models/maths_setting.dart';
@@ -67,21 +71,70 @@ class _FiveBuddyScreenState extends State<FiveBuddyScreen> {
     }
   }
 
+  final Map<String, List<dynamic>> _dataMap = {
+    'Five_+2_4_1_1': fivePlusTwo4Row11,
+    'Five_+2_4_1_2': fivePlusTwo4Row21,
+    'Five_+2_4_2_1': fivePlusTwo4Row21,
+    'Five_+2_4_2_2': fivePlusTwo4Row22,
+    'Five_+2_5_1_1': fivePlusTwo5Row11,
+    'Five_+2_5_1_2': fivePlusTwo5Row21,
+    'Five_+2_5_2_1': fivePlusTwo5Row21,
+    'Five_+2_5_2_2': fivePlusTwo5Row22,
+    'Five_+2_6_1_1': fivePlusTwo6Row11,
+    'Five_+2_6_1_2': fivePlusTwo6Row21,
+    'Five_+2_6_2_1': fivePlusTwo6Row21,
+    'Five_+2_6_2_2': fivePlusTwo6Row22,
+    'Five_+3_4_1_1': fivePlusThree4Row11,
+    'Five_+3_4_1_2': fivePlusThree4Row21,
+    'Five_+3_4_2_1': fivePlusThree4Row21,
+    'Five_+3_4_2_2': fivePlusThree4Row22,
+    'Five_+3_5_1_1': fivePlusThree5Row11,
+    'Five_+3_5_1_2': fivePlusThree5Row21,
+    'Five_+3_5_2_1': fivePlusThree5Row21,
+    'Five_+3_5_2_2': fivePlusThree5Row22,
+    'Five_+3_6_1_1': fivePlusThree6Row11,
+    'Five_+3_6_1_2': fivePlusThree6Row21,
+    'Five_+3_6_2_1': fivePlusThree6Row21,
+    'Five_+3_6_2_2': fivePlusThree6Row22,
+    'Five_+4_4_1_1': fivePlusFour4Row11,
+    'Five_+4_4_1_2': fivePlusFour4Row21,
+    'Five_+4_4_2_1': fivePlusFour4Row21,
+    'Five_+4_4_2_2': fivePlusFour4Row22,
+    'Five_+4_5_1_1': fivePlusFour5Row11,
+    'Five_+4_5_1_2': fivePlusFour5Row21,
+    'Five_+4_5_2_1': fivePlusFour5Row21,
+    'Five_+4_5_2_2': fivePlusFour5Row22,
+    'Five_+4_6_1_1': fivePlusFour6Row11,
+    'Five_+4_6_1_2': fivePlusFour6Row21,
+    'Five_+4_6_2_1': fivePlusFour6Row21,
+    'Five_+4_6_2_2': fivePlusFour6Row22,
+  };
+
+  List<dynamic> _getList() {
+    final currentMenu = widget.setting.selectedSubOptionLabel.replaceAll(
+      ' ',
+      '_',
+    );
+    final currentRow = widget.setting.row;
+    final currentD1 = widget.setting.digit1;
+    final currentD2 = widget.setting.digit2;
+    final key = '${currentMenu}_${currentRow}_${currentD1}_$currentD2';
+    return _dataMap[key] ?? [];
+  }
+
   void _generateRandomNumbers() {
-    final digit1 = int.tryParse(widget.setting.digit1) ?? 1;
-    final digit2 = int.tryParse(widget.setting.digit2) ?? 1;
     final row = int.tryParse(widget.setting.row) ?? 3;
 
     numbers = [];
 
-    if (row == 3) {
-      _randomQuestion3rows(digit1, digit2);
-    } else if (row == 4) {
-      _randomQuestion4rows(digit1, digit2);
+    if (row == 4) {
+      _randomQuestion4rows();
     } else if (row == 5) {
-      _randomQuestion5rows(digit1, digit2);
+      _randomQuestion5rows();
     } else if (row == 6) {
-      _randomQuestion6rows(digit1, digit2);
+      _randomQuestion6rows();
+    } else {
+      return;
     }
 
     currentStep = 0;
@@ -106,54 +159,12 @@ class _FiveBuddyScreenState extends State<FiveBuddyScreen> {
     }
   }
 
-  void _randomQuestion3rows(int d1, int d2) {
-    // LowerUpper3Row? currentQ;
-    // if (d1 == 1) {
-    //   if (d2 == 1) {}
-    // } else if (d1 == 2) {
-    //   if (d2 == 2) {
-    //     RandomQuestionRow selector = RandomQuestionRow(questions: upper3Row22);
-    //     selector.selectRandomQuestion();
-    //     currentQ = selector.getCurrentQuestion();
-    //   }
-    // } else if (d1 == 3) {
-    //   if (d2 == 3) {
-    //     RandomQuestionRow selector = RandomQuestionRow(questions: upper3Row33);
-    //     selector.selectRandomQuestion();
-    //     currentQ = selector.getCurrentQuestion();
-    //   }
-    // }
-    // if (currentQ != null) {
-    //   numbers.add(currentQ.digit1);
-    //   numbers.add(currentQ.digit2);
-    //   numbers.add(currentQ.digit3);
-    //   answer = currentQ.ans;
-    // }
-  }
-
-  void _randomQuestion4rows(int d1, int d2) {
+  void _randomQuestion4rows() {
     FiveTen4Row? currentQ;
-    if (d1 == 1) {
-      if (d2 == 1) {
-        RandomQuestionRow selector = RandomQuestionRow(questions: five4Row11);
-        selector.selectRandomQuestion();
-        currentQ = selector.getCurrentQuestion();
-      } else if (d2 == 2) {
-        RandomQuestionRow selector = RandomQuestionRow(questions: five4Row21);
-        selector.selectRandomQuestion();
-        currentQ = selector.getCurrentQuestion();
-      }
-    } else if (d1 == 2) {
-      if (d2 == 1) {
-        RandomQuestionRow selector = RandomQuestionRow(questions: five4Row21);
-        selector.selectRandomQuestion();
-        currentQ = selector.getCurrentQuestion();
-      } else if (d2 == 2) {
-        RandomQuestionRow selector = RandomQuestionRow(questions: five4Row22);
-        selector.selectRandomQuestion();
-        currentQ = selector.getCurrentQuestion();
-      }
-    }
+    RandomQuestionRow selector = RandomQuestionRow(questions: _getList());
+    selector.selectRandomQuestion();
+    currentQ = selector.getCurrentQuestion();
+
     if (currentQ != null) {
       numbers.add(currentQ.digit1);
       numbers.add(currentQ.digit2);
@@ -163,29 +174,12 @@ class _FiveBuddyScreenState extends State<FiveBuddyScreen> {
     }
   }
 
-  void _randomQuestion5rows(int d1, int d2) {
+  void _randomQuestion5rows() {
     FiveTen5Row? currentQ;
-    if (d1 == 1) {
-      if (d2 == 1) {
-        RandomQuestionRow selector = RandomQuestionRow(questions: five5Row11);
-        selector.selectRandomQuestion();
-        currentQ = selector.getCurrentQuestion();
-      } else if (d2 == 2) {
-        RandomQuestionRow selector = RandomQuestionRow(questions: five5Row21);
-        selector.selectRandomQuestion();
-        currentQ = selector.getCurrentQuestion();
-      }
-    } else if (d1 == 2) {
-      if (d2 == 1) {
-        RandomQuestionRow selector = RandomQuestionRow(questions: five5Row21);
-        selector.selectRandomQuestion();
-        currentQ = selector.getCurrentQuestion();
-      } else if (d2 == 2) {
-        RandomQuestionRow selector = RandomQuestionRow(questions: five5Row22);
-        selector.selectRandomQuestion();
-        currentQ = selector.getCurrentQuestion();
-      }
-    }
+    RandomQuestionRow selector = RandomQuestionRow(questions: _getList());
+    selector.selectRandomQuestion();
+    currentQ = selector.getCurrentQuestion();
+
     if (currentQ != null) {
       numbers.add(currentQ.digit1);
       numbers.add(currentQ.digit2);
@@ -196,29 +190,12 @@ class _FiveBuddyScreenState extends State<FiveBuddyScreen> {
     }
   }
 
-  void _randomQuestion6rows(int d1, int d2) {
+  void _randomQuestion6rows() {
     FiveTen6Row? currentQ;
-    if (d1 == 1) {
-      if (d2 == 1) {
-        RandomQuestionRow selector = RandomQuestionRow(questions: five6Row11);
-        selector.selectRandomQuestion();
-        currentQ = selector.getCurrentQuestion();
-      } else if (d2 == 2) {
-        RandomQuestionRow selector = RandomQuestionRow(questions: five6Row21);
-        selector.selectRandomQuestion();
-        currentQ = selector.getCurrentQuestion();
-      }
-    } else if (d1 == 2) {
-      if (d2 == 1) {
-        RandomQuestionRow selector = RandomQuestionRow(questions: five6Row21);
-        selector.selectRandomQuestion();
-        currentQ = selector.getCurrentQuestion();
-      } else if (d2 == 2) {
-        RandomQuestionRow selector = RandomQuestionRow(questions: five6Row22);
-        selector.selectRandomQuestion();
-        currentQ = selector.getCurrentQuestion();
-      }
-    }
+    RandomQuestionRow selector = RandomQuestionRow(questions: _getList());
+    selector.selectRandomQuestion();
+    currentQ = selector.getCurrentQuestion();
+
     if (currentQ != null) {
       numbers.add(currentQ.digit1);
       numbers.add(currentQ.digit2);

@@ -1,6 +1,6 @@
 import 'package:iq_maths_apps/models/five_ten.dart';
 
-List<FiveTen4Row> five4Row11 = [
+List<FiveTen4Row> fivePlusFour4Row11 = [
   FiveTen4Row(digit1: 2, digit2: 5, digit3: -6, digit4: 4, ans: 5),
   FiveTen4Row(digit1: 9, digit2: -5, digit3: 4, digit4: -6, ans: 2),
   FiveTen4Row(digit1: 7, digit2: -1, digit3: -5, digit4: 4, ans: 5),
@@ -202,7 +202,7 @@ List<FiveTen4Row> five4Row11 = [
   FiveTen4Row(digit1: 6, digit2: 2, digit3: 1, digit4: -6, ans: 3),
   FiveTen4Row(digit1: 5, digit2: 4, digit3: -7, digit4: 2, ans: 4),
 ];
-List<FiveTen4Row> five4Row21 = [
+List<FiveTen4Row> fivePlusFour4Row21 = [
   FiveTen4Row(digit1: 21, digit2: 4, digit3: 3, digit4: -6, ans: 22),
   FiveTen4Row(digit1: 4, digit2: 14, digit3: -7, digit4: 4, ans: 15),
   FiveTen4Row(digit1: 63, digit2: 5, digit3: -7, digit4: 4, ans: 65),
@@ -404,7 +404,7 @@ List<FiveTen4Row> five4Row21 = [
   FiveTen4Row(digit1: 87, digit2: -6, digit3: 4, digit4: -5, ans: 80),
   FiveTen4Row(digit1: 6, digit2: -5, digit3: 4, digit4: 24, ans: 29),
 ];
-List<FiveTen4Row> five4Row22 = [
+List<FiveTen4Row> fivePlusFour4Row22 = [
   FiveTen4Row(digit1: 62, digit2: 24, digit3: -51, digit4: 14, ans: 49),
   FiveTen4Row(digit1: 98, digit2: -55, digit3: 41, digit4: 14, ans: 98),
   FiveTen4Row(digit1: 12, digit2: 35, digit3: -25, digit4: 45, ans: 67),
@@ -606,7 +606,7 @@ List<FiveTen4Row> five4Row22 = [
   FiveTen4Row(digit1: 60, digit2: 36, digit3: -62, digit4: 44, ans: 78),
   FiveTen4Row(digit1: 65, digit2: -50, digit3: 43, digit4: 10, ans: 68),
 ];
-List<FiveTen5Row> five5Row11 = [
+List<FiveTen5Row> fivePlusFour5Row11 = [
   FiveTen5Row(digit1: 2, digit2: 5, digit3: -6, digit4: 4, digit5: 3, ans: 8),
   FiveTen5Row(digit1: 9, digit2: -5, digit3: 4, digit4: -6, digit5: 2, ans: 4),
   FiveTen5Row(digit1: 7, digit2: -1, digit3: -5, digit4: 4, digit5: 3, ans: 8),
@@ -808,7 +808,7 @@ List<FiveTen5Row> five5Row11 = [
   FiveTen5Row(digit1: 6, digit2: 2, digit3: 1, digit4: -6, digit5: 4, ans: 7),
   FiveTen5Row(digit1: 5, digit2: 4, digit3: -7, digit4: 2, digit5: 4, ans: 8),
 ];
-List<FiveTen5Row> five5Row21 = [
+List<FiveTen5Row> fivePlusFour5Row21 = [
   FiveTen5Row(
     digit1: 21,
     digit2: 4,
@@ -2396,7 +2396,7 @@ List<FiveTen5Row> five5Row21 = [
     ans: 32,
   ),
 ];
-List<FiveTen5Row> five5Row22 = [
+List<FiveTen5Row> fivePlusFour5Row22 = [
   FiveTen5Row(
     digit1: 62,
     digit2: 24,
@@ -3998,7 +3998,7 @@ List<FiveTen5Row> five5Row22 = [
     ans: 11,
   ),
 ];
-List<FiveTen6Row> five6Row11 = [
+List<FiveTen6Row> fivePlusFour6Row11 = [
   FiveTen6Row(
     digit1: 2,
     digit2: 5,
@@ -5800,7 +5800,7 @@ List<FiveTen6Row> five6Row11 = [
     ans: 3,
   ),
 ];
-List<FiveTen6Row> five6Row21 = [
+List<FiveTen6Row> fivePlusFour6Row21 = [
   FiveTen6Row(
     digit1: 21,
     digit2: 4,
@@ -7602,7 +7602,7 @@ List<FiveTen6Row> five6Row21 = [
     ans: 26,
   ),
 ];
-List<FiveTen6Row> five6Row22 = [
+List<FiveTen6Row> fivePlusFour6Row22 = [
   FiveTen6Row(
     digit1: 62,
     digit2: 24,

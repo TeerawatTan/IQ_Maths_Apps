@@ -681,7 +681,7 @@ class _WidgetWrapperState extends State<WidgetWrapper> {
                     inputFormatters: <TextInputFormatter>[
                       FilteringTextInputFormatter.digitsOnly,
                     ],
-                    maxLength: 5,
+                    maxLength: 7,
                     enabled: !widget.isFlashCardAnimating,
                     onChanged: (value) {
                       setState(() {});
@@ -835,7 +835,7 @@ class _WidgetWrapperState extends State<WidgetWrapper> {
                         inputFormatters: <TextInputFormatter>[
                           FilteringTextInputFormatter.digitsOnly,
                         ],
-                        maxLength: 5,
+                        maxLength: 7,
                         enabled: !widget.isFlashCardAnimating,
                         onChanged: (value) {
                           setState(() {});
