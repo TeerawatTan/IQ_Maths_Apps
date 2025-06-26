@@ -75,16 +75,23 @@ class _RandomExerciseScreenState extends State<RandomExerciseScreen> {
     final rand = Random();
     int total = -1;
 
-    while (total < 0) {
-      numbers = List.generate(row, (_) {
+    while (total <= 0) {
+      numbers = [];
+
+      final firstDigit = rand.nextBool() ? digit1 : digit2;
+      final firstMin = getMin(firstDigit);
+      final firstMax = getMax(firstDigit);
+      final firstNumber = rand.nextInt(firstMax - firstMin + 1) + firstMin;
+      numbers.add(firstNumber);
+
+      for (int i = 1; i < row; i++) {
         final useDigit = rand.nextBool() ? digit1 : digit2;
         final min = getMin(useDigit);
         final max = getMax(useDigit);
         final value = rand.nextInt(max - min + 1) + min;
 
-        // สุ่มติดลบหรือบวก
-        return rand.nextBool() ? value : -value;
-      });
+        numbers.add(rand.nextBool() ? value : -value);
+      }
 
       total = numbers.reduce((a, b) => a + b);
     }

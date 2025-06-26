@@ -226,13 +226,46 @@ class _MultiplicationScreenState extends State<MultiplicationScreen> {
           : LayoutBuilder(
               builder: (context, constraints) {
                 final shortSide = MediaQuery.of(context).size.shortestSide;
+                final isTablet = shortSide >= 600;
 
-                final isTablet = shortSide >= 950;
+                // สร้างข้อความที่จะแสดง
+                final displayText =
+                    "${numbers[currentStep][0]} × ${numbers[currentStep][1]}";
+                final textLength = displayText.length;
 
-                final boxWidth = isTablet ? 700.0 : 450.0;
-                final boxHeight = isTablet ? 300.0 : 150.0;
-                final paddingTop = isTablet ? 40.0 : 80.0;
-                final paddingLeft = isTablet ? 25.0 : 50.0;
+                // กำหนดขนาดตามจำนวนตัวอักษร
+                double boxWidth, boxHeight;
+
+                if (isTablet) {
+                  if (textLength >= 13) {
+                    // 5 หลัก (13+ ตัวอักษร)
+                    boxWidth = 900.0;
+                    boxHeight = 300.0;
+                  } else if (textLength >= 11) {
+                    // 4 หลัก (11 ตัวอักษร)
+                    boxWidth = 800.0;
+                    boxHeight = 250.0;
+                  } else if (textLength >= 9) {
+                    // 3 หลัก (9 ตัวอักษร)
+                    boxWidth = 700.0;
+                    boxHeight = 200.0;
+                  } else if (textLength >= 7) {
+                    // 2 หลัก (7 ตัวอักษร)
+                    boxWidth = 550.0;
+                    boxHeight = 180.0;
+                  } else {
+                    // 1 หลัก (5 ตัวอักษร)
+                    boxWidth = 450.0;
+                    boxHeight = 150.0;
+                  }
+                } else {
+                  // สำหรับโทรศัพท์ ใช้ขนาดเดิม
+                  boxWidth = 450.0;
+                  boxHeight = 150.0;
+                }
+
+                final paddingTop = isTablet ? 80.0 : 80.0;
+                final paddingLeft = isTablet ? 50.0 : 50.0;
 
                 return SizedBox(
                   width: boxWidth,
@@ -244,9 +277,7 @@ class _MultiplicationScreenState extends State<MultiplicationScreen> {
                     ),
                     child: FittedBox(
                       fit: BoxFit.contain,
-                      child: buildOutlinedText(
-                        "${numbers[currentStep][0]} × ${numbers[currentStep][1]}",
-                      ),
+                      child: buildOutlinedText(displayText),
                     ),
                   ),
                 );
