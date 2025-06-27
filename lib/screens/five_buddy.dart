@@ -1,6 +1,7 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:iq_maths_apps/datas/five_minus_one.dart';
 import 'package:iq_maths_apps/datas/five_minus_three.dart';
 import 'package:iq_maths_apps/datas/five_plus_four.dart';
 import 'package:iq_maths_apps/datas/five_plus_three.dart';
@@ -71,6 +72,19 @@ class _FiveBuddyScreenState extends State<FiveBuddyScreen> {
   }
 
   final Map<String, List<dynamic>> _dataMap = {
+    'Five_-1_4_1_1': fiveMinusOne4Row11,
+    'Five_-1_4_1_2': fiveMinusOne4Row21,
+    'Five_-1_4_2_1': fiveMinusOne4Row21,
+    'Five_-1_4_2_2': fiveMinusOne4Row22,
+    'Five_-1_5_1_1': fiveMinusOne5Row11,
+    'Five_-1_5_1_2': fiveMinusOne5Row21,
+    'Five_-1_5_2_1': fiveMinusOne5Row21,
+    'Five_-1_5_2_2': fiveMinusOne5Row22,
+    'Five_-1_6_1_1': fiveMinusOne6Row11,
+    'Five_-1_6_1_2': fiveMinusOne6Row21,
+    'Five_-1_6_2_1': fiveMinusOne6Row21,
+    'Five_-1_6_2_2': fiveMinusOne6Row22,
+
     'Five_-3_4_1_1': fiveMinusThree4Row11,
     'Five_-3_4_1_2': fiveMinusThree4Row21,
     'Five_-3_4_2_1': fiveMinusThree4Row21,
@@ -96,6 +110,7 @@ class _FiveBuddyScreenState extends State<FiveBuddyScreen> {
     'Five_+2_6_1_2': fivePlusTwo6Row21,
     'Five_+2_6_2_1': fivePlusTwo6Row21,
     'Five_+2_6_2_2': fivePlusTwo6Row22,
+
     'Five_+3_4_1_1': fivePlusThree4Row11,
     'Five_+3_4_1_2': fivePlusThree4Row21,
     'Five_+3_4_2_1': fivePlusThree4Row21,
@@ -108,6 +123,7 @@ class _FiveBuddyScreenState extends State<FiveBuddyScreen> {
     'Five_+3_6_1_2': fivePlusThree6Row21,
     'Five_+3_6_2_1': fivePlusThree6Row21,
     'Five_+3_6_2_2': fivePlusThree6Row22,
+
     'Five_+4_4_1_1': fivePlusFour4Row11,
     'Five_+4_4_1_2': fivePlusFour4Row21,
     'Five_+4_4_2_1': fivePlusFour4Row21,

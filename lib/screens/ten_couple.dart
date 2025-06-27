@@ -1,6 +1,9 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:iq_maths_apps/datas/random_plus_ten.dart';
+import 'package:iq_maths_apps/helpers/random_question.dart';
+import 'package:iq_maths_apps/models/digit_model.dart';
 import 'package:iq_maths_apps/models/maths_setting.dart';
 import 'package:iq_maths_apps/screens/no_data.dart';
 import 'package:iq_maths_apps/screens/summary.dart';
@@ -71,9 +74,7 @@ class _TenCoupleScreenState extends State<TenCoupleScreen> {
 
     numbers = [];
 
-    if (row == 3) {
-      _randomQuestion3rows(digit1, digit2);
-    } else if (row == 4) {
+    if (row == 4) {
       _randomQuestion4rows(digit1, digit2);
     } else if (row == 5) {
       _randomQuestion5rows(digit1, digit2);
@@ -103,128 +104,79 @@ class _TenCoupleScreenState extends State<TenCoupleScreen> {
     }
   }
 
-  void _randomQuestion3rows(int d1, int d2) {
-    // ThreeDigit? currentQ;
-    // if (d1 == 1) {
-    //   if (d2 == 1) {}
-    // } else if (d1 == 2) {
-    //   if (d2 == 2) {
-    //     RandomQuestionRow selector = RandomQuestionRow(questions: upper3Row22);
-    //     selector.selectRandomQuestion();
-    //     currentQ = selector.getCurrentQuestion();
-    //   }
-    // } else if (d1 == 3) {
-    //   if (d2 == 3) {
-    //     RandomQuestionRow selector = RandomQuestionRow(questions: upper3Row33);
-    //     selector.selectRandomQuestion();
-    //     currentQ = selector.getCurrentQuestion();
-    //   }
-    // }
-    // if (currentQ != null) {
-    //   numbers.add(currentQ.digit1);
-    //   numbers.add(currentQ.digit2);
-    //   numbers.add(currentQ.digit3);
-    //   answer = currentQ.ans;
-    // }
+  final Map<String, List<dynamic>> _dataMap = {
+    'Random_Lesson_Ten_+_4_1_1': randomTenPlus4Row11,
+    'Random_Lesson_Ten_+_4_1_2': randomTenPlus4Row21,
+    'Random_Lesson_Ten_+_4_2_1': randomTenPlus4Row21,
+    'Random_Lesson_Ten_+_4_2_2': randomTenPlus4Row22,
+    'Random_Lesson_Ten_+_5_1_1': randomTenPlus5Row11,
+    'Random_Lesson_Ten_+_5_1_2': randomTenPlus5Row21,
+    'Random_Lesson_Ten_+_5_2_1': randomTenPlus5Row21,
+    'Random_Lesson_Ten_+_5_2_2': randomTenPlus5Row22,
+    'Random_Lesson_Ten_+_6_1_1': randomTenPlus6Row11,
+    'Random_Lesson_Ten_+_6_1_2': randomTenPlus6Row21,
+    'Random_Lesson_Ten_+_6_2_1': randomTenPlus6Row21,
+    'Random_Lesson_Ten_+_6_2_2': randomTenPlus6Row22,
+  };
+
+  List<dynamic> _getList() {
+    final currentMenu = widget.setting.selectedSubOptionLabel.replaceAll(
+      ' ',
+      '_',
+    );
+    final currentRow = widget.setting.row;
+    final currentD1 = widget.setting.digit1;
+    final currentD2 = widget.setting.digit2;
+    final key = '${currentMenu}_${currentRow}_${currentD1}_$currentD2';
+    return _dataMap[key] ?? [];
   }
 
   void _randomQuestion4rows(int d1, int d2) {
-    // FourDigit? currentQ;
-    // if (d1 == 1) {
-    //   if (d2 == 1) {
-    //     RandomQuestionRow selector = RandomQuestionRow(questions: fivePlusFour4Row11);
-    //     selector.selectRandomQuestion();
-    //     currentQ = selector.getCurrentQuestion();
-    //   } else if (d2 == 2) {
-    //     RandomQuestionRow selector = RandomQuestionRow(questions: fivePlusFour4Row21);
-    //     selector.selectRandomQuestion();
-    //     currentQ = selector.getCurrentQuestion();
-    //   }
-    // } else if (d1 == 2) {
-    //   if (d2 == 1) {
-    //     RandomQuestionRow selector = RandomQuestionRow(questions: fivePlusFour4Row21);
-    //     selector.selectRandomQuestion();
-    //     currentQ = selector.getCurrentQuestion();
-    //   } else if (d2 == 2) {
-    //     RandomQuestionRow selector = RandomQuestionRow(questions: fivePlusFour4Row22);
-    //     selector.selectRandomQuestion();
-    //     currentQ = selector.getCurrentQuestion();
-    //   }
-    // }
-    // if (currentQ != null) {
-    //   numbers.add(currentQ.digit1);
-    //   numbers.add(currentQ.digit2);
-    //   numbers.add(currentQ.digit3);
-    //   numbers.add(currentQ.digit4);
-    //   answer = currentQ.ans;
-    // }
+    FourDigit? currentQ;
+    RandomQuestionRow selector = RandomQuestionRow(questions: _getList());
+    selector.selectRandomQuestion();
+    currentQ = selector.getCurrentQuestion();
+
+    if (currentQ != null) {
+      numbers.add(currentQ.digit1);
+      numbers.add(currentQ.digit2);
+      numbers.add(currentQ.digit3);
+      numbers.add(currentQ.digit4);
+      answer = currentQ.ans;
+    }
   }
 
   void _randomQuestion5rows(int d1, int d2) {
-    // FiveDigit? currentQ;
-    // if (d1 == 1) {
-    //   if (d2 == 1) {
-    //     RandomQuestionRow selector = RandomQuestionRow(questions: fivePlusFour5Row11);
-    //     selector.selectRandomQuestion();
-    //     currentQ = selector.getCurrentQuestion();
-    //   } else if (d2 == 2) {
-    //     RandomQuestionRow selector = RandomQuestionRow(questions: fivePlusFour5Row21);
-    //     selector.selectRandomQuestion();
-    //     currentQ = selector.getCurrentQuestion();
-    //   }
-    // } else if (d1 == 2) {
-    //   if (d2 == 1) {
-    //     RandomQuestionRow selector = RandomQuestionRow(questions: fivePlusFour5Row21);
-    //     selector.selectRandomQuestion();
-    //     currentQ = selector.getCurrentQuestion();
-    //   } else if (d2 == 2) {
-    //     RandomQuestionRow selector = RandomQuestionRow(questions: fivePlusFour5Row22);
-    //     selector.selectRandomQuestion();
-    //     currentQ = selector.getCurrentQuestion();
-    //   }
-    // }
-    // if (currentQ != null) {
-    //   numbers.add(currentQ.digit1);
-    //   numbers.add(currentQ.digit2);
-    //   numbers.add(currentQ.digit3);
-    //   numbers.add(currentQ.digit4);
-    //   numbers.add(currentQ.digit5);
-    //   answer = currentQ.ans;
-    // }
+    FiveDigit? currentQ;
+    RandomQuestionRow selector = RandomQuestionRow(questions: _getList());
+    selector.selectRandomQuestion();
+    currentQ = selector.getCurrentQuestion();
+
+    if (currentQ != null) {
+      numbers.add(currentQ.digit1);
+      numbers.add(currentQ.digit2);
+      numbers.add(currentQ.digit3);
+      numbers.add(currentQ.digit4);
+      numbers.add(currentQ.digit5);
+      answer = currentQ.ans;
+    }
   }
 
   void _randomQuestion6rows(int d1, int d2) {
-    // SixDigit? currentQ;
-    // if (d1 == 1) {
-    //   if (d2 == 1) {
-    //     RandomQuestionRow selector = RandomQuestionRow(questions: fivePlusFour6Row11);
-    //     selector.selectRandomQuestion();
-    //     currentQ = selector.getCurrentQuestion();
-    //   } else if (d2 == 2) {
-    //     RandomQuestionRow selector = RandomQuestionRow(questions: fivePlusFour6Row21);
-    //     selector.selectRandomQuestion();
-    //     currentQ = selector.getCurrentQuestion();
-    //   }
-    // } else if (d1 == 2) {
-    //   if (d2 == 1) {
-    //     RandomQuestionRow selector = RandomQuestionRow(questions: fivePlusFour6Row21);
-    //     selector.selectRandomQuestion();
-    //     currentQ = selector.getCurrentQuestion();
-    //   } else if (d2 == 2) {
-    //     RandomQuestionRow selector = RandomQuestionRow(questions: fivePlusFour6Row22);
-    //     selector.selectRandomQuestion();
-    //     currentQ = selector.getCurrentQuestion();
-    //   }
-    // }
-    // if (currentQ != null) {
-    //   numbers.add(currentQ.digit1);
-    //   numbers.add(currentQ.digit2);
-    //   numbers.add(currentQ.digit3);
-    //   numbers.add(currentQ.digit4);
-    //   numbers.add(currentQ.digit5);
-    //   numbers.add(currentQ.digit6);
-    //   answer = currentQ.ans;
-    // }
+    SixDigit? currentQ;
+    RandomQuestionRow selector = RandomQuestionRow(questions: _getList());
+    selector.selectRandomQuestion();
+    currentQ = selector.getCurrentQuestion();
+
+    if (currentQ != null) {
+      numbers.add(currentQ.digit1);
+      numbers.add(currentQ.digit2);
+      numbers.add(currentQ.digit3);
+      numbers.add(currentQ.digit4);
+      numbers.add(currentQ.digit5);
+      numbers.add(currentQ.digit6);
+      answer = currentQ.ans;
+    }
   }
 
   Future<void> _startFlashCard() async {
