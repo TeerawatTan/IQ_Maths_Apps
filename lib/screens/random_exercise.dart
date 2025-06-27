@@ -333,7 +333,7 @@ class _RandomExerciseScreenState extends State<RandomExerciseScreen> {
                       fontSize = fontSize.clamp(25, 120);
 
                       return SingleChildScrollView(
-                        padding: EdgeInsets.only(top: 50),
+                        padding: EdgeInsets.only(top: 20),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: numbers.map((e) {
