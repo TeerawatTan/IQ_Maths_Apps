@@ -256,7 +256,8 @@ class _LoginScreenState extends State<LoginScreen> {
       if (user != null) {
         Navigator.pushReplacementNamed(
           context,
-          '/Setting',
+          // '/Setting',
+          '/Home',
           arguments: user.uid,
         );
       }

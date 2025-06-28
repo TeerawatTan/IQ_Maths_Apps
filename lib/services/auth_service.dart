@@ -49,4 +49,21 @@ class AuthService {
   Future<void> logout() async {
     await _auth.signOut();
   }
+
+  String? getUserId() => _auth.currentUser?.uid;
+
+  String getUserName() {
+    String uname = '';
+    if (_auth.currentUser != null) {
+      try {
+        uname = _auth.currentUser!.email!.substring(
+          0,
+          _auth.currentUser!.email!.indexOf('@'),
+        );
+      } catch (e) {
+        return uname;
+      }
+    }
+    return uname;
+  }
 }

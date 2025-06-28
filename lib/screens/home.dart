@@ -288,7 +288,6 @@ class _HomeScreenState extends State<HomeScreen> {
     // ใช้ CommonLayout เพื่อห่อหุ้มเนื้อหาเฉพาะของ HomeScreen
     return CommonLayout(
       userId: widget.userId, // ส่ง UID ไปยัง CommonLayout
-      uname: uname, // ส่งชื่อผู้ใช้ไป CommonLayout
       child: Stack(
         children: [
           // เนื้อหาเฉพาะของ HomeScreen จะอยู่ที่นี่

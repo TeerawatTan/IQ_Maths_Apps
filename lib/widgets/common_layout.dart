@@ -6,19 +6,20 @@ import 'package:flutter/material.dart';
 import 'package:iq_maths_apps/services/auth_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-// CommonLayout เป็น Widget ที่ใช้สำหรับสร้างโครงสร้างพื้นฐานของหน้าจอ
-// ประกอบด้วย Background, Header, UserInfo และ Footer
-// โดยมี child เป็นส่วนเนื้อหาหลักที่เปลี่ยนแปลงไปตามแต่ละหน้าจอ
 class CommonLayout extends StatefulWidget {
-  final Widget child; // เนื้อหาหลักของหน้าจอ
+  final Widget child;
   final String? userId; // UserId สำหรับการตรวจสอบ Session
-  final String uname; // ชื่อผู้ใช้ที่แสดงในส่วน UserInfo
+  final bool customBottomBar;
+  final bool isSoundOn;
+  final ValueChanged<bool>? onSoundToggle;
 
   const CommonLayout({
     super.key,
     required this.child,
     this.userId,
-    required this.uname,
+    this.customBottomBar = false,
+    this.isSoundOn = true,
+    this.onSoundToggle,
   });
 
   @override
@@ -35,15 +36,16 @@ class _CommonLayoutState extends State<CommonLayout> {
   String? profileImagePath;
   bool isAssetImage = true;
   ImageProvider? profileImage;
+  late bool currentIsSoundOn;
 
   @override
   void initState() {
     super.initState();
-    // ถ้ามี UID ให้เริ่มฟังการเปลี่ยนแปลงของ Session
     if (widget.userId != null) {
       _listenForSessionChanges(context, widget.userId!);
     }
-    _loadProfileImage(); // โหลดรูปโปรไฟล์เมื่อเริ่มต้น
+    _loadProfileImage();
+    currentIsSoundOn = widget.isSoundOn;
   }
 
   @override
@@ -176,53 +178,56 @@ class _CommonLayoutState extends State<CommonLayout> {
   );
 
   // Widget สำหรับ User Info (ชื่อผู้ใช้และรูปโปรไฟล์)
-  Widget _buildUserInfo() => Positioned(
-    top: 10,
-    right: 0,
-    child: Padding(
-      padding: const EdgeInsets.only(left: 20.0, right: 0),
-      child: Container(
-        decoration: BoxDecoration(
-          color: Colors.cyan[100],
-          borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(30),
-            bottomLeft: Radius.circular(30),
+  Widget _buildUserInfo() {
+    final uname = authService.getUserName();
+    return Positioned(
+      top: 10,
+      right: 0,
+      child: Padding(
+        padding: const EdgeInsets.only(left: 20.0, right: 0),
+        child: Container(
+          decoration: BoxDecoration(
+            color: Colors.cyan[100],
+            borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(30),
+              bottomLeft: Radius.circular(30),
+            ),
+          ),
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 1),
+          child: Row(
+            children: [
+              Text(
+                "ID : $uname",
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.pink,
+                ),
+              ),
+              SizedBox(width: 10),
+              CircleAvatar(radius: 25, backgroundImage: profileImage),
+              IconButton(
+                icon: const Icon(Icons.logout),
+                iconSize: 30.0,
+                color: const Color.fromARGB(255, 235, 99, 144),
+                onPressed: _logout,
+                tooltip: 'Logout',
+              ),
+            ],
           ),
         ),
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 1),
-        child: Row(
-          children: [
-            Text(
-              "ID : ${widget.uname}",
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-                color: Colors.pink,
-              ),
-            ),
-            SizedBox(width: 10),
-            CircleAvatar(radius: 25, backgroundImage: profileImage),
-            IconButton(
-              icon: const Icon(Icons.logout),
-              iconSize: 30.0,
-              color: const Color.fromARGB(255, 235, 99, 144),
-              onPressed: _logout,
-              tooltip: 'Logout',
-            ),
-          ],
-        ),
       ),
-    ),
-  );
+    );
+  }
 
-  // Widget สำหรับ Footer (ชื่อแอปและเวอร์ชัน)
-  Widget _buildFooter(bool isSmallScreen) => Positioned(
+  // Widget สำหรับ Footer
+  Widget _widgetBuildFooter(bool isSmallScreen) => Positioned(
     bottom: 0,
     left: 0,
     right: 0,
     child: Container(
       color: Colors.lightBlueAccent,
-      height: 40,
+      height: isSmallScreen ? 32 : 35,
       padding: const EdgeInsets.symmetric(horizontal: 12),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -238,17 +243,67 @@ class _CommonLayoutState extends State<CommonLayout> {
               ),
             ),
           ),
-          Padding(
-            padding: EdgeInsets.only(right: isSmallScreen ? 10 : 16),
-            child: Text(
-              "v.1.0.0",
-              style: TextStyle(
-                color: Colors.white10,
-                fontWeight: FontWeight.bold,
-                fontSize: isSmallScreen ? 14 : 16,
-              ),
-            ),
-          ),
+          widget.customBottomBar
+              ? Padding(
+                  padding: EdgeInsets.only(right: isSmallScreen ? 10 : 16),
+                  child: Text(
+                    "v.1.0.0",
+                    style: TextStyle(
+                      color: Colors.white10,
+                      fontWeight: FontWeight.bold,
+                      fontSize: isSmallScreen ? 14 : 16,
+                    ),
+                  ),
+                )
+              : Padding(
+                  padding: EdgeInsets.only(right: isSmallScreen ? 10 : 16),
+                  child: Row(
+                    children: [
+                      Text(
+                        "Sound ",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: isSmallScreen ? 14 : 16,
+                        ),
+                      ),
+                      Image.asset(
+                        'assets/images/sound_icon.png',
+                        width: 22,
+                        height: 22,
+                      ),
+                      Transform.scale(
+                        scale: 0.8,
+                        child: Switch(
+                          value: currentIsSoundOn,
+                          onChanged: (value) {
+                            setState(() {
+                              currentIsSoundOn = value;
+                              if (widget.onSoundToggle != null) {
+                                widget.onSoundToggle!(value);
+                              }
+                            });
+                          },
+                          activeColor: Colors.white,
+                          inactiveThumbColor: Colors.red,
+                          inactiveTrackColor: const Color.fromARGB(
+                            255,
+                            235,
+                            116,
+                            107,
+                          ),
+                        ),
+                      ),
+                      Text(
+                        currentIsSoundOn ? "ON" : "OFF",
+                        style: TextStyle(
+                          color: currentIsSoundOn ? Colors.white : Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
         ],
       ),
     ),
@@ -262,12 +317,11 @@ class _CommonLayoutState extends State<CommonLayout> {
           bool isSmallScreen = constraints.maxWidth < 600; // ตรวจสอบขนาดหน้าจอ
           return Stack(
             children: [
-              _buildBackground(), // Background
-              _buildHeader(), // Header
-              _buildUserInfo(), // User Info
-              // ส่วนเนื้อหาหลักของแต่ละหน้าจอจะถูกแทรกเข้ามาตรงนี้
+              _buildBackground(),
+              _buildHeader(),
+              _buildUserInfo(),
               widget.child,
-              _buildFooter(isSmallScreen), // Footer
+              _widgetBuildFooter(isSmallScreen),
             ],
           );
         },
