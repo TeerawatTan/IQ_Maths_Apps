@@ -1,7 +1,7 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:iq_maths_apps/datas/random_plus_ten.dart';
+import 'package:iq_maths_apps/datas/random_ten_plus.dart';
 import 'package:iq_maths_apps/helpers/random_question.dart';
 import 'package:iq_maths_apps/models/digit_model.dart';
 import 'package:iq_maths_apps/models/maths_setting.dart';

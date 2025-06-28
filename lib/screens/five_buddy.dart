@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:iq_maths_apps/datas/five_minus_one.dart';
 import 'package:iq_maths_apps/datas/five_minus_three.dart';
+import 'package:iq_maths_apps/datas/five_minus_two.dart';
 import 'package:iq_maths_apps/datas/five_plus_four.dart';
 import 'package:iq_maths_apps/datas/five_plus_three.dart';
 import 'package:iq_maths_apps/datas/five_plus_two.dart';
@@ -84,6 +85,19 @@ class _FiveBuddyScreenState extends State<FiveBuddyScreen> {
     'Five_-1_6_1_2': fiveMinusOne6Row21,
     'Five_-1_6_2_1': fiveMinusOne6Row21,
     'Five_-1_6_2_2': fiveMinusOne6Row22,
+
+    'Five_-2_4_1_1': fiveMinusTwo4Row11,
+    'Five_-2_4_1_2': fiveMinusTwo4Row21,
+    'Five_-2_4_2_1': fiveMinusTwo4Row21,
+    'Five_-2_4_2_2': fiveMinusTwo4Row22,
+    'Five_-2_5_1_1': fiveMinusTwo5Row11,
+    'Five_-2_5_1_2': fiveMinusTwo5Row21,
+    'Five_-2_5_2_1': fiveMinusTwo5Row21,
+    'Five_-2_5_2_2': fiveMinusTwo5Row22,
+    'Five_-2_6_1_1': fiveMinusTwo6Row11,
+    'Five_-2_6_1_2': fiveMinusTwo6Row21,
+    'Five_-2_6_2_1': fiveMinusTwo6Row21,
+    'Five_-2_6_2_2': fiveMinusTwo6Row22,
 
     'Five_-3_4_1_1': fiveMinusThree4Row11,
     'Five_-3_4_1_2': fiveMinusThree4Row21,
