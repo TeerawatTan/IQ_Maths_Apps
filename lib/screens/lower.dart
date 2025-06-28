@@ -62,7 +62,7 @@ class _LowerScreenState extends State<LowerScreen> {
   void _playTikSound() async {
     if (isSoundOn) {
       await audioPlayer.stop();
-      await audioPlayer.play(AssetSource('files/sound_tik.mp3'));
+      audioPlayer.play(AssetSource('files/sound_tik.mp3'));
     }
   }
 
