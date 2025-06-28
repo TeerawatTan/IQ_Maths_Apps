@@ -254,11 +254,7 @@ class _LoginScreenState extends State<LoginScreen> {
     if (success) {
       User? user = FirebaseAuth.instance.currentUser;
       if (user != null) {
-        Navigator.pushReplacementNamed(
-          context,
-          '/Setting',
-          arguments: user.uid,
-        );
+        Navigator.pushReplacementNamed(context, '/Home', arguments: user.uid);
       }
     } else {
       _showValidationError(

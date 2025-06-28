@@ -16,15 +16,15 @@ import 'package:iq_maths_apps/widgets/sub_options/sub_options_div.dart';
 import 'package:iq_maths_apps/models/maths_setting.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class SettingScreen extends StatefulWidget {
+class HomeScreen extends StatefulWidget {
   final String? uid;
-  const SettingScreen({super.key, this.uid});
+  const HomeScreen({super.key, this.uid});
 
   @override
-  State<SettingScreen> createState() => _SettingScreenState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _SettingScreenState extends State<SettingScreen> {
+class _HomeScreenState extends State<HomeScreen> {
   String selectedMenu = '';
   String selectedDigit1 = '';
   String selectedDigit2 = '';

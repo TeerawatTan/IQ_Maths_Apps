@@ -93,7 +93,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             context,
           ).showSnackBar(SnackBar(content: Text("Register success.")));
           Navigator.pop(context);
-          // Navigator.pushReplacementNamed(context, '/Setting');
+          // Navigator.pushReplacementNamed(context, '/Home');
         }
       } on FirebaseAuthException catch (e) {
         String message;

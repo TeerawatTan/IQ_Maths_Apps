@@ -9,7 +9,7 @@ import 'package:iq_maths_apps/screens/random_exercise.dart';
 import 'package:iq_maths_apps/screens/ten_couple.dart';
 import '../models/maths_setting.dart';
 import 'screens/login.dart';
-import 'screens/setting.dart';
+import 'screens/home.dart';
 import 'screens/lower.dart';
 import 'screens/upper.dart';
 import 'screens/lowerandupper.dart';
@@ -67,7 +67,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(fontFamily: 'PoetsenOn', useMaterial3: true),
       home: currentUser == null
           ? LoginScreen()
-          : SettingScreen(uid: currentUser.uid),
+          : HomeScreen(uid: currentUser.uid),
       onGenerateRoute: (settings) {
         if (settings.name == '/Lower') {
           final mathsSetting = settings.arguments as MathsSetting;
@@ -105,9 +105,9 @@ class MyApp extends StatelessWidget {
           return MaterialPageRoute(
             builder: (_) => DivisionRandomTableScreen(setting: mathsSetting),
           );
-        } else if (settings.name == '/Setting') {
+        } else if (settings.name == '/Home') {
           final uid = settings.arguments as String?;
-          return MaterialPageRoute(builder: (_) => SettingScreen(uid: uid));
+          return MaterialPageRoute(builder: (_) => HomeScreen(uid: uid));
         }
         // else if (settings.name == '/Register') {
         //   return MaterialPageRoute(builder: (_) => const RegisterScreen());
@@ -130,7 +130,7 @@ class MyApp extends StatelessWidget {
             builder: (_) => RandomExerciseScreen(setting: mathsSetting),
           );
         }
-        return MaterialPageRoute(builder: (_) => const SettingScreen());
+        return MaterialPageRoute(builder: (_) => const HomeScreen());
       },
     );
   }
