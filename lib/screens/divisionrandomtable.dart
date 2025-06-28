@@ -389,6 +389,14 @@ class _DivisionRandomTableScreenState extends State<DivisionRandomTableScreen> {
                       bottom: 20,
                     );
                     containerHeight = 430;
+                  } else if (width < 800) {
+                    containerMargin = const EdgeInsets.only(
+                      left: 220,
+                      right: 160,
+                      top: 60,
+                      bottom: 20,
+                    );
+                    containerHeight = 430;
                   } else {
                     // Pixel 6 (แนวตั้ง) หรือจอใหญ่
                     containerMargin = const EdgeInsets.only(

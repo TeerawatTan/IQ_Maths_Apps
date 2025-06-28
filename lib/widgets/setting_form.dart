@@ -76,10 +76,16 @@ class _SettingFormState extends State<SettingForm> {
     if (widget.onScreen == 'Random Exercise') {
       list = _digitOptions();
     } else if (widget.onScreen == 'Multiplication' ||
+        widget.onScreen == 'Multiplication Random Table' ||
         widget.onScreen == 'Division') {
       list = _digitOptions().where((option) {
         int? value = int.tryParse(option['value'] ?? '');
         return value != null && value >= 1 && value <= 5;
+      }).toList();
+    } else if (widget.onScreen == 'Division Random Table') {
+      list = _digitOptions().where((option) {
+        int? value = int.tryParse(option['value'] ?? '');
+        return value != null && value >= 2 && value <= 5;
       }).toList();
     } else {
       list = _digitOptions().where((option) {
