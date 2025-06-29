@@ -126,22 +126,26 @@ class _HomeScreenState extends State<HomeScreen> {
         prefs.getBool(isAssetImageKey) ?? true; // Default to true if not set
 
     if (imagePath != null) {
-      setState(() {
-        profileImagePath = imagePath;
-        isAssetImage = isAsset;
-        // กำหนด profileImage ตรงนี้ด้วย
-        if (isAssetImage) {
-          profileImage = AssetImage(profileImagePath!);
-        } else {
-          profileImage = FileImage(File(profileImagePath!));
-        }
-      });
+      if (mounted) {
+        setState(() {
+          profileImagePath = imagePath;
+          isAssetImage = isAsset;
+          // กำหนด profileImage ตรงนี้ด้วย
+          if (isAssetImage) {
+            profileImage = AssetImage(profileImagePath!);
+          } else {
+            profileImage = FileImage(File(profileImagePath!));
+          }
+        });
+      }
     } else {
-      setState(() {
-        profileImagePath = null;
-        isAssetImage = true;
-        profileImage = const AssetImage('assets/images/user_icon.png');
-      });
+      if (mounted) {
+        setState(() {
+          profileImagePath = null;
+          isAssetImage = true;
+          profileImage = const AssetImage('assets/images/user_icon.png');
+        });
+      }
     }
   }
 
