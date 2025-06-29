@@ -5,6 +5,7 @@ import 'package:iq_maths_apps/datas/five_minus_one.dart';
 import 'package:iq_maths_apps/datas/five_minus_three.dart';
 import 'package:iq_maths_apps/datas/five_minus_two.dart';
 import 'package:iq_maths_apps/datas/five_plus_four.dart';
+import 'package:iq_maths_apps/datas/five_plus_one.dart';
 import 'package:iq_maths_apps/datas/five_plus_three.dart';
 import 'package:iq_maths_apps/datas/five_plus_two.dart';
 import 'package:iq_maths_apps/datas/random_five_minus.dart';
@@ -74,6 +75,19 @@ class _FiveBuddyScreenState extends State<FiveBuddyScreen> {
   }
 
   final Map<String, List<dynamic>> _dataMap = {
+    'Five_+1_4_1_1': fivePlusOne4Row11,
+    'Five_+1_4_1_2': fivePlusOne4Row21,
+    'Five_+1_4_2_1': fivePlusOne4Row21,
+    'Five_+1_4_2_2': fivePlusOne4Row22,
+    'Five_+1_5_1_1': fivePlusOne5Row11,
+    'Five_+1_5_1_2': fivePlusOne5Row21,
+    'Five_+1_5_2_1': fivePlusOne5Row21,
+    'Five_+1_5_2_2': fivePlusOne5Row22,
+    'Five_+1_6_1_1': fivePlusOne6Row11,
+    'Five_+1_6_1_2': fivePlusOne6Row21,
+    'Five_+1_6_2_1': fivePlusOne6Row21,
+    'Five_+1_6_2_2': fivePlusOne6Row22,
+
     'Five_+2_4_1_1': fivePlusTwo4Row11,
     'Five_+2_4_1_2': fivePlusTwo4Row21,
     'Five_+2_4_2_1': fivePlusTwo4Row21,
