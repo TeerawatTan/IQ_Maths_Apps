@@ -2,6 +2,7 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:iq_maths_apps/datas/random_five_and_ten_plus.dart';
+import 'package:iq_maths_apps/datas/random_ten_minus.dart';
 import 'package:iq_maths_apps/datas/random_ten_plus.dart';
 import 'package:iq_maths_apps/helpers/random_question.dart';
 import 'package:iq_maths_apps/models/digit_model.dart';
@@ -131,6 +132,19 @@ class _TenCoupleScreenState extends State<TenCoupleScreen> {
     'Random_Lesson_Five&Ten_+_6_1_2': randomFiveTenPlus6Row21,
     'Random_Lesson_Five&Ten_+_6_2_1': randomFiveTenPlus6Row21,
     'Random_Lesson_Five&Ten_+_6_2_2': randomFiveTenPlus6Row22,
+
+    'Random_Lesson_Ten_-_4_1_1': randomTenMinus4Row11,
+    'Random_Lesson_Ten_-_4_1_2': randomTenMinus4Row21,
+    'Random_Lesson_Ten_-_4_2_1': randomTenMinus4Row21,
+    'Random_Lesson_Ten_-_4_2_2': randomTenMinus4Row22,
+    'Random_Lesson_Ten_-_5_1_1': randomTenMinus5Row11,
+    'Random_Lesson_Ten_-_5_1_2': randomTenMinus5Row21,
+    'Random_Lesson_Ten_-_5_2_1': randomTenMinus5Row21,
+    'Random_Lesson_Ten_-_5_2_2': randomTenMinus5Row22,
+    'Random_Lesson_Ten_-_6_1_1': randomTenMinus6Row11,
+    'Random_Lesson_Ten_-_6_1_2': randomTenMinus6Row21,
+    'Random_Lesson_Ten_-_6_2_1': randomTenMinus6Row21,
+    'Random_Lesson_Ten_-_6_2_2': randomTenMinus6Row22,
   };
 
   List<dynamic> _getList() {
