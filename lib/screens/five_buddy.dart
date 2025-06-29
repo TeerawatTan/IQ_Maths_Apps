@@ -9,6 +9,7 @@ import 'package:iq_maths_apps/datas/five_plus_one.dart';
 import 'package:iq_maths_apps/datas/five_plus_three.dart';
 import 'package:iq_maths_apps/datas/five_plus_two.dart';
 import 'package:iq_maths_apps/datas/random_five_minus.dart';
+import 'package:iq_maths_apps/datas/random_five_plus.dart';
 import 'package:iq_maths_apps/helpers/random_question.dart';
 import 'package:iq_maths_apps/models/digit_model.dart';
 import 'package:iq_maths_apps/models/maths_setting.dart';
@@ -126,6 +127,19 @@ class _FiveBuddyScreenState extends State<FiveBuddyScreen> {
     'Five_+4_6_1_2': fivePlusFour6Row21,
     'Five_+4_6_2_1': fivePlusFour6Row21,
     'Five_+4_6_2_2': fivePlusFour6Row22,
+
+    'Random_Lesson_Five_+_4_1_1': randomFivePlus4Row11,
+    'Random_Lesson_Five_+_4_1_2': randomFivePlus4Row21,
+    'Random_Lesson_Five_+_4_2_1': randomFivePlus4Row21,
+    'Random_Lesson_Five_+_4_2_2': randomFivePlus4Row22,
+    'Random_Lesson_Five_+_5_1_1': randomFivePlus5Row11,
+    'Random_Lesson_Five_+_5_1_2': randomFivePlus5Row21,
+    'Random_Lesson_Five_+_5_2_1': randomFivePlus5Row21,
+    'Random_Lesson_Five_+_5_2_2': randomFivePlus5Row22,
+    'Random_Lesson_Five_+_6_1_1': randomFivePlus6Row11,
+    'Random_Lesson_Five_+_6_1_2': randomFivePlus6Row21,
+    'Random_Lesson_Five_+_6_2_1': randomFivePlus6Row21,
+    'Random_Lesson_Five_+_6_2_2': randomFivePlus6Row22,
 
     'Five_-3_4_1_1': fiveMinusThree4Row11,
     'Five_-3_4_1_2': fiveMinusThree4Row21,
