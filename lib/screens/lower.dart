@@ -286,6 +286,7 @@ class _LowerScreenState extends State<LowerScreen> {
 
   void _checkAnswer() {
     String input = inputAnsController.text.replaceAll(',', '');
+    ;
     int? userAnswer;
     if (input.isNotEmpty) {
       userAnswer = int.tryParse(input);
