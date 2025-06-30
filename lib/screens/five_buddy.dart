@@ -1,5 +1,4 @@
 import 'package:audioplayers/audioplayers.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:iq_maths_apps/datas/five_minus_four.dart';
 import 'package:iq_maths_apps/datas/five_minus_one.dart';
@@ -44,8 +43,6 @@ class _FiveBuddyScreenState extends State<FiveBuddyScreen> {
   bool shouldContinueFlashCard = false;
   bool showSmallWrongIcon = false;
   bool showAnswerText = false;
-  bool isLoggingOut = false; // State to manage logout loading
-  final auth = FirebaseAuth.instance;
   final AudioPlayer audioPlayer = AudioPlayer();
   bool isAnswerCorrect = false;
   bool hasCheckedAnswer = false;
@@ -442,14 +439,7 @@ class _FiveBuddyScreenState extends State<FiveBuddyScreen> {
     }
 
     return WidgetWrapper(
-      userName: auth.currentUser == null
-          ? ''
-          : auth.currentUser!.email!.substring(
-              0,
-              auth.currentUser!.email!.indexOf('@'),
-            ),
-      avatarImg: null,
-      displayMode: '',
+      displayMode: widget.setting.display,
       inputAnsController: inputAnsController,
       onNextPressed: isAnswerCorrect || showAnswerText ? _nextStep : null,
       onCheckPressed: isNextButtonEnabled ? _checkAnswer : null,
@@ -464,7 +454,7 @@ class _FiveBuddyScreenState extends State<FiveBuddyScreen> {
       showSmallWrongIcon: showSmallWrongIcon,
       answerText: answer.toString(),
       currentMenuButtonLabel: _getCurrentMenuLabel(),
-      isShowMode: false,
+      isShowMode: true,
       isSoundOn: isSoundOn,
       onSoundToggle: (newValue) {
         setState(() {

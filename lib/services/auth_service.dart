@@ -25,16 +25,17 @@ class AuthService {
 
   Future<bool> login(String email, String password) async {
     try {
-      // Login firebase
-      UserCredential userCred = await _auth.signInWithEmailAndPassword(
+      final userCred = await _auth.signInWithEmailAndPassword(
         email: email,
         password: password,
       );
+      final uid = userCred.user?.uid;
+      if (uid == null) {
+        log('Login error: User UID is null');
+        return false;
+      }
+      final currentDeviceId = await getDeviceId();
 
-      String uid = userCred.user!.uid;
-      String currentDeviceId = await getDeviceId();
-
-      // Force update: บันทึก deviceId ใหม่ → เตะเครื่องเก่าออก
       await _firestore.collection('users').doc(uid).set({
         'uid': uid,
         'deviceId': currentDeviceId,
@@ -42,13 +43,33 @@ class AuthService {
       }, SetOptions(merge: true));
 
       return true;
-    } catch (e) {
-      log('Login error: $e');
+    } on FirebaseAuthException catch (e) {
+      log('FirebaseAuthException: ${e.code} - ${e.message}');
+      return false;
+    } catch (e, stack) {
+      log('Login error: $e', stackTrace: stack);
       return false;
     }
   }
 
   Future<void> logout() async {
     await _auth.signOut();
+  }
+
+  String? getUserId() => _auth.currentUser?.uid;
+
+  String getUserName() {
+    String uname = '';
+    if (_auth.currentUser != null) {
+      try {
+        uname = _auth.currentUser!.email!.substring(
+          0,
+          _auth.currentUser!.email!.indexOf('@'),
+        );
+      } catch (e) {
+        return uname;
+      }
+    }
+    return uname;
   }
 }

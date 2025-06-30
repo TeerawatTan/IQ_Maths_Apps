@@ -6,6 +6,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:iq_maths_apps/services/auth_service.dart';
+import 'package:iq_maths_apps/widgets/app_background.dart';
 import 'package:iq_maths_apps/widgets/setting_menu_button.dart';
 import 'package:iq_maths_apps/widgets/sub_options/sub_options_lp.dart';
 import 'package:iq_maths_apps/widgets/sub_options/sub_options_five.dart';
@@ -14,6 +15,7 @@ import 'package:iq_maths_apps/widgets/sub_options/sub_options_tenminus.dart';
 import 'package:iq_maths_apps/widgets/sub_options/sub_options_multi.dart';
 import 'package:iq_maths_apps/widgets/sub_options/sub_options_div.dart';
 import 'package:iq_maths_apps/models/maths_setting.dart';
+import 'package:iq_maths_apps/widgets/user_info_bar.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -376,37 +378,6 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
-  Future<void> _logout() async {
-    setState(() {
-      isLoggingOut = true;
-    });
-
-    try {
-      await authService.logout();
-      if (mounted) {
-        Navigator.pushReplacementNamed(context, '/');
-      }
-    } on FirebaseAuthException catch (e) {
-      if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error logging out: ${e.message}')),
-        );
-      }
-    } catch (e) {
-      if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('An unexpected error occurred: $e')),
-        );
-      }
-    } finally {
-      if (mounted) {
-        setState(() {
-          isLoggingOut = false;
-        });
-      }
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -415,8 +386,8 @@ class _HomeScreenState extends State<HomeScreen> {
           bool isSmallScreen = constraints.maxWidth < 600;
           return Stack(
             children: [
-              _buildBackground(),
-              _buildHeader(),
+              // Background
+              AppBackground(isHome: true),
               _buildUserInfo(),
               _buildMainMenu(),
               if (selectedMenu == 'LP') _buildSubOptionsLP(),
@@ -435,69 +406,10 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Widget _buildBackground() => Positioned.fill(
-    child: Image.asset('assets/images/bg4.png', fit: BoxFit.cover),
-  );
-
-  Widget _buildHeader() => Positioned(
-    top: 20,
-    left: 20,
-    child: Image.asset('assets/images/logo.png', width: 70),
-  );
-
   Widget _buildUserInfo() => Positioned(
     top: 10,
     right: 0,
-    child: Padding(
-      padding: const EdgeInsets.only(left: 20.0, right: 0),
-      child: Container(
-        decoration: BoxDecoration(
-          color: Colors.cyan[100],
-          borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(30),
-            bottomLeft: Radius.circular(30),
-          ),
-        ),
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 1),
-        child: Row(
-          children: [
-            Text(
-              "ID : $uname",
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-                color: Colors.pink,
-              ),
-            ),
-            SizedBox(width: 10),
-            CircleAvatar(radius: 25, backgroundImage: profileImage),
-            isLoggingOut
-                ? const SizedBox(
-                    width: 30, // Match icon size
-                    height: 30, // Match icon size
-                    child: CircularProgressIndicator(
-                      strokeWidth: 3,
-                      valueColor: AlwaysStoppedAnimation<Color>(
-                        Color.fromARGB(255, 235, 99, 144),
-                      ),
-                    ),
-                  )
-                : IconButton(
-                    icon: const Icon(Icons.logout), // Logout icon
-                    iconSize: 30.0, // Adjust icon size as needed
-                    color: const Color.fromARGB(
-                      255,
-                      235,
-                      99,
-                      144,
-                    ), // Icon color
-                    onPressed: _logout, // Call the _logout function
-                    tooltip: 'Logout', // Text that appears on long press
-                  ),
-          ],
-        ),
-      ),
-    ),
+    child: UserInfoBar(userName: authService.getUserName()),
   );
 
   Widget _buildMainMenu() => Positioned(

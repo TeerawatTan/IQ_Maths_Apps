@@ -1,5 +1,4 @@
 import 'package:audioplayers/audioplayers.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:iq_maths_apps/datas/lower.dart';
 import 'package:iq_maths_apps/helpers/random_question.dart';
@@ -34,7 +33,6 @@ class _LowerScreenState extends State<LowerScreen> {
   bool shouldContinueFlashCard = false;
   bool showSmallWrongIcon = false;
   bool showAnswerText = false;
-  final auth = FirebaseAuth.instance;
   bool isSoundOn = true;
   final AudioPlayer audioPlayer = AudioPlayer();
   bool isAnswerCorrect = false;
@@ -367,13 +365,6 @@ class _LowerScreenState extends State<LowerScreen> {
     }
 
     return WidgetWrapper(
-      userName: auth.currentUser == null
-          ? ''
-          : auth.currentUser!.email!.substring(
-              0,
-              auth.currentUser!.email!.indexOf('@'),
-            ),
-      avatarImg: null,
       displayMode: widget.setting.display,
       inputAnsController: inputAnsController,
       onNextPressed: isAnswerCorrect || showAnswerText ? _nextStep : null,
