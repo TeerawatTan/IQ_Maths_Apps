@@ -61,7 +61,7 @@ class _RandomExerciseScreenState extends State<RandomExerciseScreen> {
   void _playTikSound() async {
     if (isSoundOn) {
       await audioPlayer.stop();
-      audioPlayer.play(AssetSource('files/sound_tik.mp3'));
+      await audioPlayer.play(AssetSource('files/sound_tik.mp3'));
     }
   }
 
@@ -74,61 +74,62 @@ class _RandomExerciseScreenState extends State<RandomExerciseScreen> {
     int getMax(int digit) => (digit == 1) ? 9 : pow(10, digit).toInt() - 1;
 
     final rand = Random();
-    int total = -1;
+    bool isValidSequence = false;
 
-    final maxDigitLength = max(digit1, digit2);
-    final maxAllowedAnswerValue = pow(10, maxDigitLength).toInt() - 1;
-
-    const int maxAttempts = 1000;
-    int currentAttempts = 0;
-
-    while (total <= 0 || total > maxAllowedAnswerValue) {
-      currentAttempts++;
-      if (currentAttempts > maxAttempts) {
-        int fallbackNumber =
-            rand.nextInt(getMax(maxDigitLength) - getMin(maxDigitLength) + 1) +
-            getMin(maxDigitLength);
-        numbers = [fallbackNumber];
-        total = fallbackNumber;
-        break;
-      }
-
+    while (!isValidSequence) {
       numbers = [];
 
-      if (digit1 != digit2 && row >= 2) {
-        int val1 =
-            rand.nextInt(getMax(digit1) - getMin(digit1) + 1) + getMin(digit1);
-        numbers.add(val1);
+      // สร้างเลขตัวแรก (ต้องเป็นบวกเสมอ)
+      final firstDigit = rand.nextBool() ? digit1 : digit2;
+      final firstMin = getMin(firstDigit);
+      final firstMax = getMax(firstDigit);
+      final firstNumber = rand.nextInt(firstMax - firstMin + 1) + firstMin;
+      numbers.add(firstNumber);
 
-        int val2 =
-            rand.nextInt(getMax(digit2) - getMin(digit2) + 1) + getMin(digit2);
-        numbers.add(rand.nextBool() ? val2 : -val2);
+      // ตัวแปรเก็บผลรวมสะสม
+      int runningTotal = firstNumber;
+      bool validSequence = true;
 
-        for (int i = 2; i < row; i++) {
-          final useDigit = rand.nextBool() ? digit1 : digit2;
-          final value =
-              rand.nextInt(getMax(useDigit) - getMin(useDigit) + 1) +
-              getMin(useDigit);
-          numbers.add(rand.nextBool() ? value : -value);
+      // สร้างเลขตัวที่เหลือทีละตัว และตรวจสอบผลรวมสะสม
+      for (int i = 1; i < row; i++) {
+        final useDigit = rand.nextBool() ? digit1 : digit2;
+        final min = getMin(useDigit);
+        final max = getMax(useDigit);
+        final value = rand.nextInt(max - min + 1) + min;
+
+        // สุ่มเครื่องหมาย
+        int nextNumber;
+        if (rand.nextBool()) {
+          // เป็นบวก
+          nextNumber = value;
+        } else {
+          // เป็นลบ - ตรวจสอบว่าถ้าลบแล้วจะยังเป็นบวกหรือไม่
+          if (runningTotal > value) {
+            nextNumber = -value;
+          } else {
+            // ถ้าลบแล้วจะติดลบ ให้เป็นบวกแทน
+            nextNumber = value;
+          }
         }
-      } else {
-        final firstUseDigit = rand.nextBool() ? digit1 : digit2;
-        final firstValue =
-            rand.nextInt(getMax(firstUseDigit) - getMin(firstUseDigit) + 1) +
-            getMin(firstUseDigit);
-        numbers.add(firstValue);
-        for (int i = 1; i < row; i++) {
-          final useDigit = rand.nextBool() ? digit1 : digit2;
-          final value =
-              rand.nextInt(getMax(useDigit) - getMin(useDigit) + 1) +
-              getMin(useDigit);
-          numbers.add(rand.nextBool() ? value : -value);
+
+        numbers.add(nextNumber);
+        runningTotal += nextNumber;
+
+        // ตรวจสอบว่าผลรวมสะสมยังเป็นบวกหรือไม่
+        if (runningTotal <= 0) {
+          validSequence = false;
+          break;
         }
       }
-      total = numbers.reduce((a, b) => a + b);
+
+      // ตรวจสอบว่าผลรวมสุดท้ายเป็นบวก
+      if (validSequence && runningTotal > 0) {
+        isValidSequence = true;
+        answer = runningTotal;
+      }
     }
 
-    answer = total;
+    // เซ็ตค่าตัวแปรอื่นๆ เหมือนเดิม
     currentStep = 0;
     showAnswer = false;
     waitingToShowAnswer = false;
@@ -137,9 +138,11 @@ class _RandomExerciseScreenState extends State<RandomExerciseScreen> {
     inputAnsController.clear();
     isAnswerCorrect = false;
     hasCheckedAnswer = false;
+
     setState(() {
       isShowAll = widget.setting.display.toLowerCase() == 'show all';
     });
+
     if (!isShowAll) {
       shouldContinueFlashCard = true;
       _startFlashCard();
