@@ -45,7 +45,6 @@ class _DivisionScreenState extends State<DivisionScreen> {
     super.initState();
     widget.setting.display = "show all";
     _generateRandomNumbers();
-    _updateCurrentQuestion();
   }
 
   @override
@@ -96,36 +95,28 @@ class _DivisionScreenState extends State<DivisionScreen> {
       }
     }
 
-    while (numbers.length < questionLimit) {
-      numbers.add([minDividend, minDivisor]);
-    }
-  }
-
-  void _updateCurrentQuestion() {
-    if (numbers.isEmpty) {
-      setState(() {
-        // Perhaps set a flag to show NoDataScreen
-      });
-      return;
-    }
-
     final p = numbers[currentStep];
     answer = p[0] ~/ p[1];
 
+    currentStep = 0;
+    showAnswer = false;
+    waitingToShowAnswer = false;
+    showSmallWrongIcon = false;
+    showAnswerText = false;
+    inputAnsController.clear();
+    isAnswerCorrect = false;
+    hasCheckedAnswer = false;
     setState(() {
-      showAnswer = false;
-      waitingToShowAnswer = false;
-      showSmallWrongIcon = false;
-      showAnswerText = false;
-      inputAnsController.clear();
-      isAnswerCorrect = false;
-      hasCheckedAnswer = false;
+      // Determine _isShowAll here based on the current setting
       isShowAll = widget.setting.display.toLowerCase() == 'show all';
     });
-
     if (!isShowAll) {
       shouldContinueFlashCard = true;
     } else {
+      // If in show all mode, reset _currentStep and immediately update UI
+      setState(() {
+        currentStep = 0; // Not strictly needed for showAll but good practice
+      });
       _playTikSound();
     }
   }
@@ -144,7 +135,6 @@ class _DivisionScreenState extends State<DivisionScreen> {
 
   void _checkAnswer() {
     String input = inputAnsController.text.replaceAll(',', '');
-    ;
     int? userAnswer;
     if (input.isNotEmpty) {
       userAnswer = int.tryParse(input);

@@ -638,24 +638,30 @@ class _WidgetWrapperState extends State<WidgetWrapper> {
             child: Stack(
               children: [
                 // "Ans" Label
-                Text(
-                  "Ans",
-                  style: TextStyle(
-                    fontSize: 28,
-                    fontWeight: FontWeight.bold,
-                    foreground: Paint()
-                      ..style = PaintingStyle.stroke
-                      ..strokeWidth = 8
-                      ..color = Colors.black
-                      ..strokeJoin = StrokeJoin.round,
+                Padding(
+                  padding: const EdgeInsets.all(2.0),
+                  child: Text(
+                    "Ans",
+                    style: TextStyle(
+                      fontSize: 28,
+                      fontWeight: FontWeight.bold,
+                      foreground: Paint()
+                        ..style = PaintingStyle.stroke
+                        ..strokeWidth = 8
+                        ..color = Colors.black
+                        ..strokeJoin = StrokeJoin.round,
+                    ),
                   ),
                 ),
-                const Text(
-                  "Ans",
-                  style: TextStyle(
-                    fontSize: 28,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
+                Padding(
+                  padding: const EdgeInsets.all(2.0),
+                  child: const Text(
+                    "Ans",
+                    style: TextStyle(
+                      fontSize: 28,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
 
