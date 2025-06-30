@@ -212,7 +212,7 @@ class _MultiplicationScreenState extends State<MultiplicationScreen> {
       showAnswerText: showAnswerText,
       waitingToShowAnswer: waitingToShowAnswer,
       showSmallWrongIcon: showSmallWrongIcon,
-      answerText: answer.toString(),
+      answerText: formatNumber(answer.toString()),
       currentMenuButtonLabel: _getCurrentMenuLabel(),
       isShowMode: false,
       isSoundOn: isSoundOn,
