@@ -132,66 +132,65 @@ class _SettingFormState extends State<SettingForm> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Row(
-          children: [
-            SettingDropdown(
+        Padding(
+          padding: const EdgeInsets.only(bottom: 10.0),
+          child: Align(
+            alignment: Alignment.topLeft,
+            child: SettingDropdown(
               label: "Digit 1",
               options: digitOptions,
               selectedValue: currentDigit1,
               onChanged: (v) => widget.onChanged("Digit 1", v ?? ''),
             ),
-            const SizedBox(width: 10),
-          ],
-        ),
-        const SizedBox(height: 10),
-
-        Row(
-          children: [
-            SettingDropdown(
-              label: "Digit 2",
-              options: digitOptions,
-              selectedValue: currentDigit2,
-              onChanged: (v) => widget.onChanged("Digit 2", v ?? ''),
-            ),
-            const SizedBox(width: 10),
-            if (!widget.showRow && widget.showDisplay && widget.showTime)
-              SettingDropdown(
-                label: "Time",
-                options: _timeOptions(),
-                selectedValue: widget.selectedTime,
-                onChanged: (v) => widget.onChanged("Time", v ?? ''),
-              ),
-            if (widget.showDisplay)
-              SettingDropdown(
-                label: "Display",
-                options: _displayOptions(),
-                selectedValue: widget.selectedDisplay,
-                onChanged: (v) => widget.onChanged("Display", v ?? ''),
-              ),
-          ],
+          ),
         ),
 
-        const SizedBox(height: 10),
-
-        Row(
-          children: [
-            if (widget.showRow)
+        Padding(
+          padding: const EdgeInsets.only(bottom: 10.0),
+          child: Wrap(
+            spacing: 10.0,
+            runSpacing: 10.0,
+            alignment: WrapAlignment.start,
+            children: [
               SettingDropdown(
-                label: "Row",
-                options: rowOptions,
-                selectedValue: currentRow,
-                onChanged: (v) => widget.onChanged("Row", v ?? ''),
+                label: "Digit 2",
+                options: digitOptions,
+                selectedValue: currentDigit2,
+                onChanged: (v) => widget.onChanged("Digit 2", v ?? ''),
               ),
-            if (widget.showRow) const SizedBox(width: 10),
-            if (widget.showRow && widget.showTime)
-              SettingDropdown(
-                label: "Time",
-                options: _timeOptions(),
-                selectedValue: widget.selectedTime,
-                onChanged: (v) => widget.onChanged("Time", v ?? ''),
-              ),
-          ],
+              if (widget.showDisplay)
+                SettingDropdown(
+                  label: "Display",
+                  options: _displayOptions(),
+                  selectedValue: widget.selectedDisplay,
+                  onChanged: (v) => widget.onChanged("Display", v ?? ''),
+                ),
+            ],
+          ),
         ),
+
+        if (widget.showRow || widget.showTime)
+          Wrap(
+            spacing: 10.0,
+            runSpacing: 10.0,
+            alignment: WrapAlignment.start,
+            children: [
+              if (widget.showRow)
+                SettingDropdown(
+                  label: "Row",
+                  options: rowOptions,
+                  selectedValue: currentRow,
+                  onChanged: (v) => widget.onChanged("Row", v ?? ''),
+                ),
+              if (widget.showTime)
+                SettingDropdown(
+                  label: "Time",
+                  options: _timeOptions(),
+                  selectedValue: widget.selectedTime,
+                  onChanged: (v) => widget.onChanged("Time", v ?? ''),
+                ),
+            ],
+          ),
       ],
     );
   }

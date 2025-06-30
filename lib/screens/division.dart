@@ -143,7 +143,8 @@ class _DivisionScreenState extends State<DivisionScreen> {
   }
 
   void _checkAnswer() {
-    String input = inputAnsController.text;
+    String input = inputAnsController.text.replaceAll(',', '');
+    ;
     int? userAnswer;
     if (input.isNotEmpty) {
       userAnswer = int.tryParse(input);

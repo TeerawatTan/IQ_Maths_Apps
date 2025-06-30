@@ -61,7 +61,7 @@ class _RandomExerciseScreenState extends State<RandomExerciseScreen> {
   void _playTikSound() async {
     if (isSoundOn) {
       await audioPlayer.stop();
-      await audioPlayer.play(AssetSource('files/sound_tik.mp3'));
+      audioPlayer.play(AssetSource('files/sound_tik.mp3'));
     }
   }
 
@@ -172,8 +172,8 @@ class _RandomExerciseScreenState extends State<RandomExerciseScreen> {
         await Future.delayed(const Duration(milliseconds: 100));
       }
       if (!mounted || !shouldContinueFlashCard) return;
-      setState(() => currentStep = i);
       _playTikSound();
+      setState(() => currentStep = i);
       await Future.delayed(delayDuration);
     }
 
@@ -196,7 +196,7 @@ class _RandomExerciseScreenState extends State<RandomExerciseScreen> {
   }
 
   void _checkAnswer() {
-    String input = inputAnsController.text;
+    String input = inputAnsController.text.replaceAll(',', '');
     int? userAnswer;
     if (input.isNotEmpty) {
       userAnswer = int.tryParse(input);

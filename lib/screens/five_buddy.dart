@@ -332,10 +332,10 @@ class _FiveBuddyScreenState extends State<FiveBuddyScreen> {
         // Check again after resuming, in case the state changed while paused
         return;
       }
+      _playTikSound();
       setState(() {
         currentStep = i; // Update currentStep to the number being displayed
       });
-      _playTikSound();
       await Future.delayed(delayDuration);
     }
 
@@ -361,7 +361,8 @@ class _FiveBuddyScreenState extends State<FiveBuddyScreen> {
   }
 
   void _checkAnswer() {
-    String input = inputAnsController.text;
+    String input = inputAnsController.text.replaceAll(',', '');
+    ;
     int? userAnswer;
     if (input.isNotEmpty) {
       userAnswer = int.tryParse(input);
