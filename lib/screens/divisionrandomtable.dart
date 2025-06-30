@@ -1,7 +1,6 @@
 import 'dart:math';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:iq_maths_apps/models/maths_setting.dart';
 import 'package:iq_maths_apps/screens/no_data.dart';
 import 'package:iq_maths_apps/screens/summary.dart';
@@ -23,7 +22,6 @@ class _DivisionRandomTableScreenState extends State<DivisionRandomTableScreen> {
   List<List<int>> numbers = [];
   List<bool?> answerStatus = [];
   List<TextEditingController> controllers = [];
-  final auth = FirebaseAuth.instance;
   bool isPaused = false;
   bool isSoundOn = true;
   bool isAnswerChecked = false;
@@ -58,6 +56,7 @@ class _DivisionRandomTableScreenState extends State<DivisionRandomTableScreen> {
     final digit2 = int.tryParse(widget.setting.digit2) ?? 1;
 
     numbers = [];
+    final Set<String> generatedProblems = {};
 
     final minDividend = pow(10, digit1 - 1).toInt();
     final maxDividend = pow(10, digit1).toInt() - 1;
@@ -67,20 +66,29 @@ class _DivisionRandomTableScreenState extends State<DivisionRandomTableScreen> {
     final random = Random();
     int attempt = 0;
 
-    while (numbers.length < questionLimit && attempt < questionLimit * 20) {
+    while (numbers.length < questionLimit && attempt < questionLimit * 100) {
       attempt++;
-
       int divisor = random.nextInt(maxDivisor - minDivisor + 1) + minDivisor;
-      int quotient = random.nextInt(9) + 1;
+      final int minQuotient = 1;
+      final int maxQuotientForThisDivisor = (maxDividend / divisor).floor();
+      if (maxQuotientForThisDivisor < minQuotient) {}
+
+      int quotient =
+          random.nextInt(maxQuotientForThisDivisor - minQuotient + 1) +
+          minQuotient;
       int dividend = divisor * quotient;
 
-      if (dividend >= minDividend && dividend <= maxDividend) {
+      final String problemKey = '$dividend,$divisor';
+
+      if (dividend >= minDividend &&
+          dividend <= maxDividend &&
+          dividend != divisor &&
+          !generatedProblems.contains(problemKey)) {
         numbers.add([dividend, divisor]);
+        generatedProblems.add(problemKey);
       }
     }
-    while (numbers.length < questionLimit) {
-      numbers.add([minDividend, minDivisor]);
-    }
+
     controllers = List.generate(questionLimit, (_) => TextEditingController());
     answerStatus = List.generate(questionLimit, (_) => null);
     isAnswerChecked = false;
@@ -338,8 +346,6 @@ class _DivisionRandomTableScreenState extends State<DivisionRandomTableScreen> {
   @override
   Widget build(BuildContext context) {
     return WidgetWrapper(
-      userName: auth.currentUser?.email?.split('@').first ?? '',
-      avatarImg: null,
       displayMode: 'show all',
       inputAnsController: TextEditingController(),
       onNextPressed: _submitAnswers,

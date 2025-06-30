@@ -1,11 +1,9 @@
-import 'dart:io';
-
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:iq_maths_apps/helpers/format_input_number.dart';
 import 'package:iq_maths_apps/services/auth_service.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:iq_maths_apps/widgets/app_background.dart';
+import 'package:iq_maths_apps/widgets/user_info_bar.dart';
 
 Widget buildOutlinedText(
   String text, {
@@ -63,8 +61,6 @@ double _getFontSize(int textLength) {
 }
 
 class WidgetWrapper extends StatefulWidget {
-  final String? userName;
-  final String? avatarImg;
   final String displayMode;
   final bool isFlashCardAnimating;
   final bool showAnswer;
@@ -72,7 +68,7 @@ class WidgetWrapper extends StatefulWidget {
   final bool waitingToShowAnswer;
   final TextEditingController inputAnsController;
   final Function? onNextPressed;
-  final Function? onPlayPauseFlashCard;
+  final VoidCallback? onPlayPauseFlashCard;
   final bool isPaused;
   final int? currentStep;
   final int? totalNumbers;
@@ -90,12 +86,10 @@ class WidgetWrapper extends StatefulWidget {
   final ValueChanged<bool>? onSoundToggle;
   final bool isAnswerCorrect;
   final bool hasCheckedAnswer;
-  final bool hideAnsLabel; // เพิ่ม parameter นี้
+  final bool hideAnsLabel;
 
   const WidgetWrapper({
     super.key,
-    this.userName = '',
-    this.avatarImg,
     required this.displayMode,
     this.isFlashCardAnimating = false,
     this.showAnswer = false,
@@ -121,7 +115,7 @@ class WidgetWrapper extends StatefulWidget {
     this.onSoundToggle,
     this.isAnswerCorrect = false,
     this.hasCheckedAnswer = false,
-    this.hideAnsLabel = false, // default value
+    this.hideAnsLabel = false,
   });
 
   @override
@@ -129,48 +123,13 @@ class WidgetWrapper extends StatefulWidget {
 }
 
 class _WidgetWrapperState extends State<WidgetWrapper> {
-  bool _isLoggingOut = false;
   late bool _currentIsSoundOn;
   final AuthService authService = AuthService();
-  static const String profileImagePathKey =
-      'profileImagePath'; // คีย์สำหรับ SharedPreferences
-  static const String isAssetImageKey =
-      'isAssetImage'; // คีย์สำหรับ SharedPreferences
-  String? profileImagePath;
-  bool isAssetImage = true;
-  ImageProvider? profileImage;
 
   @override
   void initState() {
     super.initState();
     _currentIsSoundOn = widget.isSoundOn;
-    _loadProfileImage(); // โหลดรูปภาพที่บันทึกไว้เมื่อเริ่มต้น
-  }
-
-  Future<void> _loadProfileImage() async {
-    final prefs = await SharedPreferences.getInstance();
-    final imagePath = prefs.getString(profileImagePathKey);
-    final isAsset =
-        prefs.getBool(isAssetImageKey) ?? true; // Default to true if not set
-
-    if (imagePath != null) {
-      setState(() {
-        profileImagePath = imagePath;
-        isAssetImage = isAsset;
-        // กำหนด profileImage ตรงนี้ด้วย
-        if (isAssetImage) {
-          profileImage = AssetImage(profileImagePath!);
-        } else {
-          profileImage = FileImage(File(profileImagePath!));
-        }
-      });
-    } else {
-      setState(() {
-        profileImagePath = null;
-        isAssetImage = true;
-        profileImage = const AssetImage('assets/images/user_icon.png');
-      });
-    }
   }
 
   // Function สำหรับปรับขนาดฟอนต์ตามหน้าจอ
@@ -218,372 +177,41 @@ class _WidgetWrapperState extends State<WidgetWrapper> {
     }
   }
 
-  Future<void> _logout() async {
-    setState(() {
-      _isLoggingOut = true;
-    });
-
-    try {
-      await authService.logout();
-      if (mounted) {
-        Navigator.pushReplacementNamed(context, '/');
-      }
-    } on FirebaseAuthException catch (e) {
-      if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error logging out: ${e.message}')),
-        );
-      }
-    } catch (e) {
-      if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('An unexpected error occurred: $e')),
-        );
-      }
-    } finally {
-      if (mounted) {
-        setState(() {
-          _isLoggingOut = false;
-        });
-      }
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: LayoutBuilder(
-        builder: (context, constraints) {
-          bool isSmallScreen = constraints.maxWidth < 600;
-
-          return Stack(
-            children: [
-              // Background
-              Positioned.fill(
-                child: Image.asset('assets/images/bg4.png', fit: BoxFit.cover),
-              ),
-
-              // Logo
-              Positioned(
-                top: isSmallScreen ? 20 : 25,
-                left: isSmallScreen ? 15 : 20,
-                child: Image.asset(
-                  'assets/images/logo.png',
-                  width: _getResponsiveImageSize(60, isSmallScreen),
-                ),
-              ),
-
-              // Menu btn
-              Positioned(
-                top: isSmallScreen ? 90 : 110,
-                left: isSmallScreen ? 15 : 20,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: _getButtonColors(
-                      widget.currentMenuButtonLabel,
-                    ),
-                    foregroundColor: Colors.black,
-                    elevation: 2,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(16),
-                    ),
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 24,
-                      vertical: 12,
-                    ),
-                    textStyle: const TextStyle(
-                      fontFamily: 'PoetsenOn',
-                      fontSize: 16,
-                      fontWeight: FontWeight.w700,
-                      letterSpacing: 0.5,
-                    ),
-                    maximumSize: Size(
-                      _getResponsiveImageSize(195, isSmallScreen),
-                      widget.currentMenuButtonLabel.contains('Random')
-                          ? (isSmallScreen ? 60 : 70)
-                          : (isSmallScreen ? 50 : 60),
-                    ),
-                  ),
-                  onPressed: () => Navigator.pop(context),
-                  child: Text(
-                    widget.currentMenuButtonLabel,
-                    textAlign: TextAlign.center,
-                    softWrap: true,
-                    maxLines: 2,
-                    overflow: TextOverflow.fade,
-                  ),
-                ),
-              ),
-
-              // IQ Maths Icon
-              Positioned(
-                top: isSmallScreen ? 2 : 4,
-                left: isSmallScreen ? 80 : 100,
-                child: Center(
-                  child: Image.asset(
-                    'assets/images/iq_maths_icon.png',
-                    width: _getResponsiveImageSize(130, isSmallScreen),
-                  ),
-                ),
-              ),
-
-              // Owl Image
-              Positioned(
-                bottom: isSmallScreen ? 80 : 40,
-                left: isSmallScreen ? 15 : 20,
-                child: Image.asset(
-                  'assets/images/owl.png',
-                  width: _getResponsiveImageSize(120, isSmallScreen),
-                ),
-              ),
-
-              // Top Right User Info and Controls
-              Positioned(
-                top: isSmallScreen ? 5 : 10,
-                right: 0,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    // User Info Container
-                    Padding(
-                      padding: const EdgeInsets.only(left: 20.0, right: 0),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: Colors.cyan[100],
-                          borderRadius: const BorderRadius.only(
-                            topLeft: Radius.circular(30),
-                            bottomLeft: Radius.circular(30),
-                          ),
-                        ),
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 10,
-                          vertical: 1,
-                        ),
-                        child: Row(
-                          children: [
-                            Text(
-                              "ID : ${widget.userName}",
-                              style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.pink,
-                              ),
-                            ),
-                            SizedBox(width: 10),
-                            CircleAvatar(
-                              radius: 25,
-                              backgroundImage: profileImage,
-                            ),
-                            _isLoggingOut
-                                ? const SizedBox(
-                                    width: 30, // Match icon size
-                                    height: 30, // Match icon size
-                                    child: CircularProgressIndicator(
-                                      strokeWidth: 3,
-                                      valueColor: AlwaysStoppedAnimation<Color>(
-                                        Color.fromARGB(255, 235, 99, 144),
-                                      ),
-                                    ),
-                                  )
-                                : IconButton(
-                                    icon: const Icon(
-                                      Icons.logout,
-                                    ), // Logout icon
-                                    iconSize:
-                                        30.0, // Adjust icon size as needed
-                                    color: const Color.fromARGB(
-                                      255,
-                                      235,
-                                      99,
-                                      144,
-                                    ), // Icon color
-                                    onPressed:
-                                        _logout, // Call the _logout function
-                                    tooltip:
-                                        'Logout', // Text that appears on long press
-                                  ),
-                          ],
-                        ),
-                      ),
-                    ),
-
-                    SizedBox(height: isSmallScreen ? 4 : 6),
-
-                    // Display Mode Text
-                    if (widget.isShowMode)
-                      Padding(
-                        padding: const EdgeInsets.only(right: 30),
-                        child: Stack(
-                          children: [
-                            Text(
-                              "Display : ${widget.displayMode}",
-                              style: TextStyle(
-                                fontSize: _getResponsiveTextSize(
-                                  24,
-                                  isSmallScreen,
-                                ),
-                                fontWeight: FontWeight.bold,
-                                foreground: Paint()
-                                  ..style = PaintingStyle.stroke
-                                  ..strokeWidth = isSmallScreen ? 5 : 7
-                                  ..color = Colors.black
-                                  ..strokeJoin = StrokeJoin.round,
-                              ),
-                            ),
-                            Text(
-                              "Display : ${widget.displayMode}",
-                              style: TextStyle(
-                                fontSize: _getResponsiveTextSize(
-                                  24,
-                                  isSmallScreen,
-                                ),
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-
-                    // Step Counter
-                    if (widget.isPaused &&
-                        widget.displayMode.toLowerCase() == "flash card")
-                      Padding(
-                        padding: const EdgeInsets.only(right: 60),
-                        child: buildOutlinedText(
-                          '${widget.currentStep! + 1}/${widget.totalNumbers!}',
-                          fontSize: _getResponsiveTextSize(30, isSmallScreen),
-                          strokeColor: Colors.blueAccent,
-                          fillColor: Colors.white,
-                        ),
-                      ),
-                  ],
-                ),
-              ),
-
-              // Main Content Area
-              Column(
-                children: [
-                  Expanded(
-                    child: Padding(
-                      padding: EdgeInsets.only(top: isSmallScreen ? 12 : 16),
-                      child: widget.child,
-                    ),
-                  ),
-
-                  // Answer Input แบบเดิมเมื่อ hideAnsLabel = false (ไม่ได้ใช้ในตาราง)
-                  if (widget.showAnswerInput &&
-                      (widget.totalNumbers ?? 0) > 0 &&
-                      !widget.hideAnsLabel)
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: isSmallScreen ? 8.0 : 16.0,
-                        vertical: 5.0,
-                      ),
-                      child: _buildResponsiveInputSection(
-                        isSmallScreen,
-                        constraints,
-                      ),
-                    ),
-
-                  // Bottom Bar
-                  Container(
-                    height: isSmallScreen ? 32 : 35,
-                    color: Colors.blue[300],
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.only(
-                            left: isSmallScreen ? 10 : 16,
-                          ),
-                          child: Text(
-                            "Intelligent Quick Maths (IQM)",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: isSmallScreen ? 14 : 16,
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(right: 30),
-                          child: Row(
-                            children: [
-                              Text(
-                                "Sound ",
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: isSmallScreen ? 14 : 16,
-                                ),
-                              ),
-                              Image.asset(
-                                'assets/images/sound_icon.png',
-                                width: 22,
-                                height: 22,
-                              ),
-                              Transform.scale(
-                                scale: 0.8,
-                                child: Switch(
-                                  value: _currentIsSoundOn,
-                                  onChanged: (value) {
-                                    setState(() {
-                                      _currentIsSoundOn = value;
-                                      if (widget.onSoundToggle != null) {
-                                        widget.onSoundToggle!(
-                                          value,
-                                        ); // <--- เรียก callback เพื่อส่งค่ากลับไป
-                                      }
-                                    });
-                                  },
-                                  activeColor: Colors.white,
-                                  inactiveThumbColor: Colors.red,
-                                  inactiveTrackColor: const Color.fromARGB(
-                                    255,
-                                    235,
-                                    116,
-                                    107,
-                                  ),
-                                ),
-                              ),
-                              Text(
-                                _currentIsSoundOn ? "ON" : "OFF",
-                                style: TextStyle(
-                                  color: _currentIsSoundOn
-                                      ? Colors.white
-                                      : Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-
-              // ปุ่ม Check/Next แบบ overlay สำหรับตาราง (เมื่อ hideAnsLabel = true)
-              if (widget.showAnswerInput &&
-                  (widget.totalNumbers ?? 0) > 0 &&
-                  widget.hideAnsLabel)
-                Positioned(
-                  bottom: isSmallScreen
-                      ? 40
-                      : 45, // ลงมาใกล้ bottom bar มากขึ้น
-                  right: 20,
-                  child: _buildFloatingButton(),
-                ),
-            ],
-          );
-        },
+  Widget _widgetLeftMenuButton(bool isSmallScreen) => Positioned(
+    top: isSmallScreen ? 90 : 110,
+    left: isSmallScreen ? 15 : 20,
+    child: ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: _getButtonColors(widget.currentMenuButtonLabel),
+        foregroundColor: Colors.black,
+        elevation: 2,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+        textStyle: const TextStyle(
+          fontFamily: 'PoetsenOn',
+          fontSize: 16,
+          fontWeight: FontWeight.w700,
+          letterSpacing: 0.5,
+        ),
+        maximumSize: Size(
+          _getResponsiveImageSize(195, isSmallScreen),
+          widget.currentMenuButtonLabel.contains('Random')
+              ? (isSmallScreen ? 60 : 70)
+              : (isSmallScreen ? 50 : 60),
+        ),
       ),
-    );
-  }
+      onPressed: () => Navigator.pop(context),
+      child: Text(
+        widget.currentMenuButtonLabel,
+        textAlign: TextAlign.center,
+        softWrap: true,
+        maxLines: 2,
+        overflow: TextOverflow.fade,
+      ),
+    ),
+  );
 
-  Widget _buildFloatingButton() {
+  Widget _widgetBuildFloatingButton() {
     Widget actionButtonImage;
     if (widget.hasCheckedAnswer) {
       actionButtonImage = Image.asset('assets/images/next.png', width: 120);
@@ -610,7 +238,7 @@ class _WidgetWrapperState extends State<WidgetWrapper> {
     );
   }
 
-  Widget _buildResponsiveInputSection(
+  Widget _widgetBuildResponsiveInputSection(
     bool isSmallScreen,
     BoxConstraints constraints,
   ) {
@@ -939,5 +567,221 @@ class _WidgetWrapperState extends State<WidgetWrapper> {
         ],
       );
     }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          bool isSmallScreen = constraints.maxWidth < 600;
+
+          return Stack(
+            children: [
+              // Background
+              AppBackground(),
+
+              // Menu btn
+              _widgetLeftMenuButton(isSmallScreen),
+
+              // Top Right User Info and Controls
+              Positioned(
+                top: isSmallScreen ? 5 : 10,
+                right: 0,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    // User Info Container
+                    UserInfoBar(userName: authService.getUserName()),
+
+                    SizedBox(height: isSmallScreen ? 4 : 6),
+
+                    // Display Mode Text
+                    if (widget.isShowMode)
+                      Padding(
+                        padding: const EdgeInsets.only(right: 30),
+                        child: Stack(
+                          children: [
+                            Text(
+                              "Display : ${widget.displayMode}",
+                              style: TextStyle(
+                                fontSize: _getResponsiveTextSize(
+                                  24,
+                                  isSmallScreen,
+                                ),
+                                fontWeight: FontWeight.bold,
+                                foreground: Paint()
+                                  ..style = PaintingStyle.stroke
+                                  ..strokeWidth = isSmallScreen ? 5 : 7
+                                  ..color = Colors.black
+                                  ..strokeJoin = StrokeJoin.round,
+                              ),
+                            ),
+                            Text(
+                              "Display : ${widget.displayMode}",
+                              style: TextStyle(
+                                fontSize: _getResponsiveTextSize(
+                                  24,
+                                  isSmallScreen,
+                                ),
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+
+                    if (widget.displayMode.toLowerCase() == "flash card" &&
+                        !widget.waitingToShowAnswer)
+                      Padding(
+                        padding: const EdgeInsets.only(top: 0, right: 30),
+                        child: IconButton(
+                          icon: Image.asset(
+                            widget.isPaused
+                                ? 'assets/images/play_icon.png'
+                                : 'assets/images/pause_icon.png',
+                            width: 100,
+                            height: 100,
+                          ),
+                          onPressed: widget.onPlayPauseFlashCard,
+                        ),
+                      ),
+                    // Step Counter
+                    if (widget.isPaused &&
+                        widget.displayMode.toLowerCase() == "flash card")
+                      Padding(
+                        padding: const EdgeInsets.only(right: 60),
+                        child: buildOutlinedText(
+                          '${widget.currentStep! + 1}/${widget.totalNumbers!}',
+                          fontSize: _getResponsiveTextSize(30, isSmallScreen),
+                          strokeColor: Colors.blueAccent,
+                          fillColor: Colors.white,
+                        ),
+                      ),
+                  ],
+                ),
+              ),
+
+              // Main Content Area
+              Column(
+                children: [
+                  Expanded(
+                    child: Padding(
+                      padding: EdgeInsets.only(top: isSmallScreen ? 12 : 16),
+                      child: widget.child,
+                    ),
+                  ),
+
+                  // Answer Input แบบเดิมเมื่อ hideAnsLabel = false (ไม่ได้ใช้ในตาราง)
+                  if (widget.showAnswerInput &&
+                      (widget.totalNumbers ?? 0) > 0 &&
+                      !widget.hideAnsLabel)
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: isSmallScreen ? 8.0 : 16.0,
+                        vertical: 5.0,
+                      ),
+                      child: _widgetBuildResponsiveInputSection(
+                        isSmallScreen,
+                        constraints,
+                      ),
+                    ),
+
+                  // Bottom Bar
+                  Container(
+                    height: isSmallScreen ? 32 : 35,
+                    color: Colors.blue[300],
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.only(
+                            left: isSmallScreen ? 10 : 16,
+                          ),
+                          child: Text(
+                            "Intelligent Quick Maths (IQM)",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: isSmallScreen ? 14 : 16,
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(right: 30),
+                          child: Row(
+                            children: [
+                              Text(
+                                "Sound ",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: isSmallScreen ? 14 : 16,
+                                ),
+                              ),
+                              Image.asset(
+                                'assets/images/sound_icon.png',
+                                width: 22,
+                                height: 22,
+                              ),
+                              Transform.scale(
+                                scale: 0.8,
+                                child: Switch(
+                                  value: _currentIsSoundOn,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      _currentIsSoundOn = value;
+                                      if (widget.onSoundToggle != null) {
+                                        widget.onSoundToggle!(
+                                          value,
+                                        ); // <--- เรียก callback เพื่อส่งค่ากลับไป
+                                      }
+                                    });
+                                  },
+                                  activeColor: Colors.white,
+                                  inactiveThumbColor: Colors.red,
+                                  inactiveTrackColor: const Color.fromARGB(
+                                    255,
+                                    235,
+                                    116,
+                                    107,
+                                  ),
+                                ),
+                              ),
+                              Text(
+                                _currentIsSoundOn ? "ON" : "OFF",
+                                style: TextStyle(
+                                  color: _currentIsSoundOn
+                                      ? Colors.white
+                                      : Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+
+              // ปุ่ม Check/Next แบบ overlay สำหรับตาราง (เมื่อ hideAnsLabel = true)
+              if (widget.showAnswerInput &&
+                  (widget.totalNumbers ?? 0) > 0 &&
+                  widget.hideAnsLabel)
+                Positioned(
+                  bottom: isSmallScreen
+                      ? 40
+                      : 45, // ลงมาใกล้ bottom bar มากขึ้น
+                  right: 20,
+                  child: _widgetBuildFloatingButton(),
+                ),
+            ],
+          );
+        },
+      ),
+    );
   }
 }

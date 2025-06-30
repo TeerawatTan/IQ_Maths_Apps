@@ -1,5 +1,4 @@
 import 'package:audioplayers/audioplayers.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:iq_maths_apps/helpers/format_number.dart';
 import 'package:iq_maths_apps/models/maths_setting.dart';
@@ -33,7 +32,6 @@ class _RandomExerciseScreenState extends State<RandomExerciseScreen> {
   bool shouldContinueFlashCard = false;
   bool showSmallWrongIcon = false;
   bool showAnswerText = false;
-  final auth = FirebaseAuth.instance;
   bool isSoundOn = true;
   final AudioPlayer audioPlayer = AudioPlayer();
   bool isAnswerCorrect = false;
@@ -275,13 +273,6 @@ class _RandomExerciseScreenState extends State<RandomExerciseScreen> {
     }
 
     return WidgetWrapper(
-      userName: auth.currentUser == null
-          ? ''
-          : auth.currentUser!.email!.substring(
-              0,
-              auth.currentUser!.email!.indexOf('@'),
-            ),
-      avatarImg: null,
       displayMode: widget.setting.display,
       inputAnsController: inputAnsController,
       onNextPressed: isAnswerCorrect || showAnswerText ? _nextStep : null,
@@ -336,7 +327,7 @@ class _RandomExerciseScreenState extends State<RandomExerciseScreen> {
                       fontSize = fontSize.clamp(25, 120);
 
                       return SingleChildScrollView(
-                        padding: EdgeInsets.only(top: 20),
+                        padding: EdgeInsets.all(10),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: numbers.map((e) {

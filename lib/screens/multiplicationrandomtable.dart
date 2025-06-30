@@ -1,7 +1,6 @@
 import 'dart:math';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:iq_maths_apps/models/maths_setting.dart';
 import 'package:iq_maths_apps/screens/no_data.dart';
 import 'package:iq_maths_apps/screens/summary.dart';
@@ -24,7 +23,6 @@ class _MultiplicationRandomTableScreenState
   List<List<int>> numbers = [];
   List<TextEditingController> controllers = [];
   List<bool?> answerStatus = [];
-  final auth = FirebaseAuth.instance;
   bool isPaused = false;
   bool isSoundOn = true;
   bool isAnswerChecked = false;
@@ -328,8 +326,6 @@ class _MultiplicationRandomTableScreenState
   @override
   Widget build(BuildContext context) {
     return WidgetWrapper(
-      userName: auth.currentUser?.email?.split('@').first ?? '',
-      avatarImg: null,
       displayMode: '',
       inputAnsController: TextEditingController(),
       onNextPressed: _submitAnswers,
