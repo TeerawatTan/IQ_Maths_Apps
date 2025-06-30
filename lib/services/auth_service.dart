@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:device_info_plus/device_info_plus.dart';
@@ -41,7 +43,7 @@ class AuthService {
 
       return true;
     } catch (e) {
-      print('Login error: $e');
+      log('Login error: $e');
       return false;
     }
   }

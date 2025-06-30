@@ -251,6 +251,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
     setState(() => _isLoading = false);
 
+    if (!mounted) return;
+
     if (success) {
       User? user = FirebaseAuth.instance.currentUser;
       if (user != null) {
@@ -373,7 +375,9 @@ class _LoginScreenState extends State<LoginScreen> {
                           alignment: Alignment.bottomRight,
                           child: Container(
                             decoration: BoxDecoration(
-                              color: Colors.white.withOpacity(0.8),
+                              color: Colors.white.withAlpha(
+                                (0.8 * 255).toInt(),
+                              ),
                               shape: BoxShape.circle,
                             ),
                             child: const Icon(

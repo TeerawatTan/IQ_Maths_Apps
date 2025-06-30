@@ -148,7 +148,7 @@ class SubOptionsTenMinus extends StatelessWidget {
 
       // ขยายและเลื่อนปุ่ม Random Exercise ไปทางขวา
       if (suffix == "Random Exercise") {
-        return Container(
+        return SizedBox(
           width: double.infinity,
           child: Row(
             children: [
