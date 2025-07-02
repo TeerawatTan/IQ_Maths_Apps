@@ -241,6 +241,25 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void navigateToRoute() {
+    if (selectedMenu == 'DIV' &&
+        selectedDigit1.isNotEmpty &&
+        selectedDigit2.isNotEmpty) {
+      int? d1 = int.tryParse(selectedDigit1);
+      int? d2 = int.tryParse(selectedDigit2);
+
+      if (d1 != null && d2 != null && d2 > d1) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text(
+              'For division, Digit 2 cannot be greater than Digit 1. Please adjust the values.',
+            ),
+            duration: Duration(seconds: 4),
+            backgroundColor: Colors.orange,
+          ),
+        );
+        return;
+      }
+    }
     if (!isSettingValid()) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(

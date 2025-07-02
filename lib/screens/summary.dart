@@ -252,9 +252,10 @@ class _SummaryScreenState extends State<SummaryScreen> {
                                 text: TextSpan(
                                   children: [
                                     TextSpan(
-                                      text: "ตอบถูก ",
+                                      text: "Score ",
                                       style: TextStyle(
                                         fontSize: 60,
+                                        fontFamily: 'PoetsenOn',
                                         fontWeight: FontWeight.bold,
                                         foreground: Paint()
                                           ..style = PaintingStyle.stroke
@@ -267,6 +268,7 @@ class _SummaryScreenState extends State<SummaryScreen> {
                                       text: "${widget.answerCorrect}",
                                       style: TextStyle(
                                         fontSize: 125,
+                                        fontFamily: 'PoetsenOn',
                                         fontWeight: FontWeight.bold,
                                         foreground: Paint()
                                           ..style = PaintingStyle.stroke
@@ -276,9 +278,10 @@ class _SummaryScreenState extends State<SummaryScreen> {
                                       ),
                                     ),
                                     TextSpan(
-                                      text: " ข้อ",
+                                      text: " Points",
                                       style: TextStyle(
                                         fontSize: 60,
+                                        fontFamily: 'PoetsenOn',
                                         fontWeight: FontWeight.bold,
                                         foreground: Paint()
                                           ..style = PaintingStyle.stroke
@@ -295,9 +298,10 @@ class _SummaryScreenState extends State<SummaryScreen> {
                                 text: TextSpan(
                                   children: [
                                     TextSpan(
-                                      text: "ตอบถูก ",
+                                      text: "Score ",
                                       style: TextStyle(
                                         fontSize: 60,
+                                        fontFamily: 'PoetsenOn',
                                         fontWeight: FontWeight.bold,
                                         color:
                                             Colors.grey, // "ตอบถูก" เป็นสีขาว
@@ -307,14 +311,16 @@ class _SummaryScreenState extends State<SummaryScreen> {
                                       text: "${widget.answerCorrect}",
                                       style: TextStyle(
                                         fontSize: 125,
+                                        fontFamily: 'PoetsenOn',
                                         fontWeight: FontWeight.bold,
                                         color: Colors.red, // ตัวเลขเป็นสีแดง
                                       ),
                                     ),
                                     TextSpan(
-                                      text: " ข้อ",
+                                      text: " Points",
                                       style: TextStyle(
                                         fontSize: 60,
+                                        fontFamily: 'PoetsenOn',
                                         fontWeight: FontWeight.bold,
                                         color: Colors.grey, // "ข้อ" เป็นสีขาว
                                       ),
