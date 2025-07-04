@@ -6,6 +6,7 @@ import 'package:iq_maths_apps/helpers/random_question.dart';
 import 'package:iq_maths_apps/models/digit_model.dart';
 import 'package:iq_maths_apps/screens/no_data.dart';
 import 'package:iq_maths_apps/screens/summary.dart';
+import 'package:iq_maths_apps/widgets/animated_outlined_text.dart';
 import 'package:iq_maths_apps/widgets/widget_wrapper.dart';
 
 class UpperScreen extends StatefulWidget {
@@ -444,7 +445,7 @@ class _UpperScreenState extends State<UpperScreen> {
                           children: numbers.map((e) {
                             return Padding(
                               padding: const EdgeInsets.symmetric(vertical: 1),
-                              child: buildOutlinedText(
+                              child: normalbuildOutlinedText(
                                 "$e",
                                 fontSize: fontSize,
                               ),
@@ -454,9 +455,14 @@ class _UpperScreenState extends State<UpperScreen> {
                       );
                     }()
                   : isFlashCardAnimating
-                  ? buildOutlinedText("${numbers[currentStep]}", fontSize: 160)
+                  ? flashCardTextWithGlow(
+                      "${numbers[currentStep]}",
+                      fontSize: 160,
+                      displayTimeSeconds:
+                          int.tryParse(widget.setting.time.toString()) ?? 2,
+                    )
                   : showAnswer || waitingToShowAnswer
-                  ? buildOutlinedText("?", fontSize: 160)
+                  ? normalbuildOutlinedText("?", fontSize: 160)
                   : Container(),
             ),
     );

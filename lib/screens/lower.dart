@@ -7,6 +7,7 @@ import 'package:iq_maths_apps/models/maths_setting.dart';
 import 'package:iq_maths_apps/screens/no_data.dart';
 import 'package:iq_maths_apps/screens/summary.dart';
 import 'package:iq_maths_apps/widgets/widget_wrapper.dart';
+import 'package:iq_maths_apps/widgets/animated_outlined_text.dart';
 
 class LowerScreen extends StatefulWidget {
   final MathsSetting setting;
@@ -425,7 +426,7 @@ class _LowerScreenState extends State<LowerScreen> {
                           children: numbers.map((e) {
                             return Padding(
                               padding: const EdgeInsets.symmetric(vertical: 1),
-                              child: buildOutlinedText(
+                              child: normalbuildOutlinedText(
                                 "$e",
                                 fontSize: fontSize,
                               ),
@@ -435,9 +436,14 @@ class _LowerScreenState extends State<LowerScreen> {
                       );
                     }()
                   : isFlashCardAnimating
-                  ? buildOutlinedText("${numbers[currentStep]}", fontSize: 160)
+                  ? flashCardTextWithGlow(
+                      "${numbers[currentStep]}",
+                      fontSize: 160,
+                      displayTimeSeconds:
+                          int.tryParse(widget.setting.time.toString()) ?? 2,
+                    )
                   : showAnswer || waitingToShowAnswer
-                  ? buildOutlinedText("?", fontSize: 160)
+                  ? normalbuildOutlinedText("?", fontSize: 160)
                   : Container(),
             ),
     );

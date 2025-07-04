@@ -4,6 +4,7 @@ import 'package:iq_maths_apps/helpers/format_number.dart';
 import 'package:iq_maths_apps/models/maths_setting.dart';
 import 'package:iq_maths_apps/screens/no_data.dart';
 import 'package:iq_maths_apps/screens/summary.dart';
+import 'package:iq_maths_apps/widgets/animated_outlined_text.dart';
 import 'package:iq_maths_apps/widgets/widget_wrapper.dart';
 import 'dart:math';
 
@@ -333,7 +334,7 @@ class _RandomExerciseScreenState extends State<RandomExerciseScreen> {
                           children: numbers.map((e) {
                             return Padding(
                               padding: const EdgeInsets.symmetric(vertical: 1),
-                              child: buildOutlinedText(
+                              child: normalbuildOutlinedText(
                                 formatNumber(e.toString()),
                                 fontSize: fontSize,
                               ),
@@ -350,8 +351,12 @@ class _RandomExerciseScreenState extends State<RandomExerciseScreen> {
                         padding: const EdgeInsets.only(top: 60, left: 50),
                         child: FittedBox(
                           fit: BoxFit.contain,
-                          child: buildOutlinedText(
+                          child: flashCardTextWithGlow(
                             formatNumber(numbers[currentStep].toString()),
+                            fontSize: 160,
+                            displayTimeSeconds:
+                                int.tryParse(widget.setting.time.toString()) ??
+                                2,
                           ),
                         ),
                       ),
@@ -364,7 +369,7 @@ class _RandomExerciseScreenState extends State<RandomExerciseScreen> {
                         padding: const EdgeInsets.only(top: 60, left: 50),
                         child: FittedBox(
                           fit: BoxFit.contain,
-                          child: buildOutlinedText("?"),
+                          child: normalbuildOutlinedText("?"),
                         ),
                       ),
                     )
