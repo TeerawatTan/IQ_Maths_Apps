@@ -559,7 +559,12 @@ class _TenCoupleScreenState extends State<TenCoupleScreen> {
                           int.tryParse(widget.setting.time.toString()) ?? 2,
                     )
                   : showAnswer || waitingToShowAnswer
-                  ? normalbuildOutlinedText("?", fontSize: 160)
+                  ? SizedBox(
+                      width: MediaQuery.of(context).size.width - 20,
+                      child: FittedBox(
+                        child: normalbuildOutlinedText("?", fontSize: 160),
+                      ),
+                    )
                   : Container(),
             ),
     );
