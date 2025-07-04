@@ -4,9 +4,12 @@ import 'package:iq_maths_apps/datas/random_five_and_ten_plus.dart';
 import 'package:iq_maths_apps/datas/random_ten_minus.dart';
 import 'package:iq_maths_apps/datas/random_ten_plus.dart';
 import 'package:iq_maths_apps/datas/ten_plus_eight.dart';
+import 'package:iq_maths_apps/datas/ten_plus_five.dart';
 import 'package:iq_maths_apps/datas/ten_plus_nine.dart';
+import 'package:iq_maths_apps/datas/ten_plus_one.dart';
 import 'package:iq_maths_apps/datas/ten_plus_seven.dart';
 import 'package:iq_maths_apps/datas/ten_plus_six.dart';
+import 'package:iq_maths_apps/datas/ten_plus_three.dart';
 import 'package:iq_maths_apps/datas/ten_plus_two.dart';
 import 'package:iq_maths_apps/helpers/random_question.dart';
 import 'package:iq_maths_apps/models/digit_model.dart';
@@ -161,6 +164,32 @@ class _TenCoupleScreenState extends State<TenCoupleScreen> {
     'Ten_+6_6_2_1': tenPlusSix6Row21,
     'Ten_+6_6_2_2': tenPlusSix6Row22,
 
+    'Ten_+5_4_1_1': tenPlusFive4Row11,
+    'Ten_+5_4_1_2': tenPlusFive4Row21,
+    'Ten_+5_4_2_1': tenPlusFive4Row21,
+    'Ten_+5_4_2_2': tenPlusFive4Row22,
+    'Ten_+5_5_1_1': tenPlusFive5Row11,
+    'Ten_+5_5_1_2': tenPlusFive5Row21,
+    'Ten_+5_5_2_1': tenPlusFive5Row21,
+    'Ten_+5_5_2_2': tenPlusFive5Row22,
+    'Ten_+5_6_1_1': tenPlusFive6Row11,
+    'Ten_+5_6_1_2': tenPlusFive6Row21,
+    'Ten_+5_6_2_1': tenPlusFive6Row21,
+    'Ten_+5_6_2_2': tenPlusFive6Row22,
+
+    'Ten_+3_4_1_1': tenPlusThree4Row11,
+    'Ten_+3_4_1_2': tenPlusThree4Row21,
+    'Ten_+3_4_2_1': tenPlusThree4Row21,
+    'Ten_+3_4_2_2': tenPlusThree4Row22,
+    'Ten_+3_5_1_1': tenPlusThree5Row11,
+    'Ten_+3_5_1_2': tenPlusThree5Row21,
+    'Ten_+3_5_2_1': tenPlusThree5Row21,
+    'Ten_+3_5_2_2': tenPlusThree5Row22,
+    'Ten_+3_6_1_1': tenPlusThree6Row11,
+    'Ten_+3_6_1_2': tenPlusThree6Row21,
+    'Ten_+3_6_2_1': tenPlusThree6Row21,
+    'Ten_+3_6_2_2': tenPlusThree6Row22,
+
     'Ten_+2_4_1_1': tenPlusTwo4Row11,
     'Ten_+2_4_1_2': tenPlusTwo4Row21,
     'Ten_+2_4_2_1': tenPlusTwo4Row21,
@@ -173,6 +202,19 @@ class _TenCoupleScreenState extends State<TenCoupleScreen> {
     'Ten_+2_6_1_2': tenPlusTwo6Row21,
     'Ten_+2_6_2_1': tenPlusTwo6Row21,
     'Ten_+2_6_2_2': tenPlusTwo6Row22,
+
+    'Ten_+1_4_1_1': tenPlusOne4Row11,
+    'Ten_+1_4_1_2': tenPlusOne4Row21,
+    'Ten_+1_4_2_1': tenPlusOne4Row21,
+    'Ten_+1_4_2_2': tenPlusOne4Row22,
+    'Ten_+1_5_1_1': tenPlusOne5Row11,
+    'Ten_+1_5_1_2': tenPlusOne5Row21,
+    'Ten_+1_5_2_1': tenPlusOne5Row21,
+    'Ten_+1_5_2_2': tenPlusOne5Row22,
+    'Ten_+1_6_1_1': tenPlusOne6Row11,
+    'Ten_+1_6_1_2': tenPlusOne6Row21,
+    'Ten_+1_6_2_1': tenPlusOne6Row21,
+    'Ten_+1_6_2_2': tenPlusOne6Row22,
 
     'Random_Lesson_Ten_+_4_1_1': randomTenPlus4Row11,
     'Random_Lesson_Ten_+_4_1_2': randomTenPlus4Row21,
