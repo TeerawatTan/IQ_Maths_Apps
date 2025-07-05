@@ -91,7 +91,7 @@ class FadeAnimatedText extends StatefulWidget {
   final int? displayTimeSeconds;
 
   const FadeAnimatedText({
-    Key? key,
+    super.key,
     required this.text,
     this.fontSize = 60,
     this.strokeWidthRatio = 0.25,
@@ -100,7 +100,7 @@ class FadeAnimatedText extends StatefulWidget {
     this.enhancedGlow = false,
     this.glowColor = Colors.yellow,
     this.displayTimeSeconds, // รับค่าเวลา
-  }) : super(key: key);
+  });
 
   @override
   State<FadeAnimatedText> createState() => _FadeAnimatedTextState();
