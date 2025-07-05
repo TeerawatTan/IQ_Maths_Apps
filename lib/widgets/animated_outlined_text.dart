@@ -119,12 +119,12 @@ class _FadeAnimatedTextState extends State<FadeAnimatedText>
 
   void _initializeAnimation() {
     _fadeController = AnimationController(
-      duration: const Duration(milliseconds: 500), // 0.5 วินาที
+      duration: const Duration(milliseconds: 1200),
       vsync: this,
     );
 
     _fadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
-      CurvedAnimation(parent: _fadeController, curve: Curves.easeInOut),
+      CurvedAnimation(parent: _fadeController, curve: Curves.easeInOutSine),
     );
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -134,16 +134,16 @@ class _FadeAnimatedTextState extends State<FadeAnimatedText>
 
   void _playFadeAnimation() async {
     try {
-      // Fade In (0.5 วินาที)
-      _fadeController.forward();
+      // Fade In ช้า ๆ (1.2 วินาที)
+      await _fadeController.forward();
 
       // หยุดแสดงตามเวลาที่ตั้งค่า (ถ้าไม่มีให้ใช้ 2 วินาที)
       final displayTime = widget.displayTimeSeconds ?? 2;
       await Future.delayed(Duration(seconds: displayTime));
 
-      // Fade Out (0.5 วินาที)
+      // Fade Out ช้า ๆ (1.2 วินาที)
       if (mounted) {
-        _fadeController.reverse();
+        await _fadeController.reverse();
       }
     } catch (e) {
       debugPrint('Fade animation error: $e');
@@ -213,6 +213,7 @@ class _FadeAnimatedTextState extends State<FadeAnimatedText>
             ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 60),
         ),
       ),
+
       Text(
         widget.text,
         style: TextStyle(
@@ -227,6 +228,7 @@ class _FadeAnimatedTextState extends State<FadeAnimatedText>
             ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 50),
         ),
       ),
+
       Text(
         widget.text,
         style: TextStyle(
@@ -241,6 +243,7 @@ class _FadeAnimatedTextState extends State<FadeAnimatedText>
             ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 40),
         ),
       ),
+
       Text(
         widget.text,
         style: TextStyle(
@@ -255,6 +258,7 @@ class _FadeAnimatedTextState extends State<FadeAnimatedText>
             ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 30),
         ),
       ),
+
       Text(
         widget.text,
         style: TextStyle(
@@ -269,6 +273,7 @@ class _FadeAnimatedTextState extends State<FadeAnimatedText>
             ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 20),
         ),
       ),
+
       Text(
         widget.text,
         style: TextStyle(
@@ -287,7 +292,7 @@ class _FadeAnimatedTextState extends State<FadeAnimatedText>
   }
 }
 
-// Fade Effect พร้อม Neon Glow (ฟังก์ชันหลัก)
+// Fade Effect พร้อม Neon Glow
 Widget flashCardTextWithGlow(
   String text, {
   double fontSize = 160,
@@ -309,7 +314,6 @@ Widget flashCardTextWithGlow(
   );
 }
 
-// Fade Effect ธรรมดา (ไม่มี Glow)
 Widget flashCardText(
   String text, {
   double fontSize = 160,
@@ -329,7 +333,7 @@ Widget flashCardText(
   );
 }
 
-// Show All
+// Show All mode
 Widget normalbuildOutlinedText(
   String text, {
   double fontSize = 60,
