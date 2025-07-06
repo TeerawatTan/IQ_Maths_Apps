@@ -47,13 +47,13 @@ class FiveDigit {
 }
 
 class SixDigit {
-  int digit1;
-  int digit2;
-  int digit3;
-  int digit4;
-  int digit5;
-  int digit6;
-  int ans;
+  final int digit1;
+  final int digit2;
+  final int digit3;
+  final int digit4;
+  final int digit5;
+  final int digit6;
+  final int ans;
 
   SixDigit({
     required this.digit1,

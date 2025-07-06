@@ -2,6 +2,8 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:iq_maths_apps/datas/five_and_ten_minus_eight.dart';
 import 'package:iq_maths_apps/datas/five_and_ten_minus_nine.dart';
+import 'package:iq_maths_apps/datas/five_and_ten_plus_eight.dart';
+import 'package:iq_maths_apps/datas/five_and_ten_plus_nine.dart';
 import 'package:iq_maths_apps/datas/random_five_and_ten_plus.dart';
 import 'package:iq_maths_apps/datas/random_ten_minus.dart';
 import 'package:iq_maths_apps/datas/random_ten_plus.dart';
@@ -257,6 +259,32 @@ class _TenCoupleScreenState extends State<TenCoupleScreen> {
     'Five&Ten_-8_6_1_2': fiveTenMinusEight6Row21,
     'Five&Ten_-8_6_2_1': fiveTenMinusEight6Row21,
     'Five&Ten_-8_6_2_2': fiveTenMinusEight6Row22,
+
+    'Five&Ten_+9_4_1_1': fiveTenPlusNine4Row11,
+    'Five&Ten_+9_4_1_2': fiveTenPlusNine4Row21,
+    'Five&Ten_+9_4_2_1': fiveTenPlusNine4Row21,
+    'Five&Ten_+9_4_2_2': fiveTenPlusNine4Row22,
+    'Five&Ten_+9_5_1_1': fiveTenPlusNine5Row11,
+    'Five&Ten_+9_5_1_2': fiveTenPlusNine5Row21,
+    'Five&Ten_+9_5_2_1': fiveTenPlusNine5Row21,
+    'Five&Ten_+9_5_2_2': fiveTenPlusNine5Row22,
+    'Five&Ten_+9_6_1_1': fiveTenPlusNine6Row11,
+    'Five&Ten_+9_6_1_2': fiveTenPlusNine6Row21,
+    'Five&Ten_+9_6_2_1': fiveTenPlusNine6Row21,
+    'Five&Ten_+9_6_2_2': fiveTenPlusNine6Row22,
+
+    'Five&Ten_+8_4_1_1': fiveTenPlusEight4Row11,
+    'Five&Ten_+8_4_1_2': fiveTenPlusEight4Row21,
+    'Five&Ten_+8_4_2_1': fiveTenPlusEight4Row21,
+    'Five&Ten_+8_4_2_2': fiveTenPlusEight4Row22,
+    'Five&Ten_+8_5_1_1': fiveTenPlusEight5Row11,
+    'Five&Ten_+8_5_1_2': fiveTenPlusEight5Row21,
+    'Five&Ten_+8_5_2_1': fiveTenPlusEight5Row21,
+    'Five&Ten_+8_5_2_2': fiveTenPlusEight5Row22,
+    'Five&Ten_+8_6_1_1': fiveTenPlusEight6Row11,
+    'Five&Ten_+8_6_1_2': fiveTenPlusEight6Row21,
+    'Five&Ten_+8_6_2_1': fiveTenPlusEight6Row21,
+    'Five&Ten_+8_6_2_2': fiveTenPlusEight6Row22,
 
     'Random_Lesson_Five&Ten_+_4_1_1': randomFiveTenPlus4Row11,
     'Random_Lesson_Five&Ten_+_4_1_2': randomFiveTenPlus4Row21,
