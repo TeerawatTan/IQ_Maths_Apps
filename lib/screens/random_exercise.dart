@@ -345,11 +345,12 @@ class _RandomExerciseScreenState extends State<RandomExerciseScreen> {
                     }()
                   : isFlashCardAnimating
                   ? SizedBox(
-                      width: MediaQuery.of(context).size.width - 20,
+                      width: MediaQuery.of(context).size.width * 0.45,
+                      height: MediaQuery.of(context).size.height * 0.8,
                       child: FittedBox(
                         child: flashCardTextWithGlow(
-                          "${numbers[currentStep]}",
-                          fontSize: 160,
+                          formatNumber("${numbers[currentStep]}"),
+                          fontSize: 120,
                           displayTimeSeconds:
                               int.tryParse(widget.setting.time.toString()) ?? 2,
                         ),
@@ -357,7 +358,8 @@ class _RandomExerciseScreenState extends State<RandomExerciseScreen> {
                     )
                   : showAnswer || waitingToShowAnswer
                   ? SizedBox(
-                      width: MediaQuery.of(context).size.width - 20,
+                      width: MediaQuery.of(context).size.width * 0.45,
+                      height: MediaQuery.of(context).size.height * 0.8,
                       child: FittedBox(
                         child: normalbuildOutlinedText("?", fontSize: 160),
                       ),

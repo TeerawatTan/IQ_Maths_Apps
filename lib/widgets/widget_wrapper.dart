@@ -612,7 +612,7 @@ class _WidgetWrapperState extends State<WidgetWrapper> {
                               "Display : ${widget.displayMode}",
                               style: TextStyle(
                                 fontSize: _getResponsiveTextSize(
-                                  24,
+                                  20,
                                   isSmallScreen,
                                 ),
                                 fontWeight: FontWeight.bold,
@@ -627,7 +627,7 @@ class _WidgetWrapperState extends State<WidgetWrapper> {
                               "Display : ${widget.displayMode}",
                               style: TextStyle(
                                 fontSize: _getResponsiveTextSize(
-                                  24,
+                                  20,
                                   isSmallScreen,
                                 ),
                                 fontWeight: FontWeight.bold,
@@ -674,7 +674,13 @@ class _WidgetWrapperState extends State<WidgetWrapper> {
                 children: [
                   Expanded(
                     child: Padding(
-                      padding: EdgeInsets.only(top: isSmallScreen ? 12 : 16),
+                      padding: EdgeInsets.only(
+                        top: isSmallScreen
+                            ? 12
+                            : widget.displayMode.toLowerCase() == "flash card"
+                            ? 120
+                            : 16,
+                      ),
                       child: widget.child,
                     ),
                   ),
