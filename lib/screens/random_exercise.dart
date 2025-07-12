@@ -345,32 +345,21 @@ class _RandomExerciseScreenState extends State<RandomExerciseScreen> {
                     }()
                   : isFlashCardAnimating
                   ? SizedBox(
-                      width: 450,
-                      height: 200,
-                      child: Padding(
-                        padding: const EdgeInsets.only(top: 60, left: 50),
-                        child: FittedBox(
-                          fit: BoxFit.contain,
-                          child: flashCardTextWithGlow(
-                            formatNumber(numbers[currentStep].toString()),
-                            fontSize: 160,
-                            displayTimeSeconds:
-                                int.tryParse(widget.setting.time.toString()) ??
-                                2,
-                          ),
+                      width: MediaQuery.of(context).size.width - 20,
+                      child: FittedBox(
+                        child: flashCardTextWithGlow(
+                          "${numbers[currentStep]}",
+                          fontSize: 160,
+                          displayTimeSeconds:
+                              int.tryParse(widget.setting.time.toString()) ?? 2,
                         ),
                       ),
                     )
                   : showAnswer || waitingToShowAnswer
                   ? SizedBox(
-                      width: 450,
-                      height: 200,
-                      child: Padding(
-                        padding: const EdgeInsets.only(top: 60, left: 50),
-                        child: FittedBox(
-                          fit: BoxFit.contain,
-                          child: normalbuildOutlinedText("?"),
-                        ),
+                      width: MediaQuery.of(context).size.width - 20,
+                      child: FittedBox(
+                        child: normalbuildOutlinedText("?", fontSize: 160),
                       ),
                     )
                   : Container(),

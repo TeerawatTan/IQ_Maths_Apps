@@ -44,7 +44,14 @@ class AuthService {
 
       return true;
     } on FirebaseAuthException catch (e) {
-      log('FirebaseAuthException: ${e.code} - ${e.message}');
+      if (e.code == 'invalid-credential') {
+        // หรือ 'user-not-found', 'wrong-password'
+        log('ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง');
+      } else if (e.code == 'user-disabled') {
+        log('บัญชีผู้ใช้ถูกปิดใช้งาน');
+      } else {
+        log('เกิดข้อผิดพลาดในการเข้าสู่ระบบ: ${e.message}');
+      }
       return false;
     } catch (e, stack) {
       log('Login error: $e', stackTrace: stack);

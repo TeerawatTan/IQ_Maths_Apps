@@ -510,11 +510,16 @@ class _FiveBuddyScreenState extends State<FiveBuddyScreen> {
                       );
                     }()
                   : isFlashCardAnimating
-                  ? flashCardTextWithGlow(
-                      "${numbers[currentStep]}",
-                      fontSize: 160,
-                      displayTimeSeconds:
-                          int.tryParse(widget.setting.time.toString()) ?? 2,
+                  ? SizedBox(
+                      width: MediaQuery.of(context).size.width - 20,
+                      child: FittedBox(
+                        child: flashCardTextWithGlow(
+                          "${numbers[currentStep]}",
+                          fontSize: 160,
+                          displayTimeSeconds:
+                              int.tryParse(widget.setting.time.toString()) ?? 2,
+                        ),
+                      ),
                     )
                   : showAnswer || waitingToShowAnswer
                   ? SizedBox(
