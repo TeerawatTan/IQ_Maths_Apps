@@ -208,7 +208,7 @@ class _FadeAnimatedTextState extends State<FadeAnimatedText>
           foreground: Paint()
             ..style = PaintingStyle.stroke
             ..strokeWidth = strokeWidth + 60
-            ..color = glowColor.withOpacity(0.08)
+            ..color = glowColor.withAlpha((255.0 * 0.08).round())
             ..strokeJoin = StrokeJoin.round
             ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 60),
         ),
@@ -223,7 +223,7 @@ class _FadeAnimatedTextState extends State<FadeAnimatedText>
           foreground: Paint()
             ..style = PaintingStyle.stroke
             ..strokeWidth = strokeWidth + 45
-            ..color = glowColor.withOpacity(0.12)
+            ..color = glowColor.withAlpha((255.0 * 0.12).round())
             ..strokeJoin = StrokeJoin.round
             ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 50),
         ),
@@ -238,7 +238,7 @@ class _FadeAnimatedTextState extends State<FadeAnimatedText>
           foreground: Paint()
             ..style = PaintingStyle.stroke
             ..strokeWidth = strokeWidth + 30
-            ..color = glowColor.withOpacity(0.16)
+            ..color = glowColor.withAlpha((255.0 * 0.16).round())
             ..strokeJoin = StrokeJoin.round
             ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 40),
         ),
@@ -253,7 +253,7 @@ class _FadeAnimatedTextState extends State<FadeAnimatedText>
           foreground: Paint()
             ..style = PaintingStyle.stroke
             ..strokeWidth = strokeWidth + 20
-            ..color = glowColor.withOpacity(0.22)
+            ..color = glowColor.withAlpha((255.0 * 0.22).round())
             ..strokeJoin = StrokeJoin.round
             ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 30),
         ),
@@ -268,7 +268,7 @@ class _FadeAnimatedTextState extends State<FadeAnimatedText>
           foreground: Paint()
             ..style = PaintingStyle.stroke
             ..strokeWidth = strokeWidth + 10
-            ..color = glowColor.withOpacity(0.28)
+            ..color = glowColor.withAlpha((255.0 * 0.28).round())
             ..strokeJoin = StrokeJoin.round
             ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 20),
         ),
@@ -283,7 +283,7 @@ class _FadeAnimatedTextState extends State<FadeAnimatedText>
           foreground: Paint()
             ..style = PaintingStyle.stroke
             ..strokeWidth = strokeWidth + 5
-            ..color = glowColor.withOpacity(0.35)
+            ..color = glowColor.withAlpha((255.0 * 0.35).round())
             ..strokeJoin = StrokeJoin.round
             ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 12),
         ),
