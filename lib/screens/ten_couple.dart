@@ -4,11 +4,14 @@ import 'package:iq_maths_apps/datas/five_and_ten_minus_eight.dart';
 import 'package:iq_maths_apps/datas/five_and_ten_minus_nine.dart';
 import 'package:iq_maths_apps/datas/five_and_ten_plus_eight.dart';
 import 'package:iq_maths_apps/datas/five_and_ten_plus_nine.dart';
+import 'package:iq_maths_apps/datas/five_and_ten_plus_seven.dart';
+import 'package:iq_maths_apps/datas/five_and_ten_plus_six.dart';
 import 'package:iq_maths_apps/datas/random_five_and_ten_plus.dart';
 import 'package:iq_maths_apps/datas/random_ten_minus.dart';
 import 'package:iq_maths_apps/datas/random_ten_plus.dart';
 import 'package:iq_maths_apps/datas/ten_plus_eight.dart';
 import 'package:iq_maths_apps/datas/ten_plus_five.dart';
+import 'package:iq_maths_apps/datas/ten_plus_four.dart';
 import 'package:iq_maths_apps/datas/ten_plus_nine.dart';
 import 'package:iq_maths_apps/datas/ten_plus_one.dart';
 import 'package:iq_maths_apps/datas/ten_plus_seven.dart';
@@ -182,6 +185,19 @@ class _TenCoupleScreenState extends State<TenCoupleScreen> {
     'Ten_+5_6_2_1': tenPlusFive6Row21,
     'Ten_+5_6_2_2': tenPlusFive6Row22,
 
+    'Ten_+4_4_1_1': tenPlusFour4Row11,
+    'Ten_+4_4_1_2': tenPlusFour4Row21,
+    'Ten_+4_4_2_1': tenPlusFour4Row21,
+    'Ten_+4_4_2_2': tenPlusFour4Row22,
+    'Ten_+4_5_1_1': tenPlusFour5Row11,
+    'Ten_+4_5_1_2': tenPlusFour5Row21,
+    'Ten_+4_5_2_1': tenPlusFour5Row21,
+    'Ten_+4_5_2_2': tenPlusFour5Row22,
+    'Ten_+4_6_1_1': tenPlusFour6Row11,
+    'Ten_+4_6_1_2': tenPlusFour6Row21,
+    'Ten_+4_6_2_1': tenPlusFour6Row21,
+    'Ten_+4_6_2_2': tenPlusFour6Row22,
+
     'Ten_+3_4_1_1': tenPlusThree4Row11,
     'Ten_+3_4_1_2': tenPlusThree4Row21,
     'Ten_+3_4_2_1': tenPlusThree4Row21,
@@ -285,6 +301,32 @@ class _TenCoupleScreenState extends State<TenCoupleScreen> {
     'Five&Ten_+8_6_1_2': fiveTenPlusEight6Row21,
     'Five&Ten_+8_6_2_1': fiveTenPlusEight6Row21,
     'Five&Ten_+8_6_2_2': fiveTenPlusEight6Row22,
+
+    'Five&Ten_+7_4_1_1': fiveTenPlusSeven4Row11,
+    'Five&Ten_+7_4_1_2': fiveTenPlusSeven4Row21,
+    'Five&Ten_+7_4_2_1': fiveTenPlusSeven4Row21,
+    'Five&Ten_+7_4_2_2': fiveTenPlusSeven4Row22,
+    'Five&Ten_+7_5_1_1': fiveTenPlusSeven5Row11,
+    'Five&Ten_+7_5_1_2': fiveTenPlusSeven5Row21,
+    'Five&Ten_+7_5_2_1': fiveTenPlusSeven5Row21,
+    'Five&Ten_+7_5_2_2': fiveTenPlusSeven5Row22,
+    'Five&Ten_+7_6_1_1': fiveTenPlusSeven6Row11,
+    'Five&Ten_+7_6_1_2': fiveTenPlusSeven6Row21,
+    'Five&Ten_+7_6_2_1': fiveTenPlusSeven6Row21,
+    'Five&Ten_+7_6_2_2': fiveTenPlusSeven6Row22,
+
+    'Five&Ten_+6_4_1_1': fiveTenPlusSix4Row11,
+    'Five&Ten_+6_4_1_2': fiveTenPlusSix4Row21,
+    'Five&Ten_+6_4_2_1': fiveTenPlusSix4Row21,
+    'Five&Ten_+6_4_2_2': fiveTenPlusSix4Row22,
+    'Five&Ten_+6_5_1_1': fiveTenPlusSix5Row11,
+    'Five&Ten_+6_5_1_2': fiveTenPlusSix5Row21,
+    'Five&Ten_+6_5_2_1': fiveTenPlusSix5Row21,
+    'Five&Ten_+6_5_2_2': fiveTenPlusSix5Row22,
+    'Five&Ten_+6_6_1_1': fiveTenPlusSix6Row11,
+    'Five&Ten_+6_6_1_2': fiveTenPlusSix6Row21,
+    'Five&Ten_+6_6_2_1': fiveTenPlusSix6Row21,
+    'Five&Ten_+6_6_2_2': fiveTenPlusSix6Row22,
 
     'Random_Lesson_Five&Ten_+_4_1_1': randomFiveTenPlus4Row11,
     'Random_Lesson_Five&Ten_+_4_1_2': randomFiveTenPlus4Row21,
