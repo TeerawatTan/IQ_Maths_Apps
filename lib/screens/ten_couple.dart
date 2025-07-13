@@ -9,6 +9,9 @@ import 'package:iq_maths_apps/datas/five_and_ten_plus_six.dart';
 import 'package:iq_maths_apps/datas/random_five_and_ten_plus.dart';
 import 'package:iq_maths_apps/datas/random_ten_minus.dart';
 import 'package:iq_maths_apps/datas/random_ten_plus.dart';
+import 'package:iq_maths_apps/datas/ten_minus_eight.dart';
+import 'package:iq_maths_apps/datas/ten_minus_nine.dart';
+import 'package:iq_maths_apps/datas/ten_minus_seven.dart';
 import 'package:iq_maths_apps/datas/ten_plus_eight.dart';
 import 'package:iq_maths_apps/datas/ten_plus_five.dart';
 import 'package:iq_maths_apps/datas/ten_plus_four.dart';
@@ -249,6 +252,45 @@ class _TenCoupleScreenState extends State<TenCoupleScreen> {
     'Random_Lesson_Ten_+_6_1_2': randomTenPlus6Row21,
     'Random_Lesson_Ten_+_6_2_1': randomTenPlus6Row21,
     'Random_Lesson_Ten_+_6_2_2': randomTenPlus6Row22,
+
+    'Ten_-9_4_1_1': tenMinusNine4Row11,
+    'Ten_-9_4_1_2': tenMinusNine4Row21,
+    'Ten_-9_4_2_1': tenMinusNine4Row21,
+    'Ten_-9_4_2_2': tenMinusNine4Row22,
+    'Ten_-9_5_1_1': tenMinusNine5Row11,
+    'Ten_-9_5_1_2': tenMinusNine5Row21,
+    'Ten_-9_5_2_1': tenMinusNine5Row21,
+    'Ten_-9_5_2_2': tenMinusNine5Row22,
+    'Ten_-9_6_1_1': tenMinusNine6Row11,
+    'Ten_-9_6_1_2': tenMinusNine6Row21,
+    'Ten_-9_6_2_1': tenMinusNine6Row21,
+    'Ten_-9_6_2_2': tenMinusNine6Row22,
+
+    'Ten_-8_4_1_1': tenMinusEight4Row11,
+    'Ten_-8_4_1_2': tenMinusEight4Row21,
+    'Ten_-8_4_2_1': tenMinusEight4Row21,
+    'Ten_-8_4_2_2': tenMinusEight4Row22,
+    'Ten_-8_5_1_1': tenMinusEight5Row11,
+    'Ten_-8_5_1_2': tenMinusEight5Row21,
+    'Ten_-8_5_2_1': tenMinusEight5Row21,
+    'Ten_-8_5_2_2': tenMinusEight5Row22,
+    'Ten_-8_6_1_1': tenMinusEight6Row11,
+    'Ten_-8_6_1_2': tenMinusEight6Row21,
+    'Ten_-8_6_2_1': tenMinusEight6Row21,
+    'Ten_-8_6_2_2': tenMinusEight6Row22,
+
+    'Ten_-7_4_1_1': tenMinusSeven4Row11,
+    'Ten_-7_4_1_2': tenMinusSeven4Row21,
+    'Ten_-7_4_2_1': tenMinusSeven4Row21,
+    'Ten_-7_4_2_2': tenMinusSeven4Row22,
+    'Ten_-7_5_1_1': tenMinusSeven5Row11,
+    'Ten_-7_5_1_2': tenMinusSeven5Row21,
+    'Ten_-7_5_2_1': tenMinusSeven5Row21,
+    'Ten_-7_5_2_2': tenMinusSeven5Row22,
+    'Ten_-7_6_1_1': tenMinusSeven6Row11,
+    'Ten_-7_6_1_2': tenMinusSeven6Row21,
+    'Ten_-7_6_2_1': tenMinusSeven6Row21,
+    'Ten_-7_6_2_2': tenMinusSeven6Row22,
 
     'Five&Ten_-9_4_1_1': fiveTenMinusNine4Row11,
     'Five&Ten_-9_4_1_2': fiveTenMinusNine4Row21,
