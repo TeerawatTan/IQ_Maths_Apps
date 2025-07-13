@@ -1,15 +1,6 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
-import 'package:iq_maths_apps/datas/five_minus_four.dart';
-import 'package:iq_maths_apps/datas/five_minus_one.dart';
-import 'package:iq_maths_apps/datas/five_minus_three.dart';
-import 'package:iq_maths_apps/datas/five_minus_two.dart';
-import 'package:iq_maths_apps/datas/five_plus_four.dart';
-import 'package:iq_maths_apps/datas/five_plus_one.dart';
-import 'package:iq_maths_apps/datas/five_plus_three.dart';
-import 'package:iq_maths_apps/datas/five_plus_two.dart';
-import 'package:iq_maths_apps/datas/random_five_minus.dart';
-import 'package:iq_maths_apps/datas/random_five_plus.dart';
+import 'package:iq_maths_apps/datas/map_list_five_buddy.dart';
 import 'package:iq_maths_apps/helpers/random_question.dart';
 import 'package:iq_maths_apps/models/digit_model.dart';
 import 'package:iq_maths_apps/models/maths_setting.dart';
@@ -74,138 +65,6 @@ class _FiveBuddyScreenState extends State<FiveBuddyScreen> {
     }
   }
 
-  final Map<String, List<dynamic>> _dataMap = {
-    'Five_+1_4_1_1': fivePlusOne4Row11,
-    'Five_+1_4_1_2': fivePlusOne4Row21,
-    'Five_+1_4_2_1': fivePlusOne4Row21,
-    'Five_+1_4_2_2': fivePlusOne4Row22,
-    'Five_+1_5_1_1': fivePlusOne5Row11,
-    'Five_+1_5_1_2': fivePlusOne5Row21,
-    'Five_+1_5_2_1': fivePlusOne5Row21,
-    'Five_+1_5_2_2': fivePlusOne5Row22,
-    'Five_+1_6_1_1': fivePlusOne6Row11,
-    'Five_+1_6_1_2': fivePlusOne6Row21,
-    'Five_+1_6_2_1': fivePlusOne6Row21,
-    'Five_+1_6_2_2': fivePlusOne6Row22,
-
-    'Five_+2_4_1_1': fivePlusTwo4Row11,
-    'Five_+2_4_1_2': fivePlusTwo4Row21,
-    'Five_+2_4_2_1': fivePlusTwo4Row21,
-    'Five_+2_4_2_2': fivePlusTwo4Row22,
-    'Five_+2_5_1_1': fivePlusTwo5Row11,
-    'Five_+2_5_1_2': fivePlusTwo5Row21,
-    'Five_+2_5_2_1': fivePlusTwo5Row21,
-    'Five_+2_5_2_2': fivePlusTwo5Row22,
-    'Five_+2_6_1_1': fivePlusTwo6Row11,
-    'Five_+2_6_1_2': fivePlusTwo6Row21,
-    'Five_+2_6_2_1': fivePlusTwo6Row21,
-    'Five_+2_6_2_2': fivePlusTwo6Row22,
-
-    'Five_+3_4_1_1': fivePlusThree4Row11,
-    'Five_+3_4_1_2': fivePlusThree4Row21,
-    'Five_+3_4_2_1': fivePlusThree4Row21,
-    'Five_+3_4_2_2': fivePlusThree4Row22,
-    'Five_+3_5_1_1': fivePlusThree5Row11,
-    'Five_+3_5_1_2': fivePlusThree5Row21,
-    'Five_+3_5_2_1': fivePlusThree5Row21,
-    'Five_+3_5_2_2': fivePlusThree5Row22,
-    'Five_+3_6_1_1': fivePlusThree6Row11,
-    'Five_+3_6_1_2': fivePlusThree6Row21,
-    'Five_+3_6_2_1': fivePlusThree6Row21,
-    'Five_+3_6_2_2': fivePlusThree6Row22,
-
-    'Five_+4_4_1_1': fivePlusFour4Row11,
-    'Five_+4_4_1_2': fivePlusFour4Row21,
-    'Five_+4_4_2_1': fivePlusFour4Row21,
-    'Five_+4_4_2_2': fivePlusFour4Row22,
-    'Five_+4_5_1_1': fivePlusFour5Row11,
-    'Five_+4_5_1_2': fivePlusFour5Row21,
-    'Five_+4_5_2_1': fivePlusFour5Row21,
-    'Five_+4_5_2_2': fivePlusFour5Row22,
-    'Five_+4_6_1_1': fivePlusFour6Row11,
-    'Five_+4_6_1_2': fivePlusFour6Row21,
-    'Five_+4_6_2_1': fivePlusFour6Row21,
-    'Five_+4_6_2_2': fivePlusFour6Row22,
-
-    'Random_Lesson_Five_+_4_1_1': randomFivePlus4Row11,
-    'Random_Lesson_Five_+_4_1_2': randomFivePlus4Row21,
-    'Random_Lesson_Five_+_4_2_1': randomFivePlus4Row21,
-    'Random_Lesson_Five_+_4_2_2': randomFivePlus4Row22,
-    'Random_Lesson_Five_+_5_1_1': randomFivePlus5Row11,
-    'Random_Lesson_Five_+_5_1_2': randomFivePlus5Row21,
-    'Random_Lesson_Five_+_5_2_1': randomFivePlus5Row21,
-    'Random_Lesson_Five_+_5_2_2': randomFivePlus5Row22,
-    'Random_Lesson_Five_+_6_1_1': randomFivePlus6Row11,
-    'Random_Lesson_Five_+_6_1_2': randomFivePlus6Row21,
-    'Random_Lesson_Five_+_6_2_1': randomFivePlus6Row21,
-    'Random_Lesson_Five_+_6_2_2': randomFivePlus6Row22,
-
-    'Five_-4_4_1_1': fiveMinusFour4Row11,
-    'Five_-4_4_1_2': fiveMinusFour4Row21,
-    'Five_-4_4_2_1': fiveMinusFour4Row21,
-    'Five_-4_4_2_2': fiveMinusFour4Row22,
-    'Five_-4_5_1_1': fiveMinusFour5Row11,
-    'Five_-4_5_1_2': fiveMinusFour5Row21,
-    'Five_-4_5_2_1': fiveMinusFour5Row21,
-    'Five_-4_5_2_2': fiveMinusFour5Row22,
-    'Five_-4_6_1_1': fiveMinusFour6Row11,
-    'Five_-4_6_1_2': fiveMinusFour6Row21,
-    'Five_-4_6_2_1': fiveMinusFour6Row21,
-    'Five_-4_6_2_2': fiveMinusFour6Row22,
-
-    'Five_-3_4_1_1': fiveMinusThree4Row11,
-    'Five_-3_4_1_2': fiveMinusThree4Row21,
-    'Five_-3_4_2_1': fiveMinusThree4Row21,
-    'Five_-3_4_2_2': fiveMinusThree4Row22,
-    'Five_-3_5_1_1': fiveMinusThree5Row11,
-    'Five_-3_5_1_2': fiveMinusThree5Row21,
-    'Five_-3_5_2_1': fiveMinusThree5Row21,
-    'Five_-3_5_2_2': fiveMinusThree5Row22,
-    'Five_-3_6_1_1': fiveMinusThree6Row11,
-    'Five_-3_6_1_2': fiveMinusThree6Row21,
-    'Five_-3_6_2_1': fiveMinusThree6Row21,
-    'Five_-3_6_2_2': fiveMinusThree6Row22,
-
-    'Five_-2_4_1_1': fiveMinusTwo4Row11,
-    'Five_-2_4_1_2': fiveMinusTwo4Row21,
-    'Five_-2_4_2_1': fiveMinusTwo4Row21,
-    'Five_-2_4_2_2': fiveMinusTwo4Row22,
-    'Five_-2_5_1_1': fiveMinusTwo5Row11,
-    'Five_-2_5_1_2': fiveMinusTwo5Row21,
-    'Five_-2_5_2_1': fiveMinusTwo5Row21,
-    'Five_-2_5_2_2': fiveMinusTwo5Row22,
-    'Five_-2_6_1_1': fiveMinusTwo6Row11,
-    'Five_-2_6_1_2': fiveMinusTwo6Row21,
-    'Five_-2_6_2_1': fiveMinusTwo6Row21,
-    'Five_-2_6_2_2': fiveMinusTwo6Row22,
-
-    'Five_-1_4_1_1': fiveMinusOne4Row11,
-    'Five_-1_4_1_2': fiveMinusOne4Row21,
-    'Five_-1_4_2_1': fiveMinusOne4Row21,
-    'Five_-1_4_2_2': fiveMinusOne4Row22,
-    'Five_-1_5_1_1': fiveMinusOne5Row11,
-    'Five_-1_5_1_2': fiveMinusOne5Row21,
-    'Five_-1_5_2_1': fiveMinusOne5Row21,
-    'Five_-1_5_2_2': fiveMinusOne5Row22,
-    'Five_-1_6_1_1': fiveMinusOne6Row11,
-    'Five_-1_6_1_2': fiveMinusOne6Row21,
-    'Five_-1_6_2_1': fiveMinusOne6Row21,
-    'Five_-1_6_2_2': fiveMinusOne6Row22,
-
-    'Random_Lesson_Five_-_4_1_1': randomFiveMinus4Row11,
-    'Random_Lesson_Five_-_4_1_2': randomFiveMinus4Row21,
-    'Random_Lesson_Five_-_4_2_1': randomFiveMinus4Row21,
-    'Random_Lesson_Five_-_4_2_2': randomFiveMinus4Row22,
-    'Random_Lesson_Five_-_5_1_1': randomFiveMinus5Row11,
-    'Random_Lesson_Five_-_5_1_2': randomFiveMinus5Row21,
-    'Random_Lesson_Five_-_5_2_1': randomFiveMinus5Row21,
-    'Random_Lesson_Five_-_5_2_2': randomFiveMinus5Row22,
-    'Random_Lesson_Five_-_6_1_1': randomFiveMinus6Row11,
-    'Random_Lesson_Five_-_6_1_2': randomFiveMinus6Row21,
-    'Random_Lesson_Five_-_6_2_1': randomFiveMinus6Row21,
-    'Random_Lesson_Five_-_6_2_2': randomFiveMinus6Row22,
-  };
-
   List<dynamic> _getList() {
     final currentMenu = widget.setting.selectedSubOptionLabel.replaceAll(
       ' ',
@@ -215,7 +74,7 @@ class _FiveBuddyScreenState extends State<FiveBuddyScreen> {
     final currentD1 = widget.setting.digit1;
     final currentD2 = widget.setting.digit2;
     final key = '${currentMenu}_${currentRow}_${currentD1}_$currentD2';
-    return _dataMap[key] ?? [];
+    return dataFiveBuddyMap[key] ?? [];
   }
 
   void _generateRandomNumbers() {
