@@ -43,11 +43,6 @@ class _LowerScreenState extends State<LowerScreen> {
   void initState() {
     super.initState();
     _generateRandomNumbers();
-
-    if (widget.setting.display.toLowerCase() == "flash card") {
-      shouldContinueFlashCard = true;
-      _startFlashCard();
-    }
   }
 
   @override

@@ -42,11 +42,6 @@ class _RandomExerciseScreenState extends State<RandomExerciseScreen> {
   void initState() {
     super.initState();
     _generateRandomNumbers();
-
-    if (widget.setting.display.toLowerCase() == "flash card") {
-      shouldContinueFlashCard = true;
-      _startFlashCard();
-    }
   }
 
   @override
